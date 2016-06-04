@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=F103_48.map -O0 --gc-sections -lstdc++ -LC:\CooCox\CoIDE\configuration\ProgramData\F103_48 -TC:\CooCox\CoIDE\configuration\ProgramData\F103_48/arm-gcc-link.ld -g">
+      <target file="F103_48.elf" lastModified="154c9996f5a">
+         <source file="..\obj\semihosting.o" lastModified="154c99967c3"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="154c999688e"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="154c99968ec"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="154c999691b"/>
+         <source file="..\obj\stm32f10x_can.o" lastModified="154c9996998"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="154c99969e6"/>
+         <source file="..\obj\main.o" lastModified="154c9996aa2"/>
+         <source file="..\obj\printf.o" lastModified="154c9996aff"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="154c9996b6d"/>
+         <source file="..\obj\stm32f10x_exti.o" lastModified="154c9996bab"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="154c9996c19"/>
+         <source file="..\obj\STM32F103C8T6_Function.o" lastModified="154c9996c90"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="154c9996cee"/>
+         <source file="..\obj\sh_cmd.o" lastModified="154c9996cfa"/>
+         <source file="..\obj\syscalls.o" lastModified="154c9996d28"/>
+         <source file="..\obj\misc.o" lastModified="154c9996d66"/>
+      </target>
+   </processor>
+</history>

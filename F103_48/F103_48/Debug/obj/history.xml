@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F103C8 -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -DSUPPORT_CPLUSPLUS -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\CoIDE_workspace\F103_48\cmsis_boot -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\CoIDE_workspace\F103_48\user -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\CoIDE_workspace -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\CoIDE_workspace\F103_48 -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\CoIDE_workspace\F103_48\stm_lib -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\CoIDE_workspace\F103_48\cmsis -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\CoIDE_workspace\F103_48\stm_lib\inc -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\CoIDE_workspace\F103_48\semihosting">
+      <target file="stm32f10x_adc.o" lastModified="154c9996c19">
+         <source file="..\..\..\stm_lib\src\stm32f10x_adc.c" lastModified="15336ea5f45"/>
+      </target>
+      <target file="stm32f10x_can.o" lastModified="154c9996998">
+         <source file="..\..\..\stm_lib\src\stm32f10x_can.c" lastModified="15336eaea79"/>
+      </target>
+      <target file="syscalls.o" lastModified="154c9996d28">
+         <source file="..\..\..\syscalls\syscalls.c" lastModified="15336e9c3d6"/>
+      </target>
+      <target file="stm32f10x_exti.o" lastModified="154c9996bab">
+         <source file="..\..\..\stm_lib\src\stm32f10x_exti.c" lastModified="153a6933775"/>
+      </target>
+      <target file="stm32f10x_tim.o" lastModified="154c999688e">
+         <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="15336eab70f"/>
+      </target>
+      <target file="printf.o" lastModified="154c9996aff">
+         <source file="..\..\..\stdio\printf.c" lastModified="1539cdb9088"/>
+      </target>
+      <target file="system_stm32f10x.o" lastModified="154c99968ec">
+         <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="1539d18e939"/>
+      </target>
+      <target file="STM32F103C8T6_Function.o" lastModified="154c9996c90">
+         <source file="..\..\..\user\STM32F103C8T6_Function.cpp" lastModified="153a72407f0"/>
+      </target>
+      <target file="main.o" lastModified="154c9996aa2">
+         <source file="..\..\..\main.cpp" lastModified="154c99963fa"/>
+      </target>
+      <target file="sh_cmd.o" lastModified="154c9996cfa">
+         <source file="..\..\..\semihosting\sh_cmd.s" lastModified="15336e9e338"/>
+      </target>
+      <target file="stm32f10x_usart.o" lastModified="154c9996cee">
+         <source file="..\..\..\stm_lib\src\stm32f10x_usart.c" lastModified="15336ea4e8b"/>
+      </target>
+      <target file="stm32f10x_gpio.o" lastModified="154c99969e6">
+         <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="15336ea1b9e"/>
+      </target>
+      <target file="semihosting.o" lastModified="154c99967c3">
+         <source file="..\..\..\semihosting\semihosting.c" lastModified="15336e9e336"/>
+      </target>
+      <target file="stm32f10x_rcc.o" lastModified="154c9996b6d">
+         <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="15336ea104f"/>
+      </target>
+      <target file="startup_stm32f10x_md.o" lastModified="154c999691b">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="153a7210187"/>
+      </target>
+      <target file="misc.o" lastModified="154c9996d66">
+         <source file="..\..\..\stm_lib\src\misc.c" lastModified="15336eb61d5"/>
+      </target>
+   </processor>
+</history>
