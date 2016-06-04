@@ -86,10 +86,10 @@ int main(void)
     	a = ADC1Read(1);
     	//OC3DutySet(TIM3,a/4);
     	//OC4DutySet(TIM3,a/4);
-    	delay(500);
+    	delay(200);
     	led.write(Bit_SET);
 
-    	delay(500);
+    	delay(200);
     	led.write(Bit_RESET);
 
     	canData[0] = a;
@@ -102,7 +102,7 @@ int main(void)
 
     	if(rxFlag == 1){
     		rxFlag = 0;
-    		printf("CAN Data 0 : %d ENC : %d\n\r",RxMessage.Data[0],enc1);
+    		printf("CAN Data 0 : %4d ENC : %4d\n\r",RxMessage.Data[0],enc1);
     	}
 
     	/*if(CAN_MessagePending(CAN1,CAN_FIFO0) != 0){
@@ -152,7 +152,6 @@ extern "C" void CAN1_RX1_IRQHandler(void){
 extern "C" void EXTI0_IRQHandler(void){
 	EXTI_ClearITPendingBit(EXTI_Line0);
 	enc1++;
-
 }
 
 
