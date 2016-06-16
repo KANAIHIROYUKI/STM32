@@ -19,6 +19,7 @@
 <part id="1"/>
 <part id="0"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -31,13 +32,17 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_48/user/STM32F103C8T6_Function.cpp"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2740" selectionTopPixel="1204"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="K:/マイドキュメント/STM32/F103_48/main.cpp" title="main.cpp" tooltip="K:/マイドキュメント/STM32/F103_48/main.cpp" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="K:/マイドキュメント/STM32/F103_48/main.cpp" title="main.cpp" tooltip="K:/マイドキュメント/STM32/F103_48/main.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_48/main.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1128" selectionTopPixel="296"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1128" selectionTopPixel="332"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x.h" partName="stm32f10x.h" path="K:/マイドキュメント/STM32/F103_48/cmsis_boot/stm32f10x.h" title="stm32f10x.h" tooltip="K:/マイドキュメント/STM32/F103_48/cmsis_boot/stm32f10x.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_48/cmsis_boot/stm32f10x.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="9616" selectionTopPixel="6242"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" partName="startup_stm32f10x_md.c" path="K:/マイドキュメント/STM32/F103_48/cmsis_boot/startup/startup_stm32f10x_md.c" title="startup_stm32f10x_md.c" tooltip="K:/マイドキュメント/STM32/F103_48/cmsis_boot/startup/startup_stm32f10x_md.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_48/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="10852" selectionTopPixel="2962"/>
 </editor>
 </editors>
 <views>
@@ -259,13 +264,8 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_48/cmsis_boot/stm32f10x.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_48/user/STM32F103C8T6_Function.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_48/user/STM32F103C8T6_Function.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_48/cmsis_boot/startup/startup_stm32f10x_md.c"/>
 </editors>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="367" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="2305" y="0"/>
-</item>
 <item historyLabel="STM32F103C8T6_Function.cpp" index="1">
 <position info="not_deleted" x="8145" y="0"/>
 </item>
@@ -404,8 +404,17 @@
 <item historyLabel="STM32F103C8T6_Function.cpp" index="9">
 <position info="not_deleted" x="2740" y="0"/>
 </item>
-<item active="true" historyLabel="main.cpp" index="0">
+<item historyLabel="main.cpp" index="0">
 <position info="not_deleted" x="1890" y="0"/>
+</item>
+<item historyLabel="startup_stm32f10x_md.c" index="10">
+<position info="not_deleted" x="10549" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="0">
+<position info="not_deleted" x="1128" y="0"/>
+</item>
+<item active="true" historyLabel="startup_stm32f10x_md.c" index="10">
+<position info="not_deleted" x="10549" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -414,6 +423,9 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="F103_48/cmsis_boot/startup/startup_stm32f10x_md.c">
+<persistable path="/F103_48/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+</file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_48.coproj" tooltip="K:\マイドキュメント\STM32\F103_48\F103_48.coproj">
 <persistable uri="file:/K:/マイドキュメント/STM32/F103_48/F103_48.coproj"/>
 </file>
@@ -453,9 +465,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can_helper.h" tooltip="NucleoF103_blink_led/headers/mbed/can_helper.h">
 <persistable path="/NucleoF103_blink_led/headers/mbed/can_helper.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can_api.h" tooltip="NucleoF103_blink_led/headers/mbed/can_api.h">
-<persistable path="/NucleoF103_blink_led/headers/mbed/can_api.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can_api.h" tooltip="NucleoF103_blink_led/headers/mbed/can_api.h">
 <persistable path="/NucleoF103_blink_led/headers/mbed/can_api.h"/>

@@ -213,7 +213,7 @@ void Default_Reset_Handler(void)
   /* Setup the microcontroller system. */
   SystemInit();
     
-  /* Call the application's entry point.*/
+  /* Call the application's entry point.*/-
   main();
 }
 
