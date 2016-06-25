@@ -1,6 +1,12 @@
 #include "stm32f10x.h"
-#include "STM32F103C8T6_Function.h"
 #include "stdio.h"
+
+#include "GPIO.h"
+#include "TIM.h"
+#include "CAN.h"
+#include "ADC.h"
+#include "USART.h"
+#include "SYSTEM.h"
 
 #define CAN_ID 0x07FF
 
@@ -23,6 +29,11 @@ GPIO encA;
 GPIO encB;
 GPIO encZ;
 
+GPIO pwmout;
+PWM pwm;
+
+ADC pot;
+
 int main(void)
 {
 	GPIOSetup();
@@ -30,6 +41,7 @@ int main(void)
 	led.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
 	canTx.setup(GPIOB,GPIO_Pin_9,GPIO_Mode_AF_PP);
 	canRx.setup(GPIOB,GPIO_Pin_8,GPIO_Mode_AF_PP);
+
 	usart1Tx.setup(GPIOA,GPIO_Pin_9,GPIO_Mode_AF_PP);
 	usart2Tx.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_AF_PP);
 	aIn.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_AIN);
@@ -37,7 +49,10 @@ int main(void)
 	encB.setup(GPIOA,GPIO_Pin_15,GPIO_Mode_IN_FLOATING);
 	encZ.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IN_FLOATING);
 
+	pwmout.setup(GPIOA,GPIO_Pin_6,GPIO_Mode_Out_PP);
+	pwm.setup(TIM3,1,512,TIM_OCMode_PWM1);
 
+	pot.setup(ADC1,9);
 
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
 
@@ -45,11 +60,16 @@ int main(void)
 
 	SysTick_Config(SystemCoreClock/1000);
 
-	USART2Setup(9600);
+	USART2Setup(115200);
 	USART2ITSetup(USART_IT_RXNE);
 
-	USART1Setup(9600);
+	USART1Setup(115200);
 	USART1ITSetup(USART_IT_RXNE);
+
+	printf(__DATE__);
+	printf(__TIME__);
+
+	printf("ADC1 CH0 read = %d",pot.read());
 
 /*	TIM3PWMSetup(1024);
 	OC3PWMSetup(TIM3,TIM_OCMode_PWM1);
@@ -58,13 +78,15 @@ int main(void)
 	OC3DutySet(TIM3,512);
 	OC4DutySet(TIM3,512);*/
 
-	ADC1Setup(1);
+
 
 	CAN1Setup();
 
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
     //GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource14);
     //GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource15);
+
+    /*
     GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource0);
 
     EXTI_InitTypeDef EXTI_InitStructure;
@@ -80,10 +102,14 @@ int main(void)
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x03;
     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x00;
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-    NVIC_Init(&NVIC_InitStructure);
+    NVIC_Init(&NVIC_InitStructure);*/
 
     while(1){
-    	a = ADC1Read(1);
+    	pwm.duty(pot.read()/8);
+
+    	printf("pot read = %d\n\r",pot.read());
+
+    	//a = pot.read();
     	//OC3DutySet(TIM3,a/4);
     	//OC4DutySet(TIM3,a/4);
     	delay(200);
@@ -102,7 +128,7 @@ int main(void)
 
     	if(rxFlag == 1){
     		rxFlag = 0;
-    		printf("CAN Data 0 : %4d ENC : %4d\n\r",RxMessage.Data[0],enc1);
+    		//printf("CAN Data 0 : %4d ENC : %4d\n\r",RxMessage.Data[0],enc1);
     	}
 
     	/*if(CAN_MessagePending(CAN1,CAN_FIFO0) != 0){
@@ -111,8 +137,6 @@ int main(void)
     	}*/
     }
 }
-
-
 
 
 

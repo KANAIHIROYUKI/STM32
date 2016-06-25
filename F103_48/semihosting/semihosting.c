@@ -44,7 +44,7 @@ void SH_SendChar(int ch) {
  *****************************************************************************/
 void SH_SendString(const char *str)
 {
-	int j;
+	//int j;
 	if (SH_DoCommand(0x04, (int)str, NULL) != 0) {
 		return;
 	}
