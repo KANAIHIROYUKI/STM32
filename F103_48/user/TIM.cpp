@@ -39,6 +39,7 @@ uint16_t PWM::setup(TIM_TypeDef* tim,uint16_t channel,uint16_t period,uint16_t m
 }
 
 uint16_t PWM::duty(uint16_t duty){
+	if(duty > pwm_period)duty = pwm_period;
 	pwm_duty = duty;
 	switch(pwm_channel){
 		case 1:
@@ -100,6 +101,9 @@ void OC1PWMSetup(TIM_TypeDef *tim,uint16_t mode){
 	TIM_OCInitStructure.TIM_Pulse = 0;//duty
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 	TIM_OC1Init(tim,&TIM_OCInitStructure);
+
+	TIM_ARRPreloadConfig(TIM3,ENABLE);
+	TIM_Cmd(TIM3,ENABLE);
 }
 
 void OC2PWMSetup(TIM_TypeDef *tim,uint16_t mode){

@@ -5,10 +5,10 @@
          <include file="..\..\..\cmsis\core_cmInstr.h"/>
          <include file="..\..\..\cmsis\core_cmFunc.h"/>
       </source>
-      <source file="..\..\..\user\CAN.h" lastModified="15578c6396f">
+      <source file="..\..\..\user\CAN.h" lastModified="1559be7d79e">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\ADC.h" lastModified="155797344fe">
+      <source file="..\..\..\user\ADC.h" lastModified="1559be7d797">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_rcc.h" lastModified="15336ea104e">
@@ -56,9 +56,6 @@
       <source file="..\..\..\user\CAN.cpp" lastModified="15578c6358f">
          <include file="..\..\..\user\CAN.h"/>
       </source>
-      <source file="..\..\..\user\USART.h" lastModified="155795c80a8">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
       <source file="..\..\..\semihosting\sh_cmd.s" lastModified="15336e9e338">
       </source>
       <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="15561d3e4a7">
@@ -66,7 +63,7 @@
       <source file="..\..\..\user\SYSTEM.cpp" lastModified="1557952aafa">
          <include file="..\..\..\user\SYSTEM.h"/>
       </source>
-      <source file="..\..\..\user\GPIO.h" lastModified="15579676002">
+      <source file="..\..\..\user\GPIO.h" lastModified="1559be7d7a5">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="15336eab70f">
@@ -77,29 +74,17 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\main.cpp" lastModified="15579b53236">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-         <include file="..\..\..\user\GPIO.h"/>
-         <include file="..\..\..\user\TIM.h"/>
-         <include file="..\..\..\user\CAN.h"/>
-         <include file="..\..\..\user\ADC.h"/>
-         <include file="..\..\..\user\USART.h"/>
-         <include file="..\..\..\user\SYSTEM.h"/>
-      </source>
-      <source file="..\..\..\stdio\printf.c" lastModified="1539cdb9858">
+      <source file="..\..\..\stdio\printf.c" lastModified="1559bf1b130">
          <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
          <include file="..\..\..\semihosting\semihosting.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\misc.h" lastModified="15336eb61d5">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\SYSTEM.h" lastModified="1557952aed8">
+      <source file="..\..\..\user\SYSTEM.h" lastModified="1559be7d7af">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
       <source file="..\..\..\syscalls\syscalls.c" lastModified="15336e9d376">
-      </source>
-      <source file="..\..\..\user\USART.cpp" lastModified="15578d8234a">
-         <include file="..\..\..\user\USART.h"/>
       </source>
       <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="15336e9f9c2">
       </source>
@@ -121,10 +106,10 @@
       </source>
       <source file="..\..\..\semihosting\semihosting.h" lastModified="15336e9e337">
       </source>
-      <source file="..\..\..\user\TIM.h" lastModified="15579b53247">
+      <source file="..\..\..\user\TIM.h" lastModified="1559bf1ad51">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\TIM.cpp" lastModified="155799b84ad">
+      <source file="..\..\..\user\TIM.cpp" lastModified="1559b9e6ab3">
          <include file="..\..\..\user\TIM.h"/>
       </source>
       <source file="..\..\..\semihosting\semihosting.c" lastModified="15579aae405">

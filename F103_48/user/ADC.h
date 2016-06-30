@@ -1,5 +1,5 @@
-#ifndef ADC_H
-#define ADC_H
+#ifndef ADC_H_
+#define ADC_H_
 
 #include "stm32f10x.h"
 #include "stdio.h"

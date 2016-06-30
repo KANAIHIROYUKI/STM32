@@ -8,6 +8,7 @@
 #include "USART.h"
 #include "SYSTEM.h"
 
+
 #define CAN_ID 0x07FF
 
 uint16_t a;
@@ -34,8 +35,14 @@ PWM pwm;
 
 ADC pot;
 
+USART serial;
+
 int main(void)
 {
+	char text[] = "HelloPrintf";
+
+	SysTick_Config(SystemCoreClock/1000);
+
 	GPIOSetup();
 
 	led.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
@@ -49,34 +56,25 @@ int main(void)
 	encB.setup(GPIOA,GPIO_Pin_15,GPIO_Mode_IN_FLOATING);
 	encZ.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IN_FLOATING);
 
-	pwmout.setup(GPIOA,GPIO_Pin_6,GPIO_Mode_Out_PP);
-	pwm.setup(TIM3,1,512,TIM_OCMode_PWM1);
+	pwmout.setup(GPIOA,GPIO_Pin_6,GPIO_Mode_AF_PP);
+	pwm.setup(TIM3,1);
 
 	pot.setup(ADC1,9);
+
+	serial.setup(USART1,115200);
+	serial.ITsetup(USART_IT_RXNE);
+
 
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
 
 	GPIO_PinRemapConfig(GPIO_Remap1_CAN1,ENABLE);
 
-	SysTick_Config(SystemCoreClock/1000);
-
-	USART2Setup(115200);
-	USART2ITSetup(USART_IT_RXNE);
-
-	USART1Setup(115200);
-	USART1ITSetup(USART_IT_RXNE);
 
 	printf(__DATE__);
 	printf(__TIME__);
 
 	printf("ADC1 CH0 read = %d",pot.read());
 
-/*	TIM3PWMSetup(1024);
-	OC3PWMSetup(TIM3,TIM_OCMode_PWM1);
-	OC4PWMSetup(TIM3,TIM_OCMode_PWM1);
-
-	OC3DutySet(TIM3,512);
-	OC4DutySet(TIM3,512);*/
 
 
 
@@ -105,17 +103,26 @@ int main(void)
     NVIC_Init(&NVIC_InitStructure);*/
 
     while(1){
-    	pwm.duty(pot.read()/8);
+    	pwm.duty(pot.read()/4);
 
-    	printf("pot read = %d\n\r",pot.read());
+    	//printf("pot read = %d\n\r",pot.read());
+    	printf("\n\r");
+    	//printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
+    	while(serial.available()){
+    		//printf("%c",serial.read());
+    		printf("\n\r");
+    		printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
+    		serial.send(serial.read());
+    	}
+    	printf("\n\r");
 
-    	//a = pot.read();
+    	a = pot.read();
     	//OC3DutySet(TIM3,a/4);
     	//OC4DutySet(TIM3,a/4);
-    	delay(200);
+    	delay(2000);
     	led.write(Bit_SET);
 
-    	delay(200);
+    	delay(2000);
     	led.write(Bit_RESET);
 
     	canData[0] = a;
@@ -140,25 +147,9 @@ int main(void)
 
 
 
-extern "C" void USART2_IRQHandler(void){
-	if(USART_GetITStatus(USART2,USART_IT_RXNE) == SET){
-		uint8_t i = USART_ReceiveData(USART2);
-		USART_SendData(USART2,i);
 
-		//usartData[usartAddress] = USART_ReceiveData(USART2);
-		//usartAddress++;
-	}
-}
 
-extern "C" void USART1_IRQHandler(void){
-	if(USART_GetITStatus(USART1,USART_IT_RXNE) == SET){
-		uint8_t i = USART_ReceiveData(USART1);
-		USART_SendData(USART1,i);
 
-		//usartData[usartAddress] = USART_ReceiveData(USART2);
-		//usartAddress++;
-	}
-}
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	rxFlag = 1;

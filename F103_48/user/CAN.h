@@ -1,5 +1,5 @@
-#ifndef CAN_H
-#define CAN_H
+#ifndef CAN_H_
+#define CAN_H_
 
 #include "stm32f10x.h"
 #include "stdio.h"

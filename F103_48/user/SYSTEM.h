@@ -1,5 +1,5 @@
-#ifndef SYSTEM_H
-#define SYSTEM_H
+#ifndef SYSTEM_H_
+#define SYSTEM_H_
 
 #include "stm32f10x.h"
 #include "stdio.h"

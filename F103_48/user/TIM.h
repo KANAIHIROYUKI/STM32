@@ -1,5 +1,5 @@
-#ifndef TIM_H
-#define TIM_H
+#ifndef TIM_H_
+#define TIM_H_
 
 #define PWM_PERIOD_DEFALUT 1024
 
