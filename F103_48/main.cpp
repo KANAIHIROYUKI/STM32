@@ -1,11 +1,7 @@
 #include "stm32f10x.h"
 #include "stdio.h"
 
-#include "GPIO.h"
-#include "TIM.h"
-#include "CAN.h"
-#include "ADC.h"
-#include "USART.h"
+
 #include "SYSTEM.h"
 
 
@@ -24,7 +20,9 @@ GPIO led;
 GPIO canRx;
 GPIO canTx;
 GPIO usart1Tx;
+GPIO usart1Rx;
 GPIO usart2Tx;
+GPIO usart2Rx;
 GPIO aIn;
 GPIO encA;
 GPIO encB;
@@ -36,21 +34,24 @@ PWM pwm;
 ADC pot;
 
 USART serial;
+USART serial2;
 
 int main(void)
 {
+	setup();
 	char text[] = "HelloPrintf";
 
-	SysTick_Config(SystemCoreClock/1000);
-
-	GPIOSetup();
+	GPIOSetup();//GPIOÉNÉâÉXÇ≈êÈåæÇµÇƒÇ¢ÇÈÇÃÇ≈ÇΩÇ‘ÇÒÇ¢ÇÁÇ»Ç¢
 
 	led.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
 	canTx.setup(GPIOB,GPIO_Pin_9,GPIO_Mode_AF_PP);
 	canRx.setup(GPIOB,GPIO_Pin_8,GPIO_Mode_AF_PP);
 
 	usart1Tx.setup(GPIOA,GPIO_Pin_9,GPIO_Mode_AF_PP);
+	usart1Rx.setup(GPIOA,GPIO_Pin_10,GPIO_Mode_IN_FLOATING);
 	usart2Tx.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_AF_PP);
+	usart2Rx.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_IN_FLOATING);
+
 	aIn.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_AIN);
 	encA.setup(GPIOA,GPIO_Pin_14,GPIO_Mode_IN_FLOATING);
 	encB.setup(GPIOA,GPIO_Pin_15,GPIO_Mode_IN_FLOATING);
@@ -63,6 +64,9 @@ int main(void)
 
 	serial.setup(USART1,115200);
 	serial.ITsetup(USART_IT_RXNE);
+
+	serial2.setup(USART2,115200);
+	serial2.ITsetup(USART_IT_RXNE);
 
 
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
@@ -108,11 +112,13 @@ int main(void)
     	//printf("pot read = %d\n\r",pot.read());
     	printf("\n\r");
     	//printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
-    	while(serial.available()){
-    		//printf("%c",serial.read());
+    	for(int i=0;i<USART_RX_BUFFER_SIZE;i++){
+    		printf("%d = %c\n\r",i,USART::usart2RxBuffer[i]);
+    	}
+    	while(serial2.available()){
     		printf("\n\r");
-    		printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
-    		serial.send(serial.read());
+    		printf("rx = %d,read = %d,available = %d",USART::usart2RxAddress,USART::usart2ReadAddress,serial2.available());
+    		serial2.send(serial2.read());
     	}
     	printf("\n\r");
 

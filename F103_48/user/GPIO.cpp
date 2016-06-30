@@ -10,6 +10,7 @@ int16_t GPIO::setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode){
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_IOPBEN,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_IOPCEN,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_IOPDEN,ENABLE);
+
 	gpio_mode = mode;
 
 	GPIO_InitTypeDef GPIO_InitStructure;

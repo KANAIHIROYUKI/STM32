@@ -32,17 +32,31 @@ void USART::send(char c){
 
 
 char USART::read(){
-
-	if(usart1RxAddress == usart1ReadAddress + 1){
-		return 0;
-	}else{
-		if(usart1ReadAddress == USART_RX_BUFFER_SIZE){
-			usart1ReadAddress = 1;
-
+	if(usart_usart == USART1){
+		if(usart1RxAddress == usart1ReadAddress + 1){
+			return 0;
 		}else{
-			usart1ReadAddress++;
+			if(usart1ReadAddress == USART_RX_BUFFER_SIZE - 1){
+				usart1ReadAddress = 0;
+
+			}else{
+				usart1ReadAddress++;
+			}
+			return usart1RxBuffer[usart1ReadAddress];
 		}
-		return usart1RxBuffer[usart1ReadAddress - 1];
+
+	}else if(usart_usart == USART2){
+		if(usart2RxAddress == usart2ReadAddress + 1){
+			return 0;
+		}else{
+			if(usart2ReadAddress == USART_RX_BUFFER_SIZE - 1){
+				usart2ReadAddress = 0;
+
+			}else{
+				usart2ReadAddress++;
+			}
+			return usart2RxBuffer[usart2ReadAddress];
+		}
 	}
 	return 0;
 }
