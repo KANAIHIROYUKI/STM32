@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=F103_48.map -O0 --gc-sections -lm -lgcc -lc -lstdc++ -LC:\CooCox\CoIDE\configuration\ProgramData\F103_48 -TC:\CooCox\CoIDE\configuration\ProgramData\F103_48/arm-gcc-link.ld -g">
+      <target file="F103_48.elf" lastModified="155a5bfcb18">
+         <source file="..\obj\semihosting.o" lastModified="155a5a2b722"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="155a5a2b7dc"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="155a5a2b821"/>
+         <source file="..\obj\CAN.o" lastModified="155a5a2b8d0"/>
+         <source file="..\obj\SYSTEM.o" lastModified="155a5bf879e"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="155a5a2b976"/>
+         <source file="..\obj\stm32f10x_can.o" lastModified="155a5a2b9f0"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="155a5a2ba40"/>
+         <source file="..\obj\main.o" lastModified="155a5bf886d"/>
+         <source file="..\obj\GPIO.o" lastModified="155a5a2bb61"/>
+         <source file="..\obj\ADC.o" lastModified="155a5a2bbb8"/>
+         <source file="..\obj\printf.o" lastModified="155a5a2bc20"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="155a5a2bc7a"/>
+         <source file="..\obj\stm32f10x_exti.o" lastModified="155a5a2bcbc"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="155a5a2bd1d"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="155a5a2bd78"/>
+         <source file="..\obj\sh_cmd.o" lastModified="155a5a2bd81"/>
+         <source file="..\obj\syscalls.o" lastModified="155a5a2bdbc"/>
+         <source file="..\obj\REMAP.o" lastModified="155a5a2bde9"/>
+         <source file="..\obj\misc.o" lastModified="155a5a2be2a"/>
+         <source file="..\obj\USART.o" lastModified="155a5bfc926"/>
+         <source file="..\obj\TIM.o" lastModified="155a5a2beee"/>
+      </target>
+   </processor>
+</history>

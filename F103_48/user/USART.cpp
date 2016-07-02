@@ -8,6 +8,14 @@ char USART::usart2RxBuffer[USART_RX_BUFFER_SIZE];
 uint16_t USART::usart2RxAddress = 1;
 uint16_t USART::usart2ReadAddress = 0;
 
+char USART::usart1TxBuffer[USART_TX_BUFFER_SIZE];
+uint16_t USART::usart1TxAddress;
+uint16_t USART::usart1TxWriteAddress;
+
+char USART::usart2TxBuffer[USART_TX_BUFFER_SIZE];
+uint16_t USART::usart2TxAddress;
+uint16_t USART::usart2TxWriteAddress;
+
 void USART::setup(USART_TypeDef *usart,uint32_t baud){
 	usart_usart = usart;
 	if(usart_usart == USART1){
@@ -61,16 +69,31 @@ char USART::read(){
 	return 0;
 }
 
-char USART::peek(){
-	return usart1RxBuffer[usart1ReadAddress];
+char USART::peek(){		//要動作チェック
+	if(usart_usart == USART1){
+		return usart1RxBuffer[usart1ReadAddress + 1];
+	}else if(usart_usart == USART2){
+		return usart2RxBuffer[usart2ReadAddress + 1];
+	}
+	return 0;
 }
 
 uint16_t USART::available(){
-	if(usart1RxAddress <= usart1ReadAddress){
-		return usart1RxAddress + USART_RX_BUFFER_SIZE - usart1ReadAddress - 1;
-	}else{
-		return usart1RxAddress - usart1ReadAddress - 1;
+	if(usart_usart == USART1){
+		if(usart1RxAddress <= usart1ReadAddress){
+			return usart1RxAddress + USART_RX_BUFFER_SIZE - usart1ReadAddress - 1;
+		}else{
+			return usart1RxAddress - usart1ReadAddress - 1;
+		}
+	}else if(usart_usart == USART2){
+		if(usart2RxAddress <= usart2ReadAddress){
+			return usart2RxAddress + USART_RX_BUFFER_SIZE - usart2ReadAddress - 1;
+		}else{
+			return usart2RxAddress - usart2ReadAddress - 1;
+		}
 	}
+	return 0;
+
 }
 
 void USART2Setup(uint32_t baud){
