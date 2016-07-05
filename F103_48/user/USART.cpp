@@ -74,10 +74,10 @@ void USART::send(char c){
 
 char USART::read(){
 	if(usart_usart == USART1){
-		if(usart1RxAddress == usart1ReadAddress + 1){
+		if(usart1RxAddress == usart1ReadAddress + 1){	//“Ç‚ß‚éƒf[ƒ^‚ª‚È‚¢
 			return 0;
 		}else{
-			if(usart1ReadAddress == USART_RX_BUFFER_SIZE - 1){
+			if(usart1ReadAddress == USART_RX_BUFFER_SIZE - 1){	//
 				usart1ReadAddress = 0;
 			}else{
 				usart1ReadAddress++;
