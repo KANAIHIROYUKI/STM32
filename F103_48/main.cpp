@@ -34,12 +34,11 @@ PWM pwm;
 ADC pot;
 
 USART serial;
-USART serial2;
+//USART serial2;
 
 int main(void)
 {
 	setup();
-	char text[] = "HelloPrintf";
 
 	GPIOSetup();//GPIOÉNÉâÉXÇ≈êÈåæÇµÇƒÇ¢ÇÈÇÃÇ≈ÇΩÇ‘ÇÒÇ¢ÇÁÇ»Ç¢
 
@@ -63,10 +62,8 @@ int main(void)
 	pot.setup(ADC1,9);
 
 	serial.setup(USART1,115200);
-	serial.ITsetup(USART_IT_RXNE);
 
-	serial2.setup(USART2,115200);
-	serial2.ITsetup(USART_IT_RXNE);
+	//serial2.setup(USART2,115200);
 
 
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
@@ -77,11 +74,7 @@ int main(void)
 	printf(__DATE__);
 	printf(__TIME__);
 
-	printf("ADC1 CH0 read = %d",pot.read());
-
-
-
-
+	printf("ADC1 CH0 read = %d\n\r",pot.read());
 	CAN1Setup();
 
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
@@ -109,16 +102,15 @@ int main(void)
     while(1){
     	pwm.duty(pot.read()/4);
 
-    	//printf("pot read = %d\n\r",pot.read());
-    	printf("\n\r");
-    	//printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
+    	printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
     	for(int i=0;i<USART_RX_BUFFER_SIZE;i++){
-    		printf("%d = %c\n\r",i,USART::usart2RxBuffer[i]);
+    		printf("%d = %c\n\r",i,USART::usart1RxBuffer[i]);
     	}
-    	while(serial2.available()){
+    	while(serial.available()){
     		printf("\n\r");
-    		printf("rx = %d,read = %d,available = %d",USART::usart2RxAddress,USART::usart2ReadAddress,serial2.available());
-    		serial2.send(serial2.read());
+    		printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
+    		//serial.send(serial.read());
+    		serial.read();
     	}
     	printf("\n\r");
 

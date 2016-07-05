@@ -9,7 +9,6 @@
 #include "stm32f10x_usart.h"
 #include "semihosting/semihosting.h"
 
-
 /**
  * @brief  Transmit a char, if you want to use printf(), 
  *         you need implement this function
