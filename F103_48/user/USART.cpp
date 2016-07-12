@@ -27,11 +27,10 @@ void USART::puts(const char *s){
 void USART::printf(const char *format, ...) {
 	va_list list;
 	va_start(list, format);
-	int len = vsnprintf(0, 0, format, list);
+	int len = vsnprintf(0, USART_TX_BUFFER_SIZE, format, list);
 	char *s;
 	s = (char *)malloc(len + 1);
 	vsprintf(s, format, list);
-	printf(s);
 	puts(s);
 	free(s);
 	va_end(list);
@@ -44,7 +43,9 @@ void USART::setup(USART_TypeDef *usart,uint32_t baud){
 	if(usart_usart == USART1){
 		USART1Setup(baud);
 		USART1ITSetup(USART_IT_RXNE);
-		//USART1ITSetup(USART_IT_TXE);
+		USART1ITSetup(USART_IT_TXE);
+		USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
+
 	}else if(usart_usart == USART2){
 		USART2Setup(baud);
 		USART2ITSetup(USART_IT_RXNE);
@@ -54,10 +55,10 @@ void USART::setup(USART_TypeDef *usart,uint32_t baud){
 
 
 void USART::send(char c){
-	while(USART_GetFlagStatus(usart_usart,USART_FLAG_TXE) == 0);
-	USART_SendData(usart_usart,c);
+	//while(USART_GetFlagStatus(usart_usart,USART_FLAG_TXE) == 0);
+	//USART_SendData(usart_usart,c);
 
-	/*USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
+	USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
 
 	if(USART::usart1TxSendAddress == USART::usart1TxWriteAddress + 1){
 		USART::usart1TxSendAddress++;
@@ -67,7 +68,7 @@ void USART::send(char c){
 	USART::usart1TxWriteAddress++;
 	if(USART::usart1TxWriteAddress >= USART_TX_BUFFER_SIZE){
 		USART::usart1TxWriteAddress = 0;
-	}*/
+	}
 
 }
 
@@ -186,7 +187,7 @@ extern "C" void USART1_IRQHandler(void){
 
 		USART::usart1RxBuffer[USART::usart1RxAddress] = USART_ReceiveData(USART1);
 		USART::usart1RxAddress++;
-		if(USART::usart1RxAddress == USART_RX_BUFFER_SIZE){
+		if(USART::usart1RxAddress >= USART_RX_BUFFER_SIZE){
 			USART::usart1RxAddress = 0;
 		}
 	}else if(USART_GetITStatus(USART1,USART_IT_TXE)){//‘—MŠ®—¹Š„‚İ

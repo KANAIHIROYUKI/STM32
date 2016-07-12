@@ -8,8 +8,8 @@
 #include <stdlib.h>
 
 #define USART_DEFAULT_BAUD 115200
-#define USART_RX_BUFFER_SIZE 8
-#define USART_TX_BUFFER_SIZE 8
+#define USART_RX_BUFFER_SIZE 16
+#define USART_TX_BUFFER_SIZE 16
 
 
 class USART {
@@ -23,7 +23,6 @@ public:
 
 	void puts(const char *c);
 	void printf(const char *format, ...);
-
 
 	static char usart1RxBuffer[USART_RX_BUFFER_SIZE];
 	static uint16_t usart1RxAddress;

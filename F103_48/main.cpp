@@ -38,6 +38,7 @@ USART serial;
 
 int main(void)
 {
+	char text[] = "HOGEhoge";
 	setup();
 
 	GPIOSetup();//GPIOÉNÉâÉXÇ≈êÈåæÇµÇƒÇ¢ÇÈÇÃÇ≈ÇΩÇ‘ÇÒÇ¢ÇÁÇ»Ç¢
@@ -70,11 +71,16 @@ int main(void)
 
 	GPIO_PinRemapConfig(GPIO_Remap1_CAN1,ENABLE);
 
-
+	printf("DATE = ");
 	printf(__DATE__);
+	printf("\n\rTIME = ");
 	printf(__TIME__);
+	//serial.printf("HOGE");
+	printf("\n\r");
+	serial.puts(text);
+	//serial.printf("hogehoge");
 
-	printf("ADC1 CH0 read = %d\n\r",pot.read());
+	printf("\n\rADC1 CH0 read = %d\n\r",pot.read());
 	CAN1Setup();
 
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
@@ -102,15 +108,20 @@ int main(void)
     while(1){
     	pwm.duty(pot.read()/4);
 
-    	printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
-    	for(int i=0;i<USART_RX_BUFFER_SIZE;i++){
+    	printf("\n\r");
+    	//printf("\n\rrx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
+    	/*for(int i=0;i<USART_RX_BUFFER_SIZE;i++){
     		printf("%d = %c\n\r",i,USART::usart1RxBuffer[i]);
-    	}
+    	}*/
     	while(serial.available()){
-    		printf("\n\r");
     		printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
-    		//serial.send(serial.read());
-    		serial.read();
+    		serial.send(serial.read());
+    		printf("\n\r");
+    		//serial.read();
+    	}
+    	printf("\n\r write = %d,send = %d\n\r",USART::usart1TxSendAddress,USART::usart1TxWriteAddress);
+    	for(int i=0;i<USART_TX_BUFFER_SIZE;i++){
+    		printf("%d,\n\r",USART::usart1TxBuffer[i]);
     	}
     	printf("\n\r");
 
