@@ -21,6 +21,14 @@ private:
 
 };
 
+/*
+class ENCODER{
+public:
+	uint16_t setup(TIM_TypeDef* tim,0);
+private:
+
+};*/
+
 
 
 
@@ -39,5 +47,10 @@ void OC1DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 void OC2DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 void OC3DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 void OC4DutySet(TIM_TypeDef*TIMx,uint16_t duty);
+
+void TIM1_ENCODERSetup();
+void TIM2_ENCODERSetup();
+void TIM3_ENCODERSetup();
+void TIM4_ENCODERSetup();
 
 #endif

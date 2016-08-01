@@ -26,7 +26,6 @@ GPIO usart2Rx;
 GPIO aIn;
 GPIO encA;
 GPIO encB;
-GPIO encZ;
 
 GPIO pwmout;
 PWM pwm;
@@ -38,10 +37,9 @@ USART serial;
 
 int main(void)
 {
-	char text[] = "HOGEhoge";
+	char text[] = "HOGEhoge",text2[] = "POGEpoge";
 	setup();
-
-	GPIOSetup();//GPIOクラスで宣言しているのでたぶんいらない
+	GPIOSetup();
 
 	led.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
 	canTx.setup(GPIOB,GPIO_Pin_9,GPIO_Mode_AF_PP);
@@ -53,9 +51,8 @@ int main(void)
 	usart2Rx.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_IN_FLOATING);
 
 	aIn.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_AIN);
-	encA.setup(GPIOA,GPIO_Pin_14,GPIO_Mode_IN_FLOATING);
-	encB.setup(GPIOA,GPIO_Pin_15,GPIO_Mode_IN_FLOATING);
-	encZ.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IN_FLOATING);
+	encA.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
+	encB.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
 
 	pwmout.setup(GPIOA,GPIO_Pin_6,GPIO_Mode_AF_PP);
 	pwm.setup(TIM3,1);
@@ -64,25 +61,28 @@ int main(void)
 
 	serial.setup(USART1,115200);
 
-	//serial2.setup(USART2,115200);
-
 
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
 
 	GPIO_PinRemapConfig(GPIO_Remap1_CAN1,ENABLE);
 
-	printf("DATE = ");
-	printf(__DATE__);
-	printf("\n\rTIME = ");
-	printf(__TIME__);
-	//serial.printf("HOGE");
-	printf("\n\r");
-	serial.puts(text);
-	//serial.printf("hogehoge");
+	serial.printf("DATE = ");
+	serial.printf(__DATE__);
+	serial.printf("\n\rTIME = ");
+	serial.printf(__TIME__);
+	serial.printf("\n\r");
 
-	printf("\n\rADC1 CH0 read = %d\n\r",pot.read());
+	serial.printf("serial.printf");
+
+	serial.printf("\n\rADC1 CH0 read = %d\n\r",pot.read());
 	CAN1Setup();
 
+	//エンコーダ
+	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM2EN,ENABLE);
+	TIM_EncoderInterfaceConfig(TIM2,TIM_EncoderMode_TI12,TIM_ICPolarity_Rising,TIM_ICPolarity_Rising);
+	TIM_Cmd(TIM2,ENABLE);
+
+	//入力割込み
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
     //GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource14);
     //GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource15);
@@ -108,11 +108,10 @@ int main(void)
     while(1){
     	pwm.duty(pot.read()/4);
 
-    	printf("\n\r");
-    	//printf("\n\rrx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
-    	/*for(int i=0;i<USART_RX_BUFFER_SIZE;i++){
-    		printf("%d = %c\n\r",i,USART::usart1RxBuffer[i]);
-    	}*/
+    	serial.printf("%d\n\r",TIM2->CNT);
+    	/*
+    	serial.printf("\n\r");
+
     	while(serial.available()){
     		printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
     		serial.send(serial.read());
@@ -124,6 +123,7 @@ int main(void)
     		printf("%d,\n\r",USART::usart1TxBuffer[i]);
     	}
     	printf("\n\r");
+    	*/
 
     	a = pot.read();
     	//OC3DutySet(TIM3,a/4);

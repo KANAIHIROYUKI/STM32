@@ -25,15 +25,14 @@ void USART::puts(const char *s){
 }
 
 void USART::printf(const char *format, ...) {
-	va_list list;
-	va_start(list, format);
-	int len = vsnprintf(0, USART_TX_BUFFER_SIZE, format, list);
-	char *s;
-	s = (char *)malloc(len + 1);
-	vsprintf(s, format, list);
-	puts(s);
-	free(s);
-	va_end(list);
+	va_list ap;
+	va_start(ap, format);
+
+	char buffer[USART_TX_BUFFER_SIZE];
+	vsprintf(buffer,format,ap);
+	puts(buffer);
+
+	va_end(ap);
 	return;
 }
 

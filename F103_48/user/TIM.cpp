@@ -160,3 +160,27 @@ void OC3DutySet(TIM_TypeDef*TIMx,uint16_t duty){
 void OC4DutySet(TIM_TypeDef*TIMx,uint16_t duty){
 	TIMx->CCR4 = duty;
 }
+
+void TIM1_ENCODERSetup(){
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1,ENABLE);
+	TIM_EncoderInterfaceConfig(TIM1,TIM_EncoderMode_TI12,TIM_ICPolarity_Rising,TIM_ICPolarity_Rising);
+	TIM_Cmd(TIM1,ENABLE);
+}
+
+void TIM2_ENCODERSetup(){
+	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM2EN,ENABLE);
+	TIM_EncoderInterfaceConfig(TIM2,TIM_EncoderMode_TI12,TIM_ICPolarity_Rising,TIM_ICPolarity_Rising);
+	TIM_Cmd(TIM2,ENABLE);
+}
+
+void TIM3_ENCODERSetup(){
+	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM3EN,ENABLE);
+	TIM_EncoderInterfaceConfig(TIM3,TIM_EncoderMode_TI12,TIM_ICPolarity_Rising,TIM_ICPolarity_Rising);
+	TIM_Cmd(TIM3,ENABLE);
+}
+
+void TIM4_ENCODERSetup(){
+	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM4EN,ENABLE);
+	TIM_EncoderInterfaceConfig(TIM4,TIM_EncoderMode_TI12,TIM_ICPolarity_Rising,TIM_ICPolarity_Rising);
+	TIM_Cmd(TIM4,ENABLE);
+}
