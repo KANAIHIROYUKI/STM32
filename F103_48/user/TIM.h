@@ -21,15 +21,6 @@ private:
 
 };
 
-/*
-class ENCODER{
-public:
-	uint16_t setup(TIM_TypeDef* tim,0);
-private:
-
-};*/
-
-
 
 
 void TIM2PWMSetup(uint16_t period);
@@ -48,9 +39,28 @@ void OC2DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 void OC3DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 void OC4DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 
+/********************************Å´ENCODER Å™PWM***********************************************/
+
+class ENCODER{
+public:
+	uint16_t setup(TIM_TypeDef* tim);
+	int32_t read();
+	static int32_t tim1Cnt;
+	static int32_t tim2Cnt;
+	static int32_t tim3Cnt;
+	static int32_t tim4Cnt;
+private:
+	TIM_TypeDef *enc_tim;
+};
+
 void TIM1_ENCODERSetup();
 void TIM2_ENCODERSetup();
 void TIM3_ENCODERSetup();
 void TIM4_ENCODERSetup();
+
+int32_t TIM1_ENCODERRead();
+int32_t TIM2_ENCODERRead();
+int32_t TIM3_ENCODERRead();
+int32_t TIM4_ENCODERRead();
 
 #endif

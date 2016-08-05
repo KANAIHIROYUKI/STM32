@@ -80,6 +80,7 @@ int main(void)
 	//エンコーダ
 	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM2EN,ENABLE);
 	TIM_EncoderInterfaceConfig(TIM2,TIM_EncoderMode_TI12,TIM_ICPolarity_Rising,TIM_ICPolarity_Rising);
+	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
 	TIM_Cmd(TIM2,ENABLE);
 
 	//入力割込み
@@ -177,5 +178,3 @@ extern "C" void EXTI0_IRQHandler(void){
 	EXTI_ClearITPendingBit(EXTI_Line0);
 	enc1++;
 }
-
-
