@@ -541,8 +541,12 @@ Discarded input sections
  .text          0x00000000        0x0 ..\obj\REMAP.o
  .data          0x00000000        0x0 ..\obj\REMAP.o
  .bss           0x00000000        0x0 ..\obj\REMAP.o
- .debug_line    0x00000000        0x0 ..\obj\REMAP.o
- .debug_str     0x00000000       0xbf ..\obj\REMAP.o
+ .debug_info    0x00000000       0x99 ..\obj\REMAP.o
+ .debug_abbrev  0x00000000       0x4b ..\obj\REMAP.o
+ .debug_aranges
+                0x00000000       0x18 ..\obj\REMAP.o
+ .debug_line    0x00000000      0x129 ..\obj\REMAP.o
+ .debug_str     0x00000000      0x1b4 ..\obj\REMAP.o
  .comment       0x00000000       0x71 ..\obj\REMAP.o
  .ARM.attributes
                 0x00000000       0x33 ..\obj\REMAP.o
@@ -648,8 +652,32 @@ Discarded input sections
                 0x00000000        0x0 ..\obj\TIM.o
  .ARM.exidx.text._Z16TIM4_ENCODERReadv
                 0x00000000        0x8 ..\obj\TIM.o
- .text.TIM1_IRQHandler
+ .text._Z16TIM1_ENCODER_IRQv
                 0x00000000       0x40 ..\obj\TIM.o
+ .ARM.extab.text._Z16TIM1_ENCODER_IRQv
+                0x00000000        0x0 ..\obj\TIM.o
+ .ARM.exidx.text._Z16TIM1_ENCODER_IRQv
+                0x00000000        0x8 ..\obj\TIM.o
+ .text._Z16TIM2_ENCODER_IRQv
+                0x00000000        0xc ..\obj\TIM.o
+ .ARM.extab.text._Z16TIM2_ENCODER_IRQv
+                0x00000000        0x0 ..\obj\TIM.o
+ .ARM.exidx.text._Z16TIM2_ENCODER_IRQv
+                0x00000000        0x8 ..\obj\TIM.o
+ .text._Z16TIM3_ENCODER_IRQv
+                0x00000000        0xc ..\obj\TIM.o
+ .ARM.extab.text._Z16TIM3_ENCODER_IRQv
+                0x00000000        0x0 ..\obj\TIM.o
+ .ARM.exidx.text._Z16TIM3_ENCODER_IRQv
+                0x00000000        0x8 ..\obj\TIM.o
+ .text._Z16TIM4_ENCODER_IRQv
+                0x00000000        0xc ..\obj\TIM.o
+ .ARM.extab.text._Z16TIM4_ENCODER_IRQv
+                0x00000000        0x0 ..\obj\TIM.o
+ .ARM.exidx.text._Z16TIM4_ENCODER_IRQv
+                0x00000000        0x8 ..\obj\TIM.o
+ .text.TIM1_IRQHandler
+                0x00000000       0x18 ..\obj\TIM.o
  .ARM.extab.text.TIM1_IRQHandler
                 0x00000000        0x0 ..\obj\TIM.o
  .ARM.exidx.text.TIM1_IRQHandler
@@ -1441,7 +1469,7 @@ LOAD c:/program files (x86)/gnu tools arm embedded/4.9 2014q4/bin/../lib/gcc/arm
 END GROUP
 OUTPUT(F103_48.elf elf32-littlearm)
 
-.debug_info     0x00000000     0xa359
+.debug_info     0x00000000     0xa3d1
  .debug_info    0x00000000     0x1c58 ..\obj\stm32f10x_tim.o
  .debug_info    0x00001c58      0x479 ..\obj\system_stm32f10x.o
  .debug_info    0x000020d1      0x74a ..\obj\CAN.o
@@ -1449,20 +1477,20 @@ OUTPUT(F103_48.elf elf32-littlearm)
  .debug_info    0x00002df3       0xfc ..\obj\startup_stm32f10x_md.o
  .debug_info    0x00002eef      0xb9c ..\obj\stm32f10x_can.o
  .debug_info    0x00003a8b      0x6e7 ..\obj\stm32f10x_gpio.o
- .debug_info    0x00004172      0xe47 ..\obj\main.o
- .debug_info    0x00004fb9      0x491 ..\obj\GPIO.o
- .debug_info    0x0000544a      0x47e ..\obj\ADC.o
- .debug_info    0x000058c8      0xf5a ..\obj\printf.o
- .debug_info    0x00006822      0x88d ..\obj\stm32f10x_rcc.o
- .debug_info    0x000070af      0x341 ..\obj\stm32f10x_exti.o
- .debug_info    0x000073f0      0xb74 ..\obj\stm32f10x_adc.o
- .debug_info    0x00007f64      0x9e8 ..\obj\stm32f10x_usart.o
- .debug_info    0x0000894c       0xb3 ..\obj\sh_cmd.o
- .debug_info    0x000089ff      0x53d ..\obj\misc.o
- .debug_info    0x00008f3c      0x999 ..\obj\USART.o
- .debug_info    0x000098d5      0xa84 ..\obj\TIM.o
+ .debug_info    0x00004172      0xe57 ..\obj\main.o
+ .debug_info    0x00004fc9      0x491 ..\obj\GPIO.o
+ .debug_info    0x0000545a      0x47e ..\obj\ADC.o
+ .debug_info    0x000058d8      0xf5a ..\obj\printf.o
+ .debug_info    0x00006832      0x88d ..\obj\stm32f10x_rcc.o
+ .debug_info    0x000070bf      0x341 ..\obj\stm32f10x_exti.o
+ .debug_info    0x00007400      0xb74 ..\obj\stm32f10x_adc.o
+ .debug_info    0x00007f74      0x9e8 ..\obj\stm32f10x_usart.o
+ .debug_info    0x0000895c       0xb3 ..\obj\sh_cmd.o
+ .debug_info    0x00008a0f      0x53d ..\obj\misc.o
+ .debug_info    0x00008f4c      0x999 ..\obj\USART.o
+ .debug_info    0x000098e5      0xaec ..\obj\TIM.o
 
-.debug_abbrev   0x00000000     0x1efe
+.debug_abbrev   0x00000000     0x1f26
  .debug_abbrev  0x00000000      0x1b0 ..\obj\stm32f10x_tim.o
  .debug_abbrev  0x000001b0      0x14c ..\obj\system_stm32f10x.o
  .debug_abbrev  0x000002fc      0x175 ..\obj\CAN.o
@@ -1470,20 +1498,20 @@ OUTPUT(F103_48.elf elf32-littlearm)
  .debug_abbrev  0x0000060e       0xae ..\obj\startup_stm32f10x_md.o
  .debug_abbrev  0x000006bc      0x1f3 ..\obj\stm32f10x_can.o
  .debug_abbrev  0x000008af      0x1c8 ..\obj\stm32f10x_gpio.o
- .debug_abbrev  0x00000a77      0x249 ..\obj\main.o
- .debug_abbrev  0x00000cc0      0x1d2 ..\obj\GPIO.o
- .debug_abbrev  0x00000e92      0x1b8 ..\obj\ADC.o
- .debug_abbrev  0x0000104a      0x2a5 ..\obj\printf.o
- .debug_abbrev  0x000012ef      0x1ba ..\obj\stm32f10x_rcc.o
- .debug_abbrev  0x000014a9      0x151 ..\obj\stm32f10x_exti.o
- .debug_abbrev  0x000015fa      0x198 ..\obj\stm32f10x_adc.o
- .debug_abbrev  0x00001792      0x162 ..\obj\stm32f10x_usart.o
- .debug_abbrev  0x000018f4       0x14 ..\obj\sh_cmd.o
- .debug_abbrev  0x00001908      0x145 ..\obj\misc.o
- .debug_abbrev  0x00001a4d      0x25b ..\obj\USART.o
- .debug_abbrev  0x00001ca8      0x256 ..\obj\TIM.o
+ .debug_abbrev  0x00000a77      0x25c ..\obj\main.o
+ .debug_abbrev  0x00000cd3      0x1d2 ..\obj\GPIO.o
+ .debug_abbrev  0x00000ea5      0x1b8 ..\obj\ADC.o
+ .debug_abbrev  0x0000105d      0x2a5 ..\obj\printf.o
+ .debug_abbrev  0x00001302      0x1ba ..\obj\stm32f10x_rcc.o
+ .debug_abbrev  0x000014bc      0x151 ..\obj\stm32f10x_exti.o
+ .debug_abbrev  0x0000160d      0x198 ..\obj\stm32f10x_adc.o
+ .debug_abbrev  0x000017a5      0x162 ..\obj\stm32f10x_usart.o
+ .debug_abbrev  0x00001907       0x14 ..\obj\sh_cmd.o
+ .debug_abbrev  0x0000191b      0x145 ..\obj\misc.o
+ .debug_abbrev  0x00001a60      0x25b ..\obj\USART.o
+ .debug_abbrev  0x00001cbb      0x26b ..\obj\TIM.o
 
-.debug_aranges  0x00000000      0xc20
+.debug_aranges  0x00000000      0xc40
  .debug_aranges
                 0x00000000      0x2f0 ..\obj\stm32f10x_tim.o
  .debug_aranges
@@ -1521,9 +1549,9 @@ OUTPUT(F103_48.elf elf32-littlearm)
  .debug_aranges
                 0x00000ab0       0x80 ..\obj\USART.o
  .debug_aranges
-                0x00000b30       0xf0 ..\obj\TIM.o
+                0x00000b30      0x110 ..\obj\TIM.o
 
-.debug_ranges   0x00000000      0xae0
+.debug_ranges   0x00000000      0xb00
  .debug_ranges  0x00000000      0x2e0 ..\obj\stm32f10x_tim.o
  .debug_ranges  0x000002e0       0x28 ..\obj\system_stm32f10x.o
  .debug_ranges  0x00000308       0x18 ..\obj\CAN.o
@@ -1541,9 +1569,9 @@ OUTPUT(F103_48.elf elf32-littlearm)
  .debug_ranges  0x00000870       0xf0 ..\obj\stm32f10x_usart.o
  .debug_ranges  0x00000960       0x30 ..\obj\misc.o
  .debug_ranges  0x00000990       0x70 ..\obj\USART.o
- .debug_ranges  0x00000a00       0xe0 ..\obj\TIM.o
+ .debug_ranges  0x00000a00      0x100 ..\obj\TIM.o
 
-.debug_line     0x00000000     0x460f
+.debug_line     0x00000000     0x4654
  .debug_line    0x00000000      0xb0b ..\obj\stm32f10x_tim.o
  .debug_line    0x00000b0b      0x231 ..\obj\system_stm32f10x.o
  .debug_line    0x00000d3c      0x25b ..\obj\CAN.o
@@ -1562,9 +1590,9 @@ OUTPUT(F103_48.elf elf32-littlearm)
  .debug_line    0x00003ab1       0x8c ..\obj\sh_cmd.o
  .debug_line    0x00003b3d      0x271 ..\obj\misc.o
  .debug_line    0x00003dae      0x3ef ..\obj\USART.o
- .debug_line    0x0000419d      0x472 ..\obj\TIM.o
+ .debug_line    0x0000419d      0x4b7 ..\obj\TIM.o
 
-.debug_str      0x00000000     0x3ed5
+.debug_str      0x00000000     0x3f8b
  .debug_str     0x00000000      0xcdf ..\obj\stm32f10x_tim.o
                                 0xdf2 (size before relaxing)
  .debug_str     0x00000cdf      0x176 ..\obj\system_stm32f10x.o
@@ -1579,28 +1607,28 @@ OUTPUT(F103_48.elf elf32-littlearm)
                                 0x743 (size before relaxing)
  .debug_str     0x00001a23      0x340 ..\obj\stm32f10x_gpio.o
                                 0x52e (size before relaxing)
- .debug_str     0x00001d63      0x424 ..\obj\main.o
-                                0x996 (size before relaxing)
- .debug_str     0x00002187       0xfd ..\obj\GPIO.o
+ .debug_str     0x00001d63      0x43e ..\obj\main.o
+                                0x9b0 (size before relaxing)
+ .debug_str     0x000021a1       0xfd ..\obj\GPIO.o
                                 0x4e7 (size before relaxing)
- .debug_str     0x00002284      0x13d ..\obj\ADC.o
+ .debug_str     0x0000229e      0x13d ..\obj\ADC.o
                                 0x40d (size before relaxing)
- .debug_str     0x000023c1      0x4bf ..\obj\printf.o
+ .debug_str     0x000023db      0x4bf ..\obj\printf.o
                                 0x715 (size before relaxing)
- .debug_str     0x00002880      0x3e9 ..\obj\stm32f10x_rcc.o
+ .debug_str     0x0000289a      0x3e9 ..\obj\stm32f10x_rcc.o
                                 0x62f (size before relaxing)
- .debug_str     0x00002c69      0x1df ..\obj\stm32f10x_exti.o
+ .debug_str     0x00002c83      0x1df ..\obj\stm32f10x_exti.o
                                 0x35e (size before relaxing)
- .debug_str     0x00002e48      0x460 ..\obj\stm32f10x_adc.o
+ .debug_str     0x00002e62      0x460 ..\obj\stm32f10x_adc.o
                                 0x710 (size before relaxing)
- .debug_str     0x000032a8      0x410 ..\obj\stm32f10x_usart.o
+ .debug_str     0x000032c2      0x410 ..\obj\stm32f10x_usart.o
                                 0x6a5 (size before relaxing)
- .debug_str     0x000036b8      0x111 ..\obj\misc.o
+ .debug_str     0x000036d2      0x111 ..\obj\misc.o
                                 0x3d3 (size before relaxing)
- .debug_str     0x000037c9      0x290 ..\obj\USART.o
+ .debug_str     0x000037e3      0x290 ..\obj\USART.o
                                 0xab7 (size before relaxing)
- .debug_str     0x00003a59      0x47c ..\obj\TIM.o
-                                0x944 (size before relaxing)
+ .debug_str     0x00003a73      0x518 ..\obj\TIM.o
+                                0x9fa (size before relaxing)
 
 .comment        0x00000000       0x70
  .comment       0x00000000       0x70 ..\obj\stm32f10x_tim.o
@@ -1664,7 +1692,7 @@ OUTPUT(F103_48.elf elf32-littlearm)
  .ARM.attributes
                 0x00000384       0x33 ..\obj\TIM.o
 
-.debug_frame    0x00000000     0x3304
+.debug_frame    0x00000000     0x3380
  .debug_frame   0x00000000      0xe2c ..\obj\stm32f10x_tim.o
  .debug_frame   0x00000e2c       0x98 ..\obj\system_stm32f10x.o
  .debug_frame   0x00000ec4       0x58 ..\obj\CAN.o
@@ -1682,4 +1710,4 @@ OUTPUT(F103_48.elf elf32-littlearm)
  .debug_frame   0x000027f4      0x490 ..\obj\stm32f10x_usart.o
  .debug_frame   0x00002c84       0xd8 ..\obj\misc.o
  .debug_frame   0x00002d5c      0x20c ..\obj\USART.o
- .debug_frame   0x00002f68      0x39c ..\obj\TIM.o
+ .debug_frame   0x00002f68      0x418 ..\obj\TIM.o

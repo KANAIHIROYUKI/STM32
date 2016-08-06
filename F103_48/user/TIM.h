@@ -1,10 +1,10 @@
 #ifndef TIM_H_
 #define TIM_H_
 
-#define PWM_PERIOD_DEFALUT 1024
-
 #include "stm32f10x.h"
 #include "stdio.h"
+
+#define PWM_PERIOD_DEFALUT 1024
 
 class PWM{
 public:
@@ -13,6 +13,8 @@ public:
 
 	uint16_t pwm_duty;
 	uint16_t pwm_period;
+
+	static void PWM_IRQ();
 
 private:
 	TIM_TypeDef* pwm_tim;
@@ -39,6 +41,7 @@ void OC2DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 void OC3DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 void OC4DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 
+
 /********************************Å´ENCODER Å™PWM***********************************************/
 
 class ENCODER{
@@ -62,5 +65,15 @@ int32_t TIM1_ENCODERRead();
 int32_t TIM2_ENCODERRead();
 int32_t TIM3_ENCODERRead();
 int32_t TIM4_ENCODERRead();
+
+void TIM1_ENCODER_IRQ();
+void TIM2_ENCODER_IRQ();
+void TIM3_ENCODER_IRQ();
+void TIM4_ENCODER_IRQ();
+
+void TIM1_PWM_Update_IRQ();
+void TIM2_PWM_Update_IRQ();
+void TIM3_PWM_Update_IRQ();
+void TIM4_PWM_Update_IRQ();
 
 #endif

@@ -178,3 +178,4 @@ extern "C" void EXTI0_IRQHandler(void){
 	EXTI_ClearITPendingBit(EXTI_Line0);
 	enc1++;
 }
+

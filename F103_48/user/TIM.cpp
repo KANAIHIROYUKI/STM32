@@ -163,6 +163,8 @@ void OC4DutySet(TIM_TypeDef*TIMx,uint16_t duty){
 }
 
 
+
+
 /********************************«ENCODER ªPWM***********************************************/
 
 int32_t ENCODER::tim1Cnt = 0;
@@ -246,7 +248,7 @@ int32_t TIM4_ENCODERRead(){
 	return TIM4->CNT + ENCODER::tim4Cnt*65536;
 }
 
-extern "C" void TIM1_IRQHandler(void){
+void TIM1_ENCODER_IRQ(){
 	if(TIM1->CNT < 32768){
 		ENCODER::tim1Cnt ++;
 	}else{
@@ -255,8 +257,31 @@ extern "C" void TIM1_IRQHandler(void){
 	TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
 }
 
+void TIM2_ENCODER_IRQ(){
+
+}
+
+void TIM3_ENCODER_IRQ(){
+
+}
+
+void TIM4_ENCODER_IRQ(){
+
+}
+
+
+
+
+
+extern "C" void TIM1_IRQHandler(void){
+	if(TIM_GetITStatus(TIM1,TIM_IT_Update) == SET){
+
+	}
+}
+
 
 extern "C" void TIM2_IRQHandler(void){
+
 	if(TIM2->CNT < 32768){
 		ENCODER::tim2Cnt ++;
 	}else{
