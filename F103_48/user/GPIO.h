@@ -9,7 +9,7 @@
 
 class GPIO {
 public:
-	int16_t setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode);
+	void setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode);
 	uint16_t write(BitAction value);
 	uint16_t read();
 

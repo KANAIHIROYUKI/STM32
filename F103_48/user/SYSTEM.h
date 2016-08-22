@@ -9,7 +9,7 @@
 #include "CAN.h"
 #include "ADC.h"
 #include "USART.h"
-
+#include "SPI.h"
 
 void setup();
 

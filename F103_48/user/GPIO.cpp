@@ -1,6 +1,6 @@
 #include "GPIO.h"
 
-int16_t GPIO::setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode){
+void GPIO::setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode){
 	gpio_pin = pin;
 	gpio_gpio = gpio;
 
@@ -19,7 +19,6 @@ int16_t GPIO::setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode){
 	GPIO_InitStructure.GPIO_Mode = gpio_mode;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(gpio_gpio,&GPIO_InitStructure);
-	return 0;
 }
 
 
@@ -35,10 +34,7 @@ uint16_t GPIO::write(BitAction value){
 }
 
 uint16_t GPIO::read(){
-	int16_t value = 0;
-
-
-	return value;
+	return GPIO_ReadInputDataBit(gpio_gpio,gpio_pin);
 }
 
 void GPIOSetup(){

@@ -8,7 +8,11 @@
       <source file="..\..\..\user\CAN.h" lastModified="1559be7d79e">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\ADC.h" lastModified="1559be7d797">
+      <source file="..\..\..\stm_lib\src\stm32f10x_spi.c" lastModified="156a1185bd3">
+         <include file="..\..\..\stm_lib\inc\stm32f10x_spi.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\user\ADC.h" lastModified="156a1489c39">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_rcc.h" lastModified="15336ea104e">
@@ -24,7 +28,7 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\user\GPIO.cpp" lastModified="155a0c4375d">
+      <source file="..\..\..\user\GPIO.cpp" lastModified="156a224ad57">
          <include file="..\..\..\user\GPIO.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_adc.h" lastModified="15336ea5f44">
@@ -35,12 +39,13 @@
       <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="1539d18e939">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\cmsis_boot\stm32f10x_conf.h" lastModified="153a69377e2">
+      <source file="..\..\..\cmsis_boot\stm32f10x_conf.h" lastModified="156a11abf57">
          <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_can.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_exti.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_spi.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
          <include file="..\..\..\stm_lib\inc\misc.h"/>
@@ -64,12 +69,15 @@
       </source>
       <source file="..\..\..\semihosting\sh_cmd.s" lastModified="15336e9e338">
       </source>
+      <source file="..\..\..\user\SPI.h" lastModified="156a2043e53">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
       <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="15561d3e4a7">
       </source>
       <source file="..\..\..\user\SYSTEM.cpp" lastModified="155a0c43721">
          <include file="..\..\..\user\SYSTEM.h"/>
       </source>
-      <source file="..\..\..\user\GPIO.h" lastModified="1559be7d7a5">
+      <source file="..\..\..\user\GPIO.h" lastModified="156a145ba96">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="15336eab70f">
@@ -80,9 +88,15 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\main.cpp" lastModified="1565833b5ef">
+      <source file="..\..\..\main.cpp" lastModified="156a233330b">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\user\SYSTEM.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\inc\stm32f10x_spi.h" lastModified="156a1185bd1">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\user\SPI.cpp" lastModified="156a207f19a">
+         <include file="..\..\..\user\SPI.h"/>
       </source>
       <source file="..\..\..\stdio\printf.c" lastModified="155c9fa203f">
          <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
@@ -91,13 +105,14 @@
       <source file="..\..\..\stm_lib\inc\misc.h" lastModified="15336eb61d5">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\SYSTEM.h" lastModified="155bac8535a">
+      <source file="..\..\..\user\SYSTEM.h" lastModified="156a20b769c">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\user\GPIO.h"/>
          <include file="..\..\..\user\TIM.h"/>
          <include file="..\..\..\user\CAN.h"/>
          <include file="..\..\..\user\ADC.h"/>
          <include file="..\..\..\user\USART.h"/>
+         <include file="..\..\..\user\SPI.h"/>
       </source>
       <source file="..\..\..\syscalls\syscalls.c" lastModified="15336e9d376">
       </source>
@@ -127,8 +142,11 @@
       </source>
       <source file="..\..\..\semihosting\semihosting.h" lastModified="15336e9e337">
       </source>
-      <source file="..\..\..\user\TIM.h" lastModified="15659e525ac">
+      <source file="..\..\..\user\TIM.h" lastModified="156a145baa7">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\user\TIM.cpp" lastModified="156a146877b">
+         <include file="..\..\..\user\TIM.h"/>
       </source>
       <source file="..\..\..\semihosting\semihosting.c" lastModified="15579aae405">
          <include file="..\..\..\semihosting\semihosting.h"/>
@@ -142,7 +160,7 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_tim.h" lastModified="15336eab70e">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\ADC.cpp" lastModified="1557973411e">
+      <source file="..\..\..\user\ADC.cpp" lastModified="156a1489849">
          <include file="..\..\..\user\ADC.h"/>
       </source>
    </includePath>

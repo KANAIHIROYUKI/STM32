@@ -6,21 +6,34 @@
 
 #define PWM_PERIOD_DEFALUT 1024
 
-class PWM{
+#define TIM_PWM 1
+#define TIM_ENC 2
+
+class TIM{
 public:
-	uint16_t setup(TIM_TypeDef* tim,uint16_t channel,uint16_t period = PWM_PERIOD_DEFALUT,uint16_t mode = TIM_OCMode_PWM1);
+	void encoderSetup(TIM_TypeDef* tim);
+	int32_t read();
+	static int32_t tim1Cnt;
+	static int32_t tim2Cnt;
+	static int32_t tim3Cnt;
+	static int32_t tim4Cnt;
+
+
+	void pwmSetup(TIM_TypeDef* tim,uint16_t channel,uint16_t period = PWM_PERIOD_DEFALUT,uint16_t mode = TIM_OCMode_PWM1);
 	uint16_t duty(uint16_t duty);
 
 	uint16_t pwm_duty;
 	uint16_t pwm_period;
 
-	static void PWM_IRQ();
+	static uint32_t tim1_pwm_enc;
+	static uint32_t tim2_pwm_enc;
+	static uint32_t tim3_pwm_enc;
+	static uint32_t tim4_pwm_enc;
 
 private:
-	TIM_TypeDef* pwm_tim;
+	TIM_TypeDef* pwm_enc_tim;
 	uint16_t pwm_channel;
 	uint16_t pwm_mode;
-
 };
 
 
@@ -44,18 +57,6 @@ void OC4DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 
 /********************************Å´ENCODER Å™PWM***********************************************/
 
-class ENCODER{
-public:
-	uint16_t setup(TIM_TypeDef* tim);
-	int32_t read();
-	static int32_t tim1Cnt;
-	static int32_t tim2Cnt;
-	static int32_t tim3Cnt;
-	static int32_t tim4Cnt;
-private:
-	TIM_TypeDef *enc_tim;
-};
-
 void TIM1_ENCODERSetup();
 void TIM2_ENCODERSetup();
 void TIM3_ENCODERSetup();
@@ -75,5 +76,7 @@ void TIM1_PWM_Update_IRQ();
 void TIM2_PWM_Update_IRQ();
 void TIM3_PWM_Update_IRQ();
 void TIM4_PWM_Update_IRQ();
+
+
 
 #endif

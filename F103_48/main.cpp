@@ -27,8 +27,14 @@ GPIO aIn;
 GPIO encA;
 GPIO encB;
 
+GPIO spiNss;
+GPIO spiMosi;
+GPIO spiMiso;
+GPIO spiSck;
+
 GPIO pwmout;
-PWM pwm;
+TIM pwm;
+TIM enc;
 
 ADC pot;
 
@@ -37,7 +43,6 @@ USART serial;
 
 int main(void)
 {
-	char text[] = "HOGEhoge",text2[] = "POGEpoge";
 	setup();
 	GPIOSetup();
 
@@ -50,17 +55,27 @@ int main(void)
 	usart2Tx.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_AF_PP);
 	usart2Rx.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_IN_FLOATING);
 
-	aIn.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_AIN);
+	spiNss.setup(GPIOA,GPIO_Pin_4,GPIO_Mode_Out_PP);
+	spiSck.setup(GPIOA,GPIO_Pin_5,GPIO_Mode_AF_PP);
+	spiMiso.setup(GPIOA,GPIO_Pin_6,GPIO_Mode_AF_PP);
+	spiMosi.setup(GPIOA,GPIO_Pin_7,GPIO_Mode_AF_PP);
+
 	encA.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
 	encB.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
 
 	pwmout.setup(GPIOA,GPIO_Pin_6,GPIO_Mode_AF_PP);
-	pwm.setup(TIM3,1);
+	pwm.pwmSetup(TIM3,1);
 
-	pot.setup(ADC1,9);
+	aIn.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_AIN);
+	pot.setup(ADC1,2);
+
+	SPI1Setup(SPI_Mode_Master,SPI_Mode0,SPI_BaudRatePrescaler_256);
 
 	serial.setup(USART1,115200);
 
+	spiNss.write(Bit_SET);
+
+	SPI_I2S_SendData(SPI1,0b01010101);
 
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
 
@@ -78,10 +93,13 @@ int main(void)
 	CAN1Setup();
 
 	//エンコーダ
+	enc.encoderSetup(TIM2);
+
+	/*
 	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM2EN,ENABLE);
 	TIM_EncoderInterfaceConfig(TIM2,TIM_EncoderMode_TI12,TIM_ICPolarity_Rising,TIM_ICPolarity_Rising);
 	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
-	TIM_Cmd(TIM2,ENABLE);
+	TIM_Cmd(TIM2,ENABLE);*/
 
 	//入力割込み
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
@@ -108,8 +126,7 @@ int main(void)
 
     while(1){
     	pwm.duty(pot.read()/4);
-
-    	serial.printf("%d\n\r",TIM2->CNT);
+    	serial.printf("%d,%d,%d\n\r",pot.read(),enc.read(),enc.tim2Cnt);
     	/*
     	serial.printf("\n\r");
 
@@ -129,10 +146,10 @@ int main(void)
     	a = pot.read();
     	//OC3DutySet(TIM3,a/4);
     	//OC4DutySet(TIM3,a/4);
-    	delay(2000);
+    	delay(20);
     	led.write(Bit_SET);
 
-    	delay(2000);
+    	delay(20);
     	led.write(Bit_RESET);
 
     	canData[0] = a;

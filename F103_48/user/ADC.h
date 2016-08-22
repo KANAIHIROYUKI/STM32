@@ -8,7 +8,7 @@
 
 class ADC{
 public:
-	int16_t setup(ADC_TypeDef* adc,uint8_t channel);
+	void setup(ADC_TypeDef* adc,uint8_t channel);
 	int16_t read();
 private:
 	ADC_TypeDef* adc_adc;

@@ -1,59 +1,84 @@
 #include "TIM.h"
 
+uint32_t TIM::tim1_pwm_enc = 0;
+uint32_t TIM::tim2_pwm_enc = 0;
+uint32_t TIM::tim3_pwm_enc = 0;
+uint32_t TIM::tim4_pwm_enc = 0;
 
-uint16_t PWM::setup(TIM_TypeDef* tim,uint16_t channel,uint16_t period,uint16_t mode){
+int32_t TIM::tim1Cnt = 0;
+int32_t TIM::tim2Cnt = 0;
+int32_t TIM::tim3Cnt = 0;
+int32_t TIM::tim4Cnt = 0;
+
+void TIM::pwmSetup(TIM_TypeDef* tim,uint16_t channel,uint16_t period,uint16_t mode){
 	pwm_channel = channel;
-	pwm_tim = tim;
+	pwm_enc_tim = tim;
 	pwm_period = period;
 	pwm_mode = mode;
-	if(pwm_tim == TIM1){
-		return 1;
-	}else if(pwm_tim == TIM2){
+	if(pwm_enc_tim == TIM1){
+		return;
+
+	}else if(pwm_enc_tim == TIM2){
+		tim2_pwm_enc = TIM_PWM;
 		TIM2PWMSetup(pwm_period);
-	}else if(pwm_tim == TIM3){
+
+	}else if(pwm_enc_tim == TIM3){
+		tim3_pwm_enc = TIM_PWM;
 		TIM3PWMSetup(pwm_period);
-	}else if(pwm_tim == TIM4){
+
+	}else if(pwm_enc_tim == TIM4){
+		tim4_pwm_enc = TIM_PWM;
 		TIM4PWMSetup(pwm_period);
+
 	}else{
-		return 1;
+		return;
 	}
 
 	switch(pwm_channel){
 		case 1:
-			OC1PWMSetup(pwm_tim,pwm_mode);
+			OC1PWMSetup(pwm_enc_tim,pwm_mode);
 			break;
 		case 2:
-			OC2PWMSetup(pwm_tim,pwm_mode);
+			OC2PWMSetup(pwm_enc_tim,pwm_mode);
 			break;
 		case 3:
-			OC3PWMSetup(pwm_tim,pwm_mode);
+			OC3PWMSetup(pwm_enc_tim,pwm_mode);
 			break;
 		case 4:
-			OC4PWMSetup(pwm_tim,pwm_mode);
+			OC4PWMSetup(pwm_enc_tim,pwm_mode);
 			break;
 		default:
-			return 1;
+			return;
 	}
 
 	duty(0);
-	return 0;
 }
 
-uint16_t PWM::duty(uint16_t duty){
+uint16_t TIM::duty(uint16_t duty){
+	if(pwm_enc_tim == TIM1){
+		if(tim1_pwm_enc != TIM_PWM)return 1;
+	}else if(pwm_enc_tim == TIM2){
+		if(tim2_pwm_enc != TIM_PWM)return 1;
+	}else if(pwm_enc_tim == TIM3){
+		if(tim3_pwm_enc != TIM_PWM)return 1;
+	}else if(pwm_enc_tim == TIM4){
+		if(tim4_pwm_enc != TIM_PWM)return 1;
+	}
+
 	if(duty > pwm_period)duty = pwm_period;
 	pwm_duty = duty;
 	switch(pwm_channel){
 		case 1:
-			OC1DutySet(pwm_tim,pwm_duty);
+			OC1DutySet(pwm_enc_tim,pwm_duty);
 			break;
 		case 2:
-			OC2DutySet(pwm_tim,pwm_duty);
+			OC2DutySet(pwm_enc_tim,pwm_duty);
 			break;
 		case 3:
-			OC3DutySet(pwm_tim,pwm_duty);
+			OC3DutySet(pwm_enc_tim,pwm_duty);
 			break;
 		case 4:
-			OC4DutySet(pwm_tim,pwm_duty);
+			OC4DutySet(pwm_enc_tim,pwm_duty);
 			break;
 		default:
 			return 1;
@@ -61,6 +86,43 @@ uint16_t PWM::duty(uint16_t duty){
 	return 0;
 }
 
+
+void TIM::encoderSetup(TIM_TypeDef *tim){
+	pwm_enc_tim = tim;
+	if(pwm_enc_tim == TIM1){
+		tim1_pwm_enc = TIM_ENC;
+		TIM1_ENCODERSetup();
+
+	}else if(pwm_enc_tim == TIM2){
+		tim2_pwm_enc = TIM_ENC;
+		TIM2_ENCODERSetup();
+
+	}else if(pwm_enc_tim == TIM3){
+		tim3_pwm_enc = TIM_ENC;
+		TIM3_ENCODERSetup();
+
+	}else if(pwm_enc_tim == TIM4){
+		tim4_pwm_enc = TIM_ENC;
+		TIM4_ENCODERSetup();
+
+	}
+}
+
+int32_t TIM::read(){
+	if(pwm_enc_tim == TIM1){
+		return TIM1_ENCODERRead();
+	}else if(pwm_enc_tim == TIM2){
+		return TIM2_ENCODERRead();
+	}else if(pwm_enc_tim == TIM3){
+		return TIM3_ENCODERRead();
+	}else if(pwm_enc_tim == TIM4){
+		return TIM4_ENCODERRead();
+	}else{
+		return -1;
+	}
+}
+
+/************************************************ªclass member «function*************************************************************************/
 
 void TIM2PWMSetup(uint16_t period){
 	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM2EN,ENABLE);
@@ -91,8 +153,6 @@ void TIM4PWMSetup(uint16_t period){
 	TimeBaseInitStructure.TIM_Period = period;
 	TIM_TimeBaseInit(TIM4,&TimeBaseInitStructure);
 }
-
-
 
 void OC1PWMSetup(TIM_TypeDef *tim,uint16_t mode){
 	TIM_OCInitTypeDef TIM_OCInitStructure;
@@ -163,45 +223,8 @@ void OC4DutySet(TIM_TypeDef*TIMx,uint16_t duty){
 }
 
 
-
-
 /********************************«ENCODER ªPWM***********************************************/
 
-int32_t ENCODER::tim1Cnt = 0;
-int32_t ENCODER::tim2Cnt = 0;
-int32_t ENCODER::tim3Cnt = 0;
-int32_t ENCODER::tim4Cnt = 0;
-
-
-uint16_t ENCODER::setup(TIM_TypeDef *tim){
-	enc_tim = tim;
-	if(enc_tim == TIM1){
-		TIM1_ENCODERSetup();
-	}else if(enc_tim == TIM2){
-		TIM2_ENCODERSetup();
-	}else if(enc_tim == TIM3){
-		TIM3_ENCODERSetup();
-	}else if(enc_tim == TIM4){
-		TIM4_ENCODERSetup();
-	}else{
-		return 1;
-	}
-	return 0;
-}
-
-int32_t ENCODER::read(){
-	if(enc_tim == TIM1){
-		return TIM1_ENCODERRead();
-	}else if(enc_tim == TIM2){
-		return TIM2_ENCODERRead();
-	}else if(enc_tim == TIM3){
-		return TIM3_ENCODERRead();
-	}else if(enc_tim == TIM4){
-		return TIM4_ENCODERRead();
-	}else{
-		return -1;
-	}
-}
 
 
 void TIM1_ENCODERSetup(){
@@ -212,7 +235,16 @@ void TIM1_ENCODERSetup(){
 }
 
 void TIM2_ENCODERSetup(){
+
+	NVIC_InitTypeDef NVIC_InitStructure;
+	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+
 	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM2EN,ENABLE);
+
 	TIM_EncoderInterfaceConfig(TIM2,TIM_EncoderMode_TI12,TIM_ICPolarity_Rising,TIM_ICPolarity_Rising);
 	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
 	TIM_Cmd(TIM2,ENABLE);
@@ -233,78 +265,115 @@ void TIM4_ENCODERSetup(){
 }
 
 int32_t TIM1_ENCODERRead(){
-	return TIM1->CNT + ENCODER::tim1Cnt*65536;
+	return TIM1->CNT + TIM::tim1Cnt*65536;
 }
 
 int32_t TIM2_ENCODERRead(){
-	return TIM2->CNT + ENCODER::tim2Cnt*65536;
+	return TIM2->CNT + TIM::tim2Cnt*65536;
 }
 
 int32_t TIM3_ENCODERRead(){
-	return TIM3->CNT + ENCODER::tim3Cnt*65536;
+	return TIM3->CNT + TIM::tim3Cnt*65536;
 }
 
 int32_t TIM4_ENCODERRead(){
-	return TIM4->CNT + ENCODER::tim4Cnt*65536;
+	return TIM4->CNT + TIM::tim4Cnt*65536;
 }
+
+
+/**************************************************ªfunction «interrupt***************************************************************************/
+
 
 void TIM1_ENCODER_IRQ(){
 	if(TIM1->CNT < 32768){
-		ENCODER::tim1Cnt ++;
+		TIM::tim1Cnt ++;
 	}else{
-		ENCODER::tim1Cnt --;
+		TIM::tim1Cnt --;
 	}
 	TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
 }
 
 void TIM2_ENCODER_IRQ(){
-
+	if(TIM2->CNT < 32768){
+		TIM::tim2Cnt ++;
+	}else{
+		TIM::tim2Cnt --;
+	}
+	TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 }
 
 void TIM3_ENCODER_IRQ(){
-
+	if(TIM3->CNT < 32768){
+		TIM::tim3Cnt ++;
+	}else{
+		TIM::tim3Cnt --;
+	}
+	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
 }
 
 void TIM4_ENCODER_IRQ(){
-
+	if(TIM4->CNT < 32768){
+		TIM::tim4Cnt ++;
+	}else{
+		TIM::tim4Cnt --;
+	}
+	TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 }
 
 
+void TIM1_PWM_Update_IRQ(){
+
+}
+
+void TIM2_PWM_Update_IRQ(){
+
+}
+
+void TIM3_PWM_Update_IRQ(){
+
+}
+
+void TIM4_PWM_Update_IRQ(){
+
+}
 
 
 
 extern "C" void TIM1_IRQHandler(void){
-	if(TIM_GetITStatus(TIM1,TIM_IT_Update) == SET){
+	if(TIM::tim1_pwm_enc == TIM_ENC){
+		TIM1_ENCODER_IRQ();
+
+	}else if(TIM::tim1_pwm_enc == TIM_PWM){
 
 	}
 }
 
 
 extern "C" void TIM2_IRQHandler(void){
+	if(TIM::tim2_pwm_enc == TIM_ENC){
+		TIM2_ENCODER_IRQ();
 
-	if(TIM2->CNT < 32768){
-		ENCODER::tim2Cnt ++;
-	}else{
-		ENCODER::tim2Cnt --;
+	}else if(TIM::tim2_pwm_enc == TIM_PWM){
+
 	}
-	TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
+
 }
 
 extern "C" void TIM3_IRQHandler(void){
-	if(TIM3->CNT < 32768){
-		ENCODER::tim3Cnt ++;
-	}else{
-		ENCODER::tim3Cnt --;
+	if(TIM::tim3_pwm_enc == TIM_ENC){
+		TIM3_ENCODER_IRQ();
+
+	}else if(TIM::tim3_pwm_enc == TIM_PWM){
+
 	}
-	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
 }
 
 
 extern "C" void TIM4_IRQHandler(void){
-	if(TIM4->CNT < 32768){
-		ENCODER::tim4Cnt ++;
-	}else{
-		ENCODER::tim4Cnt --;
+	if(TIM::tim4_pwm_enc == TIM_ENC){
+		TIM4_ENCODER_IRQ();
+
+	}else if(TIM::tim4_pwm_enc == TIM_PWM){
+
 	}
-	TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 }

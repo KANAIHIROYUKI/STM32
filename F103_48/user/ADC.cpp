@@ -1,16 +1,12 @@
 #include "ADC.h"
 
-int16_t ADC::setup(ADC_TypeDef* adc,uint8_t channel){
+void ADC::setup(ADC_TypeDef* adc,uint8_t channel){
 	adc_channel = channel;
 	adc_adc = adc;
 	if(adc_adc == ADC1){
 		ADC1Setup(adc_channel);
-		return 0;
 	}else if(adc_adc == ADC2){
 		ADC2Setup(adc_channel);
-		return 0;
-	}else{
-		return 1;
 	}
 }
 
