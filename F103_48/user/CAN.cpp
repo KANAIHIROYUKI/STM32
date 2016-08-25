@@ -6,7 +6,7 @@ void CAN1Setup(){
 
 	CAN_InitTypeDef CAN_InitStructure;
 	CAN_StructInit(&CAN_InitStructure);
-	CAN_InitStructure.CAN_TTCM = DISABLE;
+	CAN_InitStructure.CAN_TTCM = ENABLE;
 	CAN_InitStructure.CAN_ABOM = DISABLE;
 	CAN_InitStructure.CAN_AWUM = DISABLE;
 	CAN_InitStructure.CAN_NART = DISABLE;
@@ -15,7 +15,7 @@ void CAN1Setup(){
 	CAN_InitStructure.CAN_SJW = CAN_SJW_1tq;
 	CAN_InitStructure.CAN_BS1 = CAN_BS1_6tq;
 	CAN_InitStructure.CAN_BS2 = CAN_BS2_7tq;
-	CAN_InitStructure.CAN_Prescaler = 4;
+	CAN_InitStructure.CAN_Prescaler = 3;
 	CAN_Init(CAN1,&CAN_InitStructure);
 
 	CAN_FilterInitTypeDef  CAN_FilterInitStructure;
@@ -30,6 +30,7 @@ void CAN1Setup(){
     CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
     CAN_FilterInit(&CAN_FilterInitStructure);
 
+    /*
     NVIC_InitTypeDef NVIC_InitStructure;
     NVIC_InitStructure.NVIC_IRQChannel = USB_LP_CAN1_RX0_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x0;
@@ -38,6 +39,7 @@ void CAN1Setup(){
     NVIC_Init(&NVIC_InitStructure);
 
     CAN_ITConfig(CAN1,CAN_IT_FMP0,ENABLE);
+    */
 }
 
 void CAN1Send(uint16_t id,uint8_t length,uint8_t *data){

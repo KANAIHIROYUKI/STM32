@@ -47,13 +47,14 @@ int main(void)
 	GPIOSetup();
 
 	led.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
-	canTx.setup(GPIOB,GPIO_Pin_9,GPIO_Mode_AF_PP);
-	canRx.setup(GPIOB,GPIO_Pin_8,GPIO_Mode_AF_PP);
+
+	canTx.setup(GPIOA,GPIO_Pin_12,GPIO_Mode_AF_PP);
+	canRx.setup(GPIOA,GPIO_Pin_11,GPIO_Mode_AF_PP);
 
 	usart1Tx.setup(GPIOA,GPIO_Pin_9,GPIO_Mode_AF_PP);
 	usart1Rx.setup(GPIOA,GPIO_Pin_10,GPIO_Mode_IN_FLOATING);
-	usart2Tx.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_AF_PP);
-	usart2Rx.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_IN_FLOATING);
+	//usart2Tx.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_AF_PP);
+	//usart2Rx.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_IN_FLOATING);
 
 	spiNss.setup(GPIOA,GPIO_Pin_4,GPIO_Mode_Out_PP);
 	spiSck.setup(GPIOA,GPIO_Pin_5,GPIO_Mode_AF_PP);
@@ -69,13 +70,13 @@ int main(void)
 	aIn.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_AIN);
 	pot.setup(ADC1,2);
 
-	SPI1Setup(SPI_Mode_Master,SPI_Mode0,SPI_BaudRatePrescaler_256);
+	//SPI1Setup(SPI_Mode_Master,SPI_Mode0,SPI_BaudRatePrescaler_256);
 
 	serial.setup(USART1,115200);
 
-	spiNss.write(Bit_SET);
+	//spiNss.write(Bit_SET);
 
-	SPI_I2S_SendData(SPI1,0b01010101);
+	//SPI_I2S_SendData(SPI1,0b01010101);
 
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
 
@@ -125,8 +126,10 @@ int main(void)
     NVIC_Init(&NVIC_InitStructure);*/
 
     while(1){
-    	pwm.duty(pot.read()/4);
-    	serial.printf("%d,%d,%d\n\r",pot.read(),enc.read(),enc.tim2Cnt);
+    	a = pot.read();
+
+    	pwm.duty(a/4);
+    	serial.printf("%d,%d,%d\n\r",a,enc.read(),enc.tim2Cnt);
     	/*
     	serial.printf("\n\r");
 
@@ -143,32 +146,30 @@ int main(void)
     	printf("\n\r");
     	*/
 
-    	a = pot.read();
-    	//OC3DutySet(TIM3,a/4);
-    	//OC4DutySet(TIM3,a/4);
-    	delay(20);
+    	delay(200);
     	led.write(Bit_SET);
 
-    	delay(20);
+    	delay(200);
     	led.write(Bit_RESET);
 
-    	canData[0] = a;
+    	canData[0] = a/16;
+    	serial.printf("CAN tx messase = %d\n\r",canData[0]);
     	CAN1Send(CAN_ID,1,canData);
-    	//while(CANTXOK != CAN_TransmitStatus(CAN1,0));
+    	while(CANTXOK != CAN_TransmitStatus(CAN1,0));
 
-    	//printf("FIFO : %d\n\r",CAN_MessagePending(CAN1,CAN_FIFO0));
-    	//CAN_GetITStatus(CAN1,CAN_IT_RQCP0);
+    	serial.printf("FIFO : %d\n\r",CAN_MessagePending(CAN1,CAN_FIFO0));
+    	CAN_GetITStatus(CAN1,CAN_IT_RQCP0);
 
 
     	if(rxFlag == 1){
     		rxFlag = 0;
-    		//printf("CAN Data 0 : %4d ENC : %4d\n\r",RxMessage.Data[0],enc1);
+    		serial.printf("CAN Data 0 : %4d ENC : %4d\n\r",RxMessage.Data[0],enc1);
     	}
 
-    	/*if(CAN_MessagePending(CAN1,CAN_FIFO0) != 0){
+    	while(CAN_MessagePending(CAN1,CAN_FIFO0) != 0){
     		CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
-    		printf("%d\n\r",RxMessage.Data[0]);
-    	}*/
+    		serial.printf("CAN rx messase = %d\n\r",RxMessage.Data[0]);
+    	}
     }
 }
 
