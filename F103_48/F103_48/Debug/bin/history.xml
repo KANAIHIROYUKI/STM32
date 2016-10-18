@@ -1,31 +1,29 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=F103_48.map -O0 --gc-sections -lm -lgcc -lc -lstdc++ -LC:\CooCox\CoIDE\configuration\ProgramData\F103_48 -TC:\CooCox\CoIDE\configuration\ProgramData\F103_48/arm-gcc-link.ld -g">
-      <target file="F103_48.elf" lastModified="156bbd8abdb">
-         <source file="..\obj\semihosting.o" lastModified="156bbd8a138"/>
-         <source file="..\obj\stm32f10x_tim.o" lastModified="156bbd8a228"/>
-         <source file="..\obj\system_stm32f10x.o" lastModified="156bbd8a279"/>
-         <source file="..\obj\CAN.o" lastModified="156bbd8a2d3"/>
-         <source file="..\obj\SYSTEM.o" lastModified="156bbd8a32e"/>
-         <source file="..\obj\startup_stm32f10x_md.o" lastModified="156bbd8a35b"/>
-         <source file="..\obj\stm32f10x_can.o" lastModified="156bbd8a3d2"/>
-         <source file="..\obj\stm32f10x_gpio.o" lastModified="156bbd8a42a"/>
-         <source file="..\obj\main.o" lastModified="156bbd8a48f"/>
-         <source file="..\obj\GPIO.o" lastModified="156bbd8a4e9"/>
-         <source file="..\obj\ADC.o" lastModified="156bbd8a54f"/>
-         <source file="..\obj\printf.o" lastModified="156bbd8a5b6"/>
-         <source file="..\obj\stm32f10x_rcc.o" lastModified="156bbd8a615"/>
-         <source file="..\obj\stm32f10x_exti.o" lastModified="156bbd8a65a"/>
-         <source file="..\obj\stm32f10x_adc.o" lastModified="156bbd8a6c6"/>
-         <source file="..\obj\stm32f10x_usart.o" lastModified="156bbd8a73b"/>
-         <source file="..\obj\sh_cmd.o" lastModified="156bbd8a745"/>
-         <source file="..\obj\syscalls.o" lastModified="156bbd8a780"/>
-         <source file="..\obj\SPI.o" lastModified="156bbd8a7d6"/>
-         <source file="..\obj\REMAP.o" lastModified="156bbd8a824"/>
-         <source file="..\obj\misc.o" lastModified="156bbd8a866"/>
-         <source file="..\obj\stm32f10x_spi.o" lastModified="156bbd8a8c1"/>
-         <source file="..\obj\USART.o" lastModified="156bbd8a92f"/>
-         <source file="..\obj\TIM.o" lastModified="156bbd8a9ac"/>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=F103_48.map -O0 --gc-sections -lm -lgcc -lc -lstdc++ -LC:\CooCox\CoIDE\configuration\ProgramData\F103_3WS_MD -TC:\CooCox\CoIDE\configuration\ProgramData\F103_3WS_MD/arm-gcc-link.ld -g">
+      <target file="F103_48.elf" lastModified="157d26d1c6b">
+         <source file="..\obj\stm32f10x_tim.o" lastModified="157d26d12eb"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="157d26d1335"/>
+         <source file="..\obj\CAN.o" lastModified="157d26d138d"/>
+         <source file="..\obj\SYSTEM.o" lastModified="157d26d13e7"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="157d26d1414"/>
+         <source file="..\obj\stm32f10x_can.o" lastModified="157d26d1486"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="157d26d14d8"/>
+         <source file="..\obj\main.o" lastModified="157d26d154b"/>
+         <source file="..\obj\GPIO.o" lastModified="157d26d15a6"/>
+         <source file="..\obj\ADC.o" lastModified="157d26d160a"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="157d26d167d"/>
+         <source file="..\obj\stm32f10x_exti.o" lastModified="157d26d16c0"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="157d26d1721"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="157d26d177b"/>
+         <source file="..\obj\syscalls.o" lastModified="157d26d17b1"/>
+         <source file="..\obj\app.o" lastModified="157d26d1805"/>
+         <source file="..\obj\SPI.o" lastModified="157d26d1861"/>
+         <source file="..\obj\REMAP.o" lastModified="157d26d18ad"/>
+         <source file="..\obj\misc.o" lastModified="157d26d18f2"/>
+         <source file="..\obj\stm32f10x_spi.o" lastModified="157d26d1947"/>
+         <source file="..\obj\USART.o" lastModified="157d26d19af"/>
+         <source file="..\obj\TIM.o" lastModified="157d26d1a36"/>
       </target>
    </processor>
 </history>

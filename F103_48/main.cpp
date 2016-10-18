@@ -3,197 +3,286 @@
 
 
 #include "SYSTEM.h"
+#include "app.hpp"
+
+#define CAN_VLV 0x280
+#define CAN_ENC 0x400
+#define CAN_MTD 0x100
+
+#define IntervalTime 100
+
+#define PWM_PERIOD 2048
+
+#define Kp (long int)5
+#define Kd (long int)10
 
 
-#define CAN_ID 0x07FF
 
-uint16_t a;
-uint16_t rxFlag = 0;
+uint16_t a,adcChannelStat = 1;
+uint16_t rxFlag = 0,encOld;
 
-int16_t enc1=0;
+long int encPwm;
 
-uint8_t canData[8] = {0,0,0,0,0,0,0,0};
+uint8_t canData[8] = {0,0,0,0,0,0,0,0},canAddress=0;
+
+uint64_t intervalTimer = 0,timCnt=0;
 
 CanRxMsg RxMessage;
 
-GPIO led;
-GPIO canRx;
-GPIO canTx;
-GPIO usart1Tx;
-GPIO usart1Rx;
-GPIO usart2Tx;
-GPIO usart2Rx;
-GPIO aIn;
-GPIO encA;
-GPIO encB;
+GPIO encAa;
+GPIO encAb;
+GPIO encBa;
+GPIO encBb;
 
-GPIO spiNss;
-GPIO spiMosi;
-GPIO spiMiso;
-GPIO spiSck;
+GPIO sw1;
+GPIO sw2;
 
-GPIO pwmout;
-TIM pwm;
-TIM enc;
+GPIO buzzer;
+GPIO ledA;
+GPIO ledB;
 
-ADC pot;
+GPIO sel1;
+GPIO sel2;
+GPIO sel4;
+GPIO sel8;
+
+GPIO motorEN;
+GPIO limitA1;
+GPIO limitA2;
+GPIO limitB1;
+GPIO limitB2;
+
+GPIO usartTX;
+GPIO usartRX;
+GPIO canTX;
+GPIO canRX;
+
+GPIO spiNSS;
+GPIO spiSCK;
+GPIO spiMOSI;
+GPIO spiMISO;
+
+GPIO pinPwmA;
+GPIO pinPwmAN;
+GPIO pinPwmB;
+GPIO pinPwmBN;
+
+TIM timer;
+
+TIM pwmA;
+TIM pwmAN;
+TIM pwmB;
+TIM pwmBN;
+
+TIM encA;
+TIM encB;
 
 USART serial;
-//USART serial2;
+
+MOTOR motorA;
+MOTOR motorB;
+
+
 
 int main(void)
 {
 	setup();
 	GPIOSetup();
 
-	led.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
+	timer.timerSetup(TIM1);
 
-	canTx.setup(GPIOA,GPIO_Pin_12,GPIO_Mode_AF_PP);
-	canRx.setup(GPIOA,GPIO_Pin_11,GPIO_Mode_AF_PP);
+	encAa.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
+	encAb.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
+	encBa.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
+	encBb.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
+	encA.encoderSetup(TIM2);
+	encB.encoderSetup(TIM3);
 
-	usart1Tx.setup(GPIOA,GPIO_Pin_9,GPIO_Mode_AF_PP);
-	usart1Rx.setup(GPIOA,GPIO_Pin_10,GPIO_Mode_IN_FLOATING);
-	//usart2Tx.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_AF_PP);
-	//usart2Rx.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_IN_FLOATING);
+	sw1.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_IPU);
+	sw2.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_IPU);
 
-	spiNss.setup(GPIOA,GPIO_Pin_4,GPIO_Mode_Out_PP);
-	spiSck.setup(GPIOA,GPIO_Pin_5,GPIO_Mode_AF_PP);
-	spiMiso.setup(GPIOA,GPIO_Pin_6,GPIO_Mode_AF_PP);
-	spiMosi.setup(GPIOA,GPIO_Pin_7,GPIO_Mode_AF_PP);
+	ledA.setup(GPIOA,GPIO_Pin_4,GPIO_Mode_Out_PP);
+	ledB.setup(GPIOA,GPIO_Pin_5,GPIO_Mode_Out_PP);
+	buzzer.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
+	ledA.write(Bit_RESET);
+	ledB.write(Bit_RESET);
 
-	encA.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
-	encB.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
+	sel1.setup(GPIOB,GPIO_Pin_1,GPIO_Mode_IPU);
+	sel2.setup(GPIOB,GPIO_Pin_2,GPIO_Mode_IPU);
+	sel4.setup(GPIOB,GPIO_Pin_10,GPIO_Mode_IPU);
+	sel8.setup(GPIOB,GPIO_Pin_11,GPIO_Mode_IPU);
+	canAddress = 15 - (sel1.read()*4 + sel2.read()*1 + sel4.read()*2 + sel8.read()*8);
 
-	pwmout.setup(GPIOA,GPIO_Pin_6,GPIO_Mode_AF_PP);
-	pwm.pwmSetup(TIM3,1);
+	motorEN.setup(GPIOB,GPIO_Pin_12,GPIO_Mode_Out_PP);
 
-	aIn.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_AIN);
-	pot.setup(ADC1,2);
+	limitA1.setup(GPIOB,GPIO_Pin_13,GPIO_Mode_Out_PP);
+	limitA2.setup(GPIOB,GPIO_Pin_14,GPIO_Mode_Out_PP);
+	limitB1.setup(GPIOB,GPIO_Pin_15,GPIO_Mode_Out_PP);
+	limitB2.setup(GPIOA,GPIO_Pin_8,GPIO_Mode_Out_PP);
 
-	//SPI1Setup(SPI_Mode_Master,SPI_Mode0,SPI_BaudRatePrescaler_256);
+	usartTX.setup(GPIOA,GPIO_Pin_9,GPIO_Mode_AF_PP);
+	usartTX.setup(GPIOA,GPIO_Pin_10,GPIO_Mode_IN_FLOATING);
 
-	serial.setup(USART1,115200);
-
-	//spiNss.write(Bit_SET);
-
-	//SPI_I2S_SendData(SPI1,0b01010101);
-
-	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
-
-	GPIO_PinRemapConfig(GPIO_Remap1_CAN1,ENABLE);
-
-	serial.printf("DATE = ");
-	serial.printf(__DATE__);
-	serial.printf("\n\rTIME = ");
-	serial.printf(__TIME__);
-	serial.printf("\n\r");
-
-	serial.printf("serial.printf");
-
-	serial.printf("\n\rADC1 CH0 read = %d\n\r",pot.read());
-	CAN1Setup();
-
-	//エンコーダ
-	enc.encoderSetup(TIM2);
+	canTX.setup(GPIOA,GPIO_Pin_12,GPIO_Mode_AF_PP);
+	canRX.setup(GPIOA,GPIO_Pin_11,GPIO_Mode_AF_PP);
 
 	/*
-	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM2EN,ENABLE);
-	TIM_EncoderInterfaceConfig(TIM2,TIM_EncoderMode_TI12,TIM_ICPolarity_Rising,TIM_ICPolarity_Rising);
-	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
-	TIM_Cmd(TIM2,ENABLE);*/
+	spiNSS.setup(GPIOA,GPIO_Pin_15,GPIO_Mode_IPU);
+	spiSCK.setup(GPIOB,GPIO_Pin_3,GPIO_Mode_AF_PP);
+	spiMOSI.setup(GPIOB,GPIO_Pin_4,GPIO_Mode_AF_PP);
+	spiMISO.setup(GPIOB,GPIO_Pin_5,GPIO_Mode_AF_PP);
+*/
 
-	//入力割込み
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
-    //GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource14);
-    //GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource15);
+	pinPwmA.setup(GPIOB,GPIO_Pin_8,GPIO_Mode_AF_PP);
+	pinPwmAN.setup(GPIOB,GPIO_Pin_9,GPIO_Mode_AF_PP);
+	pinPwmB.setup(GPIOB,GPIO_Pin_6,GPIO_Mode_AF_PP);
+	pinPwmBN.setup(GPIOB,GPIO_Pin_7,GPIO_Mode_AF_PP);
 
-    /*
-    GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource0);
+	pinPwmA.write(Bit_RESET);
+	pinPwmAN.write(Bit_RESET);
+	pinPwmB.write(Bit_RESET);
+	pinPwmBN.write(Bit_RESET);
+	motorEN.write(Bit_SET);
+	delay(100);
+	motorEN.write(Bit_RESET);
 
-    EXTI_InitTypeDef EXTI_InitStructure;
-    EXTI_StructInit(&EXTI_InitStructure);
-    EXTI_InitStructure.EXTI_Line = EXTI_Line0;
-    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
-    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
-    EXTI_Init(&EXTI_InitStructure);
 
-    NVIC_InitTypeDef NVIC_InitStructure;
-    NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x03;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x00;
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-    NVIC_Init(&NVIC_InitStructure);*/
+	pwmA.pwmSetup(TIM4,3,PWM_PERIOD,TIM_OCMode_PWM1);
+	pwmAN.pwmSetup(TIM4,4,PWM_PERIOD,TIM_OCMode_PWM1);
+	pwmB.pwmSetup(TIM4,1,PWM_PERIOD,TIM_OCMode_PWM1);
+	pwmBN.pwmSetup(TIM4,2,PWM_PERIOD,TIM_OCMode_PWM1);
+
+	motorA.setup(pwmA,pwmAN);
+	motorB.setup(pwmB,pwmBN);
+
+	pwmA.duty(PWM_PERIOD/2);
+	pwmAN.duty(PWM_PERIOD/2);
+	pwmB.duty(PWM_PERIOD/2);
+	pwmBN.duty(PWM_PERIOD/2);
+	motorEN.write(Bit_SET);
+
+
+	serial.setup(USART1,921600);
+	serial.printf("FILE = %s\n\r",__FILE__);
+	serial.printf("DATE = %s\n\r",__DATE__);
+	serial.printf("TIME = %s\n\r",__TIME__);
+	serial.printf("ADRS = %d\n\r",canAddress);
+
+	delay(100);
+
+	TIM4ITSetup(TIM_IT_CC1);
+
+	CAN1Setup();
+
 
     while(1){
-    	a = pot.read();
 
-    	pwm.duty(a/4);
-    	serial.printf("%d,%d,%d\n\r",a,enc.read(),enc.tim2Cnt);
-    	/*
-    	serial.printf("\n\r");
+    	canAddress = 15 - (sel1.read()*4 + sel2.read()*1 + sel4.read()*2 + sel8.read()*8);
 
-    	while(serial.available()){
-    		printf("rx = %d,read = %d,available = %d",USART::usart1RxAddress,USART::usart1ReadAddress,serial.available());
-    		serial.send(serial.read());
-    		printf("\n\r");
-    		//serial.read();
-    	}
-    	printf("\n\r write = %d,send = %d\n\r",USART::usart1TxSendAddress,USART::usart1TxWriteAddress);
-    	for(int i=0;i<USART_TX_BUFFER_SIZE;i++){
-    		printf("%d,\n\r",USART::usart1TxBuffer[i]);
-    	}
-    	printf("\n\r");
-    	*/
+    	//serial.printf("%4d,%4d,%6d,%6d,%6d\n\r",encA.read(),encB.read(),motorB.outDuty,motorB.outDuty,timCnt);
 
-    	delay(200);
-    	led.write(Bit_SET);
+    	int outA = encA.read();
+    	motorA.duty(outA);
+    	motorB.duty(outA);
 
-    	delay(200);
-    	led.write(Bit_RESET);
-
-    	canData[0] = a/16;
-    	serial.printf("CAN tx messase = %d\n\r",canData[0]);
-    	CAN1Send(CAN_ID,1,canData);
-    	while(CANTXOK != CAN_TransmitStatus(CAN1,0));
-
-    	serial.printf("FIFO : %d\n\r",CAN_MessagePending(CAN1,CAN_FIFO0));
-    	CAN_GetITStatus(CAN1,CAN_IT_RQCP0);
-
-
-    	if(rxFlag == 1){
-    		rxFlag = 0;
-    		serial.printf("CAN Data 0 : %4d ENC : %4d\n\r",RxMessage.Data[0],enc1);
+    	if(sw2.read() == 0){
+    		ledB.write(Bit_SET);
+    	}else{
+    		ledB.write(Bit_RESET);
     	}
 
-    	while(CAN_MessagePending(CAN1,CAN_FIFO0) != 0){
-    		CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
-    		serial.printf("CAN rx messase = %d\n\r",RxMessage.Data[0]);
+    	if(sw1.read() == 0){
+    		ledA.write(Bit_SET);
+    	}else{
+    		ledA.write(Bit_RESET);
     	}
+
+
+    	outA = encA.read()*50;
+    	if(outA > 0x7FFF)outA = 0x7FFF;
+    	if(outA < -0x8000)outA = -0x8000;
+    	if(outA < 0)outA = ~outA + 0x8000;
+    	canData[0] = outA & 0xFF;
+    	canData[1] = outA>>8;
+    	if(canAddress != 0){
+    		//CAN1Send(CAN_MTD + canAddress - 1,2,canData);
+    	}
+    	canData[0] = 0xFF;
+    	canData[1] = canAddress + (canAddress << 4);
+    	if(canAddress != 0){
+    		CAN1Send(CAN_VLV,2,canData);
+    	}
+
+    	delay(10);
+    	//ledA.toggle();
+
+
+    	while(rxFlag > 0){
+    		rxFlag--;
+    		serial.printf("CAN ADD = %x,Data = %d,%d,%d,%d,%d,%d,%d,%d\n\r",RxMessage.StdId,RxMessage.Data[0],RxMessage.Data[1],RxMessage.Data[2],RxMessage.Data[3],RxMessage.Data[4],RxMessage.Data[5],RxMessage.Data[6],RxMessage.Data[7]);
+    	}
+
     }
 }
 
 
-
-
-
-
-
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
-	rxFlag = 1;
-	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
-
-	return;
-}
-
-extern "C" void CAN1_RX1_IRQHandler(void){
-	rxFlag = 1;
+	rxFlag++;
 	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
 	return;
 }
 
-extern "C" void EXTI0_IRQHandler(void){
-	EXTI_ClearITPendingBit(EXTI_Line0);
-	enc1++;
+extern "C" void TIM4_IRQHandler(void){
+
+	/*
+	 * ADCのPWM同期をすると､mainループが著しく遅くなる｡
+	 * TIM割込みには問題がない様子10/12
+	 *
+	 *
+	 */
+	if(TIM_GetITStatus(TIM4,TIM_IT_CC1) == SET){
+		//currentA.peek();
+		//currentA.start(ADC_SampleTime_13Cycles5);
+
+		TIM_ITConfig(TIM4,TIM_IT_CC1,DISABLE);
+		TIM_ClearITPendingBit(TIM4,TIM_IT_CC1);
+		TIM_ITConfig(TIM4,TIM_IT_CC2,ENABLE);
+
+	}else if(TIM_GetITStatus(TIM4,TIM_IT_CC2) == SET){
+		//currentA.peek();
+		//currentB.start(ADC_SampleTime_13Cycles5);
+
+		TIM_ITConfig(TIM4,TIM_IT_CC2,DISABLE);
+		TIM_ClearITPendingBit(TIM4,TIM_IT_CC2);
+		TIM_ITConfig(TIM4,TIM_IT_CC3,ENABLE);
+
+	}else if(TIM_GetITStatus(TIM4,TIM_IT_CC3) == SET){
+		//currentB.peek();
+		//currentB.start(ADC_SampleTime_13Cycles5);
+
+		TIM_ITConfig(TIM4,TIM_IT_CC3,DISABLE);
+		TIM_ClearITPendingBit(TIM4,TIM_IT_CC3);
+		TIM_ITConfig(TIM4,TIM_IT_CC4,ENABLE);
+
+	}else if(TIM_GetITStatus(TIM4,TIM_IT_CC4) == SET){
+		//currentB.peek();
+		//currentA.start(ADC_SampleTime_13Cycles5);
+
+		TIM_ITConfig(TIM4,TIM_IT_CC4,DISABLE);
+		TIM_ClearITPendingBit(TIM4,TIM_IT_CC4);
+		TIM_ITConfig(TIM4,TIM_IT_CC1,ENABLE);
+
+	}
+
+	TIM_ClearITPendingBit(TIM4,TIM_IT_CC1);
+	TIM_ClearITPendingBit(TIM4,TIM_IT_CC2);
+	TIM_ClearITPendingBit(TIM4,TIM_IT_CC3);
+	TIM_ClearITPendingBit(TIM4,TIM_IT_CC4);
+	TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 }
 
+extern "C" void TIM1_UP_IRQHandler(void){
+	timCnt++;
+	TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
+	TIM_ITConfig(TIM1,TIM_IT_Update,ENABLE);
+}

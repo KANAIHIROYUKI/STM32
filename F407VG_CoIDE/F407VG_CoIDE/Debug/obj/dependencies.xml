@@ -8,6 +8,9 @@
       <source file="..\..\..\cmsis_lib\include\misc.h" lastModified="15654e87d63">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
+      <source file="..\..\..\user\GPIO.cpp" lastModified="156551cd148">
+         <include file="..\..\..\user\GPIO.h"/>
+      </source>
       <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="15654e87d65">
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
       </source>
@@ -51,6 +54,9 @@
          <include file="..\..\..\cmsis\core_cm4.h"/>
          <include file="..\..\..\cmsis_boot\system_stm32f4xx.h"/>
          <include file="..\..\..\cmsis_boot\stm32f4xx_conf.h"/>
+      </source>
+      <source file="..\..\..\user\GPIO.h" lastModified="15654e76d30">
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_exti.h" lastModified="15654de0402">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
