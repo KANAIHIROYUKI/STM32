@@ -16,9 +16,6 @@
 #define Kp (long int)5
 #define Kd (long int)10
 
-
-
-uint16_t a,adcChannelStat = 1;
 uint16_t rxFlag = 0,encOld;
 
 long int encPwm;
@@ -124,7 +121,7 @@ int main(void)
 	usartTX.setup(GPIOA,GPIO_Pin_10,GPIO_Mode_IN_FLOATING);
 
 	canTX.setup(GPIOA,GPIO_Pin_12,GPIO_Mode_AF_PP);
-	canRX.setup(GPIOA,GPIO_Pin_11,GPIO_Mode_AF_PP);
+	canRX.setup(GPIOA,GPIO_Pin_11,GPIO_Mode_IN_FLOATING);
 
 	/*
 	spiNSS.setup(GPIOA,GPIO_Pin_15,GPIO_Mode_IPU);
@@ -229,8 +226,16 @@ int main(void)
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	rxFlag++;
 	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
+
 	return;
 }
+
+extern "C" void CAN1_RX1_IRQHandler(void){
+	rxFlag++;
+	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
+	return;
+}
+
 
 extern "C" void TIM4_IRQHandler(void){
 

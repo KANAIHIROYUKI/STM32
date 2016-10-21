@@ -5,6 +5,7 @@
 #include "stdio.h"
 
 #define PWM_PERIOD_DEFALUT 1024
+#define TIM_OCMode_DEFAULT TIM_OCMode_PWM1
 
 #define TIM_PWM 1
 #define TIM_ENC 2
@@ -20,7 +21,7 @@ public:
 	static int32_t tim4Cnt;
 
 
-	void pwmSetup(TIM_TypeDef* tim,uint16_t channel,uint16_t period,uint16_t mode = TIM_OCMode_PWM1);
+	void pwmSetup(TIM_TypeDef* tim,uint16_t channel,uint16_t period = PWM_PERIOD_DEFALUT,uint16_t mode = TIM_OCMode_DEFAULT);
 	uint16_t duty(uint16_t duty);
 	void itSetup();
 

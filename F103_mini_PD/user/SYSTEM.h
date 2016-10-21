@@ -14,7 +14,7 @@
 void setup();
 
 void delay(uint32_t nTime);
-uint64_t millis();
+uint32_t millis();
 
 
 #endif

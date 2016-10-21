@@ -1,23 +1,12 @@
 #include "stm32f10x.h"
 #include "stdio.h"
-
-
 #include "SYSTEM.h"
 
 
-#define CAN_ID 0x280
+#define IntervalTime (1000)*10
+#define DriveTime 1000
 
-#define IntervalTime 100
-
-uint16_t a,adcChannelStat = 1;
-uint16_t rxFlag = 0,tim4itCnt=0,currentA_16,currentB_16;
-
-float currentA_A=0,currentB_A=0;
-
-uint8_t canData[8] = {0,0,0,0,0,0,0,0},canAddress=0;
-
-uint64_t intervalTimer = 0;
-
+uint32_t intervalTime = 0;
 
 GPIO encA;
 GPIO encB;
@@ -66,12 +55,23 @@ int main(void)
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
 
-
+	motor(0);
     while(1){
-    	serial.printf("%d\n\r",millis());
+    	serial.printf("%d,%d\n\r",intervalTime,millis());
 
     	delay(100);
-    	led.toggle();
+    	//led.toggle();
+
+    	if(intervalTime < millis()){
+    		intervalTime += IntervalTime;
+    		motor(1024);
+    		led.write(Bit_SET);
+    		delay(DriveTime);
+    		led.write(Bit_RESET);
+    		motor(0);
+    	}else{
+    		motor(0);
+    	}
 
 
     }
@@ -92,4 +92,3 @@ void motor(int duty){
 		pwm.duty(-duty);
 	}
 }
-

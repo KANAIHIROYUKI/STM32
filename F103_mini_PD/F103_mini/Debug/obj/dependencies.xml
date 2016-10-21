@@ -71,7 +71,7 @@
       </source>
       <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="1577ee5e095">
       </source>
-      <source file="..\..\..\user\SYSTEM.cpp" lastModified="156ff21e6b4">
+      <source file="..\..\..\user\SYSTEM.cpp" lastModified="157e0a671e9">
          <include file="..\..\..\user\SYSTEM.h"/>
       </source>
       <source file="..\..\..\user\GPIO.h" lastModified="156fec24e5b">
@@ -85,6 +85,10 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
+      <source file="..\..\..\main.cpp" lastModified="157e0b8861f">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+         <include file="..\..\..\user\SYSTEM.h"/>
+      </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_spi.h" lastModified="1577ee5f3b8">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
@@ -96,7 +100,7 @@
       <source file="..\..\..\stm_lib\inc\misc.h" lastModified="1577eea0b7b">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\SYSTEM.h" lastModified="156ff21eaa3">
+      <source file="..\..\..\user\SYSTEM.h" lastModified="157e0a675c7">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\user\GPIO.h"/>
          <include file="..\..\..\user\TIM.h"/>
