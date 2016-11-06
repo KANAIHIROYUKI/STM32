@@ -1,0 +1,41 @@
+18:36:23 **** Build of configuration Debug for project F401_test ****
+make all 
+'Building file: ../startup/startup_stm32f401xx.s'
+'Invoking: MCU GCC Assembler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F401_test\Debug
+arm-none-eabi-as -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F401_test/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -g -o "startup/startup_stm32f401xx.o" "../startup/startup_stm32f401xx.s"
+'Finished building: ../startup/startup_stm32f401xx.s'
+' '
+'Building file: ../src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F401_test\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F401_test/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/syscalls.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F401_test\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F401_test/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/syscalls.d" -MT"src/syscalls.o" -o "src/syscalls.o" "../src/syscalls.c"
+'Finished building: ../src/syscalls.c'
+' '
+'Building file: ../src/system_stm32f4xx.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F401_test\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F401_test/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/system_stm32f4xx.d" -MT"src/system_stm32f4xx.o" -o "src/system_stm32f4xx.o" "../src/system_stm32f4xx.c"
+'Finished building: ../src/system_stm32f4xx.c'
+' '
+'Building target: F401_test.elf'
+'Invoking: MCU G++ Linker'
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -L"C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug" -T"C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F401_test\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -fno-exceptions -fno-rtti -lm -o "F401_test.elf" @"objects.list"  -lnucleo-f401re_stdperiph_lib
+'Finished building target: F401_test.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "F401_test.elf" "F401_test.bin"
+arm-none-eabi-size "F401_test.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1352	   1076	   1568	   3996	    f9c	F401_test.elf
+' '
+
+18:36:24 Build Finished (took 1s.387ms)
+

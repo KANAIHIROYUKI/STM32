@@ -188,6 +188,7 @@ int main(void)
     		ledB.write(Bit_RESET);
     	}
 
+
     	if(sw1.read() == 0){
     		ledA.write(Bit_SET);
     	}else{

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wall -g -nostartfiles -Map=STM32F303CC.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\STM32F303CC -TC:\CooCox\CoIDE\configuration\ProgramData\STM32F303CC/arm-gcc-link.ld -g">
+      <target file="STM32F303CC.elf" lastModified="15823c849f7">
+         <source file="..\obj\semihosting.o" lastModified="15823c84348"/>
+         <source file="..\obj\stm32f30x_rcc.o" lastModified="15823c843cd"/>
+         <source file="..\obj\stm32f30x_adc.o" lastModified="15823c84461"/>
+         <source file="..\obj\stm32f30x_gpio.o" lastModified="15823c844ad"/>
+         <source file="..\obj\main.o" lastModified="15823c84554"/>
+         <source file="..\obj\printf.o" lastModified="15823c845c5"/>
+         <source file="..\obj\stm32f30x_exti.o" lastModified="15823c84604"/>
+         <source file="..\obj\stm32f30x_spi.o" lastModified="15823c8465d"/>
+         <source file="..\obj\system_stm32f30x_temp.o" lastModified="15823c84696"/>
+         <source file="..\obj\sh_cmd.o" lastModified="15823c846a0"/>
+         <source file="..\obj\syscalls.o" lastModified="15823c846d9"/>
+         <source file="..\obj\startup_stm32f30x.o" lastModified="15823c846ef"/>
+         <source file="..\obj\stm32f30x_can.o" lastModified="15823c8474f"/>
+         <source file="..\obj\stm32f30x_usart.o" lastModified="15823c847b6"/>
+      </target>
+   </processor>
+</history>

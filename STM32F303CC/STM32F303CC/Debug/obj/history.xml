@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F303CC -DSTM32F30X -D__FPU_USED -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\STM32F303CC\cmsis -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\STM32F303CC\cmsis_lib\include -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\STM32F303CC\semihosting -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\STM32F303CC\cmsis_boot -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\STM32F303CC\cmsis_lib -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32 -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\STM32F303CC">
+      <target file="syscalls.o" lastModified="15823c846d9">
+         <source file="..\..\..\syscalls\syscalls.c" lastModified="15823c3379c"/>
+      </target>
+      <target file="stm32f30x_usart.o" lastModified="15823c847b6">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_usart.c" lastModified="15823c39f83"/>
+      </target>
+      <target file="stm32f30x_exti.o" lastModified="15823c84604">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_exti.c" lastModified="15823c388fa"/>
+      </target>
+      <target file="startup_stm32f30x.o" lastModified="15823c846ef">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f30x.S" lastModified="15823c35929"/>
+      </target>
+      <target file="stm32f30x_spi.o" lastModified="15823c8465d">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_spi.c" lastModified="15823c39481"/>
+      </target>
+      <target file="printf.o" lastModified="15823c845c5">
+         <source file="..\..\..\stdio\printf.c" lastModified="15823c58004"/>
+      </target>
+      <target file="stm32f30x_gpio.o" lastModified="15823c844ad">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_gpio.c" lastModified="15823c366b9"/>
+      </target>
+      <target file="stm32f30x_rcc.o" lastModified="15823c843cd">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_rcc.c" lastModified="15823c3591d"/>
+      </target>
+      <target file="main.o" lastModified="15823c84554">
+         <source file="..\..\..\main.c" lastModified="15823c57fef"/>
+      </target>
+      <target file="sh_cmd.o" lastModified="15823c846a0">
+         <source file="..\..\..\semihosting\sh_cmd.s" lastModified="15823c34053"/>
+      </target>
+      <target file="semihosting.o" lastModified="15823c84348">
+         <source file="..\..\..\semihosting\semihosting.c" lastModified="15823c34052"/>
+      </target>
+      <target file="stm32f30x_can.o" lastModified="15823c8474f">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_can.c" lastModified="15823c37db2"/>
+      </target>
+      <target file="stm32f30x_adc.o" lastModified="15823c84461">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_adc.c" lastModified="15823c371d0"/>
+      </target>
+      <target file="system_stm32f30x_temp.o" lastModified="15823c84696">
+         <source file="..\..\..\cmsis_boot\system_stm32f30x_temp.c" lastModified="15823c3592e"/>
+      </target>
+   </processor>
+</history>
