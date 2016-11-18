@@ -89,6 +89,11 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
+      <source file="..\..\..\main.cpp" lastModified="158145cf481">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+         <include file="..\..\..\user\SYSTEM.h"/>
+         <include file="..\..\..\user\app.hpp"/>
+      </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_spi.h" lastModified="156a1185bd1">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>

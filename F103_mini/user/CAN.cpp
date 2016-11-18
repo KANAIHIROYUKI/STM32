@@ -18,7 +18,7 @@ void CAN1Setup(){
 	CAN_InitStructure.CAN_Prescaler = 2;
 	CAN_Init(CAN1,&CAN_InitStructure);
 
-	CAN_FilterInitTypeDef  CAN_FilterInitStructure;
+/*	CAN_FilterInitTypeDef  CAN_FilterInitStructure;
     CAN_FilterInitStructure.CAN_FilterNumber = 0;
     CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdMask;
     CAN_FilterInitStructure.CAN_FilterScale = CAN_FilterScale_32bit;
@@ -28,7 +28,7 @@ void CAN1Setup(){
     CAN_FilterInitStructure.CAN_FilterMaskIdLow = 0x0000;
     CAN_FilterInitStructure.CAN_FilterFIFOAssignment = 0;
     CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
-    CAN_FilterInit(&CAN_FilterInitStructure);
+    CAN_FilterInit(&CAN_FilterInitStructure);*/
 
 
     NVIC_InitTypeDef NVIC_InitStructure;

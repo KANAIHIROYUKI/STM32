@@ -23,7 +23,7 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/main.cpp" title="main.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/main.cpp" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/main.cpp" title="main.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/main.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_3WS_MD/main.cpp"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3431" selectionTopPixel="2569"/>
 </editor>
@@ -35,7 +35,7 @@
 <input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F303CCT6_test/F303CCT6_test.elf.xcodeproj/project.pbxproj"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_conf.h" partName="stm32f10x_conf.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/cmsis_boot/stm32f10x_conf.h" title="stm32f10x_conf.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/cmsis_boot/stm32f10x_conf.h" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_conf.h" partName="stm32f10x_conf.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/cmsis_boot/stm32f10x_conf.h" title="stm32f10x_conf.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/cmsis_boot/stm32f10x_conf.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_3WS_MD/cmsis_boot/stm32f10x_conf.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="463" selectionTopPixel="0"/>
 </editor>
@@ -45,7 +45,7 @@
 <viewState/>
 </view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="3">
+<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="2">
 <expanded>
 <element path="/F103_3WS_MD"/>
 <element path="/F103_3WS_MD/app"/>
@@ -58,7 +58,7 @@
 <element path="/F103_3WS_MD/user/src"/>
 </expanded>
 <selection>
-<element path="/F103_3WS_MD/cmsis_boot/stm32f10x_conf.h"/>
+<element path="/F103_3WS_MD/main.cpp"/>
 </selection>
 </viewState>
 </view>
@@ -269,10 +269,8 @@
 <editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F303CCT6_test/F303CCT6_test.elf.xcodeproj/project.pbxproj"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/main.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/cmsis_boot/stm32f10x_conf.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/main.cpp"/>
 </editors>
-<item historyLabel="CAN.cpp" index="0">
-<position info="not_deleted" x="1129" y="0"/>
-</item>
 <item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="4037" y="25"/>
 </item>
@@ -417,8 +415,11 @@
 <item historyLabel="main.cpp" index="15">
 <position info="not_deleted" x="4079" y="0"/>
 </item>
-<item active="true" historyLabel="stm32f10x_conf.h" index="16">
+<item historyLabel="stm32f10x_conf.h" index="16">
 <position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="main.cpp" index="17">
+<position info="not_deleted" x="3431" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -427,14 +428,20 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_mini.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_mini\F103_mini.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini/F103_mini.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_48.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_48\F103_48.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/F103_48.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="core_cm4_simd.h" tooltip="STM32F303CC/cmsis/core_cm4_simd.h">
+<persistable path="/STM32F303CC/cmsis/core_cm4_simd.h"/>
+</file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="STM32F303CC.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\STM32F303CC\STM32F303CC.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/STM32F303CC/STM32F303CC.coproj"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_conf.h" tooltip="F103_3WS_MD/cmsis_boot/stm32f10x_conf.h">
 <persistable path="/F103_3WS_MD/cmsis_boot/stm32f10x_conf.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_48.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_48\F103_48.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/F103_48.coproj"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" tooltip="STM32F303CC/stdio/printf.c">
 <persistable path="/STM32F303CC/stdio/printf.c"/>
@@ -466,12 +473,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f30x_temp.c" tooltip="F303CCT6_test/cmsis_boot/system_stm32f30x_temp.c">
 <persistable path="/F303CCT6_test/cmsis_boot/system_stm32f30x_temp.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32f30x.S" tooltip="F303CCT6_test/cmsis_boot/startup/startup_stm32f30x.S">
-<persistable path="/F303CCT6_test/cmsis_boot/startup/startup_stm32f30x.S"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_mini.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_mini\F103_mini.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini/F103_mini.coproj"/>
 </file>
 </mruList>
 </workbench>

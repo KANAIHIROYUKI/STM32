@@ -5,7 +5,7 @@
 #include "SYSTEM.h"
 
 
-#define CAN_ID 0x280
+#define CAN_ID 0x100
 
 #define IntervalTime 100
 
@@ -198,7 +198,7 @@ int main(void)
 
     	canData[0] = 0xFF;
     	canData[1] = 0x00;
-    	//CAN1Send(CAN_ID,2,canData);
+    	CAN1Send(CAN_ID,2,canData);
     	//while(CANTXOK != CAN_TransmitStatus(CAN1,0));
 
 
