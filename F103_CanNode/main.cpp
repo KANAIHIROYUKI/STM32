@@ -20,128 +20,79 @@ uint64_t intervalTimer = 0;
 
 CanRxMsg RxMessage;
 
-GPIO encAa;
-GPIO encAb;
-GPIO encBa;
-GPIO encBb;
+GPIO enc1a;
+GPIO enc1b;
+GPIO enc2a;
+GPIO enc2b;
+GPIO enc3a;
+GPIO enc3b;
+GPIO enc4a;
+GPIO enc4b;
 
-GPIO pinCurrentA;
-GPIO pinCurrentB;
+GPIO io1;
+GPIO io2;
+GPIO io3;
+GPIO io4;
+GPIO io5;
+GPIO io6;
+GPIO io7;
+GPIO io8;
 
-GPIO buzzer;
-GPIO ledA;
-GPIO ledB;
-
-GPIO sel1;
-GPIO sel2;
-GPIO sel4;
-GPIO sel8;
-
-GPIO motorEN;
-GPIO limitA1;
-GPIO limitA2;
-GPIO limitB1;
-GPIO limitB2;
+GPIO led;
 
 GPIO usartTX;
 GPIO usartRX;
 GPIO canTX;
 GPIO canRX;
 
-GPIO spiNSS;
-GPIO spiSCK;
-GPIO spiMOSI;
-GPIO spiMISO;
-
-GPIO pinPwmA;
-GPIO pinPwmAN;
-GPIO pinPwmB;
-GPIO pinPwmBN;
-
-TIM pwmA;
-TIM pwmAN;
-TIM pwmB;
-TIM pwmBN;
-
-TIM encA;
-TIM encB;
-
-ADC currentA;
-ADC currentB;
+TIM enc1;
+TIM enc2;
+TIM enc3;
+TIM enc4;
 
 USART serial;
-
-
 
 int main(void)
 {
 	setup();
 	GPIOSetup();
 
-	encAa.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
-	encAb.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
-	encBa.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
-	encBb.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
-	encA.encoderSetup(TIM2);
-	encB.encoderSetup(TIM3);
+	enc1a.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
+	enc1b.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
 
-	pinCurrentA.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_AIN);
-	pinCurrentB.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_AIN);
-	currentA.setup(ADC1,2);
-	currentB.setup(ADC1,3);
+	enc2a.setup(GPIOA,GPIO_Pin_6,GPIO_Mode_IPU);
+	enc2b.setup(GPIOA,GPIO_Pin_7,GPIO_Mode_IPU);
 
-	ledA.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
-	ledB.setup(GPIOA,GPIO_Pin_5,GPIO_Mode_Out_PP);
-	buzzer.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
+	enc3a.setup(GPIOB,GPIO_Pin_8,GPIO_Mode_IPU);
+	enc3b.setup(GPIOB,GPIO_Pin_9,GPIO_Mode_IPU);
 
-	sel1.setup(GPIOB,GPIO_Pin_1,GPIO_Mode_IPU);
-	sel2.setup(GPIOB,GPIO_Pin_2,GPIO_Mode_IPU);
-	sel4.setup(GPIOB,GPIO_Pin_10,GPIO_Mode_IPU);
-	sel8.setup(GPIOB,GPIO_Pin_11,GPIO_Mode_IPU);
-	canAddress = 15 - (sel1.read()*4 + sel2.read()*1 + sel4.read()*2 + sel8.read()*8);
+	enc4a.setup(GPIOB,GPIO_Pin_6,GPIO_Mode_IPU);
+	enc4b.setup(GPIOB,GPIO_Pin_7,GPIO_Mode_IPU);
 
-	motorEN.setup(GPIOB,GPIO_Pin_12,GPIO_Mode_Out_PP);
+	enc1.encoderSetup(TIM1);
+	enc2.encoderSetup(TIM2);
+	enc3.encoderSetup(TIM3);
+	enc4.encoderSetup(TIM4);
 
-	limitA1.setup(GPIOB,GPIO_Pin_13,GPIO_Mode_Out_PP);
-	limitA2.setup(GPIOB,GPIO_Pin_14,GPIO_Mode_Out_PP);
-	limitB1.setup(GPIOB,GPIO_Pin_15,GPIO_Mode_Out_PP);
-	limitB2.setup(GPIOA,GPIO_Pin_8,GPIO_Mode_Out_PP);
+	io1.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_IPU);
+	io2.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_IPU);
+	io3.setup(GPIOA,GPIO_Pin_4,GPIO_Mode_IPU);
+	io4.setup(GPIOA,GPIO_Pin_5,GPIO_Mode_IPU);
 
-	usartTX.setup(GPIOA,GPIO_Pin_9,GPIO_Mode_AF_PP);
-	usartTX.setup(GPIOA,GPIO_Pin_10,GPIO_Mode_IN_FLOATING);
+	io5.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
+	io6.setup(GPIOB,GPIO_Pin_1,GPIO_Mode_Out_PP);
+	io7.setup(GPIOB,GPIO_Pin_12,GPIO_Mode_Out_PP);
+	io8.setup(GPIOB,GPIO_Pin_13,GPIO_Mode_Out_PP);
+
+	led.setup(GPIOB,GPIO_Pin_2,GPIO_Mode_Out_PP);
 
 	canTX.setup(GPIOA,GPIO_Pin_12,GPIO_Mode_AF_PP);
 	canRX.setup(GPIOA,GPIO_Pin_11,GPIO_Mode_IN_FLOATING);
 
-	spiNSS.setup(GPIOA,GPIO_Pin_15,GPIO_Mode_IPU);
-	spiSCK.setup(GPIOB,GPIO_Pin_3,GPIO_Mode_AF_PP);
-	spiMOSI.setup(GPIOB,GPIO_Pin_4,GPIO_Mode_AF_PP);
-	spiMISO.setup(GPIOB,GPIO_Pin_5,GPIO_Mode_AF_PP);
+	usartTX.setup(GPIOB,GPIO_Pin_10,GPIO_Mode_AF_PP);
+	usartRX.setup(GPIOB,GPIO_Pin_11,GPIO_Mode_IN_FLOATING);
 
-	pinPwmA.setup(GPIOB,GPIO_Pin_8,GPIO_Mode_AF_PP);
-	pinPwmAN.setup(GPIOB,GPIO_Pin_9,GPIO_Mode_AF_PP);
-	pinPwmB.setup(GPIOB,GPIO_Pin_6,GPIO_Mode_AF_PP);
-	pinPwmBN.setup(GPIOB,GPIO_Pin_7,GPIO_Mode_AF_PP);
-
-
-	pwmA.pwmSetup(TIM4,3,1024,TIM_OCMode_PWM1);
-	pwmAN.pwmSetup(TIM4,4,1024,TIM_OCMode_PWM1);
-	pwmB.pwmSetup(TIM4,1,1024,TIM_OCMode_PWM1);
-	pwmBN.pwmSetup(TIM4,2,1024,TIM_OCMode_PWM1);
-	pwmA.duty(512);
-	pwmAN.duty(512);
-	pwmB.duty(512);
-	pwmBN.duty(512);
-	TIM4ITSetup();
-
-
-	motorEN.write(Bit_SET);
-
-	//SPI1Setup(SPI_Mode_Master,SPI_Mode0,SPI_BaudRatePrescaler_256);
-	//spiNss.write(Bit_SET);
-	//SPI_I2S_SendData(SPI1,0b01010101);
-
-	serial.setup(USART1,921600);
+	serial.setup(USART3,921600);
 	serial.printf("FILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
@@ -149,45 +100,6 @@ int main(void)
 
 
 	CAN1Setup();
-
-	/*
-	buzzer.write(Bit_SET);
-	delay(500);
-	buzzer.write(Bit_RESET);*/
-
-	//CANエンコーダ
-/*
-	canData[0] = 0xFF;
-	canData[1] = 0x00;
-	CAN1Send(CAN_ID,8,canData);*/
-
-	/*
-	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM2EN,ENABLE);
-	TIM_EncoderInterfaceConfig(TIM2,TIM_EncoderMode_TI12,TIM_ICPolarity_Rising,TIM_ICPolarity_Rising);
-	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
-	TIM_Cmd(TIM2,ENABLE);*/
-
-	//入力割込み
-    //GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource14);
-    //GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource15);
-
-    /*
-    GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource0);
-
-    EXTI_InitTypeDef EXTI_InitStructure;
-    EXTI_StructInit(&EXTI_InitStructure);
-    EXTI_InitStructure.EXTI_Line = EXTI_Line0;
-    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
-    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
-    EXTI_Init(&EXTI_InitStructure);
-
-    NVIC_InitTypeDef NVIC_InitStructure;
-    NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x03;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x00;
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-    NVIC_Init(&NVIC_InitStructure);*/
 
     while(1){
     	//currentA.start();
@@ -202,8 +114,12 @@ int main(void)
     	//while(CANTXOK != CAN_TransmitStatus(CAN1,0));
 
 
-    	delay(100);
-    	ledA.toggle();
+    	delay(1);
+    	led.toggle();
+    	io5.toggle();
+    	io6.toggle();
+    	io7.toggle();
+    	io8.toggle();
     	/*
     	canData[0] = 0xFF;
     	canData[1] = 0xFF;
@@ -238,28 +154,4 @@ extern "C" void CAN1_RX1_IRQHandler(void){
 	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
 	return;
 }
-
-/*
-extern "C" void EXTI0_IRQHandler(void){
-	EXTI_ClearITPendingBit(EXTI_Line0);
-}*/
-
-
-
-extern "C" void TIM4_IRQHandler(void){
-	if(adcChannelStat == 1){
-		adcChannelStat = 2;
-		currentB_16 = currentB.peek();
-		//currentB_A = (currentB.peek() - 1024)*0.01953125;
-		currentA.start(ADC_SampleTime_239Cycles5);
-	}else{
-		adcChannelStat = 1;
-		currentA_16 = currentA.peek();
-		//currentA_A = (currentA.peek() - 1024)*0.01953125;
-		currentB.start(ADC_SampleTime_239Cycles5);
-	}
-	TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
-
-}
-
 

@@ -207,13 +207,11 @@ int main(void)
     	}
     	canData[0] = 0xFF;
     	canData[1] = canAddress + (canAddress << 4);
-    	if(canAddress != 0){
+    	/*if(canAddress != 0){
     		CAN1Send(CAN_VLV,2,canData);
-    	}
+    	}*/
 
-    	delay(10);
-    	//ledA.toggle();
-
+    	//CAN1Send(CAN_MTD,2,canData);
 
     	while(rxFlag > 0){
     		rxFlag--;

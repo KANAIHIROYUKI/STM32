@@ -6,19 +6,19 @@ void CAN1Setup(){
 
 	CAN_InitTypeDef CAN_InitStructure;
 	CAN_StructInit(&CAN_InitStructure);
-	CAN_InitStructure.CAN_TTCM = DISABLE;
+	CAN_InitStructure.CAN_TTCM = ENABLE;
 	CAN_InitStructure.CAN_ABOM = DISABLE;
 	CAN_InitStructure.CAN_AWUM = DISABLE;
 	CAN_InitStructure.CAN_NART = DISABLE;
 	CAN_InitStructure.CAN_TXFP = DISABLE;
 	CAN_InitStructure.CAN_Mode = CAN_Mode_Normal;
 	CAN_InitStructure.CAN_SJW = CAN_SJW_1tq;
-	CAN_InitStructure.CAN_BS1 = CAN_BS1_3tq;
-	CAN_InitStructure.CAN_BS2 = CAN_BS2_5tq;
-	CAN_InitStructure.CAN_Prescaler = 2;
+	CAN_InitStructure.CAN_BS1 = CAN_BS1_5tq;
+	CAN_InitStructure.CAN_BS2 = CAN_BS2_6tq;
+	CAN_InitStructure.CAN_Prescaler = 3;
 	CAN_Init(CAN1,&CAN_InitStructure);
 
-	/*
+
 	CAN_FilterInitTypeDef  CAN_FilterInitStructure;
     CAN_FilterInitStructure.CAN_FilterNumber = 0;
     CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdList;
@@ -27,19 +27,6 @@ void CAN1Setup(){
     CAN_FilterInitStructure.CAN_FilterMaskIdLow = (0x100+1)<<5;
     CAN_FilterInitStructure.CAN_FilterIdHigh = (0x100+2)<<5;
     CAN_FilterInitStructure.CAN_FilterMaskIdHigh = (0x100+3)<<5;
-    CAN_FilterInitStructure.CAN_FilterFIFOAssignment = 0;
-    CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
-    CAN_FilterInit(&CAN_FilterInitStructure);*/
-
-
-	CAN_FilterInitTypeDef  CAN_FilterInitStructure;
-    CAN_FilterInitStructure.CAN_FilterNumber = 0;
-    CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdMask;
-    CAN_FilterInitStructure.CAN_FilterScale = CAN_FilterScale_32bit;
-    CAN_FilterInitStructure.CAN_FilterIdHigh = 0x0000;
-    CAN_FilterInitStructure.CAN_FilterIdLow = 0x0000;
-    CAN_FilterInitStructure.CAN_FilterMaskIdHigh = 0x0000;
-    CAN_FilterInitStructure.CAN_FilterMaskIdLow = 0x0000;
     CAN_FilterInitStructure.CAN_FilterFIFOAssignment = 0;
     CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
     CAN_FilterInit(&CAN_FilterInitStructure);

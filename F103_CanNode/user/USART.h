@@ -32,6 +32,10 @@ public:
 	static uint16_t usart2RxAddress;
 	static uint16_t usart2ReadAddress;
 
+	static char usart3RxBuffer[USART_RX_BUFFER_SIZE];
+	static uint16_t usart3RxAddress;
+	static uint16_t usart3ReadAddress;
+
 	static char usart1TxBuffer[USART_TX_BUFFER_SIZE];
 	static uint16_t usart1TxSendAddress;
 	static uint16_t usart1TxWriteAddress;
@@ -39,6 +43,10 @@ public:
 	static char usart2TxBuffer[USART_TX_BUFFER_SIZE];
 	static uint16_t usart2TxSendAddress;
 	static uint16_t usart2TxWriteAddress;
+
+	static char usart3TxBuffer[USART_TX_BUFFER_SIZE];
+	static uint16_t usart3TxSendAddress;
+	static uint16_t usart3TxWriteAddress;
 private:
 	USART_TypeDef* usart_usart;
 };
@@ -50,6 +58,9 @@ void USART1ITSetup(uint16_t flag);
 
 void USART2Setup(uint32_t baud);
 void USART2ITSetup(uint16_t flag);
+
+void USART3Setup(uint32_t baud);
+void USART3ITSetup(uint16_t flag);
 
 
 #endif
