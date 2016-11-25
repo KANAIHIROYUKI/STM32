@@ -14,14 +14,27 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini/main.cpp" title="main.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini/main.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/main.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="605" selectionTopPixel="2087"/>
+</editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0"/>
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
+<expanded>
+<element path="/F103_mini"/>
+</expanded>
+<selection>
+<element path="/F103_mini/main.cpp"/>
+</selection>
+</viewState>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
@@ -33,11 +46,14 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
 </view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.views.ProblemView" activePerspective="org.coocox.builder.perspective.CoBuilder">
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.coocox.welcome.ui.actionSet"/>
@@ -68,6 +84,7 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.coocox.builder.ui.views.ProjectView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
@@ -89,11 +106,12 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@bc0144" ratio="0.69952303" ratioLeft="440" ratioRight="189" relationship="4" relative="org.eclipse.ui.internal.ViewStack@f74e1a">
-<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
@@ -113,7 +131,14 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.cpp"/>
+</editors>
+<item active="true" historyLabel="main.cpp" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -123,14 +148,23 @@
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_48.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_48\F103_48.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_48/F103_48.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CAN.cpp" tooltip="F103_mini/user/src/CAN.cpp">
-<persistable path="/F103_mini/user/src/CAN.cpp"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" tooltip="F103_mini/main.cpp">
 <persistable path="/F103_mini/main.cpp"/>
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_mini.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_mini\F103_mini.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini/F103_mini.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_CanNode.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_CanNode\F103_CanNode.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/F103_CanNode.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_mini_PD.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_mini_PD\F103_mini_PD.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini_PD/F103_mini_PD.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="USART.hpp" tooltip="F103_3WS_MD/user/inc/USART.hpp">
+<persistable path="/F103_3WS_MD/user/inc/USART.hpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CAN.cpp" tooltip="F103_mini/user/src/CAN.cpp">
+<persistable path="/F103_mini/user/src/CAN.cpp"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="core_cm4_simd.h" tooltip="STM32F303CC/cmsis/core_cm4_simd.h">
 <persistable path="/STM32F303CC/cmsis/core_cm4_simd.h"/>
@@ -150,21 +184,11 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="STM32F303CC/main.c">
 <persistable path="/STM32F303CC/main.c"/>
 </file>
-<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
-<persistable>&#x0A;<subPage/>
-</persistable>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="project.pbxproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F303CCT6_test\F303CCT6_test.elf.xcodeproj\project.pbxproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F303CCT6_test/F303CCT6_test.elf.xcodeproj/project.pbxproj"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f30x.h" tooltip="F303CCT6_test/cmsis_boot/stm32f30x.h">
-<persistable path="/F303CCT6_test/cmsis_boot/stm32f30x.h"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="F303CCT6_test/main.c">
 <persistable path="/F303CCT6_test/main.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="core_cmInstr.h" tooltip="F303CCT6_test/cmsis/core_cmInstr.h">
-<persistable path="/F303CCT6_test/cmsis/core_cmInstr.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="USART.cpp" tooltip="F103_mini/user/src/USART.cpp">
+<persistable path="/F103_mini/user/src/USART.cpp"/>
 </file>
 </mruList>
 </workbench>

@@ -55,7 +55,6 @@ USART serial;
 int main(void)
 {
 	setup();
-	GPIOSetup();
 
 	enc1a.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
 	enc1b.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
@@ -96,40 +95,18 @@ int main(void)
 	serial.printf("FILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
-	serial.printf("ADRS = %d\n\r",canAddress);
-
 
 	CAN1Setup();
 
     while(1){
-    	//currentA.start();
-    	//delay(10);
     	serial.printf("%d\n\r",millis());
 
-
-
-    	canData[0] = 0xFF;
-    	canData[1] = 0x00;
-    	//CAN1Send(CAN_ID,2,canData);
-    	//while(CANTXOK != CAN_TransmitStatus(CAN1,0));
-
-
-    	delay(1);
-    	led.toggle();
-    	io5.toggle();
-    	io6.toggle();
-    	io7.toggle();
+    	delay(1000);
+    	//led.toggle();
+    	//io5.toggle();
+    	//io6.toggle();
+    	//io7.toggle();
     	io8.toggle();
-    	/*
-    	canData[0] = 0xFF;
-    	canData[1] = 0xFF;
-    	CAN1Send(CAN_ID,1,canData);
-    	*/
-
-    	//canData[0] = a/16;
-
-    	//serial.printf("FIFO : %d\n\r",CAN_MessagePending(CAN1,CAN_FIFO0));
-    	//CAN_GetITStatus(CAN1,CAN_IT_RQCP0);
 
     	while(rxFlag > 0){
     		rxFlag--;

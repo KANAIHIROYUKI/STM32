@@ -2,8 +2,8 @@
 #include "stdio.h"
 
 
-#include "SYSTEM.h"
-#include "app.hpp"
+#include "system.h"
+#include "app.h"
 
 #define CAN_VLV 0x280
 #define CAN_ENC 0x400
@@ -54,10 +54,10 @@ GPIO usartRX;
 GPIO canTX;
 GPIO canRX;
 
-GPIO spiNSS;
-GPIO spiSCK;
-GPIO spiMOSI;
-GPIO spiMISO;
+GPIO io0;
+GPIO io1;
+GPIO io2;
+GPIO io3;
 
 GPIO pinPwmA;
 GPIO pinPwmAN;
@@ -83,57 +83,59 @@ MOTOR motorB;
 
 int main(void)
 {
+
+
 	setup();
-	GPIOSetup();
+
+
 
 	timer.timerSetup(TIM1);
 
-	encAa.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
-	encAb.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
-	encBa.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
-	encBb.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
+	encAa.setup(PA0,GPIO_Mode_IPU);
+	encAb.setup(PA1,GPIO_Mode_IPU);
+	encBa.setup(PA6,GPIO_Mode_IPU);
+	encBb.setup(PA7,GPIO_Mode_IPU);
 	encA.encoderSetup(TIM2);
 	encB.encoderSetup(TIM3);
 
-	sw1.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_IPU);
-	sw2.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_IPU);
+	sw1.setup(PB4,GPIO_Mode_IPU);
+	sw2.setup(PB5,GPIO_Mode_IPU);
 
-	ledA.setup(GPIOA,GPIO_Pin_4,GPIO_Mode_Out_PP);
-	ledB.setup(GPIOA,GPIO_Pin_5,GPIO_Mode_Out_PP);
-	buzzer.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
+	ledA.setup(PA15,GPIO_Mode_Out_PP);
+	ledB.setup(PB3,GPIO_Mode_Out_PP);
+	buzzer.setup(PB2,GPIO_Mode_Out_PP);
 	ledA.write(Bit_RESET);
 	ledB.write(Bit_RESET);
 
-	sel1.setup(GPIOB,GPIO_Pin_1,GPIO_Mode_IPU);
-	sel2.setup(GPIOB,GPIO_Pin_2,GPIO_Mode_IPU);
-	sel4.setup(GPIOB,GPIO_Pin_10,GPIO_Mode_IPU);
-	sel8.setup(GPIOB,GPIO_Pin_11,GPIO_Mode_IPU);
+	sel1.setup(PB12,GPIO_Mode_IPU);
+	sel2.setup(PB13,GPIO_Mode_IPU);
+	sel4.setup(PB14,GPIO_Mode_IPU);
+	sel8.setup(PB15,GPIO_Mode_IPU);
 	canAddress = 15 - (sel1.read()*4 + sel2.read()*1 + sel4.read()*2 + sel8.read()*8);
 
-	motorEN.setup(GPIOB,GPIO_Pin_12,GPIO_Mode_Out_PP);
+	io0.setup(PB0,GPIO_Mode_Out_PP);
+	io1.setup(PB1,GPIO_Mode_Out_PP);
+	io2.setup(PA9,GPIO_Mode_Out_PP);
+	io3.setup(PA10,GPIO_Mode_Out_PP);
 
-	limitA1.setup(GPIOB,GPIO_Pin_13,GPIO_Mode_Out_PP);
-	limitA2.setup(GPIOB,GPIO_Pin_14,GPIO_Mode_Out_PP);
-	limitB1.setup(GPIOB,GPIO_Pin_15,GPIO_Mode_Out_PP);
-	limitB2.setup(GPIOA,GPIO_Pin_8,GPIO_Mode_Out_PP);
 
-	usartTX.setup(GPIOA,GPIO_Pin_9,GPIO_Mode_AF_PP);
-	usartTX.setup(GPIOA,GPIO_Pin_10,GPIO_Mode_IN_FLOATING);
+	motorEN.setup(PA8,GPIO_Mode_Out_PP);
 
-	canTX.setup(GPIOA,GPIO_Pin_12,GPIO_Mode_AF_PP);
-	canRX.setup(GPIOA,GPIO_Pin_11,GPIO_Mode_IN_FLOATING);
+	limitA1.setup(PA2,GPIO_Mode_Out_PP);
+	limitA2.setup(PA3,GPIO_Mode_Out_PP);
+	limitB1.setup(PA4,GPIO_Mode_Out_PP);
+	limitB2.setup(PA5,GPIO_Mode_Out_PP);
 
-	/*
-	spiNSS.setup(GPIOA,GPIO_Pin_15,GPIO_Mode_IPU);
-	spiSCK.setup(GPIOB,GPIO_Pin_3,GPIO_Mode_AF_PP);
-	spiMOSI.setup(GPIOB,GPIO_Pin_4,GPIO_Mode_AF_PP);
-	spiMISO.setup(GPIOB,GPIO_Pin_5,GPIO_Mode_AF_PP);
-*/
+	usartTX.setup(PB10,GPIO_Mode_AF_PP);
+	usartRX.setup(PB11,GPIO_Mode_IN_FLOATING);
 
-	pinPwmA.setup(GPIOB,GPIO_Pin_8,GPIO_Mode_AF_PP);
-	pinPwmAN.setup(GPIOB,GPIO_Pin_9,GPIO_Mode_AF_PP);
-	pinPwmB.setup(GPIOB,GPIO_Pin_6,GPIO_Mode_AF_PP);
-	pinPwmBN.setup(GPIOB,GPIO_Pin_7,GPIO_Mode_AF_PP);
+	canTX.setup(PA12,GPIO_Mode_AF_PP);
+	canRX.setup(PA11,GPIO_Mode_IN_FLOATING);
+
+	pinPwmA.setup(PB8,GPIO_Mode_AF_PP);
+	pinPwmAN.setup(PB9,GPIO_Mode_AF_PP);
+	pinPwmB.setup(PB6,GPIO_Mode_AF_PP);
+	pinPwmBN.setup(PB7,GPIO_Mode_AF_PP);
 
 	pinPwmA.write(Bit_RESET);
 	pinPwmAN.write(Bit_RESET);
@@ -158,32 +160,28 @@ int main(void)
 	pwmBN.duty(PWM_PERIOD/2);
 	motorEN.write(Bit_SET);
 
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
 
-	serial.setup(USART1,921600);
+
+	serial.setup(USART3,921600);
+	serial.printf("\n\roppai\n\r");
 	serial.printf("FILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
 	serial.printf("ADRS = %d\n\r",canAddress);
 
-	delay(100);
 
-	TIM4ITSetup(TIM_IT_CC1);
+	delay(100);
 
 	CAN1Setup();
 
 
     while(1){
-
     	canAddress = 15 - (sel1.read()*4 + sel2.read()*1 + sel4.read()*2 + sel8.read()*8);
-
-    	//serial.printf("%4d,%4d,%6d,%6d,%6d\n\r",encA.read(),encB.read(),motorB.outDuty,motorB.outDuty,timCnt);
-
-    	int outA = encA.read();
-    	motorA.duty(outA);
-    	motorB.duty(outA);
 
     	if(sw2.read() == 0){
     		ledB.write(Bit_SET);
+    		serial.printf("B\n\r");
     	}else{
     		ledB.write(Bit_RESET);
     	}
@@ -191,30 +189,18 @@ int main(void)
 
     	if(sw1.read() == 0){
     		ledA.write(Bit_SET);
+    		serial.printf("A\n\r");
     	}else{
     		ledA.write(Bit_RESET);
     	}
 
-
-    	outA = encA.read()*50;
-    	if(outA > 0x7FFF)outA = 0x7FFF;
-    	if(outA < -0x8000)outA = -0x8000;
-    	if(outA < 0)outA = ~outA + 0x8000;
-    	canData[0] = outA & 0xFF;
-    	canData[1] = outA>>8;
-    	if(canAddress != 0){
-    		//CAN1Send(CAN_MTD + canAddress - 1,2,canData);
-    	}
-    	canData[0] = 0xFF;
-    	canData[1] = canAddress + (canAddress << 4);
-    	/*if(canAddress != 0){
-    		CAN1Send(CAN_VLV,2,canData);
-    	}*/
-
-    	//CAN1Send(CAN_MTD,2,canData);
-
     	while(rxFlag > 0){
     		rxFlag--;
+    		if(RxMessage.StdId == 0x0103){
+    			int32_t outA_duty = 0;
+    			motorA.duty(outA_duty/31);
+    			serial.printf("OUTA = %d,",outA_duty/31);
+    		}
     		serial.printf("CAN ADD = %x,Data = %d,%d,%d,%d,%d,%d,%d,%d\n\r",RxMessage.StdId,RxMessage.Data[0],RxMessage.Data[1],RxMessage.Data[2],RxMessage.Data[3],RxMessage.Data[4],RxMessage.Data[5],RxMessage.Data[6],RxMessage.Data[7]);
     	}
 
@@ -233,56 +219,6 @@ extern "C" void CAN1_RX1_IRQHandler(void){
 	rxFlag++;
 	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
 	return;
-}
-
-
-extern "C" void TIM4_IRQHandler(void){
-
-	/*
-	 * ADCのPWM同期をすると､mainループが著しく遅くなる｡
-	 * TIM割込みには問題がない様子10/12
-	 *
-	 *
-	 */
-	if(TIM_GetITStatus(TIM4,TIM_IT_CC1) == SET){
-		//currentA.peek();
-		//currentA.start(ADC_SampleTime_13Cycles5);
-
-		TIM_ITConfig(TIM4,TIM_IT_CC1,DISABLE);
-		TIM_ClearITPendingBit(TIM4,TIM_IT_CC1);
-		TIM_ITConfig(TIM4,TIM_IT_CC2,ENABLE);
-
-	}else if(TIM_GetITStatus(TIM4,TIM_IT_CC2) == SET){
-		//currentA.peek();
-		//currentB.start(ADC_SampleTime_13Cycles5);
-
-		TIM_ITConfig(TIM4,TIM_IT_CC2,DISABLE);
-		TIM_ClearITPendingBit(TIM4,TIM_IT_CC2);
-		TIM_ITConfig(TIM4,TIM_IT_CC3,ENABLE);
-
-	}else if(TIM_GetITStatus(TIM4,TIM_IT_CC3) == SET){
-		//currentB.peek();
-		//currentB.start(ADC_SampleTime_13Cycles5);
-
-		TIM_ITConfig(TIM4,TIM_IT_CC3,DISABLE);
-		TIM_ClearITPendingBit(TIM4,TIM_IT_CC3);
-		TIM_ITConfig(TIM4,TIM_IT_CC4,ENABLE);
-
-	}else if(TIM_GetITStatus(TIM4,TIM_IT_CC4) == SET){
-		//currentB.peek();
-		//currentA.start(ADC_SampleTime_13Cycles5);
-
-		TIM_ITConfig(TIM4,TIM_IT_CC4,DISABLE);
-		TIM_ClearITPendingBit(TIM4,TIM_IT_CC4);
-		TIM_ITConfig(TIM4,TIM_IT_CC1,ENABLE);
-
-	}
-
-	TIM_ClearITPendingBit(TIM4,TIM_IT_CC1);
-	TIM_ClearITPendingBit(TIM4,TIM_IT_CC2);
-	TIM_ClearITPendingBit(TIM4,TIM_IT_CC3);
-	TIM_ClearITPendingBit(TIM4,TIM_IT_CC4);
-	TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 }
 
 extern "C" void TIM1_UP_IRQHandler(void){

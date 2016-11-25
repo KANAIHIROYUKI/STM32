@@ -19,25 +19,35 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="5"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/main.cpp" title="main.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/main.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/main.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2370" selectionTopPixel="1676"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="374" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="SYSTEM.cpp" partName="SYSTEM.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/user/SYSTEM.cpp" title="SYSTEM.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/user/SYSTEM.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user/src/SYSTEM.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="5" selectionOffset="96" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usart.cpp" partName="usart.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/user/src/usart.cpp" title="usart.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/user/src/usart.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user/src/usart.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9639" selectionTopPixel="5066"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="USART.h" partName="USART.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/user/USART.h" title="USART.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/user/USART.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user/inc/USART.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="750" selectionTopPixel="497"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="tim.h" partName="tim.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/user/inc/tim.h" title="tim.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/user/inc/tim.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user/inc/tim.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="60"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="USART.cpp" partName="USART.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/user/USART.cpp" title="USART.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/user/USART.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user/src/USART.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="302" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="tim.cpp" partName="tim.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/user/src/tim.cpp" title="tim.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/user/src/tim.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user/src/tim.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="11991" selectionTopPixel="6353"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="system.h" partName="system.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/user/inc/system.h" title="system.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/user/inc/system.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user/inc/system.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="279" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="system.cpp" partName="system.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/user/src/system.cpp" title="system.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/user/src/system.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user/src/system.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="430" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -45,12 +55,9 @@
 <viewState/>
 </view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="9">
+<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
 <element path="/F103_mini"/>
-<element path="/F103_mini/user"/>
-<element path="/F103_mini/user/inc"/>
-<element path="/F103_mini/user/src"/>
 </expanded>
 <selection>
 <element path="/F103_mini/main.cpp"/>
@@ -246,18 +253,6 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/user/src/CAN.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/main.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/user/src/TIM.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/user/inc/TIM.hpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/user/src/CAN.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/app/app.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/user/inc/USART.hpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/user/src/TIM.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/user/src/CAN.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/user/inc/USART.hpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/user/src/USART.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/stm_lib/src/stm32f10x_can.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/main.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_3WS_MD/user/src/CAN.cpp"/>
 <editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F303CCT6_test/F303CCT6_test.elf.xcodeproj/project.pbxproj"/>
@@ -272,154 +267,164 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/src/SYSTEM.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/inc/USART.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/src/USART.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/src/USART.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/inc/USART.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/inc/USART.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/src/SYSTEM.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/src/usart.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/inc/tim.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/src/tim.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/inc/system.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user/src/system.cpp"/>
 </editors>
-<item historyLabel="main.cpp" index="1">
-<position info="not_deleted" x="4593" y="0"/>
-</item>
-<item historyLabel="CAN.cpp" index="0">
-<position info="not_deleted" x="1709" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="1">
-<position info="not_deleted" x="4457" y="0"/>
-</item>
-<item historyLabel="CAN.cpp" index="0">
-<position info="not_deleted" x="1294" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="1">
-<position info="not_deleted" x="4457" y="0"/>
-</item>
-<item historyLabel="TIM.cpp" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="TIM.hpp" index="3">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="CAN.cpp" index="4">
-<position info="not_deleted" x="1294" y="0"/>
-</item>
-<item historyLabel="TIM.cpp" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="TIM.hpp" index="3">
-<position info="not_deleted" x="489" y="0"/>
-</item>
-<item historyLabel="TIM.cpp" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="app.cpp" index="5">
-<position info="not_deleted" x="0" y="20"/>
-</item>
-<item historyLabel="main.cpp" index="1">
+<item historyLabel="main.cpp" index="0">
 <position info="not_deleted" x="69" y="20"/>
 </item>
-<item historyLabel="TIM.hpp" index="3">
-<position info="not_deleted" x="155" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="1">
-<position info="not_deleted" x="69" y="20"/>
-</item>
-<item historyLabel="USART.hpp" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="TIM.cpp" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="USART.hpp" index="6">
-<position/>
-</item>
-<item historyLabel="CAN.cpp" index="8">
-<position info="not_deleted" x="1294" y="0"/>
-</item>
-<item historyLabel="USART.hpp" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="USART.cpp" index="10">
-<position info="not_deleted" x="1939" y="0"/>
-</item>
-<item historyLabel="stm32f10x_can.c" index="11">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="USART.cpp" index="10">
-<position info="not_deleted" x="1939" y="0"/>
-</item>
-<item historyLabel="USART.hpp" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="CAN.cpp" index="8">
-<position info="not_deleted" x="1294" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="12">
-<position info="not_deleted" x="69" y="20"/>
-</item>
-<item historyLabel="CAN.cpp" index="13">
+<item historyLabel="CAN.cpp" index="1">
 <position info="not_deleted" x="503" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="12">
+<item historyLabel="main.cpp" index="0">
 <position info="not_deleted" x="4072" y="0"/>
 </item>
-<item historyLabel="project.pbxproj" index="14">
+<item historyLabel="project.pbxproj" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="15">
+<item historyLabel="main.cpp" index="3">
 <position info="not_deleted" x="4079" y="0"/>
 </item>
-<item historyLabel="stm32f10x_conf.h" index="16">
+<item historyLabel="stm32f10x_conf.h" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="17">
+<item historyLabel="main.cpp" index="5">
 <position info="not_deleted" x="3431" y="0"/>
 </item>
-<item historyLabel="CAN.cpp" index="18">
+<item historyLabel="CAN.cpp" index="6">
 <position info="not_deleted" x="503" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="17">
+<item historyLabel="main.cpp" index="5">
 <position info="not_deleted" x="4182" y="0"/>
 </item>
-<item historyLabel="welcome" index="19"/>
-<item historyLabel="main.cpp" index="20">
+<item historyLabel="welcome" index="7"/>
+<item historyLabel="main.cpp" index="8">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="20">
+<item historyLabel="main.cpp" index="8">
 <position info="not_deleted" x="1608" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="20">
+<item historyLabel="main.cpp" index="8">
 <position/>
 </item>
-<item historyLabel="SYSTEM.cpp" index="21">
+<item historyLabel="SYSTEM.cpp" index="9">
 <position info="not_deleted" x="96" y="5"/>
 </item>
-<item historyLabel="main.cpp" index="20">
+<item historyLabel="main.cpp" index="8">
 <position info="not_deleted" x="3187" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="20">
+<item historyLabel="main.cpp" index="8">
 <position info="not_deleted" x="678" y="0"/>
 </item>
-<item historyLabel="USART.h" index="22">
+<item historyLabel="USART.h" index="10">
 <position info="not_deleted" x="1461" y="0"/>
 </item>
-<item historyLabel="USART.cpp" index="23">
+<item historyLabel="USART.cpp" index="11">
 <position info="not_deleted" x="193" y="1"/>
 </item>
-<item historyLabel="USART.h" index="22">
+<item historyLabel="USART.h" index="10">
 <position info="not_deleted" x="750" y="0"/>
 </item>
-<item historyLabel="SYSTEM.cpp" index="21">
+<item historyLabel="SYSTEM.cpp" index="9">
 <position info="not_deleted" x="96" y="5"/>
 </item>
-<item historyLabel="USART.cpp" index="23">
+<item historyLabel="USART.cpp" index="11">
 <position info="not_deleted" x="193" y="1"/>
 </item>
-<item historyLabel="USART.cpp" index="23">
+<item historyLabel="USART.cpp" index="11">
 <position info="not_deleted" x="3290" y="0"/>
 </item>
-<item historyLabel="USART.cpp" index="23">
+<item historyLabel="USART.cpp" index="11">
 <position info="not_deleted" x="10087" y="0"/>
 </item>
-<item historyLabel="USART.cpp" index="23">
+<item historyLabel="USART.cpp" index="11">
 <position info="not_deleted" x="302" y="0"/>
 </item>
-<item active="true" historyLabel="main.cpp" index="20">
+<item historyLabel="main.cpp" index="8">
 <position info="not_deleted" x="678" y="0"/>
+</item>
+<item historyLabel="USART.cpp" index="12">
+<position info="not_deleted" x="302" y="0"/>
+</item>
+<item historyLabel="USART.h" index="13">
+<position info="not_deleted" x="750" y="0"/>
+</item>
+<item historyLabel="USART.cpp" index="12">
+<position info="not_deleted" x="6367" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="8">
+<position info="not_deleted" x="2059" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="8">
+<position info="not_deleted" x="2101" y="0"/>
+</item>
+<item historyLabel="USART.h" index="13">
+<position info="not_deleted" x="750" y="0"/>
+</item>
+<item historyLabel="USART.cpp" index="12">
+<position info="not_deleted" x="6367" y="0"/>
+</item>
+<item historyLabel="USART.h" index="14">
+<position info="not_deleted" x="750" y="0"/>
+</item>
+<item historyLabel="USART.cpp" index="12">
+<position info="not_deleted" x="6367" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="15">
+<position info="not_deleted" x="2101" y="0"/>
+</item>
+<item historyLabel="SYSTEM.cpp" index="16">
+<position info="not_deleted" x="96" y="5"/>
+</item>
+<item historyLabel="main.cpp" index="15">
+<position info="not_deleted" x="2101" y="0"/>
+</item>
+<item historyLabel="usart.cpp" index="17">
+<position info="not_deleted" x="9639" y="0"/>
+</item>
+<item historyLabel="tim.h" index="18">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="tim.cpp" index="19">
+<position info="not_deleted" x="11991" y="0"/>
+</item>
+<item historyLabel="system.h" index="20">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="system.cpp" index="21">
+<position info="not_deleted" x="85" y="0"/>
+</item>
+<item historyLabel="system.h" index="20">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="system.h" index="20">
+<position info="not_deleted" x="279" y="0"/>
+</item>
+<item historyLabel="system.cpp" index="21">
+<position info="not_deleted" x="85" y="0"/>
+</item>
+<item historyLabel="system.cpp" index="21">
+<position info="not_deleted" x="469" y="0"/>
+</item>
+<item historyLabel="system.cpp" index="21">
+<position info="not_deleted" x="400" y="0"/>
+</item>
+<item historyLabel="system.cpp" index="21">
+<position info="not_deleted" x="329" y="0"/>
+</item>
+<item historyLabel="system.cpp" index="21">
+<position info="not_deleted" x="430" y="0"/>
+</item>
+<item active="true" historyLabel="main.cpp" index="15">
+<position info="not_deleted" x="2101" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -434,41 +439,8 @@
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_CanNode.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_CanNode\F103_CanNode.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/F103_CanNode.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CAN.cpp" tooltip="F103_mini/user/src/CAN.cpp">
-<persistable path="/F103_mini/user/src/CAN.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_mini.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_mini\F103_mini.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini/F103_mini.coproj"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="core_cm4_simd.h" tooltip="STM32F303CC/cmsis/core_cm4_simd.h">
-<persistable path="/STM32F303CC/cmsis/core_cm4_simd.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="STM32F303CC.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\STM32F303CC\STM32F303CC.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/STM32F303CC/STM32F303CC.coproj"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_conf.h" tooltip="F103_3WS_MD/cmsis_boot/stm32f10x_conf.h">
 <persistable path="/F103_3WS_MD/cmsis_boot/stm32f10x_conf.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" tooltip="STM32F303CC/stdio/printf.c">
-<persistable path="/STM32F303CC/stdio/printf.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="semihosting.c" tooltip="STM32F303CC/semihosting/semihosting.c">
-<persistable path="/STM32F303CC/semihosting/semihosting.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="STM32F303CC/main.c">
-<persistable path="/STM32F303CC/main.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="F303CCT6_test/main.c">
-<persistable path="/F303CCT6_test/main.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="USART.cpp" tooltip="F103_mini/user/src/USART.cpp">
-<persistable path="/F103_mini/user/src/USART.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="USART.h" tooltip="F103_mini/user/inc/USART.h">
-<persistable path="/F103_mini/user/inc/USART.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="STM32F303CC/main.c">
-<persistable path="/STM32F303CC/main.c"/>
 </file>
 </mruList>
 </workbench>

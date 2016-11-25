@@ -84,33 +84,34 @@
     <Component id="495" name="CAN" path="" type="2"/>
   </Components>
   <Files>
+    <File name="user/src/usart.cpp" path="../user/src/usart.cpp" type="1"/>
+    <File name="user/src/tim.cpp" path="../user/src/tim.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_can.h" path="stm_lib/inc/stm32f10x_can.h" type="1"/>
-    <File name="user/src/SPI.cpp" path="user/SPI.cpp" type="1"/>
-    <File name="user/inc/SYSTEM.h" path="user/SYSTEM.h" type="1"/>
-    <File name="user/inc/CAN.h" path="user/CAN.h" type="1"/>
+    <File name="user/inc/gpio.h" path="../user/inc/gpio.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_tim.h" path="stm_lib/inc/stm32f10x_tim.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_dbgmcu.c" path="stm_lib/src/stm32f10x_dbgmcu.c" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
-    <File name="user/src/SYSTEM.cpp" path="user/SYSTEM.cpp" type="1"/>
+    <File name="user/inc/tim.h" path="../user/inc/tim.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_tim.c" path="stm_lib/src/stm32f10x_tim.c" type="1"/>
     <File name="semihosting/sh_cmd.s" path="semihosting/sh_cmd.s" type="1"/>
     <File name="cmsis_boot/startup" path="" type="2"/>
+    <File name="user/src/adc.cpp" path="../user/src/adc.cpp" type="1"/>
+    <File name="user/inc/remap.h" path="../user/inc/remap.h" type="1"/>
     <File name="cmsis/core_cmFunc.h" path="cmsis/core_cmFunc.h" type="1"/>
     <File name="semihosting/semihosting.c" path="semihosting/semihosting.c" type="1"/>
+    <File name="user/src/remap.cpp" path="../user/src/remap.cpp" type="1"/>
     <File name="stm_lib/src/misc.c" path="stm_lib/src/misc.c" type="1"/>
     <File name="stm_lib/src/stm32f10x_spi.c" path="stm_lib/src/stm32f10x_spi.c" type="1"/>
-    <File name="user/inc/SPI.h" path="user/SPI.h" type="1"/>
     <File name="cmsis_boot/stm32f10x.h" path="cmsis_boot/stm32f10x.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_dbgmcu.h" path="stm_lib/inc/stm32f10x_dbgmcu.h" type="1"/>
-    <File name="user/inc/REMAP.h" path="user/REMAP.h" type="1"/>
     <File name="cmsis_boot/stm32f10x_conf.h" path="cmsis_boot/stm32f10x_conf.h" type="1"/>
     <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>
-    <File name="user/src/CAN.cpp" path="user/CAN.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_spi.h" path="stm_lib/inc/stm32f10x_spi.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_adc.c" path="stm_lib/src/stm32f10x_adc.c" type="1"/>
     <File name="user" path="" type="2"/>
-    <File name="user/inc/GPIO.h" path="user/GPIO.h" type="1"/>
+    <File name="user/inc/usart.h" path="../user/inc/usart.h" type="1"/>
     <File name="user/inc" path="" type="2"/>
+    <File name="user/inc/can.h" path="../user/inc/can.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_usart.c" path="stm_lib/src/stm32f10x_usart.c" type="1"/>
     <File name="stdio/printf.c" path="stdio/printf.c" type="1"/>
     <File name="cmsis_boot/startup/startup_stm32f10x_md.c" path="cmsis_boot/startup/startup_stm32f10x_md.c" type="1"/>
@@ -118,31 +119,30 @@
     <File name="stm_lib/inc/stm32f10x_gpio.h" path="stm_lib/inc/stm32f10x_gpio.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_usart.h" path="stm_lib/inc/stm32f10x_usart.h" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.c" path="cmsis_boot/system_stm32f10x.c" type="1"/>
-    <File name="stm_lib/inc/misc.h" path="stm_lib/inc/misc.h" type="1"/>
     <File name="stdio" path="" type="2"/>
-    <File name="user/inc/TIM.h" path="user/TIM.h" type="1"/>
+    <File name="stm_lib/inc/misc.h" path="stm_lib/inc/misc.h" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="cmsis/core_cm3.h" path="cmsis/core_cm3.h" type="1"/>
-    <File name="user/inc/ADC.h" path="user/ADC.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_rcc.c" path="stm_lib/src/stm32f10x_rcc.c" type="1"/>
     <File name="semihosting" path="" type="2"/>
     <File name="user/src" path="" type="2"/>
-    <File name="user/inc/USART.h" path="user/USART.h" type="1"/>
-    <File name="user/src/ADC.cpp" path="user/ADC.cpp" type="1"/>
-    <File name="user/src/REMAP.cpp" path="user/REMAP.cpp" type="1"/>
+    <File name="user/inc/adc.h" path="../user/inc/adc.h" type="1"/>
     <File name="stm_lib/src" path="" type="2"/>
     <File name="cmsis" path="" type="2"/>
     <File name="stm_lib" path="" type="2"/>
-    <File name="user/src/TIM.cpp" path="user/TIM.cpp" type="1"/>
+    <File name="user/src/can.cpp" path="../user/src/can.cpp" type="1"/>
+    <File name="user/src/system.cpp" path="../user/src/system.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_adc.h" path="stm_lib/inc/stm32f10x_adc.h" type="1"/>
-    <File name="main.cpp" path="main.cpp" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
+    <File name="user/inc/spi.h" path="../user/inc/spi.h" type="1"/>
+    <File name="main.cpp" path="main.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>
     <File name="syscalls" path="" type="2"/>
+    <File name="user/inc/system.h" path="../user/inc/system.h" type="1"/>
     <File name="semihosting/semihosting.h" path="semihosting/semihosting.h" type="1"/>
-    <File name="stm_lib/inc" path="" type="2"/>
+    <File name="user/src/spi.cpp" path="../user/src/spi.cpp" type="1"/>
     <File name="stm_lib/src/stm32f10x_can.c" path="stm_lib/src/stm32f10x_can.c" type="1"/>
-    <File name="user/src/GPIO.cpp" path="user/GPIO.cpp" type="1"/>
-    <File name="user/src/USART.cpp" path="user/USART.cpp" type="1"/>
+    <File name="stm_lib/inc" path="" type="2"/>
+    <File name="user/src/gpio.cpp" path="../user/src/gpio.cpp" type="1"/>
   </Files>
 </Project>

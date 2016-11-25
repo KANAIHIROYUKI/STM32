@@ -6,6 +6,7 @@
 #define IntervalTime (1000)*10
 #define DriveTime 1000
 
+#define AA "::::::a::::::::a::::::: \n\r:::::::::::c::::::::::::: \n\r:::::::++++::::::::"
 uint32_t intervalTime = 0;
 
 GPIO encA;
@@ -51,7 +52,7 @@ int main(void)
 
 
 	serial.setup(USART1,921600);
-	serial.printf("FILE = %s\n\r",__FILE__);
+	serial.printf("\n\rFILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
 

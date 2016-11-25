@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=F103_48.map -O0 --gc-sections -lm -lgcc -lc -lstdc++ -LC:\CooCox\CoIDE\configuration\ProgramData\F103_3WS_MD -TC:\CooCox\CoIDE\configuration\ProgramData\F103_3WS_MD/arm-gcc-link.ld -g">
-      <target file="F103_48.elf" lastModified="158866f72d0">
-         <source file="..\obj\stm32f10x_tim.o" lastModified="157e6cf03d0"/>
-         <source file="..\obj\system_stm32f10x.o" lastModified="157e6cf0416"/>
-         <source file="..\obj\CAN.o" lastModified="158866f70cc"/>
-         <source file="..\obj\SYSTEM.o" lastModified="157e6cf04d7"/>
-         <source file="..\obj\startup_stm32f10x_md.o" lastModified="157e6cf0503"/>
-         <source file="..\obj\stm32f10x_can.o" lastModified="157e6cf0572"/>
-         <source file="..\obj\stm32f10x_gpio.o" lastModified="157e6cf05d1"/>
-         <source file="..\obj\main.o" lastModified="158866c0475"/>
-         <source file="..\obj\GPIO.o" lastModified="157e6cf069f"/>
-         <source file="..\obj\ADC.o" lastModified="157e6cf0700"/>
-         <source file="..\obj\stm32f10x_rcc.o" lastModified="157e6cf075f"/>
-         <source file="..\obj\stm32f10x_exti.o" lastModified="157e6cf07a4"/>
-         <source file="..\obj\stm32f10x_adc.o" lastModified="157e6cf0809"/>
-         <source file="..\obj\stm32f10x_usart.o" lastModified="157e6cf0867"/>
-         <source file="..\obj\syscalls.o" lastModified="157e6cf08a4"/>
-         <source file="..\obj\app.o" lastModified="157e6cf08fd"/>
-         <source file="..\obj\SPI.o" lastModified="157e6cf0953"/>
-         <source file="..\obj\REMAP.o" lastModified="157e6cf09bb"/>
-         <source file="..\obj\misc.o" lastModified="157e6cf0a1a"/>
-         <source file="..\obj\stm32f10x_spi.o" lastModified="157e6cf0a85"/>
-         <source file="..\obj\USART.o" lastModified="157e6cf0aee"/>
-         <source file="..\obj\TIM.o" lastModified="157e6cf0b76"/>
+      <target file="F103_48.elf" lastModified="15899dfade8">
+         <source file="..\obj\spi.o" lastModified="15895fcc1d9"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="15895fcc28e"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="15895fcc2d5"/>
+         <source file="..\obj\tim.o" lastModified="15899d1a2f7"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="15895fcc3a0"/>
+         <source file="..\obj\stm32f10x_can.o" lastModified="15895fcc416"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="15895fcc486"/>
+         <source file="..\obj\main.o" lastModified="15899dfabed"/>
+         <source file="..\obj\system.o" lastModified="15899df6713"/>
+         <source file="..\obj\can.o" lastModified="15895fcc5d0"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="15895fcc62f"/>
+         <source file="..\obj\gpio.o" lastModified="15899df677b"/>
+         <source file="..\obj\stm32f10x_exti.o" lastModified="15895fcc6d4"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="15895fcc73c"/>
+         <source file="..\obj\remap.o" lastModified="15895fcc792"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="15895fcc7f6"/>
+         <source file="..\obj\syscalls.o" lastModified="15895fcc834"/>
+         <source file="..\obj\adc.o" lastModified="15895fcc89b"/>
+         <source file="..\obj\app.o" lastModified="15899df67e4"/>
+         <source file="..\obj\misc.o" lastModified="15895fcc944"/>
+         <source file="..\obj\stm32f10x_spi.o" lastModified="15895fcc9aa"/>
+         <source file="..\obj\usart.o" lastModified="15895fcca3b"/>
       </target>
    </processor>
 </history>
