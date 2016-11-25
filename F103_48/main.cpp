@@ -107,11 +107,12 @@ int main(void)
 	ledA.write(Bit_RESET);
 	ledB.write(Bit_RESET);
 
-	sel1.setup(PB12,GPIO_Mode_IPU);
-	sel2.setup(PB13,GPIO_Mode_IPU);
-	sel4.setup(PB14,GPIO_Mode_IPU);
-	sel8.setup(PB15,GPIO_Mode_IPU);
-	canAddress = 15 - (sel1.read()*4 + sel2.read()*1 + sel4.read()*2 + sel8.read()*8);
+
+	sel1.setup(PB14,GPIO_Mode_IPU);
+	sel2.setup(PB15,GPIO_Mode_IPU);
+	sel4.setup(PB12,GPIO_Mode_IPU);
+	sel8.setup(PB13,GPIO_Mode_IPU);
+	canAddress = 15 - (sel8.read()*8 + sel4.read()*4 + sel2.read()*2 + sel1.read()*1);
 
 	io0.setup(PB0,GPIO_Mode_Out_PP);
 	io1.setup(PB1,GPIO_Mode_Out_PP);
