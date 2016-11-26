@@ -103,10 +103,10 @@ int main(void)
 	ledA.write(Bit_RESET);
 	ledB.write(Bit_RESET);
 
-	sel1.setup(PB10,GPIO_Mode_IPU);
-	sel2.setup(PB11,GPIO_Mode_IPU);
+	sel1.setup(PB2,GPIO_Mode_IPU);
+	sel2.setup(PB10,GPIO_Mode_IPU);
 	sel4.setup(PB1,GPIO_Mode_IPU);
-	sel8.setup(PB2,GPIO_Mode_IPU);
+	sel8.setup(PB11,GPIO_Mode_IPU);
 	canAddress = 15 - (sel1.read() + sel2.read()*2 + sel4.read()*4 + sel8.read()*8);
 
 	io0.setup(PA15,GPIO_Mode_Out_PP);
@@ -168,8 +168,20 @@ int main(void)
 	CAN1Setup();
 
 
+	canData[0] = 1;
+	canData[1] = 10;
+	canData[2] = 0;
+	//CAN1Send(CAN_ENC,3,canData);
+
+	canData[0] = 0;
+	CAN1Send(CAN_ENC,1,canData);
+
+
     while(1){
-    	canAddress = 15 - (sel1.read()*4 + sel2.read()*1 + sel4.read()*2 + sel8.read()*8);
+    	canAddress = 15 - (sel1.read() + sel2.read()*2 + sel4.read()*4 + sel8.read()*8);
+
+    	canData[0] = 0xFF;
+    	canData[1] = canAddress;
 
     	if(sw2.read() == 0){
     		ledB.write(Bit_SET);
@@ -185,6 +197,10 @@ int main(void)
     	}else{
     		ledA.write(Bit_RESET);
     	}
+
+    	//CAN1Send(CAN_VLV,2,canData);
+    	CAN1Send(CAN_ENC,0,canData);
+    	delay(10);
 
     	while(rxFlag > 0){
     		rxFlag--;

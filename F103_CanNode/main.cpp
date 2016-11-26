@@ -2,7 +2,7 @@
 #include "stdio.h"
 
 
-#include "SYSTEM.h"
+#include "system.h"
 
 
 #define CAN_ID 0x280
@@ -56,40 +56,40 @@ int main(void)
 {
 	setup();
 
-	enc1a.setup(GPIOA,GPIO_Pin_0,GPIO_Mode_IPU);
-	enc1b.setup(GPIOA,GPIO_Pin_1,GPIO_Mode_IPU);
+	enc1a.setup(PA0,GPIO_Mode_IPU);
+	enc1b.setup(PA1,GPIO_Mode_IPU);
 
-	enc2a.setup(GPIOA,GPIO_Pin_6,GPIO_Mode_IPU);
-	enc2b.setup(GPIOA,GPIO_Pin_7,GPIO_Mode_IPU);
+	enc2a.setup(PA6,GPIO_Mode_IPU);
+	enc2b.setup(PA7,GPIO_Mode_IPU);
 
-	enc3a.setup(GPIOB,GPIO_Pin_8,GPIO_Mode_IPU);
-	enc3b.setup(GPIOB,GPIO_Pin_9,GPIO_Mode_IPU);
+	enc3a.setup(PB8,GPIO_Mode_IPU);
+	enc3b.setup(PB9,GPIO_Mode_IPU);
 
-	enc4a.setup(GPIOB,GPIO_Pin_6,GPIO_Mode_IPU);
-	enc4b.setup(GPIOB,GPIO_Pin_7,GPIO_Mode_IPU);
+	enc4a.setup(PB6,GPIO_Mode_IPU);
+	enc4b.setup(PB7,GPIO_Mode_IPU);
 
 	enc1.encoderSetup(TIM1);
 	enc2.encoderSetup(TIM2);
 	enc3.encoderSetup(TIM3);
 	enc4.encoderSetup(TIM4);
 
-	io1.setup(GPIOA,GPIO_Pin_2,GPIO_Mode_IPU);
-	io2.setup(GPIOA,GPIO_Pin_3,GPIO_Mode_IPU);
-	io3.setup(GPIOA,GPIO_Pin_4,GPIO_Mode_IPU);
-	io4.setup(GPIOA,GPIO_Pin_5,GPIO_Mode_IPU);
+	io1.setup(PA2,GPIO_Mode_IPU);
+	io2.setup(PA3,GPIO_Mode_IPU);
+	io3.setup(PA4,GPIO_Mode_IPU);
+	io4.setup(PA5,GPIO_Mode_IPU);
 
-	io5.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
-	io6.setup(GPIOB,GPIO_Pin_1,GPIO_Mode_Out_PP);
-	io7.setup(GPIOB,GPIO_Pin_12,GPIO_Mode_Out_PP);
-	io8.setup(GPIOB,GPIO_Pin_13,GPIO_Mode_Out_PP);
+	io5.setup(PB0,GPIO_Mode_Out_PP);
+	io6.setup(PB1,GPIO_Mode_Out_PP);
+	io7.setup(PB12,GPIO_Mode_Out_PP);
+	io8.setup(PB13,GPIO_Mode_Out_PP);
 
-	led.setup(GPIOB,GPIO_Pin_2,GPIO_Mode_Out_PP);
+	led.setup(PB2,GPIO_Mode_Out_PP);
 
-	canTX.setup(GPIOA,GPIO_Pin_12,GPIO_Mode_AF_PP);
-	canRX.setup(GPIOA,GPIO_Pin_11,GPIO_Mode_IN_FLOATING);
+	canTX.setup(PA12,GPIO_Mode_AF_PP);
+	canRX.setup(PA11,GPIO_Mode_IN_FLOATING);
 
-	usartTX.setup(GPIOB,GPIO_Pin_10,GPIO_Mode_AF_PP);
-	usartRX.setup(GPIOB,GPIO_Pin_11,GPIO_Mode_IN_FLOATING);
+	usartTX.setup(PB10,GPIO_Mode_AF_PP);
+	usartRX.setup(PB11,GPIO_Mode_IN_FLOATING);
 
 	serial.setup(USART3,921600);
 	serial.printf("FILE = %s\n\r",__FILE__);
@@ -99,14 +99,14 @@ int main(void)
 	CAN1Setup();
 
     while(1){
-    	serial.printf("%d\n\r",millis());
+    	//serial.printf("%d\n\r",millis());
 
-    	delay(1000);
+    	delay(1);
     	//led.toggle();
     	//io5.toggle();
     	//io6.toggle();
     	//io7.toggle();
-    	io8.toggle();
+    	//io8.toggle();
 
     	while(rxFlag > 0){
     		rxFlag--;
@@ -122,6 +122,36 @@ int main(void)
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	rxFlag++;
 	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
+	if(RxMessage.StdId == CAN_ID){
+		if(RxMessage.Data[0] & 0b00000001 != 0){
+			if((RxMessage.Data[1] & 0b00000001) != 0){
+				io8.write(Bit_SET);
+			}else{
+				io8.write(Bit_RESET);
+			}
+		}
+		if(RxMessage.Data[0] & 0b00000010 != 0){
+			if((RxMessage.Data[1] & 0b00000010) != 0){
+				io7.write(Bit_SET);
+			}else{
+				io7.write(Bit_RESET);
+			}
+		}
+		if(RxMessage.Data[0] & 0b00000100 != 0){
+			if((RxMessage.Data[1] & 0b00000100) != 0){
+				io6.write(Bit_SET);
+			}else{
+				io6.write(Bit_RESET);
+			}
+		}
+		if(RxMessage.Data[0] & 0b00001000 != 0){
+			if((RxMessage.Data[1] & 0b00001000) != 0){
+				io5.write(Bit_SET);
+			}else{
+				io5.write(Bit_RESET);
+			}
+		}
+	}
 
 	return;
 }
