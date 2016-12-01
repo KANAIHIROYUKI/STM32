@@ -137,6 +137,17 @@ int32_t TIM::read(){
 	}
 }
 
+void TIM::reset(){
+	if(tim_tim == TIM1){
+		tim1Cnt = 0;
+	}else if(tim_tim == TIM2){
+		tim2Cnt = 0;
+	}else if(tim_tim == TIM3){
+		tim3Cnt = 0;
+	}else if(tim_tim == TIM4){
+		tim4Cnt = 0;
+	}
+}
 
 /************************/
 

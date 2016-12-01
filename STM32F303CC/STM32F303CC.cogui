@@ -36,11 +36,11 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F303CC/user/src/gpio.cpp"/>
 <editorState selectionHorizontalPixel="0" selectionLength="21" selectionOffset="333" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usart.h" partName="usart.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/STM32F303CC/user/inc/usart.h" title="usart.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/STM32F303CC/user/inc/usart.h" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="usart.h" partName="usart.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/STM32F303CC/user/inc/usart.h" title="usart.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/STM32F303CC/user/inc/usart.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F303CC/user/inc/usart.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="16" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.coocox.builder.ui.editors.ConfigEditor" name="" partName="Configuration" title="Configuration" tooltip="" workbook="DefaultEditorWorkbook">
+<editor id="org.coocox.builder.ui.editors.ConfigEditor" name="" partName="Configuration" title="Configuration" tooltip="" workbook="DefaultEditorWorkbook">
 <input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">
 <org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
 </input>
@@ -88,7 +88,7 @@
 </view>
 <view id="org.eclipse.debug.ui.VariableView" partName="Variables"/>
 </views>
-<perspectives activePart="org.coocox.builder.ui.editors.ConfigEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.coocox.component.ui.actionSet"/>
@@ -283,13 +283,11 @@
 <editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
 <org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
 </editor>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</editor>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F303CC/user/inc/usart.h"/>
 </editors>
-<item historyLabel="gpio.cpp" index="2">
-<position/>
-</item>
-<item historyLabel="adc.cpp" index="4">
-<position info="not_deleted" x="2794" y="41"/>
-</item>
 <item historyLabel="adc.cpp" index="4">
 <position info="not_deleted" x="843" y="0"/>
 </item>
@@ -429,7 +427,11 @@
 <item historyLabel="usart.h" index="11">
 <position info="not_deleted" x="16" y="0"/>
 </item>
-<item active="true" historyLabel="Configuration" index="12"/>
+<item historyLabel="Configuration" index="12"/>
+<item historyLabel="Configuration" index="13"/>
+<item active="true" historyLabel="usart.h" index="14">
+<position info="not_deleted" x="16" y="0"/>
+</item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -437,10 +439,8 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor" name="" tooltip="">
-<persistable>
-<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
-</persistable>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_CanNode.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_CanNode\F103_CanNode.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/F103_CanNode.coproj"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usart.h" tooltip="STM32F303CC/user/inc/usart.h">
 <persistable path="/STM32F303CC/user/inc/usart.h"/>
@@ -450,9 +450,6 @@
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_rev2.0.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_rev2.0\F103_rev2.0.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_rev2.0/F103_rev2.0.coproj"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_CanNode.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_CanNode\F103_CanNode.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_CanNode/F103_CanNode.coproj"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canValbe.cpp" tooltip="F103_mini/user_app/inc/canValbe.cpp">
 <persistable path="/F103_mini/user_app/inc/canValbe.cpp"/>
@@ -480,6 +477,9 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="spi.cpp" tooltip="F103_3WS_MD/user/src/spi.cpp">
 <persistable path="/F103_3WS_MD/user/src/spi.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system.h" tooltip="F103_mini/user_lib/inc/system.h">
+<persistable path="/F103_mini/user_lib/inc/system.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system.h" tooltip="F103_mini/user_lib/inc/system.h">
 <persistable path="/F103_mini/user_lib/inc/system.h"/>

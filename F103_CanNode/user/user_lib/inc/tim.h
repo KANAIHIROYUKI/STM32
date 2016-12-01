@@ -15,6 +15,7 @@ class TIM{
 public:
 	void encoderSetup(TIM_TypeDef* tim);
 	int32_t read();
+	void reset();
 	static int32_t tim1Cnt;
 	static int32_t tim2Cnt;
 	static int32_t tim3Cnt;

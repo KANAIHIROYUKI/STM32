@@ -80,25 +80,25 @@ void CAN1Setup(){
 }
 
 void CAN1Send(uint16_t id,uint8_t length,uint8_t data[8]){
-    CanTxMsg TxMessage;
-    TxMessage.StdId = id;
-    TxMessage.IDE   = CAN_ID_STD;
+    CanTxMsg txMessage;
+    txMessage.StdId = id;
+    txMessage.IDE   = CAN_ID_STD;
     if(length == 0){
-    	TxMessage.RTR = CAN_RTR_REMOTE;
+    	txMessage.RTR = CAN_RTR_REMOTE;
     }else{
-    	TxMessage.RTR   = CAN_RTR_DATA;
+    	txMessage.RTR   = CAN_RTR_DATA;
     }
-    TxMessage.DLC   = length;
-    TxMessage.Data[0] = data[0];
-    TxMessage.Data[1] = data[1];
-    TxMessage.Data[2] = data[2];
-    TxMessage.Data[3] = data[3];
-    TxMessage.Data[4] = data[4];
-    TxMessage.Data[5] = data[5];
-    TxMessage.Data[6] = data[6];
-    TxMessage.Data[7] = data[7];
+    txMessage.DLC   = length;
+    txMessage.Data[0] = data[0];
+    txMessage.Data[1] = data[1];
+    txMessage.Data[2] = data[2];
+    txMessage.Data[3] = data[3];
+    txMessage.Data[4] = data[4];
+    txMessage.Data[5] = data[5];
+    txMessage.Data[6] = data[6];
+    txMessage.Data[7] = data[7];
 
-    CAN_Transmit(CAN1,&TxMessage);
+    CAN_Transmit(CAN1,&txMessage);
 }
 
 void CANFilterAdd(uint16_t id1,uint16_t id2,uint16_t id3,uint16_t id4){

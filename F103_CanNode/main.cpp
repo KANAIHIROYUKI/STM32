@@ -15,8 +15,6 @@ float currentA_A=0,currentB_A=0;
 
 uint8_t canData[8] = {0,0,0,0,0,0,0,0},canAddress=0;
 
-uint32_t encValue[4];
-
 uint64_t intervalTimer[4] = {0,0,0,0},intervalTime[4] = {0,0,0,0};
 
 CanRxMsg rxMessage;
@@ -30,14 +28,7 @@ GPIO enc3b;
 GPIO enc4a;
 GPIO enc4b;
 
-GPIO io1;
-GPIO io2;
-GPIO io3;
-GPIO io4;
-GPIO io5;
-GPIO io6;
-GPIO io7;
-GPIO io8;
+GPIO io[8];
 
 GPIO led;
 
@@ -46,10 +37,7 @@ GPIO usartRX;
 GPIO canTX;
 GPIO canRX;
 
-TIM enc1;
-TIM enc2;
-TIM enc3;
-TIM enc4;
+TIM enc[4];
 
 USART serial;
 
@@ -71,20 +59,20 @@ int main(void)
 	enc4a.setup(PB6,GPIO_Mode_IPU);
 	enc4b.setup(PB7,GPIO_Mode_IPU);
 
-	enc1.encoderSetup(TIM1);
-	enc2.encoderSetup(TIM2);
-	enc3.encoderSetup(TIM3);
-	enc4.encoderSetup(TIM4);
+	enc[0].encoderSetup(TIM1);
+	enc[1].encoderSetup(TIM2);
+	enc[2].encoderSetup(TIM3);
+	enc[3].encoderSetup(TIM4);
 
-	io1.setup(PA2,GPIO_Mode_IPU);
-	io2.setup(PA3,GPIO_Mode_IPU);
-	io3.setup(PA4,GPIO_Mode_IPU);
-	io4.setup(PA5,GPIO_Mode_IPU);
+	io[0].setup(PA2,GPIO_Mode_AF_PP);
+	io[1].setup(PA3,GPIO_Mode_AF_PP);
+	io[2].setup(PA4,GPIO_Mode_AF_PP);
+	io[3].setup(PA5,GPIO_Mode_AF_PP);
 
-	io5.setup(PB0,GPIO_Mode_Out_PP);
-	io6.setup(PB1,GPIO_Mode_Out_PP);
-	io7.setup(PB12,GPIO_Mode_Out_PP);
-	io8.setup(PB13,GPIO_Mode_Out_PP);
+	io[4].setup(PB0,GPIO_Mode_AF_PP);
+	io[5].setup(PB1,GPIO_Mode_AF_PP);
+	io[6].setup(PB12,GPIO_Mode_AF_PP);
+	io[7].setup(PB13,GPIO_Mode_AF_PP);
 
 	led.setup(PB2,GPIO_Mode_Out_PP);
 
@@ -111,21 +99,17 @@ int main(void)
 	//CANFilterAdd(CAN_ENC_VAL,CAN_ENC_VAL + 1,CAN_ENC_VAL + 2,CAN_ENC_VAL + 3);
 
     while(1){
-    	encValue[0] = enc1.read();
-    	encValue[1] = enc2.read();
-    	encValue[2] = enc3.read();
-    	encValue[3] = enc4.read();
-
     	for(int i=0;i<4;i++){
         	if(intervalTime[i] != 0){
             	if(intervalTimer[i] < millis()){
+            		uint32_t encValue = enc[i].read();
             		intervalTimer[i] = millis() + intervalTime[i];
-            		canData[0] = encValue[i] & 0xFF;
-            		canData[1] = (encValue[i] >> 8) & 0xFF;
-            		canData[2] = (encValue[i] >> 16) & 0xFF;
-            		canData[3] = (encValue[i] >> 24) & 0xFF;
+            		canData[0] = encValue & 0xFF;
+            		canData[1] = (encValue >> 8) & 0xFF;
+            		canData[2] = (encValue >> 16) & 0xFF;
+            		canData[3] = (encValue >> 24) & 0xFF;
             		CAN1Send(CAN_ENC_VAL + i,4,canData);
-            		serial.printf("%d,%d,%d,%d\n\r",enc1.read(),enc2.read(),enc3.read(),enc4.read());
+            		serial.printf("%d,%d,%d,%d\n\r",enc[0].read(),enc[1].read(),enc[2].read(),enc[3].read());
             	}
         	}
     	}
@@ -134,7 +118,6 @@ int main(void)
     		rxFlag--;
     		serial.printf("RX FLAG CAN Data 0x%x,%d,%d,%d,%d,%d,%d,%d,%d\n\r",rxMessage.StdId,rxMessage.Data[0],rxMessage.Data[1],rxMessage.Data[2],rxMessage.Data[3],rxMessage.Data[4],rxMessage.Data[5],rxMessage.Data[6],rxMessage.Data[7]);
     	}
-
     }
 }
 
@@ -143,35 +126,24 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	//CAN_Receive(CAN1,CAN_FIFO0,&rxMessage);
 	can1.receive(&rxMessage);
 	if(rxMessage.StdId == CAN_VLV){
-		if((rxMessage.Data[0] & 0b00000001) != 0){
-			if((rxMessage.Data[1] & 0b00000001) != 0){
-				io8.write(Bit_SET);
-			}else{
-				io8.write(Bit_RESET);
+		for(int i=0;i<8;i++){
+			if((rxMessage.Data[0] & (1 << i)) != 0){
+				if(((rxMessage.Data[1] & (1 << i)) != 0)){
+					io[i].write(Bit_SET);
+				}else{
+					io[i].write(Bit_RESET);
+				}
 			}
 		}
-		if((rxMessage.Data[0] & 0b00000010) != 0){
-			if((rxMessage.Data[1] & 0b00000010) != 0){
-				io7.write(Bit_SET);
-			}else{
-				io7.write(Bit_RESET);
+	}else if((rxMessage.StdId >= CAN_ENC_SET) && (rxMessage.StdId <= CAN_ENC_SET + 3)){
+		for(int i=0;i<4;i++){
+			if(rxMessage.Data[0] == 0){
+				enc[i].reset();
+			}else if(rxMessage.Data[0] == 1){
+				intervalTime[i] = (rxMessage.Data[2] << 8) + rxMessage.Data[1];
 			}
 		}
-		if((rxMessage.Data[0] & 0b00000100) != 0){
-			if((rxMessage.Data[1] & 0b00000100) != 0){
-				io6.write(Bit_SET);
-			}else{
-				io6.write(Bit_RESET);
-			}
-		}
-		if((rxMessage.Data[0] & 0b00001000) != 0){
-			if((rxMessage.Data[1] & 0b00001000) != 0){
-				io5.write(Bit_SET);
-			}else{
-				io5.write(Bit_RESET);
-			}
-		}
-	}else if(rxMessage.StdId == CAN_ENC_SET){
+	}/*else if(rxMessage.StdId == CAN_ENC_SET){
 		if(rxMessage.Data[0] == 0){
 			encValue[0] = 0;
 		}else if(rxMessage.Data[0] == 1){
@@ -195,7 +167,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 		}else if(rxMessage.Data[0] == 1){
 			intervalTime[3] = (rxMessage.Data[2] << 8) + rxMessage.Data[1];
 		}
-	}
+	}*/
 
 	return;
 }
