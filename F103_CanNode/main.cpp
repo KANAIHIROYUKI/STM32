@@ -1,24 +1,25 @@
 #include "stm32f10x.h"
 #include "stdio.h"
 
-
 #include "system.h"
+#include "app.h"
 
+#define CAN_VLV 0x280
+#define CAN_MTD 0x100
+#define CAN_ENC_VAL 0x440
+#define CAN_ENC_SET 0x400
 
-#define CAN_ID 0x280
-
-#define IntervalTime 100
-
-uint16_t a,adcChannelStat = 1;
-uint16_t rxFlag = 0,tim4itCnt=0,currentA_16,currentB_16;
+uint16_t rxFlag = 0,limitResetMode[4] = {3,3,3,3};
 
 float currentA_A=0,currentB_A=0;
 
 uint8_t canData[8] = {0,0,0,0,0,0,0,0},canAddress=0;
 
-uint64_t intervalTimer = 0;
+uint32_t encValue[4];
 
-CanRxMsg RxMessage;
+uint64_t intervalTimer[4] = {0,0,0,0},intervalTime[4] = {0,0,0,0};
+
+CanRxMsg rxMessage;
 
 GPIO enc1a;
 GPIO enc1b;
@@ -51,6 +52,8 @@ TIM enc3;
 TIM enc4;
 
 USART serial;
+
+CAN can1;
 
 int main(void)
 {
@@ -96,69 +99,104 @@ int main(void)
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
 
-	CAN1Setup();
+
+	can1.setup();
+	can1.filterAdd(CAN_VLV);
+	can1.filterAdd(CAN_ENC_SET,CAN_ENC_SET + 1,CAN_ENC_SET + 2,CAN_ENC_SET + 3);
+	can1.filterAdd(CAN_ENC_VAL,CAN_ENC_VAL + 1,CAN_ENC_VAL + 2,CAN_ENC_VAL + 3);
+
+	//CAN1Setup();
+	//CANFilterAdd(CAN_VLV);
+	//CANFilterAdd(CAN_ENC_SET,CAN_ENC_SET + 1,CAN_ENC_SET + 2,CAN_ENC_SET + 3);
+	//CANFilterAdd(CAN_ENC_VAL,CAN_ENC_VAL + 1,CAN_ENC_VAL + 2,CAN_ENC_VAL + 3);
 
     while(1){
-    	//serial.printf("%d\n\r",millis());
+    	encValue[0] = enc1.read();
+    	encValue[1] = enc2.read();
+    	encValue[2] = enc3.read();
+    	encValue[3] = enc4.read();
 
-    	delay(1);
-    	//led.toggle();
-    	//io5.toggle();
-    	//io6.toggle();
-    	//io7.toggle();
-    	//io8.toggle();
+    	for(int i=0;i<4;i++){
+        	if(intervalTime[i] != 0){
+            	if(intervalTimer[i] < millis()){
+            		intervalTimer[i] = millis() + intervalTime[i];
+            		canData[0] = encValue[i] & 0xFF;
+            		canData[1] = (encValue[i] >> 8) & 0xFF;
+            		canData[2] = (encValue[i] >> 16) & 0xFF;
+            		canData[3] = (encValue[i] >> 24) & 0xFF;
+            		CAN1Send(CAN_ENC_VAL + i,4,canData);
+            		serial.printf("%d,%d,%d,%d\n\r",enc1.read(),enc2.read(),enc3.read(),enc4.read());
+            	}
+        	}
+    	}
 
     	while(rxFlag > 0){
     		rxFlag--;
-    		serial.printf("RX FLAG CAN Data %d,%d,%d,%d,%d,%d,%d,%d\n\r",RxMessage.Data[0],RxMessage.Data[1],RxMessage.Data[2],RxMessage.Data[3],RxMessage.Data[4],RxMessage.Data[5],RxMessage.Data[6],RxMessage.Data[7]);
+    		serial.printf("RX FLAG CAN Data 0x%x,%d,%d,%d,%d,%d,%d,%d,%d\n\r",rxMessage.StdId,rxMessage.Data[0],rxMessage.Data[1],rxMessage.Data[2],rxMessage.Data[3],rxMessage.Data[4],rxMessage.Data[5],rxMessage.Data[6],rxMessage.Data[7]);
     	}
 
     }
 }
 
-
-
-
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	rxFlag++;
-	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
-	if(RxMessage.StdId == CAN_ID){
-		if(RxMessage.Data[0] & 0b00000001 != 0){
-			if((RxMessage.Data[1] & 0b00000001) != 0){
+	//CAN_Receive(CAN1,CAN_FIFO0,&rxMessage);
+	can1.receive(&rxMessage);
+	if(rxMessage.StdId == CAN_VLV){
+		if((rxMessage.Data[0] & 0b00000001) != 0){
+			if((rxMessage.Data[1] & 0b00000001) != 0){
 				io8.write(Bit_SET);
 			}else{
 				io8.write(Bit_RESET);
 			}
 		}
-		if(RxMessage.Data[0] & 0b00000010 != 0){
-			if((RxMessage.Data[1] & 0b00000010) != 0){
+		if((rxMessage.Data[0] & 0b00000010) != 0){
+			if((rxMessage.Data[1] & 0b00000010) != 0){
 				io7.write(Bit_SET);
 			}else{
 				io7.write(Bit_RESET);
 			}
 		}
-		if(RxMessage.Data[0] & 0b00000100 != 0){
-			if((RxMessage.Data[1] & 0b00000100) != 0){
+		if((rxMessage.Data[0] & 0b00000100) != 0){
+			if((rxMessage.Data[1] & 0b00000100) != 0){
 				io6.write(Bit_SET);
 			}else{
 				io6.write(Bit_RESET);
 			}
 		}
-		if(RxMessage.Data[0] & 0b00001000 != 0){
-			if((RxMessage.Data[1] & 0b00001000) != 0){
+		if((rxMessage.Data[0] & 0b00001000) != 0){
+			if((rxMessage.Data[1] & 0b00001000) != 0){
 				io5.write(Bit_SET);
 			}else{
 				io5.write(Bit_RESET);
 			}
 		}
+	}else if(rxMessage.StdId == CAN_ENC_SET){
+		if(rxMessage.Data[0] == 0){
+			encValue[0] = 0;
+		}else if(rxMessage.Data[0] == 1){
+			intervalTime[0] = (rxMessage.Data[2] << 8) + rxMessage.Data[1];
+		}
+	}else if(rxMessage.StdId == CAN_ENC_SET + 1){
+		if(rxMessage.Data[0] == 0){
+			encValue[1] = 0;
+		}else if(rxMessage.Data[0] == 1){
+			intervalTime[1] = (rxMessage.Data[2] << 8) + rxMessage.Data[1];
+		}
+	}else if(rxMessage.StdId == CAN_ENC_SET + 2){
+		if(rxMessage.Data[0] == 0){
+			encValue[2] = 0;
+		}else if(rxMessage.Data[0] == 1){
+			intervalTime[2] = (rxMessage.Data[2] << 8) + rxMessage.Data[1];
+		}
+	}else if(rxMessage.StdId == CAN_ENC_SET + 3){
+		if(rxMessage.Data[0] == 0){
+			encValue[3] = 0;
+		}else if(rxMessage.Data[0] == 1){
+			intervalTime[3] = (rxMessage.Data[2] << 8) + rxMessage.Data[1];
+		}
 	}
 
-	return;
-}
-
-extern "C" void CAN1_RX1_IRQHandler(void){
-	rxFlag++;
-	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
 	return;
 }
 

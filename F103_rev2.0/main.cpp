@@ -6,10 +6,9 @@
 #include "app.h"
 
 #define CAN_VLV 0x280
-#define CAN_ENC 0x400
+#define CAN_ENC_SET 0x400
+#define CAN_ENC_VAL 0x440
 #define CAN_MTD 0x100
-
-#define IntervalTime 100
 
 #define PWM_PERIOD 2048
 
@@ -22,7 +21,7 @@ long int encPwm;
 
 uint8_t canData[8] = {0,0,0,0,0,0,0,0},canAddress=0;
 
-uint64_t intervalTimer = 0,timCnt=0;
+uint64_t intervalTime = 0,timCnt=0;
 
 CanRxMsg RxMessage;
 
@@ -156,8 +155,7 @@ int main(void)
 	motorEN.write(Bit_SET);
 
 	serial.setup(USART1,921600);
-	serial.printf("\n\roppai\n\r");
-	serial.printf("FILE = %s\n\r",__FILE__);
+	serial.printf("\n\rFILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
 	serial.printf("ADRS = %d\n\r",canAddress);
@@ -167,14 +165,27 @@ int main(void)
 
 	CAN1Setup();
 
+	CAN1FilterAdd(CAN_MTD);
+	CAN1FilterAdd(CAN_ENC_VAL,CAN_ENC_VAL + 1,CAN_ENC_VAL + 2,CAN_ENC_VAL + 3);
+
 
 	canData[0] = 1;
 	canData[1] = 10;
 	canData[2] = 0;
-	//CAN1Send(CAN_ENC,3,canData);
+	CAN1Send(CAN_ENC_SET,3,canData);
 
+	delay(10);
 	canData[0] = 0;
-	CAN1Send(CAN_ENC,1,canData);
+	CAN1Send(CAN_ENC_SET,1,canData);
+
+	canData[0] = 1;
+	canData[1] = 10;
+	canData[2] = 0;
+	CAN1Send(CAN_ENC_SET + 1,3,canData);
+
+	delay(10);
+	canData[0] = 0;
+	CAN1Send(CAN_ENC_SET + 1,1,canData);
 
 
     while(1){
@@ -194,13 +205,11 @@ int main(void)
     	if(sw1.read() == 0){
     		ledA.write(Bit_SET);
     		serial.printf("A\n\r");
+    		CAN1Send(CAN_ENC_VAL,0,canData);
+    		delay(250);
     	}else{
     		ledA.write(Bit_RESET);
     	}
-
-    	//CAN1Send(CAN_VLV,2,canData);
-    	CAN1Send(CAN_ENC,0,canData);
-    	delay(10);
 
     	while(rxFlag > 0){
     		rxFlag--;
@@ -219,18 +228,5 @@ int main(void)
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	rxFlag++;
 	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
-
 	return;
-}
-
-extern "C" void CAN1_RX1_IRQHandler(void){
-	rxFlag++;
-	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
-	return;
-}
-
-extern "C" void TIM1_UP_IRQHandler(void){
-	timCnt++;
-	TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
-	TIM_ITConfig(TIM1,TIM_IT_Update,ENABLE);
 }

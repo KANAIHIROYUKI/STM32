@@ -1,32 +1,34 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=F103_mini.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\F103_mini -TC:\CooCox\CoIDE\configuration\ProgramData\F103_mini/arm-gcc-link.ld -g">
-      <target file="F103_mini.elf" lastModified="1589f7dc069">
-         <source file="..\obj\semihosting.o" lastModified="1589f7c4579"/>
-         <source file="..\obj\spi.o" lastModified="1589f7c45dc"/>
-         <source file="..\obj\stm32f10x_tim.o" lastModified="1589f7c468f"/>
-         <source file="..\obj\stm32f10x_dbgmcu.o" lastModified="1589f7c46d9"/>
-         <source file="..\obj\system_stm32f10x.o" lastModified="1589f7c4727"/>
-         <source file="..\obj\tim.o" lastModified="1589f7c47bf"/>
-         <source file="..\obj\startup_stm32f10x_md.o" lastModified="1589f7c47f0"/>
-         <source file="..\obj\stm32f10x_can.o" lastModified="1589f7c4861"/>
-         <source file="..\obj\stm32f10x_gpio.o" lastModified="1589f7c48b7"/>
-         <source file="..\obj\main.o" lastModified="1589f7dbe95"/>
-         <source file="..\obj\system.o" lastModified="1589f7c49c7"/>
-         <source file="..\obj\printf.o" lastModified="1589f7c4a22"/>
-         <source file="..\obj\can.o" lastModified="1589f7c4a87"/>
-         <source file="..\obj\stm32f10x_rcc.o" lastModified="1589f7c4ae7"/>
-         <source file="..\obj\gpio.o" lastModified="1589f7c4b4e"/>
-         <source file="..\obj\stm32f10x_adc.o" lastModified="1589f7c4bbb"/>
-         <source file="..\obj\remap.o" lastModified="1589f7c4c16"/>
-         <source file="..\obj\stm32f10x_usart.o" lastModified="1589f7c4c76"/>
-         <source file="..\obj\sh_cmd.o" lastModified="1589f7c4c80"/>
-         <source file="..\obj\syscalls.o" lastModified="1589f7c4cc0"/>
-         <source file="..\obj\adc.o" lastModified="1589f7c4d2a"/>
-         <source file="..\obj\app.o" lastModified="1589f7c4d8f"/>
-         <source file="..\obj\misc.o" lastModified="1589f7c4ddb"/>
-         <source file="..\obj\stm32f10x_spi.o" lastModified="1589f7c4e40"/>
-         <source file="..\obj\usart.o" lastModified="1589f7c4ed2"/>
+      <target file="F103_mini.elf" lastModified="158b3ecc46a">
+         <source file="..\obj\spi.o" lastModified="158b3d9861f"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="158b3d986f2"/>
+         <source file="..\obj\stm32f10x_dbgmcu.o" lastModified="158b3d98734"/>
+         <source file="..\obj\iwdg.o" lastModified="158b3d987a0"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="158b3d987e9"/>
+         <source file="..\obj\tim.o" lastModified="158b3d98870"/>
+         <source file="..\obj\canEncoder.o" lastModified="158b3d98898"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="158b3d988c5"/>
+         <source file="..\obj\stm32f10x_can.o" lastModified="158b3d98932"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="158b3d98985"/>
+         <source file="..\obj\canValve.o" lastModified="158b3d989ac"/>
+         <source file="..\obj\main.o" lastModified="158b3ecc268"/>
+         <source file="..\obj\system.o" lastModified="158b3e0d346"/>
+         <source file="..\obj\can.o" lastModified="158b3eb5685"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="158b3d98bac"/>
+         <source file="..\obj\gpio.o" lastModified="158b3d98c10"/>
+         <source file="..\obj\motor.o" lastModified="158b3e0d40a"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="158b3d98cd1"/>
+         <source file="..\obj\remap.o" lastModified="158b3d98d38"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="158b3d98d9e"/>
+         <source file="..\obj\syscalls.o" lastModified="158b3d98ddd"/>
+         <source file="..\obj\adc.o" lastModified="158b3d98e42"/>
+         <source file="..\obj\app.o" lastModified="158b3e0d464"/>
+         <source file="..\obj\misc.o" lastModified="158b3d98ee0"/>
+         <source file="..\obj\stm32f10x_spi.o" lastModified="158b3d98f3a"/>
+         <source file="..\obj\usart.o" lastModified="158b3d98fb3"/>
+         <source file="..\obj\stm32f10x_iwdg.o" lastModified="158b3d98ffb"/>
       </target>
    </processor>
 </history>

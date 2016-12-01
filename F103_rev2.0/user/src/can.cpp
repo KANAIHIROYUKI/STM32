@@ -18,18 +18,18 @@ void CAN1Setup(){
 	CAN_InitStructure.CAN_Prescaler = 3;
 	CAN_Init(CAN1,&CAN_InitStructure);
 
-
+/*
 	CAN_FilterInitTypeDef  CAN_FilterInitStructure;
     CAN_FilterInitStructure.CAN_FilterNumber = 0;
     CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdList;
     CAN_FilterInitStructure.CAN_FilterScale = CAN_FilterScale_16bit;
     CAN_FilterInitStructure.CAN_FilterIdLow = (0x400+0)<<5;
     CAN_FilterInitStructure.CAN_FilterMaskIdLow = (0x400+1)<<5;
-    CAN_FilterInitStructure.CAN_FilterIdHigh = (0x400+2)<<5;
-    CAN_FilterInitStructure.CAN_FilterMaskIdHigh = (0x400+3)<<5;
+    CAN_FilterInitStructure.CAN_FilterIdHigh = (0x280)<<5;
+    CAN_FilterInitStructure.CAN_FilterMaskIdHigh = (0x280+1)<<5;
     CAN_FilterInitStructure.CAN_FilterFIFOAssignment = 0;
     CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
-    CAN_FilterInit(&CAN_FilterInitStructure);
+    CAN_FilterInit(&CAN_FilterInitStructure);*/
 
 
     NVIC_InitTypeDef NVIC_InitStructure;
@@ -62,4 +62,24 @@ void CAN1Send(uint16_t id,uint8_t length,uint8_t data[8]){
     TxMessage.Data[7] = data[7];
 
     CAN_Transmit(CAN1,&TxMessage);
+}
+
+void CAN1FilterAdd(uint16_t id1,uint16_t id2,uint16_t id3,uint16_t id4){
+	static uint16_t filterCnt = 0;
+
+	if(filterCnt > 13)return;
+
+	CAN_FilterInitTypeDef  CAN_FilterInitStructure;
+    CAN_FilterInitStructure.CAN_FilterNumber = filterCnt;
+    CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdList;
+    CAN_FilterInitStructure.CAN_FilterScale = CAN_FilterScale_16bit;
+    CAN_FilterInitStructure.CAN_FilterIdLow = id1<<5;
+    CAN_FilterInitStructure.CAN_FilterMaskIdLow = id2<<5;
+    CAN_FilterInitStructure.CAN_FilterIdHigh = id3<<5;
+    CAN_FilterInitStructure.CAN_FilterMaskIdHigh = id4<<5;
+    CAN_FilterInitStructure.CAN_FilterFIFOAssignment = 0;
+    CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
+    CAN_FilterInit(&CAN_FilterInitStructure);
+
+	filterCnt++;
 }
