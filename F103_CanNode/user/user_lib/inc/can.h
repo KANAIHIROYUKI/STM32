@@ -7,13 +7,13 @@
 class CAN{
 public:
 	CAN_TypeDef* can_can;
-	CanRxMsg rxMessage;
+	//CanRxMsg rxMessage;
 
 	void setup(CAN_TypeDef* can = CAN1);
 	void send(uint16_t id,uint8_t length,uint8_t *data);
 	void filterAdd(uint16_t id1 = 0,uint16_t id2 = 0,uint16_t id3 = 0,uint16_t id4 = 0);
 	void receive(CanRxMsg* canRxMessage);
-	void receive();
+	//void receive();
 
 private:
 };

@@ -29,13 +29,13 @@ void CAN::receive(CanRxMsg* canRxMessage){
 	}
 }
 
-void CAN::receive(){
+/*void CAN::receive(){
 	if(can_can == CAN1){
 		CAN_Receive(CAN1,CAN_FIFO0,&rxMessage);
 	}else{
 
 	}
-}
+}*/
 
 void CAN1Setup(){
 	CAN_DeInit(CAN1);
