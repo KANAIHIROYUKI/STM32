@@ -196,6 +196,16 @@ int main(void)
 	canData[0] = 0;
 	can1.send(CAN_ENC_SET + 1,1,canData);
 
+	/*
+	motorA.duty(500);
+	motorB.duty(500);
+	delay(1000);
+	motorA.duty(-500);
+	motorB.duty(-500);
+	delay(1000);
+	motorA.duty(0);
+	motorB.duty(0);*/
+
 
     while(1){
     	canAddress = 15 - (sel1.read() + sel2.read()*2 + sel4.read()*4 + sel8.read()*8);

@@ -100,6 +100,12 @@ int main(void)
 
 	//CAN1Send(CAN_VLV,1,canData);
 
+	enc[0].reverse();
+
+
+
+	//intervalTime[0] = 100;
+
     while(1){
     	for(int i=0;i<4;i++){
         	if(intervalTime[i] != 0){

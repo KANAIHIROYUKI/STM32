@@ -34,7 +34,7 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_adc.h" lastModified="1577ee60f36">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\tim.h" lastModified="158b8ce20f5">
+      <source file="..\..\..\user\user_lib\inc\tim.h" lastModified="158d213807c">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f10x.h" lastModified="1577ee5e099">
@@ -85,11 +85,6 @@
       <source file="..\..\..\stm_lib\src\stm32f10x_usart.c" lastModified="1577ee62a3b">
          <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\main.cpp" lastModified="158b9518fb6">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_app\inc\app.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_spi.h" lastModified="1577ee5f3b8">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
@@ -168,6 +163,9 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h" lastModified="158afe1aed0">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\user\user_lib\src\tim.cpp" lastModified="158d2137ca3">
+         <include file="..\..\..\user\user_lib\inc\tim.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="1577ee5e08f">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>

@@ -221,9 +221,3 @@ extern "C" void CAN1_RX1_IRQHandler(void){
 	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
 	return;
 }
-
-extern "C" void TIM1_UP_IRQHandler(void){
-	timCnt++;
-	TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
-	TIM_ITConfig(TIM1,TIM_IT_Update,ENABLE);
-}
