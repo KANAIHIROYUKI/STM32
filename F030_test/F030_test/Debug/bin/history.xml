@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -g -nostartfiles -Map=F030_test.map -O0 --gc-sections -lstdc++ -LC:\CooCox\CoIDE\configuration\ProgramData\F030_test -TC:\CooCox\CoIDE\configuration\ProgramData\F030_test/arm-gcc-link.ld -g">
+      <target file="F030_test.elf" lastModified="158e184285b">
+         <source file="..\obj\stm32f0xx_rcc.o" lastModified="158e182d1d4"/>
+         <source file="..\obj\stm32f0xx_adc.o" lastModified="158e182d229"/>
+         <source file="..\obj\iwdg.o" lastModified="158e182d27b"/>
+         <source file="..\obj\tim.o" lastModified="158e182d2fc"/>
+         <source file="..\obj\stm32f0xx_iwdg.o" lastModified="158e182d334"/>
+         <source file="..\obj\main.o" lastModified="158e182d364"/>
+         <source file="..\obj\startup_stm32f0xx.o" lastModified="158e182d36f"/>
+         <source file="..\obj\system.o" lastModified="158e182d3c6"/>
+         <source file="..\obj\gpio.o" lastModified="158e182d41a"/>
+         <source file="..\obj\stm32f0xx_spi.o" lastModified="158e182d46e"/>
+         <source file="..\obj\remap.o" lastModified="158e182d4b5"/>
+         <source file="..\obj\system_stm32f0xx_temp.o" lastModified="158e182d4ed"/>
+         <source file="..\obj\stm32f0xx_gpio.o" lastModified="158e182d52d"/>
+         <source file="..\obj\syscalls.o" lastModified="158e182d56a"/>
+         <source file="..\obj\stm32f0xx_usart.o" lastModified="158e182d5cd"/>
+         <source file="..\obj\adc.o" lastModified="158e184264e"/>
+         <source file="..\obj\stm32f0xx_tim.o" lastModified="158e182d745"/>
+         <source file="..\obj\stm32f0xx_exti.o" lastModified="158e182d783"/>
+         <source file="..\obj\stm32f0xx_misc.o" lastModified="158e182d7bd"/>
+         <source file="..\obj\usart.o" lastModified="158e182d89d"/>
+      </target>
+   </processor>
+</history>

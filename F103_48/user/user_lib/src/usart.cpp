@@ -28,8 +28,8 @@ uint16_t USART::usart3TxWriteAddress = 0;
 
 
 void USART::puts(const char *s){
- int i;
- for(i=0;s[i]!=0;i++)send(s[i]);
+	int i;
+	for(i=0;s[i]!=0;i++)send(s[i]);
 }
 
 void USART::printf(const char *format, ...) {

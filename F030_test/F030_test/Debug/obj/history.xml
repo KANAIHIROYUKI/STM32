@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m0 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F030F4P6 -DSTM32F030X6 -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -DSUPPORT_CPLUSPLUS -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F030_test\stm32_lib -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F030_test\user\user_lib\inc -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F030_test\user\user_lib -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F030_test\cmsis_boot -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F030_test\stm32_lib\inc -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F030_test\cmsis_core -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F030_test\user -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32 -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F030_test">
+      <target file="gpio.o" lastModified="158e182d41a">
+         <source file="..\..\..\user\user_lib\src\gpio.cpp" lastModified="158e182cfcb"/>
+      </target>
+      <target file="stm32f0xx_tim.o" lastModified="158e182d745">
+         <source file="..\..\..\stm32_lib\src\stm32f0xx_tim.c" lastModified="158e1637c88"/>
+      </target>
+      <target file="stm32f0xx_adc.o" lastModified="158e182d229">
+         <source file="..\..\..\stm32_lib\src\stm32f0xx_adc.c" lastModified="158e1635177"/>
+      </target>
+      <target file="system_stm32f0xx_temp.o" lastModified="158e182d4ed">
+         <source file="..\..\..\cmsis_boot\system_stm32f0xx_temp.c" lastModified="158e1634117"/>
+      </target>
+      <target file="stm32f0xx_exti.o" lastModified="158e182d783">
+         <source file="..\..\..\stm32_lib\src\stm32f0xx_exti.c" lastModified="158e1639df2"/>
+      </target>
+      <target file="remap.o" lastModified="158e182d4b5">
+         <source file="..\..\..\user\user_lib\src\remap.cpp" lastModified="15895a2abc5"/>
+      </target>
+      <target file="iwdg.o" lastModified="158e182d27b">
+         <source file="..\..\..\user\user_lib\src\iwdg.cpp" lastModified="158afe3af9d"/>
+      </target>
+      <target file="stm32f0xx_gpio.o" lastModified="158e182d52d">
+         <source file="..\..\..\stm32_lib\src\stm32f0xx_gpio.c" lastModified="158e1634c06"/>
+      </target>
+      <target file="stm32f0xx_spi.o" lastModified="158e182d46e">
+         <source file="..\..\..\stm32_lib\src\stm32f0xx_spi.c" lastModified="158e1636cb8"/>
+      </target>
+      <target file="stm32f0xx_rcc.o" lastModified="158e182d1d4">
+         <source file="..\..\..\stm32_lib\src\stm32f0xx_rcc.c" lastModified="158e163410e"/>
+      </target>
+      <target file="stm32f0xx_misc.o" lastModified="158e182d7bd">
+         <source file="..\..\..\stm32_lib\src\stm32f0xx_misc.c" lastModified="158e1634673"/>
+      </target>
+      <target file="syscalls.o" lastModified="158e182d56a">
+         <source file="..\..\..\syscalls\syscalls.c" lastModified="158e1632006"/>
+      </target>
+      <target file="startup_stm32f0xx.o" lastModified="158e182d36f">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f0xx.s" lastModified="158e1634112"/>
+      </target>
+      <target file="stm32f0xx_usart.o" lastModified="158e182d5cd">
+         <source file="..\..\..\stm32_lib\src\stm32f0xx_usart.c" lastModified="158e1635e90"/>
+      </target>
+      <target file="adc.o" lastModified="158e184264e">
+         <source file="..\..\..\user\user_lib\src\adc.cpp" lastModified="158e1842437"/>
+      </target>
+      <target file="tim.o" lastModified="158e182d2fc">
+         <source file="..\..\..\user\user_lib\src\tim.cpp" lastModified="158e182cfc3"/>
+      </target>
+      <target file="stm32f0xx_iwdg.o" lastModified="158e182d334">
+         <source file="..\..\..\stm32_lib\src\stm32f0xx_iwdg.c" lastModified="158e1637c7d"/>
+      </target>
+      <target file="usart.o" lastModified="158e182d89d">
+         <source file="..\..\..\user\user_lib\src\usart.cpp" lastModified="158e17718b0"/>
+      </target>
+      <target file="system.o" lastModified="158e182d3c6">
+         <source file="..\..\..\user\user_lib\src\system.cpp" lastModified="158b3c34b3b"/>
+      </target>
+      <target file="main.o" lastModified="158e182d364">
+         <source file="..\..\..\main.cpp" lastModified="158e17191f0"/>
+      </target>
+   </processor>
+</history>

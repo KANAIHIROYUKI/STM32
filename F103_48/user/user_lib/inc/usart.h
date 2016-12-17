@@ -6,9 +6,10 @@
 
 #include <stdarg.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define USART_DEFAULT_BAUD 115200
-#define USART_RX_BUFFER_SIZE 128
+#define USART_RX_BUFFER_SIZE 16
 #define USART_TX_BUFFER_SIZE 128
 
 

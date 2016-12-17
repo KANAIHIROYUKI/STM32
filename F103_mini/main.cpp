@@ -90,8 +90,8 @@ int main(void)
 	currentA.setup(ADC1,2);
 	currentB.setup(ADC1,3);
 
-	ledA.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
-	ledB.setup(GPIOA,GPIO_Pin_5,GPIO_Mode_Out_PP);
+	ledA.setup(GPIOC,GPIO_Pin_13,GPIO_Mode_Out_PP);
+	ledB.setup(GPIOC,GPIO_Pin_14,GPIO_Mode_Out_PP);
 	buzzer.setup(GPIOB,GPIO_Pin_0,GPIO_Mode_Out_PP);
 
 	sel1.setup(GPIOB,GPIO_Pin_1,GPIO_Mode_IPU);

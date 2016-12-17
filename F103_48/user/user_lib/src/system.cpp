@@ -12,6 +12,11 @@ void delay(uint32_t nTime){
 	while(delayTime > micros());
 }
 
+void delayMicros(uint32_t nTime){
+	uint64_t delayTime = nTime + micros();
+	while(delayTime > micros());
+}
+
 uint64_t micros(){
 	return systemTimer*(1000000/TIME_SPLIT);
 }

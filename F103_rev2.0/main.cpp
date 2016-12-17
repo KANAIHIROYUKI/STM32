@@ -69,6 +69,10 @@ GPIO pinPwmAN;
 GPIO pinPwmB;
 GPIO pinPwmBN;
 
+GPIO pin13;
+GPIO pin14;
+GPIO pin15;
+
 TIM timer;
 
 TIM pwmA;
@@ -104,6 +108,10 @@ int main(void)
 
 	sw1.setup(PA2,INPUT_PU);
 	sw2.setup(PA3,INPUT_PU);
+
+	pin13.setup(PC13,OUTPUT);
+	pin14.setup(PC14,OUTPUT);
+	pin15.setup(PC15,OUTPUT);
 
 	ledA.setup(PA4,OUTPUT);
 	ledB.setup(PA5,OUTPUT);
@@ -196,7 +204,7 @@ int main(void)
 	canData[0] = 0;
 	can1.send(CAN_ENC_SET + 1,1,canData);
 
-	/*
+
 	motorA.duty(500);
 	motorB.duty(500);
 	delay(1000);
@@ -204,7 +212,14 @@ int main(void)
 	motorB.duty(-500);
 	delay(1000);
 	motorA.duty(0);
-	motorB.duty(0);*/
+	motorB.duty(0);
+
+	while(1){
+		delay(3000);
+		pin13.toggle();
+		pin14.toggle();
+		pin15.toggle();
+	}
 
 
     while(1){

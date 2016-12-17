@@ -20,6 +20,9 @@ private:
 void ADC1Setup(uint8_t ADC_Channel);
 void ADC2Setup(uint8_t ADC_Channel);
 
+void ADC1ITSetup();
+void ADC2ITSetup();
+
 uint16_t ADC1Read(uint8_t ADC_Channel);
 uint16_t ADC2Read(uint8_t ADC_Channel);
 

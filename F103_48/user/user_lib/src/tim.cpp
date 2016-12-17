@@ -512,10 +512,11 @@ extern "C" void TIM1_UP_IRQHandler(void){
 	if(TIM::tim1_mode == TIM_ENC){
 		TIM1_ENCODER_IRQ();
 	}else if(TIM::tim1_mode == TIM_PWM){
-		TIM1_ENCODER_IRQ();
+		TIM1_PWM_Update_IRQ();
 	}else if(TIM::tim1_mode == TIM_TIM){
 		TIM1_TIM_Update_IRQ();
 	}
+
 	TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
 }
 
@@ -523,41 +524,38 @@ extern "C" void TIM1_UP_IRQHandler(void){
 extern "C" void TIM2_IRQHandler(void){
 	if(TIM::tim2_mode == TIM_ENC){
 		TIM2_ENCODER_IRQ();
-		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 	}else if(TIM::tim2_mode == TIM_PWM){
-		TIM2_ENCODER_IRQ();
-		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
+		TIM2_PWM_Update_IRQ();
 	}else if(TIM::tim2_mode == TIM_TIM){
 		TIM2_TIM_Update_IRQ();
-		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 	}
+
+	TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 
 }
 
 extern "C" void TIM3_IRQHandler(void){
 	if(TIM::tim3_mode == TIM_ENC){
 		TIM3_ENCODER_IRQ();
-		TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
 	}else if(TIM::tim3_mode == TIM_PWM){
-		TIM3_ENCODER_IRQ();
-		TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
+		TIM3_PWM_Update_IRQ();
 	}else if(TIM::tim3_mode == TIM_TIM){
 		TIM3_TIM_Update_IRQ();
-		TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
 	}
+
+	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
 }
 
 
 extern "C" void TIM4_IRQHandler(void){
 	if(TIM::tim4_mode == TIM_ENC){
 		TIM4_ENCODER_IRQ();
-		TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 	}else if(TIM::tim4_mode == TIM_PWM){
-		TIM4_ENCODER_IRQ();
-		TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
+		TIM4_PWM_Update_IRQ();
 	}else if(TIM::tim4_mode == TIM_TIM){
 		TIM4_TIM_Update_IRQ();
-		TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 	}
+
+	TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 
 }

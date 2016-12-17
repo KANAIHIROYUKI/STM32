@@ -17,6 +17,7 @@
 void setup();
 
 void delay(uint32_t nTime);	//‚±‚ÌŠÖ”‚ÌŠÔ‚Í‚»‚ê‚Ù‚Ç³Šm‚Å‚È‚¢
+void delayMicros(uint32_t nTime);	//‚±‚ÌŠÖ”‚ÌŠÔ‚Í‚»‚ê‚Ù‚Ç³Šm‚Å‚È‚¢
 uint64_t millis();
 uint64_t micros();
 

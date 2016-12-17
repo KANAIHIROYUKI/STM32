@@ -78,6 +78,17 @@ void ADC2Setup(uint8_t ADC_Channel){
 	while(ADC_GetCalibrationStatus(ADC2));
 }
 
+void ADC1ITSetup(){
+
+
+}
+
+void ADC2ITSetup(){
+
+
+}
+
+
 uint16_t ADC1Read(uint8_t ADC_Channel){
 	ADC_RegularChannelConfig(ADC1,ADC_Channel,1,ADC_SampleTime_13Cycles5);
 	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
