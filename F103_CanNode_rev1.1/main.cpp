@@ -80,10 +80,10 @@ int main(void)
 
 	enc[3].encoderSetup(TIM4);
 
-	pwm[0].pwmSetup(TIM2,3,2048);
-	pwm[1].pwmSetup(TIM2,4,2048);
-	pwm[2].pwmSetup(TIM3,3,2048);
-	pwm[3].pwmSetup(TIM4,4,2048);
+	pwm[0].pwmSetup(TIM2,3,10000,72);
+	pwm[1].pwmSetup(TIM2,4,10000,72);
+	pwm[2].pwmSetup(TIM3,3,10000,72);
+	pwm[3].pwmSetup(TIM4,4,10000,72);	//1MHzでカウントアップ,分解能1us単位
 
 
 
@@ -138,13 +138,13 @@ int main(void)
 
 
 	uint16_t pwmCnt = 0;
+
+	IWDGSetup(1500);
+
     while(1){
     	if(pwmCnt > 2000){
-    		pwmCnt = 0;
+    		pwmCnt = 1000;
     	}
-
-
-
 
     	for(int i=0;i<4;i++){
         	if(intervalTime[i] != 0){
@@ -161,9 +161,14 @@ int main(void)
         	}
     	}
 
+
+
     	if(printTime < millis()){
-    		pwmCnt+=50;
-    		//pwm[0].duty(pwmCnt);
+
+    		IWDGReset();
+
+    		pwmCnt+=10;
+    		pwm[0].duty(pwmCnt);
 
     		printTime = millis() + PRINT_TIME;
     		serial.printf("itv = %2d,cnt = %8d, itv = %2d,cnt = %8d, itv = %2d,cnt = %8d, itv = %2d,cnt = %8d\n\r",(uint32_t)intervalTime[0],(uint32_t)enc[0].read(),(uint32_t)intervalTime[1],(uint32_t)enc[1].read(),(uint32_t)intervalTime[2],(uint32_t)enc[2].read(),(uint32_t)intervalTime[3],(uint32_t)enc[3].read());
@@ -217,7 +222,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 		}
 	}
 	//serial.printf("CAN ID = 0x,%x,DATA = ,%d,%d,%d,%d,%d,%d,%d,%d\n\r",rxMessage.StdId,rxMessage.Data[0],rxMessage.Data[1],rxMessage.Data[2],rxMessage.Data[3],rxMessage.Data[4],rxMessage.Data[5],rxMessage.Data[6],rxMessage.Data[7]);
-	serial.printf("%x\n\r",rxMessage.StdId);
+	//serial.printf("%x\n\r",rxMessage.StdId);
 	return;
 }
 
