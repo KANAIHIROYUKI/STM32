@@ -66,7 +66,7 @@ public:
 	uint16_t read();
 	void toggle();
 
-private:
+//private:
 	uint16_t gpio_pin;
 	GPIO_TypeDef* gpio_gpio;
 	GPIOMode_TypeDef gpio_mode;

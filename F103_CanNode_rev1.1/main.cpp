@@ -3,6 +3,7 @@
 
 #include "system.h"
 #include "app.h"
+#include "pin.h"
 
 //#define PD
 
@@ -40,9 +41,8 @@ GPIO enc3b;
 GPIO enc4a;
 GPIO enc4b;
 
-GPIO io[8];
 
-GPIO led;
+Port0 port;
 
 GPIO usartTX;
 GPIO usartRX;
@@ -59,8 +59,9 @@ CAN can1;
 
 int main(void)
 {
-	setup();
 
+	setup();
+/*
 	enc1a.setup(PA0,INPUT_PU);
 	enc1b.setup(PA1,INPUT_PU);
 
@@ -79,30 +80,16 @@ int main(void)
 	//enc[2].encoderSetup(TIM3);
 
 	enc[3].encoderSetup(TIM4);
+*/
 
+	/*
 	pwm[0].pwmSetup(TIM2,3,10000,72);
 	pwm[1].pwmSetup(TIM2,4,10000,72);
 	pwm[2].pwmSetup(TIM3,3,10000,72);
-	pwm[3].pwmSetup(TIM4,4,10000,72);	//1MHzでカウントアップ,分解能1us単位
+	pwm[3].pwmSetup(TIM4,4,10000,72);*/	//1MHzでカウントアップ,分解能1us単位
 
 
-
-	io[0].setup(PA2,OUTPUT_AF);
-	io[1].setup(PA3,OUTPUT_AF);
-	io[2].setup(PB0,OUTPUT_AF);
-	io[3].setup(PB1,OUTPUT_AF);
-	/*io[0].setup(PA2,OUTPUT);
-	io[1].setup(PA3,OUTPUT);
-	io[2].setup(PB0,OUTPUT);
-	io[3].setup(PB1,OUTPUT);*/
-
-	io[4].setup(PA4,OUTPUT);
-	io[5].setup(PA5,OUTPUT);
-	io[6].setup(PB12,OUTPUT);
-	io[7].setup(PB13,OUTPUT);
-
-
-	led.setup(PB2,OUTPUT);
+	Led led;
 
 	canTX.setup(PA12,OUTPUT_AF);
 	canRX.setup(PA11,INPUT);
@@ -115,7 +102,6 @@ int main(void)
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
 
-
 	can1.setup();
 	//can1.filterAdd(0x100,0x101,0x102,0x103);
 	//can1.filterAdd(0x104,0x105,0x106,0x107);
@@ -126,16 +112,8 @@ int main(void)
 	enc[0].reverse();
 
 #ifdef DEBUG
-	intervalTime[0] = 100;
+	intervalTime[0] = 1000;
 #endif
-
-	//pwm[0].duty(50);
-
-	io[4].write(Bit_SET);
-	io[5].write(Bit_SET);
-	io[6].write(Bit_SET);
-	io[7].write(Bit_SET);
-
 
 	uint16_t pwmCnt = 0;
 
@@ -162,13 +140,14 @@ int main(void)
     	}
 
 
-
     	if(printTime < millis()){
+
+    		port.toggle();
 
     		IWDGReset();
 
     		pwmCnt+=10;
-    		pwm[0].duty(pwmCnt);
+    		//pwm[0].duty(pwmCnt);
 
     		printTime = millis() + PRINT_TIME;
     		serial.printf("itv = %2d,cnt = %8d, itv = %2d,cnt = %8d, itv = %2d,cnt = %8d, itv = %2d,cnt = %8d\n\r",(uint32_t)intervalTime[0],(uint32_t)enc[0].read(),(uint32_t)intervalTime[1],(uint32_t)enc[1].read(),(uint32_t)intervalTime[2],(uint32_t)enc[2].read(),(uint32_t)intervalTime[3],(uint32_t)enc[3].read());
@@ -190,9 +169,9 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 		for(int i=0;i<8;i++){
 			if((rxMessage.Data[0] & (1 << i)) != 0){
 				if(((rxMessage.Data[1] & (1 << i)) != 0)){
-					io[i].write(Bit_SET);
+					port.io[i].write(Bit_SET);
 				}else{
-					io[i].write(Bit_RESET);
+					port.io[i].write(Bit_RESET);
 				}
 			}
 		}
