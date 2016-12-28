@@ -3,5 +3,7 @@
 
 #include "motor.h"
 #include "port.h"
+#include "canNodeEncoder.h"
+#include "canNodeValve.h"
 
 #endif

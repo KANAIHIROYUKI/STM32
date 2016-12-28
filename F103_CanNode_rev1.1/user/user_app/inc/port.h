@@ -8,7 +8,7 @@ public:
 	GPIO io[16];
 	void write(uint16_t value);
 	uint16_t read();
-	void toggle();
+	void invert();
 	uint16_t port_num;
 };
 

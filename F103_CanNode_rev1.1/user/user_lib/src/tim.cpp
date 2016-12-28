@@ -103,7 +103,9 @@ void TIM::itSetup(){
 }
 
 
-void TIM::encoderSetup(TIM_TypeDef *tim){
+void TIM::encoderSetup(TIM_TypeDef *tim,GPIO_TypeDef* gpio1,uint16_t pin1,GPIO_TypeDef* gpio2,uint16_t pin2){
+	ioSetup(gpio1,pin1,gpio2,pin2);
+
 	tim_tim = tim;
 	encoder_dir = 1;
 	if(tim_tim == TIM1){
@@ -123,6 +125,13 @@ void TIM::encoderSetup(TIM_TypeDef *tim){
 		TIM4EncoderSetup();
 
 	}
+}
+
+void TIM::ioSetup(GPIO_TypeDef* gpio1,uint16_t pin1,GPIO_TypeDef* gpio2,uint16_t pin2){
+	GPIO A,B;
+	A.setup(gpio1,pin1,INPUT_PU);
+	B.setup(gpio2,pin2,INPUT_PU);
+	return;
 }
 
 int32_t TIM::read(){

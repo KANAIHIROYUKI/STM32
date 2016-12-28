@@ -3,6 +3,7 @@
 
 #include "stm32f10x.h"
 #include "stdio.h"
+#include "gpio.h"
 
 #define PWM_PERIOD_DEFALUT 1024
 #define TIM_OCMode_DEFAULT TIM_OCMode_PWM1
@@ -13,10 +14,11 @@
 
 class TIM{
 public:
-	void encoderSetup(TIM_TypeDef* tim);
+	void encoderSetup(TIM_TypeDef* tim,GPIO_TypeDef* gpio1,uint16_t pin1,GPIO_TypeDef* gpio2,uint16_t pin2);
 	int32_t read();
 	void reset();
 	void reverse(int8_t dir = -1);
+
 	int8_t encoder_dir;
 
 	static int32_t tim1Cnt;
@@ -42,6 +44,8 @@ public:
 	static uint32_t tim4_mode;
 
 private:
+	void ioSetup(GPIO_TypeDef* gpio1,uint16_t pin1,GPIO_TypeDef* gpio2,uint16_t pin2);
+
 	TIM_TypeDef* tim_tim;
 	uint16_t pwm_channel;
 	uint16_t pwm_mode;

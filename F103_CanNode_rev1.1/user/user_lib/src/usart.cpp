@@ -52,7 +52,6 @@ void USART::setup(USART_TypeDef *usart,uint32_t baud){
 		USART1ITSetup(USART_IT_RXNE);
 		USART1ITSetup(USART_IT_TXE);
 		USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
-
 	}else if(usart_usart == USART2){
 		USART2Setup(baud);
 		USART2ITSetup(USART_IT_RXNE);

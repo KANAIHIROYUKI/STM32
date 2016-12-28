@@ -7,23 +7,14 @@
 
 #include "app.h"
 
-class Enc0:public TIM{
-	Enc0(){
-		GPIO encA;
-		GPIO encB;
-		encA.setup(PA0,INPUT_PU);
-		encB.setup(PA1,INPUT_PU);
-
-		encoderSetup(TIM1);
-	}
-};
-
 class Led:public GPIO{
 public:
 	Led(){
 		setup(PB2,OUTPUT);
 	}
 };
+
+/*******‚·‚×‚Ä“dŽ¥•Ù**********/
 
 class Port0:public PORT{
 public:
@@ -42,7 +33,10 @@ public:
 	}
 };
 
+
+
 class Can1:public CAN{
+public:
 	Can1(){
 		GPIO canRX;
 		GPIO canTX;
@@ -50,8 +44,19 @@ class Can1:public CAN{
 		canRX.setup(PA11,INPUT);
 
 		setup(CAN1);
-
 	}
 };
 
+class Serial0:public USART{
+public:
+	Serial0(){
+		GPIO usartTX;
+		GPIO usartRX;
+
+		usartTX.setup(PB10,OUTPUT_AF);
+		usartRX.setup(PB11,INPUT);
+
+		setup(USART3,921600);
+	}
+};
 #endif
