@@ -5,9 +5,6 @@
 #include "app.h"
 #include "pin.h"
 
-//#define PD
-
-
 #define DEBUG
 
 #define CAN_VLV 0x280

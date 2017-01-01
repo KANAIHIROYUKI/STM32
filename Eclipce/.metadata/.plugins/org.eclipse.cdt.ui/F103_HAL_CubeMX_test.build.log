@@ -1,0 +1,21 @@
+01:21:52 **** Erasing chip ****
+"C:\\Ac6\\SystemWorkbench\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.8.0.201603291052\\tools\\openocd\\bin\\openocd.exe" -f F103_HAL_CubeMX_test.cfg -s "C:\\Users\\hiroyuki\\Documents\\RoboCon\\STM32CubeMX\\F103_HAL_CubeMX_test\\SW4STM32\\F103_HAL_CubeMX_test" -s "C:\\Ac6\\SystemWorkbench\\plugins\\fr.ac6.mcu.debug_1.8.0.201603291114\\resources\\openocd\\scripts" -c init -c "reset halt" -c "flash erase_sector 0 0 last" -c exit 
+Open On-Chip Debugger 0.10.0-dev-00267-g884c33c (2016-03-16-12:22)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+adapter speed: 1000 kHz
+adapter_nsrst_delay: 100
+srst_only separate srst_nogate srst_open_drain connect_assert_srst
+srst_only separate srst_nogate srst_open_drain connect_assert_srst
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : clock speed 950 kHz
+Error: open failed
+in procedure 'init' 
+in procedure 'ocd_bouncer'
+
+
+01:21:52 Build Finished (took 337ms)
+

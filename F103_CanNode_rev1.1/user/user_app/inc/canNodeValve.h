@@ -7,7 +7,7 @@
 class CanNodeValve{
 public:
 	int setup(PORT &port,CAN &can,uint16_t address);
-	void cycle();
+	//void cycle();
 	void interrupt(CanRxMsg rxMessage);
 private:
 	PORT *canValve_port;

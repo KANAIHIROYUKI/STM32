@@ -889,12 +889,6 @@ Discarded input sections
  .bss           0x00000000        0x0 ..\obj\canNodeValve.o
  .ARM.extab.text._ZN12CanNodeValve5setupER4PORTR3CANt
                 0x00000000        0x0 ..\obj\canNodeValve.o
- .text._ZN12CanNodeValve5cycleEv
-                0x00000000       0x14 ..\obj\canNodeValve.o
- .ARM.extab.text._ZN12CanNodeValve5cycleEv
-                0x00000000        0x0 ..\obj\canNodeValve.o
- .ARM.exidx.text._ZN12CanNodeValve5cycleEv
-                0x00000000        0x8 ..\obj\canNodeValve.o
  .text          0x00000000        0x0 ..\obj\syscalls.o
  .data          0x00000000        0x0 ..\obj\syscalls.o
  .text.link     0x00000000       0x18 ..\obj\syscalls.o
@@ -2327,7 +2321,7 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
 END GROUP
 OUTPUT(F103_mini.elf elf32-littlearm)
 
-.debug_info     0x00000000     0xc240
+.debug_info     0x00000000     0xc1e6
  .debug_info    0x00000000      0xb6c ..\obj\canNodeEncoder.o
  .debug_info    0x00000b6c      0x494 ..\obj\spi.o
  .debug_info    0x00001000     0x1c60 ..\obj\stm32f10x_tim.o
@@ -2337,21 +2331,21 @@ OUTPUT(F103_mini.elf elf32-littlearm)
  .debug_info    0x000045d6       0xee ..\obj\startup_stm32f10x_md.o
  .debug_info    0x000046c4      0xba4 ..\obj\stm32f10x_can.o
  .debug_info    0x00005268      0x6f6 ..\obj\stm32f10x_gpio.o
- .debug_info    0x0000595e     0x1583 ..\obj\main.o
- .debug_info    0x00006ee1      0x65d ..\obj\system.o
- .debug_info    0x0000753e      0x9e4 ..\obj\can.o
- .debug_info    0x00007f22      0x8a3 ..\obj\stm32f10x_rcc.o
- .debug_info    0x000087c5      0x4d3 ..\obj\gpio.o
- .debug_info    0x00008c98      0x9f0 ..\obj\stm32f10x_usart.o
- .debug_info    0x00009688      0x84f ..\obj\canNodeValve.o
- .debug_info    0x00009ed7      0x458 ..\obj\syscalls.o
- .debug_info    0x0000a32f      0x3e6 ..\obj\port.o
- .debug_info    0x0000a715      0x556 ..\obj\misc.o
- .debug_info    0x0000ac6b      0x8fb ..\obj\stm32f10x_spi.o
- .debug_info    0x0000b566      0xacc ..\obj\usart.o
- .debug_info    0x0000c032      0x20e ..\obj\stm32f10x_iwdg.o
+ .debug_info    0x0000595e     0x1569 ..\obj\main.o
+ .debug_info    0x00006ec7      0x65d ..\obj\system.o
+ .debug_info    0x00007524      0x9e4 ..\obj\can.o
+ .debug_info    0x00007f08      0x8a3 ..\obj\stm32f10x_rcc.o
+ .debug_info    0x000087ab      0x4d3 ..\obj\gpio.o
+ .debug_info    0x00008c7e      0x9f0 ..\obj\stm32f10x_usart.o
+ .debug_info    0x0000966e      0x80f ..\obj\canNodeValve.o
+ .debug_info    0x00009e7d      0x458 ..\obj\syscalls.o
+ .debug_info    0x0000a2d5      0x3e6 ..\obj\port.o
+ .debug_info    0x0000a6bb      0x556 ..\obj\misc.o
+ .debug_info    0x0000ac11      0x8fb ..\obj\stm32f10x_spi.o
+ .debug_info    0x0000b50c      0xacc ..\obj\usart.o
+ .debug_info    0x0000bfd8      0x20e ..\obj\stm32f10x_iwdg.o
 
-.debug_abbrev   0x00000000     0x25c6
+.debug_abbrev   0x00000000     0x25ae
  .debug_abbrev  0x00000000      0x229 ..\obj\canNodeEncoder.o
  .debug_abbrev  0x00000229      0x129 ..\obj\spi.o
  .debug_abbrev  0x00000352      0x1b2 ..\obj\stm32f10x_tim.o
@@ -2367,15 +2361,15 @@ OUTPUT(F103_mini.elf elf32-littlearm)
  .debug_abbrev  0x0000156b      0x1bc ..\obj\stm32f10x_rcc.o
  .debug_abbrev  0x00001727      0x1db ..\obj\gpio.o
  .debug_abbrev  0x00001902      0x164 ..\obj\stm32f10x_usart.o
- .debug_abbrev  0x00001a66      0x251 ..\obj\canNodeValve.o
- .debug_abbrev  0x00001cb7       0xe5 ..\obj\syscalls.o
- .debug_abbrev  0x00001d9c      0x1b1 ..\obj\port.o
- .debug_abbrev  0x00001f4d      0x147 ..\obj\misc.o
- .debug_abbrev  0x00002094      0x180 ..\obj\stm32f10x_spi.o
- .debug_abbrev  0x00002214      0x2af ..\obj\usart.o
- .debug_abbrev  0x000024c3      0x103 ..\obj\stm32f10x_iwdg.o
+ .debug_abbrev  0x00001a66      0x239 ..\obj\canNodeValve.o
+ .debug_abbrev  0x00001c9f       0xe5 ..\obj\syscalls.o
+ .debug_abbrev  0x00001d84      0x1b1 ..\obj\port.o
+ .debug_abbrev  0x00001f35      0x147 ..\obj\misc.o
+ .debug_abbrev  0x0000207c      0x180 ..\obj\stm32f10x_spi.o
+ .debug_abbrev  0x000021fc      0x2af ..\obj\usart.o
+ .debug_abbrev  0x000024ab      0x103 ..\obj\stm32f10x_iwdg.o
 
-.debug_aranges  0x00000000      0xd20
+.debug_aranges  0x00000000      0xd18
  .debug_aranges
                 0x00000000       0x30 ..\obj\canNodeEncoder.o
  .debug_aranges
@@ -2407,21 +2401,21 @@ OUTPUT(F103_mini.elf elf32-littlearm)
  .debug_aranges
                 0x00000970      0x100 ..\obj\stm32f10x_usart.o
  .debug_aranges
-                0x00000a70       0x30 ..\obj\canNodeValve.o
+                0x00000a70       0x28 ..\obj\canNodeValve.o
  .debug_aranges
-                0x00000aa0       0x60 ..\obj\syscalls.o
+                0x00000a98       0x60 ..\obj\syscalls.o
  .debug_aranges
-                0x00000b00       0x30 ..\obj\port.o
+                0x00000af8       0x30 ..\obj\port.o
  .debug_aranges
-                0x00000b30       0x40 ..\obj\misc.o
+                0x00000b28       0x40 ..\obj\misc.o
  .debug_aranges
-                0x00000b70       0xd0 ..\obj\stm32f10x_spi.o
+                0x00000b68       0xd0 ..\obj\stm32f10x_spi.o
  .debug_aranges
-                0x00000c40       0x98 ..\obj\usart.o
+                0x00000c38       0x98 ..\obj\usart.o
  .debug_aranges
-                0x00000cd8       0x48 ..\obj\stm32f10x_iwdg.o
+                0x00000cd0       0x48 ..\obj\stm32f10x_iwdg.o
 
-.debug_ranges   0x00000000      0xbc0
+.debug_ranges   0x00000000      0xbb8
  .debug_ranges  0x00000000       0x20 ..\obj\canNodeEncoder.o
  .debug_ranges  0x00000020       0x18 ..\obj\spi.o
  .debug_ranges  0x00000038      0x2e0 ..\obj\stm32f10x_tim.o
@@ -2437,15 +2431,15 @@ OUTPUT(F103_mini.elf elf32-littlearm)
  .debug_ranges  0x00000740      0x108 ..\obj\stm32f10x_rcc.o
  .debug_ranges  0x00000848       0x48 ..\obj\gpio.o
  .debug_ranges  0x00000890       0xf0 ..\obj\stm32f10x_usart.o
- .debug_ranges  0x00000980       0x20 ..\obj\canNodeValve.o
- .debug_ranges  0x000009a0       0x50 ..\obj\syscalls.o
- .debug_ranges  0x000009f0       0x20 ..\obj\port.o
- .debug_ranges  0x00000a10       0x30 ..\obj\misc.o
- .debug_ranges  0x00000a40       0xc0 ..\obj\stm32f10x_spi.o
- .debug_ranges  0x00000b00       0x88 ..\obj\usart.o
- .debug_ranges  0x00000b88       0x38 ..\obj\stm32f10x_iwdg.o
+ .debug_ranges  0x00000980       0x18 ..\obj\canNodeValve.o
+ .debug_ranges  0x00000998       0x50 ..\obj\syscalls.o
+ .debug_ranges  0x000009e8       0x20 ..\obj\port.o
+ .debug_ranges  0x00000a08       0x30 ..\obj\misc.o
+ .debug_ranges  0x00000a38       0xc0 ..\obj\stm32f10x_spi.o
+ .debug_ranges  0x00000af8       0x88 ..\obj\usart.o
+ .debug_ranges  0x00000b80       0x38 ..\obj\stm32f10x_iwdg.o
 
-.debug_line     0x00000000     0x57f1
+.debug_line     0x00000000     0x57e1
  .debug_line    0x00000000      0x30f ..\obj\canNodeEncoder.o
  .debug_line    0x0000030f      0x2c6 ..\obj\spi.o
  .debug_line    0x000005d5      0xbb8 ..\obj\stm32f10x_tim.o
@@ -2461,15 +2455,15 @@ OUTPUT(F103_mini.elf elf32-littlearm)
  .debug_line    0x00003287      0x533 ..\obj\stm32f10x_rcc.o
  .debug_line    0x000037ba      0x343 ..\obj\gpio.o
  .debug_line    0x00003afd      0x51a ..\obj\stm32f10x_usart.o
- .debug_line    0x00004017      0x32c ..\obj\canNodeValve.o
- .debug_line    0x00004343      0x207 ..\obj\syscalls.o
- .debug_line    0x0000454a      0x365 ..\obj\port.o
- .debug_line    0x000048af      0x2ab ..\obj\misc.o
- .debug_line    0x00004b5a      0x495 ..\obj\stm32f10x_spi.o
- .debug_line    0x00004fef      0x5a2 ..\obj\usart.o
- .debug_line    0x00005591      0x260 ..\obj\stm32f10x_iwdg.o
+ .debug_line    0x00004017      0x31c ..\obj\canNodeValve.o
+ .debug_line    0x00004333      0x207 ..\obj\syscalls.o
+ .debug_line    0x0000453a      0x365 ..\obj\port.o
+ .debug_line    0x0000489f      0x2ab ..\obj\misc.o
+ .debug_line    0x00004b4a      0x495 ..\obj\stm32f10x_spi.o
+ .debug_line    0x00004fdf      0x5a2 ..\obj\usart.o
+ .debug_line    0x00005581      0x260 ..\obj\stm32f10x_iwdg.o
 
-.debug_str      0x00000000     0x44cb
+.debug_str      0x00000000     0x44b1
  .debug_str     0x00000000      0x730 ..\obj\canNodeEncoder.o
                                 0x85c (size before relaxing)
  .debug_str     0x00000730      0x4d5 ..\obj\spi.o
@@ -2488,31 +2482,31 @@ OUTPUT(F103_mini.elf elf32-littlearm)
                                 0x74f (size before relaxing)
  .debug_str     0x00002682      0x2ae ..\obj\stm32f10x_gpio.o
                                 0x53a (size before relaxing)
- .debug_str     0x00002930      0x4e1 ..\obj\main.o
-                                0xe60 (size before relaxing)
- .debug_str     0x00002e11      0x142 ..\obj\system.o
+ .debug_str     0x00002930      0x4c7 ..\obj\main.o
+                                0xe46 (size before relaxing)
+ .debug_str     0x00002df7      0x142 ..\obj\system.o
                                 0x68f (size before relaxing)
- .debug_str     0x00002f53      0x12a ..\obj\can.o
+ .debug_str     0x00002f39      0x12a ..\obj\can.o
                                 0x9bf (size before relaxing)
- .debug_str     0x0000307d      0x3e7 ..\obj\stm32f10x_rcc.o
+ .debug_str     0x00003063      0x3e7 ..\obj\stm32f10x_rcc.o
                                 0x63b (size before relaxing)
- .debug_str     0x00003464      0x13e ..\obj\gpio.o
+ .debug_str     0x0000344a      0x13e ..\obj\gpio.o
                                 0x53a (size before relaxing)
- .debug_str     0x000035a2      0x423 ..\obj\stm32f10x_usart.o
+ .debug_str     0x00003588      0x423 ..\obj\stm32f10x_usart.o
                                 0x6b1 (size before relaxing)
- .debug_str     0x000039c5       0x61 ..\obj\canNodeValve.o
-                                0x6be (size before relaxing)
- .debug_str     0x00003a26      0x197 ..\obj\syscalls.o
+ .debug_str     0x000039ab       0x61 ..\obj\canNodeValve.o
+                                0x69e (size before relaxing)
+ .debug_str     0x00003a0c      0x197 ..\obj\syscalls.o
                                 0x364 (size before relaxing)
- .debug_str     0x00003bbd       0x59 ..\obj\port.o
+ .debug_str     0x00003ba3       0x59 ..\obj\port.o
                                 0x3ee (size before relaxing)
- .debug_str     0x00003c16      0x124 ..\obj\misc.o
+ .debug_str     0x00003bfc      0x124 ..\obj\misc.o
                                 0x3df (size before relaxing)
- .debug_str     0x00003d3a      0x2de ..\obj\stm32f10x_spi.o
+ .debug_str     0x00003d20      0x2de ..\obj\stm32f10x_spi.o
                                 0x61e (size before relaxing)
- .debug_str     0x00004018      0x3ba ..\obj\usart.o
+ .debug_str     0x00003ffe      0x3ba ..\obj\usart.o
                                 0xc46 (size before relaxing)
- .debug_str     0x000043d2       0xf9 ..\obj\stm32f10x_iwdg.o
+ .debug_str     0x000043b8       0xf9 ..\obj\stm32f10x_iwdg.o
                                 0x27d (size before relaxing)
 
 .comment        0x00000000       0x6e
@@ -2655,7 +2649,7 @@ OUTPUT(F103_mini.elf elf32-littlearm)
  .ARM.attributes
                 0x000009ad       0x1d c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixdfsi.o)
 
-.debug_frame    0x00000000     0x42b0
+.debug_frame    0x00000000     0x4288
  .debug_frame   0x00000000       0x8c ..\obj\canNodeEncoder.o
  .debug_frame   0x0000008c       0x50 ..\obj\spi.o
  .debug_frame   0x000000dc      0xe2c ..\obj\stm32f10x_tim.o
@@ -2671,34 +2665,34 @@ OUTPUT(F103_mini.elf elf32-littlearm)
  .debug_frame   0x00002150      0x4f4 ..\obj\stm32f10x_rcc.o
  .debug_frame   0x00002644      0x128 ..\obj\gpio.o
  .debug_frame   0x0000276c      0x490 ..\obj\stm32f10x_usart.o
- .debug_frame   0x00002bfc       0x90 ..\obj\canNodeValve.o
- .debug_frame   0x00002c8c      0x168 ..\obj\syscalls.o
- .debug_frame   0x00002df4       0x7c ..\obj\port.o
- .debug_frame   0x00002e70       0xd8 ..\obj\misc.o
- .debug_frame   0x00002f48      0x3a0 ..\obj\stm32f10x_spi.o
- .debug_frame   0x000032e8      0x27c ..\obj\usart.o
- .debug_frame   0x00003564       0xf0 ..\obj\stm32f10x_iwdg.o
- .debug_frame   0x00003654       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00003680       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x000036b8      0x300 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(unwind-arm.o)
- .debug_frame   0x000039b8      0x104 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
- .debug_frame   0x00003abc       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vsprintf.o)
- .debug_frame   0x00003b0c       0x44 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfprintf.o)
- .debug_frame   0x00003b50       0x84 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-dtoa.o)
- .debug_frame   0x00003bd4       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-localeconv.o)
- .debug_frame   0x00003c14       0x54 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
- .debug_frame   0x00003c68       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memchr-stub.o)
- .debug_frame   0x00003c9c       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
- .debug_frame   0x00003ccc      0x264 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
- .debug_frame   0x00003f30       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-sbrkr.o)
- .debug_frame   0x00003f5c       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-strlen-stub.o)
- .debug_frame   0x00003f7c       0x78 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfiprintf.o)
- .debug_frame   0x00003ff4       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-callocr.o)
- .debug_frame   0x0000401c       0x74 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
- .debug_frame   0x00004090       0x84 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-locale.o)
- .debug_frame   0x00004114       0x4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mbtowc_r.o)
- .debug_frame   0x00004160       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memmove.o)
- .debug_frame   0x00004190       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memset.o)
- .debug_frame   0x000041c4       0x58 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reallocr.o)
- .debug_frame   0x0000421c       0x58 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reent.o)
- .debug_frame   0x00004274       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00002bfc       0x68 ..\obj\canNodeValve.o
+ .debug_frame   0x00002c64      0x168 ..\obj\syscalls.o
+ .debug_frame   0x00002dcc       0x7c ..\obj\port.o
+ .debug_frame   0x00002e48       0xd8 ..\obj\misc.o
+ .debug_frame   0x00002f20      0x3a0 ..\obj\stm32f10x_spi.o
+ .debug_frame   0x000032c0      0x27c ..\obj\usart.o
+ .debug_frame   0x0000353c       0xf0 ..\obj\stm32f10x_iwdg.o
+ .debug_frame   0x0000362c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00003658       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00003690      0x300 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(unwind-arm.o)
+ .debug_frame   0x00003990      0x104 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
+ .debug_frame   0x00003a94       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vsprintf.o)
+ .debug_frame   0x00003ae4       0x44 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfprintf.o)
+ .debug_frame   0x00003b28       0x84 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-dtoa.o)
+ .debug_frame   0x00003bac       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-localeconv.o)
+ .debug_frame   0x00003bec       0x54 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
+ .debug_frame   0x00003c40       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00003c74       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
+ .debug_frame   0x00003ca4      0x264 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+ .debug_frame   0x00003f08       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-sbrkr.o)
+ .debug_frame   0x00003f34       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-strlen-stub.o)
+ .debug_frame   0x00003f54       0x78 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfiprintf.o)
+ .debug_frame   0x00003fcc       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-callocr.o)
+ .debug_frame   0x00003ff4       0x74 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
+ .debug_frame   0x00004068       0x84 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-locale.o)
+ .debug_frame   0x000040ec       0x4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x00004138       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memmove.o)
+ .debug_frame   0x00004168       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memset.o)
+ .debug_frame   0x0000419c       0x58 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reallocr.o)
+ .debug_frame   0x000041f4       0x58 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reent.o)
+ .debug_frame   0x0000424c       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-wctomb_r.o)

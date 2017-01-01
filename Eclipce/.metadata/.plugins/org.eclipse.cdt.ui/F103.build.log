@@ -1,0 +1,47 @@
+03:11:41 **** Build of configuration Debug for project F103 ****
+make all 
+'Building file: ../startup/startup_stm32.s'
+'Invoking: MCU GCC Assembler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\Debug
+arm-none-eabi-as -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F103/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -g -o "startup/startup_stm32.o" "../startup/startup_stm32.s"
+'Finished building: ../startup/startup_stm32.s'
+' '
+'Building file: ../src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F103/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/stm32f4xx_it.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F103/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/stm32f4xx_it.d" -MT"src/stm32f4xx_it.o" -o "src/stm32f4xx_it.o" "../src/stm32f4xx_it.c"
+'Finished building: ../src/stm32f4xx_it.c'
+' '
+'Building file: ../src/syscalls.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F103/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/syscalls.d" -MT"src/syscalls.o" -o "src/syscalls.o" "../src/syscalls.c"
+'Finished building: ../src/syscalls.c'
+' '
+'Building file: ../src/system_stm32f1xx.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F103/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/system_stm32f1xx.d" -MT"src/system_stm32f1xx.o" -o "src/system_stm32f1xx.o" "../src/system_stm32f1xx.c"
+'Finished building: ../src/system_stm32f1xx.c'
+' '
+'Building target: F103.elf'
+'Invoking: MCU G++ Linker'
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -L"C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug" -T"C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -fno-exceptions -fno-rtti -lm -o "F103.elf" @"objects.list"  -lstm32f103_hal_lib
+'Finished building target: F103.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "F103.elf" "F103.bin"
+arm-none-eabi-size "F103.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1160	   1076	   1056	   3292	    cdc	F103.elf
+' '
+
+03:11:43 Build Finished (took 1s.824ms)
+

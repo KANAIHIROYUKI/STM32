@@ -7,9 +7,6 @@ int CanNodeValve::setup(PORT &port,CAN &can,uint16_t address){
 	return 0;
 }
 
-void CanNodeValve::cycle(){
-
-}
 
 void CanNodeValve::interrupt(CanRxMsg rxMessage){
 	if(rxMessage.StdId == canValve_address){

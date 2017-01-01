@@ -1,262 +1,316 @@
-18:36:11 **** Build of configuration Debug for project nucleo-f401re_stdperiph_lib ****
+03:11:26 **** Build of configuration Debug for project stm32f103_hal_lib ****
 make all 
-'Building file: ../StdPeriph_Driver/src/misc.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/misc.d" -MT"StdPeriph_Driver/src/misc.o" -o "StdPeriph_Driver/src/misc.o" "../StdPeriph_Driver/src/misc.c"
-'Finished building: ../StdPeriph_Driver/src/misc.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal.d" -MT"HAL_Driver/Src/stm32f1xx_hal.o" -o "HAL_Driver/Src/stm32f1xx_hal.o" "../HAL_Driver/Src/stm32f1xx_hal.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_adc.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_adc.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_adc.d" -MT"StdPeriph_Driver/src/stm32f4xx_adc.o" -o "StdPeriph_Driver/src/stm32f4xx_adc.o" "../StdPeriph_Driver/src/stm32f4xx_adc.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_adc.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_adc.d" -MT"HAL_Driver/Src/stm32f1xx_hal_adc.o" -o "HAL_Driver/Src/stm32f1xx_hal_adc.o" "../HAL_Driver/Src/stm32f1xx_hal_adc.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_adc.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_can.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_adc_ex.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_can.d" -MT"StdPeriph_Driver/src/stm32f4xx_can.o" -o "StdPeriph_Driver/src/stm32f4xx_can.o" "../StdPeriph_Driver/src/stm32f4xx_can.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_can.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_adc_ex.d" -MT"HAL_Driver/Src/stm32f1xx_hal_adc_ex.o" -o "HAL_Driver/Src/stm32f1xx_hal_adc_ex.o" "../HAL_Driver/Src/stm32f1xx_hal_adc_ex.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_adc_ex.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_crc.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_can.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_crc.d" -MT"StdPeriph_Driver/src/stm32f4xx_crc.o" -o "StdPeriph_Driver/src/stm32f4xx_crc.o" "../StdPeriph_Driver/src/stm32f4xx_crc.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_crc.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_can.d" -MT"HAL_Driver/Src/stm32f1xx_hal_can.o" -o "HAL_Driver/Src/stm32f1xx_hal_can.o" "../HAL_Driver/Src/stm32f1xx_hal_can.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_can.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_cryp.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_cec.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_cryp.d" -MT"StdPeriph_Driver/src/stm32f4xx_cryp.o" -o "StdPeriph_Driver/src/stm32f4xx_cryp.o" "../StdPeriph_Driver/src/stm32f4xx_cryp.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_cryp.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_cec.d" -MT"HAL_Driver/Src/stm32f1xx_hal_cec.o" -o "HAL_Driver/Src/stm32f1xx_hal_cec.o" "../HAL_Driver/Src/stm32f1xx_hal_cec.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_cec.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_cryp_aes.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_cortex.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_cryp_aes.d" -MT"StdPeriph_Driver/src/stm32f4xx_cryp_aes.o" -o "StdPeriph_Driver/src/stm32f4xx_cryp_aes.o" "../StdPeriph_Driver/src/stm32f4xx_cryp_aes.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_cryp_aes.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_cortex.d" -MT"HAL_Driver/Src/stm32f1xx_hal_cortex.o" -o "HAL_Driver/Src/stm32f1xx_hal_cortex.o" "../HAL_Driver/Src/stm32f1xx_hal_cortex.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_cortex.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_cryp_des.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_crc.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_cryp_des.d" -MT"StdPeriph_Driver/src/stm32f4xx_cryp_des.o" -o "StdPeriph_Driver/src/stm32f4xx_cryp_des.o" "../StdPeriph_Driver/src/stm32f4xx_cryp_des.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_cryp_des.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_crc.d" -MT"HAL_Driver/Src/stm32f1xx_hal_crc.o" -o "HAL_Driver/Src/stm32f1xx_hal_crc.o" "../HAL_Driver/Src/stm32f1xx_hal_crc.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_crc.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_cryp_tdes.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_dac.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_cryp_tdes.d" -MT"StdPeriph_Driver/src/stm32f4xx_cryp_tdes.o" -o "StdPeriph_Driver/src/stm32f4xx_cryp_tdes.o" "../StdPeriph_Driver/src/stm32f4xx_cryp_tdes.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_cryp_tdes.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_dac.d" -MT"HAL_Driver/Src/stm32f1xx_hal_dac.o" -o "HAL_Driver/Src/stm32f1xx_hal_dac.o" "../HAL_Driver/Src/stm32f1xx_hal_dac.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_dac.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_dac.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_dac_ex.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_dac.d" -MT"StdPeriph_Driver/src/stm32f4xx_dac.o" -o "StdPeriph_Driver/src/stm32f4xx_dac.o" "../StdPeriph_Driver/src/stm32f4xx_dac.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_dac.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_dac_ex.d" -MT"HAL_Driver/Src/stm32f1xx_hal_dac_ex.o" -o "HAL_Driver/Src/stm32f1xx_hal_dac_ex.o" "../HAL_Driver/Src/stm32f1xx_hal_dac_ex.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_dac_ex.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_dbgmcu.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_dma.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_dbgmcu.d" -MT"StdPeriph_Driver/src/stm32f4xx_dbgmcu.o" -o "StdPeriph_Driver/src/stm32f4xx_dbgmcu.o" "../StdPeriph_Driver/src/stm32f4xx_dbgmcu.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_dbgmcu.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_dma.d" -MT"HAL_Driver/Src/stm32f1xx_hal_dma.o" -o "HAL_Driver/Src/stm32f1xx_hal_dma.o" "../HAL_Driver/Src/stm32f1xx_hal_dma.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_dma.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_dcmi.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_eth.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_dcmi.d" -MT"StdPeriph_Driver/src/stm32f4xx_dcmi.o" -o "StdPeriph_Driver/src/stm32f4xx_dcmi.o" "../StdPeriph_Driver/src/stm32f4xx_dcmi.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_dcmi.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_eth.d" -MT"HAL_Driver/Src/stm32f1xx_hal_eth.o" -o "HAL_Driver/Src/stm32f1xx_hal_eth.o" "../HAL_Driver/Src/stm32f1xx_hal_eth.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_eth.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_dma.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_flash.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_dma.d" -MT"StdPeriph_Driver/src/stm32f4xx_dma.o" -o "StdPeriph_Driver/src/stm32f4xx_dma.o" "../StdPeriph_Driver/src/stm32f4xx_dma.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_dma.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_flash.d" -MT"HAL_Driver/Src/stm32f1xx_hal_flash.o" -o "HAL_Driver/Src/stm32f1xx_hal_flash.o" "../HAL_Driver/Src/stm32f1xx_hal_flash.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_flash.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_dma2d.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_flash_ex.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_dma2d.d" -MT"StdPeriph_Driver/src/stm32f4xx_dma2d.o" -o "StdPeriph_Driver/src/stm32f4xx_dma2d.o" "../StdPeriph_Driver/src/stm32f4xx_dma2d.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_dma2d.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_flash_ex.d" -MT"HAL_Driver/Src/stm32f1xx_hal_flash_ex.o" -o "HAL_Driver/Src/stm32f1xx_hal_flash_ex.o" "../HAL_Driver/Src/stm32f1xx_hal_flash_ex.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_flash_ex.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_dsi.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_gpio.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_dsi.d" -MT"StdPeriph_Driver/src/stm32f4xx_dsi.o" -o "StdPeriph_Driver/src/stm32f4xx_dsi.o" "../StdPeriph_Driver/src/stm32f4xx_dsi.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_dsi.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_gpio.d" -MT"HAL_Driver/Src/stm32f1xx_hal_gpio.o" -o "HAL_Driver/Src/stm32f1xx_hal_gpio.o" "../HAL_Driver/Src/stm32f1xx_hal_gpio.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_gpio.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_exti.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_exti.d" -MT"StdPeriph_Driver/src/stm32f4xx_exti.o" -o "StdPeriph_Driver/src/stm32f4xx_exti.o" "../StdPeriph_Driver/src/stm32f4xx_exti.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_exti.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_gpio_ex.d" -MT"HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o" -o "HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o" "../HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_flash.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_hcd.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_flash.d" -MT"StdPeriph_Driver/src/stm32f4xx_flash.o" -o "StdPeriph_Driver/src/stm32f4xx_flash.o" "../StdPeriph_Driver/src/stm32f4xx_flash.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_flash.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_hcd.d" -MT"HAL_Driver/Src/stm32f1xx_hal_hcd.o" -o "HAL_Driver/Src/stm32f1xx_hal_hcd.o" "../HAL_Driver/Src/stm32f1xx_hal_hcd.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_hcd.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_flash_ramfunc.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_i2c.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_flash_ramfunc.d" -MT"StdPeriph_Driver/src/stm32f4xx_flash_ramfunc.o" -o "StdPeriph_Driver/src/stm32f4xx_flash_ramfunc.o" "../StdPeriph_Driver/src/stm32f4xx_flash_ramfunc.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_flash_ramfunc.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_i2c.d" -MT"HAL_Driver/Src/stm32f1xx_hal_i2c.o" -o "HAL_Driver/Src/stm32f1xx_hal_i2c.o" "../HAL_Driver/Src/stm32f1xx_hal_i2c.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_i2c.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_gpio.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_i2s.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_gpio.d" -MT"StdPeriph_Driver/src/stm32f4xx_gpio.o" -o "StdPeriph_Driver/src/stm32f4xx_gpio.o" "../StdPeriph_Driver/src/stm32f4xx_gpio.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_gpio.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_i2s.d" -MT"HAL_Driver/Src/stm32f1xx_hal_i2s.o" -o "HAL_Driver/Src/stm32f1xx_hal_i2s.o" "../HAL_Driver/Src/stm32f1xx_hal_i2s.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_i2s.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_hash.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_irda.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_hash.d" -MT"StdPeriph_Driver/src/stm32f4xx_hash.o" -o "StdPeriph_Driver/src/stm32f4xx_hash.o" "../StdPeriph_Driver/src/stm32f4xx_hash.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_hash.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_irda.d" -MT"HAL_Driver/Src/stm32f1xx_hal_irda.o" -o "HAL_Driver/Src/stm32f1xx_hal_irda.o" "../HAL_Driver/Src/stm32f1xx_hal_irda.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_irda.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_hash_md5.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_iwdg.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_hash_md5.d" -MT"StdPeriph_Driver/src/stm32f4xx_hash_md5.o" -o "StdPeriph_Driver/src/stm32f4xx_hash_md5.o" "../StdPeriph_Driver/src/stm32f4xx_hash_md5.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_hash_md5.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_iwdg.d" -MT"HAL_Driver/Src/stm32f1xx_hal_iwdg.o" -o "HAL_Driver/Src/stm32f1xx_hal_iwdg.o" "../HAL_Driver/Src/stm32f1xx_hal_iwdg.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_iwdg.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_hash_sha1.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_msp_template.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_hash_sha1.d" -MT"StdPeriph_Driver/src/stm32f4xx_hash_sha1.o" -o "StdPeriph_Driver/src/stm32f4xx_hash_sha1.o" "../StdPeriph_Driver/src/stm32f4xx_hash_sha1.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_hash_sha1.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_msp_template.d" -MT"HAL_Driver/Src/stm32f1xx_hal_msp_template.o" -o "HAL_Driver/Src/stm32f1xx_hal_msp_template.o" "../HAL_Driver/Src/stm32f1xx_hal_msp_template.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_msp_template.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_i2c.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_nand.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_i2c.d" -MT"StdPeriph_Driver/src/stm32f4xx_i2c.o" -o "StdPeriph_Driver/src/stm32f4xx_i2c.o" "../StdPeriph_Driver/src/stm32f4xx_i2c.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_i2c.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_nand.d" -MT"HAL_Driver/Src/stm32f1xx_hal_nand.o" -o "HAL_Driver/Src/stm32f1xx_hal_nand.o" "../HAL_Driver/Src/stm32f1xx_hal_nand.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_nand.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_iwdg.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_nor.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_iwdg.d" -MT"StdPeriph_Driver/src/stm32f4xx_iwdg.o" -o "StdPeriph_Driver/src/stm32f4xx_iwdg.o" "../StdPeriph_Driver/src/stm32f4xx_iwdg.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_iwdg.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_nor.d" -MT"HAL_Driver/Src/stm32f1xx_hal_nor.o" -o "HAL_Driver/Src/stm32f1xx_hal_nor.o" "../HAL_Driver/Src/stm32f1xx_hal_nor.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_nor.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_lptim.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_pccard.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_lptim.d" -MT"StdPeriph_Driver/src/stm32f4xx_lptim.o" -o "StdPeriph_Driver/src/stm32f4xx_lptim.o" "../StdPeriph_Driver/src/stm32f4xx_lptim.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_lptim.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_pccard.d" -MT"HAL_Driver/Src/stm32f1xx_hal_pccard.o" -o "HAL_Driver/Src/stm32f1xx_hal_pccard.o" "../HAL_Driver/Src/stm32f1xx_hal_pccard.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_pccard.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_ltdc.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_pcd.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_ltdc.d" -MT"StdPeriph_Driver/src/stm32f4xx_ltdc.o" -o "StdPeriph_Driver/src/stm32f4xx_ltdc.o" "../StdPeriph_Driver/src/stm32f4xx_ltdc.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_ltdc.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_pcd.d" -MT"HAL_Driver/Src/stm32f1xx_hal_pcd.o" -o "HAL_Driver/Src/stm32f1xx_hal_pcd.o" "../HAL_Driver/Src/stm32f1xx_hal_pcd.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_pcd.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_pwr.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_pwr.d" -MT"StdPeriph_Driver/src/stm32f4xx_pwr.o" -o "StdPeriph_Driver/src/stm32f4xx_pwr.o" "../StdPeriph_Driver/src/stm32f4xx_pwr.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_pwr.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_pcd_ex.d" -MT"HAL_Driver/Src/stm32f1xx_hal_pcd_ex.o" -o "HAL_Driver/Src/stm32f1xx_hal_pcd_ex.o" "../HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_rcc.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_pwr.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_rcc.d" -MT"StdPeriph_Driver/src/stm32f4xx_rcc.o" -o "StdPeriph_Driver/src/stm32f4xx_rcc.o" "../StdPeriph_Driver/src/stm32f4xx_rcc.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_rcc.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_pwr.d" -MT"HAL_Driver/Src/stm32f1xx_hal_pwr.o" -o "HAL_Driver/Src/stm32f1xx_hal_pwr.o" "../HAL_Driver/Src/stm32f1xx_hal_pwr.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_pwr.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_rng.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_rcc.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_rng.d" -MT"StdPeriph_Driver/src/stm32f4xx_rng.o" -o "StdPeriph_Driver/src/stm32f4xx_rng.o" "../StdPeriph_Driver/src/stm32f4xx_rng.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_rng.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_rcc.d" -MT"HAL_Driver/Src/stm32f1xx_hal_rcc.o" -o "HAL_Driver/Src/stm32f1xx_hal_rcc.o" "../HAL_Driver/Src/stm32f1xx_hal_rcc.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_rcc.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_rtc.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_rtc.d" -MT"StdPeriph_Driver/src/stm32f4xx_rtc.o" -o "StdPeriph_Driver/src/stm32f4xx_rtc.o" "../StdPeriph_Driver/src/stm32f4xx_rtc.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_rtc.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_rcc_ex.d" -MT"HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o" -o "HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o" "../HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_sai.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_rtc.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_sai.d" -MT"StdPeriph_Driver/src/stm32f4xx_sai.o" -o "StdPeriph_Driver/src/stm32f4xx_sai.o" "../StdPeriph_Driver/src/stm32f4xx_sai.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_sai.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_rtc.d" -MT"HAL_Driver/Src/stm32f1xx_hal_rtc.o" -o "HAL_Driver/Src/stm32f1xx_hal_rtc.o" "../HAL_Driver/Src/stm32f1xx_hal_rtc.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_rtc.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_sdio.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_sdio.d" -MT"StdPeriph_Driver/src/stm32f4xx_sdio.o" -o "StdPeriph_Driver/src/stm32f4xx_sdio.o" "../StdPeriph_Driver/src/stm32f4xx_sdio.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_sdio.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_rtc_ex.d" -MT"HAL_Driver/Src/stm32f1xx_hal_rtc_ex.o" -o "HAL_Driver/Src/stm32f1xx_hal_rtc_ex.o" "../HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_spi.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_sd.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_spi.d" -MT"StdPeriph_Driver/src/stm32f4xx_spi.o" -o "StdPeriph_Driver/src/stm32f4xx_spi.o" "../StdPeriph_Driver/src/stm32f4xx_spi.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_spi.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_sd.d" -MT"HAL_Driver/Src/stm32f1xx_hal_sd.o" -o "HAL_Driver/Src/stm32f1xx_hal_sd.o" "../HAL_Driver/Src/stm32f1xx_hal_sd.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_sd.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_syscfg.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_smartcard.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_syscfg.d" -MT"StdPeriph_Driver/src/stm32f4xx_syscfg.o" -o "StdPeriph_Driver/src/stm32f4xx_syscfg.o" "../StdPeriph_Driver/src/stm32f4xx_syscfg.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_syscfg.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_smartcard.d" -MT"HAL_Driver/Src/stm32f1xx_hal_smartcard.o" -o "HAL_Driver/Src/stm32f1xx_hal_smartcard.o" "../HAL_Driver/Src/stm32f1xx_hal_smartcard.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_smartcard.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_tim.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_spi.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_tim.d" -MT"StdPeriph_Driver/src/stm32f4xx_tim.o" -o "StdPeriph_Driver/src/stm32f4xx_tim.o" "../StdPeriph_Driver/src/stm32f4xx_tim.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_tim.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_spi.d" -MT"HAL_Driver/Src/stm32f1xx_hal_spi.o" -o "HAL_Driver/Src/stm32f1xx_hal_spi.o" "../HAL_Driver/Src/stm32f1xx_hal_spi.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_spi.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_usart.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_spi_ex.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_usart.d" -MT"StdPeriph_Driver/src/stm32f4xx_usart.o" -o "StdPeriph_Driver/src/stm32f4xx_usart.o" "../StdPeriph_Driver/src/stm32f4xx_usart.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_usart.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_spi_ex.d" -MT"HAL_Driver/Src/stm32f1xx_hal_spi_ex.o" -o "HAL_Driver/Src/stm32f1xx_hal_spi_ex.o" "../HAL_Driver/Src/stm32f1xx_hal_spi_ex.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_spi_ex.c'
 ' '
-'Building file: ../StdPeriph_Driver/src/stm32f4xx_wwdg.c'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_sram.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32f4xx_wwdg.d" -MT"StdPeriph_Driver/src/stm32f4xx_wwdg.o" -o "StdPeriph_Driver/src/stm32f4xx_wwdg.o" "../StdPeriph_Driver/src/stm32f4xx_wwdg.c"
-'Finished building: ../StdPeriph_Driver/src/stm32f4xx_wwdg.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_sram.d" -MT"HAL_Driver/Src/stm32f1xx_hal_sram.o" -o "HAL_Driver/Src/stm32f1xx_hal_sram.o" "../HAL_Driver/Src/stm32f1xx_hal_sram.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_sram.c'
 ' '
-'Building target: libnucleo-f401re_stdperiph_lib.a'
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_tim.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_tim.d" -MT"HAL_Driver/Src/stm32f1xx_hal_tim.o" -o "HAL_Driver/Src/stm32f1xx_hal_tim.o" "../HAL_Driver/Src/stm32f1xx_hal_tim.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_tim.c'
+' '
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_tim_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_tim_ex.d" -MT"HAL_Driver/Src/stm32f1xx_hal_tim_ex.o" -o "HAL_Driver/Src/stm32f1xx_hal_tim_ex.o" "../HAL_Driver/Src/stm32f1xx_hal_tim_ex.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_tim_ex.c'
+' '
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_uart.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_uart.d" -MT"HAL_Driver/Src/stm32f1xx_hal_uart.o" -o "HAL_Driver/Src/stm32f1xx_hal_uart.o" "../HAL_Driver/Src/stm32f1xx_hal_uart.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_uart.c'
+' '
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_usart.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_usart.d" -MT"HAL_Driver/Src/stm32f1xx_hal_usart.o" -o "HAL_Driver/Src/stm32f1xx_hal_usart.o" "../HAL_Driver/Src/stm32f1xx_hal_usart.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_usart.c'
+' '
+'Building file: ../HAL_Driver/Src/stm32f1xx_hal_wwdg.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_hal_wwdg.d" -MT"HAL_Driver/Src/stm32f1xx_hal_wwdg.o" -o "HAL_Driver/Src/stm32f1xx_hal_wwdg.o" "../HAL_Driver/Src/stm32f1xx_hal_wwdg.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_hal_wwdg.c'
+' '
+'Building file: ../HAL_Driver/Src/stm32f1xx_ll_fsmc.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_ll_fsmc.d" -MT"HAL_Driver/Src/stm32f1xx_ll_fsmc.o" -o "HAL_Driver/Src/stm32f1xx_ll_fsmc.o" "../HAL_Driver/Src/stm32f1xx_ll_fsmc.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_ll_fsmc.c'
+' '
+'Building file: ../HAL_Driver/Src/stm32f1xx_ll_sdmmc.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_ll_sdmmc.d" -MT"HAL_Driver/Src/stm32f1xx_ll_sdmmc.o" -o "HAL_Driver/Src/stm32f1xx_ll_sdmmc.o" "../HAL_Driver/Src/stm32f1xx_ll_sdmmc.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_ll_sdmmc.c'
+' '
+'Building file: ../HAL_Driver/Src/stm32f1xx_ll_usb.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32f1xx_ll_usb.d" -MT"HAL_Driver/Src/stm32f1xx_ll_usb.o" -o "HAL_Driver/Src/stm32f1xx_ll_usb.o" "../HAL_Driver/Src/stm32f1xx_ll_usb.c"
+'Finished building: ../HAL_Driver/Src/stm32f1xx_ll_usb.c'
+' '
+'Building target: libstm32f103_hal_lib.a'
 'Invoking: MCU GCC Archiver'
-arm-none-eabi-ar -r  "libnucleo-f401re_stdperiph_lib.a" @"objects.list"  
-arm-none-eabi-ar: creating libnucleo-f401re_stdperiph_lib.a
-'Finished building target: libnucleo-f401re_stdperiph_lib.a'
+arm-none-eabi-ar -r  "libstm32f103_hal_lib.a" @"objects.list"  
+arm-none-eabi-ar: creating libstm32f103_hal_lib.a
+'Finished building target: libstm32f103_hal_lib.a'
 ' '
-18:36:23 **** Build of configuration Debug for project F401_test ****
+03:11:41 **** Build of configuration Debug for project F103 ****
 make all 
-'Building file: ../startup/startup_stm32f401xx.s'
+'Building file: ../startup/startup_stm32.s'
 'Invoking: MCU GCC Assembler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F401_test\Debug
-arm-none-eabi-as -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F401_test/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -g -o "startup/startup_stm32f401xx.o" "../startup/startup_stm32f401xx.s"
-'Finished building: ../startup/startup_stm32f401xx.s'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\Debug
+arm-none-eabi-as -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F103/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -g -o "startup/startup_stm32.o" "../startup/startup_stm32.s"
+'Finished building: ../startup/startup_stm32.s'
 ' '
 'Building file: ../src/main.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F401_test\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F401_test/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F103/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
 'Finished building: ../src/main.c'
+' '
+'Building file: ../src/stm32f4xx_it.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F103/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/stm32f4xx_it.d" -MT"src/stm32f4xx_it.o" -o "src/stm32f4xx_it.o" "../src/stm32f4xx_it.c"
+'Finished building: ../src/stm32f4xx_it.c'
 ' '
 'Building file: ../src/syscalls.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F401_test\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F401_test/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/syscalls.d" -MT"src/syscalls.o" -o "src/syscalls.o" "../src/syscalls.c"
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F103/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/syscalls.d" -MT"src/syscalls.o" -o "src/syscalls.o" "../src/syscalls.c"
 'Finished building: ../src/syscalls.c'
 ' '
-'Building file: ../src/system_stm32f4xx.c'
+'Building file: ../src/system_stm32f1xx.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F401_test\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DNUCLEO_F401RE -DSTM32F4 -DSTM32F401RETx -DSTM32 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F401xx -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F401_test/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/nucleo-f401re_stdperiph_lib/StdPeriph_Driver/inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/system_stm32f4xx.d" -MT"src/system_stm32f4xx.o" -o "src/system_stm32f4xx.o" "../src/system_stm32f4xx.c"
-'Finished building: ../src/system_stm32f4xx.c'
+C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32F1 -DSTM32F103C8Tx -DSTM32 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/F103/inc" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/core" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/CMSIS/device" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc/Legacy" -I"C:/Users/hiroyuki/Documents/RoboCon/STM32/Eclipce/stm32f103_hal_lib/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/system_stm32f1xx.d" -MT"src/system_stm32f1xx.o" -o "src/system_stm32f1xx.o" "../src/system_stm32f1xx.c"
+'Finished building: ../src/system_stm32f1xx.c'
 ' '
-'Building target: F401_test.elf'
+'Building target: F103.elf'
 'Invoking: MCU G++ Linker'
-arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -L"C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\nucleo-f401re_stdperiph_lib\Debug" -T"C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F401_test\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -fno-exceptions -fno-rtti -lm -o "F401_test.elf" @"objects.list"  -lnucleo-f401re_stdperiph_lib
-'Finished building target: F401_test.elf'
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -L"C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\stm32f103_hal_lib\Debug" -T"C:\Users\hiroyuki\Documents\RoboCon\STM32\Eclipce\F103\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -fno-exceptions -fno-rtti -lm -o "F103.elf" @"objects.list"  -lstm32f103_hal_lib
+'Finished building target: F103.elf'
 ' '
 make --no-print-directory post-build
 'Generating binary and Printing size information:'
-arm-none-eabi-objcopy -O binary "F401_test.elf" "F401_test.bin"
-arm-none-eabi-size "F401_test.elf"
+arm-none-eabi-objcopy -O binary "F103.elf" "F103.bin"
+arm-none-eabi-size "F103.elf"
    text	   data	    bss	    dec	    hex	filename
-   1352	   1076	   1568	   3996	    f9c	F401_test.elf
+   1160	   1076	   1056	   3292	    cdc	F103.elf
 ' '
