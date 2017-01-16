@@ -481,10 +481,11 @@ void TIM3_PWM_Update_IRQ(){
 
 }
 
+/*
 void TIM4_PWM_Update_IRQ(){
 
 }
-
+*/
 
 void TIM1_TIM_Update_IRQ(){
 	TIM::tim1Cnt++;

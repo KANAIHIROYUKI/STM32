@@ -8,12 +8,17 @@
 #define CAN_VLV 0x280
 #define CAN_ENC_SET 0x400
 #define CAN_ENC_VAL 0x440
-#define CAN_MTD 0x100
+#define CAN_MTD 0x104
 
 #define PWM_PERIOD 2048
 
 #define Kp (long int)5
 #define Kd (long int)10
+
+#define TEST_DUTY 200
+
+#define MODE_RUN 0
+#define MODE_DEBUG 1
 
 uint16_t rxFlag = 0,encOld;
 
@@ -26,6 +31,9 @@ union UNION{
 	int32_t enc32bit;
 };
 int32_t enc[4];
+
+int32_t outA_duty = 0,outB_duty = 0;
+uint64_t motorTimeA,motorTimeB;
 
 uint64_t intervalTime = 0,timCnt=0;
 
@@ -90,8 +98,12 @@ MOTOR motorB;
 
 CAN can1;
 
+uint8_t motorModeA = MODE_RUN,motorModeB = MODE_RUN;
+
 int main(void)
 {
+
+
 	union UNION encValue;
 	encValue.enc32bit = 0;
 
@@ -124,11 +136,6 @@ int main(void)
 	sel4.setup(PB1,INPUT_PU);
 	sel8.setup(PB11,INPUT_PU);
 	canAddress = 15 - (sel1.read() + sel2.read()*2 + sel4.read()*4 + sel8.read()*8);
-
-	io0.setup(PA15,OUTPUT);
-	io1.setup(PB3,OUTPUT);
-	io2.setup(PB4,OUTPUT);
-	io3.setup(PB5,OUTPUT);
 
 	motorEN.setup(PB12,OUTPUT);
 
@@ -170,99 +177,63 @@ int main(void)
 	pwmBN.duty(PWM_PERIOD/2);
 	motorEN.write(Bit_SET);
 
-
 	serial.setup(USART1,921600);
 	serial.printf("\n\rFILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
 	serial.printf("ADRS = %d\n\r",canAddress);
 
-
-	delay(100);
-
-	can1.setup();
-
-	can1.filterAdd(CAN_MTD);
-	can1.filterAdd(CAN_ENC_VAL,CAN_ENC_VAL + 1,CAN_ENC_VAL + 2,CAN_ENC_VAL + 3);
-
-
-	canData[0] = 1;
-	canData[1] = 10;
-	canData[2] = 0;
-	can1.send(CAN_ENC_SET,3,canData);
-
-	delay(10);
-	canData[0] = 0;
-	can1.send(CAN_ENC_SET,1,canData);
-
-	canData[0] = 1;
-	canData[1] = 10;
-	canData[2] = 0;
-	can1.send(CAN_ENC_SET + 1,3,canData);
-
-	delay(10);
-	canData[0] = 0;
-	can1.send(CAN_ENC_SET + 1,1,canData);
-
-
-	motorA.duty(500);
-	motorB.duty(500);
-	delay(1000);
-	motorA.duty(-500);
-	motorB.duty(-500);
-	delay(1000);
-	motorA.duty(0);
-	motorB.duty(0);
-
-	while(1){
-		delay(3000);
-		pin13.toggle();
-		pin14.toggle();
-		pin15.toggle();
+	if(sw1.read() == 0){
+		motorModeA = MODE_DEBUG;
+		serial.printf("motorA debug mode\n\rsw1:cw sw2 ccw\n\r");
+	}
+	if(sw2.read() == 0){
+		motorModeB = MODE_DEBUG;
+		serial.printf("motorB debug mode\n\rsw1:cw sw2 ccw\n\r");
 	}
 
+	while(sw1.read() == 0 || sw2.read() == 0);
+	delay(500);
+
+	can1.setup();
+	can1.filterAdd(CAN_MTD,CAN_MTD + 1);
+
+	motorTimeA = 0;
+	motorTimeB = 0;
 
     while(1){
-    	canAddress = 15 - (sel1.read() + sel2.read()*2 + sel4.read()*4 + sel8.read()*8);
+    	//canAddress = 15 - (sel1.read() + sel2.read()*2 + sel4.read()*4 + sel8.read()*8);
 
 
-    	/*canData[0] = 0xFF;
-    	canData[1] = canAddress;
-    	CAN1Send(CAN_VLV,2,canData);
-    	delay(100);*/
-
-
-    	if(sw2.read() == 0){
-    		ledB.write(Bit_SET);
-    		serial.printf("B\n\r");
-    	}else{
-    		ledB.write(Bit_RESET);
+    	if(motorTimeA + 100 < millis()){
+    		motorA.duty(0);
+    	}
+    	if(motorTimeB + 100 < millis()){
+    		motorB.duty(0);
     	}
 
-
     	if(sw1.read() == 0){
-    		ledA.write(Bit_SET);
-    		serial.printf("A\n\r");
-    		can1.send(CAN_ENC_VAL,0,canData);
-    		delay(250);
-    	}else{
-    		ledA.write(Bit_RESET);
+    		if(motorModeA == MODE_DEBUG){
+    			motorA.duty(TEST_DUTY);
+    			motorTimeA = millis();
+    		}
+    		if(motorModeB == MODE_DEBUG){
+    			motorTimeB = millis();
+    			motorB.duty(TEST_DUTY);
+    		}
+    	}else if(sw2.read() == 0){
+    		if(motorModeA == MODE_DEBUG){
+    			motorA.duty(-TEST_DUTY);
+    			motorTimeA = millis();
+    		}
+    		if(motorModeB == MODE_DEBUG){
+    			motorTimeB = millis();
+    			motorB.duty(-TEST_DUTY);
+    		}
     	}
 
     	while(rxFlag > 0){
     		rxFlag--;
-    		if(RxMessage.StdId == 0x0103){
-    			int32_t outA_duty = 0;
-    			motorA.duty(outA_duty/31);
-    			serial.printf("OUTA = %d,",outA_duty/31);
-    		}
-    		if(RxMessage.StdId == CAN_ENC_VAL){
-    			encValue.can8bit[0] = RxMessage.Data[0];
-    			encValue.can8bit[1] = RxMessage.Data[1];
-    			encValue.can8bit[2] = RxMessage.Data[2];
-    			encValue.can8bit[3] = RxMessage.Data[3];
-    			serial.printf("%d\n\r",encValue.enc32bit);
-    		}
     		//serial.printf("CAN ADD = %x,Data = %d,%d,%d,%d,%d,%d,%d,%d\n\r",RxMessage.StdId,RxMessage.Data[0],RxMessage.Data[1],RxMessage.Data[2],RxMessage.Data[3],RxMessage.Data[4],RxMessage.Data[5],RxMessage.Data[6],RxMessage.Data[7]);
     	}
 
@@ -272,8 +243,41 @@ int main(void)
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	rxFlag++;
-	can1.receive(&RxMessage);
-	//can1.receive();
-	//RxMessage = can1.rxMessage;
+	//can1.receive(&RxMessage);
+
+	CAN_Receive(CAN1,CAN_FIFO0,&RxMessage);
+
+
+
+
+	if(RxMessage.StdId == CAN_MTD){
+		outA_duty = 0;
+		motorTimeA = millis();
+
+		outA_duty = ((RxMessage.Data[1] & 0b01111111) << 8) | RxMessage.Data[0];
+		if((RxMessage.Data[1] >> 7) == 1){
+			outA_duty -= outA_duty;
+		}
+
+		outA_duty /= 32;
+
+		motorA.duty(outA_duty);
+	}else if(RxMessage.StdId == CAN_MTD + 1){
+		outB_duty = 0;
+		motorTimeB = millis();
+
+		outB_duty = ((RxMessage.Data[1] & 0b01111111) << 8) | RxMessage.Data[0];
+		if((RxMessage.Data[1] >> 7) == 1){
+			outB_duty -= outB_duty;
+		}
+
+		outB_duty /= 32;
+		motorB.duty(outB_duty);
+	}
+
+
+
+
+	serial.printf("A = %d,B = %d\n\r",outA_duty,outB_duty);
 	return;
 }

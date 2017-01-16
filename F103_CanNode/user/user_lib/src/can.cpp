@@ -49,6 +49,7 @@ void CAN1Setup(){
 	CAN_InitStructure.CAN_NART = DISABLE;
 	CAN_InitStructure.CAN_TXFP = DISABLE;
 	CAN_InitStructure.CAN_Mode = CAN_Mode_Normal;
+	//CAN_InitStructure.CAN_Mode = CAN_Mode_LoopBack;
 	CAN_InitStructure.CAN_SJW = CAN_SJW_1tq;
 	CAN_InitStructure.CAN_BS1 = CAN_BS1_5tq;
 	CAN_InitStructure.CAN_BS2 = CAN_BS2_6tq;

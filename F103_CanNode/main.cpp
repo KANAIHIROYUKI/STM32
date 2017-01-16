@@ -7,12 +7,13 @@
 //#define PD
 
 
-#define DEBUG
+//#define DEBUG
 
 #define CAN_VLV 0x280
 #define CAN_MTD 0x100
-#define CAN_ENC_VAL 0x440
-#define CAN_ENC_SET 0x400
+
+#define CAN_ENC_VAL 0x444
+#define CAN_ENC_SET 0x404
 
 #define ENC_PPR 512
 #define GEAR_RATIO 27
@@ -51,10 +52,6 @@ GPIO canRX;
 
 TIM enc[4];
 
-#ifdef PD
-TIM pwm[4];
-#endif
-
 USART serial;
 
 CAN can1;
@@ -76,20 +73,10 @@ int main(void)
 	enc4b.setup(PB7,INPUT_PU);
 
 	enc[0].encoderSetup(TIM1);
-#ifndef PD
 	enc[1].encoderSetup(TIM2);
 	enc[2].encoderSetup(TIM3);
-#endif
 	enc[3].encoderSetup(TIM4);
 
-#ifdef PD
-	pwm[0].pwmSetup(TIM2,3);
-	pwm[1].pwmSetup(TIM2,4);
-	pwm[2].pwmSetup(TIM3,3);
-	pwm[3].pwmSetup(TIM3,4);
-#endif
-
-#ifndef PD
 	io[0].setup(PA2,OUTPUT);
 	io[1].setup(PA3,OUTPUT);
 	io[2].setup(PA4,OUTPUT);
@@ -99,19 +86,6 @@ int main(void)
 	io[5].setup(PB1,OUTPUT);
 	io[6].setup(PB12,OUTPUT);
 	io[7].setup(PB13,OUTPUT);
-#endif
-
-#ifdef PD
-	io[0].setup(PA2,OUTPUT_AF);
-	io[1].setup(PA3,OUTPUT_AF);
-	io[2].setup(PA4,OUTPUT);
-	io[3].setup(PA5,OUTPUT);
-
-	io[4].setup(PB0,OUTPUT_AF);
-	io[5].setup(PB1,OUTPUT_AF);
-	io[6].setup(PB12,OUTPUT);
-	io[7].setup(PB13,OUTPUT);
-#endif
 
 	led.setup(PB2,OUTPUT);
 
@@ -128,40 +102,25 @@ int main(void)
 
 
 	can1.setup();
-	//can1.filterAdd(0x100,0x101,0x102,0x103);
-	//can1.filterAdd(0x104,0x105,0x106,0x107);
+
+	canData[0] = 1;
+	canData[1] = 10;
+	can1.send(CAN_ENC_SET,8,canData);
+
+	/*can1.filterAdd(0x100,0x101,0x102,0x103);
+	can1.filterAdd(0x104,0x105,0x106,0x107);*/
 	can1.filterAdd(CAN_VLV);
 	can1.filterAdd(CAN_ENC_SET,CAN_ENC_SET + 1,CAN_ENC_SET + 2,CAN_ENC_SET + 3);
 	can1.filterAdd(CAN_ENC_VAL,CAN_ENC_VAL + 1,CAN_ENC_VAL + 2,CAN_ENC_VAL + 3);
 
 	enc[0].reverse();
 
-#ifdef DEBUG
-	intervalTime[0] = 100;
-#endif
-
-#ifdef PD
-	pdInterval = millis() + 1000;
-#endif
 
     while(1){
-#ifdef PD
-    	if(pdInterval < millis()){
-    		pdInterval = millis() + 10000;
-    		pwm[0].duty(1024);
-    		enc[0].reset();
-    		while(enc[0].read() < ENC_PPR * GEAR_RATIO * 10){
-    			delay(10);
-    			serial.printf("%d\n\r",enc[0].read());
-    		}
-    		pwm[0].duty(0);
-    	}
-#endif
-
 
     	for(int i=0;i<4;i++){
         	if(intervalTime[i] != 0){
-            	if(intervalTimer[i] < millis()){
+            	if(intervalTimer[i] <= millis()){
             		uint32_t encValue = enc[i].read();
             		intervalTimer[i] = millis() + intervalTime[i];
 
@@ -169,6 +128,8 @@ int main(void)
             		canData[1] = (encValue >> 8) & 0xFF;
             		canData[2] = (encValue >> 16) & 0xFF;
             		canData[3] = (encValue >> 24) & 0xFF;
+
+            		//serial.printf("%d",i);
             		CAN1Send(CAN_ENC_VAL + i,4,canData);
             	}
         	}
@@ -227,7 +188,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 		}
 	}
 	//serial.printf("CAN ID = 0x,%x,DATA = ,%d,%d,%d,%d,%d,%d,%d,%d\n\r",rxMessage.StdId,rxMessage.Data[0],rxMessage.Data[1],rxMessage.Data[2],rxMessage.Data[3],rxMessage.Data[4],rxMessage.Data[5],rxMessage.Data[6],rxMessage.Data[7]);
-	serial.printf("%x\n\r",rxMessage.StdId);
+	serial.printf("ID = %x,%x,%x\n\r",rxMessage.StdId,rxMessage.Data[1],rxMessage.Data[2]);
 	return;
 }
 
