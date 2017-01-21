@@ -5,10 +5,11 @@ void CanEncoder::setup(CAN &can,uint16_t number,uint16_t interval){
 	canEnc_address = CAN_ADD_ENC_VALUE + number;	//エンコーダ値のアドレス
 	canEnc_can->filterAdd(canEnc_address);
 
-	uint8_t canData[] = {0,0,0,0,0,0,0,0};
+	uint8_t canData[3];
 	canData[0] = 1;
-	canData[1] = interval;
-	canEnc_can->send(CAN_ADD_ENC_SETUP + number,8,canData);	//インターバルの設定
+	canData[1] = interval & 0xFF;
+	canData[2] = (interval >> 8) & 0xFF;
+	canEnc_can->send(CAN_ADD_ENC_SETUP + number,3,canData);	//インターバルの設定
 	canEnc_receiveTime = millis();
 }
 
@@ -24,9 +25,9 @@ void CanEncoder::interrupt(CanRxMsg rxMessage){
 }
 
 void CanEncoder::reset(){
-	uint8_t canData[] = {0,0,0,0,0,0,0,0};
+	uint8_t canData[1];
 	canData[0] = 0;
-	canEnc_can->send(CAN_ADD_ENC_SETUP,8,canData);
+	canEnc_can->send(CAN_ADD_ENC_SETUP,1,canData);
 }
 
 uint64_t CanEncoder::lastReceiveTime(){

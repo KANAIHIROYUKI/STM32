@@ -1064,6 +1064,32 @@ Discarded input sections
  .debug_frame   0x00000000     0x10c8 ..\obj\utilplus.o
  .ARM.attributes
                 0x00000000       0x33 ..\obj\utilplus.o
+ .text          0x00000000        0x0 ..\obj\canMotorDriver.o
+ .data          0x00000000        0x0 ..\obj\canMotorDriver.o
+ .bss           0x00000000        0x0 ..\obj\canMotorDriver.o
+ .text._ZN8CanMotor5setupER3CANt
+                0x00000000       0x18 ..\obj\canMotorDriver.o
+ .ARM.extab.text._ZN8CanMotor5setupER3CANt
+                0x00000000        0x0 ..\obj\canMotorDriver.o
+ .ARM.exidx.text._ZN8CanMotor5setupER3CANt
+                0x00000000        0x8 ..\obj\canMotorDriver.o
+ .text._ZN8CanMotor4dutyEs
+                0x00000000       0x18 ..\obj\canMotorDriver.o
+ .ARM.extab.text._ZN8CanMotor4dutyEs
+                0x00000000        0x0 ..\obj\canMotorDriver.o
+ .ARM.exidx.text._ZN8CanMotor4dutyEs
+                0x00000000        0x8 ..\obj\canMotorDriver.o
+ .debug_info    0x00000000      0x6ae ..\obj\canMotorDriver.o
+ .debug_abbrev  0x00000000      0x1f1 ..\obj\canMotorDriver.o
+ .debug_aranges
+                0x00000000       0x28 ..\obj\canMotorDriver.o
+ .debug_ranges  0x00000000       0x18 ..\obj\canMotorDriver.o
+ .debug_line    0x00000000      0x2fe ..\obj\canMotorDriver.o
+ .debug_str     0x00000000      0x51b ..\obj\canMotorDriver.o
+ .comment       0x00000000       0x6f ..\obj\canMotorDriver.o
+ .debug_frame   0x00000000       0x60 ..\obj\canMotorDriver.o
+ .ARM.attributes
+                0x00000000       0x33 ..\obj\canMotorDriver.o
  .text          0x00000000        0x0 ..\obj\tim.o
  .data          0x00000000        0x0 ..\obj\tim.o
  .ARM.extab.text._ZN3TIM4dutyEt
@@ -1208,7 +1234,7 @@ Discarded input sections
  .ARM.exidx.text._ZN10CanEncoder9interruptE8CanRxMsg
                 0x00000000        0x8 ..\obj\canEncoder.o
  .text._ZN10CanEncoder5resetEv
-                0x00000000       0x30 ..\obj\canEncoder.o
+                0x00000000       0x28 ..\obj\canEncoder.o
  .ARM.extab.text._ZN10CanEncoder5resetEv
                 0x00000000        0xc ..\obj\canEncoder.o
  .ARM.exidx.text._ZN10CanEncoder5resetEv
@@ -1219,12 +1245,12 @@ Discarded input sections
                 0x00000000        0xc ..\obj\canEncoder.o
  .ARM.exidx.text._ZN10CanEncoder15lastReceiveTimeEv
                 0x00000000        0x8 ..\obj\canEncoder.o
- .debug_info    0x00000000      0x7a7 ..\obj\canEncoder.o
+ .debug_info    0x00000000      0x7b7 ..\obj\canEncoder.o
  .debug_abbrev  0x00000000      0x224 ..\obj\canEncoder.o
  .debug_aranges
                 0x00000000       0x40 ..\obj\canEncoder.o
  .debug_ranges  0x00000000       0x30 ..\obj\canEncoder.o
- .debug_line    0x00000000      0x338 ..\obj\canEncoder.o
+ .debug_line    0x00000000      0x337 ..\obj\canEncoder.o
  .debug_str     0x00000000      0x5bd ..\obj\canEncoder.o
  .comment       0x00000000       0x6f ..\obj\canEncoder.o
  .debug_frame   0x00000000       0xe0 ..\obj\canEncoder.o
@@ -1314,13 +1340,27 @@ Discarded input sections
  .text          0x00000000        0x0 ..\obj\canValve.o
  .data          0x00000000        0x0 ..\obj\canValve.o
  .bss           0x00000000        0x0 ..\obj\canValve.o
- .debug_info    0x00000000       0x99 ..\obj\canValve.o
- .debug_abbrev  0x00000000       0x4b ..\obj\canValve.o
+ .text._ZN8CanValve5setupER3CANt
+                0x00000000       0x3c ..\obj\canValve.o
+ .ARM.extab.text._ZN8CanValve5setupER3CANt
+                0x00000000        0xc ..\obj\canValve.o
+ .ARM.exidx.text._ZN8CanValve5setupER3CANt
+                0x00000000        0x8 ..\obj\canValve.o
+ .text._ZN8CanValve5writeEhh
+                0x00000000       0x4c ..\obj\canValve.o
+ .ARM.extab.text._ZN8CanValve5writeEhh
+                0x00000000        0xc ..\obj\canValve.o
+ .ARM.exidx.text._ZN8CanValve5writeEhh
+                0x00000000        0x8 ..\obj\canValve.o
+ .debug_info    0x00000000      0x6a2 ..\obj\canValve.o
+ .debug_abbrev  0x00000000      0x1f1 ..\obj\canValve.o
  .debug_aranges
-                0x00000000       0x18 ..\obj\canValve.o
- .debug_line    0x00000000      0x132 ..\obj\canValve.o
- .debug_str     0x00000000      0x1cc ..\obj\canValve.o
+                0x00000000       0x28 ..\obj\canValve.o
+ .debug_ranges  0x00000000       0x18 ..\obj\canValve.o
+ .debug_line    0x00000000      0x2f9 ..\obj\canValve.o
+ .debug_str     0x00000000      0x4f8 ..\obj\canValve.o
  .comment       0x00000000       0x6f ..\obj\canValve.o
+ .debug_frame   0x00000000       0x58 ..\obj\canValve.o
  .ARM.attributes
                 0x00000000       0x33 ..\obj\canValve.o
  .text          0x00000000        0x0 ..\obj\main.o
@@ -3265,6 +3305,7 @@ LOAD ..\obj\stm32f10x_dbgmcu.o
 LOAD ..\obj\iwdg.o
 LOAD ..\obj\system_stm32f10x.o
 LOAD ..\obj\utilplus.o
+LOAD ..\obj\canMotorDriver.o
 LOAD ..\obj\tim.o
 LOAD ..\obj\canEncoder.o
 LOAD ..\obj\startup_stm32f10x_md.o

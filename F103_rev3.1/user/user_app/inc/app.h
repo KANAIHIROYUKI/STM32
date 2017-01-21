@@ -8,6 +8,7 @@
 
 #include "canEncoder.h"
 #include "canValve.h"
+#include "canMotorDriver.h"
 
 #include "canNodeEncoder.h"
 #include "canNodeValve.h"
