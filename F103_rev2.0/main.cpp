@@ -256,7 +256,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 
 		outA_duty = ((RxMessage.Data[1] & 0b01111111) << 8) | RxMessage.Data[0];
 		if((RxMessage.Data[1] >> 7) == 1){
-			outA_duty -= outA_duty;
+			outA_duty = -outA_duty;
 		}
 
 		outA_duty /= 32;
@@ -268,7 +268,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 
 		outB_duty = ((RxMessage.Data[1] & 0b01111111) << 8) | RxMessage.Data[0];
 		if((RxMessage.Data[1] >> 7) == 1){
-			outB_duty -= outB_duty;
+			outB_duty = -outB_duty;
 		}
 
 		outB_duty /= 32;
