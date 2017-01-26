@@ -45,10 +45,10 @@ void setup(){
 
 	led.setup(PB2,OUTPUT);
 
-	io[0].setup(PA2,OUTPUT);
-	io[1].setup(PA3,OUTPUT);
-	io[2].setup(PB0,OUTPUT);
-	io[3].setup(PB1,OUTPUT);
+	//io[0].setup(PA2,OUTPUT);
+	//io[1].setup(PA3,OUTPUT);
+	//io[2].setup(PB0,OUTPUT);
+	//io[3].setup(PB1,OUTPUT);
 	io[4].setup(PA4,OUTPUT);
 	io[5].setup(PA5,OUTPUT);
 	io[6].setup(PB12,OUTPUT);

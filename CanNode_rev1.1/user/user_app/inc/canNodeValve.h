@@ -11,11 +11,12 @@ public:
 	void interrupt();
 
 	GPIO *canValve_gpio[8];
-	CAN *canValve_can;
+
 	uint16_t canValve_address;
 	uint8_t canValuve_pinNumber;
-private:
 
+private:
+	CAN *canValve_can;
 };
 
 

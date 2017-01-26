@@ -13,10 +13,11 @@ public :
 	uint64_t lastReceiveTime();
 	uint64_t canEnc_receiveTime;
 	int32_t canEnc_value;
-private:
-
-	CAN *canEnc_can;
 	uint16_t canEnc_address;
+
+private:
+	CAN *canEnc_can;
+
 };
 
 #endif

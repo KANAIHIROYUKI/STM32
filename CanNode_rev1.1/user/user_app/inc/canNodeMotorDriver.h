@@ -18,7 +18,6 @@ public:
 	int32_t outDuty;
 	uint16_t canMd_address;
 
-	CAN* canMd_can;
 	GPIO *canMd_led;
 	MOTOR* canMd_motor;
 
@@ -26,6 +25,9 @@ public:
 
 	uint64_t canMd_receiveTime,canMd_ledTime;
 	uint16_t canMd_maxInterval;
+
+private:
+	CAN* canMd_can;
 };
 
 

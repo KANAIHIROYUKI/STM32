@@ -13,13 +13,12 @@ public:
 	void interrupt();
 
 	uint32_t canEnc_interval;
-	CAN* canEnc_can;
 	TIM* canEnc_enc;
 	uint32_t canEnc_intervalTimer;
 	uint16_t canEnc_address;
 
 private:
-
+	CAN* canEnc_can;
 };
 
 

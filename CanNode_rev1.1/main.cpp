@@ -13,6 +13,15 @@ int main(void)
 
     	if(printTime <= millis()){
        		printTime = millis() + PRINT_TIME;
+
+       		if(enc[0].read() > 5000){
+       			pwm[0].duty(2000);
+       		}else if(enc[0].read() < -5000){
+       			pwm[0].duty(1000);
+       		}else{
+       			pwm[0].duty(1500 + (enc[0].read()/10));
+       		}
+
     		IWDGReset();
 
     		serial.printf("%d,%d,%d\n\r",enc[0].read(),canEncoder.canEnc_value,canEnc[0].canEnc_intervalTimer);

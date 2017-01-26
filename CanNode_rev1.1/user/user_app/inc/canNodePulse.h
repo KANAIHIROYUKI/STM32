@@ -13,8 +13,9 @@ public:
 	void interrupt();
 
 	uint16_t canPulse_address;
-	CAN *canPulse_can;
 	TIM *canPulse_tim;
+private:
+	CAN *canPulse_can;
 };
 
 
