@@ -16,7 +16,7 @@
 #define GEAR_RATIO 27
 #define TIRE_DIR 20
 
-#define PRINT_TIME 100
+#define PRINT_TIME 20
 
 uint16_t rxFlag = 0,limitResetMode[4] = {3,3,3,3};
 
@@ -41,34 +41,41 @@ int main(void)
 
 	setup();
 
-	enc[0].encoderSetup(TIM1,PA0,PA1);
-	enc[1].encoderSetup(TIM2,PA6,PA7);
-	enc[2].encoderSetup(TIM3,PB8,PB9);
-	enc[3].encoderSetup(TIM4,PB6,PB7);
+
+	//enc[0].encoderSetup(TIM1,PA0,PA1);
+	//enc[1].encoderSetup(TIM2,PA6,PA7);
+	//enc[2].encoderSetup(TIM3,PB8,PB9);
+	//enc[3].encoderSetup(TIM4,PB6,PB7);
 	enc[0].reverse();
 
 	Can1 can1;
 
-	canEnc[0].setup(enc[0],can1,CAN_ENC_SET);
-	canEnc[1].setup(enc[1],can1,CAN_ENC_SET + 1);
-	canEnc[2].setup(enc[2],can1,CAN_ENC_SET + 2);
-	canEnc[3].setup(enc[3],can1,CAN_ENC_SET + 3);
+	//canEnc[0].setup(enc[0],can1,CAN_ENC_SET);
+	//canEnc[1].setup(enc[1],can1,CAN_ENC_SET + 1);
+	//canEnc[2].setup(enc[2],can1,CAN_ENC_SET + 2);
+	//canEnc[3].setup(enc[3],can1,CAN_ENC_SET + 3);
 
-	/*
+
 	pwm[0].pwmSetup(TIM2,3,10000,72);
 	pwm[1].pwmSetup(TIM2,4,10000,72);
 	pwm[2].pwmSetup(TIM3,3,10000,72);
-	pwm[3].pwmSetup(TIM3,4,10000,72);*/	//1MHzでカウントアップ,分解能1us単位
+	pwm[3].pwmSetup(TIM3,4,10000,72);	//1MHzでカウントアップ,分解能1us単位
 
-	Led led;
-	Port0 port;
-	canValve.setup(port,can1,CAN_VLV);
+	GPIO io[2];
+	io[0].setup(PA2,OUTPUT_AF);
+	io[1].setup(PA2,OUTPUT_AF);
+
+	pwm[0].duty(500);
+	pwm[1].duty(500);
+	//Led led;
+	//Port0 port;
+	//canValve.setup(port,can1,CAN_VLV);
 
 
 
 	Serial0 serial;
 	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
-	serial.printf("%d\n\r",port.port_num);
+	//serial.printf("%d\n\r",port.port_num);
 
 
 	//can1.setup();
@@ -95,7 +102,7 @@ int main(void)
     	}
 
     	for(int i=0;i<4;i++){
-    		canEnc[i].cycle();
+    		//canEnc[i].cycle();
     		/*
         	if(intervalTime[i] != 0){
             	if(intervalTimer[i] < millis()){
@@ -113,8 +120,10 @@ int main(void)
 
 
     	if(printTime < millis()){
-    		led.toggle();
-    		port.invert();
+
+
+    		pwm[0].duty(pwmCnt);
+    		pwmCnt+=10;
 
     		IWDGReset();
 
@@ -122,7 +131,7 @@ int main(void)
     		//pwm[0].duty(pwmCnt);
 
     		printTime = millis() + PRINT_TIME;
-    		serial.printf("%f\n\r",f_v);
+    		serial.printf("%d\n\r",pwmCnt);
     		//serial.printf("itv = %2d,cnt = %8d, itv = %2d,cnt = %8d, itv = %2d,cnt = %8d, itv = %2d,cnt = %8d\n\r",(uint32_t)intervalTime[0],(uint32_t)enc[0].read(),(uint32_t)intervalTime[1],(uint32_t)enc[1].read(),(uint32_t)intervalTime[2],(uint32_t)enc[2].read(),(uint32_t)intervalTime[3],(uint32_t)enc[3].read());
     		//serial.printf("itv = %2d,cnt = %8d, itv = %2d,cnt = %8d",(uint32_t)canEnc[0].canEnc_interval,(uint32_t)canEnc[0].canEnc_enc->read(),(uint32_t)canEnc[1].canEnc_interval,(uint32_t)canEnc[1].canEnc_enc->read());
     		//serial.printf("itv = %2d,cnt = %8d, itv = %2d,cnt = %8d\n\r",(uint32_t)canEnc[2].canEnc_interval,(uint32_t)canEnc[2].canEnc_enc->read(),(uint32_t)canEnc[3].canEnc_interval,(uint32_t)canEnc[3].canEnc_enc->read());
@@ -138,7 +147,7 @@ int main(void)
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
-	Port0 port;
+	//Port0 port;
 	rxFlag++;
 	//can1.receive(&rxMessage);
 	CAN_Receive(CAN1,CAN_FIFO0,&rxMessage);
@@ -152,9 +161,9 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 		for(int i=0;i<8;i++){
 			if((rxMessage.Data[0] & (1 << i)) != 0){
 				if(((rxMessage.Data[1] & (1 << i)) != 0)){
-					port.io[i].write(Bit_SET);
+					//port.io[i].write(Bit_SET);
 				}else{
-					port.io[i].write(Bit_RESET);
+					//port.io[i].write(Bit_RESET);
 				}
 			}
 		}

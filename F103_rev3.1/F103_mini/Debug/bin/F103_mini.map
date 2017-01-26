@@ -1584,27 +1584,33 @@ Discarded input sections
  .text          0x00000000        0x0 ..\obj\canNodeValve.o
  .data          0x00000000        0x0 ..\obj\canNodeValve.o
  .bss           0x00000000        0x0 ..\obj\canNodeValve.o
- .text._ZN12CanNodeValve5setupER4PORTR3CANt
-                0x00000000       0x2c ..\obj\canNodeValve.o
- .ARM.extab.text._ZN12CanNodeValve5setupER4PORTR3CANt
+ .text._ZN12CanNodeValve5setupER3CANt
+                0x00000000       0x40 ..\obj\canNodeValve.o
+ .ARM.extab.text._ZN12CanNodeValve5setupER3CANt
+                0x00000000        0xc ..\obj\canNodeValve.o
+ .ARM.exidx.text._ZN12CanNodeValve5setupER3CANt
+                0x00000000        0x8 ..\obj\canNodeValve.o
+ .text._ZN12CanNodeValve6pinAddER4GPIO
+                0x00000000       0x34 ..\obj\canNodeValve.o
+ .ARM.extab.text._ZN12CanNodeValve6pinAddER4GPIO
                 0x00000000        0x0 ..\obj\canNodeValve.o
- .ARM.exidx.text._ZN12CanNodeValve5setupER4PORTR3CANt
+ .ARM.exidx.text._ZN12CanNodeValve6pinAddER4GPIO
                 0x00000000        0x8 ..\obj\canNodeValve.o
  .text._ZN12CanNodeValve9interruptE8CanRxMsg
-                0x00000000       0x98 ..\obj\canNodeValve.o
+                0x00000000       0x90 ..\obj\canNodeValve.o
  .ARM.extab.text._ZN12CanNodeValve9interruptE8CanRxMsg
                 0x00000000        0xc ..\obj\canNodeValve.o
  .ARM.exidx.text._ZN12CanNodeValve9interruptE8CanRxMsg
                 0x00000000        0x8 ..\obj\canNodeValve.o
- .debug_info    0x00000000      0x871 ..\obj\canNodeValve.o
- .debug_abbrev  0x00000000      0x254 ..\obj\canNodeValve.o
+ .debug_info    0x00000000      0x83f ..\obj\canNodeValve.o
+ .debug_abbrev  0x00000000      0x245 ..\obj\canNodeValve.o
  .debug_aranges
-                0x00000000       0x28 ..\obj\canNodeValve.o
- .debug_ranges  0x00000000       0x18 ..\obj\canNodeValve.o
- .debug_line    0x00000000      0x33c ..\obj\canNodeValve.o
- .debug_str     0x00000000      0x6e7 ..\obj\canNodeValve.o
+                0x00000000       0x30 ..\obj\canNodeValve.o
+ .debug_ranges  0x00000000       0x20 ..\obj\canNodeValve.o
+ .debug_line    0x00000000      0x345 ..\obj\canNodeValve.o
+ .debug_str     0x00000000      0x6d4 ..\obj\canNodeValve.o
  .comment       0x00000000       0x6f ..\obj\canNodeValve.o
- .debug_frame   0x00000000       0x68 ..\obj\canNodeValve.o
+ .debug_frame   0x00000000       0x8c ..\obj\canNodeValve.o
  .ARM.attributes
                 0x00000000       0x33 ..\obj\canNodeValve.o
  .text          0x00000000        0x0 ..\obj\syscalls.o

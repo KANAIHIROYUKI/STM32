@@ -2,17 +2,19 @@
 #define _CAN_NODE_VALVE_
 
 #include "system.h"
-#include "port.h"
+#include "gpio.h"
 
 class CanNodeValve{
 public:
-	int setup(PORT &port,CAN &can,uint16_t address);
+	int setup(CAN &can,uint16_t address);
 	//void cycle();
+	void pinAdd(GPIO &gpio);
 	void interrupt(CanRxMsg rxMessage);
 private:
-	PORT *canValve_port;
+	GPIO *canValve_gpio[8];
 	CAN *canValve_can;
 	uint16_t canValve_address;
+	uint8_t canValuve_pinNumber;
 };
 
 

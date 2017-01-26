@@ -2,7 +2,7 @@
 #define CAN_MD_H_
 
 #include "system.h"
-
+#include "can.h"
 #include "motor.h"
 
 #define LED_INTERVAL_NORECEIVE 50

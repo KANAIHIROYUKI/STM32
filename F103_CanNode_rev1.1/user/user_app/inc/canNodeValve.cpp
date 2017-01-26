@@ -1,8 +1,8 @@
 #include "canNodeValve.h"
 
-int CanNodeValve::setup(PORT &port,CAN &can,uint16_t address){
+int CanNodeValve::setup(GPIO &gpio,uint8_t pinNumber,CAN &can,uint16_t address){
 	this->canValve_can = &can;
-	this->canValve_port = &port;
+	this->canValve_gpio = &gpio;
 	canValve_address = address;
 	return 0;
 }
