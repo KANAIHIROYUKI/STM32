@@ -12,7 +12,7 @@
       <source file="..\..\..\stm_lib\src\misc.c" lastModified="1577eea0b7c">
          <include file="..\..\..\stm_lib\inc\misc.h"/>
       </source>
-      <source file="..\..\..\user\user_app\inc\canNodeMotorDriver.h" lastModified="159d883603d">
+      <source file="..\..\..\user\user_app\inc\canNodeMotorDriver.h" lastModified="159e04fe8be">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_app\inc\motor.h"/>
       </source>
@@ -22,10 +22,6 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="1577ee5e08f">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\main.hpp" lastModified="159d8a16b8f">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_app\inc\app.h"/>
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f10x.h" lastModified="1577ee5e099">
       </source>
@@ -45,14 +41,11 @@
       <source file="..\..\..\user\user_app\src\constantCurrentControl.cpp" lastModified="1599bb55370">
          <include file="..\..\..\user\user_app\inc\constantCurrentControl.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\canEncoder.cpp" lastModified="159d55f2325">
+      <source file="..\..\..\user\user_app\src\canEncoder.cpp" lastModified="159df168198">
          <include file="..\..\..\user\user_app\inc\canEncoder.h"/>
       </source>
       <source file="..\..\..\user\user_lib\inc\adc.h" lastModified="1599bb6b211">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
-      </source>
-      <source file="..\..\..\main.cpp" lastModified="159d880e3f6">
-         <include file="..\..\..\main.hpp"/>
       </source>
       <source file="..\..\..\user\user_lib\src\iwdg.cpp" lastModified="1599bb749f4">
          <include file="..\..\..\user\user_lib\inc\iwdg.h"/>
@@ -74,13 +67,13 @@
       <source file="..\..\..\user\user_lib\inc\remap.h" lastModified="1599bb6b24d">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\canNodeValve.cpp" lastModified="159d532e398">
+      <source file="..\..\..\user\user_app\src\canNodeValve.cpp" lastModified="159dd8d1f1b">
          <include file="..\..\..\user\user_app\inc\canNodeValve.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h" lastModified="1577ee61f12">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\canNodeEncoder.cpp" lastModified="159d89a2f46">
+      <source file="..\..\..\user\user_app\src\canNodeEncoder.cpp" lastModified="159dd749811">
          <include file="..\..\..\user\user_app\inc\canNodeEncoder.h"/>
       </source>
       <source file="..\..\..\user\user_lib\inc\can.h" lastModified="159d8738bd8">
@@ -92,7 +85,7 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_dma.h" lastModified="1599a4677bb">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\canNodePulse.cpp" lastModified="159d87a38d8">
+      <source file="..\..\..\user\user_app\src\canNodePulse.cpp" lastModified="159e8965f65">
          <include file="..\..\..\user\user_app\inc\canNodePulse.h"/>
       </source>
       <source file="..\..\..\user\user_lib\src\usart.cpp" lastModified="1599bb74a27">
@@ -101,7 +94,7 @@
       <source file="..\..\..\user\user_lib\inc\tim.h" lastModified="1599bb6b266">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\canMotorDriver.cpp" lastModified="159d8589a4f">
+      <source file="..\..\..\user\user_app\src\canMotorDriver.cpp" lastModified="159e052bad5">
          <include file="..\..\..\user\user_app\inc\canMotorDriver.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_rcc.h" lastModified="1577ee5e0a3">
@@ -153,10 +146,10 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_usart.h" lastModified="1577ee62a3b">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\canNodeMotorDriver.cpp" lastModified="159d52e2710">
+      <source file="..\..\..\user\user_app\src\canNodeMotorDriver.cpp" lastModified="159e04fe8cd">
          <include file="..\..\..\user\user_app\inc\canNodeMotorDriver.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="159d52a6b6b">
+      <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="159e0032d04">
          <include file="..\..\..\user\user_lib\inc\can.h"/>
       </source>
       <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="1577ee5e86f">
@@ -186,13 +179,13 @@
       <source file="..\..\..\user\user_app\src\port.cpp" lastModified="1599bb55386">
          <include file="..\..\..\user\user_app\inc\port.h"/>
       </source>
-      <source file="..\..\..\user\user_app\inc\canMotorDriver.h" lastModified="159a63065bb">
+      <source file="..\..\..\user\user_app\inc\canMotorDriver.h" lastModified="159e052064f">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\user\user_lib\inc\iwdg.h" lastModified="1599bb6b238">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
-      <source file="..\..\..\user\user_app\inc\canNodeValve.h" lastModified="159d8836048">
+      <source file="..\..\..\user\user_app\inc\canNodeValve.h" lastModified="159dd25da1d">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
       </source>
@@ -216,7 +209,10 @@
          <include file="..\..\..\user\user_app\inc\canNodePulse.h"/>
          <include file="..\..\..\user\user_app\inc\constantCurrentControl.h"/>
       </source>
-      <source file="..\..\..\user\user_app\inc\canNodePulse.h" lastModified="159d8836017">
+      <source file="..\..\..\user\user_app\src\canNodeAnalogIn.cpp" lastModified="159dd78cd26">
+         <include file="..\..\..\user\user_app\inc\canNodeAnalogIn.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\inc\canNodePulse.h" lastModified="159e887405f">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\user\util\inc\util.hpp" lastModified="154c9cd92c2">
@@ -225,7 +221,7 @@
       <source file="..\..\..\user\user_app\src\app.cpp" lastModified="1599bb55343">
          <include file="..\..\..\user\user_app\inc\app.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\canValve.cpp" lastModified="159a624917c">
+      <source file="..\..\..\user\user_app\src\canValve.cpp" lastModified="159dd7ac6c9">
          <include file="..\..\..\user\user_app\inc\canValve.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_can.h" lastModified="1577ee64a04">

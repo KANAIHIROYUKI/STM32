@@ -8,7 +8,7 @@
 #define LED_INTERVAL_NORECEIVE 50
 #define LED_INTERVAL_RECEIVE 500
 
-class CanMotorDriver{
+class CanNodeMotorDriver{
 public:
 	int16_t setup(MOTOR &motor,CAN &can,uint16_t address,uint16_t maxInterval = 100);
 	void ledAssign(GPIO &led);

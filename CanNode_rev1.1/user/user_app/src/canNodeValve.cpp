@@ -17,6 +17,7 @@ void CanNodeValve::pinAdd(GPIO &gpio){
 
 void CanNodeValve::interrupt(){
 	if(canValve_can->rxMessage.StdId == canValve_address){
+
 		for(int i=0;i<canValuve_pinNumber;i++){
 			if((canValve_can->rxMessage.Data[0] & (1 << i)) != 0){
 				if(((canValve_can->rxMessage.Data[1] & (1 << i)) != 0)){

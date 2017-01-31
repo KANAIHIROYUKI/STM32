@@ -8,7 +8,7 @@
 #define CAN_VLV 0x280
 #define CAN_ENC_SET 0x400
 #define CAN_ENC_VAL 0x440
-#define CAN_MTD 0x104
+#define CAN_MTD 0x100
 
 #define PWM_PERIOD 2048
 
@@ -19,6 +19,8 @@
 
 #define MODE_RUN 0
 #define MODE_DEBUG 1
+
+#define PRINT_TIME 100
 
 uint16_t rxFlag = 0,encOld;
 
@@ -35,7 +37,7 @@ int32_t enc[4];
 int32_t outA_duty = 0,outB_duty = 0;
 uint64_t motorTimeA,motorTimeB;
 
-uint64_t intervalTime = 0,timCnt=0;
+uint64_t intervalTime = 0,timCnt=0,printTimer;
 
 CanRxMsg RxMessage;
 
@@ -186,17 +188,19 @@ int main(void)
 	if(sw1.read() == 0){
 		motorModeA = MODE_DEBUG;
 		serial.printf("motorA debug mode\n\rsw1:cw sw2 ccw\n\r");
+		ledA.write(Bit_SET);
 	}
 	if(sw2.read() == 0){
 		motorModeB = MODE_DEBUG;
 		serial.printf("motorB debug mode\n\rsw1:cw sw2 ccw\n\r");
+		ledB.write(Bit_SET);
 	}
 
 	while(sw1.read() == 0 || sw2.read() == 0);
 	delay(500);
 
 	can1.setup();
-	can1.filterAdd(CAN_MTD,CAN_MTD + 1);
+	can1.filterAdd(CAN_MTD + canAddress,CAN_MTD + canAddress + 1,CAN_VLV);
 
 	motorTimeA = 0;
 	motorTimeB = 0;
@@ -211,6 +215,14 @@ int main(void)
     	if(motorTimeB + 100 < millis()){
     		motorB.duty(0);
     	}
+
+    	if(printTimer < millis()){
+    		printTimer = millis() + PRINT_TIME;
+        	if(motorModeA | motorModeB){
+        		serial.printf("%d,%d\n\r",encA.read(),encB.read());
+        	}
+    	}
+
 
     	if(sw1.read() == 0){
     		if(motorModeA == MODE_DEBUG){
@@ -234,7 +246,7 @@ int main(void)
 
     	while(rxFlag > 0){
     		rxFlag--;
-    		//serial.printf("CAN ADD = %x,Data = %d,%d,%d,%d,%d,%d,%d,%d\n\r",RxMessage.StdId,RxMessage.Data[0],RxMessage.Data[1],RxMessage.Data[2],RxMessage.Data[3],RxMessage.Data[4],RxMessage.Data[5],RxMessage.Data[6],RxMessage.Data[7]);
+    		serial.printf("CAN ADD = %x,Data = %d,%d,%d,%d,%d,%d,%d,%d\n\r",RxMessage.StdId,RxMessage.Data[0],RxMessage.Data[1],RxMessage.Data[2],RxMessage.Data[3],RxMessage.Data[4],RxMessage.Data[5],RxMessage.Data[6],RxMessage.Data[7]);
     	}
 
     }

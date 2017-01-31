@@ -23,9 +23,9 @@ int main(void)
     		IWDGReset();
 
     		if(sw[0].read() == 0){
-    			canData[1] = 0b01111111;
+    			canData[1] = 0b00001111;
     		}else{
-    			canData[1] = 0b11111111;
+    			canData[1] = 0b10001111;
     		}
 
     		canData[0] = 0b11111111;

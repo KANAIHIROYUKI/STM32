@@ -4,12 +4,14 @@
 #include "system.h"
 #include "math.h"
 
-class CanMotor{
+class CanMotorDriver{
 public:
 	void setup(CAN &can,uint16_t number);
 	void duty(int16_t motor_duty);
+
+	uint16_t canMotorDriver_address;
 private:
-	CAN *canMotor_can;
+	CAN *canMotorDriver_can;
 };
 
 #endif

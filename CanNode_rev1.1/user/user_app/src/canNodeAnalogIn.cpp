@@ -13,7 +13,7 @@ int16_t CanNodeAnalog::setup(ADC &adc,CAN &can,uint16_t number){
 
 void CanNodeAnalog::cycle(){
 	if(canNodeAnalog_interval != 0){
-    	if(canNodeAnalog_intervalTimer < millis()){
+    	if(canNodeAnalog_intervalTimer <= millis()){
     		uint8_t canData[8];
     		canNodeAnalog_intervalTimer = millis() + canNodeAnalog_interval;
 

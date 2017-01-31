@@ -12,7 +12,7 @@ int16_t CanNodeEncoder::setup(TIM &enc,CAN &can,uint16_t number){
 
 void CanNodeEncoder::cycle(){
 	if(canEnc_interval != 0){
-    	if(canEnc_intervalTimer < millis()){
+    	if(canEnc_intervalTimer <= millis()){
     		uint8_t canData[8];
     		canEnc_intervalTimer = millis() + canEnc_interval;
 

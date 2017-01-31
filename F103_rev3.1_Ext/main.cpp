@@ -26,7 +26,7 @@ TIM enc[2];
 TIM enPwm[2];
 MOTOR motor[2];
 CAN can1;
-USART serial,vserial;
+USART serial;
 GPIO add[4],sw[2],led[2],limit[4];
 ADC cs[2];
 
@@ -34,10 +34,7 @@ int main(void)
 {
 	setup();
 
-	vserial.setup(USART1,115200,PA10,PA9);
-
-
-	serial.setup(USART3,921600,PB10,PB11);
+	serial.setup(USART3,115200,PA10,PA9);
 	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
 
 	//serial.printf("%d,%d,%d,%d\n\r",add[0].read(),add[1].read(),add[2].read(),add[3].read());
