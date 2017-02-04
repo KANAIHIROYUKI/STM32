@@ -11,10 +11,12 @@ void CanEncoder::setup(CAN &can,uint16_t number,uint16_t interval){
 	canData[2] = (interval >> 8) & 0xFF;
 	canEnc_can->send(CAN_ADD_ENC_SETUP + number,3,canData);	//インターバルの設定
 	canEnc_receiveTime = millis();
+
+	canEnc_wise = 1;
 }
 
 int32_t CanEncoder::read(){
-	return canEnc_value;
+	return canEnc_value * canEnc_wise;
 }
 
 void CanEncoder::interrupt(){
@@ -37,4 +39,8 @@ void CanEncoder::reset(){
 
 uint64_t CanEncoder::lastReceiveTime(){
 	return millis() - canEnc_receiveTime;
+}
+
+void CanEncoder::reverse(int8_t wise){
+	canEnc_wise = wise;
 }

@@ -23,6 +23,10 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="1577ee5e08f">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
+      <source file="..\..\..\main.hpp" lastModified="159fd5710ad">
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
+         <include file="..\..\..\user\user_app\inc\app.h"/>
+      </source>
       <source file="..\..\..\cmsis_boot\system_stm32f10x.h" lastModified="1577ee5e099">
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="1577ee5e099">
@@ -41,11 +45,11 @@
       <source file="..\..\..\user\user_app\src\constantCurrentControl.cpp" lastModified="1599bb55370">
          <include file="..\..\..\user\user_app\inc\constantCurrentControl.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\canEncoder.cpp" lastModified="159df168198">
-         <include file="..\..\..\user\user_app\inc\canEncoder.h"/>
-      </source>
       <source file="..\..\..\user\user_lib\inc\adc.h" lastModified="1599bb6b211">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
+      </source>
+      <source file="..\..\..\main.cpp" lastModified="159fda47f84">
+         <include file="..\..\..\main.hpp"/>
       </source>
       <source file="..\..\..\user\user_lib\src\iwdg.cpp" lastModified="1599bb749f4">
          <include file="..\..\..\user\user_lib\inc\iwdg.h"/>
@@ -251,7 +255,7 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_can.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\user\user_app\inc\canEncoder.h" lastModified="159d8836029">
+      <source file="..\..\..\user\user_app\inc\canEncoder.h" lastModified="15a075c85f2">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\util\inc\util.h"/>
       </source>

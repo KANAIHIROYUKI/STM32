@@ -12,10 +12,14 @@ int main(void)
 		serial.printf("%d,0x%x\n\r",can1.filterCnt,can1.filterAddress[i]);
 	}
 
+	serial.printf("boot\n\r");
+	canMD[0].duty(0);
+	delay(4000);
+	serial.printf("start\n\r");
+	int16_t pulseDuty = 100;
 
 
-
-	IWDGSetup(PRINT_TIME * 20);
+	//IWDGSetup(PRINT_TIME * 20);
     while(1){
     	canEnc[0].cycle();
 
@@ -44,11 +48,16 @@ int main(void)
        		}*/
 
 
-       		int16_t pulseDuty = millis()>>2 & 0x7FF;
-       		pulseDuty -=1024;
+       		//int16_t pulseDuty = millis()>>4 & 0x7FF;
+       		pulseDuty +=1;
+       		if(pulseDuty >= 200){
+       			pulseDuty = 80;
+       			canMD[0].duty(pulseDuty);
+       			delay(4000);
+       		}
        		//pulseDuty = millis() - 1000;
        		//canVlv.write(0,millis() >> 8);
-       		//canMD[0].duty(pulseDuty);
+       		canMD[0].duty(pulseDuty);
        		//canMD[1].duty(pulseDuty);
        		//canMD[2].duty(pulseDuty);
        		//canMD[3].duty(pulseDuty);

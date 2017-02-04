@@ -81,7 +81,7 @@ void setup(){
 
 	//canEncoder.setup(can1,0,10);
 	//canVlv.setup(can1,0);
-	//canMD[0].setup(can1,0);
+	canMD[0].setup(can1,0);
 	//canMD[1].setup(can1,1);
 	//canMD[2].setup(can1,2);
 	//canMD[3].setup(can1,3);

@@ -12,8 +12,8 @@
 #define CAN_VLV 0x280
 #define CAN_MTD 0x100
 
-#define CAN_ENC_VAL 0x444
-#define CAN_ENC_SET 0x404
+#define CAN_ENC_VAL 0x440
+#define CAN_ENC_SET 0x400
 
 #define ENC_PPR 512
 #define GEAR_RATIO 27
@@ -111,9 +111,10 @@ int main(void)
 	can1.filterAdd(0x104,0x105,0x106,0x107);*/
 	can1.filterAdd(CAN_VLV);
 	can1.filterAdd(CAN_ENC_SET,CAN_ENC_SET + 1,CAN_ENC_SET + 2,CAN_ENC_SET + 3);
-	can1.filterAdd(CAN_ENC_VAL,CAN_ENC_VAL + 1,CAN_ENC_VAL + 2,CAN_ENC_VAL + 3);
+	//can1.filterAdd(CAN_ENC_VAL,CAN_ENC_VAL + 1,CAN_ENC_VAL + 2,CAN_ENC_VAL + 3);
 
 	enc[0].reverse();
+
 
 
     while(1){
@@ -141,17 +142,17 @@ int main(void)
     		serial.printf("itv = %2d,cnt = %8d, itv = %2d,cnt = %8d, itv = %2d,cnt = %8d, itv = %2d,cnt = %8d\n\r",(uint32_t)intervalTime[0],(uint32_t)enc[0].read(),(uint32_t)intervalTime[1],(uint32_t)enc[1].read(),(uint32_t)intervalTime[2],(uint32_t)enc[2].read(),(uint32_t)intervalTime[3],(uint32_t)enc[3].read());
     	}
 
-    	while(rxFlag > 0){
+    	/*while(rxFlag > 0){
     		rxFlag--;
 
     		//serial.printf("intTime = %d,%d,%d,%d\n\r",intervalTime[0],intervalTime[1],intervalTime[2],intervalTime[3]);
     		//serial.printf("CAN ID = 0x,%x,DATA = ,%d,%d,%d,%d,%d,%d,%d,%d\n\r",rxMessage.StdId,rxMessage.Data[0],rxMessage.Data[1],rxMessage.Data[2],rxMessage.Data[3],rxMessage.Data[4],rxMessage.Data[5],rxMessage.Data[6],rxMessage.Data[7]);
-    	}
+    	}*/
     }
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
-	rxFlag++;
+	//rxFlag++;
 	can1.receive(&rxMessage);
 	if(rxMessage.StdId == CAN_VLV){
 		for(int i=0;i<8;i++){
