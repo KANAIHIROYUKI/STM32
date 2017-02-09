@@ -42,17 +42,17 @@ void setup(){
 	enc[0].encoderSetup(TIM1,PA8,PA9);
 	enc[1].encoderSetup(TIM4,PB6,PB7);
 
-	pwm[0].pwmSetup(TIM2,3,PA2,20000,72);
-	pwm[1].pwmSetup(TIM2,4,PA3,20000,72);
-	pwm[2].pwmSetup(TIM3,3,PB0,20000,72);
-	pwm[3].pwmSetup(TIM3,4,PB1,20000,72);
+	//pwm[0].pwmSetup(TIM2,3,PA2,20000,72,TIM_OCMode_PWM2);
+	//pwm[1].pwmSetup(TIM2,4,PA3,20000,72);
+	//pwm[2].pwmSetup(TIM3,3,PB0,20000,72);
+	//pwm[3].pwmSetup(TIM3,4,PB1,20000,72);
 
 	led.setup(PB2,OUTPUT);
 
-	//io[0].setup(PA2,OUTPUT);
-	//io[1].setup(PA3,OUTPUT);
-	//io[2].setup(PB0,OUTPUT);
-	//io[3].setup(PB1,OUTPUT);
+	io[0].setup(PA2,OUTPUT);
+	io[1].setup(PA3,OUTPUT);
+	io[2].setup(PB0,OUTPUT);
+	io[3].setup(PB1,OUTPUT);
 	io[4].setup(PA4,OUTPUT);
 	io[5].setup(PA5,OUTPUT);
 	io[6].setup(PB12,OUTPUT);
@@ -62,10 +62,17 @@ void setup(){
 
 	//canEnc[0].setup(enc[0],can1,0);
 
-	canPulse[0].setup(pwm[0],can1,0);
+	/*canPulse[0].setup(pwm[0],can1,0);
 	canPulse[1].setup(pwm[1],can1,1);
 	canPulse[2].setup(pwm[2],can1,2);
 	canPulse[3].setup(pwm[3],can1,3);
+*/
+	canPulse[0].setup(io[0],can1,0);
+	canPulse[1].setup(io[1],can1,1);
+	canPulse[2].setup(io[2],can1,2);
+	canPulse[3].setup(io[3],can1,3);
+
+	//canPulse[0].invert();
 
 	canValve.setup(can1,0);
 	//canValve.pinAdd(io[0]);

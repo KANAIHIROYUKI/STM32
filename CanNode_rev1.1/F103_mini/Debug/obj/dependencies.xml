@@ -23,11 +23,14 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="1577ee5e08f">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\main.hpp" lastModified="159fd5710ad">
+      <source file="..\..\..\main.hpp" lastModified="15a214bb4e0">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_app\inc\app.h"/>
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f10x.h" lastModified="1577ee5e099">
+      </source>
+      <source file="..\..\..\user\user_app\inc\pulse.h" lastModified="15a216e21aa">
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="1577ee5e099">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
@@ -45,10 +48,16 @@
       <source file="..\..\..\user\user_app\src\constantCurrentControl.cpp" lastModified="1599bb55370">
          <include file="..\..\..\user\user_app\inc\constantCurrentControl.h"/>
       </source>
+      <source file="..\..\..\user\user_app\src\canEncoder.cpp" lastModified="15a075c8600">
+         <include file="..\..\..\user\user_app\inc\canEncoder.h"/>
+      </source>
       <source file="..\..\..\user\user_lib\inc\adc.h" lastModified="1599bb6b211">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
-      <source file="..\..\..\main.cpp" lastModified="159fda47f84">
+      <source file="..\..\..\user\user_lib\inc\base.h" lastModified="15a2188825e">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\main.cpp" lastModified="15a214920b3">
          <include file="..\..\..\main.hpp"/>
       </source>
       <source file="..\..\..\user\user_lib\src\iwdg.cpp" lastModified="1599bb749f4">
@@ -89,7 +98,7 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_dma.h" lastModified="1599a4677bb">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\canNodePulse.cpp" lastModified="159e8965f65">
+      <source file="..\..\..\user\user_app\src\canNodePulse.cpp" lastModified="15a214bde9d">
          <include file="..\..\..\user\user_app\inc\canNodePulse.h"/>
       </source>
       <source file="..\..\..\user\user_lib\src\usart.cpp" lastModified="1599bb74a27">
@@ -109,7 +118,7 @@
       <source file="..\..\..\user\user_lib\src\remap.cpp" lastModified="1599bb749fc">
          <include file="..\..\..\user\user_lib\inc\remap.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\system.h" lastModified="1599bb6b645">
+      <source file="..\..\..\user\user_lib\inc\system.h" lastModified="15a2178b0dd">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
          <include file="..\..\..\user\user_lib\inc\tim.h"/>
@@ -120,14 +129,14 @@
          <include file="..\..\..\user\user_lib\inc\iwdg.h"/>
          <include file="..\..\..\user\user_lib\inc\dma.h"/>
       </source>
+      <source file="..\..\..\user\user_lib\inc\usart.h" lastModified="1599bb6ba48">
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
+      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_dma.c" lastModified="1599a4677be">
          <include file="..\..\..\stm_lib\inc\stm32f10x_dma.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
       <source file="..\..\..\user\util\inc\util.h" lastModified="154c9cd8ed9">
-      </source>
-      <source file="..\..\..\user\user_lib\inc\usart.h" lastModified="1599bb6ba48">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_spi.c" lastModified="1577ee5f3b8">
          <include file="..\..\..\stm_lib\inc\stm32f10x_spi.h"/>
@@ -158,8 +167,9 @@
       </source>
       <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="1577ee5e86f">
       </source>
-      <source file="..\..\..\user\user_lib\inc\gpio.h" lastModified="1599bb6b22f">
+      <source file="..\..\..\user\user_lib\inc\gpio.h" lastModified="15a21887eb8">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
+         <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
       <source file="..\..\..\user\util\src\utilplus.cpp" lastModified="154c9cd92c3">
          <include file="..\..\..\user\util\inc\util.hpp"/>
@@ -179,6 +189,12 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_adc.h" lastModified="1577ee60f36">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\user\user_lib\src\base.cpp" lastModified="15a2178ad2e">
+         <include file="..\..\..\user\user_lib\inc\base.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\src\pulse.cpp" lastModified="15a216e2181">
+         <include file="..\..\..\user\user_app\inc\pulse.h"/>
       </source>
       <source file="..\..\..\user\user_app\src\port.cpp" lastModified="1599bb55386">
          <include file="..\..\..\user\user_app\inc\port.h"/>
@@ -216,7 +232,7 @@
       <source file="..\..\..\user\user_app\src\canNodeAnalogIn.cpp" lastModified="159dd78cd26">
          <include file="..\..\..\user\user_app\inc\canNodeAnalogIn.h"/>
       </source>
-      <source file="..\..\..\user\user_app\inc\canNodePulse.h" lastModified="159e887405f">
+      <source file="..\..\..\user\user_app\inc\canNodePulse.h" lastModified="15a21397cf5">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\user\util\inc\util.hpp" lastModified="154c9cd92c2">
@@ -237,9 +253,6 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_tim.h" lastModified="1577ee5feb0">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\src\gpio.cpp" lastModified="1599bb749e2">
-         <include file="..\..\..\user\user_lib\inc\gpio.h"/>
       </source>
       <source file="..\..\..\user\user_lib\inc\spi.h" lastModified="1599bb6b255">
          <include file="..\..\..\user\user_lib\inc\system.h"/>

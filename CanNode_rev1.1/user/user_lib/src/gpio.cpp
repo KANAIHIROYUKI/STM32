@@ -19,6 +19,8 @@ void GPIO::setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode){
 	GPIO_InitStructure.GPIO_Mode = gpio_mode;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(gpio_gpio,&GPIO_InitStructure);
+
+	gpio_invert = 0;
 }
 
 
@@ -28,9 +30,22 @@ uint16_t GPIO::write(BitAction value){
 	/*if((gpio_mode != GPIO_Mode_Out_OD) || (gpio_mode != GPIO_Mode_Out_PP)){
 		return 1;
 	}*/
-	GPIO_WriteBit(gpio_gpio,gpio_pin,value);
+	if(gpio_invert){
+		if(value == Bit_RESET){
+			value = Bit_SET;
+		}else{
+			value = Bit_RESET;
+		}
+		GPIO_WriteBit(gpio_gpio,gpio_pin,value);
+	}else{
+		GPIO_WriteBit(gpio_gpio,gpio_pin,value);
+	}
 
 	return 0;
+}
+
+void GPIO::invert(){
+	gpio_invert = 1;
 }
 
 uint16_t GPIO::read(){

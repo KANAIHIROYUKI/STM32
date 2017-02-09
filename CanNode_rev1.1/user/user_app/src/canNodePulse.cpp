@@ -13,7 +13,23 @@ int16_t CanNodePulse::setup(TIM &tim,CAN &can,uint16_t number){
 	return 1;
 }
 
+int16_t CanNodePulse::setup(GPIO &gpio,CAN &can,uint16_t number){
+	this->canPulse_can = &can;
+	this->canPulse_gpio = &gpio;
+	canPulse_address = CAN_ADD_DUTY + number;
+	canPulse_can->filterAdd(canPulse_address);
 
+	canPulse_mode = CAN_PULSE_MODE_IO;
+	canPulse_gpio->write(Bit_RESET);
+	canPulse_cycleTime = micros();
+
+	cycle();
+	return 0;
+}
+
+void CanNodePulse::invert(){
+	canPulse_gpio->toggle();
+}
 
 
 void CanNodePulse::interrupt(){
@@ -21,9 +37,24 @@ void CanNodePulse::interrupt(){
 		outDuty = ((canPulse_can->rxMessage.Data[1] & 0b11111111) << 8) | canPulse_can->rxMessage.Data[0];
 		if(outDuty > 700)outDuty = 700;
 		if(outDuty < -700)outDuty = -700;
-		canPulse_tim->duty(AMP_PULSE_CENTER + outDuty);	//一応動く
+
+		if(canPulse_mode == CAN_PULSE_MODE_TIM)canPulse_tim->duty(AMP_PULSE_CENTER + outDuty);	//一応動く
+		if(canPulse_mode == CAN_PULSE_MODE_IO)canPulse_pulseDuty = AMP_PULSE_CENTER + outDuty;
 	}
 }
 
-
-//ここらへんの実装はサーボ基板に合わせる　ファイル名も合わせたほうがいいかも
+void CanNodePulse::cycle(){
+	if(canPulse_mode == CAN_PULSE_MODE_TIM){
+		return;
+	}
+	if(canPulse_cycleTime <= micros()){
+		//canPulse_gpio->toggle();
+		canPulse_gpio->write(Bit_RESET);
+		canPulse_pulseTime = canPulse_cycleTime + canPulse_pulseDuty;
+		canPulse_cycleTime += AMP_PULSE_CYCLE;
+	}
+	if(canPulse_pulseTime <= micros()){
+		canPulse_gpio->write(Bit_SET);
+		//canPulse_gpio->toggle();
+	}
+}
