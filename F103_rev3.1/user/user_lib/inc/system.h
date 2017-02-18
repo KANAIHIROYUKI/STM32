@@ -20,5 +20,19 @@ void systemSetup();
 void delay(uint32_t nTime);	//‚±‚ÌŠÖ”‚ÌŠÔ‚Í‚»‚ê‚Ù‚Ç³Šm‚Å‚È‚¢
 uint64_t millis();
 uint64_t micros();
+/*
+class System{
+public:
+	void cycle();
+	void cycleAdd();
+
+	uint16_t cycleFunctionNumber;
+	void (*cycleFunctionPointer)();
+};
+
+void System::cycle(){
+
+}
+*/
 
 #endif

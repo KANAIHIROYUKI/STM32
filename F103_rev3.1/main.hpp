@@ -26,11 +26,11 @@ uint16_t rxFlag = 0;
 uint8_t canData[8] = {0,0,0,0,0,0,0,0},canAddress=0;
 CanRxMsg rxMessage;
 
-#define PRINT_TIME 100
+#define PRINT_TIME 50
 
 uint64_t printTime = 0;
 
-uint32_t currentInt[2] = {0,0},currentCnt[2] = {0,0};
+uint32_t currentInt[2] = {0,0},currentCnt[2] = {0,0},currentOffset[2] = {0,0};
 
 void setup(){
 	systemSetup();
@@ -87,6 +87,21 @@ void setup(){
 
 	canMD[0].ledAssign(led[0]);
 	canMD[1].ledAssign(led[1]);
+
+
+	serial.setup(USART3,921600,PB10,PB11);
+	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\rADD = %d\n\r",__FILE__,__DATE__,__TIME__,CAN_ADD);
+
+}
+
+extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
+	rxFlag++;
+	can1.receive(&rxMessage);
+	canMD[0].interrupt(rxMessage);
+	canMD[1].interrupt(rxMessage);
+
+	return;
+
 }
 
 #endif

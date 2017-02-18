@@ -31,6 +31,8 @@ void setup(){
 	enc[2].encoderSetup(TIM3,PA6,PA7);
 	enc[3].encoderSetup(TIM4,PB6,PB7);
 
+	enc[0].reverse();
+
 	led.setup(PB2,OUTPUT);
 
 	io[0].setup(PA2,OUTPUT);
@@ -75,6 +77,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	canEnc[1].interrupt();
 	canEnc[2].interrupt();
 	canEnc[3].interrupt();
+	//encCan.interrupt();
 	return;
 }
 

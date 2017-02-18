@@ -129,14 +129,14 @@
          <include file="..\..\..\user\user_lib\inc\iwdg.h"/>
          <include file="..\..\..\user\user_lib\inc\dma.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\usart.h" lastModified="1599bb6ba48">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_dma.c" lastModified="1599a4677be">
          <include file="..\..\..\stm_lib\inc\stm32f10x_dma.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
       <source file="..\..\..\user\util\inc\util.h" lastModified="154c9cd8ed9">
+      </source>
+      <source file="..\..\..\user\user_lib\inc\usart.h" lastModified="1599bb6ba48">
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_spi.c" lastModified="1577ee5f3b8">
          <include file="..\..\..\stm_lib\inc\stm32f10x_spi.h"/>
@@ -167,9 +167,8 @@
       </source>
       <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="1577ee5e86f">
       </source>
-      <source file="..\..\..\user\user_lib\inc\gpio.h" lastModified="15a21887eb8">
+      <source file="..\..\..\user\user_lib\inc\gpio.h" lastModified="1599bb6b22f">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
       <source file="..\..\..\user\util\src\utilplus.cpp" lastModified="154c9cd92c3">
          <include file="..\..\..\user\util\inc\util.hpp"/>
@@ -283,9 +282,6 @@
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1">
          <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="1599c430b63">
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
       </source>
       <source file="..\..\..\user\user_lib\src\tim.cpp" lastModified="159d523990f">
          <include file="..\..\..\user\user_lib\inc\tim.h"/>
