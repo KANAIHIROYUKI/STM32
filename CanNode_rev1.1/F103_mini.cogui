@@ -21,6 +21,7 @@
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
@@ -41,7 +42,7 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_lib/inc/usart.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="motor.cpp" partName="motor.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1/user/user_app/src/motor.cpp" title="motor.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1/user/user_app/src/motor.cpp" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="motor.cpp" partName="motor.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1/user/user_app/src/motor.cpp" title="motor.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1/user/user_app/src/motor.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_app/src/motor.cpp"/>
 <editorState selectionHorizontalPixel="0" selectionLength="120" selectionOffset="328" selectionTopPixel="0"/>
 </editor>
@@ -49,13 +50,18 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_app/inc/motor.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
+<editor activePart="true" focus="true" id="org.coocox.builder.ui.editors.ConfigEditor" name="" partName="Configuration" title="Configuration" tooltip="" workbook="DefaultEditorWorkbook">
+<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="6" verticalPosition="0"/>
+</input>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.views.ProgressView" partName="Progress">
 <viewState/>
 </view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="40">
+<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="52">
 <expanded>
 <element path="/F103_mini"/>
 <element path="/F103_mini/cmsis"/>
@@ -69,7 +75,7 @@
 <element path="/F103_mini/user_lib/src"/>
 </expanded>
 <selection>
-<element path="/F103_mini/user_app/src/motor.cpp"/>
+<element path="/F103_mini/main.hpp"/>
 </selection>
 </viewState>
 </view>
@@ -94,7 +100,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
+<perspectives activePart="org.coocox.builder.ui.editors.ConfigEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.coocox.component.ui.actionSet"/>
@@ -301,13 +307,11 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/src/motor.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/inc/motor.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.hpp"/>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="6" verticalPosition="0"/>
+</editor>
 </editors>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="1392" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="0">
-<position/>
-</item>
 <item historyLabel="main.hpp" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
@@ -441,9 +445,13 @@
 <item historyLabel="main.cpp" index="17">
 <position info="not_deleted" x="1645" y="0"/>
 </item>
-<item active="true" historyLabel="motor.cpp" index="15">
+<item historyLabel="motor.cpp" index="15">
 <position info="not_deleted" x="365" y="0"/>
 </item>
+<item historyLabel="main.hpp" index="18">
+<position info="not_deleted" x="1754" y="0"/>
+</item>
+<item active="true" historyLabel="Configuration" index="19"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -451,11 +459,26 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_rev2.0.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_rev2.0\F103_rev2.0.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_rev2.0/F103_rev2.0.coproj"/>
-</file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanNode_rev1.1.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\CanNode_rev1.1\CanNode_rev1.1.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1/CanNode_rev1.1.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_mini_PD.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_mini_PD\F103_mini_PD.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini_PD/F103_mini_PD.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_mini_PD.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\ふるい\F103_mini_PD\F103_mini_PD.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/ふるい/F103_mini_PD/F103_mini_PD.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" tooltip="F103_mini/main.cpp">
+<persistable path="/F103_mini/main.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_mini_rev1.1.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\ふるい\F103_mini_rev1.1\F103_mini_rev1.1.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/ふるい/F103_mini_rev1.1/F103_mini_rev1.1.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor.cpp" tooltip="F103_3WS_MD/user/user_lib/src/motor.cpp">
+<persistable path="/F103_3WS_MD/user/user_lib/src/motor.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_rev2.0.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_rev2.0\F103_rev2.0.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_rev2.0/F103_rev2.0.coproj"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ADC.cpp" tooltip="F103_mini_PD/user/src/ADC.cpp">
 <persistable path="/F103_mini_PD/user/src/ADC.cpp"/>
@@ -472,29 +495,8 @@
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="GPIO.h" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_mini_PD\user\GPIO.h">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini_PD/user/GPIO.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="USART.cpp" tooltip="F103_mini_PD/user/src/USART.cpp">
-<persistable path="/F103_mini_PD/user/src/USART.cpp"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="GPIO.h" tooltip="F103_mini_PD/user/inc/GPIO.h">
 <persistable path="/F103_mini_PD/user/inc/GPIO.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="GPIO.cpp" tooltip="F103_mini_PD/user/src/GPIO.cpp">
-<persistable path="/F103_mini_PD/user/src/GPIO.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="TIM.cpp" tooltip="F103_mini_PD/user/src/TIM.cpp">
-<persistable path="/F103_mini_PD/user/src/TIM.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="TIM.h" tooltip="F103_mini_PD/user/inc/TIM.h">
-<persistable path="/F103_mini_PD/user/inc/TIM.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tim.h" tooltip="F103_mini/user_lib/inc/tim.h">
-<persistable path="/F103_mini/user_lib/inc/tim.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canEncoder.cpp" tooltip="F103_mini/user_app/src/canEncoder.cpp">
-<persistable path="/F103_mini/user_app/src/canEncoder.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canEncoder.h" tooltip="F103_mini/user_app/inc/canEncoder.h">
-<persistable path="/F103_mini/user_app/inc/canEncoder.h"/>
 </file>
 </mruList>
 </workbench>

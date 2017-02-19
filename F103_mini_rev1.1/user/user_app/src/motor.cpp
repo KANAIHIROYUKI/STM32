@@ -1,0 +1,23 @@
+#include "motor.h"
+
+void MOTOR::setup(TIM &PWM_1,TIM &PWM_2){
+	this->PWM1 = &PWM_1;
+	this->PWM2 = &PWM_2;
+	duty(0);
+}
+
+void MOTOR::duty(int32_t motorDuty){
+	uint16_t dutyMax = PWM1->pwm_period - 50;	//スイッチング時間分でduty上限かける
+	if(motorDuty >  dutyMax)motorDuty = dutyMax;
+	if(motorDuty < -dutyMax)motorDuty = -dutyMax;
+
+	if(motorDuty < 0){
+		PWM1->duty(0);
+		PWM2->duty(motorDuty);
+	}else{
+		PWM2->duty(0);
+		PWM1->duty(motorDuty);
+	}
+	outDuty = motorDuty;
+
+}

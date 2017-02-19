@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=F103_mini.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\F103_mini_PD -TC:\CooCox\CoIDE\configuration\ProgramData\F103_mini_PD/arm-gcc-link.ld -g">
+      <target file="F103_mini.elf" lastModified="15a55d40572">
+         <source file="..\obj\semihosting.o" lastModified="15a55d3be8f"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="15a55d3bf66"/>
+         <source file="..\obj\stm32f10x_dbgmcu.o" lastModified="15a55d3bfa9"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="15a55d3bff1"/>
+         <source file="..\obj\CAN.o" lastModified="15a55d3c051"/>
+         <source file="..\obj\SYSTEM.o" lastModified="15a55d3c0b3"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="15a55d3c0e1"/>
+         <source file="..\obj\stm32f10x_can.o" lastModified="15a55d3c152"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="15a55d3c1a8"/>
+         <source file="..\obj\main.o" lastModified="15a55d3c20c"/>
+         <source file="..\obj\GPIO.o" lastModified="15a55d3c274"/>
+         <source file="..\obj\ADC.o" lastModified="15a55d3c2db"/>
+         <source file="..\obj\printf.o" lastModified="15a55d3c32f"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="15a55d3c391"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="15a55d3c3fc"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="15a55d3c46d"/>
+         <source file="..\obj\sh_cmd.o" lastModified="15a55d3c476"/>
+         <source file="..\obj\syscalls.o" lastModified="15a55d3c4ba"/>
+         <source file="..\obj\SPI.o" lastModified="15a55d3c516"/>
+         <source file="..\obj\REMAP.o" lastModified="15a55d3c569"/>
+         <source file="..\obj\misc.o" lastModified="15a55d3c5af"/>
+         <source file="..\obj\stm32f10x_spi.o" lastModified="15a55d3c60a"/>
+         <source file="..\obj\USART.o" lastModified="15a55d3c682"/>
+         <source file="..\obj\TIM.o" lastModified="15a55d34e88"/>
+      </target>
+   </processor>
+</history>

@@ -236,8 +236,6 @@ void USART3Setup(uint32_t baud){
 
 
 
-
-
 void USART1ITSetup(uint16_t flag){
 	NVIC_InitTypeDef NVIC_InitStructure;
 	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;

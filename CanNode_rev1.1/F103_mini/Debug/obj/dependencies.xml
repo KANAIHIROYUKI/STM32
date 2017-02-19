@@ -129,14 +129,14 @@
          <include file="..\..\..\user\user_lib\inc\iwdg.h"/>
          <include file="..\..\..\user\user_lib\inc\dma.h"/>
       </source>
+      <source file="..\..\..\user\user_lib\inc\usart.h" lastModified="1599bb6ba48">
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
+      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_dma.c" lastModified="1599a4677be">
          <include file="..\..\..\stm_lib\inc\stm32f10x_dma.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
       <source file="..\..\..\user\util\inc\util.h" lastModified="154c9cd8ed9">
-      </source>
-      <source file="..\..\..\user\user_lib\inc\usart.h" lastModified="1599bb6ba48">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_spi.c" lastModified="1577ee5f3b8">
          <include file="..\..\..\stm_lib\inc\stm32f10x_spi.h"/>
@@ -253,6 +253,9 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_tim.h" lastModified="1577ee5feb0">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
+      <source file="..\..\..\user\user_lib\src\gpio.cpp" lastModified="1599bb749e2">
+         <include file="..\..\..\user\user_lib\inc\gpio.h"/>
+      </source>
       <source file="..\..\..\user\user_lib\inc\spi.h" lastModified="1599bb6b255">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
@@ -278,6 +281,9 @@
          <include file="..\..\..\cmsis\core_cm3.h"/>
          <include file="..\..\..\cmsis_boot\system_stm32f10x.h"/>
          <include file="..\..\..\cmsis_boot\stm32f10x_conf.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a456b6cec">
+         <include file="..\..\..\user\user_app\inc\motor.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1">
          <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>

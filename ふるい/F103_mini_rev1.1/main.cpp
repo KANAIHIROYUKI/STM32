@@ -118,7 +118,7 @@ int main(void)
 	usartTX.setup(PB10,OUTPUT_AF);
 	usartRX.setup(PB11,INPUT);
 
-	serial.setup(USART3,921600);
+	serial.setup(USART1,921600);
 	serial.printf("FILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
