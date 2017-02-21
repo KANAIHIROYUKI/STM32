@@ -2,6 +2,7 @@
 #define CAN_VALVE_H_
 
 #include "system.h"
+#include "base.h"
 
 class CanValve{
 public:

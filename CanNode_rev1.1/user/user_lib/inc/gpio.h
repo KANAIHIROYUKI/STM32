@@ -1,7 +1,7 @@
 #ifndef GPIO_H_
 #define GPIO_H_
 
-#include "system.h"
+#include "base.h"
 
 #define PA0 GPIOA,GPIO_Pin_0
 #define PA1 GPIOA,GPIO_Pin_1
@@ -58,14 +58,18 @@
 #define INPUT_PU GPIO_Mode_IPU
 #define INPUT_PD GPIO_Mode_IPD
 
-class GPIO {
+class GPIO/* :public DigitalIn,public DigitalOut*/{
 public:
 	void setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode);
-	uint16_t write(BitAction value);
+	void write(uint16_t value);
 	uint16_t read();
 	void toggle();
+	void reset();
+	void invert(uint16_t mode = 1);
 
 //private:
+	uint16_t gpio_invert;
+
 	uint16_t gpio_pin;
 	GPIO_TypeDef* gpio_gpio;
 	GPIOMode_TypeDef gpio_mode;

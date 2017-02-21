@@ -77,7 +77,6 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	canEnc[1].interrupt();
 	canEnc[2].interrupt();
 	canEnc[3].interrupt();
-	//encCan.interrupt();
 	return;
 }
 

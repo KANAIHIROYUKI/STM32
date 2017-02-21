@@ -3,6 +3,9 @@
 
 #include "system.h"
 #include "app.h"
+#include "base.h"
+
+System sys;
 
 TIM pwm[4];
 TIM enc[4];
@@ -35,17 +38,17 @@ uint64_t printTime = 0;
 uint32_t currentInt[2] = {0,0},currentCnt[2] = {0,0};
 
 void setup(){
-	systemSetup();
+	sys.setup();
 
 	serial.setup(USART3,921600,PB10,PB11);
+	sys.usartSetup(serial);
+	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
+
 
 	enc[0].encoderSetup(TIM1,PA8,PA9);
-	enc[1].encoderSetup(TIM4,PB6,PB7);
-
-	//pwm[0].pwmSetup(TIM2,3,PA2,20000,72,TIM_OCMode_PWM2);
-	//pwm[1].pwmSetup(TIM2,4,PA3,20000,72);
-	//pwm[2].pwmSetup(TIM3,3,PB0,20000,72);
-	//pwm[3].pwmSetup(TIM3,4,PB1,20000,72);
+	enc[1].encoderSetup(TIM2,PA0,PA1);
+	enc[2].encoderSetup(TIM3,PA6,PA7);
+	enc[3].encoderSetup(TIM4,PB6,PB7);
 
 	led.setup(PB2,OUTPUT);
 
@@ -60,19 +63,15 @@ void setup(){
 
 	can1.setup(CAN1,PA12,PA11);
 
-	//canEnc[0].setup(enc[0],can1,0);
+	canEnc[0].setup(enc[0],can1,0);
+	canEnc[1].setup(enc[1],can1,1);
+	canEnc[2].setup(enc[2],can1,2);
+	canEnc[3].setup(enc[3],can1,3);
 
-	/*canPulse[0].setup(pwm[0],can1,0);
-	canPulse[1].setup(pwm[1],can1,1);
-	canPulse[2].setup(pwm[2],can1,2);
-	canPulse[3].setup(pwm[3],can1,3);
-*/
 	canPulse[0].setup(io[0],can1,0);
 	canPulse[1].setup(io[1],can1,1);
 	canPulse[2].setup(io[2],can1,2);
 	canPulse[3].setup(io[3],can1,3);
-
-	//canPulse[0].invert();
 
 	canValve.setup(can1,0);
 	//canValve.pinAdd(io[0]);
@@ -84,25 +83,26 @@ void setup(){
 	canValve.pinAdd(io[6]);
 	canValve.pinAdd(io[7]);
 
-	led.write(Bit_RESET);
-
 	//canEncoder.setup(can1,0,10);
 	//canVlv.setup(can1,0);
-	canMD[0].setup(can1,0);
+	//canMD[0].setup(can1,0);
 	//canMD[1].setup(can1,1);
 	//canMD[2].setup(can1,2);
 	//canMD[3].setup(can1,3);
-
-
-	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	rxFlag++;
 	can1.receive();
 	canValve.interrupt();
+
 	canEnc[0].interrupt();
-	canEncoder.interrupt();
+	canEnc[1].interrupt();
+	canEnc[2].interrupt();
+	canEnc[3].interrupt();
+
+	//canEncoder.interrupt();
+
 	canPulse[0].interrupt();
 	canPulse[1].interrupt();
 	canPulse[2].interrupt();

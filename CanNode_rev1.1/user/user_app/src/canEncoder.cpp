@@ -15,7 +15,7 @@ void CanEncoder::setup(CAN &can,uint16_t number,uint16_t interval){
 	canEnc_wise = 1;
 }
 
-int32_t CanEncoder::read(){
+int64_t CanEncoder::read(){
 	return canEnc_value * canEnc_wise;
 }
 

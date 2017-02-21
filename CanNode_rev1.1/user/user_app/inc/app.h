@@ -7,6 +7,8 @@
 
 #include "motor.h"
 #include "port.h"
+#include "enc.h"
+#include "pwm.h"
 
 #include "canEncoder.h"
 #include "canValve.h"
@@ -17,6 +19,5 @@
 #include "canNodeMotorDriver.h"
 #include "canNodePulse.h"
 
-#include "constantCurrentControl.h"
 
 #endif

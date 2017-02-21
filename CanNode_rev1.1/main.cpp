@@ -12,20 +12,29 @@ int main(void)
 		serial.printf("%d,0x%x\n\r",can1.filterCnt,can1.filterAddress[i]);
 	}
 
-	serial.printf("boot\n\r");
+/*	serial.printf("boot\n\r");
 	canMD[0].duty(0);
 	uint64_t time = millis();
 	while(time + 8000 > millis()){
 		canPulse[0].cycle();
 	}
-	serial.printf("start\n\r");
+	serial.printf("start\n\r");*/
+
 	int16_t pulseDuty = 100;
 
-
-	//IWDGSetup(PRINT_TIME * 20);
+	sys.wdgSetup(50);	//5ms
     while(1){
+    	sys.cycle();
+
     	canEnc[0].cycle();
+    	canEnc[1].cycle();
+    	canEnc[2].cycle();
+    	canEnc[3].cycle();
+
     	canPulse[0].cycle();
+    	canPulse[1].cycle();
+    	canPulse[2].cycle();
+    	canPulse[3].cycle();
 
     	if(printTime <= millis()){
     		led.toggle();
@@ -37,18 +46,14 @@ int main(void)
        		//pulseDuty = millis() - 1000;
        		//canVlv.write(0,millis() >> 8);
 
-       		canMD[0].duty(pulseDuty);
+       		//canMD[0].duty(pulseDuty);
        		//canMD[1].duty(pulseDuty);
        		//canMD[2].duty(pulseDuty);
        		//canMD[3].duty(pulseDuty);
        		if(pulseDuty > 700)pulseDuty = 100;
 
-
-
-       		serial.printf("%6d,%6d,%6d,%6d\n\r",pulseDuty,canPulse[0].outDuty,(uint32_t)canPulse[0].canPulse_pulseTime,(uint32_t)canPulse[0].canPulse_cycleTime);
-
-       		IWDGReset();
-
+       		serial.printf("%d\n\r",(uint32_t)millis());
+       		//serial.printf("%6d,%6d,%6d,%6d\n\r",pulseDuty,canPulse[0].outDuty,(uint32_t)canPulse[0].canPulse_pulseTime,(uint32_t)canPulse[0].canPulse_cycleTime);
     		//serial.printf("%2d,%6d,%2d,%d\n\r",enc[0].read(),canEncoder.read(),canEncoder.lastReceiveTime(),pulseDuty);
     	}
 

@@ -3,12 +3,13 @@
 
 #include "system.h"
 #include "util.h"
+#include "base.h"
 
-class CanEncoder{
+class CanEncoder:public CountIn{
 public :
 	void setup(CAN &can,uint16_t number,uint16_t interval);
-	int32_t read();
-	void reset();
+	virtual int64_t read();
+	virtual void reset();
 	void interrupt();
 	void reverse(int8_t wise = -1);
 	uint64_t lastReceiveTime();

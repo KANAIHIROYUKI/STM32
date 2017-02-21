@@ -6,7 +6,7 @@
 
 class CCC{
 public:
-	MOTOR *ccc_motor;
+	Motor *ccc_motor;
 	ADC *ccc_cs;
 private:
 };

@@ -6,22 +6,22 @@
 
 //dutyクラス････1~0(もしくは1~-1)で表せる
 
-class dutyOut{
+class DutyOut{
 public:
-	virtual void write(uint16_t duty){
+	virtual void duty(float duty){
 
 	}
 	virtual void reset(){
 
 	}
-	virtual void invert(int8_t mode){
+	virtual void invert(int16_t mode){
 
 	}
 };
 
-class dutyIn{
+class DutyIn{
 public:
-	virtual int16_t read(){
+	virtual float read(){
 		return 0;
 	}
 	virtual void invert(){
@@ -31,12 +31,15 @@ public:
 
 
 //countクラス････上限なし
-class countIn{
+class CountIn{
 public:
-	virtual uint64_t read(){
+	virtual int64_t read(){
 		return 0;
 	}
 	virtual void invert(){
+
+	}
+	virtual void reset(){
 
 	}
 };
@@ -44,7 +47,7 @@ public:
 //Digitalクラス　1か0
 class DigitalOut{
 public:
-	virtual void write(){
+	virtual void write(uint16_t value){
 
 	}
 	virtual void toggle(){
@@ -53,7 +56,7 @@ public:
 	virtual void reset(){
 
 	}
-	virtual void invert(){
+	virtual void invert(uint16_t mode = 1){
 
 	}
 };

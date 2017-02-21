@@ -1,7 +1,7 @@
 #ifndef USART_H_
 #define USART_H_
 
-#include "system.h"
+#include "gpio.h"
 
 #include <stdarg.h>
 #include <stdlib.h>
