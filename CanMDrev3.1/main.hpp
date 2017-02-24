@@ -27,7 +27,7 @@ TIM pwm[4],enPwm[2],enc[2];
 CAN can1;
 USART serial;
 ADC cs[2];
-GPIO add[4],sw[2],led[2],limit[4];
+GPIO add[4],sw[2],led[2],io[8],en[2];
 
 MOTOR motor[2];
 CanNodeMotorDriver nodeMotor[2];
@@ -63,6 +63,16 @@ void motorBuzzerEnd();
 void setup(){
 	systemSetup();
 
+	io[0].setup(PA3,OUTPUT);
+	io[1].setup(PA4,OUTPUT);
+	io[2].setup(PA5,OUTPUT);
+	io[3].setup(PB2,OUTPUT);
+	io[4].setup(PB12,OUTPUT);
+	io[5].setup(PB13,OUTPUT);
+	io[6].setup(PB14,OUTPUT);
+	io[7].setup(PB15,OUTPUT);
+
+
 	enc[0].encoderSetup(TIM2,PA0,PA1);
 	enc[1].encoderSetup(TIM3,PA6,PA7);
 /*
@@ -92,13 +102,18 @@ void setup(){
 	pwm[1].pwmSetup(TIM4,2,PB7,TIM_CNT);
 	pwm[2].pwmSetup(TIM4,3,PB8,TIM_CNT);
 	pwm[3].pwmSetup(TIM4,4,PB9,TIM_CNT);
-	enPwm[0].pwmSetup(TIM1,1,PA8,4000);
-	enPwm[1].pwmSetup(TIM1,2,PA9,4000);
+	enPwm[0].pwmSetup(TIM1,1,PA8,TIM_CNT);
+	enPwm[1].pwmSetup(TIM1,2,PA9,TIM_CNT);
 
-	pwm[0].duty(TIM_CNT);
-	pwm[1].duty(TIM_CNT);
-	pwm[2].duty(TIM_CNT);
-	pwm[3].duty(TIM_CNT);
+	enPwm[0].duty(TIM_CNT);
+	enPwm[1].duty(TIM_CNT);
+
+	pwm[0].duty(TIM_CNT/2);
+	pwm[1].duty(TIM_CNT/2);
+	pwm[2].duty(TIM_CNT/2);
+	pwm[3].duty(TIM_CNT/2);
+
+	while(1);
 
 	add[0].setup(PC13,INPUT_PU);
 	add[1].setup(PC14,INPUT_PU);
@@ -112,11 +127,6 @@ void setup(){
 
 	led[0].write(LOW);
 	led[1].write(LOW);
-
-	limit[0].setup(PA2,INPUT_PU);
-	limit[1].setup(PA3,INPUT_PU);
-	limit[2].setup(PA4,INPUT_PU);
-	limit[3].setup(PA5,INPUT_PU);
 
 	motor[0].setup(pwm[0],pwm[1]);
 	motor[1].setup(pwm[2],pwm[3]);

@@ -34,11 +34,11 @@ void MOTOR::duty(float motorDuty){
 	if(motorDuty16 < -dutyMax)motorDuty16 = -dutyMax;
 
 	if(motorDuty16 > 0){
-		pwm1->duty(pwm1->pwm_period);
-		pwm2->duty(pwm2->pwm_period - motorDuty16);
+		pwm1->duty(0);
+		pwm2->duty(motorDuty16);
 	}else{
-		pwm2->duty(pwm2->pwm_period);
-		pwm1->duty(pwm1->pwm_period + motorDuty16);
+		pwm2->duty(0);
+		pwm1->duty(-motorDuty16);
 	}
 	outDuty = motorDuty16;
 

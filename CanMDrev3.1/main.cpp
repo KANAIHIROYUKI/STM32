@@ -8,6 +8,7 @@ int main(void){
 
 	setup();
 
+	/*
 	for(int i=0;i<20000;i++){
 		currentOffset[0] += cs[0].read(ADC_SampleTime_239Cycles5);
 		currentOffset[1] += cs[1].read(ADC_SampleTime_239Cycles5);
@@ -19,7 +20,25 @@ int main(void){
 	cs[0].start(ADC_SampleTime_239Cycles5);
 	cs[1].start(ADC_SampleTime_239Cycles5);
 
-	TIM4ITSetup();
+	TIM4ITSetup();*/
+
+	while(1){
+
+		if(sw[1].read() == 0){
+			motor[0].duty(0.1);
+			motor[1].duty(0.1);
+		}else{
+			if(sw[0].read() == 0){
+				motor[0].duty(-0.1);
+				motor[1].duty(-0.1);
+			}else{
+				motor[0].duty(0);
+				motor[1].duty(0);
+			}
+		}
+		delay(100);
+		serial.printf("%d,%d\n\r",motor[0].outDuty,motor[1].outDuty);
+	}
 
 	//IWDGSetup(PRINT_TIME * 20);
 
@@ -50,8 +69,8 @@ int main(void){
     				canMD[0].brake(0);
     				canMD[1].brake(0);
     			}else{
-    				canMD[0].duty(-0.1);
-    				canMD[1].duty(-0.1);
+    				canMD[0].duty(-0.3);
+    				canMD[1].duty(-0.3);
     			}
 
     		}

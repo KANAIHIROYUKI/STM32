@@ -7,73 +7,80 @@
 
 #define IntervalTime 100
 
+#define CAN_ADD_SWITCH 0x700
+
+#define ROTARY 15 - ((switchPin[3].read() << 3) + (switchPin[0].read() << 2) + (switchPin[2].read() << 1) + (switchPin[1].read() << 0))
+
 uint64_t intervalTime = 0;
 uint16_t rxFlag;
 
 
-GPIO signal,led[8],toggleSw[8],rotarySw[8];
+GPIO signal,led[16],switchPin[8];
 USART serial;
 CAN can1;
 
-CanNodeValve canVlv;
+CanNodeValve canVlv[2];
 
-CanValve canValve;
+CanValve canValve[2];
 
 void setup(){
 
 
 	systemSetup();
 
-	//signal.setup(PB0,OUTPUT);
 
-	led[0].setup(PC15,OUTPUT);
-	led[1].setup(PC14,OUTPUT);
-	led[2].setup(PC15,OUTPUT);
-	led[3].setup(PA0,OUTPUT);
-	led[4].setup(PA1,OUTPUT);
-	led[5].setup(PA2,OUTPUT);
-	led[6].setup(PA3,OUTPUT);
-	led[7].setup(PA4,OUTPUT);
 
-	rotarySw[0].setup(PA5,INPUT_PU);
-	rotarySw[1].setup(PA6,INPUT_PU);
-	rotarySw[2].setup(PA7,INPUT_PU);
-	rotarySw[3].setup(PB0,INPUT_PU);
-	rotarySw[4].setup(PB1,INPUT_PU);
-	rotarySw[5].setup(PB2,INPUT_PU);
-	rotarySw[6].setup(PB10,INPUT_PU);
-	rotarySw[7].setup(PB11,INPUT_PU);
+	led[0].setup(PB9,OUTPUT);
+	led[1].setup(PB8,OUTPUT);
+	led[2].setup(PB7,OUTPUT);
+	led[3].setup(PB6,OUTPUT);
+	led[4].setup(PB5,OUTPUT);
+	led[5].setup(PA1,OUTPUT);
+	led[6].setup(PA2,OUTPUT);
+	led[7].setup(PA3,OUTPUT);
 
-	toggleSw[0].setup(PB9,INPUT_PU);
-	toggleSw[1].setup(PB8,INPUT_PU);
-	toggleSw[2].setup(PB7,INPUT_PU);
-	toggleSw[3].setup(PB6,INPUT_PU);
-	toggleSw[4].setup(PB5,INPUT_PU);
-	toggleSw[5].setup(PB4,INPUT_PU);
-	toggleSw[6].setup(PB3,INPUT_PU);
-	toggleSw[7].setup(PA15,INPUT_PU);
+	led[8].setup(PA8,OUTPUT);
+	led[9].setup(PB15,OUTPUT);
+	led[10].setup(PB14,OUTPUT);
+	led[11].setup(PB13,OUTPUT);
+	led[12].setup(PB12,OUTPUT);
+	led[13].setup(PB2,OUTPUT);
+	led[14].setup(PB10,OUTPUT);
+	led[15].setup(PB11,OUTPUT);
 
-	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
+	for(int i=0;i<16;i++){
+		led[i].write(0);
+	}
+
+	switchPin[0].setup(PC13,INPUT_PU);
+	switchPin[1].setup(PC14,INPUT_PU);
+	switchPin[2].setup(PC15,INPUT_PU);
+	switchPin[3].setup(PA0,INPUT_PU);
+
+	switchPin[4].setup(PA5,INPUT_PU);
+	switchPin[5].setup(PA6,INPUT_PU);
+	switchPin[6].setup(PA7,INPUT_PU);
+	switchPin[7].setup(PB1,INPUT_PU);
+
+
+	can1.setup(CAN1,PA12,PA11);
+	can1.filterAdd(CAN_ADD_SWITCH);
+
+	canVlv[0].setup(can1,1);
+	canVlv[1].setup(can1,2);
+
+	for(int i=0;i<8;i++){
+		canVlv[0].pinAdd(led[i]);
+		canVlv[1].pinAdd(led[i + 8]);
+	}
+
+	canValve[0].setup(can1,1);
+	canValve[1].setup(can1,2);
 
 	serial.setup(USART1,921600,PA9,PA10);
-	can1.setup(CAN1,PA12,PA11);
-
-	canVlv.setup(can1,1);
-	canVlv.pinAdd(led[0]);
-	canVlv.pinAdd(led[1]);
-	canVlv.pinAdd(led[2]);
-	canVlv.pinAdd(led[3]);
-	canVlv.pinAdd(led[4]);
-	canVlv.pinAdd(led[5]);
-	canVlv.pinAdd(led[6]);
-	canVlv.pinAdd(led[7]);
-
-	canValve.setup(can1,1);
-
 	serial.printf("\n\rFILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
-
 }
 
 
@@ -82,7 +89,8 @@ void setup(){
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	rxFlag++;
 	can1.receive();
-	canVlv.interrupt();
+	canVlv[0].interrupt();
+	canVlv[1].interrupt();
 	return;
 }
 
