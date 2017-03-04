@@ -137,8 +137,7 @@ int main(void)
 	sel2.setup(PB10,INPUT_PU);
 	sel4.setup(PB1,INPUT_PU);
 	sel8.setup(PB11,INPUT_PU);
-	canAddress = 15 - (sel1.read() + sel2.read()*2 + sel4.read()*4 + sel8.read()*8);
-
+	canAddress = 15 - (sel1.read()*8 + sel2.read() + sel4.read()*4 + sel8.read()*2);
 	motorEN.setup(PB12,OUTPUT);
 
 	limitA1.setup(PB13,OUTPUT);
@@ -200,7 +199,7 @@ int main(void)
 	delay(500);
 
 	can1.setup();
-	can1.filterAdd(CAN_MTD + canAddress,CAN_MTD + canAddress + 1,CAN_VLV);
+	can1.filterAdd(CAN_MTD + (canAddress*2),CAN_MTD + (canAddress*2) + 1,CAN_VLV);
 
 	motorTimeA = 0;
 	motorTimeB = 0;
@@ -262,7 +261,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 
 
 
-	if(RxMessage.StdId == CAN_MTD){
+	if(RxMessage.StdId == CAN_MTD + (canAddress*2)){
 		outA_duty = 0;
 		motorTimeA = millis();
 
@@ -274,7 +273,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 		outA_duty /= 32;
 
 		motorA.duty(outA_duty);
-	}else if(RxMessage.StdId == CAN_MTD + 1){
+	}else if(RxMessage.StdId == CAN_MTD + (canAddress*2) + 1){
 		outB_duty = 0;
 		motorTimeB = millis();
 
