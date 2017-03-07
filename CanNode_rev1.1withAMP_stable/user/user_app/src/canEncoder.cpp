@@ -19,10 +19,19 @@ int64_t CanEncoder::read(){
 	return canEnc_value * canEnc_wise;
 }
 
+float CanEncoder::velRead(){
+	return canEnc_velocity;
+}
+
 void CanEncoder::interrupt(){
 	if(canEnc_can->rxMessage.StdId == canEnc_address){
 		canEnc_value = uchar4_to_int(canEnc_can->rxMessage.Data);
-
+		uint8_t velData[4];
+		velData[0] = canEnc_can->rxMessage.Data[4];
+		velData[1] = canEnc_can->rxMessage.Data[5];
+		velData[2] = canEnc_can->rxMessage.Data[6];
+		velData[3] = canEnc_can->rxMessage.Data[7];
+		canEnc_velocity = uchar4_to_float(velData);
 		/*canEnc_value = canEnc_can->rxMessage.Data[0];
 		canEnc_value += canEnc_can->rxMessage.Data[1]<<8;
 		canEnc_value += canEnc_can->rxMessage.Data[2]<<16;

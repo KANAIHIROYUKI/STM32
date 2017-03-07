@@ -8,6 +8,8 @@ int main(void){
 
 	setup();
 
+
+
 	/*
 	for(int i=0;i<20000;i++){
 		currentOffset[0] += cs[0].read(ADC_SampleTime_239Cycles5);
@@ -22,6 +24,7 @@ int main(void){
 
 	TIM4ITSetup();*/
 
+/*
 	while(1){
 		if(vserial.available()){
 			serial.send(vserial.read());
@@ -48,7 +51,7 @@ int main(void){
 		//delay(10);
 		//serial.printf("%d,%d\n\r",motor[0].outDuty,motor[1].outDuty);
 	}
-
+*/
 	//IWDGSetup(PRINT_TIME * 20);
 
     while(1){

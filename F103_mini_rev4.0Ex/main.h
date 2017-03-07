@@ -15,7 +15,7 @@ USART serial,vserial;
 void setup(){
 	systemSetup();
 
-	vserial.setup(USART2,9600,PA2,PA3);
+	vserial.setup(USART2,115200,PA2,PA3);
 
 
 	v1a.setup(ADC1,0,PA0);

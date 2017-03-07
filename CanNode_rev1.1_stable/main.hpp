@@ -4,16 +4,21 @@
 #include "system.h"
 #include "app.h"
 
+#define CAN_SELF_DEBUG
+
 TIM enc[4];
 GPIO io[8],led;
 USART serial;
 
 CAN can1;
 
-CanNodeValve canValve;
+CanNodeValve canVlv;
 CanNodeEncoder canEnc[4];
 
-#define DEBUG
+CanEncoder canEncoder[4];
+CanValve canValve;
+
+//#define DEBUG
 
 #define PRINT_TIME 100
 
@@ -25,6 +30,7 @@ void setup(){
 	systemSetup();
 
 	serial.setup(USART3,921600,PB10,PB11);
+	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
 
 	enc[0].encoderSetup(TIM1,PA8,PA9);
 	enc[1].encoderSetup(TIM2,PA0,PA1);
@@ -53,30 +59,45 @@ void setup(){
 	canEnc[2].setup(enc[2],can1,2);
 	canEnc[3].setup(enc[3],can1,3);
 
-	canValve.setup(can1,0);
-	canValve.pinAdd(io[0]);
-	canValve.pinAdd(io[1]);
-	canValve.pinAdd(io[2]);
-	canValve.pinAdd(io[3]);
-	canValve.pinAdd(io[4]);
-	canValve.pinAdd(io[5]);
-	canValve.pinAdd(io[6]);
-	canValve.pinAdd(io[7]);
+	canVlv.setup(can1,0);
+	canVlv.pinAdd(io[0]);
+	canVlv.pinAdd(io[1]);
+	canVlv.pinAdd(io[2]);
+	canVlv.pinAdd(io[3]);
+	canVlv.pinAdd(io[4]);
+	canVlv.pinAdd(io[5]);
+	canVlv.pinAdd(io[6]);
+	canVlv.pinAdd(io[7]);
 
 	led.write(Bit_RESET);
 
+#ifdef CAN_SELF_DEBUG
+	canEncoder[0].setup(can1,0,10);
+	canEncoder[1].setup(can1,1,10);
+	canEncoder[2].setup(can1,2,10);
+	canEncoder[3].setup(can1,3,10);
 
-	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
+	canValve.setup(can1,0);
+#endif
+
+
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	rxFlag++;
 	can1.receive();
-	canValve.interrupt();
+	canVlv.interrupt();
 	canEnc[0].interrupt();
 	canEnc[1].interrupt();
 	canEnc[2].interrupt();
 	canEnc[3].interrupt();
+
+#ifdef CAN_SELF_DEBUG
+	canEncoder[0].interrupt();
+	canEncoder[1].interrupt();
+	canEncoder[2].interrupt();
+	canEncoder[3].interrupt();
+#endif
 	return;
 }
 

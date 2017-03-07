@@ -16,6 +16,7 @@ public:
 	TIM* canEnc_enc;
 	uint32_t canEnc_intervalTimer;
 	uint16_t canEnc_address;
+	int64_t canEnc_oldCnt;
 
 private:
 	CAN* canEnc_can;

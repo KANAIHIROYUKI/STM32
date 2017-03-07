@@ -78,7 +78,7 @@ void setup(){
 	canValve.pinAdd(io[6]);
 	canValve.pinAdd(io[7]);
 
-	//canEncoder.setup(can1,0,10);
+	//canEncoder.setup(can1,4,10);
 	//canVlv.setup(can1,0);
 
 	canMD[0].setup(can1,10);

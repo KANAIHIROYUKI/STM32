@@ -75,6 +75,7 @@ void setup(){
 	io[5].setup(PB13,OUTPUT);
 	io[6].setup(PB14,OUTPUT);
 	io[7].setup(PB15,OUTPUT);
+
 /*
 	while(1){
 		delay(200);
@@ -127,7 +128,7 @@ void setup(){
 	add[0].setup(PC13,INPUT_PU);
 	add[1].setup(PC14,INPUT_PU);
 	add[2].setup(PC15,INPUT_PU);
-	add[3].setup(PB2,INPUT_PU);
+	add[3].setup(PA2,INPUT_PU);
 
 	sw[0].setup(PB4,INPUT_PU);
 	sw[1].setup(PB5,INPUT_PU);
