@@ -88,8 +88,8 @@
   <Files>
     <File name="stm_lib/inc/stm32f10x_can.h" path="stm_lib/inc/stm32f10x_can.h" type="1"/>
     <File name="user_apps/inc/canNodeAnalogIn.h" path="user/user_app/inc/canNodeAnalogIn.h" type="1"/>
-    <File name="user_apps/src/canNodeAnalogIn.cpp" path="user/user_app/src/canNodeAnalogIn.cpp" type="1"/>
     <File name="user_lib/inc/adc.h" path="user/user_lib/inc/adc.h" type="1"/>
+    <File name="user_apps/src/canNodeAnalogIn.cpp" path="user/user_app/src/canNodeAnalogIn.cpp" type="1"/>
     <File name="stm_lib/src/stm32f10x_dbgmcu.c" path="stm_lib/src/stm32f10x_dbgmcu.c" type="1"/>
     <File name="user_apps/src/canNodePulse.cpp" path="user/user_app/src/canNodePulse.cpp" type="1"/>
     <File name="user_lib/src/usart.cpp" path="user/user_lib/src/usart.cpp" type="1"/>
@@ -119,8 +119,8 @@
     <File name="cmsis_boot/system_stm32f10x.c" path="cmsis_boot/system_stm32f10x.c" type="1"/>
     <File name="stdio" path="" type="2"/>
     <File name="stm_lib/inc/misc.h" path="stm_lib/inc/misc.h" type="1"/>
-    <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="user_apps/inc/canValve.h" path="user/user_app/inc/canValve.h" type="1"/>
+    <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="util" path="" type="2"/>
     <File name="user_lib/src/remap.cpp" path="user/user_lib/src/remap.cpp" type="1"/>
     <File name="user_apps/inc/canNodeEncoder.h" path="user/user_app/inc/canNodeEncoder.h" type="1"/>
@@ -134,10 +134,10 @@
     <File name="cmsis" path="" type="2"/>
     <File name="stm_lib" path="" type="2"/>
     <File name="util/src" path="" type="2"/>
-    <File name="user_lib/inc/remap.h" path="user/user_lib/inc/remap.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_adc.h" path="stm_lib/inc/stm32f10x_adc.h" type="1"/>
-    <File name="main.cpp" path="main.cpp" type="1"/>
+    <File name="user_lib/inc/remap.h" path="user/user_lib/inc/remap.h" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
+    <File name="main.cpp" path="main.cpp" type="1"/>
     <File name="util/src/utilplus.cpp" path="user/util/src/utilplus.cpp" type="1"/>
     <File name="user_lib/src" path="" type="2"/>
     <File name="user_apps/src/constantCurrentControl.cpp" path="user/user_app/src/constantCurrentControl.cpp" type="1"/>
@@ -152,11 +152,11 @@
     <File name="user_apps/src/canNodeMotorDriver.cpp" path="user/user_app/src/canNodeMotorDriver.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_tim.h" path="stm_lib/inc/stm32f10x_tim.h" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
-    <File name="semihosting/sh_cmd.s" path="semihosting/sh_cmd.s" type="1"/>
     <File name="stm_lib/src/stm32f10x_tim.c" path="stm_lib/src/stm32f10x_tim.c" type="1"/>
+    <File name="semihosting/sh_cmd.s" path="semihosting/sh_cmd.s" type="1"/>
     <File name="cmsis_boot/startup" path="" type="2"/>
-    <File name="user_lib/inc/usart.h" path="user/user_lib/inc/usart.h" type="1"/>
     <File name="user_apps/src/canNodeEncoder.cpp" path="user/user_app/src/canNodeEncoder.cpp" type="1"/>
+    <File name="user_lib/inc/usart.h" path="user/user_lib/inc/usart.h" type="1"/>
     <File name="semihosting/semihosting.c" path="semihosting/semihosting.c" type="1"/>
     <File name="user_apps/src/app.cpp" path="user/user_app/src/app.cpp" type="1"/>
     <File name="user_apps/inc/canNodePulse.h" path="user/user_app/inc/canNodePulse.h" type="1"/>
@@ -170,8 +170,8 @@
     <File name="user_apps/inc/app.h" path="user/user_app/inc/app.h" type="1"/>
     <File name="user_apps/src/canNodeValve.cpp" path="user/user_app/src/canNodeValve.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_gpio.h" path="stm_lib/inc/stm32f10x_gpio.h" type="1"/>
-    <File name="user_lib/src/iwdg.cpp" path="user/user_lib/src/iwdg.cpp" type="1"/>
     <File name="user_apps/inc/motor.h" path="user/user_app/inc/motor.h" type="1"/>
+    <File name="user_lib/src/iwdg.cpp" path="user/user_lib/src/iwdg.cpp" type="1"/>
     <File name="util/inc" path="" type="2"/>
     <File name="cmsis/core_cm3.h" path="cmsis/core_cm3.h" type="1"/>
     <File name="user_lib/src/adc.cpp" path="user/user_lib/src/adc.cpp" type="1"/>
@@ -179,8 +179,8 @@
     <File name="user_apps/src/canEncoder.cpp" path="user/user_app/src/canEncoder.cpp" type="1"/>
     <File name="user_apps/src/pulse.cpp" path="user/user_app/src/pulse.cpp" type="1"/>
     <File name="user_lib/src/system.cpp" path="user/user_lib/src/system.cpp" type="1"/>
-    <File name="util/inc/util.h" path="user/util/inc/util.h" type="1"/>
     <File name="user_lib/inc/iwdg.h" path="user/user_lib/inc/iwdg.h" type="1"/>
+    <File name="util/inc/util.h" path="user/util/inc/util.h" type="1"/>
     <File name="user_apps/inc/port.h" path="user/user_app/inc/port.h" type="1"/>
     <File name="user_lib/src/tim.cpp" path="user/user_lib/src/tim.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>

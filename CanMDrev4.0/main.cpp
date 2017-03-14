@@ -24,7 +24,7 @@ int main(void){
 
 	TIM4ITSetup();*/
 
-/*
+
 	while(1){
 		if(vserial.available()){
 			serial.send(vserial.read());
@@ -48,10 +48,14 @@ int main(void){
 				motor[1].duty(0);
 			}
 		}
-		//delay(10);
-		//serial.printf("%d,%d\n\r",motor[0].outDuty,motor[1].outDuty);
+
+		if(printTime < millis()){
+			printTime += PRINT_TIME;
+			//serial.printf("%d,%d\n\r",motor[0].outDuty,motor[1].outDuty);
+		}
+
 	}
-*/
+
 	//IWDGSetup(PRINT_TIME * 20);
 
     while(1){

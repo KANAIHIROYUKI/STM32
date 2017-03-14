@@ -65,7 +65,7 @@ void motorBuzzerEnd();
 void setup(){
 	systemSetup();
 
-	vserial.setup(USART1,9600,PA9,PA10);
+	vserial.setup(USART1,115200,PA9,PA10);
 
 	io[0].setup(PA3,OUTPUT);
 	io[1].setup(PA4,OUTPUT);
@@ -76,13 +76,6 @@ void setup(){
 	io[6].setup(PB14,OUTPUT);
 	io[7].setup(PB15,OUTPUT);
 
-/*
-	while(1){
-		delay(200);
-		for(int i=0;i<8;i++){
-			led[i].toggle();
-		}
-	}*/
 
 
 	enc[0].encoderSetup(TIM2,PA0,PA1);

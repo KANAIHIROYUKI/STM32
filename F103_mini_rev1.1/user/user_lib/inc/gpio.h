@@ -49,7 +49,7 @@
 #define PD3 GPIOD,GPIO_Pin_3
 
 #define OUTPUT GPIO_Mode_Out_PP
-#define OUTPUT_UD GPIO_Mode_Out_OD
+#define OUTPUT_OD GPIO_Mode_Out_OD
 #define OUTPUT_AF GPIO_Mode_AF_PP
 #define OUTPUT_AF_OD GPIO_Mode_AF_OD
 
@@ -61,7 +61,7 @@
 class GPIO {
 public:
 	void setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode);
-	uint16_t write(BitAction value);
+	uint16_t write(uint16_t value);
 	uint16_t read();
 	void toggle();
 

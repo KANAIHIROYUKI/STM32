@@ -57,7 +57,7 @@
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
-      <source file="..\..\..\user\user_app\canNode\inc\canNodePulse.h" lastModified="15a5edd2fbd">
+      <source file="..\..\..\user\user_app\canNode\inc\canNodePulse.h" lastModified="15a982c791b">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
@@ -109,6 +109,9 @@
       </source>
       <source file="..\..\..\user\user_lib\inc\tim.h" lastModified="1599bb6b266">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\src\canMotorDriver.cpp" lastModified="15a6058173c">
+         <include file="..\..\..\user\user_app\inc\canMotorDriver.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_rcc.h" lastModified="1577ee5e0a3">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
@@ -276,9 +279,6 @@
       <source file="..\..\..\stm_lib\src\stm32f10x_can.c" lastModified="1577ee64a04">
          <include file="..\..\..\stm_lib\inc\stm32f10x_can.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\canNode\src\canNodePulse.cpp" lastModified="15a5f9619ef">
-         <include file="..\..\..\user\user_app\canNode\inc\canNodePulse.h"/>
       </source>
       <source file="..\..\..\user\user_app\inc\canEncoder.h" lastModified="15a5e91a884">
          <include file="..\..\..\user\user_lib\inc\system.h"/>

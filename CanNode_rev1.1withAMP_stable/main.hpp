@@ -22,20 +22,14 @@ CanEncoder canEncoder;
 CanValve canVlv;
 CanMotorDriver canMD[4];
 
-
-#define DEBUG
-
-
+//#define DEBUG
 
 uint16_t rxFlag = 0;
 uint8_t canData[8] = {0,0,0,0,0,0,0,0},canAddress=0;
-CanRxMsg rxMessage;
 
 #define PRINT_TIME 50
 
 uint64_t printTime = 0,canLastReceiveTime = 0;
-
-uint32_t currentInt[2] = {0,0},currentCnt[2] = {0,0};
 
 void setup(){
 	sys.setup();
@@ -78,8 +72,10 @@ void setup(){
 	canValve.pinAdd(io[6]);
 	canValve.pinAdd(io[7]);
 
-	//canEncoder.setup(can1,4,10);
-	//canVlv.setup(can1,0);
+#ifdef DEBUG
+	canEncoder.setup(can1,4,10);
+	canVlv.setup(can1,0);
+#endif
 
 	canMD[0].setup(can1,10);
 	canMD[1].setup(can1,11);
@@ -95,7 +91,9 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	canEnc[0].interrupt();
 	canEnc[1].interrupt();
 
-	//canEncoder.interrupt();
+#ifdef DEBUG
+	canEncoder.interrupt();
+#endif
 
 	canPulse[0].interrupt();
 	canPulse[1].interrupt();

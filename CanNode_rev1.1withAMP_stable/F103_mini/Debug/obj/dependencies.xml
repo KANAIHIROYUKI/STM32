@@ -223,7 +223,7 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="1577ee5e08f">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\main.hpp" lastModified="15aa8548519">
+      <source file="..\..\..\main.hpp" lastModified="15ab1fcf32c">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_app\inc\app.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -262,9 +262,6 @@
       </source>
       <source file="..\..\..\user\user_lib\inc\base.h" lastModified="15a5ec21f7d">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\main.cpp" lastModified="15aa87cd1e1">
-         <include file="..\..\..\main.hpp"/>
       </source>
       <source file="..\..\..\user\user_app\inc\pwm.h" lastModified="15a83a39228">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
@@ -331,6 +328,9 @@
       <source file="..\..\..\user\user_lib\src\remap.cpp" lastModified="1599bb749fc">
          <include file="..\..\..\user\user_lib\inc\remap.h"/>
       </source>
+      <source file="..\..\..\user\user_app\canNode\src\canNodeEncoder.cpp" lastModified="15ab1f96157">
+         <include file="..\..\..\user\user_app\canNode\inc\canNodeEncoder.h"/>
+      </source>
       <source file="..\..\..\user\user_lib\inc\system.h" lastModified="15a5fc87fe8">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
@@ -341,7 +341,7 @@
          <include file="..\..\..\user\user_lib\inc\spi.h"/>
          <include file="..\..\..\user\user_lib\inc\dma.h"/>
       </source>
-      <source file="..\..\..\user\user_app\canNode\inc\canNodeEncoder.h" lastModified="15aa874f3e2">
+      <source file="..\..\..\user\user_app\canNode\inc\canNodeEncoder.h" lastModified="15ab1f94344">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\util\inc\util.h"/>
          <include file="..\..\..\user\user_lib\inc\usart.h"/>

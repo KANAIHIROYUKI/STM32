@@ -35,9 +35,12 @@ int main(void)
     		if(canLastReceiveTime + 50 < millis()){
     			led.toggle();
     		}
-    		serial.printf("%d,%d\n\r",canEnc[0].canEnc_interval,canEnc[1].canEnc_interval);
-    		//serial.printf("%d,%d\n\r",(int32_t)canEncoder.read(),(int32_t)(canEncoder.velRead()*1000));
-       		//serial.printf("%4d,%4d,%4d,%4d\n\r",canPulse[0].outDuty,canPulse[1].outDuty,canPulse[2].outDuty,canPulse[3].outDuty);
+    		//serial.printf("%d,%d\n\r",canEnc[0].canEnc_interval,canEnc[1].canEnc_interval);
+
+#ifdef DEBUG
+    		serial.printf("%d,%d\n\r",(int32_t)canEncoder.read(),(int32_t)canEncoder.read());
+#endif
+       		serial.printf("%4d,%4d,%4d,%4d\n\r",canPulse[0].outDuty,canPulse[1].outDuty,canEnc[0].canEnc_interval,canEnc[1].canEnc_interval);
     	}
 
     	while(rxFlag > 0){

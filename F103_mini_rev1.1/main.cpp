@@ -1,60 +1,54 @@
+#include "main.h"
 
-#include "main.hpp"
 
 int main(void)
 {
 	setup();
 
-	serial.printf("PIN = 0x%x,FIL = %d\n\r",canValve.canValve_address,can1.filterCnt);
-	serial.printf("address = %x,%x,%x,%x",canPulse[0].canPulse_address,canPulse[1].canPulse_address,canPulse[2].canPulse_address,canPulse[3].canPulse_address);
+	uint8_t switchState,switchStateOld,canData[8],stateCnt,sendState;
 
-	for(int i=0;i<can1.filterCnt;i++){
-		serial.printf("%d,0x%x\n\r",can1.filterCnt,can1.filterAddress[i]);
+
+
+	while(1){
+		switchStateOld = switchState;
+		switchState = 0;
+
+		for(int i=0;i<8;i++){
+			switchState += switchPin[i].read() << i;
+		}
+
+		if(switchState != switchStateOld){
+			stateCnt = 255;
+		}else if(stateCnt == 1){
+			stateCnt = 0;
+			sendState = switchState;	//定期送信用にチャタリング対策済みの値を代入
+			transmitTime = millis() + transmitIntervalTime;
+			//serial.printf("%x\n\r",switchState);
+
+			canData[0] = sendState;
+			CAN1Send(CAN_ADD_SWITCH_VALUE,1,canData);
+		}else if(stateCnt != 0){
+			stateCnt--;
+		}
+
+		if((transmitIntervalTime != 0) && (transmitTime < millis())){
+			transmitTime = millis() + transmitIntervalTime;
+			canData[0] = sendState;
+			//serial.printf("send\n\r");
+			CAN1Send(CAN_ADD_SWITCH_VALUE,1,canData);
+		}
+
+		if(intervalTime < millis()){
+			intervalTime = millis() + IntervalTime;
+			//serial.printf("%d\n\r",canSwitch.read());
+			//serial.printf("%d,%d,%d,%d,%d,%2x\n\r",ROTARY,switchPin[4].read(),switchPin[5].read(),switchPin[6].read(),switchPin[7].read(),switchState);
+		}
+
+		if(rxFlag != 0){
+			signal.toggle();
+			rxFlag--;
+			//serial.printf("%d,",transmitIntervalTime);
+			serial.printf("CAN RX d0=%x,d1=%x,d2=%x\n\r",can1.rxMessage.Data[0],can1.rxMessage.Data[1],can1.rxMessage.Data[2]);
+		}
 	}
-
-	serial.printf("boot\n\r");
-	canMD[0].duty(0);
-	uint64_t time = millis();
-	while(time + 8000 > millis()){
-		canPulse[0].cycle();
-	}
-	serial.printf("start\n\r");
-	int16_t pulseDuty = 100;
-
-
-	//IWDGSetup(PRINT_TIME * 20);
-    while(1){
-    	canEnc[0].cycle();
-    	canPulse[0].cycle();
-
-    	if(printTime <= millis()){
-    		led.toggle();
-
-       		printTime = millis() + PRINT_TIME;
-
-       		//int16_t pulseDuty = millis()>>4 & 0x7FF;
-       		pulseDuty +=1;
-       		//pulseDuty = millis() - 1000;
-       		//canVlv.write(0,millis() >> 8);
-
-       		canMD[0].duty(pulseDuty);
-       		//canMD[1].duty(pulseDuty);
-       		//canMD[2].duty(pulseDuty);
-       		//canMD[3].duty(pulseDuty);
-       		if(pulseDuty > 700)pulseDuty = 100;
-
-
-
-       		serial.printf("%6d,%6d,%6d,%6d\n\r",pulseDuty,canPulse[0].outDuty,(uint32_t)canPulse[0].canPulse_pulseTime,(uint32_t)canPulse[0].canPulse_cycleTime);
-
-       		IWDGReset();
-
-    		//serial.printf("%2d,%6d,%2d,%d\n\r",enc[0].read(),canEncoder.read(),canEncoder.lastReceiveTime(),pulseDuty);
-    	}
-
-    	while(rxFlag > 0){
-    		rxFlag--;
-    		//serial.printf("ADD = %x,%d\n\r",can1.rxMessage.StdId,can1.rxMessage.Data[1]);
-    	}
-    }
 }
