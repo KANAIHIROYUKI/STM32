@@ -36,18 +36,14 @@ int main(void){
 		}
 
 
-		if(sw[1].read() == 0){
-			motor[0].duty(0.1);
-			motor[1].duty(0.1);
-		}else{
+
 			if(sw[0].read() == 0){
 				motor[0].duty(-0.1);
 				motor[1].duty(-0.1);
 			}else{
-				motor[0].duty(0);
-				motor[1].duty(0);
+				motor[0].duty(0.1);
+				motor[1].duty(0.1);
 			}
-		}
 
 		if(printTime < millis()){
 			printTime += PRINT_TIME;

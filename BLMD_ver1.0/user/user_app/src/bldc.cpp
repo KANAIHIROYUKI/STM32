@@ -18,13 +18,15 @@ void Phase::degree(int16_t out_degree){
 	if(out_degree < 0)out_degree = 360 + out_degree;
 
 	if(out_degree <= 60){
-		duty(out_degree/60);
+		//en->write(0);
 	}else if(out_degree <= 180){
+		//en->write(1);
 		duty(1.0);
 	}else if(out_degree <= 240){
-		duty(1.0 - (180 - out_degree)/60);
+		//en->write(0);
 	}else{
-		duty(0);
+		//en->write(1);
+		duty(0.0);
 	}
 }
 

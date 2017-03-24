@@ -5,7 +5,7 @@ int main(void)
 {
 	setup();
 
-	sys.wdgSetup(50);	//5ms
+	//sys.wdgSetup(50);	//5ms
     while(1){
     	sys.cycle();
     	if(printTime <= millis()){
@@ -13,7 +13,7 @@ int main(void)
 
        		printTime = millis() + PRINT_TIME;
 
-       		bldc.degree(millis()/100);
+       		bldc.degree(millis());
 
        		serial.printf("%d\n\r",(uint32_t)millis());
 

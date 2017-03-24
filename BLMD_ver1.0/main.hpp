@@ -30,7 +30,7 @@ void setup(){
 
 	serial.setup(USART3,921600,PB10,PB11);
 	sys.usartSetup(serial);
-	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
+	//serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
 
 	enc.encoderSetup(TIM4,PB6,PB7);
 	pwm[0].pwmSetup(TIM2,1,PA0,3600);
@@ -41,16 +41,20 @@ void setup(){
 	phase[1].setup(pwm[1],en[1]);
 	phase[2].setup(pwm[2],en[2]);
 
-	phase[0].adc->setup(ADC1,5,PA4);
-	phase[1].adc->setup(ADC1,6,PA5);
-	phase[2].adc->setup(ADC1,7,PA6);
+	cs[0].setup(ADC1,5,PA4);
+	cs[1].setup(ADC1,6,PA5);
+	cs[2].setup(ADC1,7,PA6);
+
+	phase[0].adcAssigne(cs[0]);
+	phase[1].adcAssigne(cs[1]);
+	phase[2].adcAssigne(cs[2]);
 
 	bldc.setup(phase[0],phase[1],phase[2]);
 
-
-	led.setup(PB2,OUTPUT);
+	led.setup(PC13,OUTPUT);
 
 	can1.setup(CAN1,PA12,PA11);
+	//led.write(1);
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
