@@ -33,11 +33,24 @@ int main(void)
 			for(int i=0;i<6;i++){
 				vave[i] = vave[i]/vcnt;
 
-				if(vmax[0] < 3400){
-					if(buzzerStat == 0)buzzerStat = 2;
+				if(vmax[0] < 3000){
+					if(buzzerStat < 3)buzzerStat = 3;
+				}else if(vmax[0] < 3400){
+					if(buzzerStat < 1)buzzerStat = 1;
 				}else{
-					buzzerStat = 0;
+					if(buzzerStat != 5)buzzerStat = 0;
 				}
+			}
+			cellMin = 36300;
+			cellMax = 0;
+			for(int i=0;i<6;i++){
+				if(cellMin > voltage[i])cellMin = voltage[i];
+				if(cellMax < voltage[i])cellMax = voltage[i];
+			}
+			cellWorst = cellMax - cellMin;
+			if(cellWorst > 200){
+				buzzerStat = 5;
+				beep(2500,0);
 			}
 
 			serial.printf("%6d,%d\n\r",(uint32_t)vmax[0],buzzerStat);
@@ -51,32 +64,43 @@ int main(void)
 
 			switch(buzzerStat){
 			case 0:
-				beep(2500,0);
+				beep(4200,0);
 				buzzerStatCnt = 0;
 				break;
 			case 1:
-				beep(2500,0.5);
-				buzzerStatCnt = 0;
-				break;
-			case 2:
 				beep(2500,0.1);
-				buzzerStatCnt++;
-				if(buzzerStatCnt > 10){
-					buzzerStatCnt = 0;
-					buzzerStat = 3;
-				}
-				break;
-			case 3:
-				beep(2500,0);
 				buzzerStatCnt++;
 				if(buzzerStatCnt > 10){
 					buzzerStatCnt = 0;
 					buzzerStat = 2;
 				}
 				break;
+			case 2:
+				beep(2500,0);
+				buzzerStatCnt++;
+				if(buzzerStatCnt > 10){
+					buzzerStatCnt = 0;
+					buzzerStat = 1;
+				}
+				break;
+			case 3:
+				if(buzzerStatCnt == 0)beep(2500,0.1);
+				buzzerStatCnt++;
+				if(buzzerStatCnt > 10){
+					buzzerStatCnt = 0;
+					buzzerStat = 4;
+				}
+				break;
 			case 4:
+				if(buzzerStatCnt == 0)beep(2500,0);
+				buzzerStatCnt++;
+				if(buzzerStatCnt > 5){
+					buzzerStatCnt = 0;
+					buzzerStat = 3;
+				}
 				break;
 			case 5:
+
 				break;
 			default:
 				break;

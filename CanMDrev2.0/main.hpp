@@ -42,6 +42,8 @@ void setup(){
 	motorEN.setup(PB12,OUTPUT);
 	motorEN.write(Bit_RESET);
 
+
+
 	pwm[0].pwmSetup(TIM4,3,PB8,PWM_PERIOD);
 	pwm[1].pwmSetup(TIM4,4,PB9,PWM_PERIOD);
 	pwm[2].pwmSetup(TIM4,1,PB6,PWM_PERIOD);

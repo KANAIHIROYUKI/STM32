@@ -67,12 +67,19 @@ public:
 	void reset();
 	void invert(uint16_t mode = 1);
 
+	void interruptSetup(EXTITrigger_TypeDef trigger);
+	void interruptEnable();
+	void interruptDesable();
+	uint16_t interruptFrag();
+	void interruptFlagClear();
+
 //private:
 	uint16_t gpio_invert;
-
 	uint16_t gpio_pin;
 	GPIO_TypeDef* gpio_gpio;
 	GPIOMode_TypeDef gpio_mode;
+
+	EXTITrigger_TypeDef exti_trigger;
 };
 
 void GPIOSetup();
@@ -80,5 +87,7 @@ void pinSetup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode);
 void pinWrite(GPIO_TypeDef* gpio,uint16_t pin,BitAction status);
 
 void pinToggle(GPIO_TypeDef* gpio,uint16_t pin);
+
+void EXTISetup(GPIO_TypeDef* gpio,uint16_t pin,EXTITrigger_TypeDef trigger);
 
 #endif

@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=F103_mini.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\F103_mini_PD -TC:\CooCox\CoIDE\configuration\ProgramData\F103_mini_PD/arm-gcc-link.ld -g">
+      <target file="F103_mini.elf" lastModified="15b02b8503a">
+         <source file="..\obj\semihosting.o" lastModified="15afeb45e62"/>
+         <source file="..\obj\canNodeEncoder.o" lastModified="15afeb45ee0"/>
+         <source file="..\obj\spi.o" lastModified="15afeb45f3e"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="15afeb45fe5"/>
+         <source file="..\obj\util.o" lastModified="15afeb4603b"/>
+         <source file="..\obj\stm32f10x_dbgmcu.o" lastModified="15afeb46081"/>
+         <source file="..\obj\iwdg.o" lastModified="15afeb460dd"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="15afeb46125"/>
+         <source file="..\obj\utilplus.o" lastModified="15afeb4628c"/>
+         <source file="..\obj\canMotorDriver.o" lastModified="15afeb462ec"/>
+         <source file="..\obj\tim.o" lastModified="15afeb46386"/>
+         <source file="..\obj\canEncoder.o" lastModified="15afeb463e9"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="15afeb46416"/>
+         <source file="..\obj\stm32f10x_can.o" lastModified="15afeb46484"/>
+         <source file="..\obj\constantCurrentControl.o" lastModified="15afeb464de"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="15afeb46533"/>
+         <source file="..\obj\canValve.o" lastModified="15afeb46592"/>
+         <source file="..\obj\main.o" lastModified="15b02b84e56"/>
+         <source file="..\obj\system.o" lastModified="15afeb4665f"/>
+         <source file="..\obj\printf.o" lastModified="15afeb466b5"/>
+         <source file="..\obj\can.o" lastModified="15afeb4671f"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="15afeb46781"/>
+         <source file="..\obj\gpio.o" lastModified="15afeb467e7"/>
+         <source file="..\obj\motor.o" lastModified="15afeb4684d"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="15afeb468b3"/>
+         <source file="..\obj\remap.o" lastModified="15afeb46905"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="15afeb46965"/>
+         <source file="..\obj\canNodeValve.o" lastModified="15afeb469c5"/>
+         <source file="..\obj\sh_cmd.o" lastModified="15afeb469d0"/>
+         <source file="..\obj\syscalls.o" lastModified="15afeb46a0f"/>
+         <source file="..\obj\pulse.o" lastModified="15afeb46a68"/>
+         <source file="..\obj\adc.o" lastModified="15afeb46ad3"/>
+         <source file="..\obj\app.o" lastModified="15afeb46b30"/>
+         <source file="..\obj\canNodePulse.o" lastModified="15afeb46b94"/>
+         <source file="..\obj\port.o" lastModified="15afeb46bf5"/>
+         <source file="..\obj\base.o" lastModified="15afeb46c48"/>
+         <source file="..\obj\canNodeAnalogIn.o" lastModified="15afeb46caa"/>
+         <source file="..\obj\misc.o" lastModified="15afeb46cf0"/>
+         <source file="..\obj\stm32f10x_spi.o" lastModified="15afeb46d4a"/>
+         <source file="..\obj\canNodeMotorDriver.o" lastModified="15afeb46db2"/>
+         <source file="..\obj\dma.o" lastModified="15afeb46e0d"/>
+         <source file="..\obj\usart.o" lastModified="15afeb46e8c"/>
+         <source file="..\obj\stm32f10x_iwdg.o" lastModified="15afeb46ecf"/>
+      </target>
+   </processor>
+</history>

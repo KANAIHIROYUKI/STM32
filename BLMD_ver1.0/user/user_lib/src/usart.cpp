@@ -69,8 +69,6 @@ void USART::setup(USART_TypeDef *usart,uint32_t baud,GPIO_TypeDef* gpio_tx,uint1
 
 
 void USART::send(char c){
-	//while(USART_GetFlagStatus(usart_usart,USART_FLAG_TXE) == 0);
-	//USART_SendData(usart_usart,c);
 
 	if(usart_usart == USART1){
 		USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
@@ -155,7 +153,7 @@ char USART::read(){
 	return 0;
 }
 
-char USART::peek(){		//要動作チェック
+char USART::peek(){
 	if(usart_usart == USART1){
 		return usart1RxBuffer[usart1ReadAddress + 1];
 	}else if(usart_usart == USART2){

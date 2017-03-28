@@ -7,47 +7,37 @@ int main(void){
 	int32_t motorRV[2] = {0,0};
 
 	setup();
+/*
+	TIM4Setup(20000,2);
 
+	pwm[1].duty(20000);
+	pwm[2].duty(0);
+	pwm[3].duty(0);
 
+	delay(3000);
 
-	/*
-	for(int i=0;i<20000;i++){
-		currentOffset[0] += cs[0].read(ADC_SampleTime_239Cycles5);
-		currentOffset[1] += cs[1].read(ADC_SampleTime_239Cycles5);
-	}
-	currentOffset[0] /= 20000;
-	currentOffset[1] /= 20000;
-	serial.printf("currentOffset = %6d,%6d\n\r",currentOffset[0],currentOffset[1]);
-
-	cs[0].start(ADC_SampleTime_239Cycles5);
-	cs[1].start(ADC_SampleTime_239Cycles5);
-
-	TIM4ITSetup();*/
-
-
+	TIM4Setup(2000);
+*/
 	while(1){
-		if(vserial.available()){
-			serial.send(vserial.read());
-			led[0].write(Bit_SET);
-			led[1].write(Bit_RESET);
-		}else{
-			led[0].write(Bit_RESET);
-			led[1].write(Bit_SET);
-		}
+		uint16_t pDeg[3],degSp = 10;
+		uint64_t degree;
 
+		degSp = millis() / 100;
 
+		if(degSp > 25)degSp = 25;
+		degree = millis()*degSp;
 
-			if(sw[0].read() == 0){
-				motor[0].duty(-0.1);
-				motor[1].duty(-0.1);
-			}else{
-				motor[0].duty(0.1);
-				motor[1].duty(0.1);
-			}
+		pDeg[0] = outDgree(pwm[1],degree);
+		pDeg[1] = outDgree(pwm[2],degree+120);
+		pDeg[2] = outDgree(pwm[3],degree+240);
+
+		delay(1);
 
 		if(printTime < millis()){
 			printTime += PRINT_TIME;
-			//serial.printf("%d,%d\n\r",motor[0].outDuty,motor[1].outDuty);
+			//serial.printf("%d,%d,%d\n\r",pwm[0].pwm_duty,pwm[1].pwm_duty,pwm[2].pwm_duty);
+			//serial.printf("%d,%d,%d\n\r",pDeg[0],pDeg[1],pDeg[2]);
+			//serial.printf("%d\n\r",degree);
 		}
 
 	}

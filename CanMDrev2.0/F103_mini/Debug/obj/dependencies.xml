@@ -10,7 +10,7 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="1577ee5e08f">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\main.hpp" lastModified="15a7465943f">
+      <source file="..\..\..\main.hpp" lastModified="15affd987f0">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_app\inc\app.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -49,6 +49,9 @@
       </source>
       <source file="..\..\..\user\user_lib\inc\base.h" lastModified="15a5ec21f7d">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\main.cpp" lastModified="15a78d59a33">
+         <include file="..\..\..\main.hpp"/>
       </source>
       <source file="..\..\..\user\user_app\inc\pwm.h" lastModified="15a5e7c4a7b">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
@@ -291,9 +294,6 @@
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1">
          <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a7412208c">
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
       </source>
       <source file="..\..\..\user\user_lib\src\tim.cpp" lastModified="159d523990f">
          <include file="..\..\..\user\user_lib\inc\tim.h"/>

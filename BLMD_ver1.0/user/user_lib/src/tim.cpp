@@ -179,24 +179,27 @@ void TIM::reverse(int8_t dir){
 
 void TIM::timerSetup(TIM_TypeDef* tim){
 	tim_tim = tim;
+	encoder_dir = 1;
+
 	if(tim_tim == TIM1){
 		tim1_mode = TIM_TIM;
-		TIM1Setup(7000);
+		TIM1Setup(65535,71);
 		TIM1ITSetup();
+
 
 	}else if(tim_tim == TIM2){
 		tim2_mode = TIM_TIM;
-		TIM1Setup(7000);
+		TIM2Setup(65535,71);
 		TIM2ITSetup();
 
 	}else if(tim_tim == TIM3){
 		tim3_mode = TIM_TIM;
-		TIM1Setup(7000);
+		TIM3Setup(65535,71);
 		TIM3ITSetup();
 
 	}else if(tim_tim == TIM4){
 		tim4_mode = TIM_TIM;
-		TIM1Setup(7000);
+		TIM4Setup(65535,71);
 		TIM4ITSetup();
 
 	}else{
@@ -215,14 +218,16 @@ void TIM1Setup(uint16_t period,uint16_t prescaler){
 	TIM_TimeBaseStructInit(&TimeBaseInitStructure);
 	TimeBaseInitStructure.TIM_Period = period;
 	TimeBaseInitStructure.TIM_Prescaler = prescaler;
-	TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	TimeBaseInitStructure.TIM_RepetitionCounter = 0;
+	//TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	//TimeBaseInitStructure.TIM_RepetitionCounter = 0;
 	TIM_TimeBaseInit(TIM1,&TimeBaseInitStructure);
 
+	/*
 	TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
 	TIM_BDTRStructInit(&TIM_BDTRInitStructure);
 	TIM_BDTRInitStructure.TIM_AutomaticOutput = TIM_AutomaticOutput_Enable;
 	TIM_BDTRConfig(TIM1, &TIM_BDTRInitStructure);
+*/
 
 	TIM_ARRPreloadConfig(TIM1,ENABLE);
 	TIM_Cmd(TIM1,ENABLE);
@@ -238,6 +243,9 @@ void TIM2Setup(uint16_t period,uint16_t prescaler){
 	TimeBaseInitStructure.TIM_Period = period;
 	TimeBaseInitStructure.TIM_Prescaler = prescaler;
 	TIM_TimeBaseInit(TIM2,&TimeBaseInitStructure);
+
+	TIM_ARRPreloadConfig(TIM2,ENABLE);
+	TIM_Cmd(TIM2,ENABLE);
 }
 
 void TIM3Setup(uint16_t period,uint16_t prescaler){
@@ -249,18 +257,32 @@ void TIM3Setup(uint16_t period,uint16_t prescaler){
 	TimeBaseInitStructure.TIM_Prescaler = prescaler;
 	TimeBaseInitStructure.TIM_Period = period;
 	TIM_TimeBaseInit(TIM3,&TimeBaseInitStructure);
+
+	TIM_ARRPreloadConfig(TIM3,ENABLE);
+	TIM_Cmd(TIM3,ENABLE);
 }
 
 void TIM4Setup(uint16_t period,uint16_t prescaler){
 	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM4EN,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
 
+
 	TIM_TimeBaseInitTypeDef TimeBaseInitStructure;
 	TIM_TimeBaseStructInit(&TimeBaseInitStructure);
 	TimeBaseInitStructure.TIM_Prescaler = prescaler;
 	TimeBaseInitStructure.TIM_Period = period;
 	TIM_TimeBaseInit(TIM4,&TimeBaseInitStructure);
+
+
+	TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
+	TIM_BDTRStructInit(&TIM_BDTRInitStructure);
+	TIM_BDTRInitStructure.TIM_AutomaticOutput = TIM_AutomaticOutput_Enable;
+	TIM_BDTRConfig(TIM4, &TIM_BDTRInitStructure);
+
+	TIM_ARRPreloadConfig(TIM4,ENABLE);
+	TIM_Cmd(TIM4,ENABLE);
 }
+
 
 void TIM1ITSetup(uint16_t tim_it){
 	NVIC_InitTypeDef NVIC_InitStructure;
@@ -304,7 +326,6 @@ void TIM4ITSetup(uint16_t tim_it){
 	NVIC_Init(&NVIC_InitStructure);
 
 	TIM_ITConfig(TIM4,tim_it,ENABLE);
-	//TIM_ITConfig(TIM4,TIM_IT_CC1,ENABLE);
 }
 
 
@@ -317,8 +338,6 @@ void OC1PWMSetup(TIM_TypeDef *tim,uint16_t mode){
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 	TIM_OC1Init(tim,&TIM_OCInitStructure);
 
-	TIM_ARRPreloadConfig(tim,ENABLE);
-	TIM_Cmd(tim,ENABLE);
 }
 
 void OC2PWMSetup(TIM_TypeDef *tim,uint16_t mode){
@@ -330,8 +349,6 @@ void OC2PWMSetup(TIM_TypeDef *tim,uint16_t mode){
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 	TIM_OC2Init(tim,&TIM_OCInitStructure);
 
-	TIM_ARRPreloadConfig(tim,ENABLE);
-	TIM_Cmd(tim,ENABLE);
 }
 
 void OC3PWMSetup(TIM_TypeDef *tim,uint16_t mode){
@@ -343,8 +360,6 @@ void OC3PWMSetup(TIM_TypeDef *tim,uint16_t mode){
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 	TIM_OC3Init(tim,&TIM_OCInitStructure);
 
-	TIM_ARRPreloadConfig(tim,ENABLE);
-	TIM_Cmd(tim,ENABLE);
 }
 
 void OC4PWMSetup(TIM_TypeDef *tim,uint16_t mode){
@@ -356,8 +371,6 @@ void OC4PWMSetup(TIM_TypeDef *tim,uint16_t mode){
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 	TIM_OC4Init(tim,&TIM_OCInitStructure);
 
-	TIM_ARRPreloadConfig(tim,ENABLE);
-	TIM_Cmd(tim,ENABLE);
 }
 
 void OC1DutySet(TIM_TypeDef*tim,uint16_t duty){
@@ -615,6 +628,6 @@ extern "C" void TIM4_IRQHandler(void){
 		TIM4_TIM_Update_IRQ();
 		TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 	}
-	//TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
+	TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 
 }

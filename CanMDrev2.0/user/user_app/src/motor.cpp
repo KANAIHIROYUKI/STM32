@@ -29,9 +29,10 @@ void Motor::duty(float motorDuty){
 
 	int16_t motorDuty16 = (int16_t)(motorDuty * pwm1->pwm_period);
 
-	uint16_t dutyMax = (pwm1->pwm_period) - 50;	//スイッチング時間分でduty上限かける
-	if(motorDuty16 >  dutyMax)motorDuty16 = dutyMax;
-	if(motorDuty16 < -dutyMax)motorDuty16 = -dutyMax;
+	uint16_t dutyLimit = (pwm1->pwm_period) - 50;	//スイッチング時間分でduty上限かける
+	if(motorDuty16 >  dutyLimit)motorDuty16 = dutyLimit;
+	if(motorDuty16 < -dutyLimit)motorDuty16 = -dutyLimit;
+	if(motorDuty16 < 50 && motorDuty16 > -50)motorDuty16 = 0;
 
 	if(motorDuty16 > 0){
 		pwm1->duty(pwm1->pwm_period);

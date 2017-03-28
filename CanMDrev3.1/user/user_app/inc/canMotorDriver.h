@@ -2,12 +2,13 @@
 #define CANMD_H_
 
 #include "system.h"
+#include "base.h"
 #include "math.h"
 
 #define CAN_MD_ADDRESS_DUTY 0
 #define CAN_MD_ADDRESS_FREE 1
 
-class CanMotorDriver{
+class CanMotorDriver:public DutyOut{
 public:
 	void setup(CAN &can,uint16_t number);
 	void duty(float motor_duty);

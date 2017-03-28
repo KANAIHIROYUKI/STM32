@@ -1,12 +1,36 @@
 #include "system.h"
 
 static uint64_t systemTimer = 0;
+int16_t System::cycleFunctionCnt = 0;
+int16_t System::cycleFunctionNumber = 0;
 
-//uint16_t System::cycleFunctionCnt = 0;
-
-
-void systemSetup(){
+void System::setup(){
 	SysTick_Config(SystemCoreClock/TIME_SPLIT);
+	usartFlag = 0;
+}
+
+void System::usartSetup(USART &usart){
+	this->system_usart = &usart;
+	usartFlag = 1;
+}
+
+void System::cycle(){
+	if(cycleFunctionCnt > 0){
+		if(usartFlag){
+			system_usart->printf("cycle function error cycleCnt = %d\n\r",cycleFunctionCnt);
+			while(1);
+		}
+	}
+	wdgReset();
+	cycleFunctionCnt = cycleFunctionNumber;
+}
+
+void System::wdgSetup(uint16_t reload,uint8_t prescaler){
+	IWDGSetup(reload,prescaler);
+}
+
+void System::wdgReset(){
+	IWDGReset();
 }
 
 void delay(uint32_t nTime){
@@ -26,21 +50,14 @@ extern "C" void SysTick_Handler(void){
 	systemTimer++;
 }
 
-
-/*
-
-void System::setup(){
-	cycleFunctionCnt = 0;
+void IWDGSetup(uint16_t reload,uint8_t prescaler){
+	IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);
+	IWDG_SetPrescaler(prescaler);
+	IWDG_SetReload(reload);
+	IWDGReset();
+	IWDG_Enable();
 }
 
-uint16_t System::cycle(){
-	for(int i=0;i<cycleFunctionCnt;i++){
-		cycleFunctionPo[i]();
-	}
-	return 0;
+void IWDGReset(){
+	IWDG_ReloadCounter();
 }
-
-void System::functionAdd(void (*cyclePo)()){
-	cycleFunctionPo[cycleFunctionCnt] = cyclePo;
-	cycleFunctionCnt++;
-}*/

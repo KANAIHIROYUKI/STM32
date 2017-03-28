@@ -39,7 +39,7 @@ CanValve canVLV;
 
 #define DEBUG
 
-#define TIM_CNT 1350
+#define TIM_CNT 2000
 //#define TIM_CNT 2048
 //PWMé¸ä˙ÇåàíËÇ∑ÇÈ°ADCÇÃïœä∑éûä‘Ç…àÍâûçáÇÌÇπÇƒÇ†ÇÈ
 
@@ -58,9 +58,26 @@ uint64_t printTime = 0,cycleTime = 0;
 
 int64_t currentInt[2] = {0,0},currentCnt[2] = {0,0},currentOffset[2] = {0,0};
 
-void motorBuzzer1(uint32_t frequency,float volume);
-void motorBuzzer2(uint32_t frequency,float volume);
-void motorBuzzerEnd();
+uint16_t outDgree(TIM &tim,uint64_t out_degree){
+	TIM *phase;
+
+	phase = &tim;
+
+	out_degree = out_degree%360;
+	if(out_degree < 0)out_degree = 360 + out_degree;
+
+	if(out_degree <= 60){
+		phase->duty(1000);	//60
+	}else if(out_degree <= 180){
+		phase->duty(1500);	//120
+	}else if(out_degree <= 240){
+		phase->duty(1000);	//60
+	}else if(out_degree <= 360){
+		phase->duty(500);	//120
+	}
+
+	return out_degree;
+}
 
 void setup(){
 	systemSetup();
@@ -80,29 +97,7 @@ void setup(){
 
 	enc[0].encoderSetup(TIM2,PA0,PA1);
 	enc[1].encoderSetup(TIM3,PA6,PA7);
-/*
-	motorBuzzer1(BUZZER_DO,0.04);
-	delay(50);
-	motorBuzzer1(BUZZER_DO,0);
 
-	delay(100);
-
-	motorBuzzer1(BUZZER_MI,0.05);
-	delay(100);
-	motorBuzzer1(BUZZER_MI,0);
-
-
-	motorBuzzer2(BUZZER_DO,0.04);
-	delay(100);
-	motorBuzzer2(BUZZER_DO,0);
-
-	delay(50);
-
-	motorBuzzer2(BUZZER_MI,0.05);
-	delay(100);
-	motorBuzzer2(BUZZER_MI,0);
-
-*/
 	pwm[0].pwmSetup(TIM4,1,PB6,TIM_CNT);
 	pwm[1].pwmSetup(TIM4,2,PB7,TIM_CNT);
 	pwm[2].pwmSetup(TIM4,3,PB8,TIM_CNT);
@@ -131,11 +126,12 @@ void setup(){
 	led[0].write(LOW);
 	led[1].write(LOW);
 
+	/*
 	motor[0].setup(pwm[0],pwm[1]);
 	motor[1].setup(pwm[2],pwm[3]);
 	motor[0].enPwmAssigne(enPwm[0]);
 	motor[1].enPwmAssigne(enPwm[1]);
-
+*/
 	cs[0].setup(ADC1,8,PB0);
 	cs[1].setup(ADC2,9,PB1);
 
@@ -168,44 +164,4 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	nodeMotor[1].interrupt();
 	return;
 }
-
-
-void motorBuzzerEnd(){
-	pwm[0].pwmSetup(TIM4,1,PB6,TIM_CNT);
-	pwm[1].pwmSetup(TIM4,2,PB7,TIM_CNT);
-	pwm[2].pwmSetup(TIM4,3,PB8,TIM_CNT);
-	pwm[3].pwmSetup(TIM4,4,PB9,TIM_CNT);
-	enPwm[0].pwmSetup(TIM1,1,PA8,4000);
-	enPwm[1].pwmSetup(TIM1,2,PA9,4000);
-	enPwm[0].duty(TIM_CNT);
-	enPwm[1].duty(TIM_CNT);
-
-	pwm[0].duty(TIM_CNT);
-	pwm[1].duty(TIM_CNT);
-	pwm[2].duty(TIM_CNT);
-	pwm[3].duty(TIM_CNT);
-}
-
-void motorBuzzer1(uint32_t frequency,float volume){
-	frequency = 72000000/frequency;
-	pwm[0].pwmSetup(TIM4,1,PB6,frequency,0,TIM_OCMode_PWM1);
-	pwm[1].pwmSetup(TIM4,2,PB7,frequency,0,TIM_OCMode_PWM2);
-	enPwm[0].pwmSetup(TIM1,1,PA8,frequency/20);
-
-	pwm[0].duty(frequency/2);
-	pwm[1].duty(frequency/2);
-	enPwm[0].duty(frequency*volume);
-}
-
-void motorBuzzer2(uint32_t frequency,float volume){
-	frequency = 72000000/frequency;
-	pwm[2].pwmSetup(TIM4,3,PB8,frequency,0,TIM_OCMode_PWM1);
-	pwm[3].pwmSetup(TIM4,4,PB9,frequency,0,TIM_OCMode_PWM2);
-	enPwm[1].pwmSetup(TIM1,2,PA9,frequency/20);
-
-	pwm[2].duty(frequency/2);
-	pwm[3].duty(frequency/2);
-	enPwm[1].duty(frequency*volume);
-}
-
 #endif

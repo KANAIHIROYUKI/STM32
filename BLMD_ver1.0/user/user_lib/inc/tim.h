@@ -1,7 +1,8 @@
 #ifndef TIM_H_
 #define TIM_H_
 
-#include "system.h"
+//#include "system.h"
+#include "gpio.h"
 
 #define PWM_PERIOD_DEFALUT 1024
 #define TIM_OCMode_DEFAULT TIM_OCMode_PWM1
@@ -56,11 +57,13 @@ void TIM2Setup(uint16_t period = PWM_PERIOD_DEFALUT,uint16_t prescaler = 0);
 void TIM3Setup(uint16_t period = PWM_PERIOD_DEFALUT,uint16_t prescaler = 0);
 void TIM4Setup(uint16_t period = PWM_PERIOD_DEFALUT,uint16_t prescaler = 0);
 
+//割込みの設定関数｡何も入れない場合は勝手にカウント完了オーバーフロー割込みにしてくれる｡引数で割込みの種類を選択できる
 void TIM1ITSetup(uint16_t tim_it = TIM_IT_Update);
 void TIM2ITSetup(uint16_t tim_it = TIM_IT_Update);
 void TIM3ITSetup(uint16_t tim_it = TIM_IT_Update);
 void TIM4ITSetup(uint16_t tim_it = TIM_IT_Update);
 
+//オシレータの設定関数｡PWMの設定しかできない｡
 void TIM_OCStructInit_PWM(TIM_OCInitTypeDef *str);
 
 void OC1PWMSetup(TIM_TypeDef*tim,uint16_t mode);

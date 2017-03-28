@@ -11,6 +11,7 @@
 #include "usart.h"
 #include "spi.h"
 #include "dma.h"
+#include "exti.h"
 
 #define TIME_SPLIT 100000 	// タイマの最小分解能を決める｡最小分解能 = 1/TIME_SPLIT [s]
 
@@ -22,8 +23,9 @@ class System{
 public:
 	void setup();
 	void usartSetup(USART &usart);
+	void timerSetup(TIM &timer);
 	void cycle();
-	void wdgSetup(uint16_t reload = DEFAULT_RELOAD,uint8_t prescaler = IWDG_Prescaler_4);
+	void wdgSetup(uint16_t reload = DEFAULT_RELOAD,uint8_t prescaler = IWDG_Prescaler_4);	//reloadは0.1ms単位
 	void wdgReset();
 
 	static int16_t cycleFunctionNumber;
@@ -34,9 +36,11 @@ public:
 };
 
 
-void delay(uint32_t nTime);	//この関数の時間はそれほど正確でない
+void delay(uint64_t nTime);
 uint64_t millis();
 uint64_t micros();
+
+uint64_t systicMicros();
 
 void IWDGSetup(uint16_t reload = DEFAULT_RELOAD,uint8_t prescaler = IWDG_Prescaler_4);
 void IWDGReset();

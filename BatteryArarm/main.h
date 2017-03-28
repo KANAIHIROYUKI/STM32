@@ -6,7 +6,7 @@
 
 
 #define IntervalTime 50
-#define BUZZER_FRQ 1000
+#define BUZZER_FRQ 4200
 
 #define CELL0_VOLTAGE_GAIN 8.86
 #define CELL1_VOLTAGE_GAIN 8.86
@@ -17,7 +17,7 @@
 #define CELL5_VOLTAGE_GAIN 8.86
 
 uint64_t intervalTime = 0,voltage[6],vmin[6],vave[6],vmax[6],vcnt=0;
-uint32_t frequency,buzzerPower,buzzerStat,buzzerStatCnt;
+uint32_t frequency,buzzerPower,buzzerStat,buzzerStatCnt,cellMax,cellMin,cellWorst;
 
 
 GPIO power,signal;
@@ -59,9 +59,6 @@ void setup(){
 	power.write(0);
 	buzzer.duty(0);
 }
-
-
-
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	return;

@@ -1,7 +1,6 @@
 #ifndef GPIO_H_
 #define GPIO_H_
 
-#include "system.h"
 #include "base.h"
 
 #define PA0 GPIOA,GPIO_Pin_0
@@ -50,7 +49,7 @@
 #define PD3 GPIOD,GPIO_Pin_3
 
 #define OUTPUT GPIO_Mode_Out_PP
-#define OUTPUT_UD GPIO_Mode_Out_OD
+#define OUTPUT_OD GPIO_Mode_Out_OD
 #define OUTPUT_AF GPIO_Mode_AF_PP
 #define OUTPUT_AF_OD GPIO_Mode_AF_OD
 
@@ -59,22 +58,28 @@
 #define INPUT_PU GPIO_Mode_IPU
 #define INPUT_PD GPIO_Mode_IPD
 
-#define HIGH 1
-#define LOW 0
-
-class GPIO{
+class GPIO/* :public DigitalIn,public DigitalOut*/{
 public:
 	void setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode);
 	void write(uint16_t value);
+	uint16_t read();
 	void toggle();
 	void reset();
+	void invert(uint16_t mode = 1);
 
-	uint16_t read();
+	void interruptSetup(EXTITrigger_TypeDef trigger);
+	void interruptEnable();
+	void interruptDesable();
+	uint16_t interruptFrag();
+	void interruptFlagClear();
 
 //private:
+	uint16_t gpio_invert;
 	uint16_t gpio_pin;
 	GPIO_TypeDef* gpio_gpio;
 	GPIOMode_TypeDef gpio_mode;
+
+	EXTITrigger_TypeDef exti_trigger;
 };
 
 void GPIOSetup();
@@ -82,5 +87,7 @@ void pinSetup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode);
 void pinWrite(GPIO_TypeDef* gpio,uint16_t pin,BitAction status);
 
 void pinToggle(GPIO_TypeDef* gpio,uint16_t pin);
+
+void EXTISetup(GPIO_TypeDef* gpio,uint16_t pin,EXTITrigger_TypeDef trigger);
 
 #endif
