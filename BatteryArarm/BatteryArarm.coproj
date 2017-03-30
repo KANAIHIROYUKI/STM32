@@ -79,6 +79,7 @@
     <Component id="449" name="IWDG" path="" type="2"/>
     <Component id="452" name="SPI" path="" type="2"/>
     <Component id="454" name="DBGMCU" path="" type="2"/>
+    <Component id="455" name="FLASH" path="" type="2"/>
     <Component id="456" name="TIM" path="" type="2"/>
     <Component id="457" name="ADC" path="" type="2"/>
     <Component id="458" name="USART" path="" type="2"/>
@@ -101,14 +102,15 @@
     <File name="cmsis_boot/stm32f10x_conf.h" path="cmsis_boot/stm32f10x_conf.h" type="1"/>
     <File name="user_apps/src/port.cpp" path="user/user_app/src/port.cpp" type="1"/>
     <File name="main.h" path="main.h" type="1"/>
+    <File name="stm_lib/inc/stm32f10x_flash.h" path="stm_lib/inc/stm32f10x_flash.h" type="1"/>
     <File name="user_lib/src/gpio.cpp" path="user/user_lib/src/gpio.cpp" type="1"/>
     <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>
-    <File name="stm_lib/inc/stm32f10x_spi.h" path="stm_lib/inc/stm32f10x_spi.h" type="1"/>
     <File name="user_lib/inc/system.h" path="user/user_lib/inc/system.h" type="1"/>
+    <File name="stm_lib/inc/stm32f10x_spi.h" path="stm_lib/inc/stm32f10x_spi.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_adc.c" path="stm_lib/src/stm32f10x_adc.c" type="1"/>
     <File name="stm_lib/inc/stm32f10x_iwdg.h" path="stm_lib/inc/stm32f10x_iwdg.h" type="1"/>
-    <File name="user_apps/src/canMotorDriver.cpp" path="user/user_app/src/canMotorDriver.cpp" type="1"/>
     <File name="user_lib/inc/can.h" path="user/user_lib/inc/can.h" type="1"/>
+    <File name="user_apps/src/canMotorDriver.cpp" path="user/user_app/src/canMotorDriver.cpp" type="1"/>
     <File name="user_lib/inc/base.h" path="user/user_lib/inc/base.h" type="1"/>
     <File name="util/src/util.c" path="user/util/src/util.c" type="1"/>
     <File name="stdio/printf.c" path="stdio/printf.c" type="1"/>
@@ -117,31 +119,31 @@
     <File name="stm_lib/inc/stm32f10x_usart.h" path="stm_lib/inc/stm32f10x_usart.h" type="1"/>
     <File name="user_lib/src/spi.cpp" path="user/user_lib/src/spi.cpp" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.c" path="cmsis_boot/system_stm32f10x.c" type="1"/>
-    <File name="stdio" path="" type="2"/>
     <File name="stm_lib/inc/misc.h" path="stm_lib/inc/misc.h" type="1"/>
-    <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
+    <File name="stdio" path="" type="2"/>
+    <File name="user_lib/src/remap.cpp" path="user/user_lib/src/remap.cpp" type="1"/>
     <File name="user_apps/inc/canValve.h" path="user/user_app/inc/canValve.h" type="1"/>
     <File name="util" path="" type="2"/>
-    <File name="user_lib/src/remap.cpp" path="user/user_lib/src/remap.cpp" type="1"/>
+    <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="user_apps/inc/canNodeEncoder.h" path="user/user_app/inc/canNodeEncoder.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_rcc.c" path="stm_lib/src/stm32f10x_rcc.c" type="1"/>
     <File name="user_lib/inc" path="" type="2"/>
-    <File name="user_apps/src/motor.cpp" path="user/user_app/src/motor.cpp" type="1"/>
     <File name="user_apps/inc/canNodeMotorDriver.h" path="user/user_app/inc/canNodeMotorDriver.h" type="1"/>
+    <File name="user_apps/src/motor.cpp" path="user/user_app/src/motor.cpp" type="1"/>
     <File name="user_lib/inc/spi.h" path="user/user_lib/inc/spi.h" type="1"/>
     <File name="user_lib/inc/dma.h" path="user/user_lib/inc/dma.h" type="1"/>
     <File name="stm_lib/src" path="" type="2"/>
     <File name="cmsis" path="" type="2"/>
     <File name="stm_lib" path="" type="2"/>
     <File name="util/src" path="" type="2"/>
-    <File name="user_lib/inc/remap.h" path="user/user_lib/inc/remap.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_adc.h" path="stm_lib/inc/stm32f10x_adc.h" type="1"/>
-    <File name="main.cpp" path="main.cpp" type="1"/>
+    <File name="user_lib/inc/remap.h" path="user/user_lib/inc/remap.h" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
+    <File name="main.cpp" path="main.cpp" type="1"/>
     <File name="util/src/utilplus.cpp" path="user/util/src/utilplus.cpp" type="1"/>
     <File name="user_lib/src" path="" type="2"/>
-    <File name="user_apps/src/constantCurrentControl.cpp" path="user/user_app/src/constantCurrentControl.cpp" type="1"/>
     <File name="user_apps/inc/canEncoder.h" path="user/user_app/inc/canEncoder.h" type="1"/>
+    <File name="user_apps/src/constantCurrentControl.cpp" path="user/user_app/src/constantCurrentControl.cpp" type="1"/>
     <File name="user_lib/inc/tim.h" path="user/user_lib/inc/tim.h" type="1"/>
     <File name="user_lib/inc/gpio.h" path="user/user_lib/inc/gpio.h" type="1"/>
     <File name="user_lib/src/can.cpp" path="user/user_lib/src/can.cpp" type="1"/>
@@ -152,16 +154,16 @@
     <File name="user_apps/src/canNodeMotorDriver.cpp" path="user/user_app/src/canNodeMotorDriver.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_tim.h" path="stm_lib/inc/stm32f10x_tim.h" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
-    <File name="semihosting/sh_cmd.s" path="semihosting/sh_cmd.s" type="1"/>
     <File name="stm_lib/src/stm32f10x_tim.c" path="stm_lib/src/stm32f10x_tim.c" type="1"/>
+    <File name="semihosting/sh_cmd.s" path="semihosting/sh_cmd.s" type="1"/>
     <File name="cmsis_boot/startup" path="" type="2"/>
-    <File name="user_lib/inc/usart.h" path="user/user_lib/inc/usart.h" type="1"/>
     <File name="user_apps/src/canNodeEncoder.cpp" path="user/user_app/src/canNodeEncoder.cpp" type="1"/>
+    <File name="user_lib/inc/usart.h" path="user/user_lib/inc/usart.h" type="1"/>
     <File name="semihosting/semihosting.c" path="semihosting/semihosting.c" type="1"/>
-    <File name="user_apps/src/app.cpp" path="user/user_app/src/app.cpp" type="1"/>
     <File name="user_apps/inc/canNodePulse.h" path="user/user_app/inc/canNodePulse.h" type="1"/>
-    <File name="stm_lib/src/stm32f10x_iwdg.c" path="stm_lib/src/stm32f10x_iwdg.c" type="1"/>
+    <File name="user_apps/src/app.cpp" path="user/user_app/src/app.cpp" type="1"/>
     <File name="stm_lib/src/stm32f10x_spi.c" path="stm_lib/src/stm32f10x_spi.c" type="1"/>
+    <File name="stm_lib/src/stm32f10x_iwdg.c" path="stm_lib/src/stm32f10x_iwdg.c" type="1"/>
     <File name="user_apps/inc/pulse.h" path="user/user_app/inc/pulse.h" type="1"/>
     <File name="user_lib" path="" type="2"/>
     <File name="user_apps" path="" type="2"/>
@@ -170,18 +172,19 @@
     <File name="user_apps/inc/app.h" path="user/user_app/inc/app.h" type="1"/>
     <File name="user_apps/src/canNodeValve.cpp" path="user/user_app/src/canNodeValve.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_gpio.h" path="stm_lib/inc/stm32f10x_gpio.h" type="1"/>
-    <File name="user_lib/src/iwdg.cpp" path="user/user_lib/src/iwdg.cpp" type="1"/>
     <File name="user_apps/inc/motor.h" path="user/user_app/inc/motor.h" type="1"/>
+    <File name="user_lib/src/iwdg.cpp" path="user/user_lib/src/iwdg.cpp" type="1"/>
     <File name="util/inc" path="" type="2"/>
     <File name="cmsis/core_cm3.h" path="cmsis/core_cm3.h" type="1"/>
     <File name="user_lib/src/adc.cpp" path="user/user_lib/src/adc.cpp" type="1"/>
     <File name="semihosting" path="" type="2"/>
-    <File name="user_apps/src/canEncoder.cpp" path="user/user_app/src/canEncoder.cpp" type="1"/>
     <File name="user_apps/src/pulse.cpp" path="user/user_app/src/pulse.cpp" type="1"/>
+    <File name="user_apps/src/canEncoder.cpp" path="user/user_app/src/canEncoder.cpp" type="1"/>
     <File name="user_lib/src/system.cpp" path="user/user_lib/src/system.cpp" type="1"/>
     <File name="util/inc/util.h" path="user/util/inc/util.h" type="1"/>
     <File name="user_lib/inc/iwdg.h" path="user/user_lib/inc/iwdg.h" type="1"/>
     <File name="user_apps/inc/port.h" path="user/user_app/inc/port.h" type="1"/>
+    <File name="stm_lib/src/stm32f10x_flash.c" path="stm_lib/src/stm32f10x_flash.c" type="1"/>
     <File name="user_lib/src/tim.cpp" path="user/user_lib/src/tim.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>
     <File name="syscalls" path="" type="2"/>

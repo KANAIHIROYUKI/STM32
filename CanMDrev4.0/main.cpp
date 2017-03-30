@@ -34,6 +34,9 @@ int main(void){
 		delay(1);
 
 		if(printTime < millis()){
+    		led[0].toggle();
+    		led[1].toggle();
+
 			printTime += PRINT_TIME;
 			//serial.printf("%d,%d,%d\n\r",pwm[0].pwm_duty,pwm[1].pwm_duty,pwm[2].pwm_duty);
 			//serial.printf("%d,%d,%d\n\r",pDeg[0],pDeg[1],pDeg[2]);
@@ -76,6 +79,7 @@ int main(void){
     			}
 
     		}
+
 
        		printTime = millis() + PRINT_TIME;
     		IWDGReset();

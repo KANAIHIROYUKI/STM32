@@ -60,18 +60,6 @@
       </source>
       <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="1577ee5e095">
       </source>
-      <source file="..\..\..\cmsis_boot\stm32f10x_conf.h" lastModified="15a5603189a">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_can.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_spi.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
-         <include file="..\..\..\stm_lib\inc\misc.h"/>
-      </source>
       <source file="..\..\..\user\user_app\src\canNodeValve.cpp" lastModified="159dd8d1f1b">
          <include file="..\..\..\user\user_app\inc\canNodeValve.h"/>
       </source>
@@ -304,7 +292,7 @@
       <source file="..\..\..\user\CAN.h" lastModified="15a55ede0ae">
          <include file="..\..\..\user\SYSTEM.h"/>
       </source>
-      <source file="..\..\..\main.cpp" lastModified="15a7999b1bf">
+      <source file="..\..\..\main.cpp" lastModified="15b1389f5bb">
          <include file="..\..\..\main.h"/>
       </source>
       <source file="..\..\..\user\TIM.h" lastModified="15a55f819e3">
@@ -315,10 +303,11 @@
       </source>
       <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="1577ee5e095">
       </source>
-      <source file="..\..\..\cmsis_boot\stm32f10x_conf.h" lastModified="15a5603189a">
+      <source file="..\..\..\cmsis_boot\stm32f10x_conf.h" lastModified="15b1c2e0208">
          <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_can.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_flash.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
@@ -359,8 +348,6 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_rcc.h" lastModified="1577ee5e0a3">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="1577ee5e86f">
       </source>
       <source file="..\..\..\user\user_lib\src\remap.cpp" lastModified="1599bb749fc">
          <include file="..\..\..\user\REMAP.h"/>
@@ -412,8 +399,6 @@
       </source>
       <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="15a7998b08e">
          <include file="..\..\..\user\CAN.h"/>
-      </source>
-      <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="1577ee5e86f">
       </source>
       <source file="..\..\..\user\user_lib\inc\gpio.h" lastModified="15a6a6cca18">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
@@ -504,7 +489,7 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_can.h" lastModified="1577ee64a04">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\main.h" lastModified="15a7998b461">
+      <source file="..\..\..\main.h" lastModified="15b138f47ad">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\user\SYSTEM.h"/>
          <include file="..\..\..\user\user_app\inc\app.h"/>
@@ -690,18 +675,6 @@
          <include file="..\..\..\user\SYSTEM.h"/>
       </source>
       <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="1577ee5e095">
-      </source>
-      <source file="..\..\..\cmsis_boot\stm32f10x_conf.h" lastModified="15a5603189a">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_can.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_spi.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
-         <include file="..\..\..\stm_lib\inc\misc.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h" lastModified="1577ee61f12">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>

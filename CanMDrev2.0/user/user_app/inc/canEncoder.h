@@ -5,11 +5,11 @@
 #include "util.h"
 #include "base.h"
 
-class CanEncoder:public CountIn{
+class CanEncoder{
 public :
 	void setup(CAN &can,uint16_t number,uint16_t interval);
-	virtual int64_t read();
-	virtual void reset();
+	int32_t read();
+	void reset();
 	void interrupt();
 	void reverse(int8_t wise = -1);
 	uint64_t lastReceiveTime();

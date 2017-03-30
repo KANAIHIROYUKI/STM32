@@ -16,7 +16,7 @@ uint64_t intervalTime = 0,transmitTime = 0,transmitIntervalTime = 0;
 uint16_t rxFlag,rtrFlag;
 
 
-GPIO signal,led[16],switchPin[8];
+GPIO signal,led[16],switchPin[8],pin[3];
 USART serial;
 CAN can1;
 
@@ -50,6 +50,10 @@ void setup(){
 	led[14].setup(PB10,OUTPUT);
 	led[15].setup(PB11,OUTPUT);
 
+	pin[0].setup(PA15,OUTPUT);
+	pin[1].setup(PB3,OUTPUT);
+	pin[2].setup(PB4,OUTPUT);
+
 	for(int i=0;i<16;i++){
 		led[i].write(0);
 	}
@@ -80,6 +84,8 @@ void setup(){
 	//canValve[1].setup(can1,0x11);
 
 	//canSwitch.setup(can1,CAN_ADD_SWITCH_SETUP - CAN_ADD_ENC_SETUP,1000);
+
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
 
 	serial.setup(USART1,921600,PA9,PA10);
 	serial.printf("\n\rFILE = %s\n\r",__FILE__);

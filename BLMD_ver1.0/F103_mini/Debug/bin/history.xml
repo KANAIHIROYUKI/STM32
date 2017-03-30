@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=F103_mini.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\F103_mini_PD -TC:\CooCox\CoIDE\configuration\ProgramData\F103_mini_PD/arm-gcc-link.ld -g">
-      <target file="F103_mini.elf" lastModified="15b0e2ed180">
+      <target file="F103_mini.elf" lastModified="15b1d6a1b81">
+         <source file="..\obj\switch.o" lastModified="15b1d6742e9"/>
          <source file="..\obj\canNodeEncoder.o" lastModified="15b0e0e1e3c"/>
          <source file="..\obj\spi.o" lastModified="15b0e0e1ebd"/>
          <source file="..\obj\stm32f10x_tim.o" lastModified="15b0dd99d97"/>
@@ -18,7 +19,7 @@
          <source file="..\obj\constantCurrentControl.o" lastModified="15b0e0e1ffd"/>
          <source file="..\obj\stm32f10x_gpio.o" lastModified="15b0dd9a31a"/>
          <source file="..\obj\canValve.o" lastModified="15b0e0e2062"/>
-         <source file="..\obj\main.o" lastModified="15b0e2ecf81"/>
+         <source file="..\obj\main.o" lastModified="15b1d6a195a"/>
          <source file="..\obj\system.o" lastModified="15b0e273474"/>
          <source file="..\obj\can.o" lastModified="15b0e0e21c5"/>
          <source file="..\obj\stm32f10x_rcc.o" lastModified="15b0dd9a534"/>
@@ -32,7 +33,7 @@
          <source file="..\obj\syscalls.o" lastModified="15b0dd9a830"/>
          <source file="..\obj\pulse.o" lastModified="15b0e0e235e"/>
          <source file="..\obj\adc.o" lastModified="15b0e0e23d0"/>
-         <source file="..\obj\app.o" lastModified="15b0e0e2435"/>
+         <source file="..\obj\app.o" lastModified="15b1d52e8bb"/>
          <source file="..\obj\canNodePulse.o" lastModified="15b0e0e24a3"/>
          <source file="..\obj\port.o" lastModified="15b0e0e2509"/>
          <source file="..\obj\base.o" lastModified="15b0dd9aa8e"/>

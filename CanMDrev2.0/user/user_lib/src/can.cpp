@@ -18,6 +18,10 @@ void CAN::setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_Type
 	}
 }
 
+void CAN::debug(){
+	CAN1Setup(1);
+}
+
 void CAN::send(uint16_t id,uint8_t length,uint8_t *data){
 	if(can_can == CAN1){
 		CAN1Send(id,length,data);
@@ -71,7 +75,7 @@ void CAN::receive(){
 	}
 }
 
-void CAN1Setup(){
+void CAN1Setup(uint16_t mode){
 	CAN_DeInit(CAN1);
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_CAN1,ENABLE);
 
@@ -82,8 +86,11 @@ void CAN1Setup(){
 	CAN_InitStructure.CAN_AWUM = DISABLE;
 	CAN_InitStructure.CAN_NART = DISABLE;
 	CAN_InitStructure.CAN_TXFP = DISABLE;
-	//CAN_InitStructure.CAN_Mode = CAN_Mode_Normal;
-	CAN_InitStructure.CAN_Mode = CAN_Mode_LoopBack;
+	if(mode == 0){
+		CAN_InitStructure.CAN_Mode = CAN_Mode_Normal;
+	}else{
+		CAN_InitStructure.CAN_Mode = CAN_Mode_LoopBack;
+	}
 	CAN_InitStructure.CAN_SJW = CAN_SJW_1tq;
 	CAN_InitStructure.CAN_BS1 = CAN_BS1_5tq;
 	CAN_InitStructure.CAN_BS2 = CAN_BS2_6tq;
@@ -117,11 +124,12 @@ void CAN1Setup(){
 void CAN1Send(uint16_t id,uint8_t length,uint8_t data[8]){
     CanTxMsg txMessage;
     txMessage.StdId = id;
+    txMessage.ExtId = 0;
     txMessage.IDE   = CAN_ID_STD;
     if(length == 0){
-    	txMessage.RTR = CAN_RTR_REMOTE;
+    	txMessage.RTR = CAN_RTR_Remote;
     }else{
-    	txMessage.RTR   = CAN_RTR_DATA;
+    	txMessage.RTR   = CAN_RTR_Data;
     }
     txMessage.DLC   = length;
     txMessage.Data[0] = data[0];

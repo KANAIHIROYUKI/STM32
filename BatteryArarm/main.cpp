@@ -5,6 +5,39 @@ int main(void)
 {
 	setup();
 
+	uint32_t flashStat = 0,flashData = 10,readCnt = 0;
+
+	flashData = 100;
+
+	FLASH_Unlock();
+	FLASH_ReadOutProtection(DISABLE);	//ì«Ç›èoÇµï€åÏñ≥å¯âª
+	FLASH_ClearFlag(FLASH_FLAG_BSY | FLASH_FLAG_EOP | FLASH_FLAG_PGERR | FLASH_FLAG_WRPRTERR);
+
+	flashStat = FLASH_ProgramWord(0x08003000,flashData);
+
+	delay(1);
+
+	//flashData = *((uint32_t *)0x08003000);
+	serial.printf("0x08000000 = %d\n\r",flashData);
+
+	switch(flashStat){
+	case FLASH_BUSY:
+		serial.printf("BUSY\n\r");
+		break;
+	case FLASH_ERROR_PG:
+		serial.printf("ERROR_PG\n\r");
+		break;
+	case FLASH_ERROR_WRP:
+		serial.printf("ERROR_WRP\n\r");
+		break;
+	case FLASH_COMPLETE:
+		serial.printf("COMPLETE\n\r");
+		break;
+	case FLASH_TIMEOUT:
+		serial.printf("TIMEOUT\n\r");
+		break;
+	}
+
 
 
 	while(1){

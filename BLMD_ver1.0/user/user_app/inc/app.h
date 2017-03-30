@@ -9,6 +9,7 @@
 #include "port.h"
 #include "enc.h"
 #include "pwm.h"
+#include "switch.h"
 
 #include "canEncoder.h"
 #include "canValve.h"

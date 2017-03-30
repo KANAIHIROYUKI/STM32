@@ -15,6 +15,8 @@ ADC cs;
 CAN can1;
 USART serial;
 
+Switch input[3];
+
 Phase phase[3];
 BLDC bldc;
 
@@ -67,6 +69,10 @@ void setup(){
 	hall[1].setup(PB3,INPUT_PU);
 	hall[2].setup(PB4,INPUT_PU);
 
+	input[0].setup(hall[0]);
+	input[1].setup(hall[1]);
+	input[2].setup(hall[2]);
+
 	zeroCross[0].setup(PB12,INPUT_PU);
 	zeroCross[1].setup(PB13,INPUT_PU);
 	zeroCross[2].setup(PB14,INPUT_PU);
@@ -81,6 +87,8 @@ void setup(){
 	sell[3].setup(PC13,INPUT_PU);
 
 	can1.setup(CAN1,PA12,PA11);
+
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){

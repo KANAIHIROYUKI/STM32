@@ -15,6 +15,9 @@
 #define CAN_ADD_DEBUG 0x1E0
 
 
+#define CAN_ADD_SWITCH_VALUE 0x240
+#define CAN_ADD_SWITCH_SETUP 0x200
+
 #define CAN_ADD_VALVE 0x280
 #define CAN_ADD_ENC_SETUP 0x400
 #define CAN_ADD_ENC_VALUE 0x440
@@ -23,7 +26,7 @@ class CAN{
 public:
 	CAN_TypeDef* can_can;
 	//CanRxMsg rxMessage;
-
+	void debug();
 	void setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx);
 	void send(uint16_t id,uint8_t length,uint8_t *data);
 	void filterAdd(uint16_t id1 = 0,uint16_t id2 = 0,uint16_t id3 = 0,uint16_t id4 = 0);
@@ -40,7 +43,7 @@ private:
 };
 
 
-void CAN1Setup();
+void CAN1Setup(uint16_t mode = 0);
 void CAN1Send(uint16_t id,uint8_t length,uint8_t *data);
 void CANFilterAdd(uint16_t id1 = 0,uint16_t id2 = 0,uint16_t id3 = 0,uint16_t id4 = 0);
 

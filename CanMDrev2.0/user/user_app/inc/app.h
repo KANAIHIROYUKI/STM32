@@ -9,15 +9,18 @@
 #include "port.h"
 #include "enc.h"
 #include "pwm.h"
+#include "switch.h"
 
 #include "canEncoder.h"
 #include "canValve.h"
 #include "canMotorDriver.h"
+#include "canSwitch.h"
 
 #include "canNodeEncoder.h"
 #include "canNodeValve.h"
 #include "canNodeMotorDriver.h"
 #include "canNodePulse.h"
+#include "canNodeSwitch.h"
 
 
 #endif
