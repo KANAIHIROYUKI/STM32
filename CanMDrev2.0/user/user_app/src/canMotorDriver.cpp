@@ -6,6 +6,11 @@ void CanMotorDriver::setup(CAN &can,uint16_t number){
 	canMotorDriver_address[CAN_MD_ADDRESS_FREE] = CAN_ADD_FREE + number;
 }
 
+void CanMotorDriver::free(){
+	uint8_t canData[2] = {0,0};
+	canMotorDriver_can->send(canMotorDriver_address[CAN_MD_ADDRESS_FREE],2,canData);
+}
+
 /*
 void CanMotorDriver::duty(int16_t motor_duty){
 	uint8_t canData[2];

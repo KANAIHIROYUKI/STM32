@@ -8,6 +8,7 @@
 class CanNodeSwitch{
 public:
 	void setup(Switch &sw,CAN &can_,uint16_t canNumber);
+	void pinAdd(Switch &sw);
 	void cycle();
 	void interrupt();
 
@@ -16,7 +17,8 @@ public:
 	uint16_t setuped;
 	uint32_t intervalTime;
 	uint64_t lastSendTime;
-	Switch *sw;
+	uint16_t switchNumber;
+	Switch *sw[8];
 	CAN *can;
 };
 

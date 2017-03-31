@@ -1,6 +1,6 @@
 #include "canNodeMotorDriver.h"
 
-int16_t CanNodeMotorDriver::setup(Motor &motor,CAN &can,uint16_t number,uint16_t maxInterval){
+int16_t CanNodeMotorDriver::setup(Motor &motor,CAN &can,uint16_t number,uint16_t max_interval){
 	this->canMd_motor = &motor;
 	this->canMd_can = &can;
 	canMd_address[CAN_MD_ADDRESS_DUTY] = CAN_ADD_DUTY + number;
@@ -8,8 +8,8 @@ int16_t CanNodeMotorDriver::setup(Motor &motor,CAN &can,uint16_t number,uint16_t
 
 	canMd_can->filterAdd(canMd_address[CAN_MD_ADDRESS_DUTY],canMd_address[CAN_MD_ADDRESS_FREE]);
 
-	canMd_receiveTime = 0;
-	canMd_maxInterval = maxInterval;
+	lastReceiveTime = 0;
+	maxInterval = max_interval;
 
 	ledAssigned = 0;
 
@@ -23,16 +23,16 @@ void CanNodeMotorDriver::ledAssign(GPIO &led){
 }
 
 void CanNodeMotorDriver::cycle(){
-	if(canMd_receiveTime + canMd_maxInterval < millis()){
-		canMd_motor->duty(0);
-		if(ledAssigned && (canMd_ledTime < millis())){
+	if(lastReceiveTime + maxInterval < millis()){
+		canMd_motor->free();
+		if(ledAssigned && (ledTime < millis())){
 			canMd_led->toggle();
-			canMd_ledTime = millis() + LED_INTERVAL_NORECEIVE;
+			ledTime = millis() + LED_INTERVAL_NORECEIVE;
 		}
 	}else{
-		if(ledAssigned && (canMd_ledTime < millis())){
+		if(ledAssigned && (ledTime < millis())){
 			canMd_led->toggle();
-			canMd_ledTime = millis() + LED_INTERVAL_RECEIVE;
+			ledTime = millis() + LED_INTERVAL_RECEIVE;
 		}
 	}
 	System::cycleFunctionCnt--;
@@ -46,12 +46,13 @@ void CanNodeMotorDriver::interrupt(){
 			outDuty = -outDuty;
 		}
 		canMd_motor->duty((float)outDuty/32767);
-		canMd_receiveTime = millis();
+		lastReceiveTime = millis();
 	}else if(canMd_can->rxMessage.StdId == canMd_address[CAN_MD_ADDRESS_FREE]){
-		outDuty = (canMd_can->rxMessage.Data[1] << 8) | canMd_can->rxMessage.Data[0];
+		//outDuty = (canMd_can->rxMessage.Data[1] << 8) | canMd_can->rxMessage.Data[0];
 
-		canMd_motor->brake((float)outDuty/32767);
-		canMd_receiveTime = millis();
+		canMd_motor->free();
+		//canMd_motor->brake((float)outDuty/32767);
+		lastReceiveTime = millis();
 	}
 }
 

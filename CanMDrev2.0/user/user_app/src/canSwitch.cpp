@@ -13,17 +13,19 @@ void CanSwitch::setup(CAN &can_,uint16_t number,uint32_t interval_time){
 	can->filterAdd(canAddress);
 	delay(1);
 
-	//switchValue = 0;
+	readStat = 0;
+	switchStat = 0;
 	lastReceiveTime = 0;
 }
 
 uint16_t CanSwitch::read(){
-	return switchValue;
+	return switchStat;
 }
 
 void CanSwitch::interrupt(){
 	if(can->rxMessage.StdId == canAddress){
-		switchValue = can->rxMessage.Data[0];
+		readStat = can->rxMessage.Data[0];
+		switchStat = can->rxMessage.Data[1];
 		lastReceiveTime = millis();
 	}
 }

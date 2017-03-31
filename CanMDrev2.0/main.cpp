@@ -4,7 +4,7 @@ int main(void)
 {
 	setup();
 
-	serial.printf("can_add = 0x%x\n\r",canEncoder[0].canEnc_address);
+	serial.printf("pinnum = 0x%x\n\r",canSw.switchNumber);
 
 	sys.wdgSetup(50);	//50ms
 
@@ -24,42 +24,50 @@ int main(void)
     	canMD[0].cycle();
     	canMD[1].cycle();
 
-    	canSw[0].cycle();
-    	canSw[1].cycle();
+    	canSw.cycle();
     	//canSw[2].cycle();
     	//canSw[3].cycle();
 
+
     	if(intervalTimer <= millis()){
     		intervalTimer = millis() + IntervalTime;
-    		//serial.printf("%5d,%5d,%6d,%6d\n\r",motor[0].outDuty,motor[1].outDuty,enc[0].read(),enc[1].read());
-    		//serial.printf("%d,%d,%d,%d\n\r",(int32_t)enc[0].read(),(int32_t)enc[1].read(),(int32_t)canEncoder[0].read(),(int32_t)canEncoder[1].read());
-
-
-    		serial.printf("%d,%d\n\r",canSwitch[0].read(),canSwitch[1].read());
     		//serial.printf("%d,%d,%d,%d\n\r",(uint32_t)canSwitch[0].lastReceiveTime,(uint32_t)canSwitch[1].lastReceiveTime,(uint32_t)canSwitch[2].lastReceiveTime,(uint32_t)canSwitch[3].lastReceiveTime);
 
     		//serial.printf("%d,%d,%d,%d\n\r",(uint32_t)canSw[0].canData[0],(uint32_t)canSw[1].canData[0],(uint32_t)canSw[2].canData[0],(uint32_t)canSw[3].canData[0]);
     		//serial.printf("%d,%d,%d,%d\n\r",(uint32_t)canSw[0].sw->read(),(uint32_t)canSw[1].sw->read(),(uint32_t)canSw[2].sw->read(),(uint32_t)canSw[3].sw->read());
     		//serial.printf("%d,%d,%d,%d\n\r",(uint32_t)canSw[0].intervalTime,(uint32_t)canSw[1].intervalTime,(uint32_t)canSw[2].intervalTime,(uint32_t)canSw[3].intervalTime);
+    		//serial.printf("%x,%x,%x\n\r",canSw.canData[0],canSwitch.readStat,canSwitch.read());
 
-    		if(motorDebug[0] == 1){
-    			if(sw[0].read() == 0){
+    		switch(debugMode){
+    		case 0:
+    			serial.printf("%6d,%4d,%6d,%4d\n\r",(uint32_t)canMD[0].lastReceiveTime,canMD[0].outDuty,(uint32_t)canMD[1].lastReceiveTime,canMD[1].outDuty);
+
+    			break;
+    		case 1:
+    			if(swPin[0].read() == 0){
+    				canMotor[1].duty(0.2);
     				canMotor[0].duty(0.2);
-    			}else if(sw[1].read() == 0){
+    			}else if(swPin[1].read() == 0){
+    				canMotor[1].duty(-0.2);
     				canMotor[0].duty(-0.2);
     			}else{
-    				canMotor[0].duty(0);
+    				canMotor[0].free();
+    				canMotor[1].free();
     			}
-    		}
 
-    		if(motorDebug[1] == 1){
-    			if(sw[0].read() == 0){
-    				canMotor[1].duty(0.2);
-    			}else if(sw[1].read() == 0){
-    				canMotor[1].duty(-0.2);
-    			}else{
-    				canMotor[1].duty(0);
-    			}
+    			serial.printf("%5d,%5d,%6d,%6d\n\r",motor[0].outDuty,motor[1].outDuty,enc[0].read(),enc[1].read());
+    			break;
+    		case 2:
+    			if(sw[0].readStat && sw[0].read() == 0)debugMode++;
+    			serial.printf("enc A = %6d, B = %6d\n\r",(int32_t)canEncoder[0].read(),(int32_t)canEncoder[1].read());
+    			break;
+    		case 3:
+    			if(sw[0].readStat && sw[0].read() == 0)debugMode=2;
+    			serial.printf("sw stat = 0x%x,read = 0x%x\n\r",canSwitch.readStat,canSwitch.read());
+    			break;
+    		case 4:
+
+    			break;
     		}
     	}
 

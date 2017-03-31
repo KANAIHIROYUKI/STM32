@@ -11,7 +11,7 @@ public:
 	uint16_t read();
 	void interrupt();
 
-	uint16_t canAddress,switchValue;
+	uint16_t canAddress,switchStat,readStat;
 	uint64_t lastReceiveTime;
 	CAN *can;
 };

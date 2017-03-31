@@ -5,7 +5,7 @@
 #include "app.h"
 #include "base.h"
 
-#define CAN_ADDRESS 15 - (sel[0].read()*8 + sel[1].read() + sel[2].read()*4 + sel[3].read()*2)
+#define CAN_ADDRESS (uint16_t)(15 - (sel[0].read()*8 + sel[1].read() + sel[2].read()*4 + sel[3].read()*2))
 #define IntervalTime 50
 #define PWM_PERIOD 2000
 
@@ -21,14 +21,14 @@ CAN can1;
 
 CanNodeMotorDriver canMD[2];
 CanNodeEncoder canEnc[2];
-CanNodeSwitch canSw[4];
+CanNodeSwitch canSw;
 
 CanMotorDriver canMotor[2];
 CanEncoder canEncoder[2];
-CanSwitch canSwitch[4];
+CanSwitch canSwitch;
 
 
-uint8_t motorDebug[2] = {0,0},canRTR=0,canData[8],debugMode;
+uint8_t motorDebug[2] = {0,0},canRTR=0,canData[8],debugMode,printNum;
 uint64_t intervalTimer = 0;
 
 void setup(){
@@ -45,6 +45,12 @@ void setup(){
 	swPin[1].setup(PA3,INPUT_PU);
 	sw[0].setup(swPin[0]);
 	sw[1].setup(swPin[1]);
+
+	if(swPin[0].read() == 0){
+		debugMode = 1;
+	}else if(swPin[1].read() == 0){
+		debugMode = 2;
+	}
 
 	limitPin[0].setup(PB13,INPUT_PU);
 	limitPin[1].setup(PB14,INPUT_PU);
@@ -75,11 +81,7 @@ void setup(){
 	sys.usartSetup(serial);
 
 	can1.setup(CAN1,PA12,PA11);
-	if(swPin[0].read() == 0 || swPin[1].read() == 0 ){
-		debugMode = 1;
-		can1.debug();
-	}
-
+	if(debugMode)can1.debug();
 
 	canMD[0].setup(motor[0],can1,(CAN_ADDRESS * 2));
 	canMD[1].setup(motor[1],can1,(CAN_ADDRESS * 2) + 1);
@@ -87,10 +89,10 @@ void setup(){
 	canEnc[0].setup(enc[0],can1,(CAN_ADDRESS * 2));
 	canEnc[1].setup(enc[1],can1,(CAN_ADDRESS * 2) + 1);
 
-	canSw[0].setup(limit[0],can1,(CAN_ADDRESS * 2));
-	canSw[1].setup(limit[2],can1,(CAN_ADDRESS * 2) + 1);
-	//canSw[2].setup(limit[2],can1,(CAN_ADDRESS * 2) + 2);
-	//canSw[3].setup(limit[3],can1,(CAN_ADDRESS * 2) + 3);
+	canSw.setup(limit[0],can1,(CAN_ADDRESS * 2));
+	canSw.pinAdd(limit[1]);
+	canSw.pinAdd(limit[2]);
+	canSw.pinAdd(limit[3]);
 
 	if(debugMode){
 		canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
@@ -99,25 +101,9 @@ void setup(){
 		canMotor[0].setup(can1,(CAN_ADDRESS * 2));
 		canMotor[1].setup(can1,(CAN_ADDRESS * 2) + 1);
 
-		canSwitch[0].setup(can1,(CAN_ADDRESS * 2),100);
-		canSwitch[1].setup(can1,(CAN_ADDRESS * 2) + 1,100);
-		//canSwitch[2].setup(can1,(CAN_ADDRESS * 2) + 2,100);
-		//canSwitch[3].setup(can1,(CAN_ADDRESS * 2) + 3,100);
-	}
-
-
-	if(swPin[0].read() == 0){
-		motorDebug[0] = 1;
-		serial.printf("motorA debug\n\r");
-		led[0].write(Bit_SET);
+		canSwitch.setup(can1,CAN_ADDRESS,100);
 	}else{
 		canMD[0].ledAssign(led[0]);
-	}
-	if(swPin[1].read() == 0){
-		motorDebug[1] = 1;
-		serial.printf("motorB debug\n\r");
-		led[1].write(Bit_SET);
-	}else{
 		canMD[1].ledAssign(led[1]);
 	}
 
@@ -127,8 +113,18 @@ void setup(){
 	serial.printf("TIME = %s\n\r",__TIME__);
 	serial.printf("ADRS = %d\n\r",CAN_ADDRESS);
 
-	while(swPin[0].read() == 0 && swPin[1].read() == 0);
-	serial.printf("setup end\n\r");
+	while(swPin[0].read() == 0 || swPin[1].read() == 0);
+
+	serial.printf("setup end ");
+	if(debugMode == 1){
+		serial.printf("mode : debug-motor\n\r");
+		led[0].write(1);
+	}else if(debugMode == 2){
+		serial.printf("mode : debug-sensor\n\r");
+		led[1].write(1);
+	}else{
+		serial.printf("mode : run\n\r");
+	}
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
@@ -139,22 +135,14 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	canEnc[0].interrupt();
 	canEnc[1].interrupt();
 
-	canSw[0].interrupt();
-	canSw[1].interrupt();
-	//canSw[2].interrupt();
-	//canSw[3].interrupt();
+	canSw.interrupt();
 
-	if(debugMode){
+	if(debugMode != 0){
 		canEncoder[1].interrupt();
 		canEncoder[0].interrupt();
 
-		canSwitch[0].interrupt();
-		canSwitch[1].interrupt();
-		//canSwitch[2].interrupt();
-		//canSwitch[3].interrupt();
+		canSwitch.interrupt();
 	}
-
-
 	return;
 }
 

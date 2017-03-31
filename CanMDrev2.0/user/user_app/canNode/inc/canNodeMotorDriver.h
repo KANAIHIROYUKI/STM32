@@ -27,8 +27,8 @@ public:
 
 	uint8_t ledAssigned;
 
-	uint64_t canMd_receiveTime,canMd_ledTime;
-	uint16_t canMd_maxInterval;
+	uint64_t lastReceiveTime,ledTime;
+	uint16_t maxInterval;
 
 private:
 	CAN* canMd_can;

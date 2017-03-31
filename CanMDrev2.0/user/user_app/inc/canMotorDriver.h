@@ -12,10 +12,11 @@ class CanMotorDriver{
 public:
 	void setup(CAN &can,uint16_t number);
 	void duty(float motor_duty);
+	void free();
 	void brake(float motor_brake);
 
 	uint16_t canMotorDriver_address[2];
-	int16_t outDuty16;
+	int16_t outDuty16,outFree16;
 private:
 	CAN *canMotorDriver_can;
 };
