@@ -28,7 +28,7 @@ uint16_t rxFlag = 0;
 #define PRINT_TIME 50
 uint64_t printTime = 0,interruptTime;
 
-uint16_t extiPinNumber = 0;
+uint16_t extiPinNumber = 0,adcCnt = 0,adcValue;
 
 
 

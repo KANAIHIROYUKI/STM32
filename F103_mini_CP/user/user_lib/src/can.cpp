@@ -135,6 +135,7 @@ void CAN1Send(uint16_t id,uint8_t length,uint8_t data[8]){
     txMessage.Data[7] = data[7];
 
     CAN_Transmit(CAN1,&txMessage);
+    while(CANTXOK != CAN_TransmitStatus(CAN1,0));
 }
 
 void CANFilterAdd(uint16_t id1,uint16_t id2,uint16_t id3,uint16_t id4){

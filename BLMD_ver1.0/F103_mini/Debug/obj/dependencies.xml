@@ -42,9 +42,6 @@
       <source file="..\..\..\user\user_app\src\canEncoder.cpp" lastModified="15b0dbdab98">
          <include file="..\..\..\user\user_app\inc\canEncoder.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\adc.h" lastModified="1599bb6b211">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-      </source>
       <source file="..\..\..\user\user_app\inc\pwm.h" lastModified="15a5e7c4a7b">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -53,8 +50,6 @@
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\inc\exti.h" lastModified="15afed15c7a">
       </source>
       <source file="..\..\..\user\user_lib\src\iwdg.cpp" lastModified="15a5f7ae75f">
          <include file="..\..\..\user\user_lib\inc\iwdg.h"/>
@@ -83,9 +78,6 @@
       <source file="..\..\..\user\user_app\inc\enc.h" lastModified="15a5e7791d7">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\inc\can.h" lastModified="159d8738bd8">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_spi.h" lastModified="1577ee5f3b8">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
@@ -120,9 +112,6 @@
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\src\adc.cpp" lastModified="1599bb749c9">
-         <include file="..\..\..\user\user_lib\inc\adc.h"/>
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="1577ee5e0a3">
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
@@ -134,9 +123,6 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_usart.h" lastModified="1577ee62a3b">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="159e0032d04">
-         <include file="..\..\..\user\user_lib\inc\can.h"/>
       </source>
       <source file="..\..\..\user\user_lib\inc\gpio.h" lastModified="15b04bee4d1">
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -248,7 +234,7 @@
       <source file="..\..\..\user\user_app\inc\bldc.h" lastModified="15adecb1b5b">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
-      <source file="..\..\..\main.hpp" lastModified="15b1d579e20">
+      <source file="..\..\..\main.hpp" lastModified="15b3d77ae15">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_app\inc\app.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -282,13 +268,13 @@
       <source file="..\..\..\user\user_app\src\canEncoder.cpp" lastModified="15b0dbdab98">
          <include file="..\..\..\user\user_app\inc\canEncoder.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\adc.h" lastModified="1599bb6b211">
+      <source file="..\..\..\user\user_lib\inc\adc.h" lastModified="15b3d86c36c">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\user\user_lib\inc\base.h" lastModified="15a5ec21f7d">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\user_app\inc\switch.h" lastModified="15b1d52e581">
+      <source file="..\..\..\user\user_app\inc\switch.h" lastModified="15b1d781731">
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
@@ -300,8 +286,6 @@
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\inc\exti.h" lastModified="15afed15c7a">
       </source>
       <source file="..\..\..\user\user_lib\src\iwdg.cpp" lastModified="15a5f7ae75f">
          <include file="..\..\..\user\user_lib\inc\iwdg.h"/>
@@ -337,7 +321,7 @@
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\can.h" lastModified="159d8738bd8">
+      <source file="..\..\..\user\user_lib\inc\can.h" lastModified="15b1e42f61e">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_spi.h" lastModified="1577ee5f3b8">
@@ -363,7 +347,7 @@
       <source file="..\..\..\user\user_app\canNode\src\canNodeEncoder.cpp" lastModified="15a5f961a05">
          <include file="..\..\..\user\user_app\canNode\inc\canNodeEncoder.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\system.h" lastModified="15b0e0e1fd1">
+      <source file="..\..\..\user\user_lib\inc\system.h" lastModified="15b31ece477">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
          <include file="..\..\..\user\user_lib\inc\tim.h"/>
@@ -372,7 +356,6 @@
          <include file="..\..\..\user\user_lib\inc\usart.h"/>
          <include file="..\..\..\user\user_lib\inc\spi.h"/>
          <include file="..\..\..\user\user_lib\inc\dma.h"/>
-         <include file="..\..\..\user\user_lib\inc\exti.h"/>
       </source>
       <source file="..\..\..\user\user_app\canNode\inc\canNodeEncoder.h" lastModified="159d8836033">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
@@ -392,7 +375,7 @@
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\src\adc.cpp" lastModified="1599bb749c9">
+      <source file="..\..\..\user\user_lib\src\adc.cpp" lastModified="15b3d86c360">
          <include file="..\..\..\user\user_lib\inc\adc.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="1577ee5e0a3">
@@ -409,13 +392,21 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_usart.h" lastModified="1577ee62a3b">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="159e0032d04">
+      <source file="..\..\..\user\user_app\canNode\src\canNodeSwitch.cpp" lastModified="15b21ea6522">
+         <include file="..\..\..\user\user_app\canNode\inc\canNodeSwitch.h"/>
+      </source>
+      <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="15b31ef10f8">
          <include file="..\..\..\user\user_lib\inc\can.h"/>
       </source>
       <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="1577ee5e86f">
       </source>
       <source file="..\..\..\user\user_lib\inc\gpio.h" lastModified="15b04bee4d1">
          <include file="..\..\..\user\user_lib\inc\base.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\canNode\inc\canNodeSwitch.h" lastModified="15b21d60f3c">
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
+         <include file="..\..\..\user\user_lib\inc\can.h"/>
+         <include file="..\..\..\user\user_app\inc\app.h"/>
       </source>
       <source file="..\..\..\user\util\src\utilplus.cpp" lastModified="154c9cd92c3">
          <include file="..\..\..\user\util\inc\util.hpp"/>
@@ -504,7 +495,7 @@
       <source file="..\..\..\user\user_app\canNode\src\canNodeValve.cpp" lastModified="159dd8d1f1b">
          <include file="..\..\..\user\user_app\canNode\inc\canNodeValve.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\switch.cpp" lastModified="15b1d67409f">
+      <source file="..\..\..\user\user_app\src\switch.cpp" lastModified="15b1d776f38">
          <include file="..\..\..\user\user_app\inc\switch.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="1577ee5e090">

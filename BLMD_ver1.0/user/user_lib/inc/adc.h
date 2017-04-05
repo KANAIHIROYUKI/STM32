@@ -8,6 +8,8 @@
 class ADC{
 public:
 	void setup(ADC_TypeDef* adc,uint8_t channel,GPIO_TypeDef* gpio,uint16_t pin);
+	void itSetup(uint16_t ADC_InterruptMode = ADC_IT_EOC);
+	void interrupt();
 	int16_t read();
 	void start(uint8_t ADC_SampleTime = ADC_SampleTime_13Cycles5);
 	uint16_t peek();
@@ -16,10 +18,14 @@ private:
 
 	ADC_TypeDef* adc_adc;
 	uint8_t adc_channel;
+	uint16_t interruptMode;
 };
 
 void ADC1Setup(uint8_t ADC_Channel);
 void ADC2Setup(uint8_t ADC_Channel);
+
+void ADC1ITSetup(uint16_t ADC_InterruptMode = ADC_IT_EOC);
+void ADC2ITSetup(uint16_t ADC_InterruptMode = ADC_IT_EOC);
 
 uint16_t ADC1Read(uint8_t ADC_Channel);
 uint16_t ADC2Read(uint8_t ADC_Channel);

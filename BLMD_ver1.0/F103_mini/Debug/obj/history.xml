@@ -16,16 +16,16 @@
       <target file="util.o" lastModified="15b0dd99de7">
          <source file="..\..\..\user\util\src\util.c" lastModified="154c9cd8ed8"/>
       </target>
-      <target file="canNodeEncoder.o" lastModified="15b0e0e1e3c">
+      <target file="canNodeEncoder.o" lastModified="15b3d86c6c1">
          <source file="..\..\..\user\user_app\canNode\src\canNodeEncoder.cpp" lastModified="15a5f961a05"/>
       </target>
       <target file="misc.o" lastModified="15b0dd9aba9">
          <source file="..\..\..\stm_lib\src\misc.c" lastModified="1577eea0b7c"/>
       </target>
-      <target file="switch.o" lastModified="15b1d6742e9">
-         <source file="..\..\..\user\user_app\src\switch.cpp" lastModified="15b1d67409f"/>
+      <target file="switch.o" lastModified="15b3d86c5b3">
+         <source file="..\..\..\user\user_app\src\switch.cpp" lastModified="15b1d776f38"/>
       </target>
-      <target file="spi.o" lastModified="15b0e0e1ebd">
+      <target file="spi.o" lastModified="15b3d86c72a">
          <source file="..\..\..\user\user_lib\src\spi.cpp" lastModified="1599bb74a04"/>
       </target>
       <target file="system_stm32f10x.o" lastModified="15b0dd99e9f">
@@ -34,17 +34,20 @@
       <target file="stm32f10x_usart.o" lastModified="15b0dd9a78b">
          <source file="..\..\..\stm_lib\src\stm32f10x_usart.c" lastModified="1577ee62a3b"/>
       </target>
-      <target file="remap.o" lastModified="15b0e0e2298">
+      <target file="remap.o" lastModified="15b3d86caf8">
          <source file="..\..\..\user\user_lib\src\remap.cpp" lastModified="1599bb749fc"/>
       </target>
       <target file="usart.o" lastModified="15b0dee13e7">
          <source file="..\..\..\user\user_lib\src\usart.cpp" lastModified="15b0dee0305"/>
       </target>
-      <target file="app.o" lastModified="15b1d52e8bb">
+      <target file="app.o" lastModified="15b3d86cc9e">
          <source file="..\..\..\user\user_app\src\app.cpp" lastModified="1599bb55343"/>
       </target>
-      <target file="canMotorDriver.o" lastModified="15b0e0e1f32">
+      <target file="canMotorDriver.o" lastModified="15b3d86c794">
          <source file="..\..\..\user\user_app\src\canMotorDriver.cpp" lastModified="15a6058173c"/>
+      </target>
+      <target file="canNodeSwitch.o" lastModified="15b3d86c626">
+         <source file="..\..\..\user\user_app\canNode\src\canNodeSwitch.cpp" lastModified="15b21ea6522"/>
       </target>
       <target file="base.o" lastModified="15b0dd9aa8e">
          <source file="..\..\..\user\user_lib\src\base.cpp" lastModified="15a2178ad2e"/>
@@ -52,22 +55,22 @@
       <target file="stm32f10x_tim.o" lastModified="15b0dd99d97">
          <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1"/>
       </target>
-      <target file="canNodeValve.o" lastModified="15b0e0e2300">
+      <target file="canNodeValve.o" lastModified="15b3d86cb60">
          <source file="..\..\..\user\user_app\canNode\src\canNodeValve.cpp" lastModified="159dd8d1f1b"/>
       </target>
-      <target file="bldc.o" lastModified="15b0e0e25db">
+      <target file="bldc.o" lastModified="15b3d86ce4c">
          <source file="..\..\..\user\user_app\src\bldc.cpp" lastModified="15adecbc06d"/>
       </target>
-      <target file="pulse.o" lastModified="15b0e0e235e">
+      <target file="pulse.o" lastModified="15b3d86cbc1">
          <source file="..\..\..\user\user_app\src\pulse.cpp" lastModified="15a216e2181"/>
       </target>
-      <target file="constantCurrentControl.o" lastModified="15b0e0e1ffd">
+      <target file="constantCurrentControl.o" lastModified="15b3d86c862">
          <source file="..\..\..\user\user_app\src\constantCurrentControl.cpp" lastModified="1599bb55370"/>
       </target>
-      <target file="canNodePulse.o" lastModified="15b0e0e24a3">
+      <target file="canNodePulse.o" lastModified="15b3d86cd0d">
          <source file="..\..\..\user\user_app\canNode\src\canNodePulse.cpp" lastModified="15b0df6eaec"/>
       </target>
-      <target file="system.o" lastModified="15b0e273474">
+      <target file="system.o" lastModified="15b3d86c9b0">
          <source file="..\..\..\user\user_lib\src\system.cpp" lastModified="15b0e272e5a"/>
       </target>
       <target file="tim.o" lastModified="15b0e2c8736">
@@ -76,13 +79,13 @@
       <target file="iwdg.o" lastModified="15b0dd99e57">
          <source file="..\..\..\user\user_lib\src\iwdg.cpp" lastModified="15a5f7ae75f"/>
       </target>
-      <target file="canNodeAnalogIn.o" lastModified="15b0e0e256f">
+      <target file="canNodeAnalogIn.o" lastModified="15b3d86cddf">
          <source file="..\..\..\user\user_app\canNode\src\canNodeAnalogIn.cpp" lastModified="15b0df6eadd"/>
       </target>
       <target file="gpio.o" lastModified="15b0dd9a5a0">
          <source file="..\..\..\user\user_lib\src\gpio.cpp" lastModified="15b04bee4c5"/>
       </target>
-      <target file="port.o" lastModified="15b0e0e2509">
+      <target file="port.o" lastModified="15b3d86cd75">
          <source file="..\..\..\user\user_app\src\port.cpp" lastModified="1599bb55386"/>
       </target>
       <target file="stm32f10x_rcc.o" lastModified="15b0dd9a534">
@@ -94,37 +97,37 @@
       <target file="stm32f10x_adc.o" lastModified="15b0dd9a6ca">
          <source file="..\..\..\stm_lib\src\stm32f10x_adc.c" lastModified="1577ee60f36"/>
       </target>
-      <target file="canNodeMotorDriver.o" lastModified="15b0e0e2646">
+      <target file="canNodeMotorDriver.o" lastModified="15b3d86cebd">
          <source file="..\..\..\user\user_app\canNode\src\canNodeMotorDriver.cpp" lastModified="15b0df6eac8"/>
       </target>
       <target file="stm32f10x_dbgmcu.o" lastModified="15b0dd99e2a">
          <source file="..\..\..\stm_lib\src\stm32f10x_dbgmcu.c" lastModified="1577ee61f13"/>
       </target>
-      <target file="canValve.o" lastModified="15b0e0e2062">
+      <target file="canValve.o" lastModified="15b3d86c8c4">
          <source file="..\..\..\user\user_app\src\canValve.cpp" lastModified="159dd7ac6c9"/>
       </target>
-      <target file="canEncoder.o" lastModified="15b0e0e1f9b">
+      <target file="canEncoder.o" lastModified="15b3d86c7ff">
          <source file="..\..\..\user\user_app\src\canEncoder.cpp" lastModified="15b0dbdab98"/>
       </target>
-      <target file="can.o" lastModified="15b0e0e21c5">
-         <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="159e0032d04"/>
+      <target file="can.o" lastModified="15b3d86ca27">
+         <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="15b31ef10f8"/>
       </target>
-      <target file="adc.o" lastModified="15b0e0e23d0">
-         <source file="..\..\..\user\user_lib\src\adc.cpp" lastModified="1599bb749c9"/>
+      <target file="adc.o" lastModified="15b3d86cc38">
+         <source file="..\..\..\user\user_lib\src\adc.cpp" lastModified="15b3d86c360"/>
       </target>
-      <target file="main.o" lastModified="15b1d6a195a">
-         <source file="..\..\..\main.cpp" lastModified="15b1d6a16f8"/>
+      <target file="main.o" lastModified="15b3d878c11">
+         <source file="..\..\..\main.cpp" lastModified="15b3d8789a7"/>
       </target>
       <target file="startup_stm32f10x_md.o" lastModified="15b0dd9a1f3">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="1577ee5e095"/>
       </target>
-      <target file="dma.o" lastModified="15b0e0e26a8">
+      <target file="dma.o" lastModified="15b3d86cf1e">
          <source file="..\..\..\user\user_lib\src\dma.cpp" lastModified="1599bb749da"/>
       </target>
       <target file="stm32f10x_spi.o" lastModified="15b0dd9ac05">
          <source file="..\..\..\stm_lib\src\stm32f10x_spi.c" lastModified="1577ee5f3b8"/>
       </target>
-      <target file="motor.o" lastModified="15b0e0e223b">
+      <target file="motor.o" lastModified="15b3d86ca9b">
          <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a5e84ac9a"/>
       </target>
       <target file="utilplus.o" lastModified="15b0dd9a052">

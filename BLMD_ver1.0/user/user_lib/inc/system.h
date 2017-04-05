@@ -11,7 +11,6 @@
 #include "usart.h"
 #include "spi.h"
 #include "dma.h"
-#include "exti.h"
 
 #define TIME_SPLIT 100000 	// タイマの最小分解能を決める｡最小分解能 = 1/TIME_SPLIT [s]
 

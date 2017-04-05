@@ -12,6 +12,23 @@ void ADC::setup(ADC_TypeDef* adc,uint8_t channel,GPIO_TypeDef* gpio,uint16_t pin
 	}
 }
 
+void ADC::itSetup(uint16_t ADC_InterruptMode){
+	interruptMode = ADC_InterruptMode;
+	if(adc_adc == ADC1){
+		ADC1ITSetup(ADC_InterruptMode);
+	}else if(adc_adc == ADC2){
+		ADC2ITSetup(ADC_InterruptMode);
+	}
+}
+
+void ADC::interrupt(){
+	if(adc_adc == ADC1){
+		ADC_ClearITPendingBit(ADC1,interruptMode);
+	}else if(adc_adc == ADC2){
+		ADC_ClearITPendingBit(ADC2,interruptMode);
+	}
+}
+
 int16_t ADC::read(){
 	if(adc_adc == ADC1){
 		return ADC1Read(adc_channel);
@@ -85,6 +102,28 @@ void ADC2Setup(uint8_t ADC_Channel){
 	while(ADC_GetCalibrationStatus(ADC2));
 }
 
+void ADC1ITSetup(uint16_t ADC_InterruptMode){
+	NVIC_InitTypeDef NVIC_InitStructure;
+	NVIC_InitStructure.NVIC_IRQChannel = ADC1_2_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+
+	ADC_ITConfig(ADC1,ADC_InterruptMode,ENABLE);
+}
+
+void ADC2ITSetup(uint16_t ADC_InterruptMode){
+	NVIC_InitTypeDef NVIC_InitStructure;
+	NVIC_InitStructure.NVIC_IRQChannel = ADC1_2_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+
+	ADC_ITConfig(ADC2,ADC_InterruptMode,ENABLE);
+}
+
 uint16_t ADC1Read(uint8_t ADC_Channel){
 	ADC_RegularChannelConfig(ADC1,ADC_Channel,1,ADC_SampleTime_13Cycles5);
 	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
@@ -102,12 +141,12 @@ uint16_t ADC2Read(uint8_t ADC_Channel){
 }
 
 void ADC1Start(uint8_t ADC_Channel,uint8_t ADC_SampleTime){
-	ADC_RegularChannelConfig(ADC1,ADC_Channel,1,ADC_SampleTime_13Cycles5);
+	ADC_RegularChannelConfig(ADC1,ADC_Channel,1,ADC_SampleTime);
 	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
 }
 
 void ADC2Start(uint8_t ADC_Channel,uint8_t ADC_SampleTime){
-	ADC_RegularChannelConfig(ADC2,ADC_Channel,1,ADC_SampleTime_13Cycles5);
+	ADC_RegularChannelConfig(ADC2,ADC_Channel,1,ADC_SampleTime);
 	ADC_SoftwareStartConvCmd(ADC2,ENABLE);
 }
 

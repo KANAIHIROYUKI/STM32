@@ -3,9 +3,10 @@
 #include "system.h"
 #include "app.h"
 
-
-
 #define IntervalTime 100
+
+#define CP_ver10 0
+#define CP_ver11 1
 
 #define CAN_ADD_SWITCH_SETUP 0x700
 #define CAN_ADD_SWITCH_VALUE 0x740
@@ -16,7 +17,7 @@ uint64_t intervalTime = 0,transmitTime = 0,transmitIntervalTime = 0;
 uint16_t rxFlag,rtrFlag;
 
 
-GPIO signal,led[16],switchPin[8],pin[3];
+GPIO signal,led[16],switchPin[8];
 USART serial;
 CAN can1;
 
@@ -27,46 +28,90 @@ CanEncoder canSwitch;
 
 void setup(){
 
+	uint8_t revision = CP_ver11;
 
 	systemSetup();
 
 	signal.setup(PB0,OUTPUT);
 
-	led[0].setup(PB9,OUTPUT);
-	led[1].setup(PB8,OUTPUT);
-	led[2].setup(PB7,OUTPUT);
-	led[3].setup(PB6,OUTPUT);
-	led[4].setup(PB5,OUTPUT);
-	led[5].setup(PA1,OUTPUT);
-	led[6].setup(PA2,OUTPUT);
-	led[7].setup(PA3,OUTPUT);
+	if(revision == CP_ver10){
+		led[0].setup(PB9,OUTPUT);
+		led[1].setup(PB8,OUTPUT);
+		led[2].setup(PB7,OUTPUT);
+		led[3].setup(PB6,OUTPUT);
+		led[4].setup(PB5,OUTPUT);
+		led[5].setup(PA1,OUTPUT);
+		led[6].setup(PA2,OUTPUT);
+		led[7].setup(PA3,OUTPUT);
 
-	led[8].setup(PA8,OUTPUT);
-	led[9].setup(PB15,OUTPUT);
-	led[10].setup(PB14,OUTPUT);
-	led[11].setup(PB13,OUTPUT);
-	led[12].setup(PB12,OUTPUT);
-	led[13].setup(PB2,OUTPUT);
-	led[14].setup(PB10,OUTPUT);
-	led[15].setup(PB11,OUTPUT);
+		led[8].setup(PA8,OUTPUT);
+		led[9].setup(PB15,OUTPUT);
+		led[10].setup(PB14,OUTPUT);
+		led[11].setup(PB13,OUTPUT);
+		led[12].setup(PB12,OUTPUT);
+		led[13].setup(PB2,OUTPUT);
+		led[14].setup(PB10,OUTPUT);
+		led[15].setup(PB11,OUTPUT);
 
-	pin[0].setup(PA15,OUTPUT);
-	pin[1].setup(PB3,OUTPUT);
-	pin[2].setup(PB4,OUTPUT);
+		for(int i=0;i<16;i++){
+			led[i].write(1);
+			delay(10);
+		}
 
-	for(int i=0;i<16;i++){
-		led[i].write(0);
+		for(int i=0;i<16;i++){
+			led[i].write(0);
+			delay(10);
+		}
+
+		switchPin[0].setup(PC13,INPUT_PU);
+		switchPin[1].setup(PC14,INPUT_PU);
+		switchPin[2].setup(PC15,INPUT_PU);
+		switchPin[3].setup(PA0,INPUT_PU);
+
+		switchPin[4].setup(PA5,INPUT_PU);
+		switchPin[5].setup(PA6,INPUT_PU);
+		switchPin[6].setup(PA7,INPUT_PU);
+		switchPin[7].setup(PB1,INPUT_PU);
+
+
+	}else if(revision == CP_ver11){
+		led[0].setup(PB9,OUTPUT);
+		led[1].setup(PB8,OUTPUT);
+		led[5].setup(PB12,OUTPUT);
+		led[6].setup(PB13,OUTPUT);
+		led[7].setup(PB14,OUTPUT);
+
+		led[8].setup(PB15,OUTPUT);
+		led[9].setup(PA5,OUTPUT);
+		led[10].setup(PA6,OUTPUT);
+		led[11].setup(PA7,OUTPUT);
+		led[12].setup(PB1,OUTPUT);
+		led[13].setup(PB2,OUTPUT);
+		led[14].setup(PB10,OUTPUT);
+		led[15].setup(PB11,OUTPUT);
+
+		for(int i=0;i<16;i++){
+			led[i].write(1);
+			delay(10);
+		}
+
+		for(int i=0;i<16;i++){
+			led[i].write(0);
+			delay(10);
+		}
+
+		switchPin[0].setup(PC13,INPUT_PU);
+		switchPin[1].setup(PC14,INPUT_PU);
+		switchPin[2].setup(PC15,INPUT_PU);
+		switchPin[3].setup(PA0,INPUT_PU);
+
+		switchPin[4].setup(PA1,INPUT_PU);
+		switchPin[5].setup(PA2,INPUT_PU);
+		switchPin[6].setup(PA3,INPUT_PU);
+		switchPin[7].setup(PA4,INPUT_PU);
 	}
 
-	switchPin[0].setup(PC13,INPUT_PU);
-	switchPin[1].setup(PC14,INPUT_PU);
-	switchPin[2].setup(PC15,INPUT_PU);
-	switchPin[3].setup(PA0,INPUT_PU);
 
-	switchPin[4].setup(PA5,INPUT_PU);
-	switchPin[5].setup(PA6,INPUT_PU);
-	switchPin[6].setup(PA7,INPUT_PU);
-	switchPin[7].setup(PB1,INPUT_PU);
 
 
 	can1.setup(CAN1,PA12,PA11);
@@ -91,6 +136,11 @@ void setup(){
 	serial.printf("\n\rFILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
+	if(revision == CP_ver10){
+		serial.printf("ControlPanel hrev 1.0\n\r");
+	}else if(revision == CP_ver11){
+		serial.printf("ControlPanel rev 1.1\n\r");
+	}
 }
 
 
