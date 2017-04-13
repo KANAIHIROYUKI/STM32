@@ -6,7 +6,7 @@
 
 
 #define IntervalTime 50
-#define BUZZER_FRQ 4200
+#define BUZZER_FRQ 2000
 
 #define CELL0_VOLTAGE_GAIN 8.86
 #define CELL1_VOLTAGE_GAIN 8.86
@@ -17,7 +17,7 @@
 #define CELL5_VOLTAGE_GAIN 8.86
 
 uint64_t intervalTime = 0,voltage[6],vmin[6],vave[6],vmax[6],vcnt=0;
-uint32_t frequency,buzzerPower,buzzerStat,buzzerStatCnt,cellMax,cellMin,cellWorst;
+uint32_t frequency,buzzerPower,buzzerStat,buzzerStatCnt,cellMax,cellMin,cellWorst,beepInterval;
 
 
 GPIO power,signal;
@@ -45,10 +45,12 @@ void setup(){
 	signal.write(1);
 
 	frequency = 72000000/BUZZER_FRQ;
+	frequency = 72000;
 	buzzer.pwmSetup(TIM2,1,PA0,frequency);
 	buzzer.duty(frequency/2);
 
 	hc04.setup(USART2,115200,PA2,PA3);
+	hc04.printf("hogehoge\n\r");
 	serial.setup(USART1,921600,PA9,PA10);
 	serial.printf("\n\rFILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
@@ -65,7 +67,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 }
 
 void beep(uint32_t frq,float buzzer_duty){
-	frequency = 72000000/frequency;
+	frequency = 72000000/frq;
 	buzzer.pwmSetup(TIM2,1,PA0,frequency);
 	buzzer.dutyF(buzzer_duty);
 }

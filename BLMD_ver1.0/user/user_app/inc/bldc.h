@@ -8,7 +8,7 @@ public:
 	void setup(TIM &tim,GPIO &en);
 	void adcAssigne(ADC &adc);
 	void zeroCrossAssigne(GPIO &zero);
-	void degree(int16_t out_degree);
+	void degree(int16_t out_degree,float duty);
 
 	void duty(float outDuty);
 	TIM *tim;
@@ -20,7 +20,9 @@ public:
 class BLDC{
 public:
 	void setup(Phase &U,Phase &V,Phase &W);
-	void degree(int16_t out_degree);
+	void degree(int16_t out_degree,float duty);
+	void lock();
+	void free();
 	Phase* phase[3];
 };
 

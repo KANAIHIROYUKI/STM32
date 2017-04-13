@@ -4,41 +4,14 @@
 int main(void)
 {
 	setup();
+	uint64_t setTime = millis();
+	buzzerStat = 0;
 
-	uint32_t flashStat = 0,flashData = 10,readCnt = 0;
-
-	flashData = 100;
-
-	FLASH_Unlock();
-	FLASH_ReadOutProtection(DISABLE);	//読み出し保護無効化
-	FLASH_ClearFlag(FLASH_FLAG_BSY | FLASH_FLAG_EOP | FLASH_FLAG_PGERR | FLASH_FLAG_WRPRTERR);
-
-	flashStat = FLASH_ProgramWord(0x08003000,flashData);
-
-	delay(1);
-
-	//flashData = *((uint32_t *)0x08003000);
-	serial.printf("0x08000000 = %d\n\r",flashData);
-
-	switch(flashStat){
-	case FLASH_BUSY:
-		serial.printf("BUSY\n\r");
-		break;
-	case FLASH_ERROR_PG:
-		serial.printf("ERROR_PG\n\r");
-		break;
-	case FLASH_ERROR_WRP:
-		serial.printf("ERROR_WRP\n\r");
-		break;
-	case FLASH_COMPLETE:
-		serial.printf("COMPLETE\n\r");
-		break;
-	case FLASH_TIMEOUT:
-		serial.printf("TIMEOUT\n\r");
-		break;
+	for(int i=0;i<20;i++){
+		beep(i*500,0.5);
+		delay(500);
+		serial.printf("%d\n\r",i);
 	}
-
-
 
 	while(1){
 		//delay(10);
@@ -58,35 +31,32 @@ int main(void)
 		}
 
 		if(intervalTime < millis()){
-			signal.toggle();
+
 			power.toggle();
 
 			intervalTime += IntervalTime;
 
+			hc04.printf("\n\r");
 			for(int i=0;i<6;i++){
 				vave[i] = vave[i]/vcnt;
-
-				if(vmax[0] < 3000){
-					if(buzzerStat < 3)buzzerStat = 3;
-				}else if(vmax[0] < 3400){
-					if(buzzerStat < 1)buzzerStat = 1;
-				}else{
-					if(buzzerStat != 5)buzzerStat = 0;
-				}
+				hc04.printf("%6d,",voltage[i]);
 			}
+
+			//すべてのセルの最大電圧と最低電圧を出す
 			cellMin = 36300;
 			cellMax = 0;
 			for(int i=0;i<6;i++){
 				if(cellMin > voltage[i])cellMin = voltage[i];
 				if(cellMax < voltage[i])cellMax = voltage[i];
 			}
-			cellWorst = cellMax - cellMin;
-			if(cellWorst > 200){
-				buzzerStat = 5;
-				beep(2500,0);
-			}
 
-			serial.printf("%6d,%d\n\r",(uint32_t)vmax[0],buzzerStat);
+			//セル電圧差の最大値を出す
+			cellWorst = cellMax - cellMin;
+
+
+
+			serial.printf("max = %6d,stat = %d\n\r",(uint32_t)vmax[0],buzzerStat);
+
 
 			vcnt = 0;
 			for(int i=0;i<6;i++){
@@ -95,50 +65,66 @@ int main(void)
 				vave[i] = 0;
 			}
 
+			if(millis() > setTime){
+				setTime+=5000;
+				buzzerStat++;
+			}
+
 			switch(buzzerStat){
 			case 0:
-				beep(4200,0);
+				beep(2000,0);
 				buzzerStatCnt = 0;
 				break;
 			case 1:
-				beep(2500,0.1);
+				if(buzzerStatCnt == 0)beep(2000,0.5);
 				buzzerStatCnt++;
-				if(buzzerStatCnt > 10){
+				if(buzzerStatCnt > 50){
 					buzzerStatCnt = 0;
-					buzzerStat = 2;
+				}else if(buzzerStatCnt > 1){
+					beep(5000,0);
 				}
 				break;
 			case 2:
-				beep(2500,0);
+				if(buzzerStatCnt == 0)beep(2000,0.5);
 				buzzerStatCnt++;
-				if(buzzerStatCnt > 10){
+				if(buzzerStatCnt > 13){
 					buzzerStatCnt = 0;
-					buzzerStat = 1;
+				}else if(buzzerStatCnt > 10){
+					beep(2000,0);
 				}
 				break;
 			case 3:
-				if(buzzerStatCnt == 0)beep(2500,0.1);
+				if(buzzerStatCnt == 0)beep(2000,0.5);
 				buzzerStatCnt++;
-				if(buzzerStatCnt > 10){
+				if(buzzerStatCnt > 20){
 					buzzerStatCnt = 0;
-					buzzerStat = 4;
+				}else if(buzzerStatCnt > 2){
+					beep(2000,0);
 				}
 				break;
 			case 4:
-				if(buzzerStatCnt == 0)beep(2500,0);
+				if(buzzerStatCnt == 0)beep(2000,0.5);
 				buzzerStatCnt++;
-				if(buzzerStatCnt > 5){
+				if(buzzerStatCnt > 100){
 					buzzerStatCnt = 0;
-					buzzerStat = 3;
+				}else if(buzzerStatCnt > 2){
+					beep(2000,0);
 				}
 				break;
 			case 5:
-
+				if(buzzerStatCnt == 0)beep(2000,0.5);
+				buzzerStatCnt++;
+				if(buzzerStatCnt > 100){
+					buzzerStatCnt = 0;
+				}else if(buzzerStatCnt > 2){
+					beep(2000,0);
+				}
 				break;
 			default:
+				beep(2000,0);
+				buzzerStatCnt = 0;
 				break;
 			}
-
 
 		}
 	}

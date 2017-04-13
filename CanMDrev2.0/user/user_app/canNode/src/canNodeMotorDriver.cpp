@@ -24,7 +24,7 @@ void CanNodeMotorDriver::ledAssign(GPIO &led){
 
 void CanNodeMotorDriver::cycle(){
 	if(lastReceiveTime + maxInterval < millis()){
-		canMd_motor->free();
+		canMd_motor->duty(0);
 		if(ledAssigned && (ledTime < millis())){
 			canMd_led->toggle();
 			ledTime = millis() + LED_INTERVAL_NORECEIVE;
