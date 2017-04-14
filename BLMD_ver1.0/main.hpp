@@ -20,21 +20,21 @@ BLDC bldc;
 
 #define DEBUG
 
-#define ADVANCED_ANGLE (float)1.0
-#define CONTROL_ADJUST_TIME 50
+#define ADVANCED_ANGLE (float)0.95
+#define CONTROL_ADJUST_TIME 10
 
-int16_t hallToDegree[] = {-1,0,240,300,120,60,180,-1};
+int16_t hallToDegree[] = {-1,30,270,330,150,90,210,-1};
 uint16_t rxFlag = 0;
 
 uint64_t hallInterruptTime,hallIntervalTime;
 
-#define PRINT_TIME 50
+#define PRINT_TIME 10
 uint64_t printTime = 0,interruptTime;
 
 uint16_t adcCnt = 0,adcValue,phaseStat = 0;
 
 int16_t hallDegree = 0,hallNum,outDegree;
-uint16_t hallStat = 0,driveStat = 0,driveEnable = 0,interruptFuncCnt=0;
+uint16_t hallStat = 0,driveStat = 0,driveEnable = 0,interruptFuncCnt=0,driveMode = 0;
 uint64_t interruptCnt = 0,setTime;
 
 
@@ -47,7 +47,10 @@ void setup(){
 	sys.usartSetup(serial);
 	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
 
-	timer.timerSetup(TIM1);
+	timer.timerSetup(TIM4);
+	trigger.timerSetup(TIM2);
+	trigger.itSetup(TIM_IT_CC1);
+	trigger.stop();
 
 	pwm[1].pwmSetup(TIM3,1,PA6,2000);
 	pwm[0].pwmSetup(TIM3,2,PA7,2000);
@@ -91,6 +94,8 @@ void setup(){
 	can1.setup(CAN1,PA12,PA11);
 
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
+
+	serial.printf("end\n\r");
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
@@ -117,7 +122,7 @@ extern "C" void  EXTI3_IRQHandler(void){
 	hallInterruptFunc();
 }
 
-extern "C"void EXTI4_IRer(void){
+extern "C"void EXTI4_IRQHandler(void){
 	hall[2].interruptFrag();
 	hallInterruptFunc();
 }

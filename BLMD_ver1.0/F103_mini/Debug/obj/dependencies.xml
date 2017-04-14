@@ -17,7 +17,7 @@
       <source file="..\..\..\user\user_app\inc\bldc.h" lastModified="15b60f0ba71">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
-      <source file="..\..\..\main.hpp" lastModified="15b66b94fbb">
+      <source file="..\..\..\main.hpp" lastModified="15b6ccdf3ac">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_app\inc\app.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -113,7 +113,7 @@
       <source file="..\..\..\user\user_lib\src\usart.cpp" lastModified="15b0dee0305">
          <include file="..\..\..\user\user_lib\inc\usart.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\tim.h" lastModified="15b66bdd332">
+      <source file="..\..\..\user\user_lib\inc\tim.h" lastModified="15b6c048579">
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
       </source>
       <source file="..\..\..\user\user_app\src\canMotorDriver.cpp" lastModified="15a6058173c">
@@ -201,7 +201,7 @@
       <source file="..\..\..\user\util\src\util.c" lastModified="154c9cd96a8">
          <include file="..\..\..\user\util\inc\util.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\bldc.cpp" lastModified="15b616efe7b">
+      <source file="..\..\..\user\user_app\src\bldc.cpp" lastModified="15b6cc9675a">
          <include file="..\..\..\user\user_app\inc\bldc.h"/>
       </source>
       <source file="..\..\..\user\user_app\inc\motor.h" lastModified="15a5e70f35d">
@@ -317,226 +317,18 @@
          <include file="..\..\..\cmsis_boot\system_stm32f10x.h"/>
          <include file="..\..\..\cmsis_boot\stm32f10x_conf.h"/>
       </source>
+      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a5e84ac9a">
+         <include file="..\..\..\user\user_app\inc\motor.h"/>
+      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1">
          <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a5e84ac9a">
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\src\tim.cpp" lastModified="15b66e5e3af">
+      <source file="..\..\..\user\user_lib\src\tim.cpp" lastModified="15b6c0485a7">
          <include file="..\..\..\user\user_lib\inc\tim.h"/>
       </source>
       <source file="..\..\..\user\user_lib\src\system.cpp" lastModified="15b0e272e5a">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
-      </source>
-   </includePath>
-   <includePath signature="/I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\util\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\stm_lib /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\canNode /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\cmsis /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\semihosting /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_lib\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32 /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\util /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0 /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\stm_lib\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_lib /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\canNode\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\cmsis_boot">
-      <source file="..\..\..\stm_lib\src\stm32f10x_iwdg.c" lastModified="15a5602fb6a">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\src\misc.c" lastModified="1577eea0b7c">
-         <include file="..\..\..\stm_lib\inc\misc.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\inc\constantCurrentControl.h" lastModified="15a5e689c62">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="1577ee5e08f">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\cmsis_boot\system_stm32f10x.h" lastModified="1577ee5e099">
-      </source>
-      <source file="..\..\..\user\user_app\inc\pulse.h" lastModified="15a5e9120dc">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
-      </source>
-      <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="1577ee5e099">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h" lastModified="15a5602fb68">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\canNode\inc\canNodeValve.h" lastModified="159dd25da1d">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_lib\inc\gpio.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\src\stm32f10x_dbgmcu.c" lastModified="1577ee61f13">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\src\constantCurrentControl.cpp" lastModified="1599bb55370">
-         <include file="..\..\..\user\user_app\inc\constantCurrentControl.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\src\canEncoder.cpp" lastModified="15b0dbdab98">
-         <include file="..\..\..\user\user_app\inc\canEncoder.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\inc\pwm.h" lastModified="15a5e7c4a7b">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\canNode\inc\canNodePulse.h" lastModified="15a982c791b">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
-         <include file="..\..\..\user\user_lib\inc\gpio.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\src\iwdg.cpp" lastModified="15a5f7ae75f">
-         <include file="..\..\..\user\user_lib\inc\iwdg.h"/>
-      </source>
-      <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="1577ee5e095">
-      </source>
-      <source file="..\..\..\cmsis_boot\stm32f10x_conf.h" lastModified="15b02bcf942">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_can.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_exti.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_spi.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
-         <include file="..\..\..\stm_lib\inc\misc.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\inc\remap.h" lastModified="1599bb6b24d">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h" lastModified="1577ee61f12">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\inc\enc.h" lastModified="15a5e7791d7">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_spi.h" lastModified="1577ee5f3b8">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\src\canMotorDriver.cpp" lastModified="15a6058173c">
-         <include file="..\..\..\user\user_app\inc\canMotorDriver.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_rcc.h" lastModified="1577ee5e0a3">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\src\remap.cpp" lastModified="1599bb749fc">
-         <include file="..\..\..\user\user_lib\inc\remap.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\canNode\src\canNodeEncoder.cpp" lastModified="15a5f961a05">
-         <include file="..\..\..\user\user_app\canNode\inc\canNodeEncoder.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\canNode\inc\canNodeEncoder.h" lastModified="159d8836033">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\util\inc\util.h"/>
-         <include file="..\..\..\user\user_lib\inc\usart.h"/>
-      </source>
-      <source file="..\..\..\user\util\inc\util.h" lastModified="154c9cd8ed9">
-      </source>
-      <source file="..\..\..\stm_lib\src\stm32f10x_spi.c" lastModified="1577ee5f3b8">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_spi.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\inc\canValve.h" lastModified="15a5e912847">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="1577ee5e0a3">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\inc\port.h" lastModified="1599bd60d49">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\src\stm32f10x_exti.c" lastModified="15b02bcb8c7">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_exti.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_usart.h" lastModified="1577ee62a3b">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\inc\gpio.h" lastModified="15b04bee4d1">
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\src\stm32f10x_usart.c" lastModified="1577ee62a3b">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\src\dma.cpp" lastModified="1599bb749da">
-         <include file="..\..\..\user\user_lib\inc\dma.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_adc.h" lastModified="1577ee60f36">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\src\base.cpp" lastModified="15a2178ad2e">
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\src\pulse.cpp" lastModified="15a216e2181">
-         <include file="..\..\..\user\user_app\inc\pulse.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_exti.h" lastModified="15b02bcb8c7">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\src\port.cpp" lastModified="1599bb55386">
-         <include file="..\..\..\user\user_app\inc\port.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\canNode\inc\canNodeAnalogIn.h" lastModified="159d8996288">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\util\inc\util.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\inc\iwdg.h" lastModified="15a5f7b499b">
-      </source>
-      <source file="..\..\..\stm_lib\src\stm32f10x_adc.c" lastModified="1577ee60f36">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\canNode\inc\canNodeMotorDriver.h" lastModified="15a5e6981b9">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\misc.h" lastModified="1577eea0b7b">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\src\app.cpp" lastModified="1599bb55343">
-         <include file="..\..\..\user\user_app\inc\app.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\src\canValve.cpp" lastModified="159dd7ac6c9">
-         <include file="..\..\..\user\user_app\inc\canValve.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_can.h" lastModified="1577ee64a04">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\canNode\src\canNodeValve.cpp" lastModified="159dd8d1f1b">
-         <include file="..\..\..\user\user_app\canNode\inc\canNodeValve.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="1577ee5e090">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_tim.h" lastModified="1577ee5feb0">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\src\gpio.cpp" lastModified="15b04bee4c5">
-         <include file="..\..\..\user\user_lib\inc\gpio.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\inc\spi.h" lastModified="1599bb6b255">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\inc\dma.h" lastModified="1599bb6b228">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\src\stm32f10x_can.c" lastModified="1577ee64a04">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_can.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\inc\canEncoder.h" lastModified="15a5e91a884">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\util\inc\util.h"/>
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\src\spi.cpp" lastModified="1599bb74a04">
-         <include file="..\..\..\user\user_lib\inc\spi.h"/>
-      </source>
-      <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
-         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a5e84ac9a">
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
       </source>
    </includePath>
 </dependencies>
