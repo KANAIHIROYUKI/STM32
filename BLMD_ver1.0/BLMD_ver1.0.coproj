@@ -100,14 +100,16 @@
     <File name="user_apps/src/port.cpp" path="user/user_app/src/port.cpp" type="1"/>
     <File name="user_lib/src/gpio.cpp" path="user/user_lib/src/gpio.cpp" type="1"/>
     <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>
-    <File name="user_lib/inc/system.h" path="user/user_lib/inc/system.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_spi.h" path="stm_lib/inc/stm32f10x_spi.h" type="1"/>
+    <File name="user_lib/inc/system.h" path="user/user_lib/inc/system.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_adc.c" path="stm_lib/src/stm32f10x_adc.c" type="1"/>
     <File name="stm_lib/inc/stm32f10x_iwdg.h" path="stm_lib/inc/stm32f10x_iwdg.h" type="1"/>
-    <File name="user_lib/inc/can.h" path="user/user_lib/inc/can.h" type="1"/>
     <File name="user_apps/src/canMotorDriver.cpp" path="user/user_app/src/canMotorDriver.cpp" type="1"/>
-    <File name="user_lib/inc/base.h" path="user/user_lib/inc/base.h" type="1"/>
+    <File name="user_lib/inc/can.h" path="user/user_lib/inc/can.h" type="1"/>
     <File name="user_apps/canNode" path="" type="2"/>
+    <File name="user_lib/inc/base.h" path="user/user_lib/inc/base.h" type="1"/>
+    <File name="user_apps/device/inc/si8900.h" path="user/user_app/device/inc/si8900.h" type="1"/>
+    <File name="user_apps/device/src/si8900.cpp" path="user/user_app/device/src/si8900.cpp" type="1"/>
     <File name="user_apps/canNode/inc/canNodeAnalogIn.h" path="user/user_app/canNode/inc/canNodeAnalogIn.h" type="1"/>
     <File name="util/src/util.c" path="user/util/src/util.c" type="1"/>
     <File name="user_apps/canNode/src/canNodeMotorDriver.cpp" path="user/user_app/canNode/src/canNodeMotorDriver.cpp" type="1"/>
@@ -115,11 +117,12 @@
     <File name="stm_lib/src/stm32f10x_gpio.c" path="stm_lib/src/stm32f10x_gpio.c" type="1"/>
     <File name="stm_lib/inc/stm32f10x_usart.h" path="stm_lib/inc/stm32f10x_usart.h" type="1"/>
     <File name="user_lib/src/spi.cpp" path="user/user_lib/src/spi.cpp" type="1"/>
+    <File name="user_apps/device/src" path="" type="2"/>
     <File name="cmsis_boot/system_stm32f10x.c" path="cmsis_boot/system_stm32f10x.c" type="1"/>
     <File name="stm_lib/inc/misc.h" path="stm_lib/inc/misc.h" type="1"/>
+    <File name="user_lib/src/remap.cpp" path="user/user_lib/src/remap.cpp" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="util" path="" type="2"/>
-    <File name="user_lib/src/remap.cpp" path="user/user_lib/src/remap.cpp" type="1"/>
     <File name="user_apps/inc/canValve.h" path="user/user_app/inc/canValve.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_rcc.c" path="stm_lib/src/stm32f10x_rcc.c" type="1"/>
     <File name="user_lib/inc" path="" type="2"/>
@@ -128,8 +131,9 @@
     <File name="user_lib/inc/dma.h" path="user/user_lib/inc/dma.h" type="1"/>
     <File name="stm_lib/src" path="" type="2"/>
     <File name="cmsis" path="" type="2"/>
-    <File name="stm_lib" path="" type="2"/>
+    <File name="user_apps/device/inc" path="" type="2"/>
     <File name="user_apps/canNode/inc/canNodeEncoder.h" path="user/user_app/canNode/inc/canNodeEncoder.h" type="1"/>
+    <File name="stm_lib" path="" type="2"/>
     <File name="util/src" path="" type="2"/>
     <File name="stm_lib/inc/stm32f10x_exti.h" path="stm_lib/inc/stm32f10x_exti.h" type="1"/>
     <File name="user_apps/inc/switch.h" path="user/user_app/inc/switch.h" type="1"/>
@@ -139,8 +143,8 @@
     <File name="main.cpp" path="main.cpp" type="1"/>
     <File name="util/src/utilplus.cpp" path="user/util/src/utilplus.cpp" type="1"/>
     <File name="user_lib/src" path="" type="2"/>
-    <File name="user_apps/inc/canEncoder.h" path="user/user_app/inc/canEncoder.h" type="1"/>
     <File name="user_apps/src/switch.cpp" path="user/user_app/src/switch.cpp" type="1"/>
+    <File name="user_apps/inc/canEncoder.h" path="user/user_app/inc/canEncoder.h" type="1"/>
     <File name="user_apps/src/constantCurrentControl.cpp" path="user/user_app/src/constantCurrentControl.cpp" type="1"/>
     <File name="user_lib/inc/tim.h" path="user/user_lib/inc/tim.h" type="1"/>
     <File name="user_lib/src/bldc.cpp" path="user/user_app/src/bldc.cpp" type="1"/>
@@ -152,8 +156,8 @@
     <File name="user_apps/canNode/inc/canNodeMotorDriver.h" path="user/user_app/canNode/inc/canNodeMotorDriver.h" type="1"/>
     <File name="user_apps/src/canValve.cpp" path="user/user_app/src/canValve.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_tim.h" path="stm_lib/inc/stm32f10x_tim.h" type="1"/>
-    <File name="main.hpp" path="main.hpp" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
+    <File name="main.hpp" path="main.hpp" type="1"/>
     <File name="user_apps/canNode/inc/canNodePulse.h" path="user/user_app/canNode/inc/canNodePulse.h" type="1"/>
     <File name="user_apps/canNode/src" path="" type="2"/>
     <File name="stm_lib/src/stm32f10x_tim.c" path="stm_lib/src/stm32f10x_tim.c" type="1"/>
@@ -167,32 +171,33 @@
     <File name="user_apps/canNode/src/canNodeSwitch.cpp" path="user/user_app/canNode/src/canNodeSwitch.cpp" type="1"/>
     <File name="user_apps" path="" type="2"/>
     <File name="user_apps/canNode/src/canNodeEncoder.cpp" path="user/user_app/canNode/src/canNodeEncoder.cpp" type="1"/>
-    <File name="user_apps/canNode/inc/canNodeValve.h" path="user/user_app/canNode/inc/canNodeValve.h" type="1"/>
     <File name="user_apps/src" path="" type="2"/>
+    <File name="user_apps/canNode/inc/canNodeValve.h" path="user/user_app/canNode/inc/canNodeValve.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_usart.c" path="stm_lib/src/stm32f10x_usart.c" type="1"/>
     <File name="user_apps/inc/app.h" path="user/user_app/inc/app.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_gpio.h" path="stm_lib/inc/stm32f10x_gpio.h" type="1"/>
-    <File name="user_lib/src/iwdg.cpp" path="user/user_lib/src/iwdg.cpp" type="1"/>
     <File name="user_apps/inc/motor.h" path="user/user_app/inc/motor.h" type="1"/>
+    <File name="user_lib/src/iwdg.cpp" path="user/user_lib/src/iwdg.cpp" type="1"/>
     <File name="util/inc" path="" type="2"/>
     <File name="user_apps/canNode/src/canNodeAnalogIn.cpp" path="user/user_app/canNode/src/canNodeAnalogIn.cpp" type="1"/>
     <File name="cmsis/core_cm3.h" path="cmsis/core_cm3.h" type="1"/>
     <File name="user_lib/src/adc.cpp" path="user/user_lib/src/adc.cpp" type="1"/>
     <File name="stm_lib/src/stm32f10x_exti.c" path="stm_lib/src/stm32f10x_exti.c" type="1"/>
+    <File name="user_apps/src/pulse.cpp" path="user/user_app/src/pulse.cpp" type="1"/>
     <File name="user_apps/src/canEncoder.cpp" path="user/user_app/src/canEncoder.cpp" type="1"/>
     <File name="user_apps/canNode/inc/canNodeSwitch.h" path="user/user_app/canNode/inc/canNodeSwitch.h" type="1"/>
-    <File name="user_apps/src/pulse.cpp" path="user/user_app/src/pulse.cpp" type="1"/>
     <File name="user_apps/canNode/src/canNodeValve.cpp" path="user/user_app/canNode/src/canNodeValve.cpp" type="1"/>
     <File name="user_lib/src/system.cpp" path="user/user_lib/src/system.cpp" type="1"/>
-    <File name="user_lib/inc/iwdg.h" path="user/user_lib/inc/iwdg.h" type="1"/>
     <File name="util/inc/util.h" path="user/util/inc/util.h" type="1"/>
+    <File name="user_lib/inc/iwdg.h" path="user/user_lib/inc/iwdg.h" type="1"/>
     <File name="user_apps/inc/port.h" path="user/user_app/inc/port.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>
     <File name="user_lib/src/tim.cpp" path="user/user_lib/src/tim.cpp" type="1"/>
-    <File name="syscalls" path="" type="2"/>
     <File name="user_apps/canNode/src/canNodePulse.cpp" path="user/user_app/canNode/src/canNodePulse.cpp" type="1"/>
-    <File name="stm_lib/src/stm32f10x_can.c" path="stm_lib/src/stm32f10x_can.c" type="1"/>
+    <File name="syscalls" path="" type="2"/>
+    <File name="user_apps/device" path="" type="2"/>
     <File name="stm_lib/inc" path="" type="2"/>
+    <File name="stm_lib/src/stm32f10x_can.c" path="stm_lib/src/stm32f10x_can.c" type="1"/>
     <File name="user_apps/inc/constantCurrentControl.h" path="user/user_app/inc/constantCurrentControl.h" type="1"/>
   </Files>
 </Project>

@@ -41,9 +41,16 @@ int main(void)
     		led[0].toggle();
     		printTime = millis() + PRINT_TIME;
 
-    		serial.printf("%d,%d,trg%d,%d\n\r",(uint32_t)outDegree,(uint32_t)interruptFuncCnt,(uint32_t)interruptCnt,(uint32_t)interruptTime);
+    		t_ave /= t_cnt;
+
+    		serial.printf("a%d,n%d,x%d\n\r",(uint32_t)t_ave,(uint32_t)t_min,(uint32_t)t_max);
     		driveStat = 0;
     		interruptFuncCnt = 0;
+
+    		t_cnt = 0;
+    		t_ave = 0;
+    		t_max = 0;
+    		t_min = 10000000;
     	}
 	}
 }
@@ -61,6 +68,10 @@ inline void hallInterruptFunc(){
 		}else{
 			bldc.free();
 		}
+		t_cnt++;
+		if(t_min > interruptTime)t_min = interruptTime;
+		if(t_max < interruptTime)t_max = interruptTime;
+		t_ave+= interruptTime;
 
 		return;
 	}
@@ -69,6 +80,10 @@ inline void hallInterruptFunc(){
 	timer.reset();
 	outDegree = hallToDegree[(hall[2].read() << 2) + (hall[1].read() << 1) + (hall[0].read())];
 
+	t_cnt++;
+	if(t_min > interruptTime)t_min = interruptTime;
+	if(t_max < interruptTime)t_max = interruptTime;
+	t_ave+= interruptTime;
 	/*if(trigger.stat() == 1){			//ホールセンサの方が速かったとき
 		driveStat++;
 		trigger.reset();

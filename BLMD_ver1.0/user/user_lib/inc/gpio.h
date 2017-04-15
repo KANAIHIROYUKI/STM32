@@ -67,7 +67,7 @@ public:
 	void reset();
 	void invert(uint16_t mode = 1);
 
-	void interruptSetup(EXTITrigger_TypeDef trigger);
+	void interruptSetup(EXTITrigger_TypeDef trigger = EXTI_Trigger_Rising_Falling);
 	void interruptEnable();
 	void interruptDesable();
 	uint16_t interruptFrag();

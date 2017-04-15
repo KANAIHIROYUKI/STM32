@@ -35,7 +35,7 @@ uint16_t adcCnt = 0,adcValue,phaseStat = 0;
 
 int16_t hallDegree = 0,hallNum,outDegree;
 uint16_t hallStat = 0,driveStat = 0,driveEnable = 0,interruptFuncCnt=0,driveMode = 0;
-uint64_t interruptCnt = 0,setTime;
+uint64_t interruptCnt = 0,setTime,t_min,t_max,t_ave,t_cnt;
 
 
 void hallInterruptFunc();
