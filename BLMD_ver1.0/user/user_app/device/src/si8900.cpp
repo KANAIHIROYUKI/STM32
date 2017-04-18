@@ -1,10 +1,12 @@
 #include "SI8900.h"
 
-void SI8900::setup(USART &usart){
+void SI8900::setup(USART &usart,uint16_t modeSet){
 	this->usart = &usart;
+	mode = modeSet;
 	readStat[0] = 0;
 	readStat[1] = 0;
 	readStat[2] = 0;
+
 }
 
 void SI8900::cycle(){
@@ -36,11 +38,12 @@ void SI8900::request(uint16_t channel,uint16_t convert_mode){
 
 	if(mode == SI8900_MODE_DEMAND){
 		data = 0b11001011;					//VDD reference,demand mode,gain 1.0
-		data |= channel << 4;
+		data |= (channel&3) << 4;
 	}else{
 		data = 0b11001001;					//VDD reference,demand mode,gain 1.0
 	}
-	usart->send(data);
+	USART_SendData(USART2,data);
+	//usart->send(data);
 }
 
 uint16_t SI8900::read(uint16_t channel){

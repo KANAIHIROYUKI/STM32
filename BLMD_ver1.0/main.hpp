@@ -23,6 +23,8 @@ BLDC bldc;
 #define ADVANCED_ANGLE (float)0.95
 #define CONTROL_ADJUST_TIME 10
 
+#define ADDRESS (15 - (sell[1].read() + (sell[0].read()*2) + (sell[3].read()*4) + (sell[2].read()*8)))
+
 int16_t hallToDegree[] = {-1,30,270,330,150,90,210,-1};
 uint16_t rxFlag = 0;
 
@@ -35,8 +37,8 @@ uint16_t adcCnt = 0,adcValue,phaseStat = 0;
 
 int16_t hallDegree = 0,hallNum,outDegree;
 uint16_t hallStat = 0,driveStat = 0,driveEnable = 0,interruptFuncCnt=0,driveMode = 0;
-uint64_t interruptCnt = 0,setTime,t_min,t_max,t_ave,t_cnt;
-
+uint64_t interruptCnt = 0,setTime,t_time[6];
+float outPower;
 
 void hallInterruptFunc();
 
@@ -95,7 +97,7 @@ void setup(){
 
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
 
-	serial.printf("end\n\r");
+	serial.printf("end %d\n\r",ADDRESS);
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){

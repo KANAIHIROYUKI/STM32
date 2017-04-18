@@ -9,7 +9,7 @@
 
 class SI8900{
 public:
-	void setup(USART &usart);
+	void setup(USART &usart,uint16_t mode = SI8900_MODE_BURST);
 	void request(uint16_t channel = 0,uint16_t convert_mode = SI8900_MODE_DEMAND);
 	void cycle();
 	uint16_t read(uint16_t channel);
