@@ -3,7 +3,8 @@
 
 #include "system.h"
 
-#define CAN_ADD_MOTOR 0x100
+
+#define CAN_ADD_EMG 0x001
 
 #define CAN_ADD_DUTY 0x100
 #define CAN_ADD_FREE 0x120

@@ -23,6 +23,7 @@
 #include "canNodeMotorDriver.h"
 #include "canNodePulse.h"
 #include "canNodeSwitch.h"
+#include "canNodeEmg.h"
 
 
 #endif

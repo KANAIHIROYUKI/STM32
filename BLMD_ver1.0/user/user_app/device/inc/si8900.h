@@ -2,6 +2,7 @@
 #define _SI8900_H_
 
 #include "usart.h"
+#include "system.h"
 
 #define SI8900_MODE_DEMAND 0
 #define SI8900_MODE_BURST 1
@@ -15,7 +16,10 @@ public:
 	uint16_t read(uint16_t channel);
 	uint16_t stat(uint16_t channel);
 
-	uint16_t value[3],buffer,mxAddress,mode,readStat[3];
+	uint16_t timingCalibration(uint64_t timeOut = 500);
+
+	uint16_t value[3],buffer,mxAddress,mode,readStat[3],mxCount,receiveError;
+	uint64_t receiveTime[3];
 	USART *usart;
 };
 

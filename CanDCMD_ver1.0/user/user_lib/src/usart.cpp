@@ -54,19 +54,29 @@ void USART::setup(USART_TypeDef *usart,uint32_t baud,GPIO_TypeDef* gpio_tx,uint1
 		USART1ITSetup(USART_IT_RXNE);
 		USART1ITSetup(USART_IT_TXE);
 		USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
+		USART_Cmd(USART1,ENABLE);
 	}else if(usart_usart == USART2){
 		USART2Setup(baud);
 		USART2ITSetup(USART_IT_RXNE);
 		USART2ITSetup(USART_IT_TXE);
 		USART_ITConfig(USART2, USART_IT_TXE, ENABLE);
+		USART_Cmd(USART2,ENABLE);
 	}else if(usart_usart == USART3){
 		USART3Setup(baud);
 		USART3ITSetup(USART_IT_RXNE);
 		USART3ITSetup(USART_IT_TXE);
 		USART_ITConfig(USART3, USART_IT_TXE, ENABLE);
+		USART_Cmd(USART3,ENABLE);
 	}
 }
 
+void USART::enable(){
+	USART_Cmd(usart_usart,ENABLE);
+}
+
+void USART::disable(){
+	USART_Cmd(usart_usart,DISABLE);
+}
 
 void USART::send(char c){
 	//while(USART_GetFlagStatus(usart_usart,USART_FLAG_TXE) == 0);
@@ -75,15 +85,15 @@ void USART::send(char c){
 	if(usart_usart == USART1){
 		USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
 
-		if(USART::usart1TxSendAddress == USART::usart1TxWriteAddress + 1){
+		if(USART::usart1TxSendAddress == USART::usart1TxWriteAddress + 1){								//バッファ書き込みアドレスが送信読み出しアドレスに達したので上書きしていく
 			USART::usart1TxSendAddress++;
 			if(USART::usart1TxSendAddress >= USART_TX_BUFFER_SIZE)USART::usart1TxSendAddress = 0;
 		}
+
 		USART::usart1TxBuffer[USART::usart1TxWriteAddress] = c;
 		USART::usart1TxWriteAddress++;
-		if(USART::usart1TxWriteAddress >= USART_TX_BUFFER_SIZE){
-			USART::usart1TxWriteAddress = 0;
-		}
+
+		if(USART::usart1TxWriteAddress >= USART_TX_BUFFER_SIZE)USART::usart1TxWriteAddress = 0;
 
 	}else if(usart_usart == USART2){
 		USART_ITConfig(USART2, USART_IT_TXE, ENABLE);
@@ -92,11 +102,11 @@ void USART::send(char c){
 			USART::usart2TxSendAddress++;
 			if(USART::usart2TxSendAddress >= USART_TX_BUFFER_SIZE)USART::usart2TxSendAddress = 0;
 		}
+
 		USART::usart2TxBuffer[USART::usart2TxWriteAddress] = c;
 		USART::usart2TxWriteAddress++;
-		if(USART::usart2TxWriteAddress >= USART_TX_BUFFER_SIZE){
-			USART::usart2TxWriteAddress = 0;
-		}
+
+		if(USART::usart2TxWriteAddress >= USART_TX_BUFFER_SIZE)USART::usart2TxWriteAddress = 0;
 
 	}else if(usart_usart == USART3){
 		USART_ITConfig(USART3, USART_IT_TXE, ENABLE);
@@ -105,11 +115,11 @@ void USART::send(char c){
 			USART::usart3TxSendAddress++;
 			if(USART::usart3TxSendAddress >= USART_TX_BUFFER_SIZE)USART::usart3TxSendAddress = 0;
 		}
+
 		USART::usart3TxBuffer[USART::usart3TxWriteAddress] = c;
 		USART::usart3TxWriteAddress++;
-		if(USART::usart3TxWriteAddress >= USART_TX_BUFFER_SIZE){
-			USART::usart3TxWriteAddress = 0;
-		}
+
+		if(USART::usart3TxWriteAddress >= USART_TX_BUFFER_SIZE)USART::usart3TxWriteAddress = 0;
 
 	}
 }
@@ -207,7 +217,6 @@ void USART1Setup(uint32_t baud){
 	USARTInitStructure.USART_StopBits = USART_CR2_STOP_1;
 	USARTInitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_Init(USART1,&USARTInitStructure);
-	USART_Cmd(USART1,ENABLE);
 }
 
 void USART2Setup(uint32_t baud){
@@ -221,8 +230,6 @@ void USART2Setup(uint32_t baud){
 	USARTInitStructure.USART_StopBits = USART_CR2_STOP_1;
 	USARTInitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_Init(USART2,&USARTInitStructure);
-
-	USART_Cmd(USART2,ENABLE);
 }
 
 void USART3Setup(uint32_t baud){
@@ -236,8 +243,6 @@ void USART3Setup(uint32_t baud){
 	USARTInitStructure.USART_StopBits = USART_CR2_STOP_1;
 	USARTInitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_Init(USART3,&USARTInitStructure);
-
-	USART_Cmd(USART3,ENABLE);
 }
 
 
@@ -276,14 +281,11 @@ void USART3ITSetup(uint16_t flag){
 
 extern "C" void USART1_IRQHandler(void){
 	if(USART_GetITStatus(USART1,USART_IT_RXNE) == SET){//受信割込み
-		uint8_t i = USART_ReceiveData(USART1);
-		//USART_SendData(USART1,i);
-
 		USART::usart1RxBuffer[USART::usart1RxAddress] = USART_ReceiveData(USART1);
 		USART::usart1RxAddress++;
-		if(USART::usart1RxAddress >= USART_RX_BUFFER_SIZE){
-			USART::usart1RxAddress = 0;
-		}
+
+		if(USART::usart1RxAddress >= USART_RX_BUFFER_SIZE)USART::usart1RxAddress = 0;
+
 	}else if(USART_GetITStatus(USART1,USART_IT_TXE) == SET){//送信完了割込み
 		if(USART::usart1TxWriteAddress != USART::usart1TxSendAddress){//バッファに送信すべきデータが有る
 			USART_SendData(USART1,USART::usart1TxBuffer[USART::usart1TxSendAddress]);
@@ -298,19 +300,18 @@ extern "C" void USART1_IRQHandler(void){
 
 extern "C" void USART2_IRQHandler(void){
 	if(USART_GetITStatus(USART2,USART_IT_RXNE) == SET){//受信割込み
-		uint8_t i = USART_ReceiveData(USART2);
-		//USART_SendData(USART2,i);
-
 		USART::usart2RxBuffer[USART::usart2RxAddress] = USART_ReceiveData(USART2);
 		USART::usart2RxAddress++;
-		if(USART::usart2RxAddress >= USART_RX_BUFFER_SIZE){
-			USART::usart2RxAddress = 0;
-		}
+
+		if(USART::usart2RxAddress >= USART_RX_BUFFER_SIZE)USART::usart2RxAddress = 0;
+
 	}else if(USART_GetITStatus(USART2,USART_IT_TXE) == SET){//送信完了割込み
 		if(USART::usart2TxWriteAddress != USART::usart2TxSendAddress){//バッファに送信すべきデータが有る
 			USART_SendData(USART2,USART::usart2TxBuffer[USART::usart2TxSendAddress]);
 			USART::usart2TxSendAddress++;
+
 			if(USART::usart2TxSendAddress >= USART_TX_BUFFER_SIZE)USART::usart2TxSendAddress = 0;
+
 		}else{
 			USART_ITConfig(USART2, USART_IT_TXE, DISABLE);
 		}
@@ -320,14 +321,11 @@ extern "C" void USART2_IRQHandler(void){
 
 extern "C" void USART3_IRQHandler(void){
 	if(USART_GetITStatus(USART3,USART_IT_RXNE) == SET){//受信割込み
-		uint8_t i = USART_ReceiveData(USART3);
-		//USART_SendData(USART3,i);
-
 		USART::usart3RxBuffer[USART::usart3RxAddress] = USART_ReceiveData(USART3);
 		USART::usart3RxAddress++;
-		if(USART::usart3RxAddress >= USART_RX_BUFFER_SIZE){
-			USART::usart3RxAddress = 0;
-		}
+
+		if(USART::usart3RxAddress >= USART_RX_BUFFER_SIZE)USART::usart3RxAddress = 0;
+
 	}else if(USART_GetITStatus(USART3,USART_IT_TXE) == SET){//送信完了割込み
 		if(USART::usart3TxWriteAddress != USART::usart3TxSendAddress){//バッファに送信すべきデータが有る
 			USART_SendData(USART3,USART::usart3TxBuffer[USART::usart3TxSendAddress]);

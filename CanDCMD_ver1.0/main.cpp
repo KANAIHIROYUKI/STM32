@@ -6,7 +6,7 @@ int main(void)
 
 	serial.printf("pinnum = 0x%x\n\r",canSw.switchNumber);
 
-	sys.wdgSetup(50);	//50ms
+	//sys.wdgSetup(500);	//50ms
 
     while(1){
     	sys.cycle();
@@ -30,12 +30,18 @@ int main(void)
 
     	isoIn.cycle();
 
+
+
+
     	if(intervalTimer <= millis()){
     		intervalTimer = millis() + IntervalTime;
+    		/*serial.printf("%d,%d,%d\n\r",isoIn.read(0),isoIn.read(1),isoIn.read(2));*/
 
-    		serial.printf("%d,\n\r",isoIn.read(0));
-    		isoIn.request(0,0);
-
+    		if((isoIn.receiveError) || (millis() - isoIn.receiveTime[0] > 500)){
+    			serial.printf("setup ");
+    			isoIn.timingCalibration(100);
+    		}
+    		serial.printf("%d,%d,%d,%d,%d,%d\n\r",(uint32_t)isoIn.receiveTime[0],isoIn.read(0),(uint32_t)isoIn.receiveTime[1],isoIn.read(1),(uint32_t)isoIn.receiveTime[2],isoIn.read(2));
     		//serial.printf("%d,%d,%d,%d\n\r",(uint32_t)canSwitch[0].lastReceiveTime,(uint32_t)canSwitch[1].lastReceiveTime,(uint32_t)canSwitch[2].lastReceiveTime,(uint32_t)canSwitch[3].lastReceiveTime);
 
     		//serial.printf("%d,%d,%d,%d\n\r",(uint32_t)canSw[0].canData[0],(uint32_t)canSw[1].canData[0],(uint32_t)canSw[2].canData[0],(uint32_t)canSw[3].canData[0]);

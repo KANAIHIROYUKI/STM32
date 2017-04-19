@@ -116,22 +116,8 @@ void setup(){
 	serial.printf("TIME = %s\n\r",__TIME__);
 	serial.printf("ADRS = %d\n\r",CAN_ADDRESS);
 
-	iso.setup(USART2,234000,PA2,PA3);
-	delay(100);
-	iso.send(0xAA);
-	while(1){
-		if(iso.available()){
-			uint8_t sData = iso.read();
-			serial.printf("%x\n\r",sData);
-			if(sData == 0x55){
-				break;
-			}
-		}
-		delay(1);
-		iso.send(0xAA);
-	}
-
-	isoIn.setup(iso);
+	iso.setup(USART2,60000,PA2,PA3);
+	isoIn.setup(iso,SI8900_MODE_LOOP);
 
 
 	while(swPin[0].read() == 0 || swPin[1].read() == 0);

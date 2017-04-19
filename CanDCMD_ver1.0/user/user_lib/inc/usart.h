@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 #define USART_DEFAULT_BAUD 115200
-#define USART_RX_BUFFER_SIZE 32
+#define USART_RX_BUFFER_SIZE 128
 #define USART_TX_BUFFER_SIZE 128
 
 
@@ -19,6 +19,9 @@ public:
 	char read();
 	char peek();
 	uint16_t available();
+
+	void enable();
+	void disable();
 
 	void puts(const char *c);
 	void printf(const char *format, ...);
@@ -46,7 +49,7 @@ public:
 	static char usart3TxBuffer[USART_TX_BUFFER_SIZE];
 	static uint16_t usart3TxSendAddress;
 	static uint16_t usart3TxWriteAddress;
-private:
+
 	void ioSetup(GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx);
 	USART_TypeDef* usart_usart;
 };
