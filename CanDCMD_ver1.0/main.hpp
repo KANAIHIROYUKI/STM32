@@ -81,7 +81,7 @@ void setup(){
 	enc[0].encoderSetup(TIM2,PA0,PA1);
 	enc[1].encoderSetup(TIM3,PA6,PA7);
 
-	sys.usartSetup(serial);
+	//sys.usartSetup(serial);
 
 	can1.setup(CAN1,PA12,PA11);
 	if(debugMode)can1.debug();
@@ -116,7 +116,7 @@ void setup(){
 	serial.printf("TIME = %s\n\r",__TIME__);
 	serial.printf("ADRS = %d\n\r",CAN_ADDRESS);
 
-	iso.setup(USART2,60000,PA2,PA3);
+	iso.setup(USART2,234000,PA2,PA3);
 	isoIn.setup(iso,SI8900_MODE_LOOP);
 
 

@@ -2,6 +2,7 @@
 #define USART_H_
 
 #include "gpio.h"
+#include "system.h"
 
 #include <stdarg.h>
 #include <stdlib.h>
@@ -26,6 +27,8 @@ public:
 	void puts(const char *c);
 	void printf(const char *format, ...);
 
+	uint64_t lastReceiveTime();
+
 	static char usart1RxBuffer[USART_RX_BUFFER_SIZE];
 	static uint16_t usart1RxAddress;
 	static uint16_t usart1ReadAddress;
@@ -49,6 +52,10 @@ public:
 	static char usart3TxBuffer[USART_TX_BUFFER_SIZE];
 	static uint16_t usart3TxSendAddress;
 	static uint16_t usart3TxWriteAddress;
+
+	static uint64_t usart1receiveTime;
+	static uint64_t usart2receiveTime;
+	static uint64_t usart3receiveTime;
 
 	void ioSetup(GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx);
 	USART_TypeDef* usart_usart;

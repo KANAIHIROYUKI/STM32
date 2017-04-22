@@ -7,10 +7,11 @@ class CanNodeEmg{
 public:
 	void setup(CAN &canSet);
 	void emgRequest();
+	uint16_t emgRead();
 
 	void interrupt();
 
-	uint8_t data[8];
+	uint8_t data[8],emgValue;
 	uint16_t emgStat;
 	CAN *can;
 };

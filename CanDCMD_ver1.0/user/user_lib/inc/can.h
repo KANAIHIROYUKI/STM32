@@ -37,6 +37,8 @@ public:
 	static uint16_t filterCnt;
 	static uint16_t filterAddress[4*13];
 
+	uint64_t lastReceiveTime;
+
 	CanRxMsg rxMessage;
 
 private:

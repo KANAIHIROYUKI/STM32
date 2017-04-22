@@ -598,6 +598,30 @@ void TIM4_TIM_Update_IRQ(){
 	TIM::tim4Cnt++;
 }
 
+void TIM1_TIM_CC_IRQ(){
+
+}
+
+/*void TIM1_TIM_CC1_IRQ(){
+
+}*/
+
+void TIM1_TIM_CC2_IRQ(){
+
+}
+
+void TIM1_TIM_CC3_IRQ(){
+
+}
+
+void TIM1_TIM_CC4_IRQ(){
+
+}
+
+/*void TIM2_TIM_CC_IRQ(){
+
+}*/
+
 /*void TIM2_TIM_CC1_IRQ(){
 
 }*/
@@ -617,12 +641,29 @@ void TIM2_TIM_CC4_IRQ(){
 extern "C" void TIM1_UP_IRQHandler(void){
 	if(TIM::tim1_mode == TIM_ENC){
 		TIM1_ENCODER_IRQ();
+		TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
 	}else if(TIM::tim1_mode == TIM_PWM){
 		TIM1_PWM_Update_IRQ();
+		TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
 	}else if(TIM::tim1_mode == TIM_TIM){
-		TIM1_TIM_Update_IRQ();
+		TIM1_TIM_CC_IRQ();
+		if(TIM_GetITStatus(TIM1,TIM_IT_Update) == SET){
+			TIM1_TIM_Update_IRQ();
+			TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
+		}else if(TIM_GetITStatus(TIM1,TIM_IT_CC1) == SET){
+			TIM1_TIM_CC1_IRQ();
+			TIM_ClearITPendingBit(TIM1,TIM_IT_CC1);
+		}else if(TIM_GetITStatus(TIM1,TIM_IT_CC2) == SET){
+			TIM1_TIM_CC2_IRQ();
+			TIM_ClearITPendingBit(TIM1,TIM_IT_CC2);
+		}else if(TIM_GetITStatus(TIM1,TIM_IT_CC3) == SET){
+			TIM1_TIM_CC3_IRQ();
+			TIM_ClearITPendingBit(TIM1,TIM_IT_CC3);
+		}else if(TIM_GetITStatus(TIM1,TIM_IT_CC4) == SET){
+			TIM1_TIM_CC4_IRQ();
+			TIM_ClearITPendingBit(TIM1,TIM_IT_CC4);
+		}
 	}
-	TIM_ClearITPendingBit(TIM1,TIM_IT_Update);
 }
 
 
@@ -636,6 +677,7 @@ extern "C" void TIM2_IRQHandler(void){
 		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 
 	}else if(TIM::tim2_mode == TIM_TIM){						//É^ÉCÉ}
+		TIM2_TIM_CC_IRQ();
 		if(TIM_GetITStatus(TIM2,TIM_IT_Update) == SET){
 			TIM2_TIM_Update_IRQ();
 			TIM_ClearITPendingBit(TIM2,TIM_IT_Update);

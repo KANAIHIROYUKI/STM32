@@ -52,16 +52,6 @@ void setup(){
 	led[14].setup(PB10,OUTPUT);
 	led[15].setup(PB11,OUTPUT);
 
-	for(int i=0;i<16;i++){
-		led[i].write(1);
-		delay(10);
-	}
-
-	for(int i=0;i<16;i++){
-		led[i].write(0);
-		delay(10);
-	}
-
 	switchPin[0].setup(PC13,INPUT_PU);
 	switchPin[1].setup(PC14,INPUT_PU);
 	switchPin[2].setup(PC15,INPUT_PU);
@@ -72,7 +62,6 @@ void setup(){
 	switchPin[6].setup(PA3,INPUT_PU);
 	switchPin[7].setup(PA4,INPUT_PU);
 
-
 	can1.setup(CAN1,PA12,PA11);
 	can1.filterAdd(CAN_ADD_SWITCH_VALUE,CAN_ADD_SWITCH_SETUP);
 
@@ -82,6 +71,15 @@ void setup(){
 	for(int i=0;i<8;i++){
 		canVlv[0].pinAdd(led[i]);
 		canVlv[1].pinAdd(led[i + 8]);
+	}
+
+	for(int i=0;i<16;i++){
+		led[i].write(1);
+		delay(7);
+	}
+	for(int i=0;i<16;i++){
+		led[i].write(0);
+		delay(7);
 	}
 
 	//canValve[0].setup(can1,0x10);

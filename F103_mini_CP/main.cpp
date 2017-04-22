@@ -26,7 +26,9 @@ int main(void)
 			//serial.printf("%x\n\r",switchState);
 
 			canData[0] = sendState;
-			CAN1Send(CAN_ADD_SWITCH_VALUE,1,canData);
+			if((transmitIntervalTime != 0)){
+				CAN1Send(CAN_ADD_SWITCH_VALUE,1,canData);
+			}
 		}else if(stateCnt != 0){
 			stateCnt--;
 		}

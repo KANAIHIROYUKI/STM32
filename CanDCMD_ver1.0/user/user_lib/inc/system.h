@@ -21,7 +21,7 @@
 class System{
 public:
 	void setup();
-	void usartSetup(USART &usart);
+	//void usartSetup(USART &usart);
 	void cycle();
 	void wdgSetup(uint16_t reload = DEFAULT_RELOAD,uint8_t prescaler = IWDG_Prescaler_4);
 	void wdgReset();
@@ -30,7 +30,7 @@ public:
 	static int16_t cycleFunctionCnt;
 
 	uint16_t usartFlag;
-	USART *system_usart;
+	//USART *system_usart;
 };
 
 

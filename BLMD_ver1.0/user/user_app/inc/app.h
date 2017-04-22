@@ -20,7 +20,6 @@
 #include "canNodeMotorDriver.h"
 #include "canNodePulse.h"
 
-#include "si8900.h"
 
 #include "bldc.h"
 

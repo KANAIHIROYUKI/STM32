@@ -25,6 +25,9 @@ char USART::usart3TxBuffer[USART_TX_BUFFER_SIZE];
 uint16_t USART::usart3TxSendAddress = 0;
 uint16_t USART::usart3TxWriteAddress = 0;
 
+uint64_t USART::usart1receiveTime = 0;
+uint64_t USART::usart2receiveTime = 0;
+uint64_t USART::usart3receiveTime = 0;
 
 
 void USART::puts(const char *s){
@@ -206,6 +209,16 @@ void USART::ioSetup(GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,
 	RX.setup(gpio_rx,pin_rx,INPUT_PU);
 }
 
+uint64_t USART::lastReceiveTime(){
+	if(usart_usart == USART1){
+		return millis() - USART::usart1receiveTime;
+	}else if(usart_usart == USART2){
+		return millis() - USART::usart2receiveTime;
+	}else if(usart_usart == USART3){
+		return millis() - USART::usart3receiveTime;
+	}
+}
+
 void USART1Setup(uint32_t baud){
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_USART1EN,ENABLE);
 
@@ -286,6 +299,8 @@ extern "C" void USART1_IRQHandler(void){
 
 		if(USART::usart1RxAddress >= USART_RX_BUFFER_SIZE)USART::usart1RxAddress = 0;
 
+		USART::usart1receiveTime = millis();
+
 	}else if(USART_GetITStatus(USART1,USART_IT_TXE) == SET){//送信完了割込み
 		if(USART::usart1TxWriteAddress != USART::usart1TxSendAddress){//バッファに送信すべきデータが有る
 			USART_SendData(USART1,USART::usart1TxBuffer[USART::usart1TxSendAddress]);
@@ -304,6 +319,8 @@ extern "C" void USART2_IRQHandler(void){
 		USART::usart2RxAddress++;
 
 		if(USART::usart2RxAddress >= USART_RX_BUFFER_SIZE)USART::usart2RxAddress = 0;
+
+		USART::usart2receiveTime = millis();
 
 	}else if(USART_GetITStatus(USART2,USART_IT_TXE) == SET){//送信完了割込み
 		if(USART::usart2TxWriteAddress != USART::usart2TxSendAddress){//バッファに送信すべきデータが有る
@@ -325,6 +342,8 @@ extern "C" void USART3_IRQHandler(void){
 		USART::usart3RxAddress++;
 
 		if(USART::usart3RxAddress >= USART_RX_BUFFER_SIZE)USART::usart3RxAddress = 0;
+
+		USART::usart3receiveTime = millis();
 
 	}else if(USART_GetITStatus(USART3,USART_IT_TXE) == SET){//送信完了割込み
 		if(USART::usart3TxWriteAddress != USART::usart3TxSendAddress){//バッファに送信すべきデータが有る

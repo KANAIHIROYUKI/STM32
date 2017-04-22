@@ -8,16 +8,16 @@ void System::setup(){
 	SysTick_Config(SystemCoreClock/TIME_SPLIT);
 	usartFlag = 0;
 }
-
+/*
 void System::usartSetup(USART &usart){
 	this->system_usart = &usart;
 	usartFlag = 1;
-}
+}*/
 
 void System::cycle(){
 	if(cycleFunctionCnt > 0){
 		if(usartFlag){
-			system_usart->printf("cycle function error cycleCnt = %d\n\r",cycleFunctionCnt);
+			//system_usart->printf("cycle function error cycleCnt = %d\n\r",cycleFunctionCnt);
 			while(1);
 		}
 	}

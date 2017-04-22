@@ -8,7 +8,7 @@
 System sys;
 
 TIM pwm[3];
-TIM trigger,timer;
+TIM trigger;
 GPIO en[3],zeroCross[3],led[2],sw[2],sell[4],hall[3];
 ADC cs;
 
@@ -33,11 +33,14 @@ uint64_t hallInterruptTime,hallIntervalTime;
 #define PRINT_TIME 10
 uint64_t printTime = 0,interruptTime;
 
-uint16_t adcCnt = 0,adcValue,phaseStat = 0;
+uint16_t adcCnt = 0,adcValue,phaseStat = 0,interruptHallNumber;
 
-int16_t hallDegree = 0,hallNum,outDegree;
-uint16_t hallStat = 0,driveStat = 0,driveEnable = 0,interruptFuncCnt=0,driveMode = 0;
-uint64_t interruptCnt = 0,setTime,t_time[6];
+int16_t hallDegree = 0,hallNum,outDegree,triggerStat = 0,outTriggerDegree[2];
+uint16_t driveStat = 0,driveEnable = 0,driveMode = 0,triggerCnt[2] = {0,0};
+
+uint64_t hallRaiseTime[3],hallFallTime[3],hallLowTime[3],hallHighTime[3];
+uint64_t speedLimitTime;
+
 float outPower;
 
 void hallInterruptFunc();
@@ -49,14 +52,13 @@ void setup(){
 	sys.usartSetup(serial);
 	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
 
-	timer.timerSetup(TIM4);
 	trigger.timerSetup(TIM2);
 	trigger.itSetup(TIM_IT_CC1);
 	trigger.stop();
 
-	pwm[1].pwmSetup(TIM3,1,PA6,2000);
-	pwm[0].pwmSetup(TIM3,2,PA7,2000);
-	pwm[2].pwmSetup(TIM3,3,PB0,2000);
+	pwm[1].pwmSetup(TIM3,1,PA6,1000);
+	pwm[0].pwmSetup(TIM3,2,PA7,1000);
+	pwm[2].pwmSetup(TIM3,3,PB0,1000);
 
 	en[1].setup(PA3,OUTPUT);
 	en[0].setup(PA4,OUTPUT);
@@ -116,16 +118,19 @@ extern "C" void ADC1_2_IRQHandler(void){
 
 extern "C" void EXTI15_10_IRQHandler(void){
 	hall[0].interruptFrag();	//フラグリセット
+	interruptHallNumber = 0;
 	hallInterruptFunc();
 }
 
 extern "C" void  EXTI3_IRQHandler(void){
 	hall[1].interruptFrag();	//フラグリセット
+	interruptHallNumber = 1;
 	hallInterruptFunc();
 }
 
 extern "C"void EXTI4_IRQHandler(void){
 	hall[2].interruptFrag();
+	interruptHallNumber = 2;
 	hallInterruptFunc();
 }
 

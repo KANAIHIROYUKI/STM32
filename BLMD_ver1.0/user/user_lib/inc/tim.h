@@ -119,6 +119,13 @@ void TIM2_TIM_Update_IRQ();
 void TIM3_TIM_Update_IRQ();
 void TIM4_TIM_Update_IRQ();
 
+void TIM1_TIM_CC_IRQ();
+void TIM1_TIM_CC1_IRQ();
+void TIM1_TIM_CC2_IRQ();
+void TIM1_TIM_CC3_IRQ();
+void TIM1_TIM_CC4_IRQ();
+
+void TIM2_TIM_CC_IRQ();
 void TIM2_TIM_CC1_IRQ();
 void TIM2_TIM_CC2_IRQ();
 void TIM2_TIM_CC3_IRQ();

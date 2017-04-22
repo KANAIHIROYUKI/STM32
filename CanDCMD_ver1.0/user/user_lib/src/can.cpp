@@ -54,6 +54,7 @@ void CAN::filterAdd(uint16_t id1,uint16_t id2,uint16_t id3,uint16_t id4){
 void CAN::receive(CanRxMsg* canRxMessage){
 	if(can_can == CAN1){
 		CAN_Receive(CAN1,CAN_FIFO0,canRxMessage);
+		lastReceiveTime = millis();
 	}else{
 
 	}
