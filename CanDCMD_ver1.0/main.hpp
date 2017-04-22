@@ -24,10 +24,12 @@ SI8900 isoIn;
 CanNodeMotorDriver canMD[2];
 CanNodeEncoder canEnc[2];
 CanNodeSwitch canSw;
+CanNodeVoltage canVol;
 
 CanMotorDriver canMotor[2];
 CanEncoder canEncoder[2];
 CanSwitch canSwitch;
+CanVoltage canVoltage;
 
 
 uint8_t motorDebug[2] = {0,0},canRTR=0,canData[8],debugMode,printNum;
@@ -54,6 +56,7 @@ void setup(){
 	}else if(swPin[1].read() == 0){
 		debugMode = 2;
 	}
+	debugMode = 1;							//デバッグモード入れる
 
 	limitPin[0].setup(PA4,INPUT_PU);
 	limitPin[1].setup(PA5,INPUT_PU);
@@ -97,6 +100,10 @@ void setup(){
 	canSw.pinAdd(limit[2]);
 	canSw.pinAdd(limit[3]);
 
+	canVol.setup(isoIn,2,can1,0);
+	canVoltage.setup(can1,0,10);
+
+
 	if(debugMode){
 		canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
 		canEncoder[1].setup(can1,(CAN_ADDRESS * 2) + 1,10);
@@ -105,6 +112,7 @@ void setup(){
 		canMotor[1].setup(can1,(CAN_ADDRESS * 2) + 1);
 
 		canSwitch.setup(can1,CAN_ADDRESS,100);
+
 	}else{
 		canMD[0].ledAssign(led[0]);
 		canMD[1].ledAssign(led[1]);
@@ -141,6 +149,9 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 
 	canEnc[0].interrupt();
 	canEnc[1].interrupt();
+
+	canVoltage.interrupt();
+	canVol.interrupt();
 
 	canSw.interrupt();
 

@@ -29,10 +29,13 @@ int main(void)
     	//canSw[3].cycle();
 
     	isoIn.cycle();
+    	canVol.cycle();
 
 
     	if(intervalTimer <= millis()){
     		intervalTimer = millis() + IntervalTime;
+
+    		serial.printf("%d,%d\n\r",isoIn.read(0),canVoltage.read());
 
     		/*serial.printf("%d,%d,%d\n\r",isoIn.read(0),isoIn.read(1),isoIn.read(2));*/
     		//serial.printf("%d,%d,%d,%d,%d,%d,%d\n\r",(uint32_t)(millis() - isoIn.requestTime),(uint32_t)isoIn.receiveTime[0],isoIn.read(0),(uint32_t)isoIn.receiveTime[1],isoIn.read(1),(uint32_t)isoIn.receiveTime[2],isoIn.read(2));

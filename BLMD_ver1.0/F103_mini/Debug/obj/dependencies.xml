@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dependencies>
-   <includePath signature="/I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\util\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\canNode /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\stm_lib /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\device /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\cmsis /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_lib\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32 /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\util /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0 /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\stm_lib\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_lib /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\canNode\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\device\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\cmsis_boot">
+   <includePath signature="/I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\util\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\device /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\stm_lib /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\canNode /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\cmsis /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_lib\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32 /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\util /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0 /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\stm_lib\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_lib /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\canNode\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\device\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\cmsis_boot">
       <source file="..\..\..\stm_lib\src\stm32f10x_iwdg.c" lastModified="15a5602fb6a">
          <include file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h"/>
       </source>
@@ -49,10 +49,6 @@
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
-      <source file="..\..\..\user\user_app\inc\pwm.h" lastModified="15a5e7c4a7b">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
-      </source>
       <source file="..\..\..\user\user_app\canNode\inc\canNodePulse.h" lastModified="15a982c791b">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -87,10 +83,6 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h" lastModified="1577ee61f12">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\inc\enc.h" lastModified="15a5e7791d7">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-         <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
       <source file="..\..\..\user\user_lib\inc\can.h" lastModified="15b1e42f61e">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
@@ -142,10 +134,6 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_usart.h" lastModified="1577ee62a3b">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
-      <source file="..\..\..\user\user_app\device\inc\si8900.h" lastModified="15b941f020e">
-         <include file="..\..\..\user\user_lib\inc\usart.h"/>
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\user\user_app\canNode\src\canNodeSwitch.cpp" lastModified="15b21ea6522">
          <include file="..\..\..\user\user_app\canNode\inc\canNodeSwitch.h"/>
@@ -249,12 +237,12 @@
       <source file="..\..\..\user\user_lib\src\spi.cpp" lastModified="1599bb74a04">
          <include file="..\..\..\user\user_lib\inc\spi.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a5e84ac9a">
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1">
          <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a5e84ac9a">
+         <include file="..\..\..\user\user_app\inc\motor.h"/>
       </source>
       <source file="..\..\..\user\user_lib\src\system.cpp" lastModified="15b0e272e5a">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
@@ -276,6 +264,11 @@
       </source>
       <source file="..\..\..\user\user_app\inc\bldc.h" lastModified="15b60f0ba71">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
+      </source>
+      <source file="..\..\..\main.hpp" lastModified="15b94ada34d">
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
+         <include file="..\..\..\user\user_app\inc\app.h"/>
+         <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f10x.h" lastModified="1577ee5e099">
       </source>
@@ -315,6 +308,9 @@
       <source file="..\..\..\user\user_app\inc\switch.h" lastModified="15b1d781731">
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
          <include file="..\..\..\user\user_lib\inc\system.h"/>
+      </source>
+      <source file="..\..\..\main.cpp" lastModified="15b94ade554">
+         <include file="..\..\..\main.hpp"/>
       </source>
       <source file="..\..\..\user\user_app\inc\pwm.h" lastModified="15a5e7c4a7b">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
@@ -572,12 +568,12 @@
          <include file="..\..\..\cmsis_boot\system_stm32f10x.h"/>
          <include file="..\..\..\cmsis_boot\stm32f10x_conf.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a5e84ac9a">
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1">
          <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a5e84ac9a">
+         <include file="..\..\..\user\user_app\inc\motor.h"/>
       </source>
       <source file="..\..\..\user\user_lib\src\tim.cpp" lastModified="15b94925918">
          <include file="..\..\..\user\user_lib\inc\tim.h"/>
@@ -586,7 +582,7 @@
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
    </includePath>
-   <includePath signature="/I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\util\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\device /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\stm_lib /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\canNode /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\cmsis /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_lib\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32 /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\util /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0 /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\stm_lib\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_lib /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\canNode\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\device\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\cmsis_boot">
+   <includePath signature="/I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\util\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\canNode /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\stm_lib /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\device /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\cmsis /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_lib\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32 /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\util /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0 /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\stm_lib\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_lib /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\canNode\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\device\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\user\user_app\inc /I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\BLMD_ver1.0\cmsis_boot">
       <source file="..\..\..\stm_lib\src\stm32f10x_iwdg.c" lastModified="15a5602fb6a">
          <include file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h"/>
       </source>
@@ -635,6 +631,10 @@
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
+      <source file="..\..\..\user\user_app\inc\pwm.h" lastModified="15a5e7c4a7b">
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
+         <include file="..\..\..\user\user_lib\inc\base.h"/>
+      </source>
       <source file="..\..\..\user\user_app\canNode\inc\canNodePulse.h" lastModified="15a982c791b">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -669,6 +669,10 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h" lastModified="1577ee61f12">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\inc\enc.h" lastModified="15a5e7791d7">
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
+         <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
       <source file="..\..\..\user\user_lib\inc\can.h" lastModified="15b1e42f61e">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
@@ -723,6 +727,10 @@
       </source>
       <source file="..\..\..\user\user_app\canNode\src\canNodeSwitch.cpp" lastModified="15b21ea6522">
          <include file="..\..\..\user\user_app\canNode\inc\canNodeSwitch.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\device\inc\si8900.h" lastModified="15b941f020e">
+         <include file="..\..\..\user\user_lib\inc\usart.h"/>
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="15b31ef10f8">
          <include file="..\..\..\user\user_lib\inc\can.h"/>
@@ -823,12 +831,12 @@
       <source file="..\..\..\user\user_lib\src\spi.cpp" lastModified="1599bb74a04">
          <include file="..\..\..\user\user_lib\inc\spi.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a5e84ac9a">
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1">
          <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15a5e84ac9a">
+         <include file="..\..\..\user\user_app\inc\motor.h"/>
       </source>
       <source file="..\..\..\user\user_lib\src\system.cpp" lastModified="15b0e272e5a">
          <include file="..\..\..\user\user_lib\inc\system.h"/>

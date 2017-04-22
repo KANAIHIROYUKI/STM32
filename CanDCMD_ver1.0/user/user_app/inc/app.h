@@ -17,6 +17,7 @@
 #include "canValve.h"
 #include "canMotorDriver.h"
 #include "canSwitch.h"
+#include "canVoltage.h"
 
 #include "canNodeEncoder.h"
 #include "canNodeValve.h"
@@ -24,6 +25,7 @@
 #include "canNodePulse.h"
 #include "canNodeSwitch.h"
 #include "canNodeEmg.h"
+#include "canNodeVoltage.h"
 
 
 #endif

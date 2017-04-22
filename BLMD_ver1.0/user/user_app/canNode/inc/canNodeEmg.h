@@ -11,7 +11,7 @@ public:
 
 	void interrupt();
 
-	uint8_t data[8],emgValue;
+	uint8_t data[8];
 	uint16_t emgStat;
 	CAN *can;
 };

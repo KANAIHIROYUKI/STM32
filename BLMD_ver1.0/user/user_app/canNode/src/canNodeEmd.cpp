@@ -12,6 +12,10 @@ void CanNodeEmg::emgRequest(){
 
 void CanNodeEmg::interrupt(){
 	if(can->rxMessage.StdId == 0x001){
-
+		if(can->rxMessage.Data[0] == 0){
+			emgStat = 0;
+		}else{
+			emgStat = 1;
+		}
 	}
 }
