@@ -11,7 +11,7 @@
 
 System sys;
 
-GPIO led[2],sel[4],swPin[2],limitPin[4];
+GPIO led[2],sel[4];
 TIM enc[2],pwm[4],en[2];
 USART serial,iso;
 
@@ -46,27 +46,13 @@ void setup(){
 	sel[2].setup(PB13,INPUT_PU);
 	sel[3].setup(PB12,INPUT_PU);
 
-	swPin[0].setup(PB4,INPUT_PU);
-	swPin[1].setup(PB5,INPUT_PU);
-	sw[0].setup(swPin[0]);
-	sw[1].setup(swPin[1]);
+	sw[0].setup(PB4,INPUT_PU);
+	sw[1].setup(PB5,INPUT_PU);
 
-	if(swPin[0].read() == 0){
-		debugMode = 1;
-	}else if(swPin[1].read() == 0){
-		debugMode = 2;
-	}
-	debugMode = 1;							//デバッグモード入れる
-
-	limitPin[0].setup(PA4,INPUT_PU);
-	limitPin[1].setup(PA5,INPUT_PU);
-	limitPin[2].setup(PB0,INPUT_PU);
-	limitPin[3].setup(PB1,INPUT_PU);
-
-	limit[0].setup(limitPin[0]);
-	limit[1].setup(limitPin[1]);
-	limit[2].setup(limitPin[2]);
-	limit[3].setup(limitPin[3]);
+	limit[0].setup(PA4,INPUT_PU);
+	limit[1].setup(PA5,INPUT_PU);
+	limit[2].setup(PB0,INPUT_PU);
+	limit[3].setup(PB1,INPUT_PU);
 
 	en[0].pwmSetup(TIM1,2,PA9,PWM_PERIOD);
 	en[1].pwmSetup(TIM1,1,PA8,PWM_PERIOD);
@@ -83,6 +69,15 @@ void setup(){
 
 	enc[0].encoderSetup(TIM2,PA0,PA1);
 	enc[1].encoderSetup(TIM3,PA6,PA7);
+
+	//ここまでピンの設定
+
+	if(sw[0].gpioRead() == 0){
+		debugMode = 1;
+	}else if(sw[1].gpioRead() == 0){
+		debugMode = 2;
+	}
+	debugMode = 1;							//デバッグモード入れる
 
 	//sys.usartSetup(serial);
 
@@ -128,7 +123,7 @@ void setup(){
 	isoIn.setup(iso,SI8900_MODE_LOOP);
 
 
-	while(swPin[0].read() == 0 || swPin[1].read() == 0);
+	while(sw[0].gpioRead() == 0 || sw[1].gpioRead() == 0);
 
 	serial.printf("setup end ");
 	if(debugMode == 1){
