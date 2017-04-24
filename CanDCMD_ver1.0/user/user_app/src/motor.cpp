@@ -3,7 +3,9 @@
 void Motor::setup(TIM &PWM_1,TIM &PWM_2){
 	this->pwm1 = &PWM_1;
 	this->pwm2 = &PWM_2;
-	duty(0);
+
+	free();
+
 	assigneStat = MOTOR_ASSIGNE_NONE;
 }
 void Motor::enPwmAssigne(TIM &PWM_EN){

@@ -26,6 +26,7 @@ public:
 
 	void pwmSetup(TIM_TypeDef* tim,uint16_t channel,GPIO_TypeDef* gpio,uint16_t pin,uint16_t period = PWM_PERIOD_DEFALUT,uint16_t prescaler = 0,uint16_t mode = TIM_OCMode_DEFAULT);
 	uint16_t duty(uint16_t duty);
+	uint16_t dutyF(float duty);
 	void itSetup();
 
 	void timerSetup(TIM_TypeDef* tim);

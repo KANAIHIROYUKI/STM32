@@ -10,7 +10,7 @@ void CanVoltage::setup(CAN &canSet,uint16_t numberSet,uint16_t interval){
 	canData[0] = 1;
 	canData[1] = interval & 0xFF;
 	canData[2] = (interval >> 8) & 0xFF;
-	can->send(CAN_ADD_ENC_SETUP + number,3,canData);	//インターバルの設定
+	can->send(CAN_ADD_VOLTAGE_SETUP + number,3,canData);	//インターバルの設定
 	delay(1);
 	receiveTime = millis();
 }

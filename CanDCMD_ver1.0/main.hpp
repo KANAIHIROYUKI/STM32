@@ -4,10 +4,12 @@
 #include "system.h"
 #include "app.h"
 #include "base.h"
+#include "can_dcmd.h"
 
 #define CAN_ADDRESS (uint16_t)(15 - (sel[0].read()*8 + sel[1].read() + sel[2].read()*4 + sel[3].read()*2))
 #define IntervalTime 50
 #define PWM_PERIOD 2000
+
 
 System sys;
 
@@ -31,12 +33,20 @@ CanEncoder canEncoder[2];
 CanSwitch canSwitch;
 CanVoltage canVoltage;
 
+CanDCMD driver;
 
 uint8_t motorDebug[2] = {0,0},canRTR=0,canData[8],debugMode,printNum;
 uint64_t intervalTimer = 0;
 
+
 void setup(){
 	sys.setup();
+
+	serial.setup(USART3,921600,PB10,PB11);
+	serial.printf("\n\rFILE = %s\n\r",__FILE__);
+	serial.printf("DATE = %s\n\r",__DATE__);
+	serial.printf("TIME = %s\n\r",__TIME__);
+	serial.printf("ADRS = %d\n\r",CAN_ADDRESS);
 
 	led[0].setup(PA15,OUTPUT);
 	led[1].setup(PB3,OUTPUT);
@@ -56,6 +66,8 @@ void setup(){
 
 	en[0].pwmSetup(TIM1,2,PA9,PWM_PERIOD);
 	en[1].pwmSetup(TIM1,1,PA8,PWM_PERIOD);
+	en[0].duty(0);
+	en[1].duty(0);
 
 	pwm[0].pwmSetup(TIM4,3,PB8,PWM_PERIOD);
 	pwm[1].pwmSetup(TIM4,4,PB9,PWM_PERIOD);
@@ -66,6 +78,17 @@ void setup(){
 	motor[1].setup(pwm[2],pwm[3]);
 	motor[0].enPwmAssigne(en[0]);
 	motor[1].enPwmAssigne(en[1]);
+
+	iso.setup(USART2,234000,PA2,PA3);
+	isoIn.setup(iso,SI8900_MODE_LOOP);
+
+	can1.setup(CAN1,PA12,PA11);
+
+	canMD[0].setup(motor[0],can1,(CAN_ADDRESS * 2));
+	canMD[1].setup(motor[1],can1,(CAN_ADDRESS * 2) + 1);
+
+	driver.canmdSetup(canMD[0],canMD[1]);
+	driver.adcSetup(isoIn);
 
 	enc[0].encoderSetup(TIM2,PA0,PA1);
 	enc[1].encoderSetup(TIM3,PA6,PA7);
@@ -79,13 +102,8 @@ void setup(){
 	}
 	debugMode = 1;							//デバッグモード入れる
 
-	//sys.usartSetup(serial);
-
-	can1.setup(CAN1,PA12,PA11);
 	if(debugMode)can1.debug();
 
-	canMD[0].setup(motor[0],can1,(CAN_ADDRESS * 2));
-	canMD[1].setup(motor[1],can1,(CAN_ADDRESS * 2) + 1);
 
 	canEnc[0].setup(enc[0],can1,(CAN_ADDRESS * 2));
 	canEnc[1].setup(enc[1],can1,(CAN_ADDRESS * 2) + 1);
@@ -97,7 +115,6 @@ void setup(){
 
 	canVol.setup(isoIn,2,can1,0);
 	canVoltage.setup(can1,0,10);
-
 
 	if(debugMode){
 		canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
@@ -113,15 +130,6 @@ void setup(){
 		canMD[1].ledAssign(led[1]);
 	}
 
-	serial.setup(USART3,921600,PB10,PB11);
-	serial.printf("\n\rFILE = %s\n\r",__FILE__);
-	serial.printf("DATE = %s\n\r",__DATE__);
-	serial.printf("TIME = %s\n\r",__TIME__);
-	serial.printf("ADRS = %d\n\r",CAN_ADDRESS);
-
-	iso.setup(USART2,234000,PA2,PA3);
-	isoIn.setup(iso,SI8900_MODE_LOOP);
-
 
 	while(sw[0].gpioRead() == 0 || sw[1].gpioRead() == 0);
 
@@ -136,6 +144,8 @@ void setup(){
 		serial.printf("mode : run\n\r");
 	}
 }
+
+
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	can1.receive();
