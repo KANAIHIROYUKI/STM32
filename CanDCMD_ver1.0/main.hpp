@@ -48,6 +48,8 @@ void setup(){
 	serial.printf("TIME = %s\n\r",__TIME__);
 	serial.printf("ADRS = %d\n\r",CAN_ADDRESS);
 
+	delay(100);
+
 	led[0].setup(PA15,OUTPUT);
 	led[1].setup(PB3,OUTPUT);
 

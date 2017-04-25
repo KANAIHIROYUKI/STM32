@@ -24,7 +24,7 @@ public:
 	void reset();
 
 	int32_t outDuty;
-	uint16_t assigneStat;
+	uint16_t assigneStat,outEnable;
 
 	TIM *pwm1;
 	TIM *pwm2;

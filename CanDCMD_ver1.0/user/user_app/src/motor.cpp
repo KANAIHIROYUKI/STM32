@@ -4,6 +4,8 @@ void Motor::setup(TIM &PWM_1,TIM &PWM_2){
 	this->pwm1 = &PWM_1;
 	this->pwm2 = &PWM_2;
 
+	outEnable = 1;
+
 	free();
 
 	assigneStat = MOTOR_ASSIGNE_NONE;
@@ -19,6 +21,10 @@ void Motor::enPinAssigne(GPIO &gpioEn){
 }
 
 void Motor::duty(float motorDuty){
+	if(outEnable == 0){
+		free();
+		return;
+	}
 
 	switch(assigneStat){
 	case MOTOR_ASSIGNE_NONE:
@@ -39,6 +45,7 @@ void Motor::duty(float motorDuty){
 	if(motorDuty16 < -dutyLimit)motorDuty16 = -dutyLimit;
 	//if(motorDuty16 < 50 && motorDuty16 > -50)motorDuty16 = 0;
 
+
 	pwm1->duty(pwm1->pwm_period/2 - motorDuty16/2);
 	pwm2->duty(pwm2->pwm_period/2 + motorDuty16/2);
 	outDuty = motorDuty16;
@@ -46,12 +53,22 @@ void Motor::duty(float motorDuty){
 }
 
 void Motor::brake(float motorBrake){
+	if(outEnable == 0){
+		free();
+		return;
+	}
+
 	pwm1->duty(0);
 	pwm2->duty(0);
 	pwmEn->duty(pwmEn->pwm_period * motorBrake);
 }
 
 void Motor::lock(){
+	if(outEnable == 0){
+		free();
+		return;
+	}
+
 	pwm1->duty(0);
 	pwm2->duty(0);
 	if(assigneStat == MOTOR_ASSIGNE_PWM){
@@ -62,9 +79,9 @@ void Motor::lock(){
 }
 
 void Motor::free(){
-	duty(0);
-	//pwm1->duty(0);
-	//pwm2->duty(0);
+
+	pwm1->duty(0);
+	pwm2->duty(0);
 
 	switch(assigneStat){
 	case MOTOR_ASSIGNE_NONE:

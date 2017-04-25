@@ -11,16 +11,16 @@
 #define SetupLimitCurrent (float)(1.0)
 #define SetupLimitVoltage (float)(20.0)
 
-/*
- * DRIVE ERRORS
- * 0:None
- * 1:Under voltage
- * 2:Break FET outA high
- * 3:Break FET outB high
- * 4:Break FET outA low
- * 5:Break FET outB low
- */
-
+enum EDriverError{
+	DE_None 				= 0x00,
+	DE_UnderVoltage 		= 0x01,
+	DE_BreakFEToutAHigh		= 0x02,
+	DE_BreakFEToutBHigh		= 0x04,
+	DE_BreakFEToutA1Low 		= 0x08,
+	DE_BreakFEToutB1Low		= 0x10,
+	DE_BreakFEToutA2Low 		= 0x20,
+	DE_BreakFEToutB2Low		= 0x40,
+};
 
 
 class CanDCMD{
@@ -30,14 +30,17 @@ public:
 	void emgSetuo(CanNodeEmg &emgSet);
 
 	void cycle();
+	uint16_t errorTask(uint16_t errorValue);
+
+	uint16_t powerInOnetime();
 
 	float vbattRead();
-	float curentRread(uint16_t channel);
+	float currentRread(uint16_t channel);
 
 	uint16_t motorDriverSetupSequence();
 
 	uint16_t voltageValue,currentValue[2],powerIn;
-	uint16_t driveStat,driveError;
+	uint16_t driveStat,driveError,onetimeTrigger;
 
 	CanNodeMotorDriver *motor[2];
 	CanNodeEmg *emg;

@@ -7,8 +7,11 @@ void CanDCMD::canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1){
 	motor[1]->canMd_motor->free();
 
 	driveStat = 0;
-	driveError = 0;
+	driveError = DE_None;
+
+	onetimeTrigger = 0;
 }
+
 
 void CanDCMD::adcSetup(SI8900 &isoSet){
 	this->adc = &isoSet;
@@ -17,6 +20,15 @@ void CanDCMD::adcSetup(SI8900 &isoSet){
 
 
 void CanDCMD::cycle(){
+	if(driveError){
+		motor[0]->canMd_motor->outEnable = 0;
+		motor[1]->canMd_motor->outEnable = 0;
+	}else{
+		motor[0]->canMd_motor->outEnable = 1;
+		motor[1]->canMd_motor->outEnable = 1;
+	}
+
+
 	motor[0]->cycle();
 	motor[1]->cycle();
 	adc->cycle();
@@ -24,15 +36,39 @@ void CanDCMD::cycle(){
 	//まずはサイクルを回せ！
 
 	if(powerIn){
-		if(vbattRead() < 20){
-			driveError = 1;
-		}
+
 	}
 
 	if(adc->setupStat && powerIn == 0){
 		motorDriverSetupSequence();				//パワー系に電源入った
+		onetimeTrigger = 1;
 	}
+
 	powerIn = adc->setupStat;
+}
+
+uint16_t CanDCMD::powerInOnetime(){
+	if(onetimeTrigger)return 0;
+	return 1;
+}
+
+uint16_t CanDCMD::errorTask(uint16_t errorValue){
+	if(errorValue){
+		motor[0]->canMd_motor->pwmEn->dutyF(0);
+		motor[1]->canMd_motor->pwmEn->dutyF(0);
+
+		motor[0]->canMd_motor->pwm1->duty(0);
+		motor[0]->canMd_motor->pwm2->duty(0);
+
+		motor[1]->canMd_motor->pwm1->duty(0);
+		motor[1]->canMd_motor->pwm2->duty(0);
+
+		//emg->emgRequest();
+
+		return driveError;
+	}
+
+	return 0;
 }
 
 
@@ -42,86 +78,81 @@ float CanDCMD::vbattRead(){
 	return (float)(voltageValue * AdcToVoltageGain);
 }
 
-float CanDCMD::curentRread(uint16_t channel){
-	if(channel < 1)return 0;
-	if(adc->readStat[channel])voltageValue = adc->read(channel);
+
+float CanDCMD::currentRread(uint16_t channel){
+	if(channel > 1)return 0;
+	if(adc->readStat[channel])currentValue[channel] = adc->read(channel);
 	return (float)(currentValue[channel] * AdcToCurrentGain);
 }
 
+
 uint16_t CanDCMD::motorDriverSetupSequence(){
 	uint16_t phaseStat = 0;
-	uint64_t statTime = millis() + SetupDerayTime;
+	uint64_t statTime = millis();
 
-
-	while(1){
+	while(1){														//adc一周読み込む
 		adc->cycle();
-		if(adc->readStat[0] || adc->readStat[1] || adc->readStat[2]){
-			break;
-		}
-
-		if(millis() - statTime > 100)return 1;
+		if(adc->readStat[0] || adc->readStat[1] || adc->readStat[2])break;
+		if(millis() - statTime > SetupDerayTime)return 1;
 	}
 
-	while(1){
+	statTime = millis();
+
+	motor[0]->canMd_motor->pwm1->duty(0);
+	motor[0]->canMd_motor->pwm2->duty(0);
+	motor[0]->canMd_motor->pwmEn->dutyF(1.0);
+
+	motor[1]->canMd_motor->pwm1->duty(0);
+	motor[1]->canMd_motor->pwm2->duty(0);
+	motor[1]->canMd_motor->pwmEn->dutyF(1.0);
+
+	while(1){													//ローサイドのみON､ハイサイド壊れてたらここで短絡
 		adc->cycle();
 
-		if(millis() > statTime){
-			statTime += SetupDerayTime;
-			phaseStat++;
-		}
+		if(currentRread(0) > SetupLimitCurrent)driveError |= DE_BreakFEToutAHigh;
+		if(currentRread(1) > SetupLimitCurrent)driveError |= DE_BreakFEToutBHigh;
+		if(vbattRead() < SetupLimitVoltage)driveError |= DE_UnderVoltage;
 
-		if(curentRread(0) > SetupLimitCurrent){
+		if(errorTask(driveError))return driveError;
 
-		}
-
-		if(curentRread(1) > SetupLimitCurrent){
-
-		}
-
-		if(vbattRead() < SetupLimitVoltage){
-			driveError = 1;
-		}
-
-		if(driveError){
-			motor[0]->canMd_motor->pwmEn->dutyF(0);
-			motor[1]->canMd_motor->pwmEn->dutyF(0);
-
-			motor[0]->canMd_motor->pwm1->duty(0);
-			motor[0]->canMd_motor->pwm2->duty(0);
-
-			motor[1]->canMd_motor->pwm1->duty(0);
-			motor[1]->canMd_motor->pwm2->duty(0);
-
-			//emg->emgRequest();
-
-			return driveError;
-		}
-
-		switch(phaseStat){
-		case 0:
-			motor[0]->canMd_motor->pwm1->duty(0);
-			motor[0]->canMd_motor->pwm2->duty(0);
-			motor[0]->canMd_motor->pwmEn->dutyF(1.0);
-
-			motor[1]->canMd_motor->pwm1->duty(0);
-			motor[1]->canMd_motor->pwm2->duty(0);
-			motor[1]->canMd_motor->pwmEn->dutyF(1.0);
-			break;
-
-		case 1:
-			motor[0]->canMd_motor->pwm1->duty(0.5);
-			motor[0]->canMd_motor->pwm2->duty(0.5);
-			motor[0]->canMd_motor->pwmEn->dutyF(1.0);
-
-			motor[1]->canMd_motor->pwm1->duty(0.5);
-			motor[1]->canMd_motor->pwm2->duty(0.5);
-			motor[1]->canMd_motor->pwmEn->dutyF(1.0);
-			break;
-
-		default:
-			return 0;
-			break;
-		}
+		if(millis() - statTime > SetupDerayTime)return 1;
 	}
+
+	motor[0]->canMd_motor->pwm1->dutyF(0.5);
+	motor[1]->canMd_motor->pwm1->dutyF(0.5);
+
+	while(1){													//ハイサイド1のみON､ローサイド壊れてたらここで短絡
+		adc->cycle();
+
+		if(currentRread(0) > SetupLimitCurrent)driveError |= DE_BreakFEToutA1Low;
+		if(currentRread(1) > SetupLimitCurrent)driveError |= DE_BreakFEToutB1Low;
+		if(vbattRead() < SetupLimitVoltage)driveError |= DE_UnderVoltage;
+
+		if(errorTask(driveError))return driveError;
+
+		if(millis() - statTime > SetupDerayTime)return 1;
+	}
+
+
+	motor[0]->canMd_motor->pwm1->dutyF(0);
+	motor[1]->canMd_motor->pwm1->dutyF(0);
+
+	motor[0]->canMd_motor->pwm2->dutyF(0.5);
+	motor[1]->canMd_motor->pwm2->dutyF(0.5);
+
+	while(1){													//ハイサイド2のみON､ローサイド壊れてたらここで短絡
+		adc->cycle();
+
+		if(currentRread(0) > SetupLimitCurrent)driveError |= DE_BreakFEToutA2Low;
+		if(currentRread(1) > SetupLimitCurrent)driveError |= DE_BreakFEToutB2Low;
+		if(vbattRead() < SetupLimitVoltage)driveError |= DE_UnderVoltage;
+
+		if(errorTask(driveError))return driveError;
+
+		if(millis() - statTime > SetupDerayTime)return 1;
+	}
+
 	return 0;
 }
+
+
