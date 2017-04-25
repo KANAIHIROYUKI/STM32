@@ -12,14 +12,16 @@
 #define SetupLimitVoltage (float)(20.0)
 
 enum EDriverError{
-	DE_None 				= 0x00,
-	DE_UnderVoltage 		= 0x01,
-	DE_BreakFEToutAHigh		= 0x02,
-	DE_BreakFEToutBHigh		= 0x04,
-	DE_BreakFEToutA1Low 		= 0x08,
-	DE_BreakFEToutB1Low		= 0x10,
-	DE_BreakFEToutA2Low 		= 0x20,
-	DE_BreakFEToutB2Low		= 0x40,
+	DE_None 				= 0x000,
+	DE_UnderVoltage 		= 0x001,
+	DE_BreakFEToutAHigh		= 0x002,
+	DE_BreakFEToutBHigh		= 0x004,
+	DE_BreakFEToutA1Low 	= 0x008,
+	DE_BreakFEToutB1Low		= 0x010,
+	DE_BreakFEToutA2Low 	= 0x020,
+	DE_BreakFEToutB2Low		= 0x040,
+	DE_OCoutA				= 0x080,
+	DE_OCoutB				= 0x100,
 };
 
 
@@ -41,6 +43,8 @@ public:
 
 	uint16_t voltageValue,currentValue[2],powerIn;
 	uint16_t driveStat,driveError,onetimeTrigger;
+
+	float overCurrentLimit[2];
 
 	CanNodeMotorDriver *motor[2];
 	CanNodeEmg *emg;

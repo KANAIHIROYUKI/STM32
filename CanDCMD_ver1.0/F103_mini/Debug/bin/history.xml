@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=F103_mini.map -O0 --gc-sections -lstdc++ -LC:\CooCox\CoIDE\configuration\ProgramData\F103_mini -TC:\CooCox\CoIDE\configuration\ProgramData\F103_mini/arm-gcc-link.ld -g">
-      <target file="F103_mini.elf" lastModified="15ba4be278b">
+      <target file="F103_mini.elf" lastModified="15ba4e2ab8b">
          <source file="..\obj\switch.o" lastModified="15b9fb33bcc"/>
          <source file="..\obj\canNodeSwitch.o" lastModified="15ba450b40a"/>
          <source file="..\obj\canNodeEncoder.o" lastModified="15b9fb33cf7"/>
          <source file="..\obj\spi.o" lastModified="15b9fb33daa"/>
          <source file="..\obj\stm32f10x_tim.o" lastModified="15b9f12a628"/>
-         <source file="..\obj\can_dcmd.o" lastModified="15ba4be246e"/>
+         <source file="..\obj\can_dcmd.o" lastModified="15ba4e2a98f"/>
          <source file="..\obj\canSwitch.o" lastModified="15b9fb33ed7"/>
          <source file="..\obj\util.o" lastModified="15b9f12a7d2"/>
          <source file="..\obj\stm32f10x_dbgmcu.o" lastModified="15b9f12a836"/>
@@ -21,7 +21,7 @@
          <source file="..\obj\stm32f10x_can.o" lastModified="15b9f12afac"/>
          <source file="..\obj\stm32f10x_gpio.o" lastModified="15b9f12b03b"/>
          <source file="..\obj\canValve.o" lastModified="15b9fb34211"/>
-         <source file="..\obj\main.o" lastModified="15ba4be2559"/>
+         <source file="..\obj\main.o" lastModified="15ba4e266ca"/>
          <source file="..\obj\system.o" lastModified="15b9fb34369"/>
          <source file="..\obj\can.o" lastModified="15b9fb34415"/>
          <source file="..\obj\stm32f10x_rcc.o" lastModified="15b9f12b340"/>
@@ -49,7 +49,7 @@
          <source file="..\obj\canVoltage.o" lastModified="15b9fb47841"/>
          <source file="..\obj\canNodeMotorDriver.o" lastModified="15ba4512d44"/>
          <source file="..\obj\dma.o" lastModified="15b9fb34ecd"/>
-         <source file="..\obj\si8900.o" lastModified="15b9fb34f79"/>
+         <source file="..\obj\si8900.o" lastModified="15ba4dcdf54"/>
          <source file="..\obj\usart.o" lastModified="15b9fb35064"/>
          <source file="..\obj\stm32f10x_iwdg.o" lastModified="15b9f12c122"/>
       </target>

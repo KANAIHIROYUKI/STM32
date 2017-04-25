@@ -26,7 +26,7 @@ void SI8900::setup(USART &usart,uint16_t modeSet){
 }
 
 void SI8900::cycle(){
-	if(setupStat == 0){
+	if(setupStat == 0){										//ボーレート設定処理
 		if(usart->available()){
 			setupData = usart->read();
 			if(setupData == 0x55){
@@ -45,9 +45,9 @@ void SI8900::cycle(){
 	}
 
 
-	if(usart->available()){
+	if(usart->available()){									//送受信処理
 		uint8_t data = usart->read();
-		if((data >> 6) == 0x03){		//CONFIG_0 CommandByte
+		if((data >> 6) == 0x03){							//CONFIG_0 CommandByte
 			mxAddress = (data >> 4) & 0x03;
 
 			if((((data >> 2) & 1) != 0) && (mxAddress  != requestChannel)){
@@ -82,7 +82,7 @@ void SI8900::cycle(){
 		}
 	}
 
-	if(mode == SI8900_MODE_LOOP){
+	if(mode == SI8900_MODE_LOOP){						//通信切れ処理(他のモードだと検出しにくいのでLOOPモードでしか動かない)
 		for(int i=0;i<3;i++){
 			if(millis() - receiveTime[i] > 100){
 				setupStat = 0;
@@ -119,10 +119,8 @@ uint16_t SI8900::stat(uint16_t channel){
 }
 
 uint16_t SI8900::timingCalibration(uint64_t timeOut){
-	int sendCnt=0;
 
-
-	for(sendCnt=0;sendCnt<timeOut;sendCnt++){
+	for(uint sendCnt=0;sendCnt<timeOut;sendCnt++){
 		for(int i=0;i<5;i++){
 			if(usart->read() == 0x55){
 				setupStat = 1;
@@ -132,7 +130,8 @@ uint16_t SI8900::timingCalibration(uint64_t timeOut){
 		delay(1);
 
 	}
-	for(int i=0;i<10;i++){
+
+	for(int i=0;i<10;i++){					//送り続けても意味なさそうだから変なデータ送ってズラす(ここはいっていない気がする
 		delay(1);
 		USART_SendData(usart->usart_usart,0xCC);
 	}
