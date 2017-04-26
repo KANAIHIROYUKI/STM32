@@ -21,6 +21,11 @@ void CanNodeSwitch::pinAdd(Switch &sw){
 void CanNodeSwitch::cycle(){
 	canData[0] = 0;
 	canData[1] = 0;
+
+	for(int i=0;i<switchNumber;i++){
+		sw[i]->cycle();
+	}
+
 	for(int i=0;i<switchNumber;i++){
 		canData[0] |= sw[i]->readStat << i;
 		canData[1] |= sw[i]->read() << i;

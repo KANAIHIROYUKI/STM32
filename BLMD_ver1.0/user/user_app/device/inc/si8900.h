@@ -18,7 +18,7 @@ public:
 
 	uint16_t timingCalibration(uint64_t timeOut = 500);
 
-	uint16_t value[3],buffer,mxAddress,mode,readStat[3],mxCount,setupStat,requestChannel,setupData;
+	uint16_t buffer,value[3],mxAddress,mode,readStat[3],mxCount,setupStat,requestChannel,setupData;
 	uint64_t receiveTime[3],setupLastSendTime,requestTime;
 	USART *usart;
 };

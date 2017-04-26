@@ -46,7 +46,9 @@ void SI8900::cycle(){
 
 
 	if(usart->available()){									//‘—ŽóMˆ—
+
 		uint8_t data = usart->read();
+
 		if((data >> 6) == 0x03){							//CONFIG_0 CommandByte
 			mxAddress = (data >> 4) & 0x03;
 
@@ -57,7 +59,7 @@ void SI8900::cycle(){
 
 			receiveTime[mxAddress] = millis();
 
-		}else if((data >> 6) == 0x02){	//ADC_H Byte
+		}else if((data >> 6) == 0x02){						//ADC_H Byte
 			mxAddress = (data >> 4) & 0x03;
 			if(mxAddress != requestChannel){
 				setupStat = 0;
@@ -65,7 +67,10 @@ void SI8900::cycle(){
 			}
 
 			buffer = (data & 0x0F) << 6;
-		}else{							//ADC_L Byte
+			//buffer = 0;
+		}else{												//ADC_L Byte
+			// if((data & 0x81) == 0)
+
 			buffer |= (data & 0x7E) >> 1;
 
 			receiveTime[requestChannel] = millis();

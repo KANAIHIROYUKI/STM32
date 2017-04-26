@@ -7,6 +7,7 @@ void CanNodeEmg::setup(CAN &canSet){
 
 void CanNodeEmg::emgRequest(){
 	data[0] = 0;
+	data[1] = 0;
 	can->send(CAN_ADD_EMG,2,data);
 }
 

@@ -10,6 +10,11 @@ void CanDCMD::canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1){
 	driveError = DE_None;
 
 	onetimeTrigger = 0;
+
+	overCurrentLimit[0] = 10;
+	overCurrentLimit[1] = 10;
+
+	adcCycleTrigger = 0;
 }
 
 
@@ -39,9 +44,10 @@ void CanDCMD::cycle(){
 
 	if(powerIn){								//パワー系に電源入ってる(ADC読めてる
 		if(adc->readStat[2]){
-			if(vbattRead() < 20.0){
+			if(vbattRead() < CycleLimitVoltage){
 				driveError |= DE_UnderVoltage;
 			}
+			adcCycleTrigger = 1;
 		}
 		if(adc->readStat[0]){
 			if(currentRread(0) > overCurrentLimit[0]){
@@ -54,12 +60,13 @@ void CanDCMD::cycle(){
 				driveError |= DE_OCoutB;
 			}
 		}
-
+	}else{
 
 	}
 
-	if(adc->setupStat && powerIn == 0){
-		motorDriverSetupSequence();				//パワー系に電源入った
+	if(adc->setupStat && powerIn == 0){				//パワー系に電源入った
+		driveStat = DS_PowerIn;
+		motorDriverSetupSequence();
 		onetimeTrigger = 1;
 	}
 
@@ -67,15 +74,59 @@ void CanDCMD::cycle(){
 }
 
 
+void CanDCMD::cycleFunction(){
+	switch(driveStat){
+	case DS_NoPower:
+
+		break;
+	case DS_PowerIn:
+
+		break;
+	case DS_LowOn:
+
+		break;
+	case DS_HighOn1:
+
+		break;
+	case DS_HighOn2:
+
+		break;
+	case DS_Drive:
+
+		break;
+	case DS_Error:
+
+		break;
+	default:
+
+		break;
+	}
+}
 
 
 uint16_t CanDCMD::motorDriverSetupSequence(){						//起動時保護処理
+
+
+
+
+
+
+
 	uint64_t statTime = millis();
+
+
+
+
+	for(int i=0;i<3;i++){
+		adc->read(i);
+		errorAdcValue[i] = 0;
+	}
 
 	while(1){														//adc一周読み込む
 		adc->cycle();
-		if(adc->readStat[0] || adc->readStat[1] || adc->readStat[2])break;
+		if(adc->readStat[0] && adc->readStat[1] && adc->readStat[2])break;
 		if(millis() - statTime > SetupDerayTime)return 1;
+		delay(1);
 	}
 
 	statTime = millis();
@@ -90,12 +141,16 @@ uint16_t CanDCMD::motorDriverSetupSequence(){						//起動時保護処理
 
 	while(1){													//ローサイドのみON､ハイサイド壊れてたらここで短絡
 		adc->cycle();
+		delay(1);
 
-		if(currentRread(0) > SetupLimitCurrent)driveError |= DE_BreakFEToutAHigh;
-		if(currentRread(1) > SetupLimitCurrent)driveError |= DE_BreakFEToutBHigh;
-		if(vbattRead() < SetupLimitVoltage)driveError |= DE_UnderVoltage;
+		if(adc->readStat[0] && currentRread(0) > SetupLimitCurrent)driveError |= DE_BreakFEToutAHigh;
+		if(adc->readStat[1] && currentRread(1) > SetupLimitCurrent)driveError |= DE_BreakFEToutBHigh;
+		if(adc->readStat[2] && vbattRead() < SetupLimitVoltage)driveError |= DE_UnderVoltage;
 
-		if(errorTask(driveError))return driveError;
+		if(errorTask(driveError)){
+
+			return driveError;
+		}
 
 		if(millis() - statTime > SetupDerayTime)return 1;
 	}
@@ -105,14 +160,18 @@ uint16_t CanDCMD::motorDriverSetupSequence(){						//起動時保護処理
 
 	while(1){													//ハイサイド1のみON､ローサイド壊れてたらここで短絡
 		adc->cycle();
+		delay(1);
 
 		if(currentRread(0) > SetupLimitCurrent)driveError |= DE_BreakFEToutA1Low;
 		if(currentRread(1) > SetupLimitCurrent)driveError |= DE_BreakFEToutB1Low;
 		if(vbattRead() < SetupLimitVoltage)driveError |= DE_UnderVoltage;
 
-		if(errorTask(driveError))return driveError;
-
-		if(millis() - statTime > SetupDerayTime)return 1;
+		if(errorTask(driveError)){
+			//errorAdcValue[0] = adc->read(0);
+			//errorAdcValue[1] = adc->read(1);
+			//errorAdcValue[2] = adc->read(2);
+			return driveError;
+		}
 	}
 
 
@@ -124,14 +183,18 @@ uint16_t CanDCMD::motorDriverSetupSequence(){						//起動時保護処理
 
 	while(1){													//ハイサイド2のみON､ローサイド壊れてたらここで短絡
 		adc->cycle();
+		delay(1);
 
 		if(currentRread(0) > SetupLimitCurrent)driveError |= DE_BreakFEToutA2Low;
 		if(currentRread(1) > SetupLimitCurrent)driveError |= DE_BreakFEToutB2Low;
 		if(vbattRead() < SetupLimitVoltage)driveError |= DE_UnderVoltage;
 
-		if(errorTask(driveError))return driveError;
-
-		if(millis() - statTime > SetupDerayTime)return 1;
+		if(errorTask(driveError)){
+			//errorAdcValue[0] = adc->read(0);
+			//errorAdcValue[1] = adc->read(1);
+			//errorAdcValue[2] = adc->read(2);
+			return driveError;
+		}
 	}
 
 	return 0;
@@ -140,8 +203,19 @@ uint16_t CanDCMD::motorDriverSetupSequence(){						//起動時保護処理
 
 
 uint16_t CanDCMD::powerInOnetime(){
-	if(onetimeTrigger)return 0;
-	return 1;
+	if(onetimeTrigger){
+		onetimeTrigger = 0;
+		return 1;
+	}
+	return 0;
+}
+
+uint16_t CanDCMD::adcCycleOnetime(){
+	if(adcCycleTrigger){
+		adcCycleTrigger = 0;
+		return 1;
+	}
+	return 0;
 }
 
 uint16_t CanDCMD::errorTask(uint16_t errorValue){
@@ -157,6 +231,9 @@ uint16_t CanDCMD::errorTask(uint16_t errorValue){
 
 		//emg->emgRequest();
 
+
+
+
 		return driveError;
 	}
 
@@ -166,14 +243,14 @@ uint16_t CanDCMD::errorTask(uint16_t errorValue){
 
 
 float CanDCMD::vbattRead(){
-	if(adc->readStat[2])voltageValue = adc->read(2);
+	voltageValue = adc->read(2);
 	return (float)(voltageValue * AdcToVoltageGain);
 }
 
 
 float CanDCMD::currentRread(uint16_t channel){
 	if(channel > 1)return 0;
-	if(adc->readStat[channel])currentValue[channel] = adc->read(channel);
+	currentValue[channel] = adc->read(channel);
 	return (float)(currentValue[channel] * AdcToCurrentGain);
 }
 

@@ -6,25 +6,25 @@
 
 #define CAN_ADD_EMG 0x001
 
-#define CAN_ADD_VOLTAGE_SETUP 0x050
-#define CAN_ADD_VOLTAGE_VALUE 0x051
+#define CAN_ADD_VOLTAGE_SETUP 		(uint16_t)0x050
+#define CAN_ADD_VOLTAGE_VALUE 		(uint16_t)0x051
 
-#define CAN_ADD_DUTY 0x100
-#define CAN_ADD_FREE 0x120
-#define CAN_ADD_CURRENT 0x140
-#define CAN_ADD_POSITION 0x160
-#define CAN_ADD_VELOCITY 0x180
-#define CAN_ADD_SETTING 0x1A0
-#define CAN_ADD_GET_VALUES 0x1C0
-#define CAN_ADD_DEBUG 0x1E0
+#define CAN_ADD_DUTY 				(uint16_t)0x100
+#define CAN_ADD_FREE 				(uint16_t)0x120
+#define CAN_ADD_CURRENT 			(uint16_t)0x140
+#define CAN_ADD_POSITION 			(uint16_t)0x160
+#define CAN_ADD_VELOCITY 			(uint16_t)0x180
+#define CAN_ADD_SETTING 			(uint16_t)0x1A0
+#define CAN_ADD_GET_VALUES 			(uint16_t)0x1C0
+#define CAN_ADD_DEBUG 				(uint16_t)0x1E0
 
 
-#define CAN_ADD_SWITCH_VALUE 0x240
-#define CAN_ADD_SWITCH_SETUP 0x200
+#define CAN_ADD_SWITCH_VALUE 		(uint16_t)0x240
+#define CAN_ADD_SWITCH_SETUP 		(uint16_t)0x200
 
-#define CAN_ADD_VALVE 0x280
-#define CAN_ADD_ENC_SETUP 0x400
-#define CAN_ADD_ENC_VALUE 0x440
+#define CAN_ADD_VALVE 				(uint16_t)0x280
+#define CAN_ADD_ENC_SETUP 			(uint16_t)0x400
+#define CAN_ADD_ENC_VALUE 			(uint16_t)0x440
 
 class CAN{
 public:

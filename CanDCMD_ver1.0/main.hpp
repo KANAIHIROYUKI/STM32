@@ -10,7 +10,6 @@
 #define IntervalTime 50
 #define PWM_PERIOD 2000
 
-
 System sys;
 
 GPIO led[2],sel[4];
@@ -35,7 +34,7 @@ CanVoltage canVoltage;
 
 CanDCMD driver;
 
-uint8_t motorDebug[2] = {0,0},canRTR=0,canData[8],debugMode,printNum;
+uint8_t motorDebug[2] = {0,0},debugMode;
 uint64_t intervalTimer = 0;
 
 
@@ -115,8 +114,8 @@ void setup(){
 	canSw.pinAdd(limit[2]);
 	canSw.pinAdd(limit[3]);
 
-	canVol.setup(isoIn,2,can1,0);
-	canVoltage.setup(can1,0,10);
+	canVol.setup(isoIn,2,can1,CAN_ADDRESS*2);
+	canVoltage.setup(can1,CAN_ADDRESS*2,10);	//Ç∆ÇËÇ†Ç¶Ç∏MDÇÃÇŸÇ§Ç∆çáÇÌÇπÇƒÇ®Ç≠
 
 	if(debugMode){
 		canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);

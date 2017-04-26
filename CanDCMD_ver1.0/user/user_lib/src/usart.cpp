@@ -217,6 +217,7 @@ uint64_t USART::lastReceiveTime(){
 	}else if(usart_usart == USART3){
 		return millis() - USART::usart3receiveTime;
 	}
+	return 0;
 }
 
 void USART1Setup(uint32_t baud){

@@ -8,10 +8,13 @@
 #define AdcToCurrentGain (float)((3.3*50)/1023)
 #define AdcToVoltageGain (float)((3.3*11)/1023)
 
-#define SetupLimitCurrent (float)(1.0)
+#define SetupLimitCurrent (float)(100.0)
 #define SetupLimitVoltage (float)(20.0)
 
-enum EDriverError{
+#define CycleLimitVoltage (float)(20.0)
+#define CycleLimitCurrent (float)(100.0)	//Å®overCurrentLimit[]
+
+enum DE_DriverError{
 	DE_None 				= 0x000,
 	DE_UnderVoltage 		= 0x001,
 	DE_BreakFEToutAHigh		= 0x002,
@@ -24,6 +27,17 @@ enum EDriverError{
 	DE_OCoutB				= 0x100,
 };
 
+enum DS_DriveStat{
+	DS_NoPower,
+	DS_PowerIn,
+	DS_LowOn,
+	DS_HighOn1,
+	DS_HighOn2,
+	DS_Drive,
+	DS_Error,
+};
+
+
 
 class CanDCMD{
 public:
@@ -34,7 +48,10 @@ public:
 	void cycle();
 	uint16_t errorTask(uint16_t errorValue);
 
+	void cycleFunction();
+
 	uint16_t powerInOnetime();
+	uint16_t adcCycleOnetime();		//ÇΩÇ‘ÇÒmainóp
 
 	float vbattRead();
 	float currentRread(uint16_t channel);
@@ -42,7 +59,9 @@ public:
 	uint16_t motorDriverSetupSequence();
 
 	uint16_t voltageValue,currentValue[2],powerIn;
-	uint16_t driveStat,driveError,onetimeTrigger;
+	uint16_t driveStat,driveError,onetimeTrigger,adcCycleTrigger;
+
+	uint16_t errorAdcValue[3];
 
 	float overCurrentLimit[2];
 
