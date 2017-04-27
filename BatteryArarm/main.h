@@ -16,11 +16,11 @@
 #define CELL4_VOLTAGE_GAIN 8.86
 #define CELL5_VOLTAGE_GAIN 8.86
 
-uint64_t intervalTime = 0,voltage[6],vmin[6],vave[6],vmax[6],vcnt=0;
+uint64_t intervalTime = 0,voltage[6],vmin[6],vave[6],vmax[6],vcnt=0,cellNum;
 uint32_t frequency,buzzerPower,buzzerStat,buzzerStatCnt,cellMax,cellMin,cellWorst,beepInterval;
 
 
-GPIO power,signal;
+GPIO power;
 TIM buzzer;
 USART serial,hc04;
 ADC batt[6];
@@ -41,9 +41,6 @@ void setup(){
 	power.setup(PA1,OUTPUT);
 	power.write(1);
 
-	signal.setup(PB2,OUTPUT);
-	signal.write(1);
-
 	frequency = 72000000/BUZZER_FRQ;
 	frequency = 72000;
 	buzzer.pwmSetup(TIM2,1,PA0,frequency);
@@ -57,7 +54,6 @@ void setup(){
 	serial.printf("TIME = %s\n\r",__TIME__);
 
 	delay(100);
-	signal.write(0);
 	power.write(0);
 	buzzer.duty(0);
 }

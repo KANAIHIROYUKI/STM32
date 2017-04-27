@@ -7,6 +7,17 @@ int main(void)
 	uint64_t setTime = millis();
 	buzzerStat = 0;
 
+	voltage[0] = batt[0].read()*CELL0_VOLTAGE_GAIN;
+	voltage[1] = batt[1].read()*CELL1_VOLTAGE_GAIN - voltage[0];
+	voltage[2] = batt[2].read()*CELL2_VOLTAGE_GAIN - voltage[1];
+	voltage[3] = batt[3].read()*CELL3_VOLTAGE_GAIN - voltage[2];
+	voltage[4] = batt[4].read()*CELL4_VOLTAGE_GAIN - voltage[3];
+	voltage[5] = batt[5].read()*CELL5_VOLTAGE_GAIN - voltage[4];
+
+	for(int i=0;i<6;i++){
+		if(voltage[i] > 3000)cellNum = i;		//ÉZÉãêîåüèo
+	}
+
 	for(int i=0;i<20;i++){
 		beep(i*500,0.5);
 		delay(500);
