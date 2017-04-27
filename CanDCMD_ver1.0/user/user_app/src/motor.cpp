@@ -31,7 +31,7 @@ void Motor::duty(float motorDuty){
 
 		break;
 	case MOTOR_ASSIGNE_PWM:
-		pwmEn->duty(pwmEn->pwm_period);
+		pwmEn->dutyF(1.0);
 		break;
 	case MOTOR_ASSIGNE_GPIO:
 		gpioEn->write(Bit_SET);
@@ -60,7 +60,7 @@ void Motor::brake(float motorBrake){
 
 	pwm1->duty(0);
 	pwm2->duty(0);
-	pwmEn->duty(pwmEn->pwm_period * motorBrake);
+	pwmEn->dutyF(motorBrake);
 }
 
 void Motor::lock(){
@@ -72,7 +72,7 @@ void Motor::lock(){
 	pwm1->duty(0);
 	pwm2->duty(0);
 	if(assigneStat == MOTOR_ASSIGNE_PWM){
-		pwmEn->duty(pwmEn->pwm_period);
+		pwmEn->dutyF(1.0);
 	}else if(assigneStat == MOTOR_ASSIGNE_GPIO){
 		gpioEn->write(Bit_SET);
 	}

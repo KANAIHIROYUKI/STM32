@@ -34,9 +34,5 @@ int main(void)
     		serial.printf("vval=%d,error=%d,en=%d,v0=%d,v1=%d,v2=%d\n\r",canVoltage.read(),driver.driveError,(uint32_t)driver.motor[0]->canMd_motor->outEnable,(uint32_t)driver.errorAdcValue[0],(uint32_t)driver.errorAdcValue[1],(uint32_t)driver.errorAdcValue[2]);
     	}
 
-    	if(driver.adcCycleOnetime()){
-    		serial.printf("%d,%d,%d\n\r",isoIn.read(0),isoIn.read(1),isoIn.read(2));
-    	}
-
     }
 }

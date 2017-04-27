@@ -14,6 +14,10 @@
 #define CycleLimitVoltage (float)(20.0)
 #define CycleLimitCurrent (float)(100.0)	//Å®overCurrentLimit[]
 
+#define ChannelCurrent0 0
+#define ChannelCurrent1 1
+#define ChannelVoltage  2
+
 enum DE_DriverError{
 	DE_None 				= 0x000,
 	DE_UnderVoltage 		= 0x001,
@@ -56,10 +60,11 @@ public:
 	float vbattRead();
 	float currentRread(uint16_t channel);
 
-	uint16_t motorDriverSetupSequence();
+	uint16_t voltageValue,currentValue[2];
+	uint16_t driveStat;
+	uint64_t driveStatTimer,driveLedTimer;
 
-	uint16_t voltageValue,currentValue[2],powerIn;
-	uint16_t driveStat,driveError,onetimeTrigger,adcCycleTrigger;
+	uint16_t driveError,onetimeTrigger,adcCycleTrigger;
 
 	uint16_t errorAdcValue[3];
 

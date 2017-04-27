@@ -25,12 +25,12 @@ void CanNodeMotorDriver::ledAssign(GPIO &led){
 void CanNodeMotorDriver::cycle(){
 	if(lastReceiveTime + maxInterval < millis()){
 		canMd_motor->duty(0);
-		if(ledAssigned && (ledTime < millis())){
+		if(ledAssigned == 1 && (ledTime < millis())){
 			canMd_led->toggle();
 			ledTime = millis() + LED_INTERVAL_NORECEIVE;
 		}
 	}else{
-		if(ledAssigned && (ledTime < millis())){
+		if(ledAssigned == 1 && (ledTime < millis())){
 			canMd_led->toggle();
 			ledTime = millis() + LED_INTERVAL_RECEIVE;
 		}
@@ -56,3 +56,10 @@ void CanNodeMotorDriver::interrupt(){
 	}
 }
 
+void CanNodeMotorDriver::ledOverRide(uint16_t overRideEn){
+	if(ledAssigned == 1 && overRideEn != 0){
+		ledAssigned = 2;
+	}else if(ledAssigned == 2 && overRideEn == 0){
+		ledAssigned = 1;
+	}
+}

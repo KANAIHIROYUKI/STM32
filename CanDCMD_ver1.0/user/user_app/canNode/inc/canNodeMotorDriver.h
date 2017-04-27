@@ -18,6 +18,8 @@ public:
 	void cycle();
 	void interrupt();
 
+	void ledOverRide(uint16_t overRideEn);
+
 	int32_t outDuty;
 	float outDutyF;
 	uint16_t canMd_address[2];
