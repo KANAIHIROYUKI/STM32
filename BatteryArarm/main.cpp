@@ -17,11 +17,11 @@ int main(void)
 	for(int i=0;i<6;i++){
 		if(voltage[i] > 3000)cellNum = i;		//ƒZƒ‹”ŒŸo
 	}
+	serial.printf("%cell number = d\n\r",cellNum);
 
-	for(int i=0;i<20;i++){
-		beep(i*500,0.5);
-		delay(500);
-		serial.printf("%d\n\r",i);
+	for(int i=0;i<cellNum;i++){
+		beep(2000,0.5);
+		delay(100);
 	}
 
 	while(1){

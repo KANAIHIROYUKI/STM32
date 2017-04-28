@@ -2307,7 +2307,7 @@ Linker script and memory map
 
                 0x20005000                _eram = 0x20005000
 
-.text           0x08000000     0x5f6e
+.text           0x08000000     0x5f82
  *(.isr_vector)
  .isr_vector    0x08000000      0x10c ..\obj\startup_stm32f10x_md.o
                 0x08000000                g_pfnVectors
@@ -2537,320 +2537,320 @@ Linker script and memory map
                 0x08001784       0x58 ..\obj\main.o
                 0x08001784                beep(unsigned long, float)
  *fill*         0x080017dc        0x4 
- .text.main     0x080017e0      0x938 ..\obj\main.o
+ .text.main     0x080017e0      0x940 ..\obj\main.o
                 0x080017e0                main
  .text.NVIC_SetPriority
-                0x08002118       0x54 ..\obj\system.o
+                0x08002120       0x54 ..\obj\system.o
  .text.SysTick_Config
-                0x0800216c       0x44 ..\obj\system.o
+                0x08002174       0x44 ..\obj\system.o
  .text._Z11systemSetupv
-                0x080021b0       0x24 ..\obj\system.o
-                0x080021b0                systemSetup()
+                0x080021b8       0x24 ..\obj\system.o
+                0x080021b8                systemSetup()
  .text._Z5delaym
-                0x080021d4       0x58 ..\obj\system.o
-                0x080021d4                delay(unsigned long)
+                0x080021dc       0x58 ..\obj\system.o
+                0x080021dc                delay(unsigned long)
  .text._Z6microsv
-                0x0800222c       0x2c ..\obj\system.o
-                0x0800222c                micros()
+                0x08002234       0x2c ..\obj\system.o
+                0x08002234                micros()
  .text._Z6millisv
-                0x08002258       0x20 ..\obj\system.o
-                0x08002258                millis()
+                0x08002260       0x20 ..\obj\system.o
+                0x08002260                millis()
  .text.SysTick_Handler
-                0x08002278       0x20 ..\obj\system.o
-                0x08002278                SysTick_Handler
- .text.PutChar  0x08002298       0x20 ..\obj\printf.o
-                0x08002298                PutChar
+                0x08002280       0x20 ..\obj\system.o
+                0x08002280                SysTick_Handler
+ .text.PutChar  0x080022a0       0x20 ..\obj\printf.o
+                0x080022a0                PutChar
  .text.PutString
-                0x080022b8       0x3c ..\obj\printf.o
-                0x080022b8                PutString
+                0x080022c0       0x3c ..\obj\printf.o
+                0x080022c0                PutString
  .text.PutUnsignedInt
-                0x080022f4       0x9c ..\obj\printf.o
-                0x080022f4                PutUnsignedInt
+                0x080022fc       0x9c ..\obj\printf.o
+                0x080022fc                PutUnsignedInt
  .text.PutSignedInt
-                0x08002390       0xf8 ..\obj\printf.o
-                0x08002390                PutSignedInt
- .text.PutHexa  0x08002488       0xd4 ..\obj\printf.o
-                0x08002488                PutHexa
+                0x08002398       0xf8 ..\obj\printf.o
+                0x08002398                PutSignedInt
+ .text.PutHexa  0x08002490       0xd4 ..\obj\printf.o
+                0x08002490                PutHexa
  .text.vsnprintf
-                0x0800255c      0x254 ..\obj\printf.o
-                0x0800255c                vsnprintf
+                0x08002564      0x254 ..\obj\printf.o
+                0x08002564                vsnprintf
  .text.vsprintf
-                0x080027b0       0x24 ..\obj\printf.o
-                0x080027b0                vsprintf
+                0x080027b8       0x24 ..\obj\printf.o
+                0x080027b8                vsprintf
  .text.RCC_ADCCLKConfig
-                0x080027d4       0x38 ..\obj\stm32f10x_rcc.o
-                0x080027d4                RCC_ADCCLKConfig
+                0x080027dc       0x38 ..\obj\stm32f10x_rcc.o
+                0x080027dc                RCC_ADCCLKConfig
  .text.RCC_GetClocksFreq
-                0x0800280c      0x160 ..\obj\stm32f10x_rcc.o
-                0x0800280c                RCC_GetClocksFreq
+                0x08002814      0x160 ..\obj\stm32f10x_rcc.o
+                0x08002814                RCC_GetClocksFreq
  .text.RCC_APB2PeriphClockCmd
-                0x0800296c       0x3c ..\obj\stm32f10x_rcc.o
-                0x0800296c                RCC_APB2PeriphClockCmd
+                0x08002974       0x3c ..\obj\stm32f10x_rcc.o
+                0x08002974                RCC_APB2PeriphClockCmd
  .text.RCC_APB1PeriphClockCmd
-                0x080029a8       0x3c ..\obj\stm32f10x_rcc.o
-                0x080029a8                RCC_APB1PeriphClockCmd
+                0x080029b0       0x3c ..\obj\stm32f10x_rcc.o
+                0x080029b0                RCC_APB1PeriphClockCmd
  .text._ZN4GPIO5setupEP12GPIO_TypeDeft16GPIOMode_TypeDef
-                0x080029e4       0x7c ..\obj\gpio.o
-                0x080029e4                GPIO::setup(GPIO_TypeDef*, unsigned short, GPIOMode_TypeDef)
+                0x080029ec       0x7c ..\obj\gpio.o
+                0x080029ec                GPIO::setup(GPIO_TypeDef*, unsigned short, GPIOMode_TypeDef)
  .text._ZN4GPIO5writeEt
-                0x08002a60       0x40 ..\obj\gpio.o
-                0x08002a60                GPIO::write(unsigned short)
+                0x08002a68       0x40 ..\obj\gpio.o
+                0x08002a68                GPIO::write(unsigned short)
  .text._ZN4GPIO6toggleEv
-                0x08002aa0       0x20 ..\obj\gpio.o
-                0x08002aa0                GPIO::toggle()
+                0x08002aa8       0x20 ..\obj\gpio.o
+                0x08002aa8                GPIO::toggle()
  .text._Z9pinToggleP12GPIO_TypeDeft
-                0x08002ac0       0x48 ..\obj\gpio.o
-                0x08002ac0                pinToggle(GPIO_TypeDef*, unsigned short)
+                0x08002ac8       0x48 ..\obj\gpio.o
+                0x08002ac8                pinToggle(GPIO_TypeDef*, unsigned short)
  .text.ADC_Init
-                0x08002b08       0xa4 ..\obj\stm32f10x_adc.o
-                0x08002b08                ADC_Init
+                0x08002b10       0xa4 ..\obj\stm32f10x_adc.o
+                0x08002b10                ADC_Init
  .text.ADC_StructInit
-                0x08002bac       0x38 ..\obj\stm32f10x_adc.o
-                0x08002bac                ADC_StructInit
- .text.ADC_Cmd  0x08002be4       0x38 ..\obj\stm32f10x_adc.o
-                0x08002be4                ADC_Cmd
+                0x08002bb4       0x38 ..\obj\stm32f10x_adc.o
+                0x08002bb4                ADC_StructInit
+ .text.ADC_Cmd  0x08002bec       0x38 ..\obj\stm32f10x_adc.o
+                0x08002bec                ADC_Cmd
  .text.ADC_ResetCalibration
-                0x08002c1c       0x20 ..\obj\stm32f10x_adc.o
-                0x08002c1c                ADC_ResetCalibration
+                0x08002c24       0x20 ..\obj\stm32f10x_adc.o
+                0x08002c24                ADC_ResetCalibration
  .text.ADC_GetResetCalibrationStatus
-                0x08002c3c       0x30 ..\obj\stm32f10x_adc.o
-                0x08002c3c                ADC_GetResetCalibrationStatus
+                0x08002c44       0x30 ..\obj\stm32f10x_adc.o
+                0x08002c44                ADC_GetResetCalibrationStatus
  .text.ADC_StartCalibration
-                0x08002c6c       0x20 ..\obj\stm32f10x_adc.o
-                0x08002c6c                ADC_StartCalibration
+                0x08002c74       0x20 ..\obj\stm32f10x_adc.o
+                0x08002c74                ADC_StartCalibration
  .text.ADC_GetCalibrationStatus
-                0x08002c8c       0x30 ..\obj\stm32f10x_adc.o
-                0x08002c8c                ADC_GetCalibrationStatus
+                0x08002c94       0x30 ..\obj\stm32f10x_adc.o
+                0x08002c94                ADC_GetCalibrationStatus
  .text.ADC_SoftwareStartConvCmd
-                0x08002cbc       0x38 ..\obj\stm32f10x_adc.o
-                0x08002cbc                ADC_SoftwareStartConvCmd
+                0x08002cc4       0x38 ..\obj\stm32f10x_adc.o
+                0x08002cc4                ADC_SoftwareStartConvCmd
  .text.ADC_RegularChannelConfig
-                0x08002cf4      0x194 ..\obj\stm32f10x_adc.o
-                0x08002cf4                ADC_RegularChannelConfig
+                0x08002cfc      0x194 ..\obj\stm32f10x_adc.o
+                0x08002cfc                ADC_RegularChannelConfig
  .text.ADC_GetConversionValue
-                0x08002e88       0x18 ..\obj\stm32f10x_adc.o
-                0x08002e88                ADC_GetConversionValue
+                0x08002e90       0x18 ..\obj\stm32f10x_adc.o
+                0x08002e90                ADC_GetConversionValue
  .text.ADC_GetFlagStatus
-                0x08002ea0       0x34 ..\obj\stm32f10x_adc.o
-                0x08002ea0                ADC_GetFlagStatus
+                0x08002ea8       0x34 ..\obj\stm32f10x_adc.o
+                0x08002ea8                ADC_GetFlagStatus
  .text.USART_Init
-                0x08002ed4      0x174 ..\obj\stm32f10x_usart.o
-                0x08002ed4                USART_Init
+                0x08002edc      0x174 ..\obj\stm32f10x_usart.o
+                0x08002edc                USART_Init
  .text.USART_StructInit
-                0x08003048       0x38 ..\obj\stm32f10x_usart.o
-                0x08003048                USART_StructInit
+                0x08003050       0x38 ..\obj\stm32f10x_usart.o
+                0x08003050                USART_StructInit
  .text.USART_Cmd
-                0x08003080       0x40 ..\obj\stm32f10x_usart.o
-                0x08003080                USART_Cmd
+                0x08003088       0x40 ..\obj\stm32f10x_usart.o
+                0x08003088                USART_Cmd
  .text.USART_ITConfig
-                0x080030c0       0x90 ..\obj\stm32f10x_usart.o
-                0x080030c0                USART_ITConfig
+                0x080030c8       0x90 ..\obj\stm32f10x_usart.o
+                0x080030c8                USART_ITConfig
  .text.USART_SendData
-                0x08003150       0x24 ..\obj\stm32f10x_usart.o
-                0x08003150                USART_SendData
+                0x08003158       0x24 ..\obj\stm32f10x_usart.o
+                0x08003158                USART_SendData
  .text.USART_ReceiveData
-                0x08003174       0x20 ..\obj\stm32f10x_usart.o
-                0x08003174                USART_ReceiveData
+                0x0800317c       0x20 ..\obj\stm32f10x_usart.o
+                0x0800317c                USART_ReceiveData
  .text.USART_GetITStatus
-                0x08003194       0xb4 ..\obj\stm32f10x_usart.o
-                0x08003194                USART_GetITStatus
- .text          0x08003248       0x26 ..\obj\sh_cmd.o
-                0x08003248                SH_DoCommand
-                0x0800325a                HardFault_Handler
- *fill*         0x0800326e        0x2 
- .text.abort    0x08003270        0x8 ..\obj\syscalls.o
-                0x08003270                abort
+                0x0800319c       0xb4 ..\obj\stm32f10x_usart.o
+                0x0800319c                USART_GetITStatus
+ .text          0x08003250       0x26 ..\obj\sh_cmd.o
+                0x08003250                SH_DoCommand
+                0x08003262                HardFault_Handler
+ *fill*         0x08003276        0x2 
+ .text.abort    0x08003278        0x8 ..\obj\syscalls.o
+                0x08003278                abort
  .text._ZN3ADC5setupEP11ADC_TypeDefhP12GPIO_TypeDeft
-                0x08003278       0x64 ..\obj\adc.o
-                0x08003278                ADC::setup(ADC_TypeDef*, unsigned char, GPIO_TypeDef*, unsigned short)
+                0x08003280       0x64 ..\obj\adc.o
+                0x08003280                ADC::setup(ADC_TypeDef*, unsigned char, GPIO_TypeDef*, unsigned short)
  .text._ZN3ADC4readEv
-                0x080032dc       0x50 ..\obj\adc.o
-                0x080032dc                ADC::read()
+                0x080032e4       0x50 ..\obj\adc.o
+                0x080032e4                ADC::read()
  .text._ZN3ADC7ioSetupEP12GPIO_TypeDeft
-                0x0800332c       0x24 ..\obj\adc.o
-                0x0800332c                ADC::ioSetup(GPIO_TypeDef*, unsigned short)
+                0x08003334       0x24 ..\obj\adc.o
+                0x08003334                ADC::ioSetup(GPIO_TypeDef*, unsigned short)
  .text._Z9ADC1Setuph
-                0x08003350       0x94 ..\obj\adc.o
-                0x08003350                ADC1Setup(unsigned char)
+                0x08003358       0x94 ..\obj\adc.o
+                0x08003358                ADC1Setup(unsigned char)
  .text._Z9ADC2Setuph
-                0x080033e4       0x94 ..\obj\adc.o
-                0x080033e4                ADC2Setup(unsigned char)
+                0x080033ec       0x94 ..\obj\adc.o
+                0x080033ec                ADC2Setup(unsigned char)
  .text._Z8ADC1Readh
-                0x08003478       0x4c ..\obj\adc.o
-                0x08003478                ADC1Read(unsigned char)
+                0x08003480       0x4c ..\obj\adc.o
+                0x08003480                ADC1Read(unsigned char)
  .text._Z8ADC2Readh
-                0x080034c4       0x4c ..\obj\adc.o
-                0x080034c4                ADC2Read(unsigned char)
+                0x080034cc       0x4c ..\obj\adc.o
+                0x080034cc                ADC2Read(unsigned char)
  .text.NVIC_Init
-                0x08003510       0xc4 ..\obj\misc.o
-                0x08003510                NVIC_Init
+                0x08003518       0xc4 ..\obj\misc.o
+                0x08003518                NVIC_Init
  .text.SPI_I2S_GetITStatus
-                0x080035d4       0x74 ..\obj\stm32f10x_spi.o
-                0x080035d4                SPI_I2S_GetITStatus
+                0x080035dc       0x74 ..\obj\stm32f10x_spi.o
+                0x080035dc                SPI_I2S_GetITStatus
  .text.SPI_I2S_ClearITPendingBit
-                0x08003648       0x34 ..\obj\stm32f10x_spi.o
-                0x08003648                SPI_I2S_ClearITPendingBit
+                0x08003650       0x34 ..\obj\stm32f10x_spi.o
+                0x08003650                SPI_I2S_ClearITPendingBit
  .text._ZN5USART4putsEPKc
-                0x0800367c       0x3c ..\obj\usart.o
-                0x0800367c                USART::puts(char const*)
+                0x08003684       0x3c ..\obj\usart.o
+                0x08003684                USART::puts(char const*)
  .text._ZN5USART6printfEPKcz
-                0x080036b8       0x40 ..\obj\usart.o
-                0x080036b8                USART::printf(char const*, ...)
+                0x080036c0       0x40 ..\obj\usart.o
+                0x080036c0                USART::printf(char const*, ...)
  .text._ZN5USART5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x080036f8       0xc0 ..\obj\usart.o
-                0x080036f8                USART::setup(USART_TypeDef*, unsigned long, GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short)
+                0x08003700       0xc0 ..\obj\usart.o
+                0x08003700                USART::setup(USART_TypeDef*, unsigned long, GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short)
  .text._ZN5USART4sendEc
-                0x080037b8      0x17c ..\obj\usart.o
-                0x080037b8                USART::send(char)
+                0x080037c0      0x17c ..\obj\usart.o
+                0x080037c0                USART::send(char)
  .text._ZN5USART7ioSetupEP12GPIO_TypeDeftS1_t
-                0x08003934       0x34 ..\obj\usart.o
-                0x08003934                USART::ioSetup(GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short)
+                0x0800393c       0x34 ..\obj\usart.o
+                0x0800393c                USART::ioSetup(GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short)
  .text._Z11USART1Setupm
-                0x08003968       0x54 ..\obj\usart.o
-                0x08003968                USART1Setup(unsigned long)
+                0x08003970       0x54 ..\obj\usart.o
+                0x08003970                USART1Setup(unsigned long)
  .text._Z11USART2Setupm
-                0x080039bc       0x54 ..\obj\usart.o
-                0x080039bc                USART2Setup(unsigned long)
+                0x080039c4       0x54 ..\obj\usart.o
+                0x080039c4                USART2Setup(unsigned long)
  .text._Z11USART3Setupm
-                0x08003a10       0x54 ..\obj\usart.o
-                0x08003a10                USART3Setup(unsigned long)
+                0x08003a18       0x54 ..\obj\usart.o
+                0x08003a18                USART3Setup(unsigned long)
  .text._Z13USART1ITSetupt
-                0x08003a64       0x38 ..\obj\usart.o
-                0x08003a64                USART1ITSetup(unsigned short)
+                0x08003a6c       0x38 ..\obj\usart.o
+                0x08003a6c                USART1ITSetup(unsigned short)
  .text._Z13USART2ITSetupt
-                0x08003a9c       0x38 ..\obj\usart.o
-                0x08003a9c                USART2ITSetup(unsigned short)
+                0x08003aa4       0x38 ..\obj\usart.o
+                0x08003aa4                USART2ITSetup(unsigned short)
  .text._Z13USART3ITSetupt
-                0x08003ad4       0x38 ..\obj\usart.o
-                0x08003ad4                USART3ITSetup(unsigned short)
+                0x08003adc       0x38 ..\obj\usart.o
+                0x08003adc                USART3ITSetup(unsigned short)
  .text.USART1_IRQHandler
-                0x08003b0c       0xe8 ..\obj\usart.o
-                0x08003b0c                USART1_IRQHandler
+                0x08003b14       0xe8 ..\obj\usart.o
+                0x08003b14                USART1_IRQHandler
  .text.USART2_IRQHandler
-                0x08003bf4       0xe8 ..\obj\usart.o
-                0x08003bf4                USART2_IRQHandler
+                0x08003bfc       0xe8 ..\obj\usart.o
+                0x08003bfc                USART2_IRQHandler
  .text.USART3_IRQHandler
-                0x08003cdc       0xe8 ..\obj\usart.o
-                0x08003cdc                USART3_IRQHandler
- .text          0x08003dc4      0x370 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
-                0x08003dc4                __aeabi_drsub
-                0x08003dcc                __aeabi_dsub
-                0x08003dcc                __subdf3
-                0x08003dd0                __aeabi_dadd
-                0x08003dd0                __adddf3
-                0x08004048                __floatunsidf
-                0x08004048                __aeabi_ui2d
-                0x08004068                __floatsidf
-                0x08004068                __aeabi_i2d
-                0x0800408c                __aeabi_f2d
-                0x0800408c                __extendsfdf2
-                0x080040c8                __floatundidf
-                0x080040c8                __aeabi_ul2d
-                0x080040d8                __floatdidf
-                0x080040d8                __aeabi_l2d
- .text          0x08004134      0x424 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
-                0x08004134                __aeabi_dmul
-                0x08004134                __muldf3
-                0x08004388                __divdf3
-                0x08004388                __aeabi_ddiv
- .text          0x08004558      0x21c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
-                0x08004558                __aeabi_frsub
-                0x08004560                __subsf3
-                0x08004560                __aeabi_fsub
-                0x08004564                __aeabi_fadd
-                0x08004564                __addsf3
-                0x080046c4                __aeabi_ui2f
-                0x080046c4                __floatunsisf
-                0x080046cc                __aeabi_i2f
-                0x080046cc                __floatsisf
-                0x080046e8                __aeabi_ul2f
-                0x080046e8                __floatundisf
-                0x080046f8                __aeabi_l2f
-                0x080046f8                __floatdisf
- .text          0x08004774      0x2a0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
-                0x08004774                __mulsf3
-                0x08004774                __aeabi_fmul
-                0x080048dc                __aeabi_fdiv
-                0x080048dc                __divsf3
- .text          0x08004a14       0xec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpsf2.o)
-                0x08004a14                __gesf2
-                0x08004a14                __gtsf2
-                0x08004a1c                __lesf2
-                0x08004a1c                __ltsf2
-                0x08004a24                __nesf2
-                0x08004a24                __eqsf2
-                0x08004a24                __cmpsf2
-                0x08004a84                __aeabi_cfrcmple
-                0x08004a8c                __aeabi_cfcmpeq
-                0x08004a8c                __aeabi_cfcmple
-                0x08004a9c                __aeabi_fcmpeq
-                0x08004ab0                __aeabi_fcmplt
-                0x08004ac4                __aeabi_fcmple
-                0x08004ad8                __aeabi_fcmpge
-                0x08004aec                __aeabi_fcmpgt
- .text          0x08004b00       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
-                0x08004b00                __fixunssfsi
-                0x08004b00                __aeabi_f2uiz
- .text          0x08004b40       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
-                0x08004b40                __aeabi_uldivmod
- .text          0x08004b70       0x48 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_fixunsdfdi.o)
-                0x08004b70                __fixunsdfdi
-                0x08004b70                __aeabi_d2ulz
- .text          0x08004bb8      0x2ec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
-                0x08004bb8                __udivmoddi4
- .text          0x08004ea4      0x9e4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(unwind-arm.o)
-                0x08005164                _Unwind_GetCFA
-                0x08005168                __gnu_Unwind_RaiseException
-                0x080051c8                __gnu_Unwind_ForcedUnwind
-                0x080051dc                __gnu_Unwind_Resume
-                0x08005220                __gnu_Unwind_Resume_or_Rethrow
-                0x08005234                _Unwind_Complete
-                0x08005238                _Unwind_DeleteException
-                0x08005244                _Unwind_VRS_Get
-                0x08005290                _Unwind_VRS_Set
-                0x080052e0                __gnu_Unwind_Backtrace
-                0x0800562c                __aeabi_unwind_cpp_pr0
-                0x08005630                __aeabi_unwind_cpp_pr1
-                0x08005634                __aeabi_unwind_cpp_pr2
-                0x08005638                _Unwind_VRS_Pop
- .text          0x08005888      0x1ac c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(libunwind.o)
-                0x08005888                __restore_core_regs
-                0x08005888                restore_core_regs
-                0x080058a0                __gnu_Unwind_Restore_VFP
-                0x080058a8                __gnu_Unwind_Save_VFP
-                0x080058b0                __gnu_Unwind_Restore_VFP_D
-                0x080058b8                __gnu_Unwind_Save_VFP_D
-                0x080058c0                __gnu_Unwind_Restore_VFP_D_16_to_31
-                0x080058c8                __gnu_Unwind_Save_VFP_D_16_to_31
-                0x080058d0                __gnu_Unwind_Restore_WMMXD
-                0x08005914                __gnu_Unwind_Save_WMMXD
-                0x08005958                __gnu_Unwind_Restore_WMMXC
-                0x0800596c                __gnu_Unwind_Save_WMMXC
-                0x08005980                ___Unwind_RaiseException
-                0x08005980                _Unwind_RaiseException
-                0x080059a4                _Unwind_Resume
-                0x080059a4                ___Unwind_Resume
-                0x080059c8                _Unwind_Resume_or_Rethrow
-                0x080059c8                ___Unwind_Resume_or_Rethrow
-                0x080059ec                _Unwind_ForcedUnwind
-                0x080059ec                ___Unwind_ForcedUnwind
-                0x08005a10                ___Unwind_Backtrace
-                0x08005a10                _Unwind_Backtrace
- .text          0x08005a34      0x354 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
-                0x08005a8c                __gnu_unwind_execute
-                0x08005d30                __gnu_unwind_frame
-                0x08005d58                _Unwind_GetRegionStart
-                0x08005d64                _Unwind_GetLanguageSpecificData
-                0x08005d78                _Unwind_GetTextRelBase
-                0x08005d80                _Unwind_GetDataRelBase
- .text          0x08005d88        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_dvmd_tls.o)
-                0x08005d88                __aeabi_idiv0
-                0x08005d88                __aeabi_ldiv0
- .text          0x08005d8c       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunsdfsi.o)
-                0x08005d8c                __aeabi_d2uiz
-                0x08005d8c                __fixunsdfsi
- .text          0x08005dcc       0xec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memcpy.o)
-                0x08005dcc                memcpy
+                0x08003ce4       0xe8 ..\obj\usart.o
+                0x08003ce4                USART3_IRQHandler
+ .text          0x08003dcc      0x370 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
+                0x08003dcc                __aeabi_drsub
+                0x08003dd4                __aeabi_dsub
+                0x08003dd4                __subdf3
+                0x08003dd8                __aeabi_dadd
+                0x08003dd8                __adddf3
+                0x08004050                __floatunsidf
+                0x08004050                __aeabi_ui2d
+                0x08004070                __floatsidf
+                0x08004070                __aeabi_i2d
+                0x08004094                __aeabi_f2d
+                0x08004094                __extendsfdf2
+                0x080040d0                __floatundidf
+                0x080040d0                __aeabi_ul2d
+                0x080040e0                __floatdidf
+                0x080040e0                __aeabi_l2d
+ .text          0x0800413c      0x424 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
+                0x0800413c                __aeabi_dmul
+                0x0800413c                __muldf3
+                0x08004390                __divdf3
+                0x08004390                __aeabi_ddiv
+ .text          0x08004560      0x21c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x08004560                __aeabi_frsub
+                0x08004568                __subsf3
+                0x08004568                __aeabi_fsub
+                0x0800456c                __aeabi_fadd
+                0x0800456c                __addsf3
+                0x080046cc                __aeabi_ui2f
+                0x080046cc                __floatunsisf
+                0x080046d4                __aeabi_i2f
+                0x080046d4                __floatsisf
+                0x080046f0                __aeabi_ul2f
+                0x080046f0                __floatundisf
+                0x08004700                __aeabi_l2f
+                0x08004700                __floatdisf
+ .text          0x0800477c      0x2a0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x0800477c                __mulsf3
+                0x0800477c                __aeabi_fmul
+                0x080048e4                __aeabi_fdiv
+                0x080048e4                __divsf3
+ .text          0x08004a1c       0xec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpsf2.o)
+                0x08004a1c                __gesf2
+                0x08004a1c                __gtsf2
+                0x08004a24                __lesf2
+                0x08004a24                __ltsf2
+                0x08004a2c                __nesf2
+                0x08004a2c                __eqsf2
+                0x08004a2c                __cmpsf2
+                0x08004a8c                __aeabi_cfrcmple
+                0x08004a94                __aeabi_cfcmpeq
+                0x08004a94                __aeabi_cfcmple
+                0x08004aa4                __aeabi_fcmpeq
+                0x08004ab8                __aeabi_fcmplt
+                0x08004acc                __aeabi_fcmple
+                0x08004ae0                __aeabi_fcmpge
+                0x08004af4                __aeabi_fcmpgt
+ .text          0x08004b08       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+                0x08004b08                __fixunssfsi
+                0x08004b08                __aeabi_f2uiz
+ .text          0x08004b48       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
+                0x08004b48                __aeabi_uldivmod
+ .text          0x08004b78       0x48 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_fixunsdfdi.o)
+                0x08004b78                __fixunsdfdi
+                0x08004b78                __aeabi_d2ulz
+ .text          0x08004bc0      0x2ec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+                0x08004bc0                __udivmoddi4
+ .text          0x08004eac      0x9e4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(unwind-arm.o)
+                0x0800516c                _Unwind_GetCFA
+                0x08005170                __gnu_Unwind_RaiseException
+                0x080051d0                __gnu_Unwind_ForcedUnwind
+                0x080051e4                __gnu_Unwind_Resume
+                0x08005228                __gnu_Unwind_Resume_or_Rethrow
+                0x0800523c                _Unwind_Complete
+                0x08005240                _Unwind_DeleteException
+                0x0800524c                _Unwind_VRS_Get
+                0x08005298                _Unwind_VRS_Set
+                0x080052e8                __gnu_Unwind_Backtrace
+                0x08005634                __aeabi_unwind_cpp_pr0
+                0x08005638                __aeabi_unwind_cpp_pr1
+                0x0800563c                __aeabi_unwind_cpp_pr2
+                0x08005640                _Unwind_VRS_Pop
+ .text          0x08005890      0x1ac c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(libunwind.o)
+                0x08005890                __restore_core_regs
+                0x08005890                restore_core_regs
+                0x080058a8                __gnu_Unwind_Restore_VFP
+                0x080058b0                __gnu_Unwind_Save_VFP
+                0x080058b8                __gnu_Unwind_Restore_VFP_D
+                0x080058c0                __gnu_Unwind_Save_VFP_D
+                0x080058c8                __gnu_Unwind_Restore_VFP_D_16_to_31
+                0x080058d0                __gnu_Unwind_Save_VFP_D_16_to_31
+                0x080058d8                __gnu_Unwind_Restore_WMMXD
+                0x0800591c                __gnu_Unwind_Save_WMMXD
+                0x08005960                __gnu_Unwind_Restore_WMMXC
+                0x08005974                __gnu_Unwind_Save_WMMXC
+                0x08005988                ___Unwind_RaiseException
+                0x08005988                _Unwind_RaiseException
+                0x080059ac                _Unwind_Resume
+                0x080059ac                ___Unwind_Resume
+                0x080059d0                _Unwind_Resume_or_Rethrow
+                0x080059d0                ___Unwind_Resume_or_Rethrow
+                0x080059f4                _Unwind_ForcedUnwind
+                0x080059f4                ___Unwind_ForcedUnwind
+                0x08005a18                ___Unwind_Backtrace
+                0x08005a18                _Unwind_Backtrace
+ .text          0x08005a3c      0x354 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
+                0x08005a94                __gnu_unwind_execute
+                0x08005d38                __gnu_unwind_frame
+                0x08005d60                _Unwind_GetRegionStart
+                0x08005d6c                _Unwind_GetLanguageSpecificData
+                0x08005d80                _Unwind_GetTextRelBase
+                0x08005d88                _Unwind_GetDataRelBase
+ .text          0x08005d90        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_dvmd_tls.o)
+                0x08005d90                __aeabi_idiv0
+                0x08005d90                __aeabi_ldiv0
+ .text          0x08005d94       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunsdfsi.o)
+                0x08005d94                __aeabi_d2uiz
+                0x08005d94                __fixunsdfsi
+ .text          0x08005dd4       0xec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memcpy.o)
+                0x08005dd4                memcpy
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -2864,295 +2864,295 @@ Linker script and memory map
  *(SORT(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata        0x08005eb8       0xb6 ..\obj\main.o
+ .rodata        0x08005ec0       0xc2 ..\obj\main.o
  *(.eh_fram e*)
 
-.glue_7         0x08005f70        0x0
- .glue_7        0x08005f70        0x0 linker stubs
+.glue_7         0x08005f84        0x0
+ .glue_7        0x08005f84        0x0 linker stubs
 
-.glue_7t        0x08005f70        0x0
- .glue_7t       0x08005f70        0x0 linker stubs
+.glue_7t        0x08005f84        0x0
+ .glue_7t       0x08005f84        0x0 linker stubs
 
-.vfp11_veneer   0x08005f70        0x0
- .vfp11_veneer  0x08005f70        0x0 linker stubs
+.vfp11_veneer   0x08005f84        0x0
+ .vfp11_veneer  0x08005f84        0x0 linker stubs
 
-.v4_bx          0x08005f70        0x0
- .v4_bx         0x08005f70        0x0 linker stubs
+.v4_bx          0x08005f84        0x0
+ .v4_bx         0x08005f84        0x0 linker stubs
 
-.iplt           0x08005f70        0x0
- .iplt          0x08005f70        0x0 ..\obj\semihosting.o
+.iplt           0x08005f84        0x0
+ .iplt          0x08005f84        0x0 ..\obj\semihosting.o
 
-.ARM.extab      0x08005f70      0x1c8
+.ARM.extab      0x08005f84      0x1c8
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  .ARM.extab.text._ZN3TIM8pwmSetupEP11TIM_TypeDeftP12GPIO_TypeDeftttt
-                0x08005f70        0xc ..\obj\tim.o
+                0x08005f84        0xc ..\obj\tim.o
  .ARM.extab.text._ZN3TIM10ioSetupPwmEP12GPIO_TypeDeft
-                0x08005f7c        0xc ..\obj\tim.o
+                0x08005f90        0xc ..\obj\tim.o
  .ARM.extab.text._Z9TIM1Setuptt
-                0x08005f88        0xc ..\obj\tim.o
+                0x08005f9c        0xc ..\obj\tim.o
  .ARM.extab.text._Z9TIM2Setuptt
-                0x08005f94        0xc ..\obj\tim.o
+                0x08005fa8        0xc ..\obj\tim.o
  .ARM.extab.text._Z9TIM3Setuptt
-                0x08005fa0        0xc ..\obj\tim.o
+                0x08005fb4        0xc ..\obj\tim.o
  .ARM.extab.text._Z9TIM4Setuptt
-                0x08005fac        0xc ..\obj\tim.o
+                0x08005fc0        0xc ..\obj\tim.o
  .ARM.extab.text._Z11OC1PWMSetupP11TIM_TypeDeft
-                0x08005fb8        0xc ..\obj\tim.o
+                0x08005fcc        0xc ..\obj\tim.o
  .ARM.extab.text._Z11OC2PWMSetupP11TIM_TypeDeft
-                0x08005fc4        0xc ..\obj\tim.o
+                0x08005fd8        0xc ..\obj\tim.o
  .ARM.extab.text._Z11OC3PWMSetupP11TIM_TypeDeft
-                0x08005fd0        0xc ..\obj\tim.o
+                0x08005fe4        0xc ..\obj\tim.o
  .ARM.extab.text._Z11OC4PWMSetupP11TIM_TypeDeft
-                0x08005fdc        0xc ..\obj\tim.o
+                0x08005ff0        0xc ..\obj\tim.o
  .ARM.extab.text._Z4beepmf
-                0x08005fe8        0xc ..\obj\main.o
+                0x08005ffc        0xc ..\obj\main.o
  .ARM.extab.text._ZN4GPIO5setupEP12GPIO_TypeDeft16GPIOMode_TypeDef
-                0x08005ff4        0xc ..\obj\gpio.o
+                0x08006008        0xc ..\obj\gpio.o
  .ARM.extab.text._ZN4GPIO5writeEt
-                0x08006000        0xc ..\obj\gpio.o
+                0x08006014        0xc ..\obj\gpio.o
  .ARM.extab.text._ZN4GPIO6toggleEv
-                0x0800600c        0xc ..\obj\gpio.o
+                0x08006020        0xc ..\obj\gpio.o
  .ARM.extab.text._Z9pinToggleP12GPIO_TypeDeft
-                0x08006018        0xc ..\obj\gpio.o
+                0x0800602c        0xc ..\obj\gpio.o
  .ARM.extab.text._ZN3ADC5setupEP11ADC_TypeDefhP12GPIO_TypeDeft
-                0x08006024        0xc ..\obj\adc.o
+                0x08006038        0xc ..\obj\adc.o
  .ARM.extab.text._ZN3ADC4readEv
-                0x08006030        0xc ..\obj\adc.o
+                0x08006044        0xc ..\obj\adc.o
  .ARM.extab.text._ZN3ADC7ioSetupEP12GPIO_TypeDeft
-                0x0800603c        0xc ..\obj\adc.o
+                0x08006050        0xc ..\obj\adc.o
  .ARM.extab.text._Z9ADC1Setuph
-                0x08006048        0xc ..\obj\adc.o
+                0x0800605c        0xc ..\obj\adc.o
  .ARM.extab.text._Z9ADC2Setuph
-                0x08006054        0xc ..\obj\adc.o
+                0x08006068        0xc ..\obj\adc.o
  .ARM.extab.text._Z8ADC1Readh
-                0x08006060        0xc ..\obj\adc.o
+                0x08006074        0xc ..\obj\adc.o
  .ARM.extab.text._Z8ADC2Readh
-                0x0800606c        0xc ..\obj\adc.o
+                0x08006080        0xc ..\obj\adc.o
  .ARM.extab.text._ZN5USART4putsEPKc
-                0x08006078        0xc ..\obj\usart.o
+                0x0800608c        0xc ..\obj\usart.o
  .ARM.extab.text._ZN5USART6printfEPKcz
-                0x08006084        0xc ..\obj\usart.o
+                0x08006098        0xc ..\obj\usart.o
  .ARM.extab.text._ZN5USART5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x08006090        0xc ..\obj\usart.o
+                0x080060a4        0xc ..\obj\usart.o
  .ARM.extab.text._ZN5USART4sendEc
-                0x0800609c        0xc ..\obj\usart.o
+                0x080060b0        0xc ..\obj\usart.o
  .ARM.extab.text._ZN5USART7ioSetupEP12GPIO_TypeDeftS1_t
-                0x080060a8        0xc ..\obj\usart.o
+                0x080060bc        0xc ..\obj\usart.o
  .ARM.extab.text._Z11USART1Setupm
-                0x080060b4        0xc ..\obj\usart.o
+                0x080060c8        0xc ..\obj\usart.o
  .ARM.extab.text._Z11USART2Setupm
-                0x080060c0        0xc ..\obj\usart.o
+                0x080060d4        0xc ..\obj\usart.o
  .ARM.extab.text._Z11USART3Setupm
-                0x080060cc        0xc ..\obj\usart.o
+                0x080060e0        0xc ..\obj\usart.o
  .ARM.extab.text._Z13USART1ITSetupt
-                0x080060d8        0xc ..\obj\usart.o
+                0x080060ec        0xc ..\obj\usart.o
  .ARM.extab.text._Z13USART2ITSetupt
-                0x080060e4        0xc ..\obj\usart.o
+                0x080060f8        0xc ..\obj\usart.o
  .ARM.extab.text._Z13USART3ITSetupt
-                0x080060f0        0xc ..\obj\usart.o
+                0x08006104        0xc ..\obj\usart.o
  .ARM.extab.text.USART1_IRQHandler
-                0x080060fc        0xc ..\obj\usart.o
+                0x08006110        0xc ..\obj\usart.o
  .ARM.extab.text.USART2_IRQHandler
-                0x08006108        0xc ..\obj\usart.o
+                0x0800611c        0xc ..\obj\usart.o
  .ARM.extab.text.USART3_IRQHandler
-                0x08006114        0xc ..\obj\usart.o
- .ARM.extab     0x08006120       0x18 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
-                0x08006138                __exidx_start = .
+                0x08006128        0xc ..\obj\usart.o
+ .ARM.extab     0x08006134       0x18 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
+                0x0800614c                __exidx_start = .
 
-.ARM.exidx      0x08006138      0x238
+.ARM.exidx      0x0800614c      0x238
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
  .ARM.exidx.text.SPI1_IRQHandler
-                0x08006138       0x10 ..\obj\spi.o
+                0x0800614c       0x10 ..\obj\spi.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3TIM8pwmSetupEP11TIM_TypeDeftP12GPIO_TypeDeftttt
-                0x08006148        0x8 ..\obj\tim.o
+                0x0800615c        0x8 ..\obj\tim.o
  .ARM.exidx.text._ZN3TIM4dutyEt
-                0x08006150        0x8 ..\obj\tim.o
+                0x08006164        0x8 ..\obj\tim.o
  .ARM.exidx.text._ZN3TIM5dutyFEf
-                0x08006158        0x0 ..\obj\tim.o
+                0x0800616c        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3TIM10ioSetupPwmEP12GPIO_TypeDeft
-                0x08006158        0x8 ..\obj\tim.o
+                0x0800616c        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z9TIM1Setuptt
-                0x08006160        0x8 ..\obj\tim.o
+                0x08006174        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z9TIM2Setuptt
-                0x08006168        0x8 ..\obj\tim.o
+                0x0800617c        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z9TIM3Setuptt
-                0x08006170        0x8 ..\obj\tim.o
+                0x08006184        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z9TIM4Setuptt
-                0x08006178        0x8 ..\obj\tim.o
+                0x0800618c        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z11OC1PWMSetupP11TIM_TypeDeft
-                0x08006180        0x8 ..\obj\tim.o
+                0x08006194        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z11OC2PWMSetupP11TIM_TypeDeft
-                0x08006188        0x8 ..\obj\tim.o
+                0x0800619c        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z11OC3PWMSetupP11TIM_TypeDeft
-                0x08006190        0x8 ..\obj\tim.o
+                0x080061a4        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z11OC4PWMSetupP11TIM_TypeDeft
-                0x08006198        0x8 ..\obj\tim.o
+                0x080061ac        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z10OC1DutySetP11TIM_TypeDeft
-                0x080061a0        0x8 ..\obj\tim.o
+                0x080061b4        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z10OC2DutySetP11TIM_TypeDeft
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z10OC3DutySetP11TIM_TypeDeft
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z10OC4DutySetP11TIM_TypeDeft
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM1_ENCODER_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM2_ENCODER_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM3_ENCODER_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM4_ENCODER_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM1_PWM_Update_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM2_PWM_Update_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM3_PWM_Update_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM4_PWM_Update_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM4_PWM_CC1_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM4_PWM_CC2_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM4_PWM_CC3_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM4_PWM_CC4_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM1_TIM_Update_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM2_TIM_Update_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM3_TIM_Update_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM4_TIM_Update_IRQv
-                0x080061a8        0x0 ..\obj\tim.o
+                0x080061bc        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text.TIM1_UP_IRQHandler
-                0x080061a8        0x8 ..\obj\tim.o
+                0x080061bc        0x8 ..\obj\tim.o
  .ARM.exidx.text.TIM2_IRQHandler
-                0x080061b0        0x0 ..\obj\tim.o
+                0x080061c4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text.TIM3_IRQHandler
-                0x080061b0        0x0 ..\obj\tim.o
+                0x080061c4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text.TIM4_IRQHandler
-                0x080061b0        0x8 ..\obj\tim.o
+                0x080061c4        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z5setupv
-                0x080061b8        0x8 ..\obj\main.o
+                0x080061cc        0x8 ..\obj\main.o
  .ARM.exidx.text.USB_LP_CAN1_RX0_IRQHandler
-                0x080061c0        0x8 ..\obj\main.o
+                0x080061d4        0x8 ..\obj\main.o
  .ARM.exidx.text._Z4beepmf
-                0x080061c8        0x8 ..\obj\main.o
+                0x080061dc        0x8 ..\obj\main.o
  .ARM.exidx.text.main
-                0x080061d0        0x8 ..\obj\main.o
+                0x080061e4        0x8 ..\obj\main.o
  .ARM.exidx.text.NVIC_SetPriority
-                0x080061d8        0x8 ..\obj\system.o
+                0x080061ec        0x8 ..\obj\system.o
  .ARM.exidx.text.SysTick_Config
-                0x080061e0        0x0 ..\obj\system.o
+                0x080061f4        0x0 ..\obj\system.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z11systemSetupv
-                0x080061e0        0x0 ..\obj\system.o
+                0x080061f4        0x0 ..\obj\system.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z5delaym
-                0x080061e0        0x0 ..\obj\system.o
+                0x080061f4        0x0 ..\obj\system.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z6microsv
-                0x080061e0        0x0 ..\obj\system.o
+                0x080061f4        0x0 ..\obj\system.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z6millisv
-                0x080061e0        0x0 ..\obj\system.o
+                0x080061f4        0x0 ..\obj\system.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text.SysTick_Handler
-                0x080061e0        0x0 ..\obj\system.o
+                0x080061f4        0x0 ..\obj\system.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN4GPIO5setupEP12GPIO_TypeDeft16GPIOMode_TypeDef
-                0x080061e0        0x8 ..\obj\gpio.o
+                0x080061f4        0x8 ..\obj\gpio.o
  .ARM.exidx.text._ZN4GPIO5writeEt
-                0x080061e8        0x8 ..\obj\gpio.o
+                0x080061fc        0x8 ..\obj\gpio.o
  .ARM.exidx.text._ZN4GPIO6toggleEv
-                0x080061f0        0x8 ..\obj\gpio.o
+                0x08006204        0x8 ..\obj\gpio.o
  .ARM.exidx.text._Z9pinToggleP12GPIO_TypeDeft
-                0x080061f8       0x10 ..\obj\gpio.o
+                0x0800620c       0x10 ..\obj\gpio.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3ADC5setupEP11ADC_TypeDefhP12GPIO_TypeDeft
-                0x08006208        0x8 ..\obj\adc.o
+                0x0800621c        0x8 ..\obj\adc.o
  .ARM.exidx.text._ZN3ADC4readEv
-                0x08006210        0x8 ..\obj\adc.o
+                0x08006224        0x8 ..\obj\adc.o
  .ARM.exidx.text._ZN3ADC7ioSetupEP12GPIO_TypeDeft
-                0x08006218        0x8 ..\obj\adc.o
+                0x0800622c        0x8 ..\obj\adc.o
  .ARM.exidx.text._Z9ADC1Setuph
-                0x08006220        0x8 ..\obj\adc.o
+                0x08006234        0x8 ..\obj\adc.o
  .ARM.exidx.text._Z9ADC2Setuph
-                0x08006228        0x8 ..\obj\adc.o
+                0x0800623c        0x8 ..\obj\adc.o
  .ARM.exidx.text._Z8ADC1Readh
-                0x08006230        0x8 ..\obj\adc.o
+                0x08006244        0x8 ..\obj\adc.o
  .ARM.exidx.text._Z8ADC2Readh
-                0x08006238       0x10 ..\obj\adc.o
+                0x0800624c       0x10 ..\obj\adc.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN5USART4putsEPKc
-                0x08006248        0x8 ..\obj\usart.o
+                0x0800625c        0x8 ..\obj\usart.o
  .ARM.exidx.text._ZN5USART6printfEPKcz
-                0x08006250        0x8 ..\obj\usart.o
+                0x08006264        0x8 ..\obj\usart.o
  .ARM.exidx.text._ZN5USART5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x08006258        0x8 ..\obj\usart.o
+                0x0800626c        0x8 ..\obj\usart.o
  .ARM.exidx.text._ZN5USART4sendEc
-                0x08006260        0x8 ..\obj\usart.o
+                0x08006274        0x8 ..\obj\usart.o
  .ARM.exidx.text._ZN5USART7ioSetupEP12GPIO_TypeDeftS1_t
-                0x08006268        0x8 ..\obj\usart.o
+                0x0800627c        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z11USART1Setupm
-                0x08006270        0x8 ..\obj\usart.o
+                0x08006284        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z11USART2Setupm
-                0x08006278        0x8 ..\obj\usart.o
+                0x0800628c        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z11USART3Setupm
-                0x08006280        0x8 ..\obj\usart.o
+                0x08006294        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z13USART1ITSetupt
-                0x08006288        0x8 ..\obj\usart.o
+                0x0800629c        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z13USART2ITSetupt
-                0x08006290        0x8 ..\obj\usart.o
+                0x080062a4        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z13USART3ITSetupt
-                0x08006298        0x8 ..\obj\usart.o
+                0x080062ac        0x8 ..\obj\usart.o
  .ARM.exidx.text.USART1_IRQHandler
-                0x080062a0        0x8 ..\obj\usart.o
+                0x080062b4        0x8 ..\obj\usart.o
  .ARM.exidx.text.USART2_IRQHandler
-                0x080062a8        0x8 ..\obj\usart.o
+                0x080062bc        0x8 ..\obj\usart.o
  .ARM.exidx.text.USART3_IRQHandler
-                0x080062b0       0x10 ..\obj\usart.o
+                0x080062c4       0x10 ..\obj\usart.o
                                   0x8 (size before relaxing)
- .ARM.exidx     0x080062c0        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x080062d4        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
                                   0x8 (size before relaxing)
- .ARM.exidx     0x080062c0       0x78 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(unwind-arm.o)
+ .ARM.exidx     0x080062d4       0x78 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(unwind-arm.o)
                                  0xd8 (size before relaxing)
- .ARM.exidx     0x08006338       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
+ .ARM.exidx     0x0800634c       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
                                  0x48 (size before relaxing)
-                0x08006370                __exidx_end = .
-                0x08006370                __etext = .
-                0x08006370                _sidata = __etext
+                0x08006384                __exidx_end = .
+                0x08006384                __etext = .
+                0x08006384                _sidata = __etext
 
-.rel.dyn        0x08006370        0x0
- .rel.iplt      0x08006370        0x0 ..\obj\semihosting.o
+.rel.dyn        0x08006384        0x0
+ .rel.iplt      0x08006384        0x0 ..\obj\semihosting.o
 
-.data           0x20000000       0x30 load address 0x08006370
+.data           0x20000000       0x30 load address 0x08006384
                 0x20000000                __data_start__ = .
                 0x20000000                _sdata = __data_start__
  *(vtable)
@@ -3185,10 +3185,10 @@ Linker script and memory map
                 0x20000030                __data_end__ = .
                 0x20000030                _edata = __data_end__
 
-.igot.plt       0x20000030        0x0 load address 0x080063a0
+.igot.plt       0x20000030        0x0 load address 0x080063b4
  .igot.plt      0x20000030        0x0 ..\obj\semihosting.o
 
-.bss            0x20000030      0x370 load address 0x080063a0
+.bss            0x20000030      0x370 load address 0x080063b8
                 0x20000030                . = ALIGN (0x4)
                 0x20000030                __bss_start__ = .
                 0x20000030                _sbss = __bss_start__
@@ -3253,7 +3253,7 @@ Linker script and memory map
  *(.heap*)
                 0x200003a0                __HeapLimit = .
 
-.co_stack       0x200003a0      0x400 load address 0x08006710
+.co_stack       0x200003a0      0x400 load address 0x08006728
                 0x200003a0                . = ALIGN (0x8)
  *(.co_stack .co_stack.*)
  .co_stack      0x200003a0      0x400 ..\obj\startup_stm32f10x_md.o
@@ -3410,25 +3410,25 @@ OUTPUT(F103_mini.elf elf32-littlearm)
  .debug_ranges  0x00000a90       0xc0 ..\obj\stm32f10x_spi.o
  .debug_ranges  0x00000b50       0x90 ..\obj\usart.o
 
-.debug_line     0x00000000     0x4b53
+.debug_line     0x00000000     0x4b4d
  .debug_line    0x00000000      0x2a8 ..\obj\spi.o
  .debug_line    0x000002a8      0xb9c ..\obj\stm32f10x_tim.o
  .debug_line    0x00000e44      0x248 ..\obj\system_stm32f10x.o
  .debug_line    0x0000108c      0x803 ..\obj\tim.o
  .debug_line    0x0000188f       0xb4 ..\obj\startup_stm32f10x_md.o
  .debug_line    0x00001943      0x41c ..\obj\stm32f10x_gpio.o
- .debug_line    0x00001d5f      0x437 ..\obj\main.o
- .debug_line    0x00002196      0x284 ..\obj\system.o
- .debug_line    0x0000241a      0x385 ..\obj\printf.o
- .debug_line    0x0000279f      0x517 ..\obj\stm32f10x_rcc.o
- .debug_line    0x00002cb6      0x323 ..\obj\gpio.o
- .debug_line    0x00002fd9      0x586 ..\obj\stm32f10x_adc.o
- .debug_line    0x0000355f      0x4fe ..\obj\stm32f10x_usart.o
- .debug_line    0x00003a5d       0x8e ..\obj\sh_cmd.o
- .debug_line    0x00003aeb      0x3af ..\obj\adc.o
- .debug_line    0x00003e9a      0x28f ..\obj\misc.o
- .debug_line    0x00004129      0x479 ..\obj\stm32f10x_spi.o
- .debug_line    0x000045a2      0x5b1 ..\obj\usart.o
+ .debug_line    0x00001d5f      0x431 ..\obj\main.o
+ .debug_line    0x00002190      0x284 ..\obj\system.o
+ .debug_line    0x00002414      0x385 ..\obj\printf.o
+ .debug_line    0x00002799      0x517 ..\obj\stm32f10x_rcc.o
+ .debug_line    0x00002cb0      0x323 ..\obj\gpio.o
+ .debug_line    0x00002fd3      0x586 ..\obj\stm32f10x_adc.o
+ .debug_line    0x00003559      0x4fe ..\obj\stm32f10x_usart.o
+ .debug_line    0x00003a57       0x8e ..\obj\sh_cmd.o
+ .debug_line    0x00003ae5      0x3af ..\obj\adc.o
+ .debug_line    0x00003e94      0x28f ..\obj\misc.o
+ .debug_line    0x00004123      0x479 ..\obj\stm32f10x_spi.o
+ .debug_line    0x0000459c      0x5b1 ..\obj\usart.o
 
 .debug_str      0x00000000     0x4425
  .debug_str     0x00000000      0x685 ..\obj\spi.o

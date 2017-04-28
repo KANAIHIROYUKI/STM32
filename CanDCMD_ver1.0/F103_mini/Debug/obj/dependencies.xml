@@ -115,7 +115,7 @@
          <include file="..\..\..\user\user_lib\inc\usart.h"/>
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
-      <source file="..\..\..\user\user_app\board\inc\can_dcmd.h" lastModified="15baccb9861">
+      <source file="..\..\..\user\user_app\board\inc\can_dcmd.h" lastModified="15bae80e090">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_app\inc\app.h"/>
       </source>
@@ -210,6 +210,9 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_usart.h" lastModified="1577ee62a3b">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\board\src\can_dcmd.cpp" lastModified="15bace2b241">
+         <include file="..\..\..\user\user_app\board\inc\can_dcmd.h"/>
       </source>
       <source file="..\..\..\user\user_app\canNode\src\canNodeSwitch.cpp" lastModified="15ba92488ca">
          <include file="..\..\..\user\user_app\canNode\inc\canNodeSwitch.h"/>
@@ -338,10 +341,10 @@
       <source file="..\..\..\user\user_lib\src\gpio.cpp" lastModified="15b04bee4c5">
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\dma.h" lastModified="1599bb6b228">
+      <source file="..\..\..\user\user_lib\inc\spi.h" lastModified="1599bb6b255">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\spi.h" lastModified="1599bb6b255">
+      <source file="..\..\..\user\user_lib\inc\dma.h" lastModified="1599bb6b228">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_can.c" lastModified="1577ee64a04">
@@ -364,12 +367,12 @@
          <include file="..\..\..\cmsis_boot\system_stm32f10x.h"/>
          <include file="..\..\..\cmsis_boot\stm32f10x_conf.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15baca7cbbb">
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1">
          <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15baca7cbbb">
+         <include file="..\..\..\user\user_app\inc\motor.h"/>
       </source>
       <source file="..\..\..\user\user_lib\src\tim.cpp" lastModified="15b9d95f778">
          <include file="..\..\..\user\user_lib\inc\tim.h"/>
