@@ -8,7 +8,7 @@
 
 #define CAN_ADDRESS (uint16_t)(15 - (sel[0].read()*8 + sel[1].read() + sel[2].read()*4 + sel[3].read()*2))
 #define IntervalTime 50
-#define PWM_PERIOD 2000
+#define PWM_PERIOD 4000
 
 System sys;
 
@@ -101,7 +101,7 @@ void setup(){
 	}else if(sw[1].gpioRead() == 0){
 		debugMode = 2;
 	}
-	debugMode = 1;							//デバッグモード入れる
+	debugMode = 1;							//デバッグモード:モーター
 
 	if(debugMode)can1.debug();
 
@@ -117,19 +117,21 @@ void setup(){
 	canVol.setup(isoIn,2,can1,CAN_ADDRESS*2);
 	canVoltage.setup(can1,CAN_ADDRESS*2,10);	//とりあえずMDのほうと合わせておく
 
-	if(debugMode){
-		canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
-		canEncoder[1].setup(can1,(CAN_ADDRESS * 2) + 1,10);
+	canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
+	canEncoder[1].setup(can1,(CAN_ADDRESS * 2) + 1,10);
 
-		canMotor[0].setup(can1,(CAN_ADDRESS * 2));
-		canMotor[1].setup(can1,(CAN_ADDRESS * 2) + 1);
+	canMotor[0].setup(can1,(CAN_ADDRESS * 2));
+	canMotor[1].setup(can1,(CAN_ADDRESS * 2) + 1);
 
-		canSwitch.setup(can1,CAN_ADDRESS,100);
+	canSwitch.setup(can1,CAN_ADDRESS*2,100);
+
+	/*if(debugMode){
+
 
 	}else{
 		canMD[0].ledAssign(led[0]);
 		canMD[1].ledAssign(led[1]);
-	}
+	}*/
 
 
 	while(sw[0].gpioRead() == 0 || sw[1].gpioRead() == 0);

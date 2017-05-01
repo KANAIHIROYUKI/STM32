@@ -53,6 +53,9 @@
       <source file="..\..\..\user\user_lib\inc\base.h" lastModified="15a2188825e">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
+      <source file="..\..\..\main.cpp" lastModified="15bc267c665">
+         <include file="..\..\..\main.h"/>
+      </source>
       <source file="..\..\..\user\user_lib\src\iwdg.cpp" lastModified="1599bb749f4">
          <include file="..\..\..\user\user_lib\inc\iwdg.h"/>
       </source>
@@ -247,6 +250,11 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_can.h" lastModified="1577ee64a04">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\main.h" lastModified="15bc27661e2">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
+         <include file="..\..\..\user\user_app\inc\app.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="1577ee5e090">
          <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>

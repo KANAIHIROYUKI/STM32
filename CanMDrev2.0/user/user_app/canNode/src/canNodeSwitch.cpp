@@ -10,6 +10,8 @@ void CanNodeSwitch::setup(Switch &sw_,CAN &can_,uint16_t canNumber){
 	switchNumber = 1;
 	System::cycleFunctionNumber++;
 
+	interruptCnt = 0;
+
 	cycle();
 }
 
@@ -29,6 +31,7 @@ void CanNodeSwitch::cycle(){
 	if(canData[0] != 0 && intervalTime != 0){
 		can->send(canAddress + 0x40,2,canData);
 		lastSendTime = millis();
+		interruptCnt++;
 	}
 
 	if(millis() - lastSendTime > intervalTime && intervalTime != 0){

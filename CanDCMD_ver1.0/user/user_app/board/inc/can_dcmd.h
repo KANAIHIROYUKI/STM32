@@ -8,10 +8,12 @@
 #define AdcToCurrentGain (float)((3.3*50)/1023)
 #define AdcToVoltageGain (float)((3.3*11)/1023)
 
-#define SetupLimitCurrent (float)(10.0)
-#define SetupLimitVoltage (float)(20.0)
+#define SetupDelayTime 100
 
-#define CycleLimitVoltage (float)(20.0)
+#define SetupLimitCurrent (float)(10.0)
+#define SetupLimitVoltage (float)(1.0)
+
+#define CycleLimitVoltage (float)(1.0)
 #define CycleLimitCurrent (float)(100.0)	//¨overCurrentLimit[]
 
 #define ChannelCurrent0 0

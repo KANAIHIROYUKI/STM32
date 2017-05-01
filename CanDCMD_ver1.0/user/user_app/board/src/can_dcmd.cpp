@@ -38,29 +38,40 @@ void CanDCMD::cycleFunction(){
 	switch(driveStat){
 	case DS_NoPower:
 		if(adc->setupStat){
+			motor[0]->canMd_motor->outEnable = 0;
+			motor[1]->canMd_motor->outEnable = 0;	//モーター出力無効
+
+			motor[0]->ledOverRide(1);
+			motor[1]->ledOverRide(1);				//起動処理中はled処理を一時的に奪う
+
+			motor[0]->canMd_motor->pwm1->duty(0);
+			motor[0]->canMd_motor->pwm2->duty(0);
+			motor[0]->canMd_motor->pwmEn->dutyF(1.0);
+
+			motor[1]->canMd_motor->pwm1->duty(0);
+			motor[1]->canMd_motor->pwm2->duty(0);
+			motor[1]->canMd_motor->pwmEn->dutyF(1.0);
+
 			driveStat = DS_PowerIn;
+			driveStatTimer = millis();
 			onetimeTrigger = 1;
 		}
 
 		break;
 
 	case DS_PowerIn:
-		motor[0]->canMd_motor->outEnable = 0;
-		motor[1]->canMd_motor->outEnable = 0;	//モーター出力無効
 
-		motor[0]->ledOverRide(1);
-		motor[1]->ledOverRide(1);				//起動処理中はled処理を一時的に奪う
+		if(adc->readStat[ChannelVoltage] && adc->read(ChannelVoltage) <= voltageValue){	//電源電圧の上昇が止まったら次の状態へ
+			driveStatTimer = millis();
+			driveStat = DS_LowOn;
+		}else{
+			voltageValue = adc->read(ChannelVoltage);
+		}
 
-		driveStatTimer = millis();
-		driveStat = DS_LowOn;
-
-		motor[0]->canMd_motor->pwm1->duty(0);
-		motor[0]->canMd_motor->pwm2->duty(0);
-		motor[0]->canMd_motor->pwmEn->dutyF(1.0);
-
-		motor[1]->canMd_motor->pwm1->duty(0);
-		motor[1]->canMd_motor->pwm2->duty(0);
-		motor[1]->canMd_motor->pwmEn->dutyF(1.0);
+		if(millis() - driveStatTimer > SetupDerayTime){									//一定時間経った場合でも次の状態へ
+			driveStatTimer = millis();
+			driveStat = DS_LowOn;
+		}
 
 		break;
 
@@ -165,6 +176,7 @@ uint16_t CanDCMD::adcCycleOnetime(){
 
 uint16_t CanDCMD::errorTask(uint16_t errorValue){
 	if(errorValue){
+
 		motor[0]->canMd_motor->pwmEn->dutyF(0);
 		motor[1]->canMd_motor->pwmEn->dutyF(0);
 

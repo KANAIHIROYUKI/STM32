@@ -4,7 +4,8 @@ int main(void)
 {
 	setup();
 
-	serial.printf("pinnum = 0x%x\n\r",canSw.switchNumber);
+	//serial.printf("pinnum = 0x%x\n\r",canSw.switchNumber);
+	serial.printf("canAddress\n\r sw = 0x%x,enc0 = 0x%x,enc1 = 0x%x,md0 = 0x%x,md1 = 0x%x\n\r",canSw.canAddress,canEnc[0].canEnc_address,canEnc[1].canEnc_address,canMD[0].canMd_address[0],canMD[1].canMd_address[0]);
 
 	sys.wdgSetup(50);	//50ms
 
@@ -40,16 +41,18 @@ int main(void)
 
     		switch(debugMode){
     		case 0:
+
+    			//serial.printf("%d,%d,%d,0x%x,0x%x\n\r",(uint32_t)canEnc[0].canEnc_interval,(uint32_t)canSw.intervalTime,canSw.interruptCnt,canSw.canData[0],canSw.canData[1]);
     			serial.printf("%6d,%4d,%6d,%4d\n\r",(uint32_t)canMD[0].lastReceiveTime,canMD[0].outDuty,(uint32_t)canMD[1].lastReceiveTime,canMD[1].outDuty);
 
     			break;
     		case 1:
     			if(swPin[0].read() == 0){
-    				canMotor[1].duty(0.2);
-    				canMotor[0].duty(0.2);
+    				canMotor[1].duty(0.1);
+    				canMotor[0].duty(0.1);
     			}else if(swPin[1].read() == 0){
-    				canMotor[1].duty(-0.2);
-    				canMotor[0].duty(-0.2);
+    				canMotor[1].duty(-0.1);
+    				canMotor[0].duty(-0.1);
     			}else{
     				canMotor[0].free();
     				canMotor[1].free();
@@ -69,6 +72,12 @@ int main(void)
 
     			break;
     		}
+
+
+    	}
+    	if(canRxFlag && debugMode == 0){
+    		canRxFlag = 0;
+    		serial.printf("0x%x,%d,%d,\n\r",can1.rxMessage.StdId,can1.rxMessage.Data[0],can1.rxMessage.Data[1]);
     	}
 
     }

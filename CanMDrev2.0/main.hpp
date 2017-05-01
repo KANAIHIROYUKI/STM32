@@ -28,7 +28,7 @@ CanEncoder canEncoder[2];
 CanSwitch canSwitch;
 
 
-uint8_t motorDebug[2] = {0,0},canRTR=0,canData[8],debugMode,printNum;
+uint8_t motorDebug[2] = {0,0},canRTR=0,canData[8],debugMode,printNum,canRxFlag;
 uint64_t intervalTimer = 0;
 
 void setup(){
@@ -86,8 +86,8 @@ void setup(){
 	canMD[0].setup(motor[0],can1,(CAN_ADDRESS * 2));
 	canMD[1].setup(motor[1],can1,(CAN_ADDRESS * 2) + 1);
 
-	canEnc[0].setup(enc[0],can1,(CAN_ADDRESS * 2));
-	canEnc[1].setup(enc[1],can1,(CAN_ADDRESS * 2) + 1);
+	canEnc[0].setup(enc[0],can1,(CAN_ADDRESS * 2) + 0x10);
+	canEnc[1].setup(enc[1],can1,(CAN_ADDRESS * 2) + 0x10 + 1);
 
 	canSw.setup(limit[0],can1,(CAN_ADDRESS * 2));
 	canSw.pinAdd(limit[1]);
@@ -95,13 +95,13 @@ void setup(){
 	canSw.pinAdd(limit[3]);
 
 	if(debugMode){
-		canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
-		canEncoder[1].setup(can1,(CAN_ADDRESS * 2) + 1,10);
+		canEncoder[0].setup(can1,(CAN_ADDRESS * 2) + 0x10,10);
+		canEncoder[1].setup(can1,(CAN_ADDRESS * 2) + 0x10 + 1,10);
 
 		canMotor[0].setup(can1,(CAN_ADDRESS * 2));
 		canMotor[1].setup(can1,(CAN_ADDRESS * 2) + 1);
 
-		canSwitch.setup(can1,CAN_ADDRESS,100);
+		canSwitch.setup(can1,CAN_ADDRESS * 2,1000);
 	}else{
 		canMD[0].ledAssign(led[0]);
 		canMD[1].ledAssign(led[1]);
@@ -125,6 +125,8 @@ void setup(){
 	}else{
 		serial.printf("mode : run\n\r");
 	}
+
+	canRxFlag = 0;
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
@@ -143,6 +145,9 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 
 		canSwitch.interrupt();
 	}
+
+	canRxFlag = 1;
+
 	return;
 }
 

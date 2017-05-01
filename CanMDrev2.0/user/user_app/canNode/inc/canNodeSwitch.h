@@ -13,7 +13,7 @@ public:
 	void interrupt();
 
 	uint8_t canData[4];
-	uint16_t canAddress;
+	uint16_t canAddress,interruptCnt;
 	uint16_t setuped;
 	uint32_t intervalTime;
 	uint64_t lastSendTime;

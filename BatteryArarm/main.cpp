@@ -7,32 +7,29 @@ int main(void)
 	uint64_t setTime = millis();
 	buzzerStat = 0;
 
-	voltage[0] = batt[0].read()*CELL0_VOLTAGE_GAIN;
-	voltage[1] = batt[1].read()*CELL1_VOLTAGE_GAIN - voltage[0];
-	voltage[2] = batt[2].read()*CELL2_VOLTAGE_GAIN - voltage[1];
-	voltage[3] = batt[3].read()*CELL3_VOLTAGE_GAIN - voltage[2];
-	voltage[4] = batt[4].read()*CELL4_VOLTAGE_GAIN - voltage[3];
-	voltage[5] = batt[5].read()*CELL5_VOLTAGE_GAIN - voltage[4];
-
 	for(int i=0;i<6;i++){
 		if(voltage[i] > 3000)cellNum = i;		//セル数検出
 	}
-	serial.printf("%cell number = d\n\r",cellNum);
+	serial.printf("cell number = %d\n\r",cellNum);
 
-	for(int i=0;i<cellNum;i++){
-		beep(2000,0.5);
-		delay(100);
-	}
+	beep(4000,0.5);
+	delay(1000);
 
 	while(1){
 		//delay(10);
 
-		voltage[0] = batt[0].read()*CELL0_VOLTAGE_GAIN;
-		voltage[1] = batt[1].read()*CELL1_VOLTAGE_GAIN - voltage[0];
-		voltage[2] = batt[2].read()*CELL2_VOLTAGE_GAIN - voltage[1];
-		voltage[3] = batt[3].read()*CELL3_VOLTAGE_GAIN - voltage[2];
-		voltage[4] = batt[4].read()*CELL4_VOLTAGE_GAIN - voltage[3];
-		voltage[5] = batt[5].read()*CELL5_VOLTAGE_GAIN - voltage[4];
+		voltage[0] = (batt[0].read()*CELL0_VOLTAGE_GAIN);
+		voltage[1] = (batt[1].read()*CELL1_VOLTAGE_GAIN);
+		voltage[2] = (batt[2].read()*CELL2_VOLTAGE_GAIN);
+		voltage[3] = (batt[3].read()*CELL3_VOLTAGE_GAIN);
+		voltage[4] = (batt[4].read()*CELL4_VOLTAGE_GAIN);
+		voltage[5] = (batt[5].read()*CELL5_VOLTAGE_GAIN);
+
+		voltage[5] -= voltage[4];
+		voltage[4] -= voltage[3];
+		voltage[3] -= voltage[2];
+		voltage[2] -= voltage[1];
+		voltage[1] -= voltage[0];
 
 		vcnt++;
 		for(int i=0;i<6;i++){
@@ -47,10 +44,10 @@ int main(void)
 
 			intervalTime += IntervalTime;
 
-			hc04.printf("\n\r");
+			serial.printf("\n\r");
 			for(int i=0;i<6;i++){
 				vave[i] = vave[i]/vcnt;
-				hc04.printf("%6d,",voltage[i]);
+				serial.printf("%6d,",(uint32_t)voltage[i]);
 			}
 
 			//すべてのセルの最大電圧と最低電圧を出す
@@ -66,7 +63,7 @@ int main(void)
 
 
 
-			serial.printf("max = %6d,stat = %d\n\r",(uint32_t)vmax[0],buzzerStat);
+			//serial.printf("max = %6d,stat = %d\n\r",(uint32_t)vmax[0],buzzerStat);
 
 
 			vcnt = 0;
@@ -83,11 +80,11 @@ int main(void)
 
 			switch(buzzerStat){
 			case 0:
-				beep(2000,0);
+				beep(8000,0);
 				buzzerStatCnt = 0;
 				break;
 			case 1:
-				if(buzzerStatCnt == 0)beep(2000,0.5);
+				if(buzzerStatCnt == 0)beep(4000,0.5);
 				buzzerStatCnt++;
 				if(buzzerStatCnt > 50){
 					buzzerStatCnt = 0;
@@ -96,43 +93,44 @@ int main(void)
 				}
 				break;
 			case 2:
-				if(buzzerStatCnt == 0)beep(2000,0.5);
+				if(buzzerStatCnt == 0)beep(4000,0.5);
 				buzzerStatCnt++;
 				if(buzzerStatCnt > 13){
 					buzzerStatCnt = 0;
 				}else if(buzzerStatCnt > 10){
-					beep(2000,0);
+					beep(8000,0);
 				}
 				break;
 			case 3:
-				if(buzzerStatCnt == 0)beep(2000,0.5);
+				if(buzzerStatCnt == 0)beep(4000,0.5);
 				buzzerStatCnt++;
 				if(buzzerStatCnt > 20){
 					buzzerStatCnt = 0;
 				}else if(buzzerStatCnt > 2){
-					beep(2000,0);
+					beep(8000,0);
 				}
 				break;
 			case 4:
-				if(buzzerStatCnt == 0)beep(2000,0.5);
+				if(buzzerStatCnt == 0)beep(4000,0.5);
 				buzzerStatCnt++;
 				if(buzzerStatCnt > 100){
 					buzzerStatCnt = 0;
 				}else if(buzzerStatCnt > 2){
-					beep(2000,0);
+					beep(8000,0);
 				}
 				break;
 			case 5:
-				if(buzzerStatCnt == 0)beep(2000,0.5);
+				if(buzzerStatCnt == 0)beep(4000,0.5);
 				buzzerStatCnt++;
 				if(buzzerStatCnt > 100){
 					buzzerStatCnt = 0;
 				}else if(buzzerStatCnt > 2){
-					beep(2000,0);
+					beep(8000,0);
 				}
 				break;
 			default:
-				beep(2000,0);
+				beep(8000,0);
+				buzzerStat = 0;
 				buzzerStatCnt = 0;
 				break;
 			}
