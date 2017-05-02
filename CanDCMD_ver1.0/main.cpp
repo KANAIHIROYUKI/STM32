@@ -42,6 +42,7 @@ int main(void)
     		////serial.printf("%d,%d,%d,%d,%d\n\r",(uint32_t)driver.vbattRead(),(uint32_t)driver.currentRread(0),(uint32_t)driver.currentRread(1),driver.currentValue[0],driver.currentValue[1]);
     		serial.printf("vval=%d,stat=%d,error=0x%x,en=%d,v0=%d,v1=%d,v2=%d\n\r",canVoltage.read(),driver.driveStat,driver.driveError,(uint32_t)driver.motor[0]->canMd_motor->outEnable,(uint32_t)driver.errorAdcValue[0],(uint32_t)driver.errorAdcValue[1],(uint32_t)driver.errorAdcValue[2]);
     		//serial.printf("%d,%d,%d,%d,%d\n\r",driver.driveStat,canMotor[0].outDuty16,canMotor[1].outDuty16,canMD[0].outDuty,canMD[1].outDuty);
+
     		if(sw[0].read() == 0){
     			canMotor[0].duty(-0.5);
     			canMotor[1].duty(-0.5);

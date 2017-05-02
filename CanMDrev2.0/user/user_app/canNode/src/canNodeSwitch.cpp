@@ -21,22 +21,30 @@ void CanNodeSwitch::pinAdd(Switch &sw){
 }
 
 void CanNodeSwitch::cycle(){
+
 	canData[0] = 0;
 	canData[1] = 0;
 	for(int i=0;i<switchNumber;i++){
 		canData[0] |= sw[i]->readStat << i;
 		canData[1] |= sw[i]->read() << i;
+		gpioRead = canData[1];
 	}
 
 	if(canData[0] != 0 && intervalTime != 0){
 		can->send(canAddress + 0x40,2,canData);
 		lastSendTime = millis();
 		interruptCnt++;
+
+		sendStat = canData[0];
+		pinStat  = canData[1];
 	}
 
-	if(millis() - lastSendTime > intervalTime && intervalTime != 0){
+	if((millis() - lastSendTime > intervalTime) && intervalTime != 0){
 		can->send(canAddress + 0x40,2,canData);
 		lastSendTime = millis();
+
+		sendStat = canData[0];
+		pinStat  = canData[1];
 	}
 
 	System::cycleFunctionCnt--;

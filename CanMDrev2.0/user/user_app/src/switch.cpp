@@ -21,8 +21,10 @@ void Switch::cycle(){
 		if((millis() - changeTime) > toleranceTime){	//‘O‰ñ‚Ì•Ï‰»‚©‚çˆê’èŽžŠÔŒo‚Á‚Ä‚¢‚È‚¢‚ÆŽó‚¯•t‚¯‚È‚¢
 			readStat = 1;
 			pinStat = input;
+
+			changeTime = millis();
 		}
-		changeTime = millis();
+
 	}
 
 	System::cycleFunctionCnt--;

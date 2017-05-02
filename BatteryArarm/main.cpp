@@ -7,14 +7,6 @@ int main(void)
 	uint64_t setTime = millis();
 	buzzerStat = 0;
 
-	for(int i=0;i<6;i++){
-		if(voltage[i] > 3000)cellNum = i;		//セル数検出
-	}
-	serial.printf("cell number = %d\n\r",cellNum);
-
-	beep(4000,0.5);
-	delay(1000);
-
 	while(1){
 		//delay(10);
 
@@ -60,11 +52,6 @@ int main(void)
 
 			//セル電圧差の最大値を出す
 			cellWorst = cellMax - cellMin;
-
-
-
-			//serial.printf("max = %6d,stat = %d\n\r",(uint32_t)vmax[0],buzzerStat);
-
 
 			vcnt = 0;
 			for(int i=0;i<6;i++){

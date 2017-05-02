@@ -28,8 +28,9 @@ CanEncoder canEncoder[2];
 CanSwitch canSwitch;
 
 
-uint8_t motorDebug[2] = {0,0},canRTR=0,canData[8],debugMode,printNum,canRxFlag;
+uint8_t motorDebug[2] = {0,0},canRTR=0,canData[8],debugMode,printNum,canRxFlag,printStat;
 uint64_t intervalTimer = 0;
+
 
 void setup(){
 	sys.setup();

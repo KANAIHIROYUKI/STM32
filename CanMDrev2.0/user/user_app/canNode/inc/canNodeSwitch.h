@@ -12,9 +12,9 @@ public:
 	void cycle();
 	void interrupt();
 
-	uint8_t canData[4];
+	uint8_t canData[4],sendStat,pinStat,gpioRead;
 	uint16_t canAddress,interruptCnt;
-	uint16_t setuped;
+	uint16_t setuped,sendReserve;
 	uint32_t intervalTime;
 	uint64_t lastSendTime;
 	uint16_t switchNumber;

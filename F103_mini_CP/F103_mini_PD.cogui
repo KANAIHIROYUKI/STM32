@@ -26,7 +26,7 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini_CP/main.cpp" title="main.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini_CP/main.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini_PD/main.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="624" selectionTopPixel="108"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="128" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.h" partName="main.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini_CP/main.h" title="main.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini_CP/main.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini_PD/main.h"/>
@@ -47,7 +47,7 @@
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="32">
+<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="31">
 <expanded>
 <element path="/F103_mini_PD"/>
 <element path="/F103_mini_PD/cmsis_boot"/>
@@ -415,17 +415,44 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanDCMD_ver1.0.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\CanDCMD_ver1.0\CanDCMD_ver1.0.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.0/CanDCMD_ver1.0.coproj"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanMDrev2.0.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\CanMDrev2.0\CanMDrev2.0.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/CanMDrev2.0/CanMDrev2.0.coproj"/>
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_mini_CP.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\F103_mini_CP\F103_mini_CP.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/F103_mini_CP/F103_mini_CP.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can.cpp" tooltip="F103_mini/user_lib/src/can.cpp">
-<persistable path="/F103_mini/user_lib/src/can.cpp"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanDCMD_ver1.0.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\CanDCMD_ver1.0\CanDCMD_ver1.0.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.0/CanDCMD_ver1.0.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanNode_rev1.1withAMP_stable.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\CanNode_rev1.1withAMP_stable\CanNode_rev1.1withAMP_stable.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/CanNode_rev1.1withAMP_stable.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor.cpp" tooltip="F103_mini/user_app/src/motor.cpp">
+<persistable path="/F103_mini/user_app/src/motor.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor.h" tooltip="F103_mini/user_app/inc/motor.h">
+<persistable path="/F103_mini/user_app/inc/motor.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeMotorDriver.h" tooltip="F103_mini/user_app/canNode/inc/canNodeMotorDriver.h">
 <persistable path="/F103_mini/user_app/canNode/inc/canNodeMotorDriver.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can.hpp" tooltip="F103_mini/user_lib/inc/can.hpp">
+<persistable path="/F103_mini/user_lib/inc/can.hpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeMotorDriver.cpp" tooltip="F103_mini/user_app/canNode/src/canNodeMotorDriver.cpp">
+<persistable path="/F103_mini/user_app/canNode/src/canNodeMotorDriver.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canMotorDriver.cpp" tooltip="F103_mini/user_app/src/canMotorDriver.cpp">
+<persistable path="/F103_mini/user_app/src/canMotorDriver.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can.cpp" tooltip="F103_mini_PD/user_lib/src/can.cpp">
+<persistable path="/F103_mini_PD/user_lib/src/can.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanNode_rev1.1withAMP_stable.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\CanNode_rev1.1withAMP_stable\CanNode_rev1.1withAMP_stable.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/CanNode_rev1.1withAMP_stable.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor.cpp" tooltip="F103_mini/user_app/src/motor.cpp">
+<persistable path="/F103_mini/user_app/src/motor.cpp"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_can.h" tooltip="F103_mini/stm_lib/inc/stm32f10x_can.h">
 <persistable path="/F103_mini/stm_lib/inc/stm32f10x_can.h"/>

@@ -8,6 +8,13 @@
 #define IntervalTime 10
 #define BUZZER_FRQ 2000
 
+#define BoardNumber0
+//#define BoardNumber0
+//#define BoardNumber0
+//#define BoardNumber0
+
+
+#ifdef BoardNumber0
 #define CELL0_VOLTAGE_GAIN 4.59
 #define CELL1_VOLTAGE_GAIN 4.59
 #define CELL2_VOLTAGE_GAIN 4.59
@@ -15,6 +22,43 @@
 #define CELL3_VOLTAGE_GAIN 8.86
 #define CELL4_VOLTAGE_GAIN 8.86
 #define CELL5_VOLTAGE_GAIN 8.86
+#endif
+
+#ifdef BoardNumber1
+#define CELL0_VOLTAGE_GAIN 4.59
+#define CELL1_VOLTAGE_GAIN 4.59
+#define CELL2_VOLTAGE_GAIN 4.59
+
+#define CELL3_VOLTAGE_GAIN 8.86
+#define CELL4_VOLTAGE_GAIN 8.86
+#define CELL5_VOLTAGE_GAIN 8.86
+#endif
+
+#ifdef BoardNumber2
+#define CELL0_VOLTAGE_GAIN 4.59
+#define CELL1_VOLTAGE_GAIN 4.59
+#define CELL2_VOLTAGE_GAIN 4.59
+
+#define CELL3_VOLTAGE_GAIN 8.86
+#define CELL4_VOLTAGE_GAIN 8.86
+#define CELL5_VOLTAGE_GAIN 8.86
+#endif
+
+#ifdef BoardNumber3
+#define CELL0_VOLTAGE_GAIN 4.59
+#define CELL1_VOLTAGE_GAIN 4.59
+#define CELL2_VOLTAGE_GAIN 4.59
+
+#define CELL3_VOLTAGE_GAIN 8.86
+#define CELL4_VOLTAGE_GAIN 8.86
+#define CELL5_VOLTAGE_GAIN 8.86
+#endif
+
+enum {
+	Batt_Setup,
+	Batt_Norml,
+	Batt_Error,
+};
 
 uint64_t intervalTime = 0,voltage[6],vmin[6],vave[6],vmax[6],vcnt=0,cellNum;
 uint32_t frequency,buzzerPower,buzzerStat,buzzerStatCnt,cellMax,cellMin,cellWorst,beepInterval;
@@ -52,6 +96,20 @@ void setup(){
 
 	power.write(0);
 	buzzer.duty(0);
+
+	delay(100);
+
+	for(int i=0;i<6;i++){
+		if(voltage[i] > 3000)cellNum = i;		//ÉZÉãêîåüèo
+	}
+	serial.printf("cell number = %d\n\r",cellNum);
+
+	for(int i=0;i<cellNum;i++){
+		beep(4000,0.5);
+		delay(100);
+		beep(4000,0);
+		delay(10);
+	}
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
