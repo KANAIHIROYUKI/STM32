@@ -8,40 +8,39 @@
 #define IntervalTime 10
 #define BUZZER_FRQ 2000
 
-#define BoardNumber0
-//#define BoardNumber0
-//#define BoardNumber0
-//#define BoardNumber0
+#define BoardNumber2
 
 
 #ifdef BoardNumber0
-#define CELL0_VOLTAGE_GAIN 4.59
-#define CELL1_VOLTAGE_GAIN 4.59
-#define CELL2_VOLTAGE_GAIN 4.59
+#define CELL0_VOLTAGE_GAIN 4.4693
+#define CELL1_VOLTAGE_GAIN 4.5130
+#define CELL2_VOLTAGE_GAIN 4.5096
 
-#define CELL3_VOLTAGE_GAIN 8.86
-#define CELL4_VOLTAGE_GAIN 8.86
-#define CELL5_VOLTAGE_GAIN 8.86
+#define CELL3_VOLTAGE_GAIN 8.7082
+#define CELL4_VOLTAGE_GAIN 8.6445
+#define CELL5_VOLTAGE_GAIN 8.7272
 #endif
 
-#ifdef BoardNumber1
-#define CELL0_VOLTAGE_GAIN 4.59
-#define CELL1_VOLTAGE_GAIN 4.59
-#define CELL2_VOLTAGE_GAIN 4.59
 
-#define CELL3_VOLTAGE_GAIN 8.86
-#define CELL4_VOLTAGE_GAIN 8.86
-#define CELL5_VOLTAGE_GAIN 8.86
+
+#ifdef BoardNumber1
+#define CELL0_VOLTAGE_GAIN 4.5062
+#define CELL1_VOLTAGE_GAIN 4.6048
+#define CELL2_VOLTAGE_GAIN 4.5697
+
+#define CELL3_VOLTAGE_GAIN 8.6643
+#define CELL4_VOLTAGE_GAIN 8.7082
+#define CELL5_VOLTAGE_GAIN 8.7209
 #endif
 
 #ifdef BoardNumber2
-#define CELL0_VOLTAGE_GAIN 4.59
-#define CELL1_VOLTAGE_GAIN 4.59
-#define CELL2_VOLTAGE_GAIN 4.59
+#define CELL0_VOLTAGE_GAIN 4.5836
+#define CELL1_VOLTAGE_GAIN 4.6261
+#define CELL2_VOLTAGE_GAIN 4.6545
 
-#define CELL3_VOLTAGE_GAIN 8.86
-#define CELL4_VOLTAGE_GAIN 8.86
-#define CELL5_VOLTAGE_GAIN 8.86
+#define CELL3_VOLTAGE_GAIN 8.7463
+#define CELL4_VOLTAGE_GAIN 8.9888
+#define CELL5_VOLTAGE_GAIN 8.7977
 #endif
 
 #ifdef BoardNumber3
@@ -60,8 +59,9 @@ enum {
 	Batt_Error,
 };
 
-uint64_t intervalTime = 0,voltage[6],vmin[6],vave[6],vmax[6],vcnt=0,cellNum;
-uint32_t frequency,buzzerPower,buzzerStat,buzzerStatCnt,cellMax,cellMin,cellWorst,beepInterval;
+uint64_t ledInterval,intervalTime = 0,battv,voltage[6],vmin[6],vave[6],vmax[6],vcnt=0,cellNum;
+uint32_t frequency,buzzerPower,buzzerStatCnt,cellMax,cellMin,cellWorst,beepEnable;
+int32_t beepInterval;
 
 
 GPIO power;
@@ -99,17 +99,26 @@ void setup(){
 
 	delay(100);
 
+	voltage[0] = (batt[0].read()*CELL0_VOLTAGE_GAIN);
+	voltage[1] = (batt[1].read()*CELL1_VOLTAGE_GAIN);
+	voltage[2] = (batt[2].read()*CELL2_VOLTAGE_GAIN);
+	voltage[3] = (batt[3].read()*CELL3_VOLTAGE_GAIN);
+	voltage[4] = (batt[4].read()*CELL4_VOLTAGE_GAIN);
+	voltage[5] = (batt[5].read()*CELL5_VOLTAGE_GAIN);
+
 	for(int i=0;i<6;i++){
 		if(voltage[i] > 3000)cellNum = i;		//ÉZÉãêîåüèo
 	}
-	serial.printf("cell number = %d\n\r",cellNum);
+	serial.printf("cell number = %d\n\r",cellNum+1);
 
-	for(int i=0;i<cellNum;i++){
+	for(int i=0;i<(cellNum+1);i++){
 		beep(4000,0.5);
 		delay(100);
 		beep(4000,0);
 		delay(10);
 	}
+
+	ledInterval = millis();
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){

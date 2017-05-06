@@ -59,6 +59,50 @@ void TIM::pwmSetup(TIM_TypeDef* tim,uint16_t channel,GPIO_TypeDef* gpio,uint16_t
 	duty(0);
 }
 
+void TIM::pwmReset(uint16_t period,uint16_t prescaler,uint16_t mode){
+	pwm_period = period;
+	pwm_prescaler = prescaler;
+	pwm_mode = mode;
+	if(tim_tim == TIM1){
+		tim1_mode = TIM_PWM;
+		TIM1Setup(pwm_period,pwm_prescaler);
+
+	}else if(tim_tim == TIM2){
+		tim2_mode = TIM_PWM;
+		TIM2Setup(pwm_period,pwm_prescaler);
+
+	}else if(tim_tim == TIM3){
+		tim3_mode = TIM_PWM;
+		TIM3Setup(pwm_period,pwm_prescaler);
+
+	}else if(tim_tim == TIM4){
+		tim4_mode = TIM_PWM;
+		TIM4Setup(pwm_period,pwm_prescaler);
+
+	}else{
+		return;
+	}
+
+	switch(pwm_channel){
+		case 1:
+			OC1PWMSetup(tim_tim,pwm_mode);
+			break;
+		case 2:
+			OC2PWMSetup(tim_tim,pwm_mode);
+			break;
+		case 3:
+			OC3PWMSetup(tim_tim,pwm_mode);
+			break;
+		case 4:
+			OC4PWMSetup(tim_tim,pwm_mode);
+			break;
+		default:
+			return;
+	}
+
+	duty(0);
+}
+
 uint16_t TIM::duty(uint16_t duty){
 	if(tim_tim == TIM1){
 		if(tim1_mode != TIM_PWM)return 1;

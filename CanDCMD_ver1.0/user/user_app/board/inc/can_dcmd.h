@@ -31,6 +31,8 @@ enum DE_DriverError{
 	DE_BreakFEToutB2Low		= 0x040,
 	DE_OCoutA				= 0x080,
 	DE_OCoutB				= 0x100,
+	DE_ADCLost				= 0x200,
+	DE_Unknown				= 0x400,
 };
 
 enum DS_DriveStat{
@@ -39,6 +41,7 @@ enum DS_DriveStat{
 	DS_LowOn,
 	DS_HighOn1,
 	DS_HighOn2,
+	DS_MotorBuzzer,
 	DS_Drive,
 	DS_Error,
 };
@@ -49,7 +52,7 @@ class CanDCMD{
 public:
 	void canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1);
 	void adcSetup(SI8900 &isoSet);
-	void emgSetuo(CanNodeEmg &emgSet);
+	void emgSetup(CanNodeEmg &emgSet);
 
 	void cycle();
 	uint16_t errorTask(uint16_t errorValue);
@@ -66,9 +69,7 @@ public:
 	uint16_t driveStat;
 	uint64_t driveStatTimer,driveLedTimer;
 
-	uint16_t driveError,onetimeTrigger,adcCycleTrigger;
-
-	uint16_t errorAdcValue[3];
+	uint16_t driveError,onetimeTrigger,adcCycleTrigger,driveErrorStat;
 
 	float overCurrentLimit[2];
 

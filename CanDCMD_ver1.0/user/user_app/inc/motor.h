@@ -9,6 +9,10 @@
 #define MOTOR_ASSIGNE_PWM 1
 #define MOTOR_ASSIGNE_GPIO 2
 
+#define MOTOR_ENABLE_DISABLE 0
+#define MOTOR_ENABLE_ENABLE  1
+#define MOTOR_ENABLE_BUZZER  2
+
 class Motor{
 public:
 
@@ -23,8 +27,14 @@ public:
 
 	void reset();
 
+	void buzzerStart(uint16_t frequency,float duty);
+	void buzzerStop();
+
 	int32_t outDuty;
 	uint16_t assigneStat,outEnable;
+
+	uint16_t pwm_period,pwm_prescaler,pwm_mode;
+	uint16_t en_period,en_prescaler,en_mode;
 
 	TIM *pwm1;
 	TIM *pwm2;

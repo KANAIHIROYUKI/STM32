@@ -25,6 +25,7 @@ public:
 	static int32_t tim4Cnt;
 
 	void pwmSetup(TIM_TypeDef* tim,uint16_t channel,GPIO_TypeDef* gpio,uint16_t pin,uint16_t period = PWM_PERIOD_DEFALUT,uint16_t prescaler = 0,uint16_t mode = TIM_OCMode_DEFAULT);
+	void pwmReset(uint16_t period = PWM_PERIOD_DEFALUT,uint16_t prescaler = 0,uint16_t mode = TIM_OCMode_DEFAULT);
 	uint16_t duty(uint16_t duty);
 	uint16_t dutyF(float duty);
 	void itSetup();
@@ -42,7 +43,7 @@ public:
 	static uint32_t tim3_mode;
 	static uint32_t tim4_mode;
 
-private:
+
 	void ioSetupEnc(GPIO_TypeDef* gpio1,uint16_t pin1,GPIO_TypeDef* gpio2,uint16_t pin2);
 	void ioSetupPwm(GPIO_TypeDef* gpio,uint16_t pin);
 

@@ -12,7 +12,7 @@
 
 System sys;
 
-GPIO led[2],sel[4];
+GPIO led[5],sel[4],adcRst,adcPowerOn;
 TIM enc[2],pwm[4],en[2];
 USART serial,iso;
 
@@ -26,6 +26,7 @@ CanNodeMotorDriver canMD[2];
 CanNodeEncoder canEnc[2];
 CanNodeSwitch canSw;
 CanNodeVoltage canVol;
+CanNodeEmg canEmg;
 
 CanMotorDriver canMotor[2];
 CanEncoder canEncoder[2];
@@ -34,7 +35,7 @@ CanVoltage canVoltage;
 
 CanDCMD driver;
 
-uint8_t motorDebug[2] = {0,0},debugMode;
+uint8_t debugMode,printValue;
 uint64_t intervalTimer = 0;
 
 
@@ -51,6 +52,9 @@ void setup(){
 
 	led[0].setup(PA15,OUTPUT);
 	led[1].setup(PB3,OUTPUT);
+	led[2].setup(PC13,OUTPUT);
+	led[3].setup(PC14,OUTPUT);
+	led[4].setup(PC15,OUTPUT);
 
 	sel[0].setup(PB15,INPUT_PU);
 	sel[1].setup(PB14,INPUT_PU);
@@ -80,59 +84,64 @@ void setup(){
 	motor[0].enPwmAssigne(en[0]);
 	motor[1].enPwmAssigne(en[1]);
 
+	adcRst.setup(PA10,OUTPUT);
+	adcPowerOn.setup(PB2,INPUT);
+
 	iso.setup(USART2,234000,PA2,PA3);
 	isoIn.setup(iso,SI8900_MODE_LOOP);
+	isoIn.gpioAssigne(adcPowerOn,adcRst);
 
 	can1.setup(CAN1,PA12,PA11);
-
-	canMD[0].setup(motor[0],can1,(CAN_ADDRESS * 2));
-	canMD[1].setup(motor[1],can1,(CAN_ADDRESS * 2) + 1);
-
-	driver.canmdSetup(canMD[0],canMD[1]);
-	driver.adcSetup(isoIn);
 
 	enc[0].encoderSetup(TIM2,PA0,PA1);
 	enc[1].encoderSetup(TIM3,PA6,PA7);
 
 	//ここまでピンの設定
 
+	debugMode = 2;							//デバッグモード:モーター
 	if(sw[0].gpioRead() == 0){
 		debugMode = 1;
 	}else if(sw[1].gpioRead() == 0){
 		debugMode = 2;
 	}
-	debugMode = 1;							//デバッグモード:モーター
-
-	if(debugMode)can1.debug();
 
 
 	canEnc[0].setup(enc[0],can1,(CAN_ADDRESS * 2));
 	canEnc[1].setup(enc[1],can1,(CAN_ADDRESS * 2) + 1);
 
-	canSw.setup(limit[0],can1,(CAN_ADDRESS * 2));
+	canSw.setup(limit[0],can1,(CAN_ADDRESS * 2));		//リミット
 	canSw.pinAdd(limit[1]);
 	canSw.pinAdd(limit[2]);
 	canSw.pinAdd(limit[3]);
 
-	canVol.setup(isoIn,2,can1,CAN_ADDRESS*2);
-	canVoltage.setup(can1,CAN_ADDRESS*2,10);	//とりあえずMDのほうと合わせておく
+	canVol.setup(isoIn,2,can1,CAN_ADDRESS*2);			//電源電圧｡とりあえずMDのほうと合わせておく
 
-	canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
-	canEncoder[1].setup(can1,(CAN_ADDRESS * 2) + 1,10);
+	canMD[0].setup(motor[0],can1,(CAN_ADDRESS * 2));
+	canMD[1].setup(motor[1],can1,(CAN_ADDRESS * 2) + 1);
+	canMD[0].ledAssign(led[0]);
+	canMD[1].ledAssign(led[1]);
 
-	canMotor[0].setup(can1,(CAN_ADDRESS * 2));
-	canMotor[1].setup(can1,(CAN_ADDRESS * 2) + 1);
+	canEmg.setup(can1);
 
-	canSwitch.setup(can1,CAN_ADDRESS*2,100);
+	driver.canmdSetup(canMD[0],canMD[1]);
+	driver.adcSetup(isoIn);
+	driver.emgSetup(canEmg);
 
-	/*if(debugMode){
 
 
-	}else{
-		canMD[0].ledAssign(led[0]);
-		canMD[1].ledAssign(led[1]);
-	}*/
+	if(debugMode){
+		can1.debug();
 
+		canVoltage.setup(can1,CAN_ADDRESS*2,10);
+
+		canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
+		canEncoder[1].setup(can1,(CAN_ADDRESS * 2) + 1,10);
+
+		canMotor[0].setup(can1,(CAN_ADDRESS * 2));
+		canMotor[1].setup(can1,(CAN_ADDRESS * 2) + 1);
+
+		canSwitch.setup(can1,CAN_ADDRESS*2,100);
+	}
 
 	while(sw[0].gpioRead() == 0 || sw[1].gpioRead() == 0);
 
@@ -146,6 +155,8 @@ void setup(){
 	}else{
 		serial.printf("mode : run\n\r");
 	}
+
+	printValue = 0;
 }
 
 
@@ -158,14 +169,17 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	canEnc[0].interrupt();
 	canEnc[1].interrupt();
 
-	canVoltage.interrupt();
 	canVol.interrupt();
 
 	canSw.interrupt();
 
+	canEmg.interrupt();
+
 	if(debugMode != 0){
 		canEncoder[1].interrupt();
 		canEncoder[0].interrupt();
+
+		canVoltage.interrupt();
 
 		canSwitch.interrupt();
 	}

@@ -3,7 +3,7 @@
 void SI8900::setup(USART &usart,uint16_t modeSet){
 	this->usart = &usart;
 	mode = modeSet;
-	mxCount = 0;
+
 	mxAddress = 0;
 	readStat[0] = 0;
 	readStat[1] = 0;
@@ -22,11 +22,28 @@ void SI8900::setup(USART &usart,uint16_t modeSet){
 	setupLastSendTime = millis();
 	setupStat = 0;
 
+	gpioSetuped = 0;
+
 	if(mode == SI8900_MODE_LOOP)request(0,SI8900_MODE_LOOP);
 }
 
+void SI8900::gpioAssigne(GPIO &powerOnSet,GPIO &reset){
+	this->powerOn = &powerOnSet;
+	this->adcReset = &reset;
+
+	adcReset->write(0);
+	gpioSetuped = 1;
+}
+
 void SI8900::cycle(){
-	if(setupStat == 0){										//ボーレート設定処理
+	if(gpioSetuped && powerOn->read() == 1){	//電源が来ていない
+		setupStat = 0;							//当然セットアップできないわな
+		if(usart->available())usart->read();	//
+		return;
+	}
+
+
+	if(setupStat == 0/* && powerOn->read() == 0*/){										//ボーレート設定処理
 		if(usart->available()){
 			setupData = usart->read();
 			if(setupData == 0x55){
@@ -38,8 +55,16 @@ void SI8900::cycle(){
 		}
 
 		if(millis() - setupLastSendTime > 0){
-			setupLastSendTime = millis();
-			USART_SendData(usart->usart_usart,0xAA);
+			if(setupSendCnt < 100){
+				if(gpioSetuped && setupSendCnt == 0)adcReset->write(0);						//リセット解除
+				setupLastSendTime = millis();
+				USART_SendData(usart->usart_usart,0xAA);
+				setupSendCnt++;
+
+			}else{
+				setupSendCnt = 0;
+				if(gpioSetuped)adcReset->write(1);						//100回やっても初期設定できなかったらリセットかける(1ms)
+			}
 		}
 		return;
 	}
@@ -87,6 +112,7 @@ void SI8900::cycle(){
 		}
 	}
 
+
 	if(mode == SI8900_MODE_LOOP){						//通信切れ処理(他のモードだと検出しにくいのでLOOPモードでしか動かない)
 		for(int i=0;i<3;i++){
 			if(millis() - receiveTime[i] > 100){
@@ -121,24 +147,4 @@ uint16_t SI8900::read(uint16_t channel){
 
 uint16_t SI8900::stat(uint16_t channel){
 	return readStat[channel];
-}
-
-uint16_t SI8900::timingCalibration(uint64_t timeOut){
-
-	for(uint sendCnt=0;sendCnt<timeOut;sendCnt++){
-		for(int i=0;i<5;i++){
-			if(usart->read() == 0x55){
-				setupStat = 1;
-				return 0;
-			}
-		}
-		delay(1);
-
-	}
-
-	for(int i=0;i<10;i++){					//送り続けても意味なさそうだから変なデータ送ってズラす(ここはいっていない気がする
-		delay(1);
-		USART_SendData(usart->usart_usart,0xCC);
-	}
-	return 1;
 }

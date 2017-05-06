@@ -19,7 +19,7 @@ void CanNodeVoltage::cycle(){
     		uint8_t canData[8];
     		intervalTimer = millis() + interval;
 
-    		int_to_uchar4(canData,si8900->read(port));
+    		int_to_uchar4(canData,si8900->value[port]);		//readStat•Ï‚¦‚È‚¢‚æ‚¤‚É“Ç‚Þ¡‹A‚Á‚Ä‚­‚é’l‚Íread()‚Æ‘S‚­“¯‚¶
 
     		can->send(number + CAN_ADD_VOLTAGE_VALUE,4,canData);
     	}

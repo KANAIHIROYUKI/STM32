@@ -99,3 +99,36 @@ void Motor::free(){
 void Motor::reset(){
 	free();
 }
+
+void Motor::buzzerStart(uint16_t frequency,float duty){
+	if(assigneStat != MOTOR_ASSIGNE_PWM)	return;		//PWMセットされてないからビープ使えない
+	if(outEnable == 0)						return;		//出力無効
+
+	outEnable = 2;										//2がビープ
+
+	en_period 		= pwmEn->pwm_period;
+	en_prescaler 	= pwmEn->pwm_prescaler;
+	en_mode 		= pwmEn->pwm_mode;
+
+	pwm_period 		= pwm1->pwm_period;
+	pwm_prescaler 	= pwm1->pwm_prescaler;
+	pwm_mode 		= pwm1->pwm_mode;
+
+	frequency = 72000000/frequency;
+
+	pwm1->pwmReset(frequency,0,TIM_OCMode_PWM1);
+	pwm2->pwmReset(frequency,0,TIM_OCMode_PWM2);
+	pwmEn->pwmReset(frequency/20);
+
+}
+
+void Motor::buzzerStop(){
+	if(assigneStat != MOTOR_ASSIGNE_PWM)return;
+	if(outEnable != 2)return;
+
+	outEnable = 1;
+
+	pwm1->pwmReset(pwm_period,pwm_prescaler,pwm_mode);
+	pwm2->pwmReset(pwm_period,pwm_prescaler,pwm_mode);
+	pwmEn->pwmReset(en_period,en_period,en_mode);
+}

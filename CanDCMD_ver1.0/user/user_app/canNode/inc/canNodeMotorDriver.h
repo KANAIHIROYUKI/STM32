@@ -18,6 +18,7 @@ public:
 	void cycle();
 	void interrupt();
 
+	void motorOverRide(uint16_t overRideEn);
 	void ledOverRide(uint16_t overRideEn);
 
 	int32_t outDuty;
@@ -27,7 +28,7 @@ public:
 	GPIO *canMd_led;
 	Motor* canMd_motor;
 
-	uint8_t ledAssigned;
+	uint8_t ledAssigned,motorOutEnable;
 
 	uint64_t lastReceiveTime,ledTime;
 	uint16_t maxInterval;
