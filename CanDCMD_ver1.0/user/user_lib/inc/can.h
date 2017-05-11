@@ -37,6 +37,8 @@ public:
 	void receive(CanRxMsg* canRxMessage);
 	void receive();
 
+	uint16_t receiveCnt;
+
 	static uint16_t filterCnt;
 	static uint16_t filterAddress[4*13];
 

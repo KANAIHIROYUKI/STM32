@@ -7,6 +7,8 @@ void CAN::setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_Type
 	can_can = can;
 	ioSetup(gpio_tx,pin_tx,gpio_rx,pin_rx);
 
+	receiveCnt = 0;
+
 	if(can_can == CAN1){
 		CAN1Setup();
 	}else{
@@ -71,6 +73,7 @@ void CAN::ioSetup(GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,ui
 void CAN::receive(){
 	if(can_can == CAN1){
 		CAN_Receive(CAN1,CAN_FIFO0,&rxMessage);
+		receiveCnt++;
 	}else{
 
 	}

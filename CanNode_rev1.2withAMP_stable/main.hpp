@@ -41,6 +41,7 @@ void setup(){
 	enc[0].encoderSetup(TIM1,PA8,PA9);
 	enc[1].encoderSetup(TIM4,PB6,PB7);
 
+	enc[0].reverse();
 
 
 	pwm[0].pwmSetup(TIM2,3,PA2,17000,72,TIM_OCMode_PWM2);
@@ -82,6 +83,20 @@ void setup(){
 	canMD[1].setup(can1,11);
 	canMD[2].setup(can1,12);
 	canMD[3].setup(can1,13);
+
+	enc[0].reset();
+	enc[1].reset();
+
+	serial.printf("enc setup address = %x,%x\n\r",canEnc[0].canEnc_address,canEnc[1].canEnc_address);
+	serial.printf("enc valur address = %x,%x\n\r",canEnc[0].canEnc_address + 0x40,canEnc[1].canEnc_address + 0x40);
+	serial.printf("vlv address =  %x,filter number = %d\n\r",canValve.canValve_address,can1.filterCnt);
+	serial.printf("pls address = %x,%x,%x,%x\n\r",canPulse[0].canPulse_address,canPulse[1].canPulse_address,canPulse[2].canPulse_address,canPulse[3].canPulse_address);
+
+	delay(10);
+
+	for(int i=0;i<can1.filterCnt;i++){
+		serial.printf("filter number = %d,address = 0x%x\n\r",i,can1.filterAddress[i]);
+	}
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){

@@ -85,7 +85,7 @@ int main(void)
     	}
     	if(canRxFlag && debugMode == 0){
     		canRxFlag = 0;
-    		//serial.printf("0x%x,%d,%d,\n\r",can1.rxMessage.StdId,can1.rxMessage.Data[0],can1.rxMessage.Data[1]);
+    		serial.printf("0x%x,%d,%d,\n\r",can1.rxMessage.StdId,can1.rxMessage.Data[0],can1.rxMessage.Data[1]);
     	}
 
     }

@@ -21,17 +21,18 @@
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" partName="main.hpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/main.hpp" title="main.hpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/main.hpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/main.hpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1294" selectionTopPixel="914"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1294" selectionTopPixel="502"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/main.cpp" title="main.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/main.cpp" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/main.cpp" title="main.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/main.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/main.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="964" selectionTopPixel="164"/>
+<editorState selectionHorizontalPixel="186" selectionLength="0" selectionOffset="1573" selectionTopPixel="264"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeEncoder.h" partName="canNodeEncoder.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/user/user_app/canNode/inc/canNodeEncoder.h" title="canNodeEncoder.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/user/user_app/canNode/inc/canNodeEncoder.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_app/canNode/inc/canNodeEncoder.h"/>
@@ -43,16 +44,20 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="can.cpp" partName="can.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/user/user_lib/src/can.cpp" title="can.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/user/user_lib/src/can.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_lib/src/can.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="1" selectionOffset="1934" selectionTopPixel="1155"/>
+<editorState selectionHorizontalPixel="0" selectionLength="1" selectionOffset="1934" selectionTopPixel="0"/>
 </editor>
 <editor id="org.coocox.builder.ui.editors.ConfigEditor" name="" partName="Configuration" title="Configuration" tooltip="" workbook="DefaultEditorWorkbook">
 <input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">&#x0A;<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="6" verticalPosition="0"/>
 </input>
 </editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="can.hpp" partName="can.hpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/user/user_lib/inc/can.h" title="can.hpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/user/user_lib/inc/can.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_lib/inc/can.hpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="388" selectionTopPixel="0"/>
+</editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="37">
 <expanded>
 <element path="/F103_mini"/>
 <element path="/F103_mini/user_app"/>
@@ -66,7 +71,7 @@
 <element path="/F103_mini/user_lib/src"/>
 </expanded>
 <selection>
-<element path="/F103_mini/user_lib/inc/system.hpp"/>
+<element path="/F103_mini/user_lib/inc/can.hpp"/>
 </selection>
 </viewState>
 </view>
@@ -162,10 +167,7 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/inc/canNodeEncoder.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/src/canNodeEncoder.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/src/canNodePulse.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/inc/canNodeEncoder.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_lib/src/can.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/src/canNodePulse.cpp"/>
@@ -183,154 +185,158 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.hpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.hpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.hpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_lib/src/can.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_lib/inc/can.hpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/src/canNodeEncoder.cpp"/>
 </editors>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="317" y="0"/>
+<item historyLabel="canNodeEncoder.h" index="1">
+<position info="not_deleted" x="349" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="1088" y="0"/>
+<item historyLabel="canNodeEncoder.cpp" index="0">
+<position info="not_deleted" x="433" y="0"/>
 </item>
-<item historyLabel="canNodeEncoder.cpp" index="2">
-<position info="not_deleted" x="681" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="265" y="0"/>
-</item>
-<item historyLabel="canNodeEncoder.cpp" index="2">
-<position info="not_deleted" x="913" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="265" y="0"/>
+<item historyLabel="can.cpp" index="2">
+<position info="not_deleted" x="1934" y="1"/>
 </item>
 <item historyLabel="canNodePulse.cpp" index="3">
 <position info="not_deleted" x="691" y="0"/>
 </item>
-<item historyLabel="canNodeEncoder.cpp" index="2">
-<position info="not_deleted" x="913" y="0"/>
+<item historyLabel="main.hpp" index="4">
+<position info="not_deleted" x="1562" y="0"/>
+</item>
+<item historyLabel="canNodePulse.cpp" index="3">
+<position info="not_deleted" x="382" y="0"/>
+</item>
+<item historyLabel="system.cpp" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="system.hpp" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="canNodePulse.cpp" index="3">
+<position info="not_deleted" x="382" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="7">
+<position info="not_deleted" x="265" y="0"/>
 </item>
 <item historyLabel="canNodeEncoder.h" index="1">
-<position info="not_deleted" x="374" y="0"/>
-</item>
-<item historyLabel="canNodeEncoder.cpp" index="2">
-<position info="not_deleted" x="913" y="0"/>
-</item>
-<item historyLabel="canNodeEncoder.h" index="4">
 <position info="not_deleted" x="349" y="0"/>
 </item>
-<item historyLabel="canNodeEncoder.cpp" index="2">
-<position info="not_deleted" x="433" y="0"/>
-</item>
-<item historyLabel="can.cpp" index="5">
-<position info="not_deleted" x="1934" y="1"/>
-</item>
-<item historyLabel="canNodePulse.cpp" index="6">
-<position info="not_deleted" x="691" y="0"/>
-</item>
-<item historyLabel="main.hpp" index="7">
-<position info="not_deleted" x="1562" y="0"/>
-</item>
-<item historyLabel="canNodePulse.cpp" index="6">
-<position info="not_deleted" x="382" y="0"/>
-</item>
-<item historyLabel="system.cpp" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="system.hpp" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="canNodePulse.cpp" index="6">
-<position info="not_deleted" x="382" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="10">
-<position info="not_deleted" x="265" y="0"/>
-</item>
-<item historyLabel="canNodeEncoder.h" index="4">
-<position info="not_deleted" x="349" y="0"/>
-</item>
-<item historyLabel="canNodeEncoder.cpp" index="2">
+<item historyLabel="canNodeEncoder.cpp" index="0">
 <position info="not_deleted" x="432" y="0"/>
 </item>
-<item historyLabel="canNodeEncoder.cpp" index="2">
+<item historyLabel="canNodeEncoder.cpp" index="0">
 <position info="not_deleted" x="285" y="0"/>
 </item>
-<item historyLabel="canNodeEncoder.h" index="4">
+<item historyLabel="canNodeEncoder.h" index="1">
 <position info="not_deleted" x="349" y="0"/>
 </item>
-<item historyLabel="canNodeEncoder.cpp" index="2">
+<item historyLabel="canNodeEncoder.cpp" index="0">
 <position info="not_deleted" x="285" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="7">
+<item historyLabel="main.hpp" index="4">
 <position info="not_deleted" x="1562" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="10">
+<item historyLabel="main.cpp" index="7">
 <position info="not_deleted" x="265" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="7">
+<item historyLabel="main.hpp" index="4">
 <position info="not_deleted" x="1559" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="10">
+<item historyLabel="main.cpp" index="7">
 <position info="not_deleted" x="1321" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="7">
+<item historyLabel="main.hpp" index="4">
 <position info="not_deleted" x="332" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="10">
+<item historyLabel="main.cpp" index="7">
 <position info="not_deleted" x="1321" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="7">
+<item historyLabel="main.hpp" index="4">
 <position info="not_deleted" x="427" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="10">
+<item historyLabel="main.cpp" index="7">
 <position info="not_deleted" x="1321" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="7">
+<item historyLabel="main.hpp" index="4">
 <position info="not_deleted" x="349" y="0"/>
 </item>
-<item historyLabel="canNodeEncoder.cpp" index="2">
+<item historyLabel="canNodeEncoder.cpp" index="0">
 <position info="not_deleted" x="285" y="0"/>
 </item>
-<item historyLabel="canNodeEncoder.h" index="4">
+<item historyLabel="canNodeEncoder.h" index="1">
 <position info="not_deleted" x="349" y="0"/>
 </item>
-<item historyLabel="can.cpp" index="5">
+<item historyLabel="can.cpp" index="2">
 <position info="not_deleted" x="1934" y="1"/>
 </item>
-<item historyLabel="canNodePulse.cpp" index="6">
+<item historyLabel="canNodePulse.cpp" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="11">
+<item historyLabel="main.hpp" index="8">
 <position info="not_deleted" x="349" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="12">
+<item historyLabel="main.cpp" index="9">
 <position info="not_deleted" x="1323" y="0"/>
 </item>
+<item historyLabel="main.cpp" index="9">
+<position info="not_deleted" x="1461" y="0"/>
+</item>
+<item historyLabel="Configuration" index="10"/>
+<item historyLabel="canNodeEncoder.h" index="11">
+<position info="not_deleted" x="349" y="0"/>
+</item>
 <item historyLabel="main.cpp" index="12">
 <position info="not_deleted" x="1461" y="0"/>
 </item>
-<item historyLabel="Configuration" index="13"/>
-<item historyLabel="canNodeEncoder.h" index="14">
-<position info="not_deleted" x="349" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="15">
-<position info="not_deleted" x="1461" y="0"/>
-</item>
-<item historyLabel="main.hpp" index="16">
+<item historyLabel="main.hpp" index="13">
 <position info="not_deleted" x="454" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="15">
+<item historyLabel="main.cpp" index="12">
 <position info="not_deleted" x="800" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="16">
+<item historyLabel="main.hpp" index="13">
+<position info="not_deleted" x="454" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="12">
+<position info="not_deleted" x="800" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="14">
 <position info="not_deleted" x="454" y="0"/>
 </item>
 <item historyLabel="main.cpp" index="15">
-<position info="not_deleted" x="800" y="0"/>
-</item>
-<item historyLabel="main.hpp" index="17">
-<position info="not_deleted" x="454" y="0"/>
-</item>
-<item active="true" historyLabel="main.cpp" index="18">
 <position info="not_deleted" x="850" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="16">
+<position info="not_deleted" x="1294" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="15">
+<position info="not_deleted" x="1465" y="6"/>
+</item>
+<item historyLabel="main.cpp" index="15">
+<position info="not_deleted" x="1536" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="15">
+<position info="not_deleted" x="1535" y="0"/>
+</item>
+<item historyLabel="can.cpp" index="17">
+<position info="not_deleted" x="1934" y="1"/>
+</item>
+<item historyLabel="can.hpp" index="18">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="canNodeEncoder.cpp" index="19">
+<position info="not_deleted" x="285" y="0"/>
+</item>
+<item historyLabel="can.cpp" index="17">
+<position info="not_deleted" x="1934" y="1"/>
+</item>
+<item historyLabel="main.cpp" index="15">
+<position info="not_deleted" x="1573" y="0"/>
+</item>
+<item active="true" historyLabel="can.hpp" index="18">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -342,29 +348,45 @@
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanMDrev2.0.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\CanMDrev2.0\CanMDrev2.0.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/CanMDrev2.0/CanMDrev2.0.coproj"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can.hpp" tooltip="F103_mini/user_lib/inc/can.hpp">
+<persistable path="/F103_mini/user_lib/inc/can.hpp"/>
+</file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanNode_rev1.1withAMP_stable.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\CanNode_rev1.1withAMP_stable\CanNode_rev1.1withAMP_stable.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.1withAMP_stable/CanNode_rev1.1withAMP_stable.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor.cpp" tooltip="F103_mini/user_app/src/motor.cpp">
-<persistable path="/F103_mini/user_app/src/motor.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.cpp" tooltip="F103_mini/user_app/canNode/src/canNodeVoltage.cpp">
+<persistable path="/F103_mini/user_app/canNode/src/canNodeVoltage.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor.h" tooltip="F103_mini/user_app/inc/motor.h">
-<persistable path="/F103_mini/user_app/inc/motor.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.h" tooltip="F103_mini/user_app/canNode/inc/canNodeVoltage.h">
+<persistable path="/F103_mini/user_app/canNode/inc/canNodeVoltage.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeMotorDriver.h" tooltip="F103_mini/user_app/canNode/inc/canNodeMotorDriver.h">
-<persistable path="/F103_mini/user_app/canNode/inc/canNodeMotorDriver.h"/>
+<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
+<persistable>&#x0A;<subPage/>
+</persistable>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can.hpp" tooltip="F103_mini/user_lib/inc/can.hpp">
-<persistable path="/F103_mini/user_lib/inc/can.hpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.h" tooltip="F103_mini/user_app/device/inc/si8900.h">
+<persistable path="/F103_mini/user_app/device/inc/si8900.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.cpp" tooltip="F103_mini/user_app/device/src/si8900.cpp">
+<persistable path="/F103_mini/user_app/device/src/si8900.cpp"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeMotorDriver.cpp" tooltip="F103_mini/user_app/canNode/src/canNodeMotorDriver.cpp">
 <persistable path="/F103_mini/user_app/canNode/src/canNodeMotorDriver.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canMotorDriver.cpp" tooltip="F103_mini/user_app/src/canMotorDriver.cpp">
-<persistable path="/F103_mini/user_app/src/canMotorDriver.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeEmg.h" tooltip="F103_mini/user_app/canNode/inc/canNodeEmg.h">
+<persistable path="/F103_mini/user_app/canNode/inc/canNodeEmg.h"/>
 </file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanDCMD_ver1.0.coproj" tooltip="C:\Users\hiroyuki\Documents\RoboCon\STM32\CanDCMD_ver1.0\CanDCMD_ver1.0.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.0/CanDCMD_ver1.0.coproj"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeEmg.cpp" tooltip="F103_mini/user_app/canNode/src/canNodeEmg.cpp">
+<persistable path="/F103_mini/user_app/canNode/src/canNodeEmg.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeEmd.cpp" tooltip="F103_mini/user_app/canNode/src/canNodeEmd.cpp">
+<persistable path="/F103_mini/user_app/canNode/src/canNodeEmd.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tim.cpp" tooltip="F103_mini/user_lib/src/tim.cpp">
+<persistable path="/F103_mini/user_lib/src/tim.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeMotorDriver.h" tooltip="F103_mini/user_app/canNode/inc/canNodeMotorDriver.h">
+<persistable path="/F103_mini/user_app/canNode/inc/canNodeMotorDriver.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can.cpp" tooltip="F103_mini_PD/user_lib/src/can.cpp">
 <persistable path="/F103_mini_PD/user_lib/src/can.cpp"/>

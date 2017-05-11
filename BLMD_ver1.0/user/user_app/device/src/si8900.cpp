@@ -33,6 +33,7 @@ void SI8900::gpioAssigne(GPIO &powerOnSet,GPIO &reset){
 
 	adcReset->write(0);
 	gpioSetuped = 1;
+	resetCnt = 0;
 }
 
 void SI8900::cycle(){
@@ -43,11 +44,14 @@ void SI8900::cycle(){
 	}
 
 
-	if(setupStat == 0/* && powerOn->read() == 0*/){										//ボーレート設定処理
+	if(setupStat == 0){										//ボーレート設定処理
 		if(usart->available()){
 			setupData = usart->read();
 			if(setupData == 0x55){
 				setupStat = 1;
+
+				if(gpioSetuped)adcReset->write(0);
+
 				receiveTime[0] = millis();
 				receiveTime[1] = millis();
 				receiveTime[2] = millis();
@@ -55,14 +59,15 @@ void SI8900::cycle(){
 		}
 
 		if(millis() - setupLastSendTime > 0){
-			if(setupSendCnt < 100){
-				if(gpioSetuped && setupSendCnt == 0)adcReset->write(0);						//リセット解除
+			if(setupSendCnt < 200){
+				if(gpioSetuped && setupSendCnt == 10)adcReset->write(0);						//リセット解除
 				setupLastSendTime = millis();
 				USART_SendData(usart->usart_usart,0xAA);
 				setupSendCnt++;
 
 			}else{
 				setupSendCnt = 0;
+				resetCnt++;
 				if(gpioSetuped)adcReset->write(1);						//100回やっても初期設定できなかったらリセットかける(1ms)
 			}
 		}

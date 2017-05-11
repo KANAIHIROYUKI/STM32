@@ -10,7 +10,7 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="1577ee5e08f">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\main.hpp" lastModified="15bdba63c42">
+      <source file="..\..\..\main.hpp" lastModified="15bf73462d1">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_app\inc\app.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -66,6 +66,9 @@
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
+      <source file="..\..\..\main.cpp" lastModified="15bf734b2a7">
+         <include file="..\..\..\main.hpp"/>
+      </source>
       <source file="..\..\..\user\user_app\inc\pwm.h" lastModified="15a5e7c4a7b">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -80,7 +83,7 @@
       <source file="..\..\..\user\user_app\canNode\src\canNodeAnalogIn.cpp" lastModified="15a5f961a10">
          <include file="..\..\..\user\user_app\canNode\inc\canNodeAnalogIn.h"/>
       </source>
-      <source file="..\..\..\..\BLMD_ver1.0\user\user_app\device\src\si8900.cpp" lastModified="15bdba2906c">
+      <source file="..\..\..\..\BLMD_ver1.0\user\user_app\device\src\si8900.cpp" lastModified="15bf1d15306">
          <include file="..\..\..\..\BLMD_ver1.0\user\user_app\device\inc\si8900.h"/>
       </source>
       <source file="..\..\..\user\user_app\src\canVoltage.cpp" lastModified="15b9fb47514">
@@ -102,14 +105,14 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
          <include file="..\..\..\stm_lib\inc\misc.h"/>
       </source>
-      <source file="..\..\..\..\BLMD_ver1.0\user\user_app\device\inc\si8900.h" lastModified="15bd5e9bbff">
+      <source file="..\..\..\..\BLMD_ver1.0\user\user_app\device\inc\si8900.h" lastModified="15bf1b61417">
          <include file="..\..\..\user\user_lib\inc\usart.h"/>
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\user\user_lib\inc\remap.h" lastModified="1599bb6b24d">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
-      <source file="..\..\..\user\user_app\board\inc\can_dcmd.h" lastModified="15bd5fdb2ab">
+      <source file="..\..\..\user\user_app\board\inc\can_dcmd.h" lastModified="15bf725c3fd">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_app\inc\app.h"/>
       </source>
@@ -123,7 +126,7 @@
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\can.h" lastModified="15ba9274a03">
+      <source file="..\..\..\user\user_lib\inc\can.h" lastModified="15bf7330bc7">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_spi.h" lastModified="1577ee5f3b8">
@@ -200,6 +203,9 @@
       <source file="..\..\..\user\user_app\inc\port.h" lastModified="1599bd60d49">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
+      <source file="..\..\..\user\user_app\canNode\src\canNodeVoltage.cpp" lastModified="15bdbae6c62">
+         <include file="..\..\..\user\user_app\canNode\inc\canNodeVoltage.h"/>
+      </source>
       <source file="..\..\..\syscalls\syscalls.c" lastModified="1577ee5d2d1">
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_exti.c" lastModified="15b1d6d6de0">
@@ -208,13 +214,13 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_usart.h" lastModified="1577ee62a3b">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\user\user_app\board\src\can_dcmd.cpp" lastModified="15bdba2905d">
+      <source file="..\..\..\user\user_app\board\src\can_dcmd.cpp" lastModified="15bf74b6a6e">
          <include file="..\..\..\user\user_app\board\inc\can_dcmd.h"/>
       </source>
       <source file="..\..\..\user\user_app\canNode\src\canNodeSwitch.cpp" lastModified="15ba92488ca">
          <include file="..\..\..\user\user_app\canNode\inc\canNodeSwitch.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="15b8a1191fc">
+      <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="15bf735e01c">
          <include file="..\..\..\user\user_lib\inc\can.h"/>
       </source>
       <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="1577ee5e86f">
@@ -242,7 +248,7 @@
       <source file="..\..\..\user\util\src\util.c" lastModified="154c9cd96a8">
          <include file="..\..\..\user\util\inc\util.h"/>
       </source>
-      <source file="..\..\..\user\user_app\inc\motor.h" lastModified="15bd5144b79">
+      <source file="..\..\..\user\user_app\inc\motor.h" lastModified="15bf6e6f754">
          <include file="..\..\..\user\user_lib\inc\base.h"/>
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
@@ -361,9 +367,6 @@
          <include file="..\..\..\cmsis_boot\system_stm32f10x.h"/>
          <include file="..\..\..\cmsis_boot\stm32f10x_conf.h"/>
       </source>
-      <source file="..\..\..\user\user_app\src\motor.cpp" lastModified="15bd5b48742">
-         <include file="..\..\..\user\user_app\inc\motor.h"/>
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1">
          <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
@@ -471,9 +474,6 @@
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
       </source>
-      <source file="..\..\..\user\user_lib\inc\can.h" lastModified="15ba9274a03">
-         <include file="..\..\..\user\user_lib\inc\system.h"/>
-      </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_spi.h" lastModified="1577ee5f3b8">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
@@ -537,9 +537,6 @@
       </source>
       <source file="..\..\..\user\user_app\canNode\src\canNodeSwitch.cpp" lastModified="15ba92488ca">
          <include file="..\..\..\user\user_app\canNode\inc\canNodeSwitch.h"/>
-      </source>
-      <source file="..\..\..\user\user_lib\src\can.cpp" lastModified="15b8a1191fc">
-         <include file="..\..\..\user\user_lib\inc\can.h"/>
       </source>
       <source file="..\..\..\user\user_lib\inc\gpio.h" lastModified="15b04bee4d1">
          <include file="..\..\..\user\user_lib\inc\base.h"/>

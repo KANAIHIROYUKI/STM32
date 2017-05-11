@@ -11,13 +11,15 @@
 #define SetupDelayTime 100
 
 #define SetupLimitCurrent (float)(10.0)
-#define SetupLimitVoltage (float)(1.0)
+#define SetupLimitVoltage (float)(12.0)
 
-#define CycleLimitVoltage (float)(1.0)
-#define CycleLimitCurrent (float)(100.0)	//Å®overCurrentLimit[]
+#define BuzzerLimitCurrent (float)(20.0)
 
-#define ChannelCurrent0 0
-#define ChannelCurrent1 1
+#define DriveLimitVoltage (float)(12.0)
+#define DriveLimitCurrent (float)(100.0)	//Å®overCurrentLimit[]
+
+#define ChannelCurrentA 1
+#define ChannelCurrentB 0
 #define ChannelVoltage  2
 
 enum DE_DriverError{
@@ -25,22 +27,19 @@ enum DE_DriverError{
 	DE_UnderVoltage 		= 0x001,
 	DE_BreakFEToutAHigh		= 0x002,
 	DE_BreakFEToutBHigh		= 0x004,
-	DE_BreakFEToutA1Low 	= 0x008,
-	DE_BreakFEToutB1Low		= 0x010,
-	DE_BreakFEToutA2Low 	= 0x020,
-	DE_BreakFEToutB2Low		= 0x040,
-	DE_OCoutA				= 0x080,
-	DE_OCoutB				= 0x100,
-	DE_ADCLost				= 0x200,
-	DE_Unknown				= 0x400,
+	DE_BreakFEToutALow 		= 0x008,
+	DE_BreakFEToutBLow 		= 0x010,
+	DE_OCoutA				= 0x020,
+	DE_OCoutB				= 0x040,
+	DE_ADCLost				= 0x080,
+	DE_Unknown				= 0x100,
 };
 
 enum DS_DriveStat{
 	DS_NoPower,
 	DS_PowerIn,
 	DS_LowOn,
-	DS_HighOn1,
-	DS_HighOn2,
+	DS_HighOn,
 	DS_MotorBuzzer,
 	DS_Drive,
 	DS_Error,
@@ -66,6 +65,7 @@ public:
 	float currentRread(uint16_t channel);
 
 	uint16_t voltageValue,currentValue[2];
+	uint16_t vvMin,cvMax,errorVoltageValue,errorCurrentValue[2];
 	uint16_t driveStat;
 	uint64_t driveStatTimer,driveLedTimer;
 

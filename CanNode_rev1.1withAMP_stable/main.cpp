@@ -40,7 +40,7 @@ int main(void)
 #ifdef DEBUG
     		serial.printf("%d,%d\n\r",(int32_t)canEncoder.read(),(int32_t)canEncoder.read());
 #endif
-       		serial.printf("%4d,%4d,%4d,%4d\n\r",canPulse[0].outDuty,canPulse[1].outDuty,canEnc[0].canEnc_interval,canEnc[1].canEnc_interval);
+       		serial.printf("pls =%4d,%4d,enc itv = %4d,%4d enc = %6d,%6d\n\r",canPulse[0].outDuty,canPulse[1].outDuty,canEnc[0].canEnc_interval,canEnc[1].canEnc_interval,(int32_t)enc[0].read(),(int32_t)enc[1].read());
     	}
 
     	while(rxFlag > 0){

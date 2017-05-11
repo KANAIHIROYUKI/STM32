@@ -36,6 +36,7 @@ public:
 	uint16_t pwm_period,pwm_prescaler,pwm_mode;
 	uint16_t en_period,en_prescaler,en_mode;
 
+
 	TIM *pwm1;
 	TIM *pwm2;
 	TIM *pwmEn;

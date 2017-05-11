@@ -42,7 +42,7 @@ uint64_t intervalTimer = 0;
 void setup(){
 	sys.setup();
 
-	serial.setup(USART3,921600,PB10,PB11);
+	serial.setup(USART3,115200,PB10,PB11);
 	serial.printf("\n\rFILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
@@ -97,6 +97,8 @@ void setup(){
 	enc[1].encoderSetup(TIM3,PA6,PA7);
 
 	//ここまでピンの設定
+
+	printValue = 0;
 
 	debugMode = 2;							//デバッグモード:モーター
 	if(sw[0].gpioRead() == 0){
@@ -155,8 +157,6 @@ void setup(){
 	}else{
 		serial.printf("mode : run\n\r");
 	}
-
-	printValue = 0;
 }
 
 

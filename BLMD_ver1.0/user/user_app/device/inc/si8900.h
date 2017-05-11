@@ -19,7 +19,7 @@ public:
 
 
 	uint16_t buffer,value[3],mxAddress,mode,readStat[3],setupStat,requestChannel;
-	uint16_t setupData,setupSendCnt,gpioSetuped;
+	uint16_t setupData,setupSendCnt,gpioSetuped,resetCnt;
 	uint64_t receiveTime[3],setupLastSendTime,requestTime;
 	USART *usart;
 	GPIO *powerOn,*adcReset;
