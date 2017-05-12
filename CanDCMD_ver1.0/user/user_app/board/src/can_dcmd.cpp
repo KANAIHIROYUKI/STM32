@@ -1,6 +1,6 @@
 #include "can_dcmd.h"
 
-void CanDCMD::canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1){
+void CanDCMD::canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1,uint16_t buzzerBeepOrder){
 	this->motor[0] = &md0;
 	this->motor[1] = &md1;
 	motor[0]->canMd_motor->free();
@@ -15,6 +15,8 @@ void CanDCMD::canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1){
 	overCurrentLimit[1] = 10;
 
 	adcCycleTrigger = 0;
+
+	buzzerDelay = buzzerBeepOrder*100;
 
 	vvMin = 1024;
 	cvMax = 0;
@@ -42,6 +44,7 @@ void CanDCMD::cycle(){
 
 
 void CanDCMD::cycleFunction(){
+
 	if(adc->setupStat == 0 && driveStat != DS_NoPower){	//パワーない(パワー系に電源がなければadc.setupStat = 0になる)のにNoPower以外に入っていた時
 
 		if(driveStat == DS_MotorBuzzer){
@@ -64,6 +67,7 @@ void CanDCMD::cycleFunction(){
 
 		driveStat = DS_NoPower;
 
+		return;
 	}
 
 	switch(driveStat){
@@ -132,6 +136,23 @@ void CanDCMD::cycleFunction(){
 		if(errorTask(driveError))break;																//エラーならすぐ抜ける
 
 		if(millis() - driveStatTimer > 100){
+
+			motor[0]->canMd_motor->free();
+			motor[1]->canMd_motor->free();
+
+			driveStatTimer = millis();
+			driveStat = DS_MotorBuzzerDelay;
+		}
+
+		break;
+
+	case DS_MotorBuzzerDelay:
+		if(adc->readStat[ChannelVoltage] && vbattRead() 	 < SetupLimitVoltage)driveError |= DE_UnderVoltage;
+		if(millis() - adc->receiveTime[0] > 10)									 driveError |= DE_ADCLost;
+
+		if(errorTask(driveError))break;																//エラーならすぐ抜ける
+
+		if(millis() - driveStatTimer > buzzerDelay){
 			motor[0]->canMd_motor->outEnable = 1;
 			motor[1]->canMd_motor->outEnable = 1;	//ブザー使うためにモーター出力有効
 
@@ -141,7 +162,6 @@ void CanDCMD::cycleFunction(){
 			driveStatTimer = millis();
 			driveStat = DS_MotorBuzzer;
 		}
-
 		break;
 
 	case DS_MotorBuzzer:
@@ -153,7 +173,7 @@ void CanDCMD::cycleFunction(){
 
 		if(errorTask(driveError))break;																//エラーならすぐ抜ける
 
-		if(millis() - driveStatTimer > 500){
+		if(millis() - driveStatTimer > 200){
 
 			motor[0]->canMd_motor->buzzerStop();
 			motor[1]->canMd_motor->buzzerStop();	//ブザーおしまい
@@ -199,6 +219,10 @@ void CanDCMD::cycleFunction(){
 }
 
 /*********************************↑常時呼び出し　↓適宜呼び出し*****************************************/
+
+void CanDCMD::overCurrentSet(uint16_t channel,float current_A){
+	overCurrentLimit[channel] = current_A;
+}
 
 uint16_t CanDCMD::powerInOnetime(){
 	if(onetimeTrigger){

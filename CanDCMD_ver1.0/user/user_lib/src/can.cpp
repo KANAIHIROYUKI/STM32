@@ -3,14 +3,14 @@
 uint16_t CAN::filterCnt = 0;
 uint16_t CAN::filterAddress[4*13];
 
-void CAN::setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx){
+void CAN::setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx,uint16_t debugMode){
 	can_can = can;
 	ioSetup(gpio_tx,pin_tx,gpio_rx,pin_rx);
 
 	receiveCnt = 0;
 
 	if(can_can == CAN1){
-		CAN1Setup();
+		CAN1Setup(debugMode);
 	}else{
 
 	}
@@ -18,10 +18,6 @@ void CAN::setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_Type
 	for(int i=0;i<4*13;i++){
 		filterAddress[i] = 0;
 	}
-}
-
-void CAN::debug(){
-	CAN1Setup(1);
 }
 
 void CAN::send(uint16_t id,uint8_t length,uint8_t *data){
@@ -95,6 +91,7 @@ void CAN1Setup(uint16_t mode){
 	}else{
 		CAN_InitStructure.CAN_Mode = CAN_Mode_LoopBack;
 	}
+
 	CAN_InitStructure.CAN_SJW = CAN_SJW_1tq;
 	CAN_InitStructure.CAN_BS1 = CAN_BS1_5tq;
 	CAN_InitStructure.CAN_BS2 = CAN_BS2_6tq;

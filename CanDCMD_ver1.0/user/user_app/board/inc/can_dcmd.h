@@ -11,11 +11,11 @@
 #define SetupDelayTime 100
 
 #define SetupLimitCurrent (float)(10.0)
-#define SetupLimitVoltage (float)(12.0)
+#define SetupLimitVoltage (float)(20.0)
 
-#define BuzzerLimitCurrent (float)(20.0)
+#define BuzzerLimitCurrent (float)(10.0)
 
-#define DriveLimitVoltage (float)(12.0)
+#define DriveLimitVoltage (float)(20.0)
 #define DriveLimitCurrent (float)(100.0)	//Å®overCurrentLimit[]
 
 #define ChannelCurrentA 1
@@ -40,6 +40,7 @@ enum DS_DriveStat{
 	DS_PowerIn,
 	DS_LowOn,
 	DS_HighOn,
+	DS_MotorBuzzerDelay,
 	DS_MotorBuzzer,
 	DS_Drive,
 	DS_Error,
@@ -49,7 +50,7 @@ enum DS_DriveStat{
 
 class CanDCMD{
 public:
-	void canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1);
+	void canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1,uint16_t buzzerBeepOrder = 0);
 	void adcSetup(SI8900 &isoSet);
 	void emgSetup(CanNodeEmg &emgSet);
 
@@ -61,13 +62,15 @@ public:
 	uint16_t powerInOnetime();
 	uint16_t adcCycleOnetime();		//ÇΩÇ‘ÇÒmainóp
 
+	void overCurrentSet(uint16_t channel,float current_A);
+
 	float vbattRead();
 	float currentRread(uint16_t channel);
 
 	uint16_t voltageValue,currentValue[2];
 	uint16_t vvMin,cvMax,errorVoltageValue,errorCurrentValue[2];
 	uint16_t driveStat;
-	uint64_t driveStatTimer,driveLedTimer;
+	uint64_t driveStatTimer,driveLedTimer,buzzerDelay;
 
 	uint16_t driveError,onetimeTrigger,adcCycleTrigger,driveErrorStat;
 

@@ -118,12 +118,12 @@ void Motor::buzzerStart(uint16_t frequency,float duty){
 
 	pwm1->pwmReset(frequency,0,TIM_OCMode_PWM1);
 	pwm2->pwmReset(frequency,0,TIM_OCMode_PWM2);
-	pwmEn->pwmReset(frequency/20,0,TIM_OCMode_PWM1);
+	pwmEn->pwmReset(frequency/2,0,TIM_OCMode_PWM1);
 
 	pwm1->duty(frequency/2);
 	pwm2->duty(frequency/2);
 	//pwmEn->duty((uint32_t)((float)frequency*duty));	//‚±‚±‚ç‚Ö‚ñ‚¨‚©‚µ‚¢¤dutyF‚Â‚©‚¦‚ñ
-	pwmEn->duty(frequency/80);
+	pwmEn->duty(frequency/8);							// 1/4
 	//pwmEn->dutyF(0.25);
 }
 

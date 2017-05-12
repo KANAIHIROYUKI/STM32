@@ -6,7 +6,7 @@
 #include "base.h"
 #include "can_dcmd.h"
 
-#define CAN_ADDRESS (uint16_t)(15 - (sel[0].read()*8 + sel[1].read() + sel[2].read()*4 + sel[3].read()*2))
+#define CAN_ADDRESS (uint16_t)(15 - (sel[0].read()*2 + sel[1].read() + sel[2].read()*8 + sel[3].read()*4))
 #define IntervalTime 50
 #define PWM_PERIOD 4000
 
@@ -46,7 +46,6 @@ void setup(){
 	serial.printf("\n\rFILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
-	serial.printf("ADRS = %d\n\r",CAN_ADDRESS);
 
 	delay(100);
 
@@ -91,25 +90,28 @@ void setup(){
 	isoIn.setup(iso,SI8900_MODE_LOOP);
 	isoIn.gpioAssigne(adcPowerOn,adcRst);
 
-	can1.setup(CAN1,PA12,PA11);
-
-	enc[0].encoderSetup(TIM2,PA0,PA1);
-	enc[1].encoderSetup(TIM3,PA6,PA7);
-
-	//ここまでピンの設定
 
 	printValue = 0;
 
-	debugMode = 2;							//デバッグモード:モーター
+	debugMode = 0;							//デバッグモード:モーター
 	if(sw[0].gpioRead() == 0){
 		debugMode = 1;
 	}else if(sw[1].gpioRead() == 0){
 		debugMode = 2;
 	}
 
+	can1.setup(CAN1,PA12,PA11,debugMode);
 
-	canEnc[0].setup(enc[0],can1,(CAN_ADDRESS * 2));
-	canEnc[1].setup(enc[1],can1,(CAN_ADDRESS * 2) + 1);
+	enc[0].encoderSetup(TIM2,PA0,PA1);
+	enc[1].encoderSetup(TIM3,PA6,PA7);
+
+	//ここまでピンの設定
+
+
+
+
+	canEnc[0].setup(enc[0],can1,(CAN_ADDRESS * 2) + 0x10);
+	canEnc[1].setup(enc[1],can1,(CAN_ADDRESS * 2) + 0x11);
 
 	canSw.setup(limit[0],can1,(CAN_ADDRESS * 2));		//リミット
 	canSw.pinAdd(limit[1]);
@@ -125,14 +127,12 @@ void setup(){
 
 	canEmg.setup(can1);
 
-	driver.canmdSetup(canMD[0],canMD[1]);
+	driver.canmdSetup(canMD[0],canMD[1],CAN_ADDRESS);
 	driver.adcSetup(isoIn);
 	driver.emgSetup(canEmg);
 
 
-
 	if(debugMode){
-		can1.debug();
 
 		canVoltage.setup(can1,CAN_ADDRESS*2,10);
 
@@ -146,6 +146,12 @@ void setup(){
 	}
 
 	while(sw[0].gpioRead() == 0 || sw[1].gpioRead() == 0);
+
+
+	delay(100);
+	serial.printf("ADRS = %d\n\r",CAN_ADDRESS);
+	serial.printf(" md add = 0x%x,0x%x\n\renc add = 0x%x,0x%x\n\r sw add = 0x%x\n\r",canMD[0].canMd_address[0],canMD[1].canMd_address[0],canEnc[0].canEnc_address,canEnc[1].canEnc_address,canSw.canAddress);
+	delay(100);
 
 	serial.printf("setup end ");
 	if(debugMode == 1){
@@ -183,6 +189,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 
 		canSwitch.interrupt();
 	}
+
 	return;
 }
 

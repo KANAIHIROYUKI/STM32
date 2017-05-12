@@ -30,8 +30,7 @@ class CAN{
 public:
 	CAN_TypeDef* can_can;
 	//CanRxMsg rxMessage;
-	void debug();
-	void setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx);
+	void setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx,uint16_t debugMode = 0);
 	void send(uint16_t id,uint8_t length,uint8_t *data);
 	void filterAdd(uint16_t id1 = 0,uint16_t id2 = 0,uint16_t id3 = 0,uint16_t id4 = 0);
 	void receive(CanRxMsg* canRxMessage);
