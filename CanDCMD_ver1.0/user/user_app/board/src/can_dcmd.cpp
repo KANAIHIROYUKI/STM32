@@ -17,9 +17,6 @@ void CanDCMD::canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1,uint16_
 	adcCycleTrigger = 0;
 
 	buzzerDelay = buzzerBeepOrder*100;
-
-	vvMin = 1024;
-	cvMax = 0;
 }
 
 
@@ -58,8 +55,8 @@ void CanDCMD::cycleFunction(){
 		motor[0]->canMd_motor->outEnable = 0;
 		motor[1]->canMd_motor->outEnable = 0;
 
-		motor[0]->ledOverRide(1);
-		motor[1]->ledOverRide(1);					//CanNodeMotorDriverがled操作する必要はない
+		motor[0]->ledOverRide(0);
+		motor[1]->ledOverRide(0);					//CanNodeMotorDriverがled操作する必要はない
 
 		motor[0]->motorOverRide(1);
 		motor[1]->motorOverRide(1);					//motorクラスのoutEnableを0にしているので､free以外呼べないけど､一応
@@ -82,12 +79,19 @@ void CanDCMD::cycleFunction(){
 			motor[0]->ledOverRide(1);
 			motor[1]->ledOverRide(1);				//起動処理中はled処理を一時的に奪う
 
+			motor[0]->canMd_led->write(1);
+			motor[1]->canMd_led->write(1);
+
 			motor[0]->canMd_motor->free();
 			motor[1]->canMd_motor->free();
 
 			driveStat = DS_PowerIn;
 			driveStatTimer = millis();
 			onetimeTrigger = 1;
+
+			vvMin = 1023;
+			cvMax[0] = 0;
+			cvMax[1] = 0;
 		}
 
 		break;
@@ -137,6 +141,9 @@ void CanDCMD::cycleFunction(){
 
 		if(millis() - driveStatTimer > 100){
 
+			motor[0]->canMd_led->write(0);
+			motor[1]->canMd_led->write(0);
+
 			motor[0]->canMd_motor->free();
 			motor[1]->canMd_motor->free();
 
@@ -156,8 +163,8 @@ void CanDCMD::cycleFunction(){
 			motor[0]->canMd_motor->outEnable = 1;
 			motor[1]->canMd_motor->outEnable = 1;	//ブザー使うためにモーター出力有効
 
-			motor[0]->canMd_motor->buzzerStart(1500,0.05);
-			motor[1]->canMd_motor->buzzerStart(1500,0.05);	//ブザー(500ms)
+			motor[0]->canMd_motor->buzzerStart(3000,0.05);
+			motor[1]->canMd_motor->buzzerStart(3000,0.05);	//ブザー(500ms)
 
 			driveStatTimer = millis();
 			driveStat = DS_MotorBuzzer;
@@ -256,13 +263,14 @@ uint16_t CanDCMD::errorTask(uint16_t errorValue){
 
 		driveErrorStat = driveStat;
 		driveStat = DS_Error;
-		emg->emgRequest(errorValue);
 
-		motor[0]->ledOverRide(1);
-		motor[1]->ledOverRide(1);					//CanNodeMotorDriveがled操作してる場合じゃねぇ
+		motor[0]->ledOverRide(0);
+		motor[1]->ledOverRide(0);					//duty来てるかどうかは見よう
 
 		motor[0]->motorOverRide(1);
 		motor[1]->motorOverRide(1);					//motorクラスのoutEnableを0にしているので､free以外呼べないけど､一応
+
+		//emg->emgRequest(errorValue);
 
 		return driveError;
 	}
@@ -282,6 +290,6 @@ float CanDCMD::vbattRead(){
 float CanDCMD::currentRread(uint16_t channel){
 	if(channel > 1)return 0;
 	currentValue[channel] = adc->read(channel);
-	if(cvMax < currentValue[channel])cvMax = currentValue[channel];
+	if(cvMax[channel] < currentValue[channel])cvMax[channel] = currentValue[channel];
 	return (float)(currentValue[channel] * AdcToCurrentGain);
 }

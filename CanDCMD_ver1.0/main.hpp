@@ -123,7 +123,7 @@ void setup(){
 	canMD[0].setup(motor[0],can1,(CAN_ADDRESS * 2));
 	canMD[1].setup(motor[1],can1,(CAN_ADDRESS * 2) + 1);
 	canMD[0].ledAssign(led[0]);
-	canMD[1].ledAssign(led[1]);
+	canMD[1].ledAssign(led[2]);		//”’LED‚¾‚¯
 
 	canEmg.setup(can1);
 
@@ -131,6 +131,8 @@ void setup(){
 	driver.adcSetup(isoIn);
 	driver.emgSetup(canEmg);
 
+	//driver.overCurrentSet(0,50);
+	//driver.overCurrentSet(1,50);
 
 	if(debugMode){
 
@@ -163,6 +165,8 @@ void setup(){
 	}else{
 		serial.printf("mode : run\n\r");
 	}
+
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
 }
 
 
@@ -178,8 +182,6 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	canVol.interrupt();
 
 	canSw.interrupt();
-
-	canEmg.interrupt();
 
 	if(debugMode != 0){
 		canEncoder[1].interrupt();

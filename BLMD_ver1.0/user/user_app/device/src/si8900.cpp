@@ -39,7 +39,7 @@ void SI8900::gpioAssigne(GPIO &powerOnSet,GPIO &reset){
 void SI8900::cycle(){
 	if(gpioSetuped && powerOn->read() == 1){	//電源が来ていない
 		setupStat = 0;							//当然セットアップできないわな
-		//if(usart->available())usart->read();	//
+		if(usart->available())usart->read();	//
 		return;
 	}
 

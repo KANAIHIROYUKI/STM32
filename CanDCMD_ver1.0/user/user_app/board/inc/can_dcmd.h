@@ -10,12 +10,13 @@
 
 #define SetupDelayTime 100
 
+#define SetupLimitVoltage (float)(12.0)
 #define SetupLimitCurrent (float)(10.0)
-#define SetupLimitVoltage (float)(20.0)
+
 
 #define BuzzerLimitCurrent (float)(10.0)
 
-#define DriveLimitVoltage (float)(20.0)
+#define DriveLimitVoltage (float)(12.0)
 #define DriveLimitCurrent (float)(100.0)	//Å®overCurrentLimit[]
 
 #define ChannelCurrentA 1
@@ -68,7 +69,7 @@ public:
 	float currentRread(uint16_t channel);
 
 	uint16_t voltageValue,currentValue[2];
-	uint16_t vvMin,cvMax,errorVoltageValue,errorCurrentValue[2];
+	uint16_t vvMin,cvMax[2],errorVoltageValue,errorCurrentValue[2];
 	uint16_t driveStat;
 	uint64_t driveStatTimer,driveLedTimer,buzzerDelay;
 
