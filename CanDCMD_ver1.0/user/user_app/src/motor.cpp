@@ -104,15 +104,17 @@ void Motor::buzzerStart(uint16_t frequency,float duty){
 	if(assigneStat != MOTOR_ASSIGNE_PWM)	return;		//PWMセットされてないからビープ使えない
 	if(outEnable == 0)						return;		//出力無効
 
+	if(outEnable == 1){
+		en_period 		= pwmEn->pwm_period;
+		en_prescaler 	= pwmEn->pwm_prescaler;
+		en_mode 		= pwmEn->pwm_mode;
+
+		pwm_period 		= pwm1->pwm_period;
+		pwm_prescaler 	= pwm1->pwm_prescaler;
+		pwm_mode 		= pwm1->pwm_mode;
+	}
+
 	outEnable = 2;										//2がビープ
-
-	en_period 		= pwmEn->pwm_period;
-	en_prescaler 	= pwmEn->pwm_prescaler;
-	en_mode 		= pwmEn->pwm_mode;
-
-	pwm_period 		= pwm1->pwm_period;
-	pwm_prescaler 	= pwm1->pwm_prescaler;
-	pwm_mode 		= pwm1->pwm_mode;
 
 	frequency = 72000000/frequency;
 
@@ -123,12 +125,11 @@ void Motor::buzzerStart(uint16_t frequency,float duty){
 	pwm1->duty(frequency/2);
 	pwm2->duty(frequency/2);
 	//pwmEn->duty((uint32_t)((float)frequency*duty));	//ここらへんおかしい､dutyFつかえん
-	pwmEn->duty(frequency/8);							// 1/4
+	pwmEn->duty((frequency/2)*duty);							// 1/4
 	//pwmEn->dutyF(0.25);
 }
 
 void Motor::buzzerStop(){
-	if(assigneStat != MOTOR_ASSIGNE_PWM)return;
 	if(outEnable != 2)return;
 
 	outEnable = 1;

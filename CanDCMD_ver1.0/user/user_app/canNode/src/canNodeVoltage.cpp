@@ -1,11 +1,14 @@
 #include "canNodeVoltage.h"
 
-int16_t CanNodeVoltage::setup(SI8900 &si8900set,uint16_t portSet,CAN &canSet,uint16_t numberSet){
+int16_t CanNodeVoltage::setup(SI8900 &si8900set,uint16_t portSet,float gainSet,CAN &canSet,uint16_t numberSet){
 	this->can = &canSet;
 	this->si8900 = &si8900set;
 	port = portSet;				//SI8900のポート
+	gain = gainSet;
 	number = numberSet;			//設定用アドレス
 	can->filterAdd(number + CAN_ADD_VOLTAGE_SETUP);
+
+	interval = 0;
 
 	System::cycleFunctionNumber++;
 
@@ -19,7 +22,7 @@ void CanNodeVoltage::cycle(){
     		uint8_t canData[8];
     		intervalTimer = millis() + interval;
 
-    		int_to_uchar4(canData,si8900->value[port]);		//readStat変えないように読む｡帰ってくる値はread()と全く同じ
+    		float_to_uchar4(canData,(float)si8900->value[port]*gain);
 
     		can->send(number + CAN_ADD_VOLTAGE_VALUE,4,canData);
     	}

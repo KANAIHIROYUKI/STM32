@@ -6,9 +6,6 @@
 
 #define CAN_ADD_EMG 0x001
 
-#define CAN_ADD_VOLTAGE_SETUP 		(uint16_t)0x050
-#define CAN_ADD_VOLTAGE_VALUE 		(uint16_t)0x051
-
 #define CAN_ADD_DUTY 				(uint16_t)0x100
 #define CAN_ADD_FREE 				(uint16_t)0x120
 #define CAN_ADD_CURRENT 			(uint16_t)0x140
@@ -18,11 +15,14 @@
 #define CAN_ADD_GET_VALUES 			(uint16_t)0x1C0
 #define CAN_ADD_DEBUG 				(uint16_t)0x1E0
 
-
-#define CAN_ADD_SWITCH_VALUE 		(uint16_t)0x240
 #define CAN_ADD_SWITCH_SETUP 		(uint16_t)0x200
+#define CAN_ADD_SWITCH_VALUE 		(uint16_t)0x240
 
 #define CAN_ADD_VALVE 				(uint16_t)0x280
+
+#define CAN_ADD_VOLTAGE_SETUP 		(uint16_t)0x300
+#define CAN_ADD_VOLTAGE_VALUE 		(uint16_t)0x340
+
 #define CAN_ADD_ENC_SETUP 			(uint16_t)0x400
 #define CAN_ADD_ENC_VALUE 			(uint16_t)0x440
 
@@ -38,7 +38,7 @@ public:
 
 	uint16_t receiveCnt;
 
-	static uint16_t filterCnt;
+	static uint16_t filterCnt,errorCnt;
 	static uint16_t filterAddress[4*13];
 
 	uint64_t lastReceiveTime;

@@ -1,7 +1,9 @@
 #ifndef _CANNODE_EMG_H_
 #define _CANNODE_EMG_H_
 
+#include "system.h"
 #include "can.h"
+#include "app.h"
 
 class CanNodeEmg{
 public:

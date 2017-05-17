@@ -2,6 +2,7 @@
 
 uint16_t CAN::filterCnt = 0;
 uint16_t CAN::filterAddress[4*13];
+uint16_t CAN::errorCnt = 0;
 
 void CAN::setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx,uint16_t debugMode){
 	can_can = can;
@@ -18,6 +19,7 @@ void CAN::setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_Type
 	for(int i=0;i<4*13;i++){
 		filterAddress[i] = 0;
 	}
+
 }
 
 void CAN::send(uint16_t id,uint8_t length,uint8_t *data){
@@ -143,7 +145,14 @@ void CAN1Send(uint16_t id,uint8_t length,uint8_t data[8]){
     txMessage.Data[7] = data[7];
 
     CAN_Transmit(CAN1,&txMessage);
-    while(CANTXOK != CAN_TransmitStatus(CAN1,0));
+
+    uint64_t timeOut = millis();
+    while(CANTXOK != CAN_TransmitStatus(CAN1,0)){
+    	if(millis() - timeOut > 10){
+    		CAN::errorCnt++;
+    		break;
+    	}
+    }
 }
 
 void CANFilterAdd(uint16_t id1,uint16_t id2,uint16_t id3,uint16_t id4){

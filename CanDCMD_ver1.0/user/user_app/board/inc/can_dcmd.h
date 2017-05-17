@@ -3,6 +3,7 @@
 
 #include "system.h"
 #include "app.h"
+#include "math.h"
 
 #define SetupDerayTime 100
 #define AdcToCurrentGain (float)((3.3*50)/1023)
@@ -14,7 +15,9 @@
 #define SetupLimitCurrent (float)(10.0)
 
 
-#define BuzzerLimitCurrent (float)(10.0)
+#define BuzzerLimitCurrent (float)(18.0)
+#define BuzzerFrq			4000
+#define BuzzerTargetCurrent 5
 
 #define DriveLimitVoltage (float)(12.0)
 #define DriveLimitCurrent (float)(100.0)	//Å®overCurrentLimit[]
@@ -41,6 +44,7 @@ enum DS_DriveStat{
 	DS_PowerIn,
 	DS_LowOn,
 	DS_HighOn,
+	DS_MotorBuzzerCurrentTest,
 	DS_MotorBuzzerDelay,
 	DS_MotorBuzzer,
 	DS_Drive,
@@ -54,6 +58,7 @@ public:
 	void canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1,uint16_t buzzerBeepOrder = 0);
 	void adcSetup(SI8900 &isoSet);
 	void emgSetup(CanNodeEmg &emgSet);
+	void optionSetup(GPIO &optionSet);
 
 	void cycle();
 	uint16_t errorTask(uint16_t errorValue);
@@ -63,23 +68,39 @@ public:
 	uint16_t powerInOnetime();
 	uint16_t adcCycleOnetime();		//ÇΩÇ‘ÇÒmainóp
 
+	uint16_t aveRead(uint16_t channel);
+	uint16_t maxRead(uint16_t channel);
+	uint16_t minRead(uint16_t channel);
+
 	void overCurrentSet(uint16_t channel,float current_A);
 
 	float vbattRead();
 	float currentRread(uint16_t channel);
 
+	float vMaxRead();
+	float vAveRead();
+	float vMinRead();
+	float cMaxRead(uint16_t channel);
+	float cAveRead(uint16_t channel);
+
+	uint16_t hardwareOption;
+
 	uint16_t voltageValue,currentValue[2];
-	uint16_t vvMin,cvMax[2],errorVoltageValue,errorCurrentValue[2];
+	uint16_t errorVoltageValue,errorCurrentValue[2];
 	uint16_t driveStat;
 	uint64_t driveStatTimer,driveLedTimer,buzzerDelay;
-
 	uint16_t driveError,onetimeTrigger,adcCycleTrigger,driveErrorStat;
+
+	float buzzerTest[2];
+
+	uint16_t aveVal[3],aveCnt[3],maxVal[3],minVal[3];
 
 	float overCurrentLimit[2];
 
 	CanNodeMotorDriver *motor[2];
 	CanNodeEmg *emg;
 	SI8900 *adc;
+	GPIO *option;
 };
 
 

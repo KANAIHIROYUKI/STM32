@@ -8,10 +8,11 @@
 
 class CanNodeVoltage{
 public:
-	int16_t setup(SI8900 &si8900set,uint16_t portSet,CAN &can,uint16_t numberSet);
+	int16_t setup(SI8900 &si8900set,uint16_t portSet,float gainSet,CAN &can,uint16_t numberSet);
 	void cycle();
 	void interrupt();
 
+	float gain;
 	uint32_t interval;
 	SI8900 *si8900;
 	uint32_t intervalTimer;

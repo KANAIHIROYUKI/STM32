@@ -15,13 +15,13 @@ void CanVoltage::setup(CAN &canSet,uint16_t numberSet,uint16_t interval){
 	receiveTime = millis();
 }
 
-int32_t CanVoltage::read(){
+float CanVoltage::read(){
 	return value;
 }
 
 void CanVoltage::interrupt(){
 	if(can->rxMessage.StdId == number + CAN_ADD_VOLTAGE_VALUE){
-		value = uchar4_to_int(can->rxMessage.Data);
+		value = uchar4_to_float(can->rxMessage.Data);
 		receiveTime = millis();
 	}
 }
