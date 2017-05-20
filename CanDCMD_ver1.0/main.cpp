@@ -31,14 +31,23 @@ int main(void)
     		intervalTimer = millis() + IntervalTime;
 
 
-    		if(driver.driveStat == DS_Drive){
-    			led[4].write(1);
+    		if(driver.driveError&DE_UnderVoltage || driver.driveError&DE_ADCLost || driver.driveError&DE_Unknown){
+    			led[1].write(1);
+    			led[3].write(1);
     		}else{
-    			led[4].write(0);
+        		if(driver.driveError&DE_BreakFEToutAHigh || driver.driveError&DE_BreakFEToutALow || driver.driveError&DE_OCoutA){
+        			led[1].write(1);
+        		}else{
+        			led[1].write(0);
+        		}
+
+        		if(driver.driveError&DE_BreakFEToutBHigh || driver.driveError&DE_BreakFEToutBLow || driver.driveError&DE_OCoutB){
+        			led[3].write(1);
+        		}else{
+        			led[3].write(0);
+        		}
     		}
 
-    		led[1].write(driver.driveError);
-    		led[4].write(driver.adc->setupStat);
 
     		if(debugMode == 1){
         		if(sw[0].read() == 0){
@@ -66,11 +75,11 @@ int main(void)
 
     		switch(printValue){
     		case 0:
-    			serial.printf("er=0x%x,v min,%d,ave,%5d,c A=,%5d,B=,%5d\n\r",driver.driveError,(int)(driver.vMinRead()*1000),(int)(driver.vAveRead()*1000),(int)(driver.cMaxRead(0)*1000),(int)(driver.cMaxRead(1)*1000));
+    			serial.printf("er=0x%x,v min,%d,ave,%5d,c A=,%5d,B=,%5d\n\r",driver.driveError,(int)(driver.printvMin*1000),(int)(driver.printvAve*1000),(int)(driver.printcMax[0]),(int)(driver.printcMax[1]));
 
     			break;
     		case 1:
-    			serial.printf("v=,%5dmv,c=,%2d,%2d,vmn=,%3d,cmx=,%3d,%3d,dt=,%+5d,%+5d\n\r",(uint32_t)(driver.vbattRead()*1000),(uint32_t)driver.currentRread(0),(uint32_t)driver.currentRread(1),driver.minRead(2),driver.maxRead(1),driver.maxRead(0),canMD[0].outDuty/10,canMD[1].outDuty/10);
+    			serial.printf("v=,%5dmv,c=,%2d,%2d,cmx=,%5d,%5d,dt=,%+5d,%+5d\n\r",(uint32_t)(driver.printvAve*1000),(uint32_t)driver.printcAve[0],(uint32_t)driver.printcAve[1],(int)(driver.printcMax[0]),(int)(driver.printcMax[1]),canMD[0].outDuty/10,canMD[1].outDuty/10);
 
     			break;
     		case 2:
@@ -78,7 +87,7 @@ int main(void)
 
     			break;
     		case 3:
-    			serial.printf("limit,0x%d%d%d%d,enc=%6d,%6d\n\r",limit[3].gpioRead(),limit[2].gpioRead(),limit[1].gpioRead(),limit[0].gpioRead(),(uint32_t)canEnc[0].canEnc_enc->read(),(uint32_t)canEnc[1].canEnc_enc->read());
+    			serial.printf("limit,0x%d%d%d%d,%d%d%d%d,enc=%6d,%6d\n\r",limit[3].gpioRead(),limit[2].gpioRead(),limit[1].gpioRead(),limit[0].gpioRead(),limit[3].read(),limit[2].read(),limit[1].read(),limit[0].read(),(uint32_t)canEnc[0].canEnc_enc->read(),(uint32_t)canEnc[1].canEnc_enc->read());
 
     			break;
     		case 4:

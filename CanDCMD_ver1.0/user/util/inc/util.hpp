@@ -217,6 +217,69 @@ public:
     };
 };
 
+template <typename T>
+class Average{
+public:
+	T valueInt;
+	int valueCnt;
+	T read(){
+		T returnVal = valueInt/valueCnt;
+		valueCnt = 0;
+		valueInt = 0;
+		return returnVal;
+	}
+	T peek(){
+		T returnVal = valueInt/valueCnt;
+		return returnVal;
+	}
+	void stack(T value){
+		valueInt += value;
+		valueCnt++;
+	}
+};
+
+template <typename T>
+class Minimum{
+public:
+	T valueMin;
+	int valueNumber;
+	T read(){
+		valueNumber = 0;	//Å¬’l‚ğ‘ã“ü‚µ‚½‰ñ”
+		return valueMin;
+	}
+	T peek(){
+		return valueMin;
+	}
+	void stack(T value){
+		if(valueNumber == 0 || valueMin > value){
+			valueMin = value;
+			valueNumber++;
+		}
+	}
+};
+
+template <typename T>
+class Maximum{
+public:
+	T valueMax;
+	int valueNumber;
+	T read(){
+		valueNumber = 0;	//Å¬’l‚ğ‘ã“ü‚µ‚½‰ñ”
+		return valueMax;
+	}
+	T peek(){
+		return valueMax;
+	}
+	void stack(T value){
+		if(valueNumber == 0 || valueMax < value){
+			valueMax = value;
+			valueNumber++;
+		}
+	}
+};
+
+
+
 //a*x^2+b*x^1+c=0
 int quadraticEquationSolver(float &x1,float &x1i,float &x2,float &x2i,float a,float b,float c);
 int quadraticEquationSolver(std::complex<float> &x1,std::complex<float> &x2,float a,float b,float c);

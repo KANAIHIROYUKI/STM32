@@ -5,6 +5,7 @@
 #include "system.h"
 #include "can.h"
 #include "util.h"
+#include "util.hpp"
 
 class CanNodeVoltage{
 public:
@@ -12,12 +13,13 @@ public:
 	void cycle();
 	void interrupt();
 
-	float gain;
+	float gain,voltageValue;
 	uint32_t interval;
 	SI8900 *si8900;
 	uint32_t intervalTimer;
 	uint16_t number,port;
 
+	Average<float> vAve;
 private:
 	CAN* can;
 };

@@ -10,6 +10,11 @@
 #define IntervalTime 50
 #define PWM_PERIOD 2000
 
+#define BOARD_ADD_SAGI0 0
+#define BOARD_ADD_SAGI1 1
+#define BOARD_ADD_SHOT  2
+#define BOARD_ADD_ANGLE 1	//‰¼
+
 System sys;
 
 GPIO led[4],sel[4],adcRst,adcPowerOn,currentOption;
@@ -146,13 +151,28 @@ void setup(){
 	if(driver.hardwareOption == 1){
 		serial.printf("high end model\n\r");
 
-		driver.overCurrentSet(ChannelCurrentA,100);
-		driver.overCurrentSet(ChannelCurrentB,100);
+		if(CAN_ADDRESS == BOARD_ADD_SAGI0 || CAN_ADDRESS == BOARD_ADD_SAGI1){
+			driver.overCurrentPeakSet(ChannelCurrentA,150);
+			driver.overCurrentPeakSet(ChannelCurrentB,150);
+
+			driver.overCurrentAveSet(ChannelCurrentA,120);
+			driver.overCurrentAveSet(ChannelCurrentB,120);
+		}
 	}else{
 		serial.printf("mid-range model\n\r");
 
-		driver.overCurrentSet(ChannelCurrentA,50);
-		driver.overCurrentSet(ChannelCurrentB,50);
+		if(CAN_ADDRESS == BOARD_ADD_SHOT){
+			driver.overCurrentPeakSet(ChannelCurrentA,20);
+			driver.overCurrentPeakSet(ChannelCurrentB,50);
+
+			driver.overCurrentAveSet(ChannelCurrentA,10);
+			driver.overCurrentAveSet(ChannelCurrentB,30);
+		}
+
+		if(CAN_ADDRESS == BOARD_ADD_ANGLE){
+
+		}
+
 	}
 
 	delay(100);
@@ -163,10 +183,8 @@ void setup(){
 	serial.printf("setup end ");
 	if(debugMode == 1){
 		serial.printf("mode : debug-motor\n\r");
-		led[0].write(1);
 	}else if(debugMode == 2){
 		serial.printf("mode : debug-sensor\n\r");
-		led[1].write(1);
 	}else{
 		serial.printf("mode : run\n\r");
 	}

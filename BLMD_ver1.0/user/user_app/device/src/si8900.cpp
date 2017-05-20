@@ -37,6 +37,10 @@ void SI8900::gpioAssigne(GPIO &powerOnSet,GPIO &reset){
 }
 
 void SI8900::cycle(){
+	for(int i=0;i<3;i++){
+		if(readStat[i] == 2)readStat[i] = 0;
+	}
+
 	if(gpioSetuped && powerOn->read() == 1){	//電源が来ていない
 		setupStat = 0;							//当然セットアップできないわな
 		if(usart->available())usart->read();	//
@@ -146,7 +150,7 @@ void SI8900::request(uint16_t channel,uint16_t convert_mode){
 }
 
 uint16_t SI8900::read(uint16_t channel){
-	readStat[channel] = 0;
+	if(readStat[channel])readStat[channel] = 2;
 	return value[channel];
 }
 
