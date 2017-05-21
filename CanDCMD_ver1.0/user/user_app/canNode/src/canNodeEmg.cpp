@@ -2,13 +2,13 @@
 
 void CanNodeEmg::setup(CAN &canSet){
 	this->can = &canSet;
-	can->filterAdd(CAN_ADD_EMG);
+	//can->filterAdd(CAN_ADD_EMG);
 }
 
 void CanNodeEmg::emgRequest(uint16_t emgMessage){
 
-	data[0] = emgMessage		& 0xf;
-	data[1] = (emgMessage >> 8)	& 0xf;
+	data[0] = emgMessage		& 0xff;
+	data[1] = (emgMessage >> 8)	& 0xff;
 	can->send(CAN_ADD_EMG,2,data);
 }
 

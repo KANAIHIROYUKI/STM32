@@ -31,7 +31,7 @@ int main(void)
     		intervalTimer = millis() + IntervalTime;
 
 
-    		if(driver.driveError&DE_UnderVoltage || driver.driveError&DE_ADCLost || driver.driveError&DE_Unknown){
+    		if(driver.driveError&DE_UnderVoltage || driver.driveError&DE_OverVoltage || driver.driveError&DE_ADCLost || driver.driveError&DE_Unknown){
     			led[1].write(1);
     			led[3].write(1);
     		}else{
@@ -75,7 +75,7 @@ int main(void)
 
     		switch(printValue){
     		case 0:
-    			serial.printf("er=0x%x,v min,%d,ave,%5d,c A=,%5d,B=,%5d\n\r",driver.driveError,(int)(driver.printvMin*1000),(int)(driver.printvAve*1000),(int)(driver.printcMax[0]),(int)(driver.printcMax[1]));
+    			serial.printf("v min,%d,ave,%5d,c A=,%3d,B=,%3d\n\r",(int)(driver.printvMin*1000),(int)(driver.printvAve*1000),(int)(driver.printcMax[0]),(int)(driver.printcMax[1]));
 
     			break;
     		case 1:

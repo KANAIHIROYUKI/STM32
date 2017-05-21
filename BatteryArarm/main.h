@@ -8,10 +8,10 @@
 #define IntervalTime 10
 #define BUZZER_FRQ 2000
 
-#define BoardNumber2
+#define BoardNumber1
 
 
-#ifdef BoardNumber0
+#ifdef BoardNumber1
 #define CELL0_VOLTAGE_GAIN 4.4693
 #define CELL1_VOLTAGE_GAIN 4.5130
 #define CELL2_VOLTAGE_GAIN 4.5096
@@ -23,7 +23,7 @@
 
 
 
-#ifdef BoardNumber1
+#ifdef BoardNumber2
 #define CELL0_VOLTAGE_GAIN 4.5062
 #define CELL1_VOLTAGE_GAIN 4.6048
 #define CELL2_VOLTAGE_GAIN 4.5697
@@ -33,7 +33,7 @@
 #define CELL5_VOLTAGE_GAIN 8.7209
 #endif
 
-#ifdef BoardNumber2
+#ifdef BoardNumber3
 #define CELL0_VOLTAGE_GAIN 4.5836
 #define CELL1_VOLTAGE_GAIN 4.6261
 #define CELL2_VOLTAGE_GAIN 4.6545
@@ -43,15 +43,6 @@
 #define CELL5_VOLTAGE_GAIN 8.7977
 #endif
 
-#ifdef BoardNumber3
-#define CELL0_VOLTAGE_GAIN 4.59
-#define CELL1_VOLTAGE_GAIN 4.59
-#define CELL2_VOLTAGE_GAIN 4.59
-
-#define CELL3_VOLTAGE_GAIN 8.86
-#define CELL4_VOLTAGE_GAIN 8.86
-#define CELL5_VOLTAGE_GAIN 8.86
-#endif
 
 enum {
 	Batt_Setup,

@@ -17,6 +17,7 @@
 #define SetupDelayTime 100
 
 #define SetupLimitVoltage (float)(12.0)
+#define SetupOverVoltage  (float)(26.0)
 #define SetupLimitCurrent (float)(10.0)
 
 #define BuzzerLimitCurrent (float)(18.0)
@@ -34,15 +35,16 @@
 enum DE_DriverError{
 	DE_None 				= 0x000,
 	DE_UnderVoltage 		= 0x001,
-	DE_BreakFEToutAHigh		= 0x002,
-	DE_BreakFEToutBHigh		= 0x004,
-	DE_BreakFEToutALow 		= 0x008,
-	DE_BreakFEToutBLow 		= 0x010,
-	DE_OCoutA				= 0x020,
-	DE_OCoutB				= 0x040,
-	DE_ADCLost				= 0x080,
-	DE_UnderVoltageAve		= 0x100,
-	DE_Unknown				= 0x200,
+	DE_OverVoltage			= 0x002,
+	DE_BreakFEToutAHigh		= 0x004,
+	DE_BreakFEToutBHigh		= 0x008,
+	DE_BreakFEToutALow 		= 0x010,
+	DE_BreakFEToutBLow 		= 0x020,
+	DE_OCoutA				= 0x040,
+	DE_OCoutB				= 0x080,
+	DE_ADCLost				= 0x100,
+	DE_UnderVoltageAve		= 0x200,
+	DE_Unknown				= 0x400,
 };
 
 enum DS_DriveStat{

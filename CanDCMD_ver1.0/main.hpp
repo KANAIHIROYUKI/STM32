@@ -152,11 +152,11 @@ void setup(){
 		serial.printf("high end model\n\r");
 
 		if(CAN_ADDRESS == BOARD_ADD_SAGI0 || CAN_ADDRESS == BOARD_ADD_SAGI1){
-			driver.overCurrentPeakSet(ChannelCurrentA,150);
-			driver.overCurrentPeakSet(ChannelCurrentB,150);
+			driver.overCurrentPeakSet(ChannelCurrentA,15);
+			driver.overCurrentPeakSet(ChannelCurrentB,15);
 
-			driver.overCurrentAveSet(ChannelCurrentA,120);
-			driver.overCurrentAveSet(ChannelCurrentB,120);
+			driver.overCurrentAveSet(ChannelCurrentA,12);
+			driver.overCurrentAveSet(ChannelCurrentB,12);
 		}
 	}else{
 		serial.printf("mid-range model\n\r");
@@ -201,8 +201,6 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 
 	canEnc[0].interrupt();
 	canEnc[1].interrupt();
-
-	//canEmg.interrupt();
 
 	canVol.interrupt();
 

@@ -62,7 +62,7 @@ int main(void)
 				beepEnable = 0;
 			}
 
-			beepInterval =  battv - ((cellNum+1) * 3600);
+			beepInterval =  (battv - ((cellNum+1) * 3600))/10;
 			if(beepInterval < 100)beepInterval = 10;
 			serial.printf("%d,%d,%d\n\r",(uint32_t)battv,beepInterval,buzzerStatCnt);
 
