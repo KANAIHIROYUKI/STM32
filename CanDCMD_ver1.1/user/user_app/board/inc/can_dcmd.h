@@ -31,18 +31,20 @@
 #define DriveIntervalTime 50
 
 enum DE_DriverError{
-	DE_None 				= 0x000,
-	DE_UnderVoltage 		= 0x001,
-	DE_OverVoltage			= 0x002,
-	DE_BreakFEToutAHigh		= 0x004,
-	DE_BreakFEToutBHigh		= 0x008,
-	DE_BreakFEToutALow 		= 0x010,
-	DE_BreakFEToutBLow 		= 0x020,
-	DE_OCoutA				= 0x040,
-	DE_OCoutB				= 0x080,
-	DE_ADCLost				= 0x100,
-	DE_UnderVoltageAve		= 0x200,
-	DE_Unknown				= 0x400,
+	DE_None 				= 0x0000,
+	DE_UnderVoltage 		= 0x0000,		//MD側で読むとデメリットのほうが多そうなので切ってる
+	DE_OverVoltage			= 0x0002,
+	DE_BreakFEToutAHigh		= 0x0004,
+	DE_BreakFEToutBHigh		= 0x0008,
+	DE_BreakFEToutALow 		= 0x0010,
+	DE_BreakFEToutBLow 		= 0x0020,
+	DE_OCoutA				= 0x0040,
+	DE_OCoutB				= 0x0080,
+	DE_AveOCoutA			= 0x0100,
+	DE_AveOCoutB			= 0x0200,
+	DE_ADCLost				= 0x0400,
+	DE_UnderVoltageAve		= 0x0000,		//同様
+	DE_Unknown				= 0x1000,
 };
 
 enum DS_DriveStat{

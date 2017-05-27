@@ -9,8 +9,9 @@
 #define AMP_PULSE_MAX 1960
 #define AMP_PULSE_MIN 960
 
-#define AMP_PULSE_CYCLE 17000
-#define AMP_PULSE_LIMIT 500
+//#define AMP_PULSE_CYCLE 17000
+#define AMP_PULSE_CYCLE 2000
+#define AMP_PULSE_LIMIT 800
 
 #define CAN_PULSE_MODE_TIM 0
 #define CAN_PULSE_MODE_IO 1
@@ -20,6 +21,7 @@ public:
 	int16_t setup(TIM &tim,CAN &can,uint16_t number);
 	int16_t setup(GPIO &gpio,CAN &can,uint16_t number);
 	void interrupt();
+	void debug(uint16_t debugDuty);
 	void cycle();
 	void invert();
 

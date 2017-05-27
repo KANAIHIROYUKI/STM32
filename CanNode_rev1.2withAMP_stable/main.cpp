@@ -28,6 +28,9 @@ int main(void)
     		if(canLastReceiveTime + 50 < millis()){
     			led.toggle();
     		}
+
+    		//canPulse[0].debug(enc[0].read()*10);
+
     		//serial.printf("%d,%d\n\r",canEnc[0].canEnc_interval,canEnc[1].canEnc_interval);
 
 #ifdef DEBUG

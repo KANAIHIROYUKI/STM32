@@ -33,11 +33,15 @@ void CanNodeSwitch::cycle(){
 
 	if(canData[0] != 0 && intervalTime != 0){
 		can->send(canAddress + 0x40,2,canData);
+		send[0] = canData[0];
+		send[1] = canData[1];
 		lastSendTime = millis();
 	}
 
 	if(millis() - lastSendTime > intervalTime && intervalTime != 0){
 		can->send(canAddress + 0x40,2,canData);
+		send[0] = canData[0];
+		send[1] = canData[1];
 		lastSendTime = millis();
 	}
 

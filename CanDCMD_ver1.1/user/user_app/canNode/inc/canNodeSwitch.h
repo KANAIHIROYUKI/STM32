@@ -12,7 +12,7 @@ public:
 	void cycle();
 	void interrupt();
 
-	uint8_t canData[4];
+	uint8_t canData[4],send[2];
 	uint16_t canAddress;
 	uint16_t setuped;
 	uint32_t intervalTime;

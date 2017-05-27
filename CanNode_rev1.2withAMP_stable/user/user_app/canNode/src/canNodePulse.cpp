@@ -46,7 +46,7 @@ void CanNodePulse::interrupt(){
 			outDuty = -outDuty;
 		}
 		outDuty = (float)((AMP_PULSE_MAX - AMP_PULSE_CENTER)*outDuty)/32767;
-		if(outDuty > AMP_PULSE_LIMIT)outDuty = AMP_PULSE_LIMIT;
+		if(outDuty >  AMP_PULSE_LIMIT)outDuty =  AMP_PULSE_LIMIT;
 		if(outDuty < -AMP_PULSE_LIMIT)outDuty = -AMP_PULSE_LIMIT;
 
 
@@ -54,6 +54,18 @@ void CanNodePulse::interrupt(){
 		if(canPulse_mode == CAN_PULSE_MODE_IO)canPulse_pulseDuty = AMP_PULSE_CENTER + outDuty;
 		canPulse_receiveTime = millis();
 	}
+}
+
+void CanNodePulse::debug(uint16_t debugDuty){
+	outDuty = debugDuty;
+	outDuty = (float)((AMP_PULSE_MAX - AMP_PULSE_CENTER)*outDuty)/32767;
+	if(outDuty > AMP_PULSE_LIMIT)outDuty = AMP_PULSE_LIMIT;
+	if(outDuty < -AMP_PULSE_LIMIT)outDuty = -AMP_PULSE_LIMIT;
+
+
+	if(canPulse_mode == CAN_PULSE_MODE_TIM)canPulse_tim->duty(AMP_PULSE_CENTER + outDuty);	//ˆê‰ž“®‚­
+	if(canPulse_mode == CAN_PULSE_MODE_IO)canPulse_pulseDuty = AMP_PULSE_CENTER + outDuty;
+	canPulse_receiveTime = millis();
 }
 
 void CanNodePulse::cycle(){

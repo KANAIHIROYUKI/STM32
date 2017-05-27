@@ -44,10 +44,10 @@ void setup(){
 	enc[0].reverse();
 
 
-	pwm[0].pwmSetup(TIM2,3,PA2,17000,72,TIM_OCMode_PWM2);
-	pwm[1].pwmSetup(TIM2,4,PA3,17000,72,TIM_OCMode_PWM2);
-	pwm[2].pwmSetup(TIM3,3,PB0,17000,72,TIM_OCMode_PWM2);
-	pwm[3].pwmSetup(TIM3,4,PB1,17000,72,TIM_OCMode_PWM2);
+	pwm[0].pwmSetup(TIM2,3,PA2,AMP_PULSE_CYCLE,72,TIM_OCMode_PWM2);
+	pwm[1].pwmSetup(TIM2,4,PA3,AMP_PULSE_CYCLE,72,TIM_OCMode_PWM2);
+	pwm[2].pwmSetup(TIM3,3,PB0,AMP_PULSE_CYCLE,72,TIM_OCMode_PWM2);
+	pwm[3].pwmSetup(TIM3,4,PB1,AMP_PULSE_CYCLE,72,TIM_OCMode_PWM2);
 
 	led.setup(PB2,OUTPUT);
 	sw.setup(PC14,INPUT_PU);

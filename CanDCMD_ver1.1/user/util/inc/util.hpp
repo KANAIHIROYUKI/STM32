@@ -230,6 +230,11 @@ public:
 		}
 		return returnValue;
 	}
+	void reset(){
+		valueCnt = 0;
+		valueInt = 0;
+		returnValue = 0;
+	}
 	T peek(){
 		if(valueCnt)returnValue = valueInt/valueCnt;
 		return returnValue;

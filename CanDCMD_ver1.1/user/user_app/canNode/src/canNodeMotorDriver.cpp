@@ -17,6 +17,9 @@ int16_t CanNodeMotorDriver::setup(Motor &motor,CAN &can,uint16_t number,uint16_t
 
 	motorOutEnable = 1;
 
+	outDuty = 0;
+	outDutyF = 0;
+
 	return 0;
 }
 
@@ -50,7 +53,8 @@ void CanNodeMotorDriver::interrupt(){
 		if((canMd_can->rxMessage.Data[1] >> 7) == 1){
 			outDuty = -outDuty;
 		}
-		if(motorOutEnable == 1)canMd_motor->duty((float)outDuty/32767);			//outEn‚¶‚á‚È‚¢‚Æ‰ñ‚³‚ñ‚Å
+		outDutyF = (float)outDuty/32767;
+		if(motorOutEnable == 1)canMd_motor->duty(outDutyF);			//outEn‚¶‚á‚È‚¢‚Æ‰ñ‚³‚ñ‚Å
 		lastReceiveTime = millis();
 	}else if(canMd_can->rxMessage.StdId == canMd_address[CAN_MD_ADDRESS_FREE]){
 

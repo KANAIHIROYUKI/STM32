@@ -59,6 +59,15 @@ void SI8900::cycle(){
 				receiveTime[0] = millis();
 				receiveTime[1] = millis();
 				receiveTime[2] = millis();
+
+				value[0] = 0;
+				value[1] = 0;
+				value[2] = 0;
+
+				readStat[0] = 0;
+				readStat[1] = 0;
+				readStat[2] = 0;
+
 			}
 		}
 

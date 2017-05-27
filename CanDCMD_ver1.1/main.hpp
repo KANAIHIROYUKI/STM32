@@ -150,30 +150,34 @@ void setup(){
 	serial.printf("hw option = %d,",driver.hardwareOption);	//ハードウェア識別
 	if(driver.hardwareOption == 1){
 		serial.printf("high end model\n\r");
-
-		if(CAN_ADDRESS == BOARD_ADD_SAGI0 || CAN_ADDRESS == BOARD_ADD_SAGI1){
-			driver.overCurrentPeakSet(0,170);
-			driver.overCurrentPeakSet(1,170);
-
-			driver.overCurrentAveSet(0,170);
-			driver.overCurrentAveSet(1,170);
-		}
 	}else{
 		serial.printf("mid-range model\n\r");
-
-		if(CAN_ADDRESS == BOARD_ADD_SHOT){
-			driver.overCurrentPeakSet(0,50);
-			driver.overCurrentPeakSet(1,30);
-
-			driver.overCurrentAveSet(0,40);
-			driver.overCurrentAveSet(1,20);
-		}
-
-		if(CAN_ADDRESS == BOARD_ADD_ANGLE){
-
-		}
-
 	}
+
+	if(CAN_ADDRESS == BOARD_ADD_SAGI0 || CAN_ADDRESS == BOARD_ADD_SAGI1){
+		driver.overCurrentPeakSet(0,170);
+		driver.overCurrentPeakSet(1,170);
+
+		driver.overCurrentAveSet(0,170);
+		driver.overCurrentAveSet(1,170);
+	}
+
+	if(CAN_ADDRESS == BOARD_ADD_SHOT){
+		driver.overCurrentPeakSet(ChannelCurrentA,40);
+		driver.overCurrentPeakSet(ChannelCurrentB,150);
+
+		driver.overCurrentAveSet(ChannelCurrentA,30);
+		driver.overCurrentAveSet(ChannelCurrentB,100);
+
+	}else if(CAN_ADDRESS == BOARD_ADD_ANGLE){
+		driver.overCurrentPeakSet(0,150);
+		driver.overCurrentPeakSet(1,150);
+
+		driver.overCurrentAveSet(0,20);
+		driver.overCurrentAveSet(1,20);
+	}
+
+
 	serial.printf("OC limit max A=%3d,B=%3d,ave A=%3d,B=%3d\n\r",(int)driver.overCurrentLimit[0],(int)driver.overCurrentLimit[1],(int)driver.overCurrentLimitAve[0],(int)driver.overCurrentLimitAve[1]);
 
 	delay(100);
