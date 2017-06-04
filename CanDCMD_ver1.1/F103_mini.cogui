@@ -24,6 +24,7 @@
 <part id="6"/>
 <part id="7"/>
 <part id="8"/>
+<part id="9"/>
 </presentation>
 </folder>
 </info>
@@ -32,13 +33,13 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/main.cpp"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3318" selectionTopPixel="1196"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" partName="main.hpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/main.hpp" title="main.hpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/main.hpp" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" partName="main.hpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/main.hpp" title="main.hpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/main.hpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/main.hpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4382" selectionTopPixel="2506"/>
+<editorState selectionHorizontalPixel="0" selectionLength="2" selectionOffset="4094" selectionTopPixel="2757"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="can_dcmd.h" partName="can_dcmd.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/user/user_app/board/inc/can_dcmd.h" title="can_dcmd.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/user/user_app/board/inc/can_dcmd.h" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="can_dcmd.h" partName="can_dcmd.h" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/user/user_app/board/inc/can_dcmd.h" title="can_dcmd.h" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/user/user_app/board/inc/can_dcmd.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_app/board/inc/can_dcmd.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="27" selectionOffset="1075" selectionTopPixel="270"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1048" selectionTopPixel="270"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="can_dcmd.cpp" partName="can_dcmd.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/user/user_app/board/src/can_dcmd.cpp" title="can_dcmd.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/user/user_app/board/src/can_dcmd.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_app/board/src/can_dcmd.cpp"/>
@@ -63,6 +64,10 @@
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeSwitch.cpp" partName="canNodeSwitch.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/user/user_app/canNode/src/canNodeSwitch.cpp" title="canNodeSwitch.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/user/user_app/canNode/src/canNodeSwitch.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_app/canNode/src/canNodeSwitch.cpp"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="806" selectionTopPixel="110"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.cpp" partName="canNodeVoltage.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/user/user_app/canNode/src/canNodeVoltage.cpp" title="canNodeVoltage.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanDCMD_ver1.1/user/user_app/canNode/src/canNodeVoltage.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_app/canNode/src/canNodeVoltage.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="201" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -91,7 +96,7 @@
 <element path="/F103_mini/util/src"/>
 </expanded>
 <selection>
-<element path="/F103_mini/user_app/canNode/src/canNodeSwitch.cpp"/>
+<element path="/F103_mini/user_app/canNode/src/canNodeVoltage.cpp"/>
 </selection>
 </viewState>
 </view>
@@ -298,22 +303,12 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/inc/canNodeSwitch.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/src/canNodeSwitch.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/board/inc/can_dcmd.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/inc/canNodeValve.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/inc/canNodeVoltage.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/src/canNodeVoltage.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.hpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/board/inc/can_dcmd.h"/>
 </editors>
-<item historyLabel="main.hpp" index="0">
-<position/>
-</item>
-<item historyLabel="can_dcmd.h" index="1">
-<position info="not_deleted" x="1075" y="53"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="2">
-<position info="not_deleted" x="3973" y="0"/>
-</item>
-<item historyLabel="can_dcmd.h" index="1">
-<position info="not_deleted" x="1075" y="53"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="2">
-<position info="not_deleted" x="3973" y="0"/>
-</item>
 <item historyLabel="main.hpp" index="0">
 <position/>
 </item>
@@ -446,8 +441,23 @@
 <item historyLabel="can_dcmd.h" index="8">
 <position info="not_deleted" x="1075" y="27"/>
 </item>
-<item active="true" historyLabel="main.hpp" index="0">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="4382" y="0"/>
+</item>
+<item historyLabel="canNodeValve.h" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="canNodeVoltage.h" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="canNodeVoltage.cpp" index="11">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="12">
+<position info="not_deleted" x="3956" y="0"/>
+</item>
+<item active="true" historyLabel="can_dcmd.h" index="13">
+<position info="not_deleted" x="1075" y="27"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -456,6 +466,15 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.cpp" tooltip="F103_mini/user_app/canNode/src/canNodeVoltage.cpp">
+<persistable path="/F103_mini/user_app/canNode/src/canNodeVoltage.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.h" tooltip="F103_mini/user_app/canNode/inc/canNodeVoltage.h">
+<persistable path="/F103_mini/user_app/canNode/inc/canNodeVoltage.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeValve.h" tooltip="F103_mini/user_app/canNode/inc/canNodeValve.h">
+<persistable path="/F103_mini/user_app/canNode/inc/canNodeValve.h"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeSwitch.cpp" tooltip="F103_mini/user_app/canNode/src/canNodeSwitch.cpp">
 <persistable path="/F103_mini/user_app/canNode/src/canNodeSwitch.cpp"/>
 </file>
@@ -491,15 +510,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodePulse.cpp" tooltip="F103_mini/user_app/canNode/src/canNodePulse.cpp">
 <persistable path="/F103_mini/user_app/canNode/src/canNodePulse.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="pulse.h" tooltip="F103_mini/user_app/inc/pulse.h">
-<persistable path="/F103_mini/user_app/inc/pulse.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" tooltip="F103_mini/main.hpp">
-<persistable path="/F103_mini/main.hpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" tooltip="F103_mini/main.cpp">
-<persistable path="/F103_mini/main.cpp"/>
 </file>
 </mruList>
 </workbench>

@@ -11,7 +11,7 @@
 #define PWM_PERIOD 2000
 
 #define BOARD_ADD_SAGI0 0
-#define BOARD_ADD_SAGI1 1
+#define BOARD_ADD_SAGI1 3
 #define BOARD_ADD_SHOT  2
 #define BOARD_ADD_ANGLE 1	//âº
 
@@ -153,7 +153,7 @@ void setup(){
 	}else{
 		serial.printf("mid-range model\n\r");
 	}
-
+/*
 	if(CAN_ADDRESS == BOARD_ADD_SAGI0 || CAN_ADDRESS == BOARD_ADD_SAGI1){
 		driver.overCurrentPeakSet(0,170);
 		driver.overCurrentPeakSet(1,170);
@@ -176,7 +176,30 @@ void setup(){
 		driver.overCurrentAveSet(0,20);
 		driver.overCurrentAveSet(1,20);
 	}
+	*/
 
+	if(CAN_ADDRESS == BOARD_ADD_SAGI0 || CAN_ADDRESS == BOARD_ADD_SAGI1){
+		driver.overCurrentPeakSet(0,170);
+		driver.overCurrentPeakSet(1,170);
+
+		driver.overCurrentAveSet(0,120);
+		driver.overCurrentAveSet(1,120);
+	}
+
+	if(CAN_ADDRESS == BOARD_ADD_SHOT){
+		driver.overCurrentPeakSet(ChannelCurrentA,40);	//è„éÀèo
+		driver.overCurrentPeakSet(ChannelCurrentB,40);
+
+		driver.overCurrentAveSet(ChannelCurrentA,30);
+		driver.overCurrentAveSet(ChannelCurrentB,30);
+
+	}else if(CAN_ADDRESS == BOARD_ADD_ANGLE){
+		driver.overCurrentPeakSet(ChannelCurrentA,150);	//ã¬äp
+		driver.overCurrentPeakSet(ChannelCurrentB,150);	//â∫éÀèo
+
+		driver.overCurrentAveSet(ChannelCurrentA,20);
+		driver.overCurrentAveSet(ChannelCurrentB,100);
+	}
 
 	serial.printf("OC limit max A=%3d,B=%3d,ave A=%3d,B=%3d\n\r",(int)driver.overCurrentLimit[0],(int)driver.overCurrentLimit[1],(int)driver.overCurrentLimitAve[0],(int)driver.overCurrentLimitAve[1]);
 
