@@ -24,11 +24,17 @@ void GPIO::setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode){
 
 
 
-uint16_t GPIO::write(BitAction value){
+uint16_t GPIO::write(uint16_t value){
 	/*if((gpio_mode != GPIO_Mode_Out_OD) || (gpio_mode != GPIO_Mode_Out_PP)){
 		return 1;
 	}*/
-	GPIO_WriteBit(gpio_gpio,gpio_pin,value);
+	//GPIO_WriteBit(gpio_gpio,gpio_pin,value);
+
+	if(value == 0){
+		GPIO_WriteBit(gpio_gpio,gpio_pin,Bit_RESET);
+	}else{
+		GPIO_WriteBit(gpio_gpio,gpio_pin,Bit_SET);
+	}
 
 	return 0;
 }

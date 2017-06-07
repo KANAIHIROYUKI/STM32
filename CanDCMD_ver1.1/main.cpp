@@ -48,6 +48,10 @@ int main(void)
         		}
     		}
 
+    		if(serial.available()){
+    			if(serial.read() == 'r')while(1);
+    			printValue++;
+    		}
 
     		if(debugMode == 1){
         		if(sw[0].read() == 0){
@@ -65,10 +69,10 @@ int main(void)
         		}
 
     		}else{
-        		if(sw[0].readStat == 1 && sw[0].read() == 0 && printValue > 0){
+        		if(sw[0].readStat == 1 && sw[0].read() == 0&& printValue > 0){
         			printValue--;
         		}
-        		if(sw[1].readStat == 1 && sw[1].read() == 0 && printValue < 5){
+        		if(sw[1].readStat == 1 && sw[1].read() == 0){
         			printValue++;
         		}
     		}
@@ -102,6 +106,8 @@ int main(void)
     			//canデータぶんまわし
 
     			break;
+    		default:
+    			printValue = 0;
     		}
 
     		if(driver.adc->setupStat == 0 && driver.driveError){
@@ -115,13 +121,27 @@ int main(void)
     		}
     	}
 
-    	if(printValue == 5 && driver.adcCycleOnetime()){
-    		serial.printf("%d,%3d,%3d,%3d\n\r",driver.adc->setupStat,driver.adc->value[0],driver.adc->value[1],driver.adc->value[2]);	//driverがdriveモードのときのみ
+    	if(printValue == 4 && driver.adcCycleOnetime()){
+    		serial.printf("%3d,%3d,%3d\n\r",driver.adc->value[0],driver.adc->value[1],driver.adc->value[2]);	//driverがdriveモードのときのみ
     	}
 
-    	if(printValue == 6 && can1.receiveCnt > 0){
-    		serial.printf("rCnt=%d,id=0x%x,data=0x%x,0x%x",can1.receiveCnt,can1.rxMessage.StdId,can1.rxMessage.Data[0],can1.rxMessage.Data[1]);
+    	if(printValue == 5 && can1.receiveCnt > 0){
+    		serial.printf("rCnt=%d,id=0x%x,data=0x%x,0x%x\n\r",can1.receiveCnt,can1.rxMessage.StdId,can1.rxMessage.Data[0],can1.rxMessage.Data[1]);
     		can1.receiveCnt = 0;
+    	}
+
+    	if(can1.errorCnt){
+    		if(can1.errorAddress < CAN_ADD_DUTY){
+    			serial.printf("can emg error\n\r");
+    		}else if(can1.errorAddress >= CAN_ADD_SWITCH_VALUE && can1.errorAddress <= CAN_ADD_SWITCH_VALUE + 0x020){
+    			serial.printf("can switch error\n\r");
+    		}else if(can1.errorAddress >= CAN_ADD_VOLTAGE_VALUE && can1.errorAddress <= CAN_ADD_VOLTAGE_VALUE + 0x020){
+    			serial.printf("can voltage error\n\r");
+    		}else if(can1.errorAddress >= CAN_ADD_ENC_VALUE && can1.errorAddress <= CAN_ADD_ENC_VALUE + 0x020){
+    			serial.printf("can enc error\n\r");
+    		}
+    		can1.errorCnt = 0;
+    		serial.printf("address = 0x%x\n\r",can1.errorAddress);
     	}
     }
 }

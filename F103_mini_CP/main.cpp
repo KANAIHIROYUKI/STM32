@@ -43,15 +43,16 @@ int main(void)
 		if(intervalTime < millis()){
 			//signal.toggle();
 			intervalTime = millis() + IntervalTime;
+			serial.printf("0x%x\n\r",switchState);
 			//serial.printf("%d\n\r",canSwitch.read());
-			serial.printf("%d,%d,%d,%d,%d,%2x\n\r",ROTARY,switchPin[4].read(),switchPin[5].read(),switchPin[6].read(),switchPin[7].read(),switchState);
+			//serial.printf("%d,%d,%d,%d,%d,%2x\n\r",ROTARY,switchPin[4].read(),switchPin[5].read(),switchPin[6].read(),switchPin[7].read(),switchState);
 		}
 
 		if(rxFlag != 0){
 			signal.toggle();
 			rxFlag--;
-			//serial.printf("%d,",transmitIntervalTime);
-			serial.printf("CAN RX d0=%x,d1=%x,d2=%x\n\r",can1.rxMessage.Data[0],can1.rxMessage.Data[1],can1.rxMessage.Data[2]);
+			serial.printf("%d,",transmitIntervalTime);
+			//serial.printf("CAN RX d0=%x,d1=%x,d2=%x\n\r",can1.rxMessage.Data[0],can1.rxMessage.Data[1],can1.rxMessage.Data[2]);
 		}
 	}
 }

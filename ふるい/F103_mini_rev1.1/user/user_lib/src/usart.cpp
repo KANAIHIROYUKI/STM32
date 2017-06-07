@@ -45,14 +45,15 @@ void USART::printf(const char *format, ...) {
 }
 
 
-void USART::setup(USART_TypeDef *usart,uint32_t baud){
+void USART::setup(USART_TypeDef *usart,uint32_t baud,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx){
 	usart_usart = usart;
+	ioSetup(gpio_tx,pin_tx,gpio_rx,pin_rx);
+
 	if(usart_usart == USART1){
 		USART1Setup(baud);
 		USART1ITSetup(USART_IT_RXNE);
 		USART1ITSetup(USART_IT_TXE);
 		USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
-
 	}else if(usart_usart == USART2){
 		USART2Setup(baud);
 		USART2ITSetup(USART_IT_RXNE);
@@ -189,6 +190,11 @@ uint16_t USART::available(){
 
 }
 
+void USART::ioSetup(GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx){
+	GPIO TX,RX;
+	TX.setup(gpio_tx,pin_tx,OUTPUT_AF);
+	RX.setup(gpio_rx,pin_rx,INPUT_PU);
+}
 
 void USART1Setup(uint32_t baud){
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_USART1EN,ENABLE);

@@ -80,6 +80,4 @@ extern "C" void SPI1_IRQHandler(){
 	}else{
 
 	}
-
-
 }

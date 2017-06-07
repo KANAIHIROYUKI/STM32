@@ -1,6 +1,8 @@
 #include "adc.h"
 
-void ADC::setup(ADC_TypeDef* adc,uint8_t channel){
+void ADC::setup(ADC_TypeDef* adc,uint8_t channel,GPIO_TypeDef* gpio,uint16_t pin){
+	ioSetup(gpio,pin);
+
 	adc_channel = channel;
 	adc_adc = adc;
 	if(adc_adc == ADC1){
@@ -36,6 +38,11 @@ uint16_t ADC::peek(){
 	}else{
 		return 0;
 	}
+}
+
+void ADC::ioSetup(GPIO_TypeDef* gpio,uint16_t pin){
+	GPIO IN;
+	IN.setup(gpio,pin,INPUT_AIN);
 }
 
 void ADC1Setup(uint8_t ADC_Channel){

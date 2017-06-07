@@ -42,7 +42,7 @@ enum DE_DriverError{
 	DE_OCoutB				= 0x0080,
 	DE_AveOCoutA			= 0x0100,
 	DE_AveOCoutB			= 0x0200,
-	DE_ADCLost				= 0x0400,
+	DE_ADCLost				= 0x0000,
 	DE_UnderVoltageAve		= 0x0000,		//“¯—l
 	DE_Unknown				= 0x1000,
 };

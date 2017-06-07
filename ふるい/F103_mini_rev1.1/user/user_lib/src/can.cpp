@@ -1,11 +1,20 @@
 #include "can.h"
 
-void CAN::setup(CAN_TypeDef* can){
+uint16_t CAN::filterCnt = 0;
+uint16_t CAN::filterAddress[4*13];
+
+void CAN::setup(CAN_TypeDef* can,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx){
 	can_can = can;
+	ioSetup(gpio_tx,pin_tx,gpio_rx,pin_rx);
+
 	if(can_can == CAN1){
 		CAN1Setup();
 	}else{
 
+	}
+
+	for(int i=0;i<4*13;i++){
+		filterAddress[i] = 0;
 	}
 }
 
@@ -18,6 +27,23 @@ void CAN::send(uint16_t id,uint8_t length,uint8_t *data){
 }
 
 void CAN::filterAdd(uint16_t id1,uint16_t id2,uint16_t id3,uint16_t id4){
+	if(id1 != 0){
+		filterAddress[filterCnt] = id1;
+		filterCnt++;
+	}
+	if(id2 != 0){
+		filterAddress[filterCnt] = id2;
+		filterCnt++;
+	}
+	if(id3 != 0){
+		filterAddress[filterCnt] = id3;
+		filterCnt++;
+	}
+	if(id4 != 0){
+		filterAddress[filterCnt] = id4;
+		filterCnt++;
+	}
+
 	CANFilterAdd(id1,id2,id3,id4);
 }
 
@@ -29,13 +55,21 @@ void CAN::receive(CanRxMsg* canRxMessage){
 	}
 }
 
-/*void CAN::receive(){
+void CAN::ioSetup(GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx){
+	GPIO RX,TX;
+	TX.setup(gpio_tx,pin_tx,OUTPUT_AF);
+	RX.setup(gpio_rx,pin_rx,INPUT);
+
+
+}
+
+void CAN::receive(){
 	if(can_can == CAN1){
 		CAN_Receive(CAN1,CAN_FIFO0,&rxMessage);
 	}else{
 
 	}
-}*/
+}
 
 void CAN1Setup(){
 	CAN_DeInit(CAN1);
@@ -43,12 +77,13 @@ void CAN1Setup(){
 
 	CAN_InitTypeDef CAN_InitStructure;
 	CAN_StructInit(&CAN_InitStructure);
-	CAN_InitStructure.CAN_TTCM = ENABLE;
+	CAN_InitStructure.CAN_TTCM = DISABLE;
 	CAN_InitStructure.CAN_ABOM = DISABLE;
 	CAN_InitStructure.CAN_AWUM = DISABLE;
 	CAN_InitStructure.CAN_NART = DISABLE;
 	CAN_InitStructure.CAN_TXFP = DISABLE;
 	CAN_InitStructure.CAN_Mode = CAN_Mode_Normal;
+	//CAN_InitStructure.CAN_Mode = CAN_Mode_LoopBack;
 	CAN_InitStructure.CAN_SJW = CAN_SJW_1tq;
 	CAN_InitStructure.CAN_BS1 = CAN_BS1_5tq;
 	CAN_InitStructure.CAN_BS2 = CAN_BS2_6tq;
@@ -83,8 +118,9 @@ void CAN1Send(uint16_t id,uint8_t length,uint8_t data[8]){
     CanTxMsg txMessage;
     txMessage.StdId = id;
     txMessage.IDE   = CAN_ID_STD;
-    if(length == 0){
+    if(length == 9){
     	txMessage.RTR = CAN_RTR_REMOTE;
+    	length = 8;
     }else{
     	txMessage.RTR   = CAN_RTR_DATA;
     }

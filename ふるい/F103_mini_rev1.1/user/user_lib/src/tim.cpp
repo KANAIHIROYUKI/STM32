@@ -12,26 +12,28 @@ int32_t TIM::tim2Cnt = 0;
 int32_t TIM::tim3Cnt = 0;
 int32_t TIM::tim4Cnt = 0;
 
-void TIM::pwmSetup(TIM_TypeDef* tim,uint16_t channel,uint16_t period,uint16_t mode){
+void TIM::pwmSetup(TIM_TypeDef* tim,uint16_t channel,GPIO_TypeDef* gpio,uint16_t pin,uint16_t period,uint16_t prescaler,uint16_t mode){
+	ioSetupPwm(gpio,pin);
 	pwm_channel = channel;
 	tim_tim = tim;
 	pwm_period = period;
+	pwm_prescaler = prescaler;
 	pwm_mode = mode;
 	if(tim_tim == TIM1){
 		tim1_mode = TIM_PWM;
-		TIM2Setup(pwm_period);
+		TIM1Setup(pwm_period,pwm_prescaler);
 
 	}else if(tim_tim == TIM2){
 		tim2_mode = TIM_PWM;
-		TIM2Setup(pwm_period);
+		TIM2Setup(pwm_period,pwm_prescaler);
 
 	}else if(tim_tim == TIM3){
 		tim3_mode = TIM_PWM;
-		TIM3Setup(pwm_period);
+		TIM3Setup(pwm_period,pwm_prescaler);
 
 	}else if(tim_tim == TIM4){
 		tim4_mode = TIM_PWM;
-		TIM4Setup(pwm_period);
+		TIM4Setup(pwm_period,pwm_prescaler);
 
 	}else{
 		return;
@@ -102,7 +104,9 @@ void TIM::itSetup(){
 }
 
 
-void TIM::encoderSetup(TIM_TypeDef *tim){
+void TIM::encoderSetup(TIM_TypeDef *tim,GPIO_TypeDef* gpio1,uint16_t pin1,GPIO_TypeDef* gpio2,uint16_t pin2){
+	ioSetupEnc(gpio1,pin1,gpio2,pin2);
+
 	tim_tim = tim;
 	encoder_dir = 1;
 	if(tim_tim == TIM1){
@@ -122,6 +126,19 @@ void TIM::encoderSetup(TIM_TypeDef *tim){
 		TIM4EncoderSetup();
 
 	}
+}
+
+void TIM::ioSetupEnc(GPIO_TypeDef* gpio1,uint16_t pin1,GPIO_TypeDef* gpio2,uint16_t pin2){
+	GPIO A,B;
+	A.setup(gpio1,pin1,INPUT_PU);
+	B.setup(gpio2,pin2,INPUT_PU);
+	return;
+}
+
+void TIM::ioSetupPwm(GPIO_TypeDef* gpio,uint16_t pin){
+	GPIO A;
+	A.setup(gpio,pin,OUTPUT_AF);
+	return;
 }
 
 int32_t TIM::read(){
@@ -190,13 +207,14 @@ void TIM::timerSetup(TIM_TypeDef* tim){
 
 /************************************************Å™class member Å´function*************************************************************************/
 
-void TIM1Setup(uint16_t period){
+void TIM1Setup(uint16_t period,uint16_t prescaler){
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
 
 	TIM_TimeBaseInitTypeDef TimeBaseInitStructure;
 	TIM_TimeBaseStructInit(&TimeBaseInitStructure);
 	TimeBaseInitStructure.TIM_Period = period;
+	TimeBaseInitStructure.TIM_Prescaler = prescaler;
 	TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TimeBaseInitStructure.TIM_RepetitionCounter = 0;
 	TIM_TimeBaseInit(TIM1,&TimeBaseInitStructure);
@@ -211,32 +229,35 @@ void TIM1Setup(uint16_t period){
 
 }
 
-void TIM2Setup(uint16_t period){
+void TIM2Setup(uint16_t period,uint16_t prescaler){
 	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM2EN,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
 
 	TIM_TimeBaseInitTypeDef TimeBaseInitStructure;
 	TIM_TimeBaseStructInit(&TimeBaseInitStructure);
 	TimeBaseInitStructure.TIM_Period = period;
+	TimeBaseInitStructure.TIM_Prescaler = prescaler;
 	TIM_TimeBaseInit(TIM2,&TimeBaseInitStructure);
 }
 
-void TIM3Setup(uint16_t period){
+void TIM3Setup(uint16_t period,uint16_t prescaler){
 	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM3EN,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
 
 	TIM_TimeBaseInitTypeDef TimeBaseInitStructure;
 	TIM_TimeBaseStructInit(&TimeBaseInitStructure);
+	TimeBaseInitStructure.TIM_Prescaler = prescaler;
 	TimeBaseInitStructure.TIM_Period = period;
 	TIM_TimeBaseInit(TIM3,&TimeBaseInitStructure);
 }
 
-void TIM4Setup(uint16_t period){
+void TIM4Setup(uint16_t period,uint16_t prescaler){
 	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM4EN,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
 
 	TIM_TimeBaseInitTypeDef TimeBaseInitStructure;
 	TIM_TimeBaseStructInit(&TimeBaseInitStructure);
+	TimeBaseInitStructure.TIM_Prescaler = prescaler;
 	TimeBaseInitStructure.TIM_Period = period;
 	TIM_TimeBaseInit(TIM4,&TimeBaseInitStructure);
 }
@@ -486,10 +507,27 @@ void TIM3_PWM_Update_IRQ(){
 
 }
 
+
+
 void TIM4_PWM_Update_IRQ(){
 
 }
 
+void TIM4_PWM_CC1_IRQ(){
+
+}
+
+void TIM4_PWM_CC2_IRQ(){
+
+}
+
+void TIM4_PWM_CC3_IRQ(){
+
+}
+
+void TIM4_PWM_CC4_IRQ(){
+
+}
 
 void TIM1_TIM_Update_IRQ(){
 	TIM::tim1Cnt++;
@@ -512,7 +550,7 @@ extern "C" void TIM1_UP_IRQHandler(void){
 	if(TIM::tim1_mode == TIM_ENC){
 		TIM1_ENCODER_IRQ();
 	}else if(TIM::tim1_mode == TIM_PWM){
-		TIM1_ENCODER_IRQ();
+		TIM1_PWM_Update_IRQ();
 	}else if(TIM::tim1_mode == TIM_TIM){
 		TIM1_TIM_Update_IRQ();
 	}
@@ -525,7 +563,7 @@ extern "C" void TIM2_IRQHandler(void){
 		TIM2_ENCODER_IRQ();
 		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 	}else if(TIM::tim2_mode == TIM_PWM){
-		TIM2_ENCODER_IRQ();
+		TIM2_PWM_Update_IRQ();
 		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
 	}else if(TIM::tim2_mode == TIM_TIM){
 		TIM2_TIM_Update_IRQ();
@@ -539,7 +577,7 @@ extern "C" void TIM3_IRQHandler(void){
 		TIM3_ENCODER_IRQ();
 		TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
 	}else if(TIM::tim3_mode == TIM_PWM){
-		TIM3_ENCODER_IRQ();
+		TIM3_PWM_Update_IRQ();
 		TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
 	}else if(TIM::tim3_mode == TIM_TIM){
 		TIM3_TIM_Update_IRQ();
@@ -553,11 +591,30 @@ extern "C" void TIM4_IRQHandler(void){
 		TIM4_ENCODER_IRQ();
 		TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 	}else if(TIM::tim4_mode == TIM_PWM){
-		TIM4_ENCODER_IRQ();
-		TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
+		if(TIM_GetITStatus(TIM4,TIM_IT_Update) == SET){
+			TIM4_PWM_Update_IRQ();
+			TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
+
+		}else if(TIM_GetITStatus(TIM4,TIM_IT_CC1) == SET){
+			TIM4_PWM_CC1_IRQ();
+			TIM_ClearITPendingBit(TIM4,TIM_IT_CC1);
+
+		}else if(TIM_GetITStatus(TIM4,TIM_IT_CC2) == SET){
+			TIM4_PWM_CC2_IRQ();
+			TIM_ClearITPendingBit(TIM4,TIM_IT_CC2);
+
+		}else if(TIM_GetITStatus(TIM4,TIM_IT_CC3) == SET){
+			TIM4_PWM_CC3_IRQ();
+			TIM_ClearITPendingBit(TIM4,TIM_IT_CC3);
+
+		}else if(TIM_GetITStatus(TIM4,TIM_IT_CC4) == SET){
+			TIM4_PWM_CC4_IRQ();
+			TIM_ClearITPendingBit(TIM4,TIM_IT_CC4);
+		}
 	}else if(TIM::tim4_mode == TIM_TIM){
 		TIM4_TIM_Update_IRQ();
 		TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 	}
+	//TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 
 }

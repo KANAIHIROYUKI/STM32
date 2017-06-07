@@ -1,20 +1,19 @@
 #ifndef USART_H_
 #define USART_H_
 
-#include "stm32f10x.h"
-#include "stdio.h"
+#include "system.h"
 
 #include <stdarg.h>
 #include <stdlib.h>
 
 #define USART_DEFAULT_BAUD 115200
-#define USART_RX_BUFFER_SIZE 128
+#define USART_RX_BUFFER_SIZE 32
 #define USART_TX_BUFFER_SIZE 128
 
 
 class USART {
 public:
-	void setup(USART_TypeDef *usart,uint32_t baud = USART_DEFAULT_BAUD);
+	void setup(USART_TypeDef *usart,uint32_t baud,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx);
 
 	void send(char c);
 	char read();
@@ -48,6 +47,7 @@ public:
 	static uint16_t usart3TxSendAddress;
 	static uint16_t usart3TxWriteAddress;
 private:
+	void ioSetup(GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx);
 	USART_TypeDef* usart_usart;
 };
 

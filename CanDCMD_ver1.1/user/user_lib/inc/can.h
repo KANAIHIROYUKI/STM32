@@ -38,7 +38,7 @@ public:
 
 	uint16_t receiveCnt;
 
-	static uint16_t filterCnt,errorCnt;
+	static uint16_t filterCnt,errorCnt,errorAddress,sendAddress;
 	static uint16_t filterAddress[4*13];
 
 	uint64_t lastReceiveTime;

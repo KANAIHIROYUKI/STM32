@@ -1,8 +1,7 @@
 #ifndef SPI_H_
 #define SPI_H_
 
-#include "stm32f10x.h"
-#include "stdio.h"
+#include "system.h"
 
 
 #define SPI_Mode0 0
@@ -17,7 +16,6 @@
 
 
 void SPI1Setup(uint16_t SPI_Mode,uint16_t SPI_Protocol_Mode,uint16_t SPI_Prescaler);
-
 void SPI2Setup(uint16_t SPI_Mode,uint16_t SPI_Protocol_Mode,uint16_t SPI_Prescaler);
 
 

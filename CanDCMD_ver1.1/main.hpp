@@ -187,18 +187,19 @@ void setup(){
 	}
 
 	if(CAN_ADDRESS == BOARD_ADD_SHOT){
-		driver.overCurrentPeakSet(ChannelCurrentA,40);	//ãËo
-		driver.overCurrentPeakSet(ChannelCurrentB,40);
+		driver.overCurrentPeakSet(ChannelCurrentA,50);	//ãËo
+		driver.overCurrentPeakSet(ChannelCurrentB,50);
 
-		driver.overCurrentAveSet(ChannelCurrentA,30);
-		driver.overCurrentAveSet(ChannelCurrentB,30);
+		driver.overCurrentAveSet(ChannelCurrentA,40);
+		driver.overCurrentAveSet(ChannelCurrentB,40);
 
 	}else if(CAN_ADDRESS == BOARD_ADD_ANGLE){
 		driver.overCurrentPeakSet(ChannelCurrentA,150);	//‹ÂŠp
 		driver.overCurrentPeakSet(ChannelCurrentB,150);	//‰ºËo
 
 		driver.overCurrentAveSet(ChannelCurrentA,20);
-		driver.overCurrentAveSet(ChannelCurrentB,100);
+		//driver.overCurrentAveSet(ChannelCurrentB,100);
+		driver.overCurrentAveSet(ChannelCurrentB,120);
 	}
 
 	serial.printf("OC limit max A=%3d,B=%3d,ave A=%3d,B=%3d\n\r",(int)driver.overCurrentLimit[0],(int)driver.overCurrentLimit[1],(int)driver.overCurrentLimitAve[0],(int)driver.overCurrentLimitAve[1]);

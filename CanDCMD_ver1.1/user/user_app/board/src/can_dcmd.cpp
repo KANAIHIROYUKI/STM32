@@ -62,7 +62,7 @@ void CanDCMD::cycleFunction(){
 	currentRread(ChannelCurrentB);
 	vbattRead();
 
-	if(adc->setupStat == 0 && driveStat != DS_NoPower){	//パワーない(パワー系に電源がなければadc.setupStat = 0になる)のにNoPower以外に入っていた時
+	if((adc->setupStat == 0 || millis() - adc->receiveTime[0] > 10) && driveStat != DS_NoPower){	//パワーない(パワー系に電源がなければadc.setupStat = 0になる)のにNoPower以外に入っていた時
 
 		if(motor[0]->canMd_motor->outEnable == 2 || motor[1]->canMd_motor->outEnable == 2){
 			motor[0]->canMd_motor->buzzerStop();
@@ -115,7 +115,7 @@ void CanDCMD::cycleFunction(){
 
 	case DS_PowerIn:
 
-		if(millis() - adc->receiveTime[0] > 5)									driveError |= DE_ADCLost;		//データ来ない(パワー系落ちてる？)
+
 		//if(millis() - driveStatTimer > SetupDerayTime)							driveError |= DE_UnderVoltage;	//電源がなんか貧弱
 
 		if(vbattRead() <= setupvoltageValue && adc->readStat[ChannelVoltage] && millis() - driveStatTimer > 100){	//電源電圧の上昇が止まったら次の状態へ
@@ -140,7 +140,6 @@ void CanDCMD::cycleFunction(){
 		//currentRread()
 
 		if(vbattRead() 	 < SetupLimitVoltage	&& adc->readStat[ChannelVoltage])				driveError |= DE_UnderVoltage;
-		if(millis() - adc->receiveTime[0] > 10)									  				driveError |= DE_ADCLost;
 		if(vbattRead()   > SetupOverVoltage		&& adc->readStat[ChannelVoltage])				driveError |= DE_OverVoltage;
 
 		if(errorTask(driveError))break;																//エラーならすぐ抜ける
@@ -159,7 +158,6 @@ void CanDCMD::cycleFunction(){
 		if(currentRread(ChannelCurrentA) > SetupLimitCurrent && adc->readStat[ChannelCurrentA])driveError |= DE_BreakFEToutALow;
 		if(currentRread(ChannelCurrentB) > SetupLimitCurrent && adc->readStat[ChannelCurrentB])driveError |= DE_BreakFEToutBLow;
 		if(vbattRead() 	 < SetupLimitVoltage	&& adc->readStat[ChannelVoltage] )				driveError |= DE_UnderVoltage;
-		if(millis() - adc->receiveTime[0] > 10)									  				driveError |= DE_ADCLost;
 
 		if(errorTask(driveError))break;																//エラーならすぐ抜ける
 
@@ -187,7 +185,6 @@ void CanDCMD::cycleFunction(){
 		if(currentRread(ChannelCurrentA) > BuzzerLimitCurrent && adc->readStat[ChannelCurrentA])driveError |= DE_OCoutA;		//ブザーモードだからって保護はつける
 		if(currentRread(ChannelCurrentB) > BuzzerLimitCurrent && adc->readStat[ChannelCurrentB])driveError |= DE_OCoutB;
 		if(vbattRead() 	 < SetupLimitVoltage	&& adc->readStat[ChannelVoltage])				driveError |= DE_UnderVoltage;
-		if(millis() - adc->receiveTime[0] > 10)													driveError |= DE_ADCLost;
 
 		if(currentRread(ChannelCurrentA) > buzzerTest[ChannelCurrentA])buzzerTest[ChannelCurrentA] = currentRread(ChannelCurrentA);
 		if(currentRread(ChannelCurrentB) > buzzerTest[ChannelCurrentB])buzzerTest[ChannelCurrentB] = currentRread(ChannelCurrentB);
@@ -212,7 +209,6 @@ void CanDCMD::cycleFunction(){
 		if(currentRread(ChannelCurrentA) > BuzzerLimitCurrent && adc->readStat[ChannelCurrentA])driveError |= DE_OCoutA;		//ブザーモードだからって保護はつける
 		if(currentRread(ChannelCurrentB) > BuzzerLimitCurrent && adc->readStat[ChannelCurrentB])driveError |= DE_OCoutB;
 		if(adc->readStat[ChannelVoltage] && vbattRead() 	 < SetupLimitVoltage)				driveError |= DE_UnderVoltage;
-		if(millis() - adc->receiveTime[0] > 10)									 				driveError |= DE_ADCLost;
 
 		if(errorTask(driveError))break;																//エラーならすぐ抜ける
 
@@ -233,7 +229,6 @@ void CanDCMD::cycleFunction(){
 		if(currentRread(ChannelCurrentA) > BuzzerLimitCurrent && adc->readStat[ChannelCurrentA])driveError |= DE_OCoutA;
 		if(currentRread(ChannelCurrentB) > BuzzerLimitCurrent && adc->readStat[ChannelCurrentB])driveError |= DE_OCoutB;
 		if(vbattRead() 	 < SetupLimitVoltage	&& adc->readStat[ChannelVoltage])				driveError |= DE_UnderVoltage;
-		if(millis() - adc->receiveTime[0] > 10)									  				driveError |= DE_ADCLost;
 
 		if(errorTask(driveError))break;																//エラーならすぐ抜ける
 
@@ -276,7 +271,6 @@ void CanDCMD::cycleFunction(){
 		if(currentRread(ChannelCurrentA) > overCurrentLimit[ChannelCurrentA] && adc->readStat[ChannelCurrentA])	driveError |= DE_OCoutA;
 		if(currentRread(ChannelCurrentB) > overCurrentLimit[ChannelCurrentB] && adc->readStat[ChannelCurrentB])	driveError |= DE_OCoutB;
 		if(vbattRead() 	 < DriveLimitVoltage	&& adc->readStat[ChannelVoltage])								driveError |= DE_UnderVoltage;
-		if(millis() - adc->receiveTime[0] > 10)									 								driveError |= DE_ADCLost;
 
 		if(millis() - driveStatTimer >= DriveIntervalTime){
 			driveStatTimer = millis();
@@ -298,9 +292,6 @@ void CanDCMD::cycleFunction(){
 
 		break;
 	case DS_Error:
-
-		//if(vbattRead() 	 < SetupLimitVoltage	&& adc->readStat[ChannelVoltage])driveError |= DE_UnderVoltage;
-		//if(millis() - adc->receiveTime[0] > 10)									 driveError |= DE_ADCLost;			//errorTaskは実行しないので､ただ純粋に記録用
 
 		if(millis() - driveStatTimer >= DriveIntervalTime){
 			driveStatTimer = millis();
@@ -369,8 +360,8 @@ uint16_t CanDCMD::errorTask(uint16_t errorValue){
 		motor[1]->canMd_motor->outEnable = 0;
 
 		errorVoltage = vbattRead();
-		errorCurrent[0] = currentRread(0);
-		errorCurrent[1] = currentRread(1);
+		errorCurrent[0] = currentValue[0];//currentRread(0);
+		errorCurrent[1] = currentValue[1];//currentRread(1);
 		driveErrorStat = driveStat;
 
 		driveStat = DS_Error;

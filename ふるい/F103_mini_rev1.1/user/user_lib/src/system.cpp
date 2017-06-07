@@ -3,7 +3,7 @@
 static uint64_t systemTimer = 0;
 
 
-void setup(){
+void systemSetup(){
 	SysTick_Config(SystemCoreClock/TIME_SPLIT);
 }
 
