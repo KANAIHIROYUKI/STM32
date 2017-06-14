@@ -7,7 +7,7 @@
 #include "can_dcmd.h"
 
 #define CAN_ADDRESS (uint16_t)(15 - (sel[0].read()*2 + sel[1].read() + sel[2].read()*8 + sel[3].read()*4))
-#define IntervalTime 50
+#define IntervalTime 100
 #define PWM_PERIOD 2000
 
 #define BOARD_ADD_SAGI0 0
