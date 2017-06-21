@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=F303_mini.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\F303_mini -TC:\CooCox\CoIDE\configuration\ProgramData\F303_mini/arm-gcc-link.ld -g">
+      <target file="F303_mini.elf" lastModified="15cc51834b1">
+         <source file="..\obj\stm32f30x_iwdg.o" lastModified="15cc517b80b"/>
+         <source file="..\obj\stm32f30x_rcc.o" lastModified="15cc517b8b8"/>
+         <source file="..\obj\stm32f30x_adc.o" lastModified="15cc517b956"/>
+         <source file="..\obj\stm32f30x_gpio.o" lastModified="15cc517b9bb"/>
+         <source file="..\obj\main.o" lastModified="15cc517ba21"/>
+         <source file="..\obj\stm32f30x_dma.o" lastModified="15cc517ba87"/>
+         <source file="..\obj\gpio.o" lastModified="15cc517baf4"/>
+         <source file="..\obj\stm32f30x_exti.o" lastModified="15cc517bb4c"/>
+         <source file="..\obj\stm32f30x_spi.o" lastModified="15cc517bbc7"/>
+         <source file="..\obj\stm32f30x_i2c.o" lastModified="15cc517bc43"/>
+         <source file="..\obj\system_stm32f30x_temp.o" lastModified="15cc517bc93"/>
+         <source file="..\obj\syscalls.o" lastModified="15cc517bceb"/>
+         <source file="..\obj\stm32f30x_misc.o" lastModified="15cc517bd38"/>
+         <source file="..\obj\stm32f30x_tim.o" lastModified="15cc517be27"/>
+         <source file="..\obj\startup_stm32f30x.o" lastModified="15cc517be46"/>
+         <source file="..\obj\systick.o" lastModified="15cc517be79"/>
+         <source file="..\obj\stm32f30x_can.o" lastModified="15cc517bf0a"/>
+         <source file="..\obj\stm32f30x_usart.o" lastModified="15cc517bf96"/>
+      </target>
+   </processor>
+</history>
