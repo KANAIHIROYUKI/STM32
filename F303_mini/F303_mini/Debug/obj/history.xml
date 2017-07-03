@@ -1,59 +1,68 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F303CC -DSTM32F30X -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\hw_driver -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\cmsis_lib -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\hw_driver\inc -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\cmsis_boot -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\cmsis_lib\include -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\cmsis -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32">
-      <target file="stm32f30x_spi.o" lastModified="15cc517bbc7">
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F303CC -DSTM32F30X -DSUPPORT_CPLUSPLUS -D__FPU_USED -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\hw_driver -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\cmsis_lib -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\util -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\hw_driver\inc -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\cmsis_boot -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\cmsis_lib\include -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\cmsis -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32 -I..\..\..\..\..\Users\hiroyuki\Documents\RoboCon\STM32\F303_mini\util\inc">
+      <target file="stm32f30x_spi.o" lastModified="15cca397ee7">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_spi.c" lastModified="15cc4de8bc2"/>
       </target>
-      <target file="gpio.o" lastModified="15cc517baf4">
-         <source file="..\..\..\hw_driver\src\gpio.cpp" lastModified="15cc4f32f16"/>
+      <target file="gpio.o" lastModified="15cca397e0b">
+         <source file="..\..\..\hw_driver\src\gpio.cpp" lastModified="15cc9d57e74"/>
       </target>
-      <target file="system_stm32f30x_temp.o" lastModified="15cc517bc93">
+      <target file="system_stm32f30x_temp.o" lastModified="15cca397f9e">
          <source file="..\..\..\cmsis_boot\system_stm32f30x_temp.c" lastModified="15cc4de28b6"/>
       </target>
-      <target file="systick.o" lastModified="15cc517be79">
+      <target file="systick.o" lastModified="15cca398181">
          <source file="..\..\..\hw_driver\src\systick.cpp" lastModified="15cc4f58113"/>
       </target>
-      <target file="stm32f30x_rcc.o" lastModified="15cc517b8b8">
+      <target file="stm32f30x_rcc.o" lastModified="15cca397ba4">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_rcc.c" lastModified="15cc4de4afb"/>
       </target>
-      <target file="stm32f30x_i2c.o" lastModified="15cc517bc43">
+      <target file="printf.o" lastModified="15cca3b5c19">
+         <source file="..\..\..\stdio\printf.c" lastModified="15cca3b3664"/>
+      </target>
+      <target file="stm32f30x_i2c.o" lastModified="15cca397f59">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_i2c.c" lastModified="15cc4de7646"/>
       </target>
-      <target file="stm32f30x_usart.o" lastModified="15cc517bf96">
+      <target file="stm32f30x_usart.o" lastModified="15cca398265">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_usart.c" lastModified="15cc4de9c62"/>
       </target>
-      <target file="stm32f30x_gpio.o" lastModified="15cc517b9bb">
+      <target file="stm32f30x_gpio.o" lastModified="15cca397ca7">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_gpio.c" lastModified="15cc4de3271"/>
       </target>
-      <target file="stm32f30x_exti.o" lastModified="15cc517bb4c">
+      <target file="stm32f30x_exti.o" lastModified="15cca397e70">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_exti.c" lastModified="15cc4de6ef3"/>
       </target>
-      <target file="stm32f30x_can.o" lastModified="15cc517bf0a">
+      <target file="util.o" lastModified="15cca397c5b">
+         <source file="..\..\..\util\src\util.cpp" lastModified="15cca2619e4"/>
+      </target>
+      <target file="stm32f30x_can.o" lastModified="15cca3981f3">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_can.c" lastModified="15cc4de5b40"/>
       </target>
-      <target file="syscalls.o" lastModified="15cc517bceb">
+      <target file="syscalls.o" lastModified="15cca397fe2">
          <source file="..\..\..\syscalls\syscalls.c" lastModified="15cc4de1297"/>
       </target>
-      <target file="stm32f30x_adc.o" lastModified="15cc517b956">
-         <source file="..\..\..\cmsis_lib\source\stm32f30x_adc.c" lastModified="15cc4de4afb"/>
-      </target>
-      <target file="stm32f30x_misc.o" lastModified="15cc517bd38">
+      <target file="stm32f30x_misc.o" lastModified="15cca398023">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_misc.c" lastModified="15cc4f12564"/>
       </target>
-      <target file="stm32f30x_tim.o" lastModified="15cc517be27">
+      <target file="stm32f30x_adc.o" lastModified="15cca397c2f">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_adc.c" lastModified="15cc4de4afb"/>
+      </target>
+      <target file="adc.o" lastModified="15cca39813b">
+         <source file="..\..\..\hw_driver\src\adc.cpp" lastModified="15cc9fd899f"/>
+      </target>
+      <target file="stm32f30x_tim.o" lastModified="15cca3980de">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_tim.c" lastModified="15cc4de9c52"/>
       </target>
-      <target file="stm32f30x_dma.o" lastModified="15cc517ba87">
+      <target file="stm32f30x_dma.o" lastModified="15cca397da4">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_dma.c" lastModified="15cc4dea621"/>
       </target>
-      <target file="startup_stm32f30x.o" lastModified="15cc517be46">
+      <target file="startup_stm32f30x.o" lastModified="15cca398156">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f30x.S" lastModified="15cc4de28a7"/>
       </target>
-      <target file="stm32f30x_iwdg.o" lastModified="15cc517b80b">
+      <target file="stm32f30x_iwdg.o" lastModified="15cca397b20">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_iwdg.c" lastModified="15cc4de7dba"/>
       </target>
-      <target file="main.o" lastModified="15cc517ba21">
-         <source file="..\..\..\main.cpp" lastModified="15cc517263c"/>
+      <target file="main.o" lastModified="15cca51be8d">
+         <source file="..\..\..\main.cpp" lastModified="15cca22b275"/>
       </target>
    </processor>
 </history>

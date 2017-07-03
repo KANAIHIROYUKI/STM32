@@ -1,13 +1,13 @@
 #include "gpio.h"
 
 void GPIOSetup(){
-	RCC_APB2PeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
-	RCC_APB2PeriphClockCmd(RCC_AHBPeriph_GPIOB,ENABLE);
-	RCC_APB2PeriphClockCmd(RCC_AHBPeriph_GPIOC,ENABLE);
-	RCC_APB2PeriphClockCmd(RCC_AHBPeriph_GPIOD,ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB,ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC,ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOD,ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOE,ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOF,ENABLE);
 }
-
-
 
 void pinSetup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode){
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -16,6 +16,8 @@ void pinSetup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode){
 	GPIO_InitStructure.GPIO_Mode = mode;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(gpio,&GPIO_InitStructure);
+
+	if(mode == GPIO_Mode_OUT)pinWrite(gpio,pin,Bit_RESET);
 }
 
 void pinWrite(GPIO_TypeDef* gpio,uint16_t pin,BitAction status){

@@ -49,14 +49,8 @@
 #define PD3 GPIOD,GPIO_Pin_3
 
 #define OUTPUT GPIO_Mode_OUT
-//#define OUTPUT_OD GPIO_Mode_Out_OD
 #define OUTPUT_AF GPIO_Mode_AF
-//#define OUTPUT_AF_OD GPIO_Mode_AF_OD
-
-#define INPUT GPIO_Mode_IN_FLOATING
-#define INPUT_AIN GPIO_Mode_AIN
-#define INPUT_PU GPIO_Mode_IPU
-#define INPUT_PD GPIO_Mode_IPD
+#define INPUT_AIN GPIO_Mode_AN
 
 
 void GPIOSetup();

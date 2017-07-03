@@ -1,5 +1,8 @@
 #include "gpio.h"
+#include "adc.h"
+#include "usart.h"
 #include "systick.h"
+#include "util.h"
 
 int main(void)
 {
@@ -7,15 +10,15 @@ int main(void)
 	GPIOSetup();
 
 	pinSetup(PB0,OUTPUT);
-	pinWrite(PB0,Bit_SET);
+	pinSetup(PA9,OUTPUT_AF);
+	pinSetup(PA10,GPIO_Mode_IN);
+
+
 
     while(1)
     {
-    	//pinToggle(PB0);
 
-    	pinWrite(PB0,Bit_SET);
-    	delay(500);
-    	pinWrite(PB0,Bit_RESET);
-    	delay(500);
+    	delay(100);
+    	pinToggle(PB0);
     }
 }
