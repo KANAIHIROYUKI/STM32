@@ -91,12 +91,14 @@ uint16_t TIM::duty(uint16_t duty){
 	return 0;
 }
 
+/*
 uint16_t TIM::dutyF(float dutyCnt){
 	if(dutyCnt < 0)dutyCnt = 0;
 	if(dutyCnt > 1)dutyCnt = 1;
 	duty(pwm_period * dutyCnt);
 	return 0;
 }
+*/
 
 void TIM::itSetup(){
 	if(tim_tim == TIM1){

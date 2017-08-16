@@ -2,7 +2,6 @@
 #define MOTOR_H_
 
 #include "math.h"
-#include "base.h"
 #include "system.h"
 
 #define MOTOR_ASSIGNE_NONE 0

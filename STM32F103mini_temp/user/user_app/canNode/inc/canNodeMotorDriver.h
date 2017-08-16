@@ -3,7 +3,7 @@
 
 #include "system.h"
 
-#include "motor.h"
+#include "si8274.h"
 
 #define LED_INTERVAL_NORECEIVE 50
 #define LED_INTERVAL_RECEIVE 500

@@ -6,11 +6,16 @@
 
 class Enc:public CountIn{
 public:
-	void setup(TIM_TypeDef* tim,GPIO_TypeDef* gpio1,uint16_t pin1,GPIO_TypeDef* gpio2,uint16_t pin2);
-	virtual int64_t read();
-	virtual void invert();
+	void setup();
+	void add(int64_t value);
+	void write(int64_t value);
+	int64_t read();
+	void reset();
+	void reverce(int16_t dir = 1);
 
-	TIM* enc_tim;
+	int16_t direction;
+	int64_t countValue;
+
 };
 
 #endif

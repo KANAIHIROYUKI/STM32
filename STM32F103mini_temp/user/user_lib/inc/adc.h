@@ -26,7 +26,6 @@ public:
 	uint16_t adcValueBuffer;	//AD•ÏŠ·’†‚Í4096
 	uint8_t channel,sampleTime;
 
-	static uint8_t convertintgADC1Channel,convertintgADC2Channel;
 
 private:
 	void ioSetup(GPIO_TypeDef* gpio,uint16_t pin);

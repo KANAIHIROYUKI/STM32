@@ -1,4 +1,4 @@
-#include "motor.h"
+#include "si8274.h"
 
 void Motor::setup(TIM &PWM_1,TIM &PWM_2){
 	this->pwm1 = &PWM_1;

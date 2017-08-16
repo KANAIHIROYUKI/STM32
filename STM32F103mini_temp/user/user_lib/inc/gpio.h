@@ -1,7 +1,7 @@
 #ifndef GPIO_H_
 #define GPIO_H_
 
-#include "base.h"
+#include "system.h"
 
 #define PA0 GPIOA,GPIO_Pin_0
 #define PA1 GPIOA,GPIO_Pin_1

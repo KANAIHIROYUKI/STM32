@@ -1,7 +1,5 @@
 #include "adc.h"
 
-uint8_t ADC::convertintgADC1Channel = 18;
-uint8_t ADC::convertintgADC2Channel = 18;	//18でなし(16は内部温度計､17はVref)
 
 void ADC::setup(ADC_TypeDef* adcSet,uint8_t channelSet,GPIO_TypeDef* gpio,uint16_t pin,uint8_t sampleTimeSet){
 	ioSetup(gpio,pin);
@@ -18,14 +16,10 @@ void ADC::setup(ADC_TypeDef* adcSet,uint8_t channelSet,GPIO_TypeDef* gpio,uint16
 
 int16_t ADC::read(){
 	if(adc == ADC1){
-		convertintgADC1Channel = channel;
 		adcValueBuffer =  ADC1Read(channel,sampleTime);
-		convertintgADC1Channel = 18;
 		return adcValueBuffer;
 	}else if(adc == ADC2){
-		convertintgADC2Channel = channel;
 		adcValueBuffer =  ADC2Read(channel,sampleTime);
-		convertintgADC2Channel = 18;
 		return adcValueBuffer;
 	}else{
 		return 0;
@@ -34,39 +28,26 @@ int16_t ADC::read(){
 
 int16_t ADC::read(uint8_t sampleTimeSet){
 	if(adc == ADC1){
-		convertintgADC1Channel = channel;
 		adcValueBuffer =  ADC1Read(channel,sampleTime);
-		convertintgADC1Channel = 18;
 		return adcValueBuffer;
 	}else if(adc == ADC2){
-		convertintgADC2Channel = channel;
 		adcValueBuffer =  ADC2Read(channel,sampleTime);
-		convertintgADC2Channel = 18;
+		return adcValueBuffer;
 	}else{
 		return 0;
 	}
 }
 
 void ADC::start(){
+	adcValueBuffer = 4096;
+
 	if(adc == ADC1){
-		if(convertintgADC1Channel != channel && convertintgADC1Channel != 18)return;	//他のチャンネルが変換している時は邪魔しない
-
-		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET){
-			adcValueBuffer = ADC1Peek();
-		}
-
-		adcValueBuffer = 4096;	//AD変換中は4096
-		convertintgADC1Channel = channel;
+		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1Peek();
 		ADC1Start(channel,sampleTime);
 
 	}else if(adc == ADC2){
-		if(convertintgADC2Channel != channel && convertintgADC2Channel != 18)return;
 
-		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET){
-			adcValueBuffer = ADC2Peek();
-		}
-
-		convertintgADC2Channel = channel;
+		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2Peek();
 		ADC2Start(channel,sampleTime);
 	}
 }
@@ -75,42 +56,26 @@ void ADC::start(uint8_t sampleTimeSet){
 	adcValueBuffer = 4096;	//AD変換中は4096
 
 	if(adc == ADC1){
-		if(convertintgADC1Channel != channel && convertintgADC1Channel != 18)return;
-
-		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET){
-			adcValueBuffer = ADC1Peek();
-		}
-
-		convertintgADC1Channel = channel;
+		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1Peek();
 		ADC1Start(channel,sampleTimeSet);
 
 	}else if(adc == ADC2){
-		if(convertintgADC2Channel != channel && convertintgADC2Channel != 18)return;
-
-		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET){
-			adcValueBuffer = ADC2Peek();
-		}
-
-		convertintgADC2Channel = channel;
+		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2Peek();
 		ADC2Start(channel,sampleTimeSet);
 	}
 }
 
 uint16_t ADC::peek(){
 
-	if(adcValueBuffer != 4096){
-		return adcValueBuffer;
-	}
-
-	adcValueBuffer = 0;
 	if(adc == ADC1){
-		adcValueBuffer = ADC1Peek();
-		convertintgADC1Channel = 18;
-	}else if(adc == ADC2){
-		adcValueBuffer = ADC2Peek();
-		convertintgADC2Channel = 18;
-	}
+		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1Peek();
 
+	}else if(adc == ADC2){
+		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2Peek();
+
+	}else{
+		adcValueBuffer = 0;
+	}
 
 	return adcValueBuffer;
 }

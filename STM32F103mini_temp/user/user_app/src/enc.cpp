@@ -1,9 +1,29 @@
 #include "enc.h"
 
-void Enc::setup(TIM_TypeDef* tim,GPIO_TypeDef* gpio1,uint16_t pin1,GPIO_TypeDef* gpio2,uint16_t pin2){
-	this->enc_tim->encoderSetup(tim,gpio1,pin1,gpio2,pin2);
+
+void Enc::setup(){
+	direction = 1;
+	countValue = 0;
+}
+
+void Enc::add(int64_t value){
+	countValue += value*direction;
+}
+
+void Enc::write(int64_t value){
+	countValue = value;
 }
 
 int64_t Enc::read(){
-	return enc_tim->read();
+	return countValue;
+}
+
+void Enc::reset(){
+	countValue = 0;
+}
+
+void Enc::reverce(int16_t dir){
+	if(dir != 1 && dir != 1)return;
+
+	direction = dir;
 }

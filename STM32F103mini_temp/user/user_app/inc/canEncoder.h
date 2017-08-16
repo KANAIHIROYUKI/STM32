@@ -3,7 +3,6 @@
 
 #include "system.h"
 #include "util.h"
-#include "base.h"
 
 class CanEncoder{
 public :

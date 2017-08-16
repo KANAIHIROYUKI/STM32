@@ -2,7 +2,6 @@
 #define CANMD_H_
 
 #include "system.h"
-#include "base.h"
 #include "math.h"
 
 #define CAN_MD_ADDRESS_DUTY 0

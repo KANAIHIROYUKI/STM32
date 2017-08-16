@@ -6,7 +6,10 @@
 
 
 #define IntervalTime 10
+#define BeepIntervalTime 300
 #define BUZZER_FRQ 2000
+#define SCHMITT_VOLTAGE 100
+
 
 #define BoardNumber1
 
@@ -50,9 +53,10 @@ enum {
 	Batt_Error,
 };
 
-uint64_t ledInterval,intervalTime = 0,battv,voltage[6],vmin[6],vave[6],vmax[6],vcnt=0,cellNum;
-uint32_t frequency,buzzerPower,buzzerStatCnt,cellMax,cellMin,cellWorst,beepEnable;
-int32_t beepInterval;
+uint64_t ledIntervalTimer = 0,beepIntervalTimer = 0,intervalTimer = 0,battv,voltage[6],vmin[6],vave[6],vmax[6];
+uint32_t cellMax,cellMin,cellWorst,beepEnable,frequency,beepStat = 0,cellNum,underVoltageCnt;
+int32_t voltageDifference,ledIntervalTime;
+
 
 
 GPIO power;
@@ -78,7 +82,7 @@ void setup(){
 
 	buzzer.pwmSetup(TIM2,1,PA0,72000);
 
-	serial.setup(USART1,921600,PA9,PA10);
+	serial.setup(USART1,115200,PA9,PA10);
 	serial.printf("\n\rFILE = %s\n\r",__FILE__);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
@@ -91,33 +95,51 @@ void setup(){
 	delay(100);
 
 	voltage[0] = (batt[0].read()*CELL0_VOLTAGE_GAIN);
-	voltage[1] = (batt[1].read()*CELL1_VOLTAGE_GAIN);
-	voltage[2] = (batt[2].read()*CELL2_VOLTAGE_GAIN);
-	voltage[3] = (batt[3].read()*CELL3_VOLTAGE_GAIN);
-	voltage[4] = (batt[4].read()*CELL4_VOLTAGE_GAIN);
-	voltage[5] = (batt[5].read()*CELL5_VOLTAGE_GAIN);
+	voltage[1] = (batt[1].read()*CELL1_VOLTAGE_GAIN) - voltage[1];
+	voltage[2] = (batt[2].read()*CELL2_VOLTAGE_GAIN) - voltage[2];
+	voltage[3] = (batt[3].read()*CELL3_VOLTAGE_GAIN) - voltage[3];
+	voltage[4] = (batt[4].read()*CELL4_VOLTAGE_GAIN) - voltage[4];
+	voltage[5] = (batt[5].read()*CELL5_VOLTAGE_GAIN) - voltage[5];
+
+
 
 	for(int i=0;i<6;i++){
-		if(voltage[i] > 3000)cellNum = i;		//セル数検出
+		if(voltage[i] < 3000){
+			cellNum = i;		//セル数検出
+			break;
+		}
+		serial.printf("%d,",voltage[i]);
 	}
-	serial.printf("cell number = %d\n\r",cellNum+1);
 
-	for(int i=0;i<(cellNum+1);i++){
+	serial.printf("cell number = %d\n\r",cellNum);
+
+	for(int i=0;i<(cellNum);i++){
+		beepStat = 1;
 		beep(4000,0.5);
 		delay(100);
+		beepStat = 1;
 		beep(4000,0);
 		delay(10);
 	}
 
-	ledInterval = millis();
-}
-
-extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
-	return;
+	ledIntervalTime = millis();
 }
 
 void beep(uint32_t frq,float buzzer_duty){
-	frequency = 72000000/frq;
-	buzzer.pwmSetup(TIM2,1,PA0,frequency);
-	buzzer.dutyF(buzzer_duty);
+	if(beepStat){
+		beepStat = 0;
+
+		frequency = 72000000/frq;
+		buzzer.pwmSetup(TIM2,1,PA0,frequency);
+		buzzer.duty(buzzer_duty*buzzer.pwm_period);
+
+	}else{
+		beepStat = 1;
+
+		frequency = 72000000/frq;
+		buzzer.pwmSetup(TIM2,1,PA0,frequency);
+		buzzer.duty(0);
+	}
+
+
 }

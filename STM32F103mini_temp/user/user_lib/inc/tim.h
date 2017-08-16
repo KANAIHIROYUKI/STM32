@@ -2,6 +2,7 @@
 #define TIM_H_
 
 #include "system.h"
+#include "base.h"
 
 #define PWM_PERIOD_DEFALUT 1024
 #define TIM_OCMode_DEFAULT TIM_OCMode_PWM1
@@ -10,7 +11,7 @@
 #define TIM_ENC 2
 #define TIM_TIM 3
 
-class TIM{
+class TIM:public CountIn{
 public:
 	void encoderSetup(TIM_TypeDef* tim,GPIO_TypeDef* gpio1,uint16_t pin1,GPIO_TypeDef* gpio2,uint16_t pin2);
 	int32_t read();

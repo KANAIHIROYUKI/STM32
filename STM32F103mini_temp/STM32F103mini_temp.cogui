@@ -17,41 +17,46 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
-<part id="3"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" partName="main.hpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/main.hpp" title="main.hpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/main.hpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/main.hpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="530" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="SerialArduino.h" partName="SerialArduino.h" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/user/user_app/device/inc/SerialArduino.h" title="SerialArduino.h" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/user/user_app/device/inc/SerialArduino.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/user_app/device/inc/SerialArduino.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="764" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/main.cpp" title="main.cpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/main.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/main.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="246" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="adc.hpp" partName="adc.hpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/user/user_lib/inc/adc.h" title="adc.hpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/user/user_lib/inc/adc.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/user_lib/inc/adc.hpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="470" selectionTopPixel="0"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="adc.cpp" partName="adc.cpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/user/user_lib/src/adc.cpp" title="adc.cpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/user/user_lib/src/adc.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/user_lib/src/adc.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1113" selectionTopPixel="586"/>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="SerialArduino.cpp" partName="SerialArduino.cpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/user/user_app/device/src/SerialArduino.cpp" title="SerialArduino.cpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/user/user_app/device/src/SerialArduino.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/user_app/device/src/SerialArduino.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="1634" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="23">
 <expanded>
 <element path="/STM32F103mini_temp"/>
+<element path="/STM32F103mini_temp/cmsis_boot"/>
+<element path="/STM32F103mini_temp/syscalls"/>
 <element path="/STM32F103mini_temp/user_app"/>
+<element path="/STM32F103mini_temp/user_app/board"/>
+<element path="/STM32F103mini_temp/user_app/board/inc"/>
+<element path="/STM32F103mini_temp/user_app/board/src"/>
 <element path="/STM32F103mini_temp/user_app/canNode"/>
 <element path="/STM32F103mini_temp/user_app/canNode/inc"/>
 <element path="/STM32F103mini_temp/user_app/canNode/src"/>
+<element path="/STM32F103mini_temp/user_app/device"/>
+<element path="/STM32F103mini_temp/user_app/device/inc"/>
+<element path="/STM32F103mini_temp/user_app/device/src"/>
+<element path="/STM32F103mini_temp/user_app/inc"/>
+<element path="/STM32F103mini_temp/user_app/src"/>
+<element path="/STM32F103mini_temp/user_lib"/>
+<element path="/STM32F103mini_temp/user_lib/inc"/>
+<element path="/STM32F103mini_temp/user_lib/src"/>
+<element path="/STM32F103mini_temp/util"/>
+<element path="/STM32F103mini_temp/util/inc"/>
 </expanded>
 <selection>
-<element path="/STM32F103mini_temp/user_app/canNode/src/canNodeAnalogIn.cpp"/>
+<element path="/STM32F103mini_temp/user_app/device/src/SerialArduino.cpp"/>
 </selection>
 </viewState>
 </view>
@@ -76,7 +81,7 @@
 </view>
 </views>
 <perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
-<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<perspective editorAreaTrimState="1" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.coocox.component.ui.actionSet"/>
 <alwaysOnActionSet id="org.coocox.welcome.ui.actionSet"/>
@@ -105,9 +110,18 @@
 <hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
-<view id="org.coocox.builder.ui.views.ProjectView"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
-<fastViewBars/>
+<fastViewBars>
+<fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@1ae6862" orientation="256" selectedTabId="org.eclipse.ui.console.ConsoleView" style="1">
+<fastViews>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.29948187"/>
+</fastViews>
+</fastViewBar>
+<fastViewBar fastViewLocation="16384" id="org.eclipse.ui.internal.ViewStack@76fe3a" orientation="512" selectedTabId="org.coocox.builder.ui.views.ProjectView" style="1">
+<fastViews>
+<view id="org.coocox.builder.ui.views.ProjectView" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1bd1bf7">
@@ -127,7 +141,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@a6383f" ratio="0.34787473" ratioLeft="311" ratioRight="583" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1bd1bf7">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@a6383f" ratio="0.1485527" ratioLeft="272" ratioRight="1559" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1bd1bf7">
 <folder appearance="2" expanded="2">
 <page content="org.coocox.builder.ui.exampleView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
@@ -144,20 +158,16 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.44974095" ratioLeft="434" ratioRight="531" relationship="4" relative="org.eclipse.ui.internal.ViewStack@a6383f"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1ae6862" ratio="0.7678937" ratioLeft="751" ratioRight="227" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1ae6862" ratio="0.77096117" ratioLeft="754" ratioRight="224" relationship="4" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@76fe3a" ratio="0.36994818" ratioLeft="357" ratioRight="608" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1bd1bf7">
-<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
-<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<folder appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.views.ProjectView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </mainWindow>
@@ -205,8 +215,8 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
 <hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
-<hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
 <hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
+<hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.coocox.codebugger.trace.ui.traceview"/>
@@ -258,170 +268,167 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/main.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_lib/inc/spi.hpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_lib/src/spi.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/main.hpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_lib/inc/adc.hpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_lib/src/adc.cpp"/>
-<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
-<subPage/>
-</editor>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_lib/inc/system.hpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_lib/inc/tim.hpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/inc/pulse.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/canNode/inc/canNodeMotorDriver.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/canNode/inc/canNodeEncoder.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/canNode/inc/canNodeValve.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/canNode/inc/canNodePulse.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/canNode/inc/canNodeAnalogIn.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/canNode/src/canNodeAnalogIn.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/util/inc/util.hpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/src/SerialArduino.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/board/inc/KawaRoboMain.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/board/src/KawaRoboMain.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/inc/switch.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/inc/SerialArduino.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/src/SerialArduino.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/src/SerialArduino.cpp"/>
 </editors>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="646" y="0"/>
+<item historyLabel="main.hpp" index="2">
+<position/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="33" y="22"/>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="6779" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="1916" y="0"/>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="1682" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="1">
-<position info="not_deleted" x="530" y="0"/>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="1233" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="246" y="0"/>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="1743" y="0"/>
 </item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="750" y="0"/>
+<item historyLabel="SerialArduino.cpp" index="4">
+<position info="not_deleted" x="1745" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="1916" y="0"/>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="700" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="246" y="0"/>
+<item historyLabel="spi.hpp" index="0">
+<position info="not_deleted" x="1154" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="1">
-<position info="not_deleted" x="530" y="0"/>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="5964" y="0"/>
 </item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="728" y="0"/>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="831" y="2"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="1229" y="0"/>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="5964" y="0"/>
 </item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="624" y="0"/>
+<item historyLabel="spi.hpp" index="0">
+<position info="not_deleted" x="1154" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="291" y="0"/>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="831" y="2"/>
 </item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="639" y="0"/>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="5964" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="291" y="0"/>
+<item historyLabel="spi.hpp" index="0">
+<position info="not_deleted" x="221" y="0"/>
 </item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="601" y="22"/>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="1496" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="1916" y="0"/>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="831" y="2"/>
 </item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="647" y="0"/>
+<item historyLabel="SerialArduino.cpp" index="4">
+<position info="not_deleted" x="1745" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="623" y="0"/>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="1544" y="0"/>
 </item>
-<item historyLabel="Repository" index="4"/>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="1187" y="0"/>
+<item historyLabel="spi.hpp" index="0">
+<position info="not_deleted" x="221" y="0"/>
 </item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="647" y="0"/>
+<item historyLabel="util.hpp" index="3">
+<position info="not_deleted" x="3660" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="1187" y="0"/>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="1496" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="2103" y="0"/>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="1544" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="246" y="0"/>
+<item historyLabel="spi.hpp" index="0">
+<position info="not_deleted" x="506" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="2103" y="0"/>
+<item historyLabel="util.hpp" index="3">
+<position info="not_deleted" x="3660" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="1">
-<position info="not_deleted" x="530" y="0"/>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="1006" y="2"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="2103" y="0"/>
+<item historyLabel="spi.hpp" index="0">
+<position info="not_deleted" x="506" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="246" y="0"/>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="1703" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="1446" y="0"/>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="1544" y="0"/>
 </item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="111" y="0"/>
+<item historyLabel="KawaRoboMain.h" index="5">
+<position info="not_deleted" x="740" y="9"/>
 </item>
-<item historyLabel="system.hpp" index="5">
-<position info="not_deleted" x="403" y="0"/>
+<item historyLabel="KawaRoboMain.cpp" index="6">
+<position info="not_deleted" x="2003" y="0"/>
 </item>
-<item historyLabel="tim.hpp" index="6">
-<position info="not_deleted" x="432" y="0"/>
+<item historyLabel="spi.hpp" index="0">
+<position info="not_deleted" x="506" y="0"/>
 </item>
-<item historyLabel="pulse.h" index="7">
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="5967" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="917" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="763" y="0"/>
+</item>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="5773" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="2">
+<position info="not_deleted" x="1034" y="0"/>
+</item>
+<item historyLabel="spi.cpp" index="1">
+<position info="not_deleted" x="5773" y="0"/>
+</item>
+<item historyLabel="switch.h" index="7">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="111" y="0"/>
+<item historyLabel="SerialArduino.h" index="8">
+<position info="not_deleted" x="511" y="0"/>
 </item>
-<item historyLabel="canNodeMotorDriver.h" index="8">
-<position info="not_deleted" x="254" y="0"/>
+<item historyLabel="SerialArduino.cpp" index="9">
+<position info="not_deleted" x="1649" y="0"/>
 </item>
-<item historyLabel="canNodeEncoder.h" index="9">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="SerialArduino.h" index="8">
+<position info="not_deleted" x="23" y="663"/>
 </item>
-<item historyLabel="canNodeValve.h" index="10">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="SerialArduino.cpp" index="9">
+<position info="not_deleted" x="10" y="13"/>
 </item>
-<item historyLabel="canNodePulse.h" index="11">
-<position info="not_deleted" x="284" y="0"/>
+<item historyLabel="SerialArduino.h" index="8">
+<position info="not_deleted" x="23" y="663"/>
 </item>
-<item historyLabel="canNodeAnalogIn.h" index="12">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="SerialArduino.cpp" index="10">
+<position info="not_deleted" x="10" y="13"/>
 </item>
-<item historyLabel="canNodeAnalogIn.cpp" index="13">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="SerialArduino.cpp" index="10">
+<position info="not_deleted" x="77" y="0"/>
 </item>
-<item historyLabel="canNodeAnalogIn.h" index="12">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="SerialArduino.h" index="8">
+<position info="not_deleted" x="469" y="4"/>
 </item>
-<item historyLabel="canNodePulse.h" index="11">
-<position info="not_deleted" x="284" y="0"/>
+<item historyLabel="SerialArduino.cpp" index="10">
+<position info="not_deleted" x="77" y="0"/>
 </item>
-<item historyLabel="canNodeValve.h" index="10">
-<position info="not_deleted" x="352" y="0"/>
+<item historyLabel="SerialArduino.h" index="8">
+<position info="not_deleted" x="469" y="4"/>
 </item>
-<item historyLabel="canNodeEncoder.h" index="9">
-<position info="not_deleted" x="240" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.h" index="8">
-<position info="not_deleted" x="254" y="0"/>
-</item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="470" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="0">
-<position info="not_deleted" x="246" y="0"/>
-</item>
-<item historyLabel="adc.hpp" index="2">
-<position info="not_deleted" x="470" y="0"/>
-</item>
-<item active="true" historyLabel="adc.cpp" index="3">
-<position info="not_deleted" x="1446" y="0"/>
+<item active="true" historyLabel="SerialArduino.cpp" index="10">
+<position info="not_deleted" x="77" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -430,50 +437,50 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="F103_CanNode_rev1.1.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\ふるい\F103_CanNode_rev1.1\F103_CanNode_rev1.1.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/ふるい/F103_CanNode_rev1.1/F103_CanNode_rev1.1.coproj"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="STM32F103mini_temp.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\STM32F103mini_temp\STM32F103mini_temp.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/STM32F103mini_temp/STM32F103mini_temp.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeAnalogIn.cpp" tooltip="STM32F103mini_temp/user_app/canNode/src/canNodeAnalogIn.cpp">
-<persistable path="/STM32F103mini_temp/user_app/canNode/src/canNodeAnalogIn.cpp"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="BatteryArarm.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\BatteryArarm\BatteryArarm.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/BatteryArarm/BatteryArarm.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeAnalogIn.h" tooltip="STM32F103mini_temp/user_app/canNode/inc/canNodeAnalogIn.h">
-<persistable path="/STM32F103mini_temp/user_app/canNode/inc/canNodeAnalogIn.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="switch.h" tooltip="STM32F103mini_temp/user_app/inc/switch.h">
+<persistable path="/STM32F103mini_temp/user_app/inc/switch.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodePulse.h" tooltip="STM32F103mini_temp/user_app/canNode/inc/canNodePulse.h">
-<persistable path="/STM32F103mini_temp/user_app/canNode/inc/canNodePulse.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="util.hpp" tooltip="STM32F103mini_temp/util/inc/util.hpp">
+<persistable path="/STM32F103mini_temp/util/inc/util.hpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeValve.h" tooltip="STM32F103mini_temp/user_app/canNode/inc/canNodeValve.h">
-<persistable path="/STM32F103mini_temp/user_app/canNode/inc/canNodeValve.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="spi.cpp" tooltip="STM32F103mini_temp/user_lib/src/spi.cpp">
+<persistable path="/STM32F103mini_temp/user_lib/src/spi.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeEncoder.h" tooltip="STM32F103mini_temp/user_app/canNode/inc/canNodeEncoder.h">
-<persistable path="/STM32F103mini_temp/user_app/canNode/inc/canNodeEncoder.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="spi.hpp" tooltip="STM32F103mini_temp/user_lib/inc/spi.hpp">
+<persistable path="/STM32F103mini_temp/user_lib/inc/spi.hpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeMotorDriver.h" tooltip="STM32F103mini_temp/user_app/canNode/inc/canNodeMotorDriver.h">
-<persistable path="/STM32F103mini_temp/user_app/canNode/inc/canNodeMotorDriver.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system.h" tooltip="F103_mini_PD/user_lib/inc/system.h">
+<persistable path="/F103_mini_PD/user_lib/inc/system.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="pulse.h" tooltip="STM32F103mini_temp/user_app/inc/pulse.h">
-<persistable path="/STM32F103mini_temp/user_app/inc/pulse.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tim.h" tooltip="F103_mini_PD/user_lib/inc/tim.h">
+<persistable path="/F103_mini_PD/user_lib/inc/tim.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tim.cpp" tooltip="F103_mini_PD/user_lib/src/tim.cpp">
+<persistable path="/F103_mini_PD/user_lib/src/tim.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="SerialArduino.cpp" tooltip="STM32F103mini_temp/user_app/device/src/SerialArduino.cpp">
+<persistable path="/STM32F103mini_temp/user_app/device/src/SerialArduino.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="SerialArduino.h" tooltip="STM32F103mini_temp/user_app/device/inc/SerialArduino.h">
+<persistable path="/STM32F103mini_temp/user_app/device/inc/SerialArduino.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motorController.cpp" tooltip="STM32F103mini_temp/user_app/src/motorController.cpp">
+<persistable path="/STM32F103mini_temp/user_app/src/motorController.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motorController.h" tooltip="STM32F103mini_temp/user_app/inc/motorController.h">
+<persistable path="/STM32F103mini_temp/user_app/inc/motorController.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tim.hpp" tooltip="STM32F103mini_temp/user_lib/inc/tim.hpp">
 <persistable path="/STM32F103mini_temp/user_lib/inc/tim.hpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system.hpp" tooltip="STM32F103mini_temp/user_lib/inc/system.hpp">
-<persistable path="/STM32F103mini_temp/user_lib/inc/system.hpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="adc.cpp" tooltip="STM32F103mini_temp/user_lib/src/adc.cpp">
-<persistable path="/STM32F103mini_temp/user_lib/src/adc.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.h" tooltip="STM32F103mini_temp/user_app/device/inc/si8900.h">
-<persistable path="/STM32F103mini_temp/user_app/device/inc/si8900.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.cpp" tooltip="STM32F103mini_temp/user_app/device/src/si8900.cpp">
-<persistable path="/STM32F103mini_temp/user_app/device/src/si8900.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.hpp" tooltip="STM32F103mini_temp/user_lib/inc/gpio.hpp">
-<persistable path="/STM32F103mini_temp/user_lib/inc/gpio.hpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.cpp" tooltip="STM32F103mini_temp/user_lib/src/gpio.cpp">
-<persistable path="/STM32F103mini_temp/user_lib/src/gpio.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="enc.h" tooltip="STM32F103mini_temp/user_app/inc/enc.h">
+<persistable path="/STM32F103mini_temp/user_app/inc/enc.h"/>
 </file>
 </mruList>
 </workbench>
