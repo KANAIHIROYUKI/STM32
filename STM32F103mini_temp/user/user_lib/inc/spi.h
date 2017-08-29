@@ -15,6 +15,7 @@
 #define SPI_NSS_LP 2
 #define SPI_NSS_SP 3//NegativeSlaveSelect/ShiftPreceding
 
+#define SPI_BufferSize 128
 
 
 class SPI_Master{
@@ -35,6 +36,8 @@ public:
 
 	void cycle();
 
+	uint8_t transfer(uint8_t data);
+
 	void write(uint8_t data);
 	uint8_t read();
 	uint16_t available();
@@ -47,7 +50,7 @@ public:
 
 	static uint16_t interruptCnt;
 	static uint16_t interfaceNumberCnt,takeInterfaceNumber;
-	static RingBuffer<uint8_t,32> spi1txBuffer,spi2txBuffer,spi1rxBuffer,spi2rxBuffer;
+	static RingBuffer<uint8_t,SPI_BufferSize> spi1txBuffer,spi2txBuffer,spi1rxBuffer,spi2rxBuffer;
 	SPI_TypeDef *spi;
 };
 

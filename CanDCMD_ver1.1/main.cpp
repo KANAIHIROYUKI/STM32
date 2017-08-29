@@ -55,12 +55,12 @@ int main(void)
 
     		if(debugMode == 1){
         		if(sw[0].read() == 0){
-        			canMotor[0].duty(-0.2);
-        			canMotor[1].duty(-0.2);
+        			canMotor[0].duty(-0.3);
+        			canMotor[1].duty(-0.3);
         			serial.printf("ccw");
         		}else if(sw[1].read() == 0){
-        			canMotor[0].duty(0.2);
-        			canMotor[1].duty(0.2);
+        			canMotor[0].duty(0.3);
+        			canMotor[1].duty(0.3);
         			serial.printf("cw ");
         		}else{
         			canMotor[0].duty(0);

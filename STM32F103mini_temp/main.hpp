@@ -41,11 +41,11 @@ void setup(){
 	spi.setup(SPI2,PB13,PB14,PB15);
 	spiSS.setup(PB12,OUTPUT);
 	spiSS.write(1);
-	magEnc.setup(spi,spiSS);
+	//magEnc.setup(spi,spiSS);
 
 	for(int i=0;i<4;i++){
 		motor[i].setup(pwm[i],cw[i]);
-		magEnc.addEnc(enc[i]);
+		//magEnc.addEnc(enc[i]);
 		mc[i].setup(motor[i],enc[i],1024);
 	}
 
@@ -70,21 +70,19 @@ void setup(){
 	kw.setup(serial,sbus,sa,motor[0],motor[1],motor[2],motor[3]);
 	kw.uiSetup(sw[0],sw[1],led[0],led[1],led[2],led[3]);
 
-
-	for(int i=0;i<10;i++){
-		spi.write(100);
+	for(int i=0;i<100;i++){
+		spi.write(i);
 	}
-
 	delay(10);
 
-	spiSS.write(1);
-	for(int i=0;i<10;i++){
+	//spiSS.write(1);
+	for(int i=0;i<100;i++){
 		serial.printf("data = %d,",spi.read());
+		delay(1);
 	}
-	//delay(1);
-	//serial.printf("spi = %d\n\r",SPI_I2S_ReceiveData(SPI2));
+
 	delay(10);
-	serial.printf("int = %d\n\r",spi.interruptCnt);
+	serial.printf("interrupt = %d\n\r",spi.interruptCnt);
 	delay(10);
 }
 

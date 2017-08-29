@@ -4,6 +4,8 @@
 #include "stm32f10x.h"
 #include <stdio.h>
 
+#include "systime.h"
+
 #include "gpio.h"
 #include "tim.h"
 #include "can.h"
@@ -12,11 +14,10 @@
 #include "spi.h"
 #include "dma.h"
 
-#define TIME_SPLIT 100000 	// タイマの最小分解能を決める｡最小分解能 = 1/TIME_SPLIT [s]
-
 #define DEFAULT_PRESCALER IWDG_Prescaler_4	//409.6ms
 #define DEFAULT_RELOAD 4095	//最大値､0.1ms単位
 
+uint16_t g_systemTimerTIMSetuped = 0;
 
 class System{
 public:
@@ -33,7 +34,9 @@ public:
 	//USART *system_usart;
 };
 
+TIM *g_sysTimer;
 
+void setSystemTimer(TIM &timer);
 void delay(uint32_t nTime);	//この関数の時間はそれほど正確でない
 uint64_t millis();
 uint64_t micros();

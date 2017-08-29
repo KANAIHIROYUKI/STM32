@@ -3,10 +3,10 @@
 uint16_t SPI_Master::interfaceNumberCnt = 0,SPI_Master::interruptCnt = 0;
 uint16_t SPI_Master::takeInterfaceNumber = 0;
 
-RingBuffer<uint8_t,32> SPI_Master::spi1txBuffer;
-RingBuffer<uint8_t,32> SPI_Master::spi2txBuffer;
-RingBuffer<uint8_t,32> SPI_Master::spi1rxBuffer;
-RingBuffer<uint8_t,32> SPI_Master::spi2rxBuffer;
+RingBuffer<uint8_t,SPI_BufferSize> SPI_Master::spi1txBuffer;
+RingBuffer<uint8_t,SPI_BufferSize> SPI_Master::spi2txBuffer;
+RingBuffer<uint8_t,SPI_BufferSize> SPI_Master::spi1rxBuffer;
+RingBuffer<uint8_t,SPI_BufferSize> SPI_Master::spi2rxBuffer;
 
 void SPI_Master::setup(SPI_TypeDef *spiSet
 		,GPIO_TypeDef *sck,uint16_t sckPin
@@ -60,10 +60,27 @@ void SPI_Master::ioSetup(GPIO_TypeDef *sck,uint16_t sckPin,GPIO_TypeDef *miso,ui
 }
 
 
+uint8_t SPI_Master::transfer(uint8_t data){
+	if(spi == SPI1){
+		SPI_I2S_SendData(SPI1,data);
+		while(SPI_I2S_GetFlagStatus(SPI1,SPI_I2S_FLAG_RXNE) == RESET);
+		return SPI_I2S_ReceiveData(SPI1);
+
+	}else if(spi == SPI2){
+		SPI_I2S_SendData(SPI2,data);
+		while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_RXNE) == RESET);
+		return SPI_I2S_ReceiveData(SPI2);
+
+	}else{
+		return 0;
+	}
+}
+
 void SPI_Master::write(uint8_t data){
 	if(spi == SPI1){
 		if(SPI_I2S_GetFlagStatus(SPI1,SPI_I2S_FLAG_TXE)){
 			SPI_I2S_SendData(SPI1,data);
+			SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_RXNE,ENABLE);
 		}else{
 			spi1txBuffer.write(data);
 		}
@@ -71,6 +88,7 @@ void SPI_Master::write(uint8_t data){
 	}else if(spi == SPI2){
 		if(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_TXE)){
 			SPI_I2S_SendData(SPI2,data);
+			SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_RXNE,ENABLE);
 		}else{
 			spi2txBuffer.write(data);
 		}
@@ -165,7 +183,7 @@ void SPI1Setup(uint16_t SPI_Mode,uint16_t SPI_Protocol_Mode,uint16_t SPI_Prescal
 
 	if(SPI_Mode == SPI_Mode_Master){
 		SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;// | SPI_NSSInternalSoft_Set;
-		SPI_NSSInternalSoftwareConfig(SPI1,SPI_NSSInternalSoft_Set);
+		//SPI_NSSInternalSoftwareConfig(SPI1,SPI_NSSInternalSoft_Set);
 
 		SPI_InitStructure.SPI_BaudRatePrescaler = SPI_Prescaler;
 	}else{
@@ -186,8 +204,8 @@ void SPI1Setup(uint16_t SPI_Mode,uint16_t SPI_Protocol_Mode,uint16_t SPI_Prescal
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
-	SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_TXE,ENABLE);
-	SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_RXNE,ENABLE);
+	//SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_TXE,ENABLE);
+	//SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_RXNE,ENABLE);
 
 	//SPI—LŒø
 	SPI_Cmd(SPI1, ENABLE);
@@ -228,7 +246,7 @@ void SPI2Setup(uint16_t SPI_Mode,uint16_t SPI_Protocol_Mode,uint16_t SPI_Prescal
 
 
 	if(SPI_Mode == SPI_Mode_Master){
-		SPI_InitStructure.SPI_NSS = SPI_NSS_Hard;// | SPI_NSSInternalSoft_Set;
+		SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;// | SPI_NSSInternalSoft_Set;
 		//SPI_NSSInternalSoftwareConfig(SPI2,SPI_NSSInternalSoft_Set);
 
 		SPI_InitStructure.SPI_BaudRatePrescaler = SPI_Prescaler;
@@ -250,15 +268,15 @@ void SPI2Setup(uint16_t SPI_Mode,uint16_t SPI_Protocol_Mode,uint16_t SPI_Prescal
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
-	SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_TXE,ENABLE);
-	SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_RXNE,ENABLE);
+	//SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_TXE,ENABLE);
+	//SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_RXNE,ENABLE);
 
 	//SPI—LŒø
 	SPI_Cmd(SPI2, ENABLE);
 }
 
 extern "C" void SPI1_IRQHandler(){
-	//SPI_Master::interruptCnt++;
+	SPI_Master::interruptCnt++;
 	if(SPI_I2S_GetITStatus(SPI1,SPI_I2S_IT_TXE)){
 		SPI_I2S_ClearITPendingBit(SPI1,SPI_I2S_FLAG_TXE);
 		if(SPI_Master::spi1txBuffer.length()){
@@ -267,32 +285,32 @@ extern "C" void SPI1_IRQHandler(){
 			return;
 		}
 
-	}else if(SPI_I2S_GetITStatus(SPI1,SPI_I2S_IT_RXNE)){
+	}
+
+	if(SPI_I2S_GetITStatus(SPI1,SPI_I2S_IT_RXNE)){
 		SPI_I2S_ClearITPendingBit(SPI1,SPI_I2S_FLAG_RXNE);
 		SPI_Master::spi1rxBuffer.write(SPI_I2S_ReceiveData(SPI1));
-
-	}else{
 
 	}
 }
 
 
 extern "C" void SPI2_IRQHandler(){
+	SPI_Master::interruptCnt++;
 
 	if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_TXE)){
-		//SPI_I2S_ClearITPendingBit(SPI2,SPI_I2S_FLAG_TXE);
+		SPI_I2S_ClearITPendingBit(SPI2,SPI_I2S_FLAG_TXE);
 		if(SPI_Master::spi2txBuffer.length()){
 			SPI_I2S_SendData(SPI2,SPI_Master::spi2txBuffer.read());
 		}else{
 			return;
 		}
 
-	}else if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_RXNE)){
-		SPI_Master::interruptCnt++;
-		//SPI_I2S_ClearITPendingBit(SPI2,SPI_I2S_FLAG_RXNE);
-		SPI_Master::spi2rxBuffer.write(SPI_I2S_ReceiveData(SPI2));
+	}
 
-	}else{
+	if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_RXNE)){
+		SPI_I2S_ClearITPendingBit(SPI2,SPI_I2S_FLAG_RXNE);
+		SPI_Master::spi2rxBuffer.write(SPI_I2S_ReceiveData(SPI2));
 
 	}
 }

@@ -1,6 +1,5 @@
 #include "system.h"
 
-static uint64_t systemTimer = 0;
 int16_t System::cycleFunctionCnt = 0;
 int16_t System::cycleFunctionNumber = 0;
 
@@ -18,8 +17,9 @@ void System::cycle(){
 	if(cycleFunctionCnt > 0){
 		if(usartFlag){
 			wdgSetup(1);
+
 			//system_usart->printf("cycle function error cycleCnt = %d\n\r",cycleFunctionCnt);
-			while(1);
+			//while(1);
 		}
 	}
 	wdgReset();
@@ -34,22 +34,36 @@ void System::wdgReset(){
 	IWDGReset();
 }
 
+void setSystemTimer(TIM &timer){
+	g_sysTimer = &timer;
+	g_systemTimerTIMSetuped = 1;
+}
+
 void delay(uint32_t nTime){
-	uint64_t delayTime = nTime*1000 + micros();
-	while(delayTime > micros());
+	if(g_systemTimerTIMSetuped == 0){
+		_delay(nTime);
+	}else{
+
+	}
 }
 
 uint64_t micros(){
-	return systemTimer*(1000000/TIME_SPLIT);
+	if(g_systemTimerTIMSetuped == 0){
+		return _micros();
+	}else{
+
+	}
 }
 
 uint64_t millis(){
-	return micros()/1000;
+	if(g_systemTimerTIMSetuped == 0){
+		return _millis();
+	}else{
+
+	}
 }
 
-extern "C" void SysTick_Handler(void){
-	systemTimer++;
-}
+
 
 void IWDGSetup(uint16_t reload,uint8_t prescaler){
 	IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);

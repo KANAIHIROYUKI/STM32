@@ -178,6 +178,7 @@ void setup(){
 	}
 	*/
 
+	/*
 	if(CAN_ADDRESS == BOARD_ADD_SAGI0 || CAN_ADDRESS == BOARD_ADD_SAGI1){
 		driver.overCurrentPeakSet(0,170);
 		driver.overCurrentPeakSet(1,170);
@@ -200,7 +201,13 @@ void setup(){
 		driver.overCurrentAveSet(ChannelCurrentA,20);
 		//driver.overCurrentAveSet(ChannelCurrentB,100);
 		driver.overCurrentAveSet(ChannelCurrentB,120);
-	}
+	}*/
+
+	driver.overCurrentPeakSet(ChannelCurrentA,150);
+	driver.overCurrentPeakSet(ChannelCurrentB,150);
+
+	driver.overCurrentAveSet(ChannelCurrentA,50);
+	driver.overCurrentAveSet(ChannelCurrentB,50);
 
 	serial.printf("OC limit max A=%3d,B=%3d,ave A=%3d,B=%3d\n\r",(int)driver.overCurrentLimit[0],(int)driver.overCurrentLimit[1],(int)driver.overCurrentLimitAve[0],(int)driver.overCurrentLimitAve[1]);
 

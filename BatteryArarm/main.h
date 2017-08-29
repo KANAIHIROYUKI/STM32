@@ -5,13 +5,13 @@
 
 
 
-#define IntervalTime 10
+#define IntervalTime 50
 #define BeepIntervalTime 300
 #define BUZZER_FRQ 2000
 #define SCHMITT_VOLTAGE 100
 
 
-#define BoardNumber1
+#define BoardNumber2
 
 
 #ifdef BoardNumber1
@@ -95,14 +95,16 @@ void setup(){
 	delay(100);
 
 	voltage[0] = (batt[0].read()*CELL0_VOLTAGE_GAIN);
-	voltage[1] = (batt[1].read()*CELL1_VOLTAGE_GAIN) - voltage[1];
-	voltage[2] = (batt[2].read()*CELL2_VOLTAGE_GAIN) - voltage[2];
-	voltage[3] = (batt[3].read()*CELL3_VOLTAGE_GAIN) - voltage[3];
-	voltage[4] = (batt[4].read()*CELL4_VOLTAGE_GAIN) - voltage[4];
-	voltage[5] = (batt[5].read()*CELL5_VOLTAGE_GAIN) - voltage[5];
+	voltage[1] = (batt[1].read()*CELL1_VOLTAGE_GAIN) - voltage[0];
+	voltage[2] = (batt[2].read()*CELL2_VOLTAGE_GAIN) - voltage[1];
+	voltage[3] = (batt[3].read()*CELL3_VOLTAGE_GAIN) - voltage[2];
+	voltage[4] = (batt[4].read()*CELL4_VOLTAGE_GAIN) - voltage[3];
+	voltage[5] = (batt[5].read()*CELL5_VOLTAGE_GAIN) - voltage[4];
 
 
+	delay(10);
 
+	cellNum = 6;
 	for(int i=0;i<6;i++){
 		if(voltage[i] < 3000){
 			cellNum = i;		//ƒZƒ‹”ŒŸo
@@ -110,6 +112,7 @@ void setup(){
 		}
 		serial.printf("%d,",voltage[i]);
 	}
+	delay(10);
 
 	serial.printf("cell number = %d\n\r",cellNum);
 
@@ -121,6 +124,7 @@ void setup(){
 		beep(4000,0);
 		delay(10);
 	}
+	delay(10);
 
 	ledIntervalTime = millis();
 }

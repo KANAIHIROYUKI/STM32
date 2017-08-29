@@ -1,7 +1,8 @@
 #ifndef TIM_H_
 #define TIM_H_
 
-#include "system.h"
+#include "stm32f10x.h"
+#include "gpio.h"
 #include "base.h"
 
 #define PWM_PERIOD_DEFALUT 1024
