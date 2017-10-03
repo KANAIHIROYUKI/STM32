@@ -23,6 +23,7 @@ void System::cycle(){
 		if(usartFlag){
 			wdgSetup(100);
 			system_usart->printf("cycle function error cycleCnt = %d\n\r",cycleFunctionCnt);
+			delay(10);
 			while(1);
 		}
 	}

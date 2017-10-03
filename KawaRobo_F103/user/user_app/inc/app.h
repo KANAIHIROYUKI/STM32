@@ -9,6 +9,7 @@
 #include "enc.h"
 #include "pwm.h"
 #include "switch.h"
+#include "led.h"
 
 #include "si8900.h"
 #include "sbus.h"
@@ -18,6 +19,7 @@
 #include "dynamixel485.h"
 #include "AS504x.h"
 #include "ADNS9800.h"
+#include "dxlib.h"
 
 #include "canEncoder.h"
 #include "canValve.h"
@@ -35,5 +37,6 @@
 
 #include "motorController.h"
 #include "robot.h"
+#include "PID_Controller.h"
 
 #endif

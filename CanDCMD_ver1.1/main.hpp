@@ -203,11 +203,11 @@ void setup(){
 		driver.overCurrentAveSet(ChannelCurrentB,120);
 	}*/
 
-	driver.overCurrentPeakSet(ChannelCurrentA,150);
-	driver.overCurrentPeakSet(ChannelCurrentB,150);
+	driver.overCurrentPeakSet(ChannelCurrentA,180);	//150
+	driver.overCurrentPeakSet(ChannelCurrentB,180);
 
-	driver.overCurrentAveSet(ChannelCurrentA,50);
-	driver.overCurrentAveSet(ChannelCurrentB,50);
+	driver.overCurrentAveSet(ChannelCurrentA,80);//50
+	driver.overCurrentAveSet(ChannelCurrentB,80);
 
 	serial.printf("OC limit max A=%3d,B=%3d,ave A=%3d,B=%3d\n\r",(int)driver.overCurrentLimit[0],(int)driver.overCurrentLimit[1],(int)driver.overCurrentLimitAve[0],(int)driver.overCurrentLimitAve[1]);
 

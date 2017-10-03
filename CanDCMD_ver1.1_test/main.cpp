@@ -25,11 +25,22 @@ int main(void)
 
     	driver.cycle();
 
+    	if(millis() - controllCycle > 0){
+    		controllCycle++;
+
+    		pid.setPoint((float)enc[0].read()/(500*4));
+    		pid.measuredValue((float)enc[1].read()/(100*128*4));
+
+    		canMotor[0].duty(-pid.outputF());
+    		canMotor[1].duty(-pid.outputF());
+    	}
+
 
     	if(intervalTimer <= millis()){
 
     		intervalTimer = millis() + IntervalTime;
 
+    		serial.printf("output = %4d\n\r",pid.output32());
 
     		if(driver.driveError&DE_UnderVoltage || driver.driveError&DE_OverVoltage || driver.driveError&DE_ADCLost || driver.driveError&DE_Unknown || driver.driveError&DE_UnderVoltageAve){
     			led[1].write(1);
@@ -54,19 +65,7 @@ int main(void)
     		}
 
     		if(debugMode == 1){
-        		if(sw[0].read() == 0){
-        			canMotor[0].duty(-0.2);
-        			canMotor[1].duty(-0.2);
-        			serial.printf("ccw");
-        		}else if(sw[1].read() == 0){
-        			canMotor[0].duty(0.2);
-        			canMotor[1].duty(0.2);
-        			serial.printf("cw ");
-        		}else{
-        			canMotor[0].duty(0);
-        			canMotor[1].duty(0);
-        			serial.printf("fr ");
-        		}
+
 
     		}else{
         		if(sw[0].readStat == 1 && sw[0].read() == 0&& printValue > 0){
@@ -77,6 +76,9 @@ int main(void)
         		}
     		}
 
+    		//serial.printf("p = %4d,i = %4d,d = %4d,out = %4d\n\r",(int)(pid.error*100),(int)(pid.errorInt*100),(int)(pid.errorDiv*100),(int)pid.output32());
+
+    		/*
     		switch(printValue){
     		case 0:
     			if(driver.driveStat == DS_Drive){
@@ -108,7 +110,7 @@ int main(void)
     			break;
     		default:
     			printValue = 0;
-    		}
+    		}*/
 
     		if(driver.adc->setupStat == 0 && driver.driveError){
     			serial.printf("\n\r\n\rdriver error = 0x%3x,errorStat = %d\n\rv=%5d,c=%5d,%5d\n\r\n\r",driver.driveError,driver.driveErrorStat,(int)driver.errorVoltage,(int)driver.errorCurrent[ChannelCurrentA],(int)driver.errorCurrent[ChannelCurrentB]);

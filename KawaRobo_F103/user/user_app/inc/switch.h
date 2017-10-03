@@ -6,7 +6,7 @@
 
 class Switch{
 public:
-	void setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode);
+	void setup(GPIO_TypeDef* gpio,uint16_t pin,GPIOMode_TypeDef mode = INPUT_PU);
 	uint16_t read();
 	void cycle();
 	uint16_t gpioRead();

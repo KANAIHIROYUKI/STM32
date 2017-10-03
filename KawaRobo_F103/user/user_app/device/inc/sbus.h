@@ -9,7 +9,6 @@
 
 #define SBUS_BUFFER_END 25
 
-
 #define SBUS_ERROR_NONE		0x00
 #define SBUS_ERROR_FRAME	0x10
 

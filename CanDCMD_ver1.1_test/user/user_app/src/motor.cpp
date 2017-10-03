@@ -26,6 +26,9 @@ void Motor::duty(float motorDuty){
 		return;
 	}
 
+	if(motorDuty >  1.0) motorDuty = 1.0;
+	if(motorDuty < -1.0)motorDuty = -1.0;
+
 	switch(assigneStat){
 	case MOTOR_ASSIGNE_NONE:
 
@@ -40,16 +43,15 @@ void Motor::duty(float motorDuty){
 
 	int16_t motorDuty16 = (int16_t)(motorDuty * pwm1->pwm_period);
 
-	uint16_t dutyLimit = (pwm1->pwm_period) - 50;	//スイッチング時間分でduty上限かける
+	uint16_t dutyLimit = (pwm1->pwm_period) - 100;	//スイッチング時間分でduty上限かける
 	if(motorDuty16 >  dutyLimit)motorDuty16 = dutyLimit;
 	if(motorDuty16 < -dutyLimit)motorDuty16 = -dutyLimit;
 	//if(motorDuty16 < 50 && motorDuty16 > -50)motorDuty16 = 0;
 
 
-	pwm1->duty(pwm1->pwm_period/2 + motorDuty16/2);
+	pwm1->duty(pwm1->pwm_period/2 - motorDuty16/2);
 	pwm2->duty(pwm2->pwm_period/2 + motorDuty16/2);
 	outDuty = motorDuty16;
-
 }
 
 void Motor::brake(float motorBrake){
@@ -135,7 +137,7 @@ void Motor::buzzerStop(){
 	outEnable = 1;
 
 	pwm1->pwmReset(pwm_period,pwm_prescaler,TIM_OCMode_PWM1);
-	pwm2->pwmReset(pwm_period,pwm_prescaler,TIM_OCMode_PWM2);		//ここテスト用に変えてる
+	pwm2->pwmReset(pwm_period,pwm_prescaler,TIM_OCMode_PWM1);
 	pwmEn->pwmReset(en_period,en_period,en_mode);
 
 	pwm1->duty(0);

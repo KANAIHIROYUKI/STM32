@@ -6,24 +6,28 @@ void Robot::setup(){
 	radian = 0;
 }
 
-void Robot::odometry(){
+void Robot::odometryEnc(){
 	for(int i=0;i<3;i++){
 		pointX += enc[i].read() * cos(radian + ENC_RAD[i]);
 		pointY += enc[i].read() * sin(radian + ENC_RAD[i]);
 	}
 }
 
+void Robot::odmetoryMouse(int x,int y){
+	pointX += x*cos(radian) + y*sin(radian);
+	pointY += x*sin(radian) + y*cos(radian);
+}
+
 void Robot::omni(float spd,float rad,float rps){
-	rad -= radian;
+	float radi = -rad;
 
 	for(int i=0;i<3;i++){
-		float radi = rad + MOTOR_RAD[i];
 
 		while(radi < 0){
-			radi += M_PI*2;
+			radi += deg_to_radian(360);
 		}
 		while(radi > M_PI*2){
-			radi -= M_PI*2;
+			radi -= deg_to_radian(360);
 		}
 
 		if(radi < deg_to_radian(60)){
@@ -37,7 +41,10 @@ void Robot::omni(float spd,float rad,float rps){
 		}
 
 		outDuty[i] += rps;
-		motor[i].duty(outDuty[i]);
+		//motor[i].duty(outDuty[i]);
+		//モーター回す時はコメントアウト外す
+
+		radi += deg_to_radian(120);
 	}
 
 }

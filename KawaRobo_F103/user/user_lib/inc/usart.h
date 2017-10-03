@@ -22,6 +22,7 @@ public:
 	void send(char c);
 	char read();
 	char peek();
+	void flush();
 	uint16_t available();
 
 	void enable();

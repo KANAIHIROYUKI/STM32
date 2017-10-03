@@ -32,7 +32,9 @@ uint64_t USART::usart3receiveTime = 0;
 
 void USART::puts(const char *s){
  int i;
- for(i=0;s[i]!=0;i++)send(s[i]);
+ for(i=0;s[i]!=0;i++){
+	 send(s[i]);
+ }
 }
 
 void USART::printf(const char *format, ...) {
@@ -177,6 +179,25 @@ char USART::peek(){		//要動作チェック
 		return usart3RxBuffer[usart3ReadAddress + 1];
 	}
 	return 0;
+}
+
+void USART::flush(){
+	if(usart_usart == USART1){
+		usart1RxAddress = 1;
+		usart1ReadAddress = 0;
+		usart1TxSendAddress = 0;
+		usart1TxWriteAddress = 0;
+	}else if(usart_usart == USART2){
+		usart2TxSendAddress = 0;
+		usart2TxWriteAddress = 0;
+		usart2RxAddress = 1;
+		usart2ReadAddress = 0;
+	}else if(usart_usart == USART3){
+		usart3TxSendAddress = 0;
+		usart3TxWriteAddress = 0;
+		usart3RxAddress = 1;
+		usart3ReadAddress = 0;
+	}
 }
 
 uint16_t USART::available(){

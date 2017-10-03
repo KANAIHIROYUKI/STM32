@@ -69,5 +69,3 @@ uint16_t SBUS::read(uint16_t getChannel){
 
 	return channel[getChannel];
 }
-
-

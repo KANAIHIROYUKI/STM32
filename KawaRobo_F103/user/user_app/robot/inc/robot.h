@@ -24,7 +24,8 @@ public:
 	float encRad[3],outDuty[3];
 
 	void setup();
-	void odometry();
+	void odometryEnc();
+	void odmetoryMouse(int x,int y);
 	void omni(float spd,float rad,float rps);
 
 	Enc enc[3];

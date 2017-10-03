@@ -6,7 +6,7 @@
 class DutyOut{
 public:
 	void duty(float duty){
-
+		outDuty = 0.0;
 	}
 
 	void cycle(){
@@ -16,6 +16,8 @@ public:
 	void reverse(int16_t mode){
 
 	}
+
+	float outDuty;
 };
 
 class DutyIn{

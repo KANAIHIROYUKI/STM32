@@ -5,6 +5,7 @@
 #include "app.h"
 #include "base.h"
 #include "can_dcmd.h"
+#include "PID_Controller.h"
 
 #define CAN_ADDRESS (uint16_t)(15 - (sel[0].read()*2 + sel[1].read() + sel[2].read()*8 + sel[3].read()*4))
 #define IntervalTime 100
@@ -40,9 +41,13 @@ CanVoltage canVoltage;
 
 CanDCMD driver;
 
+PID pid;
+
 uint8_t debugMode = 0,printValue = 0,canData[8];
 uint64_t intervalTimer = 0;
 
+
+uint64_t controllCycle;
 
 void setup(){
 	sys.setup();
@@ -80,9 +85,9 @@ void setup(){
 	en[1].duty(0);
 
 	pwm[0].pwmSetup(TIM4,3,PB8,PWM_PERIOD);
-	pwm[1].pwmSetup(TIM4,4,PB9,PWM_PERIOD,0,TIM_OCMode_PWM2);
+	pwm[1].pwmSetup(TIM4,4,PB9,PWM_PERIOD);
 	pwm[2].pwmSetup(TIM4,1,PB6,PWM_PERIOD);
-	pwm[3].pwmSetup(TIM4,2,PB7,PWM_PERIOD,0,TIM_OCMode_PWM2);
+	pwm[3].pwmSetup(TIM4,2,PB7,PWM_PERIOD);
 
 	motor[0].setup(pwm[0],pwm[1]);
 	motor[1].setup(pwm[2],pwm[3]);
@@ -101,6 +106,9 @@ void setup(){
 	}else if(sw[1].gpioRead() == 0){
 		debugMode = 2;
 	}
+
+	//‚±‚±•Ï‚¦‚½
+	debugMode = 1;
 
 	can1.setup(CAN1,PA12,PA11,debugMode);
 
@@ -219,6 +227,11 @@ void setup(){
 	}
 
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
+
+	/************‚±‚±‚©‚ç****************/
+	pid.setup(10.0,0,0);
+	pid.limit(-1.0,1.0);
+
 }
 
 

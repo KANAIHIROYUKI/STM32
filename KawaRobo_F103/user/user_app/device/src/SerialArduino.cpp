@@ -7,6 +7,7 @@ void SerialArduino::setup(USART_TypeDef *usart,uint32_t baud,GPIO_TypeDef* gpio_
 	receiveStat = 0;
 	sendRequest = 0;
 	update = 0;
+	lastReceiveTime = 0;
 
 	for(int i=0;i<SA_DATA_SIZE*3;i++){
 		buffer[i] = 0;
@@ -45,6 +46,7 @@ void SerialArduino::cycle(){
 			data[i] = (buffer[i*3 + 2] << 12) | (buffer[i*3 + 1] << 6)  | buffer[i*3];
 		}
 		receiveStat = 0;
+		lastReceiveTime = millis();
 		update = 1;
 	}
 
@@ -65,7 +67,7 @@ void SerialArduino::cycle(){
 	System::cycleFunctionCnt--;
 }
 
-void SerialArduino::write(uint16_t address,uint16_t data){
+void SerialArduino::write(uint16_t address,int16_t data){
 	if(address >= SA_DATA_SIZE)return;
 
 	sendRequest = 1;
@@ -74,7 +76,7 @@ void SerialArduino::write(uint16_t address,uint16_t data){
 	sendBuffer[address*3 + 2] = data >>12 & 0x3F;
 }
 
-uint16_t SerialArduino::read(uint16_t address){
+int16_t SerialArduino::read(uint16_t address){
 	if(address > SA_DATA_SIZE)return 0;
 	return data[address];
 }
