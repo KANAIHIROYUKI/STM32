@@ -14,7 +14,7 @@ void NCP5359::setup(TIM &pwmSet,GPIO &gpioSet){
 void NCP5359::cycle(){
 	System::cycleFunctionCnt--;
 
-	//if(millis() - dutySetTime > TIME_OUT)duty(0);
+	if(millis() - dutySetTime > TIME_OUT)duty(0);
 }
 
 
