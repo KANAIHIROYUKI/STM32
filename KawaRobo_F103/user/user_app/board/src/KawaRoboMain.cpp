@@ -10,6 +10,8 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 	this->motor[2] = &motor2;
 	this->motor[3] = &motor3;
 
+	motor[1]->dutyLimit(0.2);
+
 	printValueSelect = 0;
 
 	for(int i=0;i<4;i++){
@@ -26,9 +28,12 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 
 	robotY.errorLimitInt(1.45,36.5);
 	robotX.errorLimitInt(1.45,36.5);
+
+	armPot.setup(0,0,1);
+
 }
 
-void KawaRobo::uiSetup(Switch &sw0,Switch sw1,LED &led0,LED &led1,LED &led2,LED &led3){
+void KawaRobo::uiSetup(Switch &sw0,Switch &sw1,LED &led0,LED &led1,LED &led2,LED &led3){
 	this->sw[0] = &sw0;
 	this->sw[1] = &sw1;
 
@@ -36,6 +41,13 @@ void KawaRobo::uiSetup(Switch &sw0,Switch sw1,LED &led0,LED &led1,LED &led2,LED 
 	this->led[1] = &led1;
 	this->led[2] = &led2;
 	this->led[3] = &led3;
+}
+
+void KawaRobo::sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3){
+	this->analog[0] = &adc0;
+	this->analog[1] = &adc1;
+	this->analog[2] = &adc2;
+	this->analog[3] = &adc3;
 }
 
 void KawaRobo::cycle(){
@@ -81,6 +93,7 @@ void KawaRobo::cycle(){
 						serial->printf("\n\rmode = RUN\n\r\n\r");
 						led[0]->interval(1000);
 						led[1]->interval(1000);
+						led[2]->interval(1000);
 					}
 					mode = KRM_MODE_RUN;
 
@@ -90,6 +103,7 @@ void KawaRobo::cycle(){
 						serial->printf("\n\rmode = TEST\n\r\n\r");
 						led[0]->interval(50);
 						led[1]->interval(1000);
+						led[2]->interval(1000);
 					}
 					mode = KRM_MODE_TEST;
 
@@ -99,6 +113,7 @@ void KawaRobo::cycle(){
 						serial->printf("\n\rmode = STOP\n\r\n\r");
 						led[0]->interval(50);
 						led[1]->interval(1000);
+						led[2]->interval(1000);
 					}
 					mode = KRM_MODE_STOP;
 
@@ -109,6 +124,7 @@ void KawaRobo::cycle(){
 					serial->printf("\n\rbatt under voltage\n\rmode = STOP\n\r\n\r");
 					led[0]->interval(50);
 					led[1]->interval(1000);
+					led[2]->interval(50);
 				}
 				mode = KRM_MODE_STOP;
 			}
@@ -118,6 +134,7 @@ void KawaRobo::cycle(){
 				serial->printf("\n\rsa com lost\n\rmode = STOP\n\r\n\r");
 				led[0]->interval(50);
 				led[1]->interval(1000);
+				led[2]->interval(50);
 			}
 			mode = KRM_MODE_STOP;
 		}
@@ -130,6 +147,7 @@ void KawaRobo::cycle(){
 			serial->printf("\n\rmode = TIME OUT\n\r\n\r");
 			led[0]->interval(50);
 			led[1]->interval(50);
+			led[2]->interval(50);
 		}
 		mode = KRM_MODE_TIMEOUT;
 	}
@@ -153,12 +171,14 @@ void KawaRobo::display(){
 
 		switch(dispValue){
 		case 0:
+			serial->printf("sa ");
 			for(int i=0;i<12;i++){
 				serial->printf("%5d,",sa->read(i));
 			}
 			break;
 
 		case 1:
+			serial->printf("sbus ");
 			for(int i=0;i<8;i++){
 				serial->printf("%5d,",sbus->read(i));
 			}
@@ -169,24 +189,24 @@ void KawaRobo::display(){
 			break;
 
 		case 3:
-			serial->printf("%d,%d,%d",robotX.output32(),robotY.output32(),robotR.output32());
+			serial->printf("robot %d,%d,%d",robotX.output32(),robotY.output32(),robotR.output32());
 			break;
 
 		case 4:
-			serial->printf("%5d,%5d,%5d",target[0].output32(),target[1].output32(),target[2].output32());
+			serial->printf("trg %5d,%5d,%5d",target[0].output32(),target[1].output32(),target[2].output32());
+			break;
+
+		case 5:
+			armPot.measuredValue((float)analog[0]->read()/4095);
+
+			serial->printf("analog ");
+			serial->printf("%4d,",armPot.output32());
 			break;
 
 		default:
 			dispValue = 0;
 		}
 
-
-		//serial->printf("%d,",(int)(target[0].output32()));
-		//serial->printf("run = %4d,rev = %4d,arm = %4d,",(int)(runRead()*100),(int)(revRead()*100),(int)(armRead()*100));
-		//serial->printf("%4d,%4d,%4d",sbus->read(KRM_CHANNEL_RUN) - 1024,sbus->read(KRM_CHANNEL_REV) - 1024,sbus->read(KRM_CHANNEL_MODE) - 1024);
-		//serial->printf(" 4-7 = %4d,%4d,%4d,%4d,",sbus->read(4),sbus->read(5),sbus->read(6),sbus->read(7));
-
-		//serial->printf("%4d",(int)(runRead()*100));
 		serial->printf("\n\r");
 	}
 }
@@ -223,6 +243,7 @@ void KawaRobo::test(){
 }
 
 void KawaRobo::run(){
+
 	target[0].measuredValue(runRead());
 	target[1].measuredValue(revRead());
 
@@ -236,50 +257,8 @@ void KawaRobo::run(){
 
 	motor[0]->duty((runRead() + revRead()) / 2);
 	motor[3]->duty((runRead() - revRead()) / 2);
+	motor[1]->duty(armRead());
 	sa->write(0,1);
-
-	//³‹t‰ñ“]
-/*
-	if(millis() > motorInvertTime){
-		float outDuty;
-		motorInvertTime = millis() + (sbus->read(7) - 140);
-
-		if(motorInvertFlag){
-			motorInvertFlag = 0;
-			outDuty = 1.0;
-
-		}else{
-			motorInvertFlag = 1;
-			outDuty = -1.0;
-		}
-
-
-
-		if(sbus->read(5) < 500){
-			outDuty *= 0.1;
-		}else if(sbus->read(5) < 1500){
-			outDuty *= 0.5;
-		}
-
-		for(int i=0;i<4;i++){
-			motor[i]->duty(outDuty);
-		}
-	}//*/
-
-	//*/
-	//motor[KRM_Motor_Arm]->duty(armRead());	//ƒA[ƒ€“®ì
-	led[2]->write(armRead());
-
-	if(sbus->read(5) > 1000){
-		led[3]->write(1);
-	}else{
-		led[3]->write(0);
-	}
-
-	/*
-	for(int i=0;i<4;i++){
-		motor[i]->duty(0.5);
-	}//*/
 }
 
 void KawaRobo::motorDisable(){
@@ -301,7 +280,8 @@ float KawaRobo::runRead(){
 }
 
 float KawaRobo::armRead(){
-	return (float)(sbus->read(KRM_CHANNEL_ARM) - 144)/1760;
+	return (float)stickRead(KRM_CHANNEL_ARM,1465)/(KRM_STICK_MAX/3);
+	//return (float)(sbus->read(KRM_CHANNEL_ARM) - 144)/1760;
 }
 
 float KawaRobo::revRead(){

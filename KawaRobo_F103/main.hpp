@@ -16,6 +16,7 @@ SPI_Master spi;
 GPIO nss,nssMouse;
 Switch sw[2];
 LED led[4];
+ADC analog[4];
 
 TIM pwm[4];
 GPIO cw[4];
@@ -33,17 +34,6 @@ uint64_t intervalTime;
 
 void setup(){
 	sys.setup();
-/*
-	pwm[0].pwmSetup(TIM4,4,PB9,2000);	//Ç©ÇÌÉçÉ{äÓî¬óp
-	pwm[1].pwmSetup(TIM4,3,PB8,2000);
-	pwm[2].pwmSetup(TIM4,2,PB7,2000);
-	pwm[3].pwmSetup(TIM4,1,PB6,2000);
-
-	cw[0].setup(PB5,OUTPUT);
-	cw[1].setup(PB4,OUTPUT);
-	cw[2].setup(PB3,OUTPUT);
-	cw[3].setup(PA15,OUTPUT);
-	//*/
 
 	pwm[0].pwmSetup(TIM3,2, PB5,20000);
 	pwm[1].pwmSetup(TIM3,1, PB4,20000);
@@ -60,6 +50,11 @@ void setup(){
 	motor[1].setup(pwm[1],cw[1]);
 	motor[2].setup(pwm[2],cw[2]);
 	motor[3].setup(pwm[3],cw[3]);
+
+	analog[0].setup(ADC1,0,PA0);
+	analog[1].setup(ADC1,1,PA1);
+	analog[2].setup(ADC1,4,PA4);
+	analog[3].setup(ADC1,5,PA5);
 	/*
 	for(int i=0;i<4;i++){
 		motor[i].setup(pwm[i],cw[i]);
@@ -98,7 +93,8 @@ void setup(){
 
 
 	kw.setup(serial,sbus,sa,motor[0],motor[1],motor[2],motor[3]);
-	kw.uiSetup(sw[0],sw[1],led[0],led[1],led[2],led[3]);
+	kw.uiSetup(sw[1],sw[0],led[0],led[1],led[2],led[3]);
+	kw.sensorSetup(analog[0],analog[1],analog[2],analog[3]);
 
 	intervalTime = 0;
 

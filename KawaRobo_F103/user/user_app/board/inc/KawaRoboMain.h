@@ -10,7 +10,7 @@
 #define KRM_CHANNEL_REV  3			//SBUS‚Ìƒ`ƒƒƒ“ƒlƒ‹
 #define KRM_CHANNEL_RUN  1
 #define KRM_CHANNEL_MODE 2
-#define KRM_CHANNEL_ARM  5
+#define KRM_CHANNEL_ARM  2
 
 #define KRM_Motor_Arm 0
 #define KRM_Motor_Right 1
@@ -34,7 +34,8 @@
 class KawaRobo {
 public:
 	void setup(USART &serial,SBUS &sbus,SerialArduino &sa,NCP5359 &motor0,NCP5359 &motor1,NCP5359 &motor2,NCP5359 &motor3);
-	void uiSetup(Switch &sw0,Switch sw1,LED &led0,LED &led1,LED &led2,LED &led3);
+	void uiSetup(Switch &sw0,Switch &sw1,LED &led0,LED &led1,LED &led2,LED &led3);
+	void sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3);
 
 	void cycle();
 	void controlCycle();
@@ -57,6 +58,7 @@ public:
 	uint16_t mode,printValueSelect,ledIntervalTime[4],motorInvertFlag;
 	uint64_t printTime,revReadTime,ledInterval[4],motorInvertTime;
 
+
 private:
 	USART *serial;
 	NCP5359 *motor[4];
@@ -66,10 +68,12 @@ private:
 	LED *led[4];
 	Switch *sw[2];
 
+	ADC *analog[4];
+
 	TIM enc;
 	AS504x mgEnc;
 
-	PID pid[4],target[4],robotX,robotY,robotR;
+	PID pid[4],target[4],robotX,robotY,robotR,armPot;
 };
 
 
