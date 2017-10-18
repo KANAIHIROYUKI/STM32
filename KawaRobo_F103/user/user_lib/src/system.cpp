@@ -6,21 +6,21 @@ uint16_t System::error = 0;
 
 void System::setup(){
 	SysTick_Config(SystemCoreClock/TIME_SPLIT);
-	usartFlag = 0;
+	usartSetupFlag = 0;
 
 	error = 0;
 }
 
 void System::usartSetup(USART &usart){
 	this->system_usart = &usart;
-	usartFlag = 1;
+	usartSetupFlag = 1;
 }
 
 void System::cycle(){
 	if(cycleFunctionCnt > 0){
 		error = cycleFunctionCnt;
 
-		if(usartFlag){
+		if(usartSetupFlag){
 			wdgSetup(100);
 			system_usart->printf("cycle function error cycleCnt = %d\n\r",cycleFunctionCnt);
 			delay(10);

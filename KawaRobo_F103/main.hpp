@@ -45,20 +45,15 @@ void setup(){
 	cw[2].setup(PB7,OUTPUT);
 	cw[3].setup(PB6,OUTPUT);
 
-
 	motor[0].setup(pwm[0],cw[0]);
 	motor[1].setup(pwm[1],cw[1]);
 	motor[2].setup(pwm[2],cw[2]);
 	motor[3].setup(pwm[3],cw[3]);
 
 	analog[0].setup(ADC1,0,PA0);
-	analog[1].setup(ADC1,1,PA1);
+	analog[1].setup(ADC2,1,PA1);
 	analog[2].setup(ADC1,4,PA4);
-	analog[3].setup(ADC1,5,PA5);
-	/*
-	for(int i=0;i<4;i++){
-		motor[i].setup(pwm[i],cw[i]);
-	}*/
+	analog[3].setup(ADC2,5,PA5);
 
 	/*********↓通信↑モーター********/
 

@@ -8,7 +8,8 @@ void NCP5359::setup(TIM &pwmSet,GPIO &gpioSet){
 
 	dutySetTime = 0;
 
-	dutyLimit(0.99);
+	limitp = 0.99;
+	limitm = -0.99;
 	System::cycleFunctionNumber++;
 }
 
@@ -25,7 +26,7 @@ void NCP5359::dutyLimit(float dutym,float dutyp){
 
 void NCP5359::dutyLimit(float duty){
 	if(duty < limitp)limitp = duty;
-	if(-duty > limitm)limitm = duty;
+	if(-duty > limitm)limitm = -duty;
 }
 
 void NCP5359::duty(float duty){
@@ -38,7 +39,7 @@ void NCP5359::duty(float duty){
 		cw->write(0);
 	}
 
-	duty = floatlimit(limitm,duty,limitp);
+	duty = floatlimit(limitp,duty,limitm);
 	if(duty < 0)duty = -duty;
 	pwm->duty(pwm->pwm_period - duty * pwm->pwm_period);
 }

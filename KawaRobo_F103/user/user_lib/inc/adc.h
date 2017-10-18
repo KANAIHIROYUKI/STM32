@@ -27,7 +27,7 @@ public:
 	uint16_t peek();
 
 	uint16_t adcValueBuffer;	//AD•ÏŠ·’†‚Í4096
-	uint8_t channel,sampleTime;
+	uint8_t channel,sampleTime,adcStarted;
 
 
 private:
@@ -44,7 +44,7 @@ uint16_t ADC2Read(uint8_t ADC_Channel,uint8_t ADC_SampleTime = ADC_SampleTime_13
 void ADC1Start(uint8_t ADC_Channel,uint8_t ADC_SampleTime = ADC_SampleTime_13Cycles5);
 void ADC2Start(uint8_t ADC_Channel,uint8_t ADC_SampleTime = ADC_SampleTime_13Cycles5);
 
-uint16_t ADC1Peek();
-uint16_t ADC2Peek();
+uint16_t ADC1GetValue();
+uint16_t ADC2GetValue();
 
 #endif

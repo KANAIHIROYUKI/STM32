@@ -52,6 +52,8 @@ public:
 	float armRead();
 	int stickRead(uint16_t channel,uint16_t offset = 1024);
 
+	float armPotRead();
+
 	int16_t forward,revolution,armPower;
 	int16_t gyroSpeed,dispValue;
 

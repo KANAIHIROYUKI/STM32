@@ -310,3 +310,12 @@ int KawaRobo::stickRead(uint16_t channel,uint16_t offset){
 
 	return data;
 }
+
+float KawaRobo::armPotRead(){
+	float value;
+
+
+	analog[0]->start();
+	analog[1]->start();
+	return value;
+}

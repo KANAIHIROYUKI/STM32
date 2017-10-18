@@ -29,7 +29,7 @@ public:
 	static int16_t cycleFunctionNumber;
 	static int16_t cycleFunctionCnt;
 
-	uint16_t usartFlag;
+	uint16_t usartSetupFlag;
 	static uint16_t error;
 	USART *system_usart;
 };

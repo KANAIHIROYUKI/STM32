@@ -12,6 +12,8 @@ void ADC::setup(ADC_TypeDef* adcSet,uint8_t channelSet,GPIO_TypeDef* gpio,uint16
 	}else if(adc == ADC2){
 		ADC2Setup(channel);
 	}
+
+	adcStarted = 0;
 }
 
 int16_t ADC::read(){
@@ -42,12 +44,12 @@ void ADC::start(){
 	adcValueBuffer = 4096;
 
 	if(adc == ADC1){
-		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1Peek();
+		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1GetValue();
 		ADC1Start(channel,sampleTime);
 
 	}else if(adc == ADC2){
 
-		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2Peek();
+		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2GetValue();
 		ADC2Start(channel,sampleTime);
 	}
 }
@@ -56,22 +58,34 @@ void ADC::start(uint8_t sampleTimeSet){
 	adcValueBuffer = 4096;	//AD•ÏŠ·’†‚Í4096
 
 	if(adc == ADC1){
-		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1Peek();
+		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1GetValue();
 		ADC1Start(channel,sampleTimeSet);
+		adcStarted = 1;
 
 	}else if(adc == ADC2){
-		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2Peek();
+		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2GetValue();
 		ADC2Start(channel,sampleTimeSet);
+		adcStarted = 1;
 	}
 }
 
 uint16_t ADC::peek(){
 
 	if(adc == ADC1){
-		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1Peek();
+		if(adcStarted){
+			while(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == RESET);
+			adcValueBuffer = ADC1GetValue();
+			adcStarted = 0;
+		}
+		//if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1Peek();
 
 	}else if(adc == ADC2){
-		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2Peek();
+		if(adcStarted){
+			while(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == RESET);
+			adcValueBuffer = ADC2GetValue();
+			adcStarted = 0;
+		}
+		//if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2Peek();
 
 	}else{
 		adcValueBuffer = 0;
@@ -135,7 +149,7 @@ uint16_t ADC1Read(uint8_t ADC_Channel,uint8_t ADC_SampleTime){
 	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
 	while(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == RESET);
 
-	return  ADC_GetConversionValue(ADC1);
+	return  ADC1GetValue();
 }
 
 uint16_t ADC2Read(uint8_t ADC_Channel,uint8_t ADC_SampleTime){
@@ -143,7 +157,7 @@ uint16_t ADC2Read(uint8_t ADC_Channel,uint8_t ADC_SampleTime){
 	ADC_SoftwareStartConvCmd(ADC2,ENABLE);
 	while(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == RESET);
 
-	return  ADC_GetConversionValue(ADC2);
+	return  ADC2GetValue();
 }
 
 void ADC1Start(uint8_t ADC_Channel,uint8_t ADC_SampleTime){
@@ -156,10 +170,10 @@ void ADC2Start(uint8_t ADC_Channel,uint8_t ADC_SampleTime){
 	ADC_SoftwareStartConvCmd(ADC2,ENABLE);
 }
 
-uint16_t ADC1Peek(){
+uint16_t ADC1GetValue(){
 	return  ADC_GetConversionValue(ADC1);
 }
 
-uint16_t ADC2Peek(){
+uint16_t ADC2GetValue(){
 	return  ADC_GetConversionValue(ADC2);
 }

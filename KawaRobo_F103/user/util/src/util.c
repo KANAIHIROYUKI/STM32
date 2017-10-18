@@ -22,10 +22,10 @@ int fsign(float val)
 	else return -1;
 }
 
-float floatlimit(float mae,float val,float ato)
+float floatlimit(float max,float val,float min)
 {
-	if(mae>=val) return mae;
-	if(ato<=val) return ato;
+	if(min>=val) return min;
+	if(max<=val) return max;
 	return val;
 }
 
