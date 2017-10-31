@@ -43,7 +43,6 @@ CanDCMD driver;
 uint8_t debugMode = 0,printValue = 0,canData[8];
 uint64_t intervalTimer = 0;
 
-
 void setup(){
 	sys.setup();
 
@@ -133,7 +132,6 @@ void setup(){
 	driver.optionSetup(currentOption);
 
 	if(debugMode){
-
 		canVoltage.setup(can1,CAN_ADDRESS*2,100);
 
 		canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
@@ -153,67 +151,29 @@ void setup(){
 	}else{
 		serial.printf("mid-range model\n\r");
 	}
-/*
-	if(CAN_ADDRESS == BOARD_ADD_SAGI0 || CAN_ADDRESS == BOARD_ADD_SAGI1){
-		driver.overCurrentPeakSet(0,170);
-		driver.overCurrentPeakSet(1,170);
 
-		driver.overCurrentAveSet(0,170);
-		driver.overCurrentAveSet(1,170);
-	}
+	///*
+	driver.overCurrentPeakSet(ChannelCurrentA,160);	//ツカサなど
+	driver.overCurrentPeakSet(ChannelCurrentB,160);
 
-	if(CAN_ADDRESS == BOARD_ADD_SHOT){
-		driver.overCurrentPeakSet(ChannelCurrentA,40);
-		driver.overCurrentPeakSet(ChannelCurrentB,150);
-
-		driver.overCurrentAveSet(ChannelCurrentA,30);
-		driver.overCurrentAveSet(ChannelCurrentB,100);
-
-	}else if(CAN_ADDRESS == BOARD_ADD_ANGLE){
-		driver.overCurrentPeakSet(0,150);
-		driver.overCurrentPeakSet(1,150);
-
-		driver.overCurrentAveSet(0,20);
-		driver.overCurrentAveSet(1,20);
-	}
-	*/
+	driver.overCurrentAveSet(ChannelCurrentA,50);
+	driver.overCurrentAveSet(ChannelCurrentB,50);
+	//*/
 
 	/*
-	if(CAN_ADDRESS == BOARD_ADD_SAGI0 || CAN_ADDRESS == BOARD_ADD_SAGI1){
-		driver.overCurrentPeakSet(0,170);
-		driver.overCurrentPeakSet(1,170);
+	driver.overCurrentPeakSet(ChannelCurrentA,40);	//ツカサなど
+	driver.overCurrentPeakSet(ChannelCurrentB,40);
 
-		driver.overCurrentAveSet(0,120);
-		driver.overCurrentAveSet(1,120);
-	}
+	driver.overCurrentAveSet(ChannelCurrentA,20);
+	driver.overCurrentAveSet(ChannelCurrentB,20);
+	//*/
 
-	if(CAN_ADDRESS == BOARD_ADD_SHOT){
-		driver.overCurrentPeakSet(ChannelCurrentA,50);	//上射出
-		driver.overCurrentPeakSet(ChannelCurrentB,50);
-
-		driver.overCurrentAveSet(ChannelCurrentA,40);
-		driver.overCurrentAveSet(ChannelCurrentB,40);
-
-	}else if(CAN_ADDRESS == BOARD_ADD_ANGLE){
-		driver.overCurrentPeakSet(ChannelCurrentA,150);	//仰角
-		driver.overCurrentPeakSet(ChannelCurrentB,150);	//下射出
-
-		driver.overCurrentAveSet(ChannelCurrentA,20);
-		//driver.overCurrentAveSet(ChannelCurrentB,100);
-		driver.overCurrentAveSet(ChannelCurrentB,120);
-	}*/
-
-	driver.overCurrentPeakSet(ChannelCurrentA,180);	//150
-	driver.overCurrentPeakSet(ChannelCurrentB,180);
-
-	driver.overCurrentAveSet(ChannelCurrentA,80);//50
-	driver.overCurrentAveSet(ChannelCurrentB,80);
 
 	serial.printf("OC limit max A=%3d,B=%3d,ave A=%3d,B=%3d\n\r",(int)driver.overCurrentLimit[0],(int)driver.overCurrentLimit[1],(int)driver.overCurrentLimitAve[0],(int)driver.overCurrentLimitAve[1]);
 
 	delay(100);
 	serial.printf("ADRS = %d\n\r",CAN_ADDRESS);
-	serial.printf(" md add = %#x,%#x\n\renc add = %#x,%#x\n\r sw add = %#x\n\r",canMD[0].canMd_address[0],canMD[1].canMd_address[0],canEnc[0].canEnc_address,canEnc[1].canEnc_address,canSw.canAddress);
+	serial.printf(" md add = %#x,%#x\n\renc add = %#x,%#x\n\r sw add = %#x\n\r",canMD[0].address[0],canMD[1].address[0],canEnc[0].address,canEnc[1].address,canSw.canAddress);
 	delay(100);
 
 	serial.printf("setup end ");
@@ -241,6 +201,8 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	canVol.interrupt();
 
 	canSw.interrupt();
+
+
 
 	if(debugMode != 0){
 		canEncoder[1].interrupt();

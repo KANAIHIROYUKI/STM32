@@ -43,6 +43,7 @@ void PID::errorLimitI(float min,float max){
 void PID::errorLimitD(float min,float max){
 	errorLimit(PID_D,min,max);
 }
+
 void PID::errorLimitInt(float min,float max){
 	errorLimit(PID_Int,min,max);
 }
@@ -56,24 +57,27 @@ void PID::errorLimit(uint16_t PorIorD,float min,float max){
 }
 //*/
 
+//åªç›ÇÃñ⁄ïW
 void PID::setPoint(float setpoint){
 	sp = setpoint;
 
 	input(sp - pv);
 }
 
+//åªç›ÇÃíl
 void PID::measuredValue(float measuredvalue){
 	pv = measuredvalue;
 
 	input(sp - pv);
 }
 
+//ì¸óÕÇ∆èoóÕÇÃç∑(e)Çó^Ç¶ÇÈ
 void PID::input(float in){
 	errorOld = error;
 	error = in;
 	errorDiv = errorOld - error;
 	errorInt += error;
-	if(errorLimitSetuped[PID_Int])errorInt = floatlimit(errorMin[PID_Int],errorInt,errorMax[PID_Int]);
+	if(errorLimitSetuped[PID_Int])errorInt = floatlimit(errorMax[PID_Int],errorInt,errorMin[PID_Int]);
 }
 
 float PID::outputF(){
@@ -84,7 +88,7 @@ float PID::outputF(){
 	outPID[PID_D] = errorDiv * Kd;
 
 	for(int i=0;i<3;i++){
-		if(errorLimitSetuped[i])outPID[i] = floatlimit(errorMin[i],outPID[i],errorMax[i]);
+		if(errorLimitSetuped[i])outPID[i] = floatlimit(errorMax[i],outPID[i],errorMin[i]);
 		out += outPID[i];
 	}
 

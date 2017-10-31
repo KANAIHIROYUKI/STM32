@@ -1,12 +1,12 @@
 #include "canNodeMotorDriver.h"
 
-int16_t CanNodeMotorDriver::setup(Motor &motor,CAN &can,uint16_t number,uint16_t max_interval){
-	this->canMd_motor = &motor;
-	this->canMd_can = &can;
-	canMd_address[CAN_MD_ADDRESS_DUTY] = CAN_ADD_DUTY + number;
-	canMd_address[CAN_MD_ADDRESS_FREE] = CAN_ADD_FREE + number;
-
-	canMd_can->filterAdd(canMd_address[CAN_MD_ADDRESS_DUTY],canMd_address[CAN_MD_ADDRESS_FREE]);
+int16_t CanNodeMotorDriver::setup(Motor &_motor,CAN &_can,uint16_t number,uint16_t max_interval){
+	this->motor = &_motor;
+	this->can = &_can;
+	address[CAN_MD_ADDRESS_DUTY] = CAN_ADD_DUTY + number;
+	address[CAN_MD_ADDRESS_FREE] = CAN_ADD_FREE + number;
+	address[CAN_MD_ADDRESS_SETUP] = CAN_ADD_SETTING + number;
+	can->filterAdd(address[CAN_MD_ADDRESS_DUTY],address[CAN_MD_ADDRESS_FREE],address[CAN_MD_ADDRESS_SETUP]);
 
 	lastReceiveTime = 0;
 	maxInterval = max_interval;
@@ -19,27 +19,34 @@ int16_t CanNodeMotorDriver::setup(Motor &motor,CAN &can,uint16_t number,uint16_t
 
 	outDuty = 0;
 	outDutyF = 0;
+	canSetuped = 0;
+
+	setupedValueFloat[0] = 0;
+	setupedValueFloat[1] = 0;
+
+	setupedValueInt[0] = 0;
+	setupedValueInt[1] = 0;
 
 	return 0;
 }
 
-void CanNodeMotorDriver::ledAssign(GPIO &led){
-	this->canMd_led = &led;
+void CanNodeMotorDriver::ledAssign(GPIO &_led){
+	this->led = &_led;
 	ledAssigned = 1;
 }
 
 void CanNodeMotorDriver::cycle(){
 	if(lastReceiveTime + maxInterval < millis()){
 
-		if(motorOutEnable == 1)canMd_motor->duty(0);							//outEnじゃないと回さんで
+		if(motorOutEnable == 1)motor->duty(0);							//outEnじゃないと回さんで
 
 		if(ledAssigned == 1 && (ledTime < millis())){
-			canMd_led->toggle();
+			led->toggle();
 			ledTime = millis() + LED_INTERVAL_NORECEIVE;
 		}
 	}else{
 		if(ledAssigned == 1 && (ledTime < millis())){
-			canMd_led->toggle();
+			led->toggle();
 			ledTime = millis() + LED_INTERVAL_RECEIVE;
 		}
 	}
@@ -47,18 +54,31 @@ void CanNodeMotorDriver::cycle(){
 }
 
 void CanNodeMotorDriver::interrupt(){
-	if(canMd_can->rxMessage.StdId == canMd_address[CAN_MD_ADDRESS_DUTY]){
-		outDuty = ((canMd_can->rxMessage.Data[1] & 0b01111111) << 8) | canMd_can->rxMessage.Data[0];
+	if(can->rxMessage.StdId == address[CAN_MD_ADDRESS_DUTY]){
+		outDuty = ((can->rxMessage.Data[1] & 0b01111111) << 8) | can->rxMessage.Data[0];
 
-		if((canMd_can->rxMessage.Data[1] >> 7) == 1){
+		if((can->rxMessage.Data[1] >> 7) == 1){
 			outDuty = -outDuty;
 		}
 		outDutyF = (float)outDuty/32767;
-		if(motorOutEnable == 1)canMd_motor->duty(outDutyF);			//outEnじゃないと回さんで
+		if(motorOutEnable == 1)motor->duty(outDutyF);			//outEnじゃないと回さんで
 		lastReceiveTime = millis();
-	}else if(canMd_can->rxMessage.StdId == canMd_address[CAN_MD_ADDRESS_FREE]){
+	}else if(can->rxMessage.StdId == address[CAN_MD_ADDRESS_FREE]){
 
-		if(motorOutEnable == 1)canMd_motor->free();								//outEnじゃないと回さんで
+		if(motorOutEnable == 1)motor->free();								//outEnじゃないと回さんで
+
+		lastReceiveTime = millis();
+	}else if(can->rxMessage.StdId == address[CAN_MD_ADDRESS_SETUP]){
+		canSetuped++;
+		if(can->rxMessage.Data[0] == 0){
+			setupedValueFloat[0] = uchar4_to_float(can->rxMessage.Data + 1);
+			setupedValueInt[0] = uchar4_to_int(can->rxMessage.Data + 1);
+		}else 	if(can->rxMessage.Data[0] == 1){
+			setupedValueFloat[1] = uchar4_to_float(can->rxMessage.Data + 1);
+			setupedValueInt[1] = uchar4_to_int(can->rxMessage.Data + 1);
+		}else{
+
+		}
 
 		lastReceiveTime = millis();
 	}
@@ -67,7 +87,7 @@ void CanNodeMotorDriver::interrupt(){
 void CanNodeMotorDriver::motorOverRide(uint16_t overRideEn){
 	if(overRideEn == 0){						//オーバーライドおしまい
 		motorOutEnable = 1;
-		canMd_motor->free();
+		motor->free();
 	}
 
 	if(overRideEn == 1){

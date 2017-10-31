@@ -49,8 +49,24 @@ int main(void)
     		}
 
     		if(serial.available()){
-    			if(serial.read() == 'r')while(1);
     			printValue++;
+
+    			if(serial.read() == 'r')while(1);
+
+    			if(serial.read() == 's'){
+    				float_to_uchar4(canData + 1,95.0);
+    				canData[0] = 0;
+    				can1.send(canMD[1].address[CAN_MD_ADDRESS_SETUP],5,canData);
+    				canData[0] = 1;
+    				can1.send(canMD[1].address[CAN_MD_ADDRESS_SETUP],5,canData);
+    				canData[0] = 0;
+    				can1.send(canMD[0].address[CAN_MD_ADDRESS_SETUP],5,canData);
+    				canData[0] = 1;
+    				can1.send(canMD[0].address[CAN_MD_ADDRESS_SETUP],5,canData);
+    				serial.printf("\n\ncan current setup\n\n");
+    				printValue--;
+    			}
+    			//*/
     		}
 
     		if(debugMode == 1){
@@ -91,21 +107,28 @@ int main(void)
 
     			break;
     		case 2:
-    			serial.printf("md rvt=,%6d,%6d,dty=,%+d,%+d,enc itx=,%d,%d,sw itv=,%d,snd=,%d\n\r",(uint32_t)canMD[0].lastReceiveTime,(uint32_t)canMD[1].lastReceiveTime,canMD[0].outDuty,canMD[1].outDuty,(uint32_t)canEnc[0].canEnc_interval,(uint32_t)canEnc[1].canEnc_interval,canSw.intervalTime,(uint32_t)canSw.lastSendTime);
+    			serial.printf("md rvt=,%6d,%6d,dty=,%+d,%+d,enc itx=,%d,%d,sw itv=,%d,snd=,%d\n\r",(uint32_t)canMD[0].lastReceiveTime,(uint32_t)canMD[1].lastReceiveTime,canMD[0].outDuty,canMD[1].outDuty,(uint32_t)canEnc[0].interval,(uint32_t)canEnc[1].interval,canSw.intervalTime,(uint32_t)canSw.lastSendTime);
 
     			break;
     		case 3:
-    			serial.printf("limit,0x%d%d%d%d,%d%d%d%d,snd=0x%x,0x%x,enc=%6d,%6d\n\r",limit[3].gpioRead(),limit[2].gpioRead(),limit[1].gpioRead(),limit[0].gpioRead(),limit[3].read(),limit[2].read(),limit[1].read(),limit[0].read(),canSw.send[0],canSw.send[1],(uint32_t)canEnc[0].canEnc_enc->read(),(uint32_t)canEnc[1].canEnc_enc->read());
+    			serial.printf("limit,0x%d%d%d%d,%d%d%d%d,snd=0x%x,0x%x,enc=%6d,%6d\n\r",limit[3].gpioRead(),limit[2].gpioRead(),limit[1].gpioRead(),limit[0].gpioRead(),limit[3].read(),limit[2].read(),limit[1].read(),limit[0].read(),canSw.send[0],canSw.send[1],(uint32_t)canEnc[0].enc->read(),(uint32_t)canEnc[1].enc->read());
 
     			break;
+
     		case 4:
+    			serial.printf("over current Apeak = %3d,Aave = %d,Bpeak = %d,Bave = %d\n\r",(int)(driver.overCurrentLimit[ChannelCurrentA]),(int)(driver.overCurrentLimit[ChannelCurrentB]),(int)(driver.overCurrentLimitAve[ChannelCurrentA]),(int)(driver.overCurrentLimitAve[ChannelCurrentB]));
+    			break;
+
+    		case 5:
     			//adcのデータぶんまわし
 
     			break;
-    		case 5:
+    		case 6:
     			//canデータぶんまわし
 
     			break;
+
+
     		default:
     			printValue = 0;
     		}

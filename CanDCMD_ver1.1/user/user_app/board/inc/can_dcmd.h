@@ -25,26 +25,26 @@
 #define BuzzerTargetCurrent 5
 
 #define DriveLimitVoltage (float)(12.0)
-#define DriveLimitCurrent (float)(100.0)	//→overCurrentLimit[]
+#define DriveLimitCurrent (float)(100.0)	//→overCurrentLimit[]が設定されていない時に入る
 
 
 #define DriveIntervalTime 50
 
 enum DE_DriverError{
-	DE_None 				= 0x0000,
-	DE_UnderVoltage 		= 0x0000,		//MD側で読むとデメリットのほうが多そうなので切ってる
-	DE_OverVoltage			= 0x0002,
-	DE_BreakFEToutAHigh		= 0x0004,
-	DE_BreakFEToutBHigh		= 0x0008,
-	DE_BreakFEToutALow 		= 0x0010,
-	DE_BreakFEToutBLow 		= 0x0020,
-	DE_OCoutA				= 0x0040,
-	DE_OCoutB				= 0x0080,
-	DE_AveOCoutA			= 0x0100,
-	DE_AveOCoutB			= 0x0200,
-	DE_ADCLost				= 0x0000,
-	DE_UnderVoltageAve		= 0x0000,		//同様
-	DE_Unknown				= 0x1000,
+	DE_None 				= 0x0000,	//エラーがない状態の値
+	DE_UnderVoltage 		= 0x0000,	//MD側で読むとデメリットのほうが多そうなので切ってる
+	DE_OverVoltage			= 0x0002,	//過電圧(26V以上
+	DE_BreakFEToutAHigh		= 0x0004,	//パワー系電源投入時の動作チェックでつまづいた
+	DE_BreakFEToutBHigh		= 0x0008,	//同上
+	DE_BreakFEToutALow 		= 0x0010,	//同上
+	DE_BreakFEToutBLow 		= 0x0020,	//同上
+	DE_OCoutA				= 0x0040,	//出力A､過電流検出(ピーク)
+	DE_OCoutB				= 0x0080,	//出力B､過電流検出(ピーク)
+	DE_AveOCoutA			= 0x0100,	//出力A､過電流検出(100ms平均)
+	DE_AveOCoutB			= 0x0200,	//出力B､過電流検出(100ms平均)
+	DE_ADCLost				= 0x0000,	//絶縁ADコンバーターと通信できていない
+	DE_UnderVoltageAve		= 0x0000,	//MD側で読むとデメリットのほうが多そうなので切ってる
+	DE_Unknown				= 0x1000,	//出たこと無いけどソフトウェア的なバグ
 };
 
 enum DS_DriveStat{

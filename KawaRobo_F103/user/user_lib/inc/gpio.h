@@ -77,7 +77,7 @@ public:
 	//Š„‚İ‚Ìİ’è(—LŒø‚É‚Í‚È‚ç‚È‚¢)
 	void interruptSetup(EXTITrigger_TypeDef trigger);
 
-	//Š„‚İ‚Ì—LŒø¥Œü‚±‚¤
+	//Š„‚İ‚Ì—LŒø¥–³Œø
 	void interruptEnable();
 	void interruptDesable();
 

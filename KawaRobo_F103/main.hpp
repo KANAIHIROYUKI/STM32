@@ -5,35 +5,32 @@
 #include "app.h"
 #include "KawaRoboMain.h"
 #include "util.h"
-#include "PID_Controller.h"
 
-#define IntervalTime 100
+#define GYRO_OFFSET_BOARD1 -20
+#define GYRO_OFFSET_BOARD2 110
+
+#define ADC_TO_BATT_BOARD1 15.076
+#define ADC_TO_BATT_BOARD2 14.925
 
 System sys;
 
 USART serial;
-SPI_Master spi;
-GPIO nss,nssMouse;
 Switch sw[2];
 LED led[4];
 ADC analog[4];
 
 TIM pwm[4];
-GPIO cw[4];
+GPIO cw[4],individual;
 NCP5359 motor[4];
 
 SerialArduino sa;
 SBUS sbus;
-CAN can;
-
-ADNS9800 mouse;
 
 KawaRobo kw;
 
-uint64_t intervalTime;
-
 void setup(){
 	sys.setup();
+	individual.setup(PA6,INPUT_PU);
 
 	pwm[0].pwmSetup(TIM3,2, PB5,20000);
 	pwm[1].pwmSetup(TIM3,1, PB4,20000);
@@ -66,8 +63,6 @@ void setup(){
 	sa.setup(USART3,115200,PB10,PB11);
 	sbus.setup(USART2,100000,PA2,PA3);
 
-	can.setup(CAN1,PA12,PA11);
-
 	sw[0].setup(PB0,INPUT_PU);
 	sw[1].setup(PA7,INPUT_PU);
 
@@ -76,22 +71,18 @@ void setup(){
 	led[2].setup(PC15);
 	led[3].setup(PB2);
 
-	/*
-	spi.setup(SPI2,PB13,PB14,PB15);
-	nssMouse.setup(PB12,OUTPUT);
-	delay(10);
-	*/
-
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
 	GPIO_PinRemapConfig(GPIO_PartialRemap1_TIM2,ENABLE);
 	GPIO_PinRemapConfig(GPIO_PartialRemap_TIM3,ENABLE);
 
-
 	kw.setup(serial,sbus,sa,motor[0],motor[1],motor[2],motor[3]);
 	kw.uiSetup(sw[1],sw[0],led[0],led[1],led[2],led[3]);
-	kw.sensorSetup(analog[0],analog[1],analog[2],analog[3]);
 
-	intervalTime = 0;
+	if(individual.read()){
+		kw.sensorSetup(analog[0],analog[1],analog[2],analog[3],GYRO_OFFSET_BOARD1,ADC_TO_BATT_BOARD1);
+	}else{
+		kw.sensorSetup(analog[0],analog[1],analog[2],analog[3],GYRO_OFFSET_BOARD2,ADC_TO_BATT_BOARD2);
+	}
 
 }
 

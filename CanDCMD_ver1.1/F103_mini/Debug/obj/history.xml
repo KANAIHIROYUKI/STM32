@@ -16,8 +16,8 @@
       <target file="util.o" lastModified="15e13acdb3c">
          <source file="..\..\..\user\util\src\util.c" lastModified="154c9cd8ed8"/>
       </target>
-      <target file="canNodeEncoder.o" lastModified="15e13acd5fc">
-         <source file="..\..\..\user\user_app\canNode\src\canNodeEncoder.cpp" lastModified="15a5f961a05"/>
+      <target file="canNodeEncoder.o" lastModified="15f720a5532">
+         <source file="..\..\..\user\user_app\canNode\src\canNodeEncoder.cpp" lastModified="15f720a5160"/>
       </target>
       <target file="misc.o" lastModified="15e13acefd0">
          <source file="..\..\..\stm_lib\src\misc.c" lastModified="1577eea0b7c"/>
@@ -37,8 +37,8 @@
       <target file="stm32f10x_usart.o" lastModified="15e13ace6b6">
          <source file="..\..\..\stm_lib\src\stm32f10x_usart.c" lastModified="1577ee62a3b"/>
       </target>
-      <target file="can_dcmd.o" lastModified="15e13acda61">
-         <source file="..\..\..\user\user_app\board\src\can_dcmd.cpp" lastModified="15c90d6e3bc"/>
+      <target file="can_dcmd.o" lastModified="15f72191f70">
+         <source file="..\..\..\user\user_app\board\src\can_dcmd.cpp" lastModified="15f72191b8d"/>
       </target>
       <target file="remap.o" lastModified="15e13ace648">
          <source file="..\..\..\user\user_lib\src\remap.cpp" lastModified="1599bb749fc"/>
@@ -46,13 +46,13 @@
       <target file="usart.o" lastModified="15e13acf304">
          <source file="..\..\..\user\user_lib\src\usart.cpp" lastModified="15ba92684af"/>
       </target>
-      <target file="app.o" lastModified="15e13aceba7">
+      <target file="app.o" lastModified="15f720c7f0b">
          <source file="..\..\..\user\user_app\src\app.cpp" lastModified="1599bb55343"/>
       </target>
       <target file="canMotorDriver.o" lastModified="15e13acde1b">
          <source file="..\..\..\user\user_app\src\canMotorDriver.cpp" lastModified="15b23a3ca37"/>
       </target>
-      <target file="canNodeSwitch.o" lastModified="15e13acd541">
+      <target file="canNodeSwitch.o" lastModified="15f720c7b13">
          <source file="..\..\..\user\user_app\canNode\src\canNodeSwitch.cpp" lastModified="15c4513b28b"/>
       </target>
       <target file="base.o" lastModified="15e13aced20">
@@ -61,8 +61,8 @@
       <target file="stm32f10x_tim.o" lastModified="15e13acd8bb">
          <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1577ee5feb1"/>
       </target>
-      <target file="canNodeValve.o" lastModified="15e13ace733">
-         <source file="..\..\..\user\user_app\canNode\src\canNodeValve.cpp" lastModified="159dd8d1f1b"/>
+      <target file="canNodeValve.o" lastModified="15f720c7e07">
+         <source file="..\..\..\user\user_app\canNode\src\canNodeValve.cpp" lastModified="15f720c77e1"/>
       </target>
       <target file="pwm.o" lastModified="15e13acdf43">
          <source file="..\..\..\user\user_app\src\pwm.cpp" lastModified="15a5e7def39"/>
@@ -82,11 +82,14 @@
       <target file="tim.o" lastModified="15e13acded6">
          <source file="..\..\..\user\user_lib\src\tim.cpp" lastModified="15bd5243d29"/>
       </target>
+      <target file="canNodeSetup.o" lastModified="15f71caea58">
+         <source file="..\..\..\user\user_app\canNode\src\canNodeSetup.cpp" lastModified="15f71cae747"/>
+      </target>
+      <target file="canNodeEmg.o" lastModified="15f720c801d">
+         <source file="..\..\..\user\user_app\canNode\src\canNodeEmg.cpp" lastModified="15c29b37129"/>
+      </target>
       <target file="canNodeAnalogIn.o" lastModified="15e13acef72">
          <source file="..\..\..\user\user_app\canNode\src\canNodeAnalogIn.cpp" lastModified="15a5f961a10"/>
-      </target>
-      <target file="canNodeEmg.o" lastModified="15e13aceef5">
-         <source file="..\..\..\user\user_app\canNode\src\canNodeEmg.cpp" lastModified="15c29b37129"/>
       </target>
       <target file="gpio.o" lastModified="15e13ace474">
          <source file="..\..\..\user\user_lib\src\gpio.cpp" lastModified="15b04bee4c5"/>
@@ -103,8 +106,8 @@
       <target file="stm32f10x_adc.o" lastModified="15e13ace5cb">
          <source file="..\..\..\stm_lib\src\stm32f10x_adc.c" lastModified="1577ee60f36"/>
       </target>
-      <target file="canNodeMotorDriver.o" lastModified="15e13acf168">
-         <source file="..\..\..\user\user_app\canNode\src\canNodeMotorDriver.cpp" lastModified="15c2a801e48"/>
+      <target file="canNodeMotorDriver.o" lastModified="15f7211828f">
+         <source file="..\..\..\user\user_app\canNode\src\canNodeMotorDriver.cpp" lastModified="15f72117d18"/>
       </target>
       <target file="stm32f10x_dbgmcu.o" lastModified="15e13acdb8a">
          <source file="..\..\..\stm_lib\src\stm32f10x_dbgmcu.c" lastModified="1577ee61f13"/>
@@ -130,8 +133,8 @@
       <target file="enc.o" lastModified="15e13acea8e">
          <source file="..\..\..\user\user_app\src\enc.cpp" lastModified="15a5e783d3c"/>
       </target>
-      <target file="main.o" lastModified="15e7f7a4058">
-         <source file="..\..\..\main.cpp" lastModified="15e2ce238d9"/>
+      <target file="main.o" lastModified="15f721b4fda">
+         <source file="..\..\..\main.cpp" lastModified="15f7219fb0b"/>
       </target>
       <target file="canSwitch.o" lastModified="15e13acdade">
          <source file="..\..\..\user\user_app\src\canSwitch.cpp" lastModified="15b21e48905"/>

@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "gpio.h"
+#include "system.h"
 
 #define ADC_SampleTime_Default ADC_SampleTime_13Cycles5	//デフォルト値､2.04us､25.2kΩ
 
@@ -22,6 +23,8 @@ public:
 	//AD変換はじめ　値読むのはpeek()
 	void start();
 	void start(uint8_t ADC_SampleTime);
+
+	int16_t converted();
 
 	//AD変換済みの値を取得する
 	uint16_t peek();

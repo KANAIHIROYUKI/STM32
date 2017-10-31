@@ -3,8 +3,8 @@
 void CanDCMD::canmdSetup(CanNodeMotorDriver &md0,CanNodeMotorDriver &md1,uint16_t buzzerBeepOrder){
 	this->motor[0] = &md0;
 	this->motor[1] = &md1;
-	motor[0]->canMd_motor->free();
-	motor[1]->canMd_motor->free();
+	motor[0]->motor->free();
+	motor[1]->motor->free();
 
 	motor[0]->motorOverRide(1);
 	motor[1]->motorOverRide(1);		//CanNodeMotorDriverとしての出力無効
@@ -54,6 +54,26 @@ void CanDCMD::cycle(){
 	adc->cycle();
 
 	cycleFunction();
+
+	if(motor[0]->canSetuped){
+		motor[0]->canSetuped--;
+		if(motor[0]->setupedValueFloat[0] > 0 && motor[1]->setupedValueFloat[0] <= 200){
+			overCurrentLimit[ChannelCurrentA] = motor[0]->setupedValueFloat[0];
+		}
+		if(motor[0]->setupedValueFloat[1] > 0 && motor[1]->setupedValueFloat[1] <= 200){
+			overCurrentLimitAve[ChannelCurrentA] = motor[0]->setupedValueFloat[1];
+		}
+	}
+
+	if(motor[1]->canSetuped){
+		motor[1]->canSetuped--;
+		if(motor[1]->setupedValueFloat[0] > 0 && motor[1]->setupedValueFloat[0] <= 200){
+			overCurrentLimit[ChannelCurrentB] = motor[1]->setupedValueFloat[0];
+		}
+		if(motor[1]->setupedValueFloat[1] > 0 && motor[1]->setupedValueFloat[1] <= 200){
+			overCurrentLimitAve[ChannelCurrentB] = motor[1]->setupedValueFloat[1];
+		}
+	}
 }
 
 
@@ -64,16 +84,16 @@ void CanDCMD::cycleFunction(){
 
 	if((adc->setupStat == 0 || millis() - adc->receiveTime[0] > 10) && driveStat != DS_NoPower){	//パワーない(パワー系に電源がなければadc.setupStat = 0になる)のにNoPower以外に入っていた時
 
-		if(motor[0]->canMd_motor->outEnable == 2 || motor[1]->canMd_motor->outEnable == 2){
-			motor[0]->canMd_motor->buzzerStop();
-			motor[1]->canMd_motor->buzzerStop();
+		if(motor[0]->motor->outEnable == 2 || motor[1]->motor->outEnable == 2){
+			motor[0]->motor->buzzerStop();
+			motor[1]->motor->buzzerStop();
 		}
 
-		motor[0]->canMd_motor->free();
-		motor[1]->canMd_motor->free();		//フリー(出力すべてオフ)
+		motor[0]->motor->free();
+		motor[1]->motor->free();		//フリー(出力すべてオフ)
 
-		motor[0]->canMd_motor->outEnable = 0;
-		motor[1]->canMd_motor->outEnable = 0;
+		motor[0]->motor->outEnable = 0;
+		motor[1]->motor->outEnable = 0;
 
 		motor[0]->ledOverRide(0);
 		motor[1]->ledOverRide(0);					//CanNodeMotorDriverがled操作する必要はない
@@ -145,8 +165,8 @@ void CanDCMD::cycleFunction(){
 		if(errorTask(driveError))break;																//エラーならすぐ抜ける
 
 		if(millis() - driveStatTimer > 100){
-			motor[0]->canMd_motor->pwm1->dutyF(0.5);
-			motor[1]->canMd_motor->pwm1->dutyF(0.5);
+			motor[0]->motor->pwm1->dutyF(0.5);
+			motor[1]->motor->pwm1->dutyF(0.5);
 
 			driveStatTimer = millis();
 			driveStat = DS_HighOn;
@@ -163,14 +183,14 @@ void CanDCMD::cycleFunction(){
 
 		if(millis() - driveStatTimer > 100){
 
-			motor[0]->canMd_led->write(0);
-			motor[1]->canMd_led->write(0);
+			motor[0]->led->write(0);
+			motor[1]->led->write(0);
 
-			motor[0]->canMd_motor->outEnable = 1;
-			motor[1]->canMd_motor->outEnable = 1;	//ブザー使うためにモーター出力有効
+			motor[0]->motor->outEnable = 1;
+			motor[1]->motor->outEnable = 1;	//ブザー使うためにモーター出力有効
 
-			motor[0]->canMd_motor->buzzerStart(BuzzerFrq,0.1);
-			motor[1]->canMd_motor->buzzerStart(BuzzerFrq,0.1);	//ブザー(50ms)
+			motor[0]->motor->buzzerStart(BuzzerFrq,0.1);
+			motor[1]->motor->buzzerStart(BuzzerFrq,0.1);	//ブザー(50ms)
 
 			buzzerTest[0] = 0;
 			buzzerTest[1] = 0;
@@ -190,8 +210,8 @@ void CanDCMD::cycleFunction(){
 		if(currentRread(ChannelCurrentB) > buzzerTest[ChannelCurrentB])buzzerTest[ChannelCurrentB] = currentRread(ChannelCurrentB);
 
 		if(millis() - driveStatTimer > 20){
-			motor[0]->canMd_motor->buzzerStart(BuzzerFrq,0);
-			motor[1]->canMd_motor->buzzerStart(BuzzerFrq,0);		//ブザーOFF
+			motor[0]->motor->buzzerStart(BuzzerFrq,0);
+			motor[1]->motor->buzzerStart(BuzzerFrq,0);		//ブザーOFF
 
 			buzzerTest[ChannelCurrentA] = 0.1*BuzzerTargetCurrent/buzzerTest[ChannelCurrentA];
 			buzzerTest[ChannelCurrentB] = 0.1*BuzzerTargetCurrent/buzzerTest[ChannelCurrentB];
@@ -213,8 +233,8 @@ void CanDCMD::cycleFunction(){
 		if(errorTask(driveError))break;																//エラーならすぐ抜ける
 
 		if(millis() - driveStatTimer > buzzerDelay){
-			motor[0]->canMd_motor->buzzerStart(BuzzerFrq,buzzerTest[ChannelCurrentA]);
-			motor[1]->canMd_motor->buzzerStart(BuzzerFrq,buzzerTest[ChannelCurrentB]);	//ブザー(500ms)
+			motor[0]->motor->buzzerStart(BuzzerFrq,buzzerTest[ChannelCurrentA]);
+			motor[1]->motor->buzzerStart(BuzzerFrq,buzzerTest[ChannelCurrentB]);	//ブザー(500ms)
 
 			buzzerTest[ChannelCurrentA] = 0;
 			buzzerTest[ChannelCurrentB] = 0;
@@ -237,14 +257,14 @@ void CanDCMD::cycleFunction(){
 
 		if(millis() - driveStatTimer > 200){
 
-			motor[0]->canMd_motor->buzzerStop();
-			motor[1]->canMd_motor->buzzerStop();	//ブザーおしまい
+			motor[0]->motor->buzzerStop();
+			motor[1]->motor->buzzerStop();	//ブザーおしまい
 
 			motor[0]->motorOverRide(0);
 			motor[1]->motorOverRide(0);				//canNodeMotorDriverのモーター出力関数呼び出しも有効化
 
-			motor[0]->canMd_motor->free();
-			motor[1]->canMd_motor->free();			//とりあえず初期化
+			motor[0]->motor->free();
+			motor[1]->motor->free();			//とりあえず初期化
 
 			motor[0]->ledOverRide(0);
 			motor[1]->ledOverRide(0);				//led操作をCanNodeMotorDriverに返す
@@ -348,16 +368,16 @@ uint16_t CanDCMD::adcCycleOnetime(){
 uint16_t CanDCMD::errorTask(uint16_t errorValue){
 	if(errorValue){
 
-		if(motor[0]->canMd_motor->outEnable == 2 || motor[1]->canMd_motor->outEnable == 2){
-			motor[0]->canMd_motor->buzzerStop();
-			motor[1]->canMd_motor->buzzerStop();
+		if(motor[0]->motor->outEnable == 2 || motor[1]->motor->outEnable == 2){
+			motor[0]->motor->buzzerStop();
+			motor[1]->motor->buzzerStop();
 		}
 
-		motor[0]->canMd_motor->free();
-		motor[1]->canMd_motor->free();		//フリー(出力すべてオフ)
+		motor[0]->motor->free();
+		motor[1]->motor->free();		//フリー(出力すべてオフ)
 
-		motor[0]->canMd_motor->outEnable = 0;
-		motor[1]->canMd_motor->outEnable = 0;
+		motor[0]->motor->outEnable = 0;
+		motor[1]->motor->outEnable = 0;
 
 		errorVoltage = vbattRead();
 		errorCurrent[0] = currentValue[0];//currentRread(0);

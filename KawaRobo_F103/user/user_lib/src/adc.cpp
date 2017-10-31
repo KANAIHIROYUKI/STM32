@@ -4,6 +4,8 @@
 void ADC::setup(ADC_TypeDef* adcSet,uint8_t channelSet,GPIO_TypeDef* gpio,uint16_t pin,uint8_t sampleTimeSet){
 	ioSetup(gpio,pin);
 
+	if(adcSet != ADC1 && adcSet != ADC2)System::error++;	//エラー追加
+
 	channel = channelSet;
 	adc = adcSet;
 	sampleTime = sampleTimeSet;
@@ -17,82 +19,55 @@ void ADC::setup(ADC_TypeDef* adcSet,uint8_t channelSet,GPIO_TypeDef* gpio,uint16
 }
 
 int16_t ADC::read(){
-	if(adc == ADC1){
-		adcValueBuffer =  ADC1Read(channel,sampleTime);
-		return adcValueBuffer;
-	}else if(adc == ADC2){
-		adcValueBuffer =  ADC2Read(channel,sampleTime);
-		return adcValueBuffer;
-	}else{
-		return 0;
-	}
+	return read(sampleTime);
 }
 
 int16_t ADC::read(uint8_t sampleTimeSet){
-	if(adc == ADC1){
-		adcValueBuffer =  ADC1Read(channel,sampleTime);
-		return adcValueBuffer;
-	}else if(adc == ADC2){
-		adcValueBuffer =  ADC2Read(channel,sampleTime);
-		return adcValueBuffer;
-	}else{
-		return 0;
-	}
+	start(sampleTimeSet);
+	while(converted() == 0);
+	return peek();
 }
 
 void ADC::start(){
-	adcValueBuffer = 4096;
-
-	if(adc == ADC1){
-		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1GetValue();
-		ADC1Start(channel,sampleTime);
-
-	}else if(adc == ADC2){
-
-		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2GetValue();
-		ADC2Start(channel,sampleTime);
-	}
+	start(sampleTime);
 }
 
 void ADC::start(uint8_t sampleTimeSet){
-	adcValueBuffer = 4096;	//AD変換中は4096
 
 	if(adc == ADC1){
-		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1GetValue();
-		ADC1Start(channel,sampleTimeSet);
-		adcStarted = 1;
+		if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1GetValue();		//他のチャンネルのデータである可能性がある｡
+		ADC1Start(channel,sampleTimeSet);													//他のチャンネルが変換中だった場合にどうなるのか？
 
 	}else if(adc == ADC2){
 		if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2GetValue();
 		ADC2Start(channel,sampleTimeSet);
-		adcStarted = 1;
 	}
+}
+
+int16_t ADC::converted(){
+	if(ADC_GetFlagStatus(adc,ADC_FLAG_EOC) == SET){
+		return 1;
+	}
+	return 0;
 }
 
 uint16_t ADC::peek(){
 
 	if(adc == ADC1){
-		if(adcStarted){
-			while(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == RESET);
-			adcValueBuffer = ADC1GetValue();
-			adcStarted = 0;
-		}
-		//if(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC1Peek();
+		if(converted())adcValueBuffer = ADC1GetValue();
 
 	}else if(adc == ADC2){
-		if(adcStarted){
-			while(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == RESET);
-			adcValueBuffer = ADC2GetValue();
-			adcStarted = 0;
-		}
-		//if(ADC_GetFlagStatus(ADC2,ADC_FLAG_EOC) == SET)adcValueBuffer = ADC2Peek();
+		if(converted())adcValueBuffer = ADC2GetValue();
 
 	}else{
+
 		adcValueBuffer = 0;
 	}
 
 	return adcValueBuffer;
 }
+
+/********************************************************************************************/
 
 void ADC::ioSetup(GPIO_TypeDef* gpio,uint16_t pin){
 	GPIO IN;
@@ -170,6 +145,7 @@ void ADC2Start(uint8_t ADC_Channel,uint8_t ADC_SampleTime){
 	ADC_SoftwareStartConvCmd(ADC2,ENABLE);
 }
 
+
 uint16_t ADC1GetValue(){
 	return  ADC_GetConversionValue(ADC1);
 }
@@ -177,3 +153,5 @@ uint16_t ADC1GetValue(){
 uint16_t ADC2GetValue(){
 	return  ADC_GetConversionValue(ADC2);
 }
+
+/********************************************************************/

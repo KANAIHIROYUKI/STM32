@@ -31,11 +31,14 @@
 #define PITCH 1
 #define ROLL 2
 
+#define MOTOR_OUT_REG_OFFSET 0.1
+#define MOTOR_OUT_ARM_OFFSET 0.1
+
 class KawaRobo {
 public:
 	void setup(USART &serial,SBUS &sbus,SerialArduino &sa,NCP5359 &motor0,NCP5359 &motor1,NCP5359 &motor2,NCP5359 &motor3);
 	void uiSetup(Switch &sw0,Switch &sw1,LED &led0,LED &led1,LED &led2,LED &led3);
-	void sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3);
+	void sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3,int16_t gyroOffset,float adcBatt);
 
 	void cycle();
 	void controlCycle();
@@ -47,18 +50,23 @@ public:
 	void motorDisable();
 	void motorEnable();
 
-	float runRead();
-	float revRead();
-	float armRead();
-	int stickRead(uint16_t channel,uint16_t offset = 1024);
+	float getRunPosition();
+	float getArmPosition();
+	float getRevPosition();
+	int getStickPosition(uint16_t channel,uint16_t offset = 1024);
 
-	float armPotRead();
+	void sensorUpdate();
+	void armPotUpdate();
+
+	float armDegree,pot1Int,pot2Int,armTargetDeg;
+	int pot1Cnt,pot2Cnt,potCnt;
 
 	int16_t forward,revolution,armPower;
-	int16_t gyroSpeed,dispValue;
+	int16_t dispValue,pot1,pot2,gyroOffset;
 
+	float adcToBattV;
 	uint16_t mode,printValueSelect,ledIntervalTime[4],motorInvertFlag;
-	uint64_t printTime,revReadTime,ledInterval[4],motorInvertTime;
+	uint64_t printTime,revReadTime,ledInterval[4],motorInvertTime,potInterval,potTime;
 
 
 private:
@@ -75,7 +83,8 @@ private:
 	TIM enc;
 	AS504x mgEnc;
 
-	PID pid[4],target[4],robotX,robotY,robotR,armPot;
+	PID pid[4],robotR,armPID,armTarget;
+	PID armCurrent;
 };
 
 

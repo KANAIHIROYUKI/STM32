@@ -17,6 +17,14 @@ void System::usartSetup(USART &usart){
 }
 
 void System::cycle(){
+	if(error){
+		if(usartSetupFlag){
+			system_usart->printf("system error = %d\n\r",error);
+			delay(10);
+			error = 0;
+		}
+	}
+
 	if(cycleFunctionCnt > 0){
 		error = cycleFunctionCnt;
 

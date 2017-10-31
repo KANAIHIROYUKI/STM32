@@ -1,10 +1,10 @@
 #include "canNodeEncoder.h"
 
-int16_t CanNodeEncoder::setup(TIM &enc,CAN &can,uint16_t number){
-	this->canEnc_can = &can;
-	this->canEnc_enc = &enc;
-	canEnc_address = CAN_ADD_ENC_SETUP + number;	//設定用アドレス
-	canEnc_can->filterAdd(canEnc_address);
+int16_t CanNodeEncoder::setup(TIM &enc,CAN &_can,uint16_t number){
+	this->can = &_can;
+	this->enc = &enc;
+	address = CAN_ADD_ENC_SETUP + number;	//設定用アドレス
+	can->filterAdd(address);
 
 	System::cycleFunctionNumber++;
 
@@ -13,14 +13,14 @@ int16_t CanNodeEncoder::setup(TIM &enc,CAN &can,uint16_t number){
 
 
 void CanNodeEncoder::cycle(){
-	if(canEnc_interval != 0){
-    	if(canEnc_intervalTimer <= millis()){
+	if(interval != 0){
+    	if(intervalTimer <= millis()){
     		uint8_t canData[8];
-    		canEnc_intervalTimer = millis() + canEnc_interval;
+    		intervalTimer = millis() + interval;
 
-    		int_to_uchar4(canData,canEnc_enc->read());
+    		int_to_uchar4(canData,enc->read());
 
-    		canEnc_can->send(canEnc_address + 0x40,4,canData);
+    		can->send(address + 0x40,4,canData);
 
 
     	}
@@ -29,12 +29,12 @@ void CanNodeEncoder::cycle(){
 }
 
 void CanNodeEncoder::interrupt(){
-	if(canEnc_can->rxMessage.StdId == canEnc_address){
-		if(canEnc_can->rxMessage.Data[0] == 0){
-			canEnc_enc->reset();
-		}else if(canEnc_can->rxMessage.Data[0] == 1){
-			canEnc_interval = (canEnc_can->rxMessage.Data[2] << 8) + canEnc_can->rxMessage.Data[1];
-			canEnc_intervalTimer = millis();
+	if(can->rxMessage.StdId == address){
+		if(can->rxMessage.Data[0] == 0){
+			enc->reset();
+		}else if(can->rxMessage.Data[0] == 1){
+			interval = (can->rxMessage.Data[2] << 8) + can->rxMessage.Data[1];
+			intervalTimer = millis();
 		}
 	}
 	return;

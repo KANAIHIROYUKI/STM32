@@ -14,6 +14,7 @@ USART serial;
 GPIO io[8],led;
 
 CanNodeEncoder canEnc[4];
+CanNodeValve canVlv;
 
 #define PRINT_TIME 50
 
@@ -27,6 +28,29 @@ void setup(){
 	serial.printf("\n\rFILE = %s\n\rDATE = %s\n\rTIME = %s\n\r",__FILE__,__DATE__,__TIME__);
 
 	led.setup(PB2,OUTPUT);
+	io[0].setup(PA2,OUTPUT);
+	io[1].setup(PA3,OUTPUT);
+	io[2].setup(PB0,OUTPUT);
+	io[3].setup(PB1,OUTPUT);
+	io[4].setup(PA4,OUTPUT);
+	io[5].setup(PA5,OUTPUT);
+	io[6].setup(PB12,OUTPUT);
+	io[7].setup(PB13,OUTPUT);
+
+	for(int i=0;i<8;i++){
+		io[i].write(0);
+	}
+
+	for(int i=0;i<8;i++){
+		io[i].write(1);
+		delay(50);
+	}
+	for(int i=0;i<8;i++){
+		io[i].write(0);
+		delay(50);
+	}
+
+
 
 	enc[0].encoderSetup(TIM4,PB6,PB7);
 	enc[1].encoderSetup(TIM1,PA8,PA9);
@@ -41,6 +65,16 @@ void setup(){
 	canEnc[1].setup(enc[1],can1,1);
 	canEnc[2].setup(enc[2],can1,2);
 	canEnc[3].setup(enc[3],can1,3);
+
+	canVlv.setup(can1,0);
+	canVlv.pinAdd(io[0]);
+	canVlv.pinAdd(io[1]);
+	canVlv.pinAdd(io[2]);
+	canVlv.pinAdd(io[3]);
+	canVlv.pinAdd(io[4]);
+	canVlv.pinAdd(io[5]);
+	canVlv.pinAdd(io[6]);
+	canVlv.pinAdd(io[7]);
 
 	enc[0].reset();
 	enc[1].reset();
@@ -62,6 +96,7 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){
 	canEnc[1].interrupt();
 	canEnc[2].interrupt();
 	canEnc[3].interrupt();
+	canVlv.interrupt();
 
 	canLastReceiveTime = millis();
 	return;
