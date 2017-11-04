@@ -17,7 +17,7 @@ public:
 
 	SPI_Master *spi;
 	GPIO *nss;
-	uint16_t interfaceNumber,takeRequested;
+	uint16_t interfaceNumber;
 	uint16_t nssSetuped;
 };
 

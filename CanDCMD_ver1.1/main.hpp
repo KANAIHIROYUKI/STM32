@@ -153,8 +153,8 @@ void setup(){
 	}
 
 	///*
-	driver.overCurrentPeakSet(ChannelCurrentA,160);	//ƒcƒJƒT‚È‚Ç
-	driver.overCurrentPeakSet(ChannelCurrentB,160);
+	driver.overCurrentPeakSet(ChannelCurrentA,120);	//‚Â‚æ‚¢
+	driver.overCurrentPeakSet(ChannelCurrentB,120);
 
 	driver.overCurrentAveSet(ChannelCurrentA,50);
 	driver.overCurrentAveSet(ChannelCurrentB,50);

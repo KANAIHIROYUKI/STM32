@@ -24,8 +24,8 @@ public:
 	uint64_t countValue[8],revolutionCnt[8],spiStartTime;
 	uint16_t directlyValue[8],oldDirectryValue[8];
 
-	uint16_t magencDeviceNumber,revCnt,spiInterfaceNumber;
-private:
+	uint16_t magencDeviceNumber,revCnt,spiInterfaceNumber,valueReadCnt;
+//private:
 	Enc *enc[8];
 	SPI_Master *spi;
 	SPI_Interface spiif;

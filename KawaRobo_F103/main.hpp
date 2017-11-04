@@ -20,13 +20,18 @@ LED led[4];
 ADC analog[4];
 
 TIM pwm[4];
-GPIO cw[4],individual;
+GPIO cw[4],individual,spiNss;
 NCP5359 motor[4];
 
 SerialArduino sa;
 SBUS sbus;
 
+SPI_Master spi;
+AS504x mag;
+
 KawaRobo kw;
+
+uint64_t intervalTime;
 
 void setup(){
 	sys.setup();
@@ -75,6 +80,11 @@ void setup(){
 	GPIO_PinRemapConfig(GPIO_PartialRemap1_TIM2,ENABLE);
 	GPIO_PinRemapConfig(GPIO_PartialRemap_TIM3,ENABLE);
 
+	/*
+	spi.setup(SPI2,PB13,PB14,PB15,SPI_Mode3);
+	spiNss.setup(PB12,OUTPUT);
+	mag.setup(spi,spiNss);//*/
+
 	kw.setup(serial,sbus,sa,motor[0],motor[1],motor[2],motor[3]);
 	kw.uiSetup(sw[1],sw[0],led[0],led[1],led[2],led[3]);
 
@@ -85,5 +95,7 @@ void setup(){
 	}
 
 }
+
+
 
 #endif

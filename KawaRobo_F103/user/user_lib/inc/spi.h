@@ -42,8 +42,12 @@ public:
 	uint8_t transfer(uint8_t data);
 
 	void write(uint8_t data);
+	void send();
 	uint8_t read();
 	uint16_t available();
+
+	uint16_t rxEmpty();
+	uint16_t txEmpty();
 
 
 	static void spi1TransferInterrupt();
@@ -51,8 +55,8 @@ public:
 	static void spi2TransferInterrupt();
 	static void spi2ReceiveInterrupt();
 
-	static uint16_t interruptCnt;
-	static uint16_t interfaceNumberCnt,takeInterfaceNumber;
+	static uint16_t interruptCnt,writeCnt;
+	uint16_t interfaceNumberCnt,takeInterfaceNumber;
 	static RingBuffer<uint8_t,SPI_BufferSize> spi1txBuffer,spi2txBuffer,spi1rxBuffer,spi2rxBuffer;
 	SPI_TypeDef *spi;
 };

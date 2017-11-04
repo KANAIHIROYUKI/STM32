@@ -49,11 +49,9 @@ int main(void)
     		}
 
     		if(serial.available()){
-    			printValue++;
+    			if(serial.peek() == 'r')while(1);
 
-    			if(serial.read() == 'r')while(1);
-
-    			if(serial.read() == 's'){
+    			if(serial.peek() == 's'){
     				float_to_uchar4(canData + 1,95.0);
     				canData[0] = 0;
     				can1.send(canMD[1].address[CAN_MD_ADDRESS_SETUP],5,canData);
@@ -64,8 +62,10 @@ int main(void)
     				canData[0] = 1;
     				can1.send(canMD[0].address[CAN_MD_ADDRESS_SETUP],5,canData);
     				serial.printf("\n\ncan current setup\n\n");
-    				printValue--;
+    			}else if(serial.peek() >= 'a' && serial.peek() <= 'z'){
+    				printValue++;
     			}
+    			serial.read();
     			//*/
     		}
 
@@ -116,7 +116,7 @@ int main(void)
     			break;
 
     		case 4:
-    			serial.printf("over current Apeak = %3d,Aave = %d,Bpeak = %d,Bave = %d\n\r",(int)(driver.overCurrentLimit[ChannelCurrentA]),(int)(driver.overCurrentLimit[ChannelCurrentB]),(int)(driver.overCurrentLimitAve[ChannelCurrentA]),(int)(driver.overCurrentLimitAve[ChannelCurrentB]));
+    			serial.printf("over current setting Apeak = %3d,Aave = %d,Bpeak = %d,Bave = %d\n\r",(int)(driver.overCurrentLimit[ChannelCurrentA]),(int)(driver.overCurrentLimit[ChannelCurrentB]),(int)(driver.overCurrentLimitAve[ChannelCurrentA]),(int)(driver.overCurrentLimitAve[ChannelCurrentB]));
     			break;
 
     		case 5:
@@ -144,11 +144,11 @@ int main(void)
     		}
     	}
 
-    	if(printValue == 4 && driver.adcCycleOnetime()){
+    	if(printValue == 5 && driver.adcCycleOnetime()){
     		serial.printf("%3d,%3d,%3d\n\r",driver.adc->value[0],driver.adc->value[1],driver.adc->value[2]);	//driver‚ªdriveƒ‚[ƒh‚Ì‚Æ‚«‚Ì‚Ý
     	}
 
-    	if(printValue == 5 && can1.receiveCnt > 0){
+    	if(printValue == 6 && can1.receiveCnt > 0){
     		serial.printf("rCnt=%d,id=0x%x,data=0x%x,0x%x\n\r",can1.receiveCnt,can1.rxMessage.StdId,can1.rxMessage.Data[0],can1.rxMessage.Data[1]);
     		can1.receiveCnt = 0;
     	}

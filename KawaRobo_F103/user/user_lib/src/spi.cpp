@@ -1,7 +1,6 @@
 #include "spi.h"
 
-uint16_t SPI_Master::interfaceNumberCnt = 0,SPI_Master::interruptCnt = 0;
-uint16_t SPI_Master::takeInterfaceNumber = 0;
+uint16_t SPI_Master::interruptCnt = 0,SPI_Master::writeCnt = 0;;
 
 RingBuffer<uint8_t,SPI_BufferSize> SPI_Master::spi1txBuffer;
 RingBuffer<uint8_t,SPI_BufferSize> SPI_Master::spi2txBuffer;
@@ -25,6 +24,9 @@ void SPI_Master::setup(SPI_TypeDef *spiSet
 	}else{
 		return;
 	}
+
+	interfaceNumberCnt = 0;
+	takeInterfaceNumber = 0;
 }
 
 uint16_t SPI_Master::getInterfaceNumber(){
@@ -35,7 +37,6 @@ uint16_t SPI_Master::getInterfaceNumber(){
 uint16_t SPI_Master::take(uint16_t interfaceNumber){
 	if(takeInterfaceNumber != 0)return 0;				//どれかinterfaceクラスが使用中
 	if(takeInterfaceNumber == interfaceNumber)return 0;	//既に使っとるわ！
-
 	takeInterfaceNumber = interfaceNumber;
 
 	if(spi == SPI1){
@@ -80,22 +81,29 @@ uint8_t SPI_Master::transfer(uint8_t data){
 
 void SPI_Master::write(uint8_t data){
 	if(spi == SPI1){
-		if(SPI_I2S_GetFlagStatus(SPI1,SPI_I2S_FLAG_TXE)){	//送信バッファが空(empty)なら
+		if(SPI_I2S_GetFlagStatus(SPI1,SPI_I2S_FLAG_TXE)){
 			SPI_I2S_SendData(SPI1,data);
-			SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_RXNE,ENABLE);
+			SPI_I2S_ITConfig(SPI1,SPI_I2S_FLAG_TXE,ENABLE);
+			//SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_RXNE,ENABLE);
 		}else{
 			spi1txBuffer.write(data);
 		}
 
 	}else if(spi == SPI2){
-		if(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_TXE)){
-			SPI_I2S_SendData(SPI2,data);
-			SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_RXNE,ENABLE);
-		}else{
-			spi2txBuffer.write(data);
-		}
+		spi2txBuffer.write(data);
 	}else{
 		return;
+	}
+}
+
+void SPI_Master::send(){
+	if(spi == SPI1){
+		SPI_I2S_ITConfig(SPI1,SPI_I2S_FLAG_TXE,ENABLE);
+		SPI_I2S_SendData(SPI1,spi1txBuffer.read());
+
+	}else if(spi == SPI2){
+		SPI_I2S_SendData(SPI2,spi2txBuffer.read());
+		SPI_Cmd(SPI2, ENABLE);
 	}
 }
 
@@ -119,6 +127,25 @@ uint16_t SPI_Master::available(){
 	}
 }
 
+uint16_t SPI_Master::rxEmpty(){
+	if(spi == SPI1){
+		return spi1rxBuffer.isEmpty();
+	}else if(spi == SPI2){
+		return spi2rxBuffer.isEmpty();
+	}else{
+		return 0;
+	}
+}
+
+uint16_t SPI_Master::txEmpty(){
+	if(spi == SPI1){
+		return spi1txBuffer.isEmpty();
+	}else if(spi == SPI2){
+		return spi2txBuffer.isEmpty();
+	}else{
+		return 0;
+	}
+}
 
 /********************************************************************************/
 /*
@@ -223,6 +250,7 @@ void SPI2Setup(uint16_t SPI_Mode,uint16_t SPI_Protocol_Mode,uint16_t SPI_Prescal
 	SPI_InitStructure.SPI_Mode = SPI_Mode;
 	SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
 
+	//SPI_Protocol_Mode = SPI_Mode0;
 	switch(SPI_Protocol_Mode){
 	case SPI_Mode0:
 		SPI_InitStructure.SPI_CPOL = SPI_CPOL_High;
@@ -270,21 +298,21 @@ void SPI2Setup(uint16_t SPI_Mode,uint16_t SPI_Protocol_Mode,uint16_t SPI_Prescal
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
-	//SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_TXE,ENABLE);
+	SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_TXE,ENABLE);
 	//SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_RXNE,ENABLE);
 
 	//SPI有効
-	SPI_Cmd(SPI2, ENABLE);
+	//SPI_Cmd(SPI2, ENABLE);
 }
 
-extern "C" void SPI1_IRQHandler(){
+extern "C" void SPI1_IRQHandler(){			//あとで
 	SPI_Master::interruptCnt++;
 	if(SPI_I2S_GetITStatus(SPI1,SPI_I2S_IT_TXE)){
 		SPI_I2S_ClearITPendingBit(SPI1,SPI_I2S_FLAG_TXE);
-		if(SPI_Master::spi1txBuffer.length()){
-			SPI_I2S_SendData(SPI1,SPI_Master::spi1txBuffer.read());
+		if(SPI_Master::spi1txBuffer.isEmpty()){
+			SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_RXNE,DISABLE);
 		}else{
-			return;
+			SPI_I2S_SendData(SPI1,SPI_Master::spi1txBuffer.read());
 		}
 
 	}
@@ -292,7 +320,6 @@ extern "C" void SPI1_IRQHandler(){
 	if(SPI_I2S_GetITStatus(SPI1,SPI_I2S_IT_RXNE)){
 		SPI_I2S_ClearITPendingBit(SPI1,SPI_I2S_FLAG_RXNE);
 		SPI_Master::spi1rxBuffer.write(SPI_I2S_ReceiveData(SPI1));
-
 	}
 }
 
@@ -300,19 +327,21 @@ extern "C" void SPI1_IRQHandler(){
 extern "C" void SPI2_IRQHandler(){
 	SPI_Master::interruptCnt++;
 
-	if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_TXE)){
-		SPI_I2S_ClearITPendingBit(SPI2,SPI_I2S_FLAG_TXE);
-		if(SPI_Master::spi2txBuffer.length()){
-			SPI_I2S_SendData(SPI2,SPI_Master::spi2txBuffer.read());
-		}else{
-			return;
-		}
 
+	if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_TXE)){
+		if(SPI_Master::spi2txBuffer.length() == 0){
+			//SPI_Cmd(SPI2, DISABLE);
+			SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_TXE,ENABLE);
+		}else{
+			SPI_I2S_SendData(SPI2,SPI_Master::spi2txBuffer.read());
+		}
 	}
+
 
 	if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_RXNE)){
 		SPI_I2S_ClearITPendingBit(SPI2,SPI_I2S_FLAG_RXNE);
 		SPI_Master::spi2rxBuffer.write(SPI_I2S_ReceiveData(SPI2));
 
-	}
+		if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_TXE))SPI_Cmd(SPI2, DISABLE);
+	}//*/
 }

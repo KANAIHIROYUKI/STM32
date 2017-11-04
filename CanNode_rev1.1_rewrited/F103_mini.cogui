@@ -20,17 +20,19 @@
 <part id="2"/>
 <part id="3"/>
 <part id="4"/>
+<part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" partName="main.hpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/main.hpp" title="main.hpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/main.hpp" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" partName="main.hpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/main.hpp" title="main.hpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/main.hpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/main.hpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="846" selectionTopPixel="519"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1516" selectionTopPixel="910"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/main.cpp" title="main.cpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/main.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/main.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="319" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="767" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="canNodePulse.cpp" partName="canNodePulse.cpp" path="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.2withAMP_stable/user/user_app/canNode/src/canNodePulse.cpp" title="canNodePulse.cpp" tooltip="C:/Users/hiroyuki/Documents/RoboCon/STM32/CanNode_rev1.2withAMP_stable/user/user_app/canNode/src/canNodePulse.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_app/canNode/src/canNodePulse.cpp"/>
@@ -44,10 +46,18 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_lib/inc/adc.hpp"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="236" selectionTopPixel="0"/>
 </editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeValve.h" partName="canNodeValve.h" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/user/user_app/canNode/inc/canNodeValve.h" title="canNodeValve.h" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/user/user_app/canNode/inc/canNodeValve.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_app/canNode/inc/canNodeValve.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="301" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeValve.cpp" partName="canNodeValve.cpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/user/user_app/canNode/src/canNodeValve.cpp" title="canNodeValve.cpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/user/user_app/canNode/src/canNodeValve.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/F103_mini/user_app/canNode/src/canNodeValve.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="773" selectionTopPixel="0"/>
+</editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="55">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="29">
 <expanded>
 <element path="/F103_mini"/>
 <element path="/F103_mini/stm_lib"/>
@@ -64,7 +74,7 @@
 <element path="/F103_mini/user_lib/src"/>
 </expanded>
 <selection>
-<element path="/F103_mini/user_lib/inc/adc.hpp"/>
+<element path="/F103_mini/user_app/canNode/src/canNodeValve.cpp"/>
 </selection>
 </viewState>
 </view>
@@ -159,8 +169,6 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/src/canNodePulse.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/inc/canNodePulse.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.hpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.cpp"/>
@@ -170,156 +178,159 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/inc/canNodePulse.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/main.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/inc/canNodeValve.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/F103_mini/user_app/canNode/src/canNodeValve.cpp"/>
 </editors>
-<item historyLabel="canNodePulse.cpp" index="0">
-<position info="not_deleted" x="1372" y="0"/>
-</item>
-<item historyLabel="canNodePulse.h" index="1">
-<position info="not_deleted" x="282" y="0"/>
-</item>
-<item historyLabel="main.hpp" index="2">
-<position/>
-</item>
-<item historyLabel="main.hpp" index="2">
-<position/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position/>
-</item>
-<item historyLabel="main.hpp" index="2">
-<position/>
-</item>
-<item historyLabel="main.hpp" index="2">
-<position info="not_deleted" x="3095" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position/>
-</item>
-<item historyLabel="main.hpp" index="2">
-<position info="not_deleted" x="135" y="17"/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position/>
-</item>
-<item historyLabel="main.hpp" index="2">
-<position info="not_deleted" x="104" y="19"/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position/>
-</item>
-<item historyLabel="main.hpp" index="2">
-<position/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position info="not_deleted" x="175" y="0"/>
-</item>
-<item historyLabel="main.hpp" index="2">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="1120" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="2">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="3260" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="3">
+<item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="277" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="3">
+<item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="721" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="3">
+<item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="57" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="2">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="3260" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="3">
+<item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="57" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="3">
+<item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="243" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="3">
+<item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="245" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="3">
+<item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="2" y="21"/>
 </item>
-<item historyLabel="main.hpp" index="2">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="3352" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="3">
+<item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="2" y="21"/>
 </item>
-<item historyLabel="main.hpp" index="2">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="671" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="3">
+<item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="251" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="2">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="671" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="4">
+<item historyLabel="main.cpp" index="2">
 <position info="not_deleted" x="55" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="2">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="921" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="4">
+<item historyLabel="main.cpp" index="2">
 <position info="not_deleted" x="55" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="2">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="1249" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="4">
+<item historyLabel="main.cpp" index="2">
 <position info="not_deleted" x="55" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="4">
+<item historyLabel="main.cpp" index="2">
 <position info="not_deleted" x="294" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="2">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="1127" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="4">
+<item historyLabel="main.cpp" index="2">
 <position info="not_deleted" x="294" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="5">
+<item historyLabel="adc.cpp" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="adc.hpp" index="6">
+<item historyLabel="adc.hpp" index="4">
 <position info="not_deleted" x="236" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="5">
+<item historyLabel="adc.cpp" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="7">
+<item historyLabel="main.hpp" index="5">
 <position info="not_deleted" x="1127" y="0"/>
 </item>
-<item historyLabel="adc.cpp" index="5">
+<item historyLabel="adc.cpp" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="8">
+<item historyLabel="main.cpp" index="6">
 <position info="not_deleted" x="376" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="7">
+<item historyLabel="main.hpp" index="5">
 <position info="not_deleted" x="1127" y="0"/>
 </item>
-<item historyLabel="canNodePulse.h" index="9">
+<item historyLabel="canNodePulse.h" index="7">
 <position info="not_deleted" x="183" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="7">
+<item historyLabel="main.hpp" index="5">
 <position info="not_deleted" x="1904" y="0"/>
 </item>
-<item historyLabel="main.cpp" index="10">
+<item historyLabel="main.cpp" index="8">
 <position info="not_deleted" x="319" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="7">
+<item historyLabel="main.hpp" index="5">
 <position info="not_deleted" x="1904" y="0"/>
 </item>
-<item active="true" historyLabel="main.hpp" index="7">
+<item historyLabel="main.hpp" index="5">
 <position info="not_deleted" x="775" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="9">
+<position info="not_deleted" x="319" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="5">
+<position info="not_deleted" x="487" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="9">
+<position info="not_deleted" x="319" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="5">
+<position info="not_deleted" x="1516" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="9">
+<position info="not_deleted" x="319" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="5">
+<position info="not_deleted" x="1516" y="0"/>
+</item>
+<item historyLabel="canNodeValve.h" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="canNodeValve.cpp" index="11">
+<position info="not_deleted" x="665" y="0"/>
+</item>
+<item historyLabel="canNodeValve.h" index="10">
+<position info="not_deleted" x="301" y="6"/>
+</item>
+<item historyLabel="canNodeValve.cpp" index="11">
+<position info="not_deleted" x="782" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="9">
+<position info="not_deleted" x="319" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="9">
+<position info="not_deleted" x="786" y="0"/>
+</item>
+<item historyLabel="canNodeValve.cpp" index="11">
+<position info="not_deleted" x="782" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="9">
+<position info="not_deleted" x="786" y="0"/>
+</item>
+<item active="true" historyLabel="canNodeValve.cpp" index="11">
+<position info="not_deleted" x="782" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -328,6 +339,15 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanDCMD_ver1.1.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\CanDCMD_ver1.1\CanDCMD_ver1.1.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/CanDCMD_ver1.1.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeValve.cpp" tooltip="F103_mini/user_app/canNode/src/canNodeValve.cpp">
+<persistable path="/F103_mini/user_app/canNode/src/canNodeValve.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeValve.h" tooltip="F103_mini/user_app/canNode/inc/canNodeValve.h">
+<persistable path="/F103_mini/user_app/canNode/inc/canNodeValve.h"/>
+</file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanNode_rev1.1_rewrited.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\CanNode_rev1.1_rewrited\CanNode_rev1.1_rewrited.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/CanNode_rev1.1_rewrited.coproj"/>
 </file>
@@ -339,9 +359,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeAnalogIn.cpp" tooltip="F103_mini/user_app/src/canNodeAnalogIn.cpp">
 <persistable path="/F103_mini/user_app/src/canNodeAnalogIn.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanDCMD_ver1.1.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\CanDCMD_ver1.1\CanDCMD_ver1.1.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/CanDCMD_ver1.1.coproj"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" tooltip="STM32F103mini_temp/main.hpp">
 <persistable path="/STM32F103mini_temp/main.hpp"/>
@@ -366,12 +383,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="KawaRoboMain.h" tooltip="STM32F103mini_temp/user_app/board/inc/KawaRoboMain.h">
 <persistable path="/STM32F103mini_temp/user_app/board/inc/KawaRoboMain.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeAnalogIn.cpp" tooltip="F103_mini/user_app/src/canNodeAnalogIn.cpp">
-<persistable path="/F103_mini/user_app/src/canNodeAnalogIn.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system.cpp" tooltip="STM32F103mini_temp/user_lib/src/system.cpp">
-<persistable path="/STM32F103mini_temp/user_lib/src/system.cpp"/>
 </file>
 </mruList>
 </workbench>

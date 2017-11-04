@@ -37,21 +37,6 @@ void setup(){
 	io[6].setup(PB12,OUTPUT);
 	io[7].setup(PB13,OUTPUT);
 
-	for(int i=0;i<8;i++){
-		io[i].write(0);
-	}
-
-	for(int i=0;i<8;i++){
-		io[i].write(1);
-		delay(50);
-	}
-	for(int i=0;i<8;i++){
-		io[i].write(0);
-		delay(50);
-	}
-
-
-
 	enc[0].encoderSetup(TIM4,PB6,PB7);
 	enc[1].encoderSetup(TIM1,PA8,PA9);
 	enc[2].encoderSetup(TIM2,PA0,PA1);

@@ -16,25 +16,25 @@ void SPI_Interface::nssAssign(GPIO &nssSet){
 
 
 uint16_t SPI_Interface::begin(){			//基本的に全てのインターフェイスがcycleで回っているはずなので､順番になるはず
-	if(takeRequested == 0)return 0;			//他のspiifが使用中
 
 	if(spi->take(interfaceNumber)){			//take()は取得した"時だけ"1になる｡
-		takeRequested = 0;
+		//takeRequested = 0;
 
 		if(nssSetuped){
 			nss->write(0);	//nssの操作怪しい
 		}
+		delayMicros(100);
 
 		return 1;
 
-	}else{									//既にspi取得してる
+	}else{									//既にspi取得してる､もしくは他のspiifが使用中
 		return 0;
 	}
 }
 
 void SPI_Interface::end(){
 	spi->releace(interfaceNumber);
-
+	while(spi->available())spi->read();
 	if(nssSetuped){
 		nss->write(1);
 	}
