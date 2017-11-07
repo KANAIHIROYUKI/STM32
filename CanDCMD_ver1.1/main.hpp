@@ -145,11 +145,11 @@ void setup(){
 
 	while(sw[0].gpioRead() == 0 || sw[1].gpioRead() == 0);
 
-	serial.printf("hw option = %d,",driver.hardwareOption);	//ハードウェア識別
+	//ハードウェア識別
 	if(driver.hardwareOption == 1){
-		serial.printf("high end model\n\r");
+		serial.printf("FDB024N06 model\n\r");
 	}else{
-		serial.printf("mid-range model\n\r");
+		serial.printf("FDB86563 model\n\r");
 	}
 
 	///*
@@ -176,7 +176,7 @@ void setup(){
 	serial.printf(" md add = %#x,%#x\n\renc add = %#x,%#x\n\r sw add = %#x\n\r",canMD[0].address[0],canMD[1].address[0],canEnc[0].address,canEnc[1].address,canSw.canAddress);
 	delay(100);
 
-	serial.printf("setup end ");
+	serial.printf("setup end\n\r");
 	if(debugMode == 1){
 		serial.printf("mode : debug-motor\n\r");
 	}else if(debugMode == 2){

@@ -70,10 +70,10 @@ void CanNodeMotorDriver::interrupt(){
 		lastReceiveTime = millis();
 	}else if(can->rxMessage.StdId == address[CAN_MD_ADDRESS_SETUP]){
 		canSetuped++;
-		if(can->rxMessage.Data[0] == 0){
+		if(can->rxMessage.Data[0] == 1){
 			setupedValueFloat[0] = uchar4_to_float(can->rxMessage.Data + 1);
 			setupedValueInt[0] = uchar4_to_int(can->rxMessage.Data + 1);
-		}else 	if(can->rxMessage.Data[0] == 1){
+		}else 	if(can->rxMessage.Data[0] == 2){
 			setupedValueFloat[1] = uchar4_to_float(can->rxMessage.Data + 1);
 			setupedValueInt[1] = uchar4_to_int(can->rxMessage.Data + 1);
 		}else{

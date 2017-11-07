@@ -842,6 +842,12 @@
       <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="1577ee5e08f">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
+      <source file="..\..\..\main.hpp" lastModified="15f95d59571">
+         <include file="..\..\..\user\user_lib\inc\system.h"/>
+         <include file="..\..\..\user\user_app\inc\app.h"/>
+         <include file="..\..\..\user\user_lib\inc\base.h"/>
+         <include file="..\..\..\user\user_app\board\inc\can_dcmd.h"/>
+      </source>
       <source file="..\..\..\cmsis_boot\system_stm32f10x.h" lastModified="1577ee5e099">
       </source>
       <source file="..\..\..\user\user_app\inc\pulse.h" lastModified="15a5e9120dc">
@@ -896,6 +902,9 @@
          <include file="..\..\..\user\user_lib\inc\gpio.h"/>
          <include file="..\..\..\user\user_lib\inc\system.h"/>
       </source>
+      <source file="..\..\..\main.cpp" lastModified="15f95d6a0bd">
+         <include file="..\..\..\main.hpp"/>
+      </source>
       <source file="..\..\..\user\user_app\inc\pwm.h" lastModified="15a5e7c4a7b">
          <include file="..\..\..\user\user_lib\inc\system.h"/>
          <include file="..\..\..\user\user_lib\inc\base.h"/>
@@ -913,7 +922,7 @@
       <source file="..\..\..\user\user_app\src\canVoltage.cpp" lastModified="15c2885352a">
          <include file="..\..\..\user\user_app\inc\canVoltage.h"/>
       </source>
-      <source file="..\..\..\user\user_app\canNode\src\canNodeMotorDriver.cpp" lastModified="15f72117d18">
+      <source file="..\..\..\user\user_app\canNode\src\canNodeMotorDriver.cpp" lastModified="15f95d39183">
          <include file="..\..\..\user\user_app\canNode\inc\canNodeMotorDriver.h"/>
       </source>
       <source file="..\..\..\cmsis_boot\stm32f10x_conf.h" lastModified="15b1d6daa30">

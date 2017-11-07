@@ -51,22 +51,24 @@ int main(void)
     		if(serial.available()){
     			if(serial.peek() == 'r')while(1);
 
+    			/*
     			if(serial.peek() == 's'){
     				float_to_uchar4(canData + 1,95.0);
-    				canData[0] = 0;
-    				can1.send(canMD[1].address[CAN_MD_ADDRESS_SETUP],5,canData);
     				canData[0] = 1;
-    				can1.send(canMD[1].address[CAN_MD_ADDRESS_SETUP],5,canData);
-    				canData[0] = 0;
-    				can1.send(canMD[0].address[CAN_MD_ADDRESS_SETUP],5,canData);
+    				can1.send(canMD[1].address[CAN_MD_ADDRESS_SETUP],8,canData);
+    				canData[0] = 2;
+    				can1.send(canMD[1].address[CAN_MD_ADDRESS_SETUP],8,canData);
     				canData[0] = 1;
-    				can1.send(canMD[0].address[CAN_MD_ADDRESS_SETUP],5,canData);
+    				can1.send(canMD[0].address[CAN_MD_ADDRESS_SETUP],8,canData);
+    				canData[0] = 2;
+    				can1.send(canMD[0].address[CAN_MD_ADDRESS_SETUP],8,canData);
     				serial.printf("\n\ncan current setup\n\n");
-    			}else if(serial.peek() >= 'a' && serial.peek() <= 'z'){
+    			}else //*/
+    			if(serial.peek() >= 'a' && serial.peek() <= 'z'){
     				printValue++;
     			}
     			serial.read();
-    			//*/
+
     		}
 
     		if(debugMode == 1){
