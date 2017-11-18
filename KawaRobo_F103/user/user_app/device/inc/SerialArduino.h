@@ -32,7 +32,7 @@ public:
 
 	uint8_t buffer[SA_DATA_SIZE*3];
 	int8_t sendBuffer[SA_DATA_SIZE*3];
-	uint16_t receiveStat,sendRequest;	//‘—MŒn
+	uint16_t receiveStat,sendRequest,sendEnded;	//‘—MŒn
 	uint16_t update;
 	uint64_t lastReceiveTime;
 	USART serial;

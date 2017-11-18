@@ -15,6 +15,7 @@ public:
 	void setup(float Kp,float Ki,float Kd);
 	void gainSet(float Kp,float Ki,float Kd);
 	void outLimit(float min,float max);
+	void clear();
 
 	void errorLimitP(float min,float max);
 	void errorLimitI(float min,float max);

@@ -33,6 +33,12 @@ void PID::outLimit(float minSet,float maxSet){
 	mmSetuped = 1;
 }
 
+void PID::clear(){
+	error = 0;
+	errorOld = 0;
+	errorInt = 0;
+}
+
 
 void PID::errorLimitP(float min,float max){
 	errorLimit(PID_P,min,max);
@@ -92,7 +98,7 @@ float PID::outputF(){
 		out += outPID[i];
 	}
 
-	if(mmSetuped)out = floatlimit(min,out,max);
+	if(mmSetuped)out = floatlimit(max,out,min);
 	return out;
 }
 

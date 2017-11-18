@@ -30,7 +30,6 @@ void NCP5359::dutyLimit(float duty){
 }
 
 void NCP5359::duty(float duty){
-	outDuty = duty;
 	dutySetTime = millis();
 
 	if(duty > 0){
@@ -40,6 +39,7 @@ void NCP5359::duty(float duty){
 	}
 
 	duty = floatlimit(limitp,duty,limitm);
+	outDuty = duty;
 	if(duty < 0)duty = -duty;
 	pwm->duty(pwm->pwm_period - duty * pwm->pwm_period);
 }

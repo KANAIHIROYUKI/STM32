@@ -4,28 +4,37 @@
 #include "system.h"
 #include "app.h"
 
-#define KRM_STICK_TOLERANCE 10
-#define KRM_STICK_MAX 640
+#define STICK_TOLERANCE 10
+#define STICK_MAX 640
 
-#define KRM_CHANNEL_REV  3			//SBUSのチャンネル
-#define KRM_CHANNEL_RUN  1
-#define KRM_CHANNEL_MODE 2
-#define KRM_CHANNEL_ARM  2
+#define CHANNEL_REV		3			//SBUSのチャンネル
+#define CHANNEL_RUN		1
+#define CHANNEL_MODE	2
+#define CHANNEL_ARM		2
+#define CHANNEL_SEL		0
 
-#define KRM_Motor_Arm 0
-#define KRM_Motor_Right 1
-#define KRM_Motor_Left  2
+#define CHANNEL_TOGGLE0 2
+#define CHANNEL_TOGGLE1 4
+#define CHANNEL_TOGGLE2 5
+#define CHANNEL_TOGGLE3 6
+#define CHANNEL_VOLUME  7
 
-#define KRM_MODE_STOP		0		//動作モード
-#define KRM_MODE_TEST		1
-#define KRM_MODE_RUN		2
-#define KRM_MODE_TIMEOUT	3
+#define Motor_Arm 1
+#define Motor_Right 0
+#define Motor_Left  3
 
-#define KRM_PRINT_CYCLE				100	//プリント周期
-#define KRM_SBUS_TIMEOUT_TOLERANCE	100	//SBUSのタイムアウト
-#define KRM_SA_TIMEOUT_TOLERANCE	100 //SerialArduinoのタイムアウト
+#define MODE_STOP		0		//動作モード
+#define MODE_TEST		1
+#define MODE_RUN		2
+#define MODE_TIMEOUT	3
 
-#define KRM_ENC_REV_READ_INT 10		//エンコーダの回転数読むためにエンコーダの値読む間隔
+#define PRINT_CYCLE				100	//プリント周期
+#define SBUS_TIMEOUT_TOLERANCE	100	//SBUSのタイムアウト
+#define SA_TIMEOUT_TOLERANCE	100 //SerialArduinoのタイムアウト
+#define SA_EN_INTERVAL 			50
+
+#define BATT_UNDER_LIMIT 	13200	//13.2V	動作下限電圧､3.3V/cell
+#define BATT_UNDER_HYS		1000	//1V	ヒステリシス
 
 #define YAW 0
 #define PITCH 1
@@ -34,6 +43,12 @@
 #define MOTOR_OUT_REG_OFFSET 0.1
 #define MOTOR_OUT_ARM_OFFSET 0.1
 
+#define ATM_MAX_DEG  130		//機構限界
+#define ARM_TOP_DEG  120		//跳ね上げ時にあげて意味のある角度
+#define ARM_DEF_DEG  0			//初期角度(跳ね上げたあとに戻る
+#define ARM_BTM_DEG -120		//最小角度(要らない気もする
+#define ARM_MIN_DEG -130		//機構限界
+
 class KawaRobo {
 public:
 	void setup(USART &serial,SBUS &sbus,SerialArduino &sa,NCP5359 &motor0,NCP5359 &motor1,NCP5359 &motor2,NCP5359 &motor3);
@@ -41,11 +56,13 @@ public:
 	void sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3,int16_t gyroOffset,float adcBatt);
 
 	void cycle();
+	void armPotCycle();
+	void displayCycle();
+
 	void controlCycle();
+
 	void run();
 	void test();
-
-	void display();
 
 	void motorDisable();
 	void motorEnable();
@@ -53,20 +70,22 @@ public:
 	float getRunPosition();
 	float getArmPosition();
 	float getRevPosition();
+	float getSelectPosition();
+	float getTogglePosition(uint16_t num);
+	float getVolumePosition();
 	int getStickPosition(uint16_t channel,uint16_t offset = 1024);
 
-	void sensorUpdate();
 	void armPotUpdate();
 
 	float armDegree,pot1Int,pot2Int,armTargetDeg;
 	int pot1Cnt,pot2Cnt,potCnt;
 
-	int16_t forward,revolution,armPower;
-	int16_t dispValue,pot1,pot2,gyroOffset;
+	int16_t dispValue,gyroOffset;
 
 	float adcToBattV;
-	uint16_t mode,printValueSelect,ledIntervalTime[4],motorInvertFlag;
-	uint64_t printTime,revReadTime,ledInterval[4],motorInvertTime,potInterval,potTime;
+	int speakRequest;
+	uint16_t mode,printValueSelect,selectToggle,battUnderVoltage,motorEN;
+	uint64_t printTime,controlCycleIntervalTime,saSendTime;
 
 
 private:
@@ -83,7 +102,7 @@ private:
 	TIM enc;
 	AS504x mgEnc;
 
-	PID pid[4],robotR,armPID,armTarget;
+	PID robotR,robotTargetR,robotPIDR,armPID,armTarget;
 	PID armCurrent;
 };
 

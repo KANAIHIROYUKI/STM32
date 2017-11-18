@@ -9,8 +9,8 @@
 #define GYRO_OFFSET_BOARD1 -20
 #define GYRO_OFFSET_BOARD2 110
 
-#define ADC_TO_BATT_BOARD1 15.076
-#define ADC_TO_BATT_BOARD2 14.925
+#define ADC_TO_BATT_BOARD1 16.901
+#define ADC_TO_BATT_BOARD2 17.114
 
 System sys;
 
@@ -90,8 +90,10 @@ void setup(){
 
 	if(individual.read()){
 		kw.sensorSetup(analog[0],analog[1],analog[2],analog[3],GYRO_OFFSET_BOARD1,ADC_TO_BATT_BOARD1);
+		serial.printf("nr\rboard = 1\n\r");
 	}else{
 		kw.sensorSetup(analog[0],analog[1],analog[2],analog[3],GYRO_OFFSET_BOARD2,ADC_TO_BATT_BOARD2);
+		serial.printf("\n\rboard = 2\n\r");
 	}
 
 }

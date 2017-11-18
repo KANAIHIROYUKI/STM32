@@ -118,7 +118,7 @@ int main(void)
     			break;
 
     		case 4:
-    			serial.printf("over current setting Apeak = %3d,Aave = %d,Bpeak = %d,Bave = %d\n\r",(int)(driver.overCurrentLimit[ChannelCurrentA]),(int)(driver.overCurrentLimit[ChannelCurrentB]),(int)(driver.overCurrentLimitAve[ChannelCurrentA]),(int)(driver.overCurrentLimitAve[ChannelCurrentB]));
+    			serial.printf("over current setting Apeak = %3d,Bpeak = %d,Aave = %d,Bave = %d\n\r",(int)(driver.overCurrentLimit[ChannelCurrentA]),(int)(driver.overCurrentLimit[ChannelCurrentB]),(int)(driver.overCurrentLimitAve[ChannelCurrentA]),(int)(driver.overCurrentLimitAve[ChannelCurrentB]));
     			break;
 
     		case 5:

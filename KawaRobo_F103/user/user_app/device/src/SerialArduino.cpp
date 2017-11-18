@@ -6,6 +6,7 @@ void SerialArduino::setup(USART_TypeDef *usart,uint32_t baud,GPIO_TypeDef* gpio_
 
 	receiveStat = 0;
 	sendRequest = 0;
+	sendEnded = 0;
 	update = 0;
 	lastReceiveTime = 0;
 
@@ -62,6 +63,7 @@ void SerialArduino::cycle(){
 		serial.send(SA_FRAME_END << 6);
 
 		sendRequest = 0;
+		sendEnded = 1;
 	}
 
 	System::cycleFunctionCnt--;
