@@ -3,6 +3,7 @@
 
 #include "system.h"
 #include "app.h"
+#include "util.hpp"
 
 #define STICK_TOLERANCE 10
 #define STICK_MAX 640
@@ -32,8 +33,9 @@
 #define SBUS_TIMEOUT_TOLERANCE	100	//SBUSのタイムアウト
 #define SA_TIMEOUT_TOLERANCE	100 //SerialArduinoのタイムアウト
 #define SA_EN_INTERVAL 			50
+#define SERIKA_TIME				10	//最初に喋る時間
 
-#define BATT_UNDER_LIMIT 	13200	//13.2V	動作下限電圧､3.3V/cell
+#define BATT_UNDER_LIMIT 	11200	//11.2V	動作下限電圧､2.8V/cell
 #define BATT_UNDER_HYS		1000	//1V	ヒステリシス
 
 #define YAW 0
@@ -43,7 +45,7 @@
 #define MOTOR_OUT_REG_OFFSET 0.1
 #define MOTOR_OUT_ARM_OFFSET 0.1
 
-#define ATM_MAX_DEG  130		//機構限界
+#define ATM_MAX_DEG  100		//機構限界
 #define ARM_TOP_DEG  120		//跳ね上げ時にあげて意味のある角度
 #define ARM_DEF_DEG  0			//初期角度(跳ね上げたあとに戻る
 #define ARM_BTM_DEG -120		//最小角度(要らない気もする
@@ -83,9 +85,9 @@ public:
 	int16_t dispValue,gyroOffset;
 
 	float adcToBattV;
-	int speakRequest;
-	uint16_t mode,printValueSelect,selectToggle,battUnderVoltage,motorEN;
-	uint64_t printTime,controlCycleIntervalTime,saSendTime;
+	int32_t speakRequest,toggleStat,turnoverReturn;
+	uint16_t mode,printValueSelect,selectToggle,battUnderVoltage,motorEN,speakRequestNext,serika;
+	uint64_t printTime,controlCycleIntervalTime,saSendTime,armSpeakTime;
 
 
 private:
@@ -104,6 +106,7 @@ private:
 
 	PID robotR,robotTargetR,robotPIDR,armPID,armTarget;
 	PID armCurrent;
+	Average<int> gravitatyAve;
 };
 
 

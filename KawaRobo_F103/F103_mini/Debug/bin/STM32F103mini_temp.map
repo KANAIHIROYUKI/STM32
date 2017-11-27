@@ -2584,12 +2584,8 @@ Discarded input sections
                 0x00000000        0x0 ..\obj\NCP5359.o
  .ARM.exidx.text._ZN7NCP53599dutyLimitEff
                 0x00000000        0x8 ..\obj\NCP5359.o
- .text._ZN7NCP53599dutyLimitEf
-                0x00000000       0x50 ..\obj\NCP5359.o
  .ARM.extab.text._ZN7NCP53599dutyLimitEf
                 0x00000000        0x0 ..\obj\NCP5359.o
- .ARM.exidx.text._ZN7NCP53599dutyLimitEf
-                0x00000000        0x8 ..\obj\NCP5359.o
  .text          0x00000000        0x0 ..\obj\syscalls.o
  .data          0x00000000        0x0 ..\obj\syscalls.o
  .text.link     0x00000000       0x18 ..\obj\syscalls.o
@@ -3258,6 +3254,9 @@ Discarded input sections
                 0x00000000       0x38 ..\obj\stm32f10x_spi.o
  .text.SPI_I2S_ClearFlag
                 0x00000000       0x20 ..\obj\stm32f10x_spi.o
+ .group         0x00000000       0x10 ..\obj\KawaRoboMain.o
+ .group         0x00000000       0x10 ..\obj\KawaRoboMain.o
+ .group         0x00000000       0x10 ..\obj\KawaRoboMain.o
  .text          0x00000000        0x0 ..\obj\KawaRoboMain.o
  .data          0x00000000        0x0 ..\obj\KawaRoboMain.o
  .bss           0x00000000        0x0 ..\obj\KawaRoboMain.o
@@ -4401,7 +4400,7 @@ Linker script and memory map
 
                 0x20005000                _eram = 0x20005000
 
-.text           0x08000000     0xc409
+.text           0x08000000     0xc879
  *(.isr_vector)
  .isr_vector    0x08000000      0x10c ..\obj\startup_stm32f10x_md.o
                 0x08000000                g_pfnVectors
@@ -4797,463 +4796,476 @@ Linker script and memory map
  .text._ZN7NCP53595cycleEv
                 0x08003148       0x5c ..\obj\NCP5359.o
                 0x08003148                NCP5359::cycle()
+ .text._ZN7NCP53599dutyLimitEf
+                0x080031a4       0x50 ..\obj\NCP5359.o
+                0x080031a4                NCP5359::dutyLimit(float)
  .text._ZN7NCP53594dutyEf
-                0x080031a4       0xc4 ..\obj\NCP5359.o
-                0x080031a4                NCP5359::duty(float)
- .text._sbrk    0x08003268       0x3c ..\obj\syscalls.o
-                0x08003268                _sbrk
- .text.abort    0x080032a4        0x8 ..\obj\syscalls.o
-                0x080032a4                abort
+                0x080031f4       0xc4 ..\obj\NCP5359.o
+                0x080031f4                NCP5359::duty(float)
+ .text._sbrk    0x080032b8       0x3c ..\obj\syscalls.o
+                0x080032b8                _sbrk
+ .text.abort    0x080032f4        0x8 ..\obj\syscalls.o
+                0x080032f4                abort
  .text._ZN3ADC5setupEP11ADC_TypeDefhP12GPIO_TypeDefth
-                0x080032ac       0x90 ..\obj\adc.o
-                0x080032ac                ADC::setup(ADC_TypeDef*, unsigned char, GPIO_TypeDef*, unsigned short, unsigned char)
+                0x080032fc       0x90 ..\obj\adc.o
+                0x080032fc                ADC::setup(ADC_TypeDef*, unsigned char, GPIO_TypeDef*, unsigned short, unsigned char)
  .text._ZN3ADC5startEv
-                0x0800333c       0x1c ..\obj\adc.o
-                0x0800333c                ADC::start()
+                0x0800338c       0x1c ..\obj\adc.o
+                0x0800338c                ADC::start()
  .text._ZN3ADC5startEh
-                0x08003358       0x98 ..\obj\adc.o
-                0x08003358                ADC::start(unsigned char)
+                0x080033a8       0x98 ..\obj\adc.o
+                0x080033a8                ADC::start(unsigned char)
  .text._ZN3ADC9convertedEv
-                0x080033f0       0x34 ..\obj\adc.o
-                0x080033f0                ADC::converted()
+                0x08003440       0x34 ..\obj\adc.o
+                0x08003440                ADC::converted()
  .text._ZN3ADC4peekEv
-                0x08003424       0x80 ..\obj\adc.o
-                0x08003424                ADC::peek()
+                0x08003474       0x80 ..\obj\adc.o
+                0x08003474                ADC::peek()
  .text._ZN3ADC7ioSetupEP12GPIO_TypeDeft
-                0x080034a4       0x24 ..\obj\adc.o
-                0x080034a4                ADC::ioSetup(GPIO_TypeDef*, unsigned short)
+                0x080034f4       0x24 ..\obj\adc.o
+                0x080034f4                ADC::ioSetup(GPIO_TypeDef*, unsigned short)
  .text._Z9ADC1Setuph
-                0x080034c8       0x94 ..\obj\adc.o
-                0x080034c8                ADC1Setup(unsigned char)
+                0x08003518       0x94 ..\obj\adc.o
+                0x08003518                ADC1Setup(unsigned char)
  .text._Z9ADC2Setuph
-                0x0800355c       0x94 ..\obj\adc.o
-                0x0800355c                ADC2Setup(unsigned char)
+                0x080035ac       0x94 ..\obj\adc.o
+                0x080035ac                ADC2Setup(unsigned char)
  .text._Z9ADC1Starthh
-                0x080035f0       0x30 ..\obj\adc.o
-                0x080035f0                ADC1Start(unsigned char, unsigned char)
+                0x08003640       0x30 ..\obj\adc.o
+                0x08003640                ADC1Start(unsigned char, unsigned char)
  .text._Z9ADC2Starthh
-                0x08003620       0x30 ..\obj\adc.o
-                0x08003620                ADC2Start(unsigned char, unsigned char)
+                0x08003670       0x30 ..\obj\adc.o
+                0x08003670                ADC2Start(unsigned char, unsigned char)
  .text._Z12ADC1GetValuev
-                0x08003650       0x14 ..\obj\adc.o
-                0x08003650                ADC1GetValue()
+                0x080036a0       0x14 ..\obj\adc.o
+                0x080036a0                ADC1GetValue()
  .text._Z12ADC2GetValuev
-                0x08003664       0x14 ..\obj\adc.o
-                0x08003664                ADC2GetValue()
+                0x080036b4       0x14 ..\obj\adc.o
+                0x080036b4                ADC2GetValue()
  .text._Z5delaym
-                0x08003678       0x58 ..\obj\systime.o
-                0x08003678                delay(unsigned long)
+                0x080036c8       0x58 ..\obj\systime.o
+                0x080036c8                delay(unsigned long)
  .text._Z6microsv
-                0x080036d0       0x2c ..\obj\systime.o
-                0x080036d0                micros()
+                0x08003720       0x2c ..\obj\systime.o
+                0x08003720                micros()
  .text._Z6millisv
-                0x080036fc       0x20 ..\obj\systime.o
-                0x080036fc                millis()
+                0x0800374c       0x20 ..\obj\systime.o
+                0x0800374c                millis()
  .text.SysTick_Handler
-                0x0800371c       0x20 ..\obj\systime.o
-                0x0800371c                SysTick_Handler
+                0x0800376c       0x20 ..\obj\systime.o
+                0x0800376c                SysTick_Handler
  .text.NVIC_Init
-                0x0800373c       0xc4 ..\obj\misc.o
-                0x0800373c                NVIC_Init
+                0x0800378c       0xc4 ..\obj\misc.o
+                0x0800378c                NVIC_Init
  .text._ZN3PID5setupEfff
-                0x08003800       0x9c ..\obj\PID_Controller.o
-                0x08003800                PID::setup(float, float, float)
+                0x08003850       0x9c ..\obj\PID_Controller.o
+                0x08003850                PID::setup(float, float, float)
  .text._ZN3PID8outLimitEff
-                0x0800389c       0x2c ..\obj\PID_Controller.o
-                0x0800389c                PID::outLimit(float, float)
+                0x080038ec       0x2c ..\obj\PID_Controller.o
+                0x080038ec                PID::outLimit(float, float)
  .text._ZN3PID5clearEv
-                0x080038c8       0x2c ..\obj\PID_Controller.o
-                0x080038c8                PID::clear()
+                0x08003918       0x2c ..\obj\PID_Controller.o
+                0x08003918                PID::clear()
  .text._ZN3PID13errorLimitIntEff
-                0x080038f4       0x20 ..\obj\PID_Controller.o
-                0x080038f4                PID::errorLimitInt(float, float)
+                0x08003944       0x20 ..\obj\PID_Controller.o
+                0x08003944                PID::errorLimitInt(float, float)
  .text._ZN3PID10errorLimitEtff
-                0x08003914       0x50 ..\obj\PID_Controller.o
-                0x08003914                PID::errorLimit(unsigned short, float, float)
+                0x08003964       0x50 ..\obj\PID_Controller.o
+                0x08003964                PID::errorLimit(unsigned short, float, float)
  .text._ZN3PID13measuredValueEf
-                0x08003964       0x34 ..\obj\PID_Controller.o
-                0x08003964                PID::measuredValue(float)
+                0x080039b4       0x34 ..\obj\PID_Controller.o
+                0x080039b4                PID::measuredValue(float)
  .text._ZN3PID5inputEf
-                0x08003998       0x80 ..\obj\PID_Controller.o
-                0x08003998                PID::input(float)
+                0x080039e8       0x80 ..\obj\PID_Controller.o
+                0x080039e8                PID::input(float)
  .text._ZN3PID7outputFEv
-                0x08003a18       0xf8 ..\obj\PID_Controller.o
-                0x08003a18                PID::outputF()
+                0x08003a68       0xf8 ..\obj\PID_Controller.o
+                0x08003a68                PID::outputF()
  .text._ZN3PID8output32Ev
-                0x08003b10       0x30 ..\obj\PID_Controller.o
-                0x08003b10                PID::output32()
- .text.SPI_Cmd  0x08003b40       0x40 ..\obj\stm32f10x_spi.o
-                0x08003b40                SPI_Cmd
+                0x08003b60       0x30 ..\obj\PID_Controller.o
+                0x08003b60                PID::output32()
+ .text.SPI_Cmd  0x08003b90       0x40 ..\obj\stm32f10x_spi.o
+                0x08003b90                SPI_Cmd
  .text.SPI_I2S_ITConfig
-                0x08003b80       0x60 ..\obj\stm32f10x_spi.o
-                0x08003b80                SPI_I2S_ITConfig
+                0x08003bd0       0x60 ..\obj\stm32f10x_spi.o
+                0x08003bd0                SPI_I2S_ITConfig
  .text.SPI_I2S_SendData
-                0x08003be0       0x1c ..\obj\stm32f10x_spi.o
-                0x08003be0                SPI_I2S_SendData
+                0x08003c30       0x1c ..\obj\stm32f10x_spi.o
+                0x08003c30                SPI_I2S_SendData
  .text.SPI_I2S_ReceiveData
-                0x08003bfc       0x18 ..\obj\stm32f10x_spi.o
-                0x08003bfc                SPI_I2S_ReceiveData
+                0x08003c4c       0x18 ..\obj\stm32f10x_spi.o
+                0x08003c4c                SPI_I2S_ReceiveData
  .text.SPI_I2S_GetITStatus
-                0x08003c14       0x74 ..\obj\stm32f10x_spi.o
-                0x08003c14                SPI_I2S_GetITStatus
+                0x08003c64       0x74 ..\obj\stm32f10x_spi.o
+                0x08003c64                SPI_I2S_GetITStatus
  .text.SPI_I2S_ClearITPendingBit
-                0x08003c88       0x34 ..\obj\stm32f10x_spi.o
-                0x08003c88                SPI_I2S_ClearITPendingBit
+                0x08003cd8       0x34 ..\obj\stm32f10x_spi.o
+                0x08003cd8                SPI_I2S_ClearITPendingBit
  .text._ZN8KawaRobo5cycleEv
-                0x08003cbc      0x514 ..\obj\KawaRoboMain.o
-                0x08003cbc                KawaRobo::cycle()
+                0x08003d0c      0x6b4 ..\obj\KawaRoboMain.o
+                0x08003d0c                KawaRobo::cycle()
  .text._ZN8KawaRobo12displayCycleEv
-                0x080041d0      0x554 ..\obj\KawaRoboMain.o
-                0x080041d0                KawaRobo::displayCycle()
+                0x080043c0      0x5a0 ..\obj\KawaRoboMain.o
+                0x080043c0                KawaRobo::displayCycle()
  .text._ZN8KawaRobo12controlCycleEv
-                0x08004724       0x40 ..\obj\KawaRoboMain.o
-                0x08004724                KawaRobo::controlCycle()
+                0x08004960       0x40 ..\obj\KawaRoboMain.o
+                0x08004960                KawaRobo::controlCycle()
  .text._ZN8KawaRobo4testEv
-                0x08004764       0x14 ..\obj\KawaRoboMain.o
-                0x08004764                KawaRobo::test()
+                0x080049a0       0x14 ..\obj\KawaRoboMain.o
+                0x080049a0                KawaRobo::test()
+ *fill*         0x080049b4        0x4 
  .text._ZN8KawaRobo3runEv
-                0x08004778      0x350 ..\obj\KawaRoboMain.o
-                0x08004778                KawaRobo::run()
+                0x080049b8      0x470 ..\obj\KawaRoboMain.o
+                0x080049b8                KawaRobo::run()
  .text._ZN8KawaRobo12armPotUpdateEv
-                0x08004ac8       0xa0 ..\obj\KawaRoboMain.o
-                0x08004ac8                KawaRobo::armPotUpdate()
+                0x08004e28       0xa4 ..\obj\KawaRoboMain.o
+                0x08004e28                KawaRobo::armPotUpdate()
  .text._ZN8KawaRobo11armPotCycleEv
-                0x08004b68       0xe8 ..\obj\KawaRoboMain.o
-                0x08004b68                KawaRobo::armPotCycle()
+                0x08004ecc       0xe8 ..\obj\KawaRoboMain.o
+                0x08004ecc                KawaRobo::armPotCycle()
  .text._ZN8KawaRobo5setupER5USARTR4SBUSR13SerialArduinoR7NCP5359S7_S7_S7_
-                0x08004c50      0x150 ..\obj\KawaRoboMain.o
-                0x08004c50                KawaRobo::setup(USART&, SBUS&, SerialArduino&, NCP5359&, NCP5359&, NCP5359&, NCP5359&)
+                0x08004fb4      0x1a0 ..\obj\KawaRoboMain.o
+                0x08004fb4                KawaRobo::setup(USART&, SBUS&, SerialArduino&, NCP5359&, NCP5359&, NCP5359&, NCP5359&)
  .text._ZN8KawaRobo7uiSetupER6SwitchS1_R3LEDS3_S3_S3_
-                0x08004da0       0x60 ..\obj\KawaRoboMain.o
-                0x08004da0                KawaRobo::uiSetup(Switch&, Switch&, LED&, LED&, LED&, LED&)
+                0x08005154       0x6c ..\obj\KawaRoboMain.o
+                0x08005154                KawaRobo::uiSetup(Switch&, Switch&, LED&, LED&, LED&, LED&)
  .text._ZN8KawaRobo11sensorSetupER3ADCS1_S1_S1_sf
-                0x08004e00       0x44 ..\obj\KawaRoboMain.o
-                0x08004e00                KawaRobo::sensorSetup(ADC&, ADC&, ADC&, ADC&, short, float)
+                0x080051c0       0x44 ..\obj\KawaRoboMain.o
+                0x080051c0                KawaRobo::sensorSetup(ADC&, ADC&, ADC&, ADC&, short, float)
  .text._ZN8KawaRobo12motorDisableEv
-                0x08004e44       0x40 ..\obj\KawaRoboMain.o
-                0x08004e44                KawaRobo::motorDisable()
+                0x08005204       0x40 ..\obj\KawaRoboMain.o
+                0x08005204                KawaRobo::motorDisable()
  .text._ZN8KawaRobo11motorEnableEv
-                0x08004e84       0x40 ..\obj\KawaRoboMain.o
-                0x08004e84                KawaRobo::motorEnable()
+                0x08005244       0x40 ..\obj\KawaRoboMain.o
+                0x08005244                KawaRobo::motorEnable()
  .text._ZN8KawaRobo14getRunPositionEv
-                0x08004ec4       0x34 ..\obj\KawaRoboMain.o
-                0x08004ec4                KawaRobo::getRunPosition()
+                0x08005284       0x34 ..\obj\KawaRoboMain.o
+                0x08005284                KawaRobo::getRunPosition()
  .text._ZN8KawaRobo14getArmPositionEv
-                0x08004ef8       0xbc ..\obj\KawaRoboMain.o
-                0x08004ef8                KawaRobo::getArmPosition()
+                0x080052b8       0xbc ..\obj\KawaRoboMain.o
+                0x080052b8                KawaRobo::getArmPosition()
  .text._ZN8KawaRobo14getRevPositionEv
-                0x08004fb4       0x34 ..\obj\KawaRoboMain.o
-                0x08004fb4                KawaRobo::getRevPosition()
+                0x08005374       0x34 ..\obj\KawaRoboMain.o
+                0x08005374                KawaRobo::getRevPosition()
  .text._ZN8KawaRobo17getSelectPositionEv
-                0x08004fe8       0x34 ..\obj\KawaRoboMain.o
-                0x08004fe8                KawaRobo::getSelectPosition()
+                0x080053a8       0x34 ..\obj\KawaRoboMain.o
+                0x080053a8                KawaRobo::getSelectPosition()
  .text._ZN8KawaRobo17getTogglePositionEt
-                0x0800501c      0x160 ..\obj\KawaRoboMain.o
-                0x0800501c                KawaRobo::getTogglePosition(unsigned short)
+                0x080053dc      0x160 ..\obj\KawaRoboMain.o
+                0x080053dc                KawaRobo::getTogglePosition(unsigned short)
  .text._ZN8KawaRobo16getStickPositionEtt
-                0x0800517c       0x80 ..\obj\KawaRoboMain.o
-                0x0800517c                KawaRobo::getStickPosition(unsigned short, unsigned short)
+                0x0800553c       0x80 ..\obj\KawaRoboMain.o
+                0x0800553c                KawaRobo::getStickPosition(unsigned short, unsigned short)
+ .text._ZN7AverageIiE5stackEi
+                0x080055bc       0x2c ..\obj\KawaRoboMain.o
+                0x080055bc                Average<int>::stack(int)
+ .text._ZN7AverageIiE4peekEv
+                0x080055e8       0x30 ..\obj\KawaRoboMain.o
+                0x080055e8                Average<int>::peek()
+ .text._ZN7AverageIiE4readEv
+                0x08005618       0x3c ..\obj\KawaRoboMain.o
+                0x08005618                Average<int>::read()
  .text._ZN13SerialArduino5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x080051fc       0xa0 ..\obj\SerialArduino.o
-                0x080051fc                SerialArduino::setup(USART_TypeDef*, unsigned long, GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short)
+                0x08005654       0xa0 ..\obj\SerialArduino.o
+                0x08005654                SerialArduino::setup(USART_TypeDef*, unsigned long, GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short)
  .text._ZN13SerialArduino5cycleEv
-                0x0800529c      0x1e0 ..\obj\SerialArduino.o
-                0x0800529c                SerialArduino::cycle()
+                0x080056f4      0x1e0 ..\obj\SerialArduino.o
+                0x080056f4                SerialArduino::cycle()
  .text._ZN13SerialArduino5writeEts
-                0x0800547c       0x8c ..\obj\SerialArduino.o
-                0x0800547c                SerialArduino::write(unsigned short, short)
+                0x080058d4       0x8c ..\obj\SerialArduino.o
+                0x080058d4                SerialArduino::write(unsigned short, short)
  .text._ZN13SerialArduino4readEt
-                0x08005508       0x28 ..\obj\SerialArduino.o
-                0x08005508                SerialArduino::read(unsigned short)
+                0x08005960       0x28 ..\obj\SerialArduino.o
+                0x08005960                SerialArduino::read(unsigned short)
  .text._ZN5USART4putsEPKc
-                0x08005530       0x3c ..\obj\usart.o
-                0x08005530                USART::puts(char const*)
+                0x08005988       0x3c ..\obj\usart.o
+                0x08005988                USART::puts(char const*)
  .text._ZN5USART6printfEPKcz
-                0x0800556c       0x44 ..\obj\usart.o
-                0x0800556c                USART::printf(char const*, ...)
+                0x080059c4       0x44 ..\obj\usart.o
+                0x080059c4                USART::printf(char const*, ...)
  .text._ZN5USART5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x080055b0       0xd8 ..\obj\usart.o
-                0x080055b0                USART::setup(USART_TypeDef*, unsigned long, GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short)
+                0x08005a08       0xd8 ..\obj\usart.o
+                0x08005a08                USART::setup(USART_TypeDef*, unsigned long, GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short)
  .text._ZN5USART4sendEc
-                0x08005688      0x17c ..\obj\usart.o
-                0x08005688                USART::send(char)
+                0x08005ae0      0x17c ..\obj\usart.o
+                0x08005ae0                USART::send(char)
  .text._ZN5USART4readEv
-                0x08005804      0x118 ..\obj\usart.o
-                0x08005804                USART::read()
+                0x08005c5c      0x118 ..\obj\usart.o
+                0x08005c5c                USART::read()
  .text._ZN5USART9availableEv
-                0x0800591c       0xe8 ..\obj\usart.o
-                0x0800591c                USART::available()
+                0x08005d74       0xe8 ..\obj\usart.o
+                0x08005d74                USART::available()
  .text._ZN5USART7ioSetupEP12GPIO_TypeDeftS1_t
-                0x08005a04       0x34 ..\obj\usart.o
-                0x08005a04                USART::ioSetup(GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short)
+                0x08005e5c       0x34 ..\obj\usart.o
+                0x08005e5c                USART::ioSetup(GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short)
  .text._Z11USART1Setupm
-                0x08005a38       0x4c ..\obj\usart.o
-                0x08005a38                USART1Setup(unsigned long)
+                0x08005e90       0x4c ..\obj\usart.o
+                0x08005e90                USART1Setup(unsigned long)
  .text._Z11USART2Setupm
-                0x08005a84       0x4c ..\obj\usart.o
-                0x08005a84                USART2Setup(unsigned long)
+                0x08005edc       0x4c ..\obj\usart.o
+                0x08005edc                USART2Setup(unsigned long)
  .text._Z11USART3Setupm
-                0x08005ad0       0x4c ..\obj\usart.o
-                0x08005ad0                USART3Setup(unsigned long)
+                0x08005f28       0x4c ..\obj\usart.o
+                0x08005f28                USART3Setup(unsigned long)
  .text._Z13USART1ITSetupt
-                0x08005b1c       0x38 ..\obj\usart.o
-                0x08005b1c                USART1ITSetup(unsigned short)
+                0x08005f74       0x38 ..\obj\usart.o
+                0x08005f74                USART1ITSetup(unsigned short)
  .text._Z13USART2ITSetupt
-                0x08005b54       0x38 ..\obj\usart.o
-                0x08005b54                USART2ITSetup(unsigned short)
+                0x08005fac       0x38 ..\obj\usart.o
+                0x08005fac                USART2ITSetup(unsigned short)
  .text._Z13USART3ITSetupt
-                0x08005b8c       0x38 ..\obj\usart.o
-                0x08005b8c                USART3ITSetup(unsigned short)
+                0x08005fe4       0x38 ..\obj\usart.o
+                0x08005fe4                USART3ITSetup(unsigned short)
  .text.USART1_IRQHandler
-                0x08005bc4       0xe0 ..\obj\usart.o
-                0x08005bc4                USART1_IRQHandler
+                0x0800601c       0xe0 ..\obj\usart.o
+                0x0800601c                USART1_IRQHandler
  .text.USART2_IRQHandler
-                0x08005ca4       0xe0 ..\obj\usart.o
-                0x08005ca4                USART2_IRQHandler
+                0x080060fc       0xe0 ..\obj\usart.o
+                0x080060fc                USART2_IRQHandler
  .text.USART3_IRQHandler
-                0x08005d84       0xe0 ..\obj\usart.o
-                0x08005d84                USART3_IRQHandler
+                0x080061dc       0xe0 ..\obj\usart.o
+                0x080061dc                USART3_IRQHandler
  .text.IWDG_WriteAccessCmd
-                0x08005e64       0x20 ..\obj\stm32f10x_iwdg.o
-                0x08005e64                IWDG_WriteAccessCmd
+                0x080062bc       0x20 ..\obj\stm32f10x_iwdg.o
+                0x080062bc                IWDG_WriteAccessCmd
  .text.IWDG_SetPrescaler
-                0x08005e84       0x20 ..\obj\stm32f10x_iwdg.o
-                0x08005e84                IWDG_SetPrescaler
+                0x080062dc       0x20 ..\obj\stm32f10x_iwdg.o
+                0x080062dc                IWDG_SetPrescaler
  .text.IWDG_SetReload
-                0x08005ea4       0x20 ..\obj\stm32f10x_iwdg.o
-                0x08005ea4                IWDG_SetReload
+                0x080062fc       0x20 ..\obj\stm32f10x_iwdg.o
+                0x080062fc                IWDG_SetReload
  .text.IWDG_ReloadCounter
-                0x08005ec4       0x18 ..\obj\stm32f10x_iwdg.o
-                0x08005ec4                IWDG_ReloadCounter
+                0x0800631c       0x18 ..\obj\stm32f10x_iwdg.o
+                0x0800631c                IWDG_ReloadCounter
  .text.IWDG_Enable
-                0x08005edc       0x18 ..\obj\stm32f10x_iwdg.o
-                0x08005edc                IWDG_Enable
- .text          0x08005ef4      0x370 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
-                0x08005ef4                __aeabi_drsub
-                0x08005efc                __aeabi_dsub
-                0x08005efc                __subdf3
-                0x08005f00                __aeabi_dadd
-                0x08005f00                __adddf3
-                0x08006178                __floatunsidf
-                0x08006178                __aeabi_ui2d
-                0x08006198                __floatsidf
-                0x08006198                __aeabi_i2d
-                0x080061bc                __aeabi_f2d
-                0x080061bc                __extendsfdf2
-                0x080061f8                __floatundidf
-                0x080061f8                __aeabi_ul2d
-                0x08006208                __floatdidf
-                0x08006208                __aeabi_l2d
- .text          0x08006264      0x424 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
-                0x08006264                __aeabi_dmul
-                0x08006264                __muldf3
-                0x080064b8                __divdf3
-                0x080064b8                __aeabi_ddiv
- .text          0x08006688      0x110 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
-                0x08006688                __gtdf2
-                0x08006688                __gedf2
-                0x08006690                __ltdf2
-                0x08006690                __ledf2
-                0x08006698                __nedf2
-                0x08006698                __eqdf2
-                0x08006698                __cmpdf2
-                0x08006714                __aeabi_cdrcmple
-                0x08006724                __aeabi_cdcmpeq
-                0x08006724                __aeabi_cdcmple
-                0x08006734                __aeabi_dcmpeq
-                0x08006748                __aeabi_dcmplt
-                0x0800675c                __aeabi_dcmple
-                0x08006770                __aeabi_dcmpge
-                0x08006784                __aeabi_dcmpgt
- .text          0x08006798       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixdfsi.o)
-                0x08006798                __aeabi_d2iz
-                0x08006798                __fixdfsi
- .text          0x080067e8       0xa0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_truncdfsf2.o)
-                0x080067e8                __truncdfsf2
-                0x080067e8                __aeabi_d2f
- .text          0x08006888      0x21c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
-                0x08006888                __aeabi_frsub
-                0x08006890                __subsf3
-                0x08006890                __aeabi_fsub
-                0x08006894                __aeabi_fadd
-                0x08006894                __addsf3
-                0x080069f4                __aeabi_ui2f
-                0x080069f4                __floatunsisf
-                0x080069fc                __aeabi_i2f
-                0x080069fc                __floatsisf
-                0x08006a18                __aeabi_ul2f
-                0x08006a18                __floatundisf
-                0x08006a28                __aeabi_l2f
-                0x08006a28                __floatdisf
- .text          0x08006aa4      0x2a0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
-                0x08006aa4                __mulsf3
-                0x08006aa4                __aeabi_fmul
-                0x08006c0c                __aeabi_fdiv
-                0x08006c0c                __divsf3
- .text          0x08006d44       0xec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpsf2.o)
-                0x08006d44                __gesf2
-                0x08006d44                __gtsf2
-                0x08006d4c                __lesf2
-                0x08006d4c                __ltsf2
-                0x08006d54                __nesf2
-                0x08006d54                __eqsf2
-                0x08006d54                __cmpsf2
-                0x08006db4                __aeabi_cfrcmple
-                0x08006dbc                __aeabi_cfcmpeq
-                0x08006dbc                __aeabi_cfcmple
-                0x08006dcc                __aeabi_fcmpeq
-                0x08006de0                __aeabi_fcmplt
-                0x08006df4                __aeabi_fcmple
-                0x08006e08                __aeabi_fcmpge
-                0x08006e1c                __aeabi_fcmpgt
- .text          0x08006e30       0x4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixsfsi.o)
-                0x08006e30                __aeabi_f2iz
-                0x08006e30                __fixsfsi
- .text          0x08006e7c       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
-                0x08006e7c                __fixunssfsi
-                0x08006e7c                __aeabi_f2uiz
- .text          0x08006ebc       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
-                0x08006ebc                __aeabi_uldivmod
- .text          0x08006eec      0x2ec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
-                0x08006eec                __udivmoddi4
- .text          0x080071d8      0x9e4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(unwind-arm.o)
-                0x08007498                _Unwind_GetCFA
-                0x0800749c                __gnu_Unwind_RaiseException
-                0x080074fc                __gnu_Unwind_ForcedUnwind
-                0x08007510                __gnu_Unwind_Resume
-                0x08007554                __gnu_Unwind_Resume_or_Rethrow
-                0x08007568                _Unwind_Complete
-                0x0800756c                _Unwind_DeleteException
-                0x08007578                _Unwind_VRS_Get
-                0x080075c4                _Unwind_VRS_Set
-                0x08007614                __gnu_Unwind_Backtrace
-                0x08007960                __aeabi_unwind_cpp_pr0
-                0x08007964                __aeabi_unwind_cpp_pr1
-                0x08007968                __aeabi_unwind_cpp_pr2
-                0x0800796c                _Unwind_VRS_Pop
- .text          0x08007bbc      0x1ac c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(libunwind.o)
-                0x08007bbc                __restore_core_regs
-                0x08007bbc                restore_core_regs
-                0x08007bd4                __gnu_Unwind_Restore_VFP
-                0x08007bdc                __gnu_Unwind_Save_VFP
-                0x08007be4                __gnu_Unwind_Restore_VFP_D
-                0x08007bec                __gnu_Unwind_Save_VFP_D
-                0x08007bf4                __gnu_Unwind_Restore_VFP_D_16_to_31
-                0x08007bfc                __gnu_Unwind_Save_VFP_D_16_to_31
-                0x08007c04                __gnu_Unwind_Restore_WMMXD
-                0x08007c48                __gnu_Unwind_Save_WMMXD
-                0x08007c8c                __gnu_Unwind_Restore_WMMXC
-                0x08007ca0                __gnu_Unwind_Save_WMMXC
-                0x08007cb4                ___Unwind_RaiseException
-                0x08007cb4                _Unwind_RaiseException
-                0x08007cd8                _Unwind_Resume
-                0x08007cd8                ___Unwind_Resume
-                0x08007cfc                _Unwind_Resume_or_Rethrow
-                0x08007cfc                ___Unwind_Resume_or_Rethrow
-                0x08007d20                _Unwind_ForcedUnwind
-                0x08007d20                ___Unwind_ForcedUnwind
-                0x08007d44                ___Unwind_Backtrace
-                0x08007d44                _Unwind_Backtrace
- .text          0x08007d68      0x354 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
-                0x08007dc0                __gnu_unwind_execute
-                0x08008064                __gnu_unwind_frame
-                0x0800808c                _Unwind_GetRegionStart
-                0x08008098                _Unwind_GetLanguageSpecificData
-                0x080080ac                _Unwind_GetTextRelBase
-                0x080080b4                _Unwind_GetDataRelBase
- .text          0x080080bc        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_dvmd_tls.o)
-                0x080080bc                __aeabi_idiv0
-                0x080080bc                __aeabi_ldiv0
- .text          0x080080c0       0xec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memcpy.o)
-                0x080080c0                memcpy
+                0x08006334       0x18 ..\obj\stm32f10x_iwdg.o
+                0x08006334                IWDG_Enable
+ .text          0x0800634c      0x370 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
+                0x0800634c                __aeabi_drsub
+                0x08006354                __aeabi_dsub
+                0x08006354                __subdf3
+                0x08006358                __aeabi_dadd
+                0x08006358                __adddf3
+                0x080065d0                __floatunsidf
+                0x080065d0                __aeabi_ui2d
+                0x080065f0                __floatsidf
+                0x080065f0                __aeabi_i2d
+                0x08006614                __aeabi_f2d
+                0x08006614                __extendsfdf2
+                0x08006650                __floatundidf
+                0x08006650                __aeabi_ul2d
+                0x08006660                __floatdidf
+                0x08006660                __aeabi_l2d
+ .text          0x080066bc      0x424 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
+                0x080066bc                __aeabi_dmul
+                0x080066bc                __muldf3
+                0x08006910                __divdf3
+                0x08006910                __aeabi_ddiv
+ .text          0x08006ae0      0x110 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
+                0x08006ae0                __gtdf2
+                0x08006ae0                __gedf2
+                0x08006ae8                __ltdf2
+                0x08006ae8                __ledf2
+                0x08006af0                __nedf2
+                0x08006af0                __eqdf2
+                0x08006af0                __cmpdf2
+                0x08006b6c                __aeabi_cdrcmple
+                0x08006b7c                __aeabi_cdcmpeq
+                0x08006b7c                __aeabi_cdcmple
+                0x08006b8c                __aeabi_dcmpeq
+                0x08006ba0                __aeabi_dcmplt
+                0x08006bb4                __aeabi_dcmple
+                0x08006bc8                __aeabi_dcmpge
+                0x08006bdc                __aeabi_dcmpgt
+ .text          0x08006bf0       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixdfsi.o)
+                0x08006bf0                __aeabi_d2iz
+                0x08006bf0                __fixdfsi
+ .text          0x08006c40       0xa0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_truncdfsf2.o)
+                0x08006c40                __truncdfsf2
+                0x08006c40                __aeabi_d2f
+ .text          0x08006ce0      0x21c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x08006ce0                __aeabi_frsub
+                0x08006ce8                __subsf3
+                0x08006ce8                __aeabi_fsub
+                0x08006cec                __aeabi_fadd
+                0x08006cec                __addsf3
+                0x08006e4c                __aeabi_ui2f
+                0x08006e4c                __floatunsisf
+                0x08006e54                __aeabi_i2f
+                0x08006e54                __floatsisf
+                0x08006e70                __aeabi_ul2f
+                0x08006e70                __floatundisf
+                0x08006e80                __aeabi_l2f
+                0x08006e80                __floatdisf
+ .text          0x08006efc      0x2a0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x08006efc                __mulsf3
+                0x08006efc                __aeabi_fmul
+                0x08007064                __aeabi_fdiv
+                0x08007064                __divsf3
+ .text          0x0800719c       0xec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpsf2.o)
+                0x0800719c                __gesf2
+                0x0800719c                __gtsf2
+                0x080071a4                __lesf2
+                0x080071a4                __ltsf2
+                0x080071ac                __nesf2
+                0x080071ac                __eqsf2
+                0x080071ac                __cmpsf2
+                0x0800720c                __aeabi_cfrcmple
+                0x08007214                __aeabi_cfcmpeq
+                0x08007214                __aeabi_cfcmple
+                0x08007224                __aeabi_fcmpeq
+                0x08007238                __aeabi_fcmplt
+                0x0800724c                __aeabi_fcmple
+                0x08007260                __aeabi_fcmpge
+                0x08007274                __aeabi_fcmpgt
+ .text          0x08007288       0x4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixsfsi.o)
+                0x08007288                __aeabi_f2iz
+                0x08007288                __fixsfsi
+ .text          0x080072d4       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+                0x080072d4                __fixunssfsi
+                0x080072d4                __aeabi_f2uiz
+ .text          0x08007314       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
+                0x08007314                __aeabi_uldivmod
+ .text          0x08007344      0x2ec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+                0x08007344                __udivmoddi4
+ .text          0x08007630      0x9e4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(unwind-arm.o)
+                0x080078f0                _Unwind_GetCFA
+                0x080078f4                __gnu_Unwind_RaiseException
+                0x08007954                __gnu_Unwind_ForcedUnwind
+                0x08007968                __gnu_Unwind_Resume
+                0x080079ac                __gnu_Unwind_Resume_or_Rethrow
+                0x080079c0                _Unwind_Complete
+                0x080079c4                _Unwind_DeleteException
+                0x080079d0                _Unwind_VRS_Get
+                0x08007a1c                _Unwind_VRS_Set
+                0x08007a6c                __gnu_Unwind_Backtrace
+                0x08007db8                __aeabi_unwind_cpp_pr0
+                0x08007dbc                __aeabi_unwind_cpp_pr1
+                0x08007dc0                __aeabi_unwind_cpp_pr2
+                0x08007dc4                _Unwind_VRS_Pop
+ .text          0x08008014      0x1ac c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(libunwind.o)
+                0x08008014                __restore_core_regs
+                0x08008014                restore_core_regs
+                0x0800802c                __gnu_Unwind_Restore_VFP
+                0x08008034                __gnu_Unwind_Save_VFP
+                0x0800803c                __gnu_Unwind_Restore_VFP_D
+                0x08008044                __gnu_Unwind_Save_VFP_D
+                0x0800804c                __gnu_Unwind_Restore_VFP_D_16_to_31
+                0x08008054                __gnu_Unwind_Save_VFP_D_16_to_31
+                0x0800805c                __gnu_Unwind_Restore_WMMXD
+                0x080080a0                __gnu_Unwind_Save_WMMXD
+                0x080080e4                __gnu_Unwind_Restore_WMMXC
+                0x080080f8                __gnu_Unwind_Save_WMMXC
+                0x0800810c                ___Unwind_RaiseException
+                0x0800810c                _Unwind_RaiseException
+                0x08008130                _Unwind_Resume
+                0x08008130                ___Unwind_Resume
+                0x08008154                _Unwind_Resume_or_Rethrow
+                0x08008154                ___Unwind_Resume_or_Rethrow
+                0x08008178                _Unwind_ForcedUnwind
+                0x08008178                ___Unwind_ForcedUnwind
+                0x0800819c                ___Unwind_Backtrace
+                0x0800819c                _Unwind_Backtrace
+ .text          0x080081c0      0x354 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
+                0x08008218                __gnu_unwind_execute
+                0x080084bc                __gnu_unwind_frame
+                0x080084e4                _Unwind_GetRegionStart
+                0x080084f0                _Unwind_GetLanguageSpecificData
+                0x08008504                _Unwind_GetTextRelBase
+                0x0800850c                _Unwind_GetDataRelBase
+ .text          0x08008514        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_dvmd_tls.o)
+                0x08008514                __aeabi_idiv0
+                0x08008514                __aeabi_ldiv0
+ .text          0x08008518       0xec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memcpy.o)
+                0x08008518                memcpy
  .text._vsprintf_r
-                0x080081ac       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vsprintf.o)
-                0x080081ac                _vsprintf_r
+                0x08008604       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vsprintf.o)
+                0x08008604                _vsprintf_r
  .text.vsprintf
-                0x080081e0       0x18 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vsprintf.o)
-                0x080081e0                vsprintf
+                0x08008638       0x18 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vsprintf.o)
+                0x08008638                vsprintf
  .text._svfprintf_r
-                0x080081f8     0x1760 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
-                0x080081f8                _svfprintf_r
- .text.quorem   0x08009958      0x12c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-dtoa.o)
- *fill*         0x08009a84        0x4 
- .text._dtoa_r  0x08009a88      0xe4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-dtoa.o)
-                0x08009a88                _dtoa_r
+                0x08008650     0x1760 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
+                0x08008650                _svfprintf_r
+ .text.quorem   0x08009db0      0x12c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-dtoa.o)
+ *fill*         0x08009edc        0x4 
+ .text._dtoa_r  0x08009ee0      0xe4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-dtoa.o)
+                0x08009ee0                _dtoa_r
  .text._localeconv_r
-                0x0800a8d4       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-localeconv.o)
-                0x0800a8d4                _localeconv_r
+                0x0800ad2c       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-localeconv.o)
+                0x0800ad2c                _localeconv_r
  .text._malloc_r
-                0x0800a8f0      0x558 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
-                0x0800a8f0                _malloc_r
- .text.memchr   0x0800ae48       0x8c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memchr-stub.o)
-                0x0800ae48                memchr
+                0x0800ad48      0x558 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+                0x0800ad48                _malloc_r
+ .text.memchr   0x0800b2a0       0x8c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memchr-stub.o)
+                0x0800b2a0                memchr
  .text.__malloc_lock
-                0x0800aed4        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mlock.o)
-                0x0800aed4                __malloc_lock
+                0x0800b32c        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mlock.o)
+                0x0800b32c                __malloc_lock
  .text.__malloc_unlock
-                0x0800aed8        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mlock.o)
-                0x0800aed8                __malloc_unlock
- .text._Balloc  0x0800aedc       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800aedc                _Balloc
- .text._Bfree   0x0800af2c       0x14 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800af2c                _Bfree
+                0x0800b330        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mlock.o)
+                0x0800b330                __malloc_unlock
+ .text._Balloc  0x0800b334       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b334                _Balloc
+ .text._Bfree   0x0800b384       0x14 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b384                _Bfree
  .text.__multadd
-                0x0800af40       0x80 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800af40                __multadd
+                0x0800b398       0x80 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b398                __multadd
  .text.__hi0bits
-                0x0800afc0       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800afc0                __hi0bits
+                0x0800b418       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b418                __hi0bits
  .text.__lo0bits
-                0x0800b000       0x5c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800b000                __lo0bits
- .text.__i2b    0x0800b05c       0x14 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800b05c                __i2b
+                0x0800b458       0x5c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b458                __lo0bits
+ .text.__i2b    0x0800b4b4       0x14 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b4b4                __i2b
  .text.__multiply
-                0x0800b070      0x13c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800b070                __multiply
+                0x0800b4c8      0x13c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b4c8                __multiply
  .text.__pow5mult
-                0x0800b1ac       0xa0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800b1ac                __pow5mult
+                0x0800b604       0xa0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b604                __pow5mult
  .text.__lshift
-                0x0800b24c       0xac c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800b24c                __lshift
- .text.__mcmp   0x0800b2f8       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800b2f8                __mcmp
- .text.__mdiff  0x0800b338      0x128 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800b338                __mdiff
- .text.__d2b    0x0800b460       0xa8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800b460                __d2b
- .text._sbrk_r  0x0800b508       0x24 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sbrkr.o)
-                0x0800b508                _sbrk_r
- .text.strlen   0x0800b52c       0x5c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strlen-stub.o)
-                0x0800b52c                strlen
+                0x0800b6a4       0xac c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b6a4                __lshift
+ .text.__mcmp   0x0800b750       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b750                __mcmp
+ .text.__mdiff  0x0800b790      0x128 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b790                __mdiff
+ .text.__d2b    0x0800b8b8       0xa8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800b8b8                __d2b
+ .text._sbrk_r  0x0800b960       0x24 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sbrkr.o)
+                0x0800b960                _sbrk_r
+ .text.strlen   0x0800b984       0x5c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strlen-stub.o)
+                0x0800b984                strlen
  .text.__ssprint_r
-                0x0800b588      0x100 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfiprintf.o)
-                0x0800b588                __ssprint_r
+                0x0800b9e0      0x100 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfiprintf.o)
+                0x0800b9e0                __ssprint_r
  .text._calloc_r
-                0x0800b688       0x60 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-callocr.o)
-                0x0800b688                _calloc_r
+                0x0800bae0       0x60 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-callocr.o)
+                0x0800bae0                _calloc_r
  .text._malloc_trim_r
-                0x0800b6e8       0x9c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-freer.o)
-                0x0800b6e8                _malloc_trim_r
- .text._free_r  0x0800b784      0x1d0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-freer.o)
-                0x0800b784                _free_r
+                0x0800bb40       0x9c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-freer.o)
+                0x0800bb40                _malloc_trim_r
+ .text._free_r  0x0800bbdc      0x1d0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-freer.o)
+                0x0800bbdc                _free_r
  .text.__ascii_mbtowc
-                0x0800b954       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mbtowc_r.o)
-                0x0800b954                __ascii_mbtowc
- .text.memmove  0x0800b980       0xc8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memmove.o)
-                0x0800b980                memmove
- .text.memset   0x0800ba48       0x9c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
-                0x0800ba48                memset
+                0x0800bdac       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mbtowc_r.o)
+                0x0800bdac                __ascii_mbtowc
+ .text.memmove  0x0800bdd8       0xc8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memmove.o)
+                0x0800bdd8                memmove
+ .text.memset   0x0800bea0       0x9c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+                0x0800bea0                memset
  .text._realloc_r
-                0x0800bae4      0x3d4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reallocr.o)
-                0x0800bae4                _realloc_r
+                0x0800bf3c      0x3d4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reallocr.o)
+                0x0800bf3c                _realloc_r
  .text.__ascii_wctomb
-                0x0800beb8       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wctomb_r.o)
-                0x0800beb8                __ascii_wctomb
- .text          0x0800bed4       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_unorddf2.o)
-                0x0800bed4                __unorddf2
-                0x0800bed4                __aeabi_dcmpun
+                0x0800c310       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wctomb_r.o)
+                0x0800c310                __ascii_wctomb
+ .text          0x0800c32c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_unorddf2.o)
+                0x0800c32c                __unorddf2
+                0x0800c32c                __aeabi_dcmpun
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -5267,552 +5279,568 @@ Linker script and memory map
  *(SORT(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata        0x0800bf00       0x66 ..\obj\main.o
- *fill*         0x0800bf66        0x2 
- .rodata        0x0800bf68       0x39 ..\obj\system.o
- *fill*         0x0800bfa1        0x3 
- .rodata        0x0800bfa4      0x1db ..\obj\KawaRoboMain.o
- *fill*         0x0800c17f        0x1 
+ .rodata        0x0800c358       0x66 ..\obj\main.o
+ *fill*         0x0800c3be        0x2 
+ .rodata        0x0800c3c0       0x39 ..\obj\system.o
+ *fill*         0x0800c3f9        0x3 
+ .rodata        0x0800c3fc      0x1f3 ..\obj\KawaRoboMain.o
+ *fill*         0x0800c5ef        0x1 
  .rodata.zeroes.7256
-                0x0800c180       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
+                0x0800c5f0       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x0800c190       0x42 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
- *fill*         0x0800c1d2        0x2 
+                0x0800c600       0x42 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
+ *fill*         0x0800c642        0x2 
  .rodata.blanks.7255
-                0x0800c1d4       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
+                0x0800c644       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x0800c1e4       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-dtoa.o)
+                0x0800c654       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-dtoa.o)
                                  0x12 (size before relaxing)
- *fill*         0x0800c1f4        0x4 
+ *fill*         0x0800c664        0x4 
  .rodata.__mprec_tens
-                0x0800c1f8       0xc8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800c1f8                __mprec_tens
+                0x0800c668       0xc8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800c668                __mprec_tens
  .rodata.p05.6085
-                0x0800c2c0        0xc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
- *fill*         0x0800c2cc        0x4 
+                0x0800c730        0xc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+ *fill*         0x0800c73c        0x4 
  .rodata.__mprec_bigtens
-                0x0800c2d0       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
-                0x0800c2d0                __mprec_bigtens
+                0x0800c740       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+                0x0800c740                __mprec_bigtens
  .rodata.str1.4
-                0x0800c2f8       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-locale.o)
+                0x0800c768       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-locale.o)
                                  0x12 (size before relaxing)
  .rodata._ctype_
-                0x0800c308      0x101 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-ctype_.o)
-                0x0800c308                _ctype_
+                0x0800c778      0x101 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-ctype_.o)
+                0x0800c778                _ctype_
  *(.eh_fram e*)
 
-.glue_7         0x0800c40c        0x0
- .glue_7        0x0800c40c        0x0 linker stubs
+.glue_7         0x0800c87c        0x0
+ .glue_7        0x0800c87c        0x0 linker stubs
 
-.glue_7t        0x0800c40c        0x0
- .glue_7t       0x0800c40c        0x0 linker stubs
+.glue_7t        0x0800c87c        0x0
+ .glue_7t       0x0800c87c        0x0 linker stubs
 
-.vfp11_veneer   0x0800c40c        0x0
- .vfp11_veneer  0x0800c40c        0x0 linker stubs
+.vfp11_veneer   0x0800c87c        0x0
+ .vfp11_veneer  0x0800c87c        0x0 linker stubs
 
-.v4_bx          0x0800c40c        0x0
- .v4_bx         0x0800c40c        0x0 linker stubs
+.v4_bx          0x0800c87c        0x0
+ .v4_bx         0x0800c87c        0x0 linker stubs
 
-.iplt           0x0800c40c        0x0
- .iplt          0x0800c40c        0x0 ..\obj\switch.o
+.iplt           0x0800c87c        0x0
+ .iplt          0x0800c87c        0x0 ..\obj\switch.o
 
-.ARM.extab      0x0800c40c      0x388
+.ARM.extab      0x0800c87c      0x388
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  .ARM.extab.text._ZN6Switch5setupEP12GPIO_TypeDeft16GPIOMode_TypeDef
-                0x0800c40c        0xc ..\obj\switch.o
+                0x0800c87c        0xc ..\obj\switch.o
  .ARM.extab.text._ZN6Switch5cycleEv
-                0x0800c418        0xc ..\obj\switch.o
+                0x0800c888        0xc ..\obj\switch.o
  .ARM.extab.text._ZN10RingBufferIhLi128EEC2Ev
-                0x0800c424        0x0 ..\obj\spi.o
+                0x0800c894        0x0 ..\obj\spi.o
  .ARM.extab.text._ZN10RingBufferIhLi128EE5writeEh
-                0x0800c424        0x0 ..\obj\spi.o
+                0x0800c894        0x0 ..\obj\spi.o
  .ARM.extab.text._ZN10RingBufferIhLi128EE4readEv
-                0x0800c424        0x0 ..\obj\spi.o
+                0x0800c894        0x0 ..\obj\spi.o
  .ARM.extab.text._ZN10RingBufferIhLi128EE6lengthEv
-                0x0800c424        0x0 ..\obj\spi.o
+                0x0800c894        0x0 ..\obj\spi.o
  .ARM.extab.text._ZN10RingBufferIhLi128EE7isEmptyEv
-                0x0800c424        0x0 ..\obj\spi.o
+                0x0800c894        0x0 ..\obj\spi.o
  .ARM.extab.text._ZN3LED5setupEP12GPIO_TypeDeft
-                0x0800c424        0xc ..\obj\led.o
+                0x0800c894        0xc ..\obj\led.o
  .ARM.extab.text._ZN3LED8intervalEm
-                0x0800c430        0xc ..\obj\led.o
+                0x0800c8a0        0xc ..\obj\led.o
  .ARM.extab.text._ZN3LED5cycleEv
-                0x0800c43c        0xc ..\obj\led.o
+                0x0800c8ac        0xc ..\obj\led.o
  .ARM.extab.text._ZN3TIM8pwmSetupEP11TIM_TypeDeftP12GPIO_TypeDeftttt
-                0x0800c448        0xc ..\obj\tim.o
+                0x0800c8b8        0xc ..\obj\tim.o
  .ARM.extab.text._ZN3TIM10ioSetupPwmEP12GPIO_TypeDeft
-                0x0800c454        0xc ..\obj\tim.o
+                0x0800c8c4        0xc ..\obj\tim.o
  .ARM.extab.text._Z9TIM1Setuptt
-                0x0800c460        0xc ..\obj\tim.o
+                0x0800c8d0        0xc ..\obj\tim.o
  .ARM.extab.text._Z9TIM2Setuptt
-                0x0800c46c        0xc ..\obj\tim.o
+                0x0800c8dc        0xc ..\obj\tim.o
  .ARM.extab.text._Z9TIM3Setuptt
-                0x0800c478        0xc ..\obj\tim.o
+                0x0800c8e8        0xc ..\obj\tim.o
  .ARM.extab.text._Z9TIM4Setuptt
-                0x0800c484        0xc ..\obj\tim.o
+                0x0800c8f4        0xc ..\obj\tim.o
  .ARM.extab.text._Z11OC1PWMSetupP11TIM_TypeDeft
-                0x0800c490        0xc ..\obj\tim.o
+                0x0800c900        0xc ..\obj\tim.o
  .ARM.extab.text._Z11OC2PWMSetupP11TIM_TypeDeft
-                0x0800c49c        0xc ..\obj\tim.o
+                0x0800c90c        0xc ..\obj\tim.o
  .ARM.extab.text._Z11OC3PWMSetupP11TIM_TypeDeft
-                0x0800c4a8        0xc ..\obj\tim.o
+                0x0800c918        0xc ..\obj\tim.o
  .ARM.extab.text._Z11OC4PWMSetupP11TIM_TypeDeft
-                0x0800c4b4        0xc ..\obj\tim.o
+                0x0800c924        0xc ..\obj\tim.o
  .ARM.extab.text._ZN6System5cycleEv
-                0x0800c4c0        0xc ..\obj\system.o
+                0x0800c930        0xc ..\obj\system.o
  .ARM.extab.text._ZN6System8wdgSetupEth
-                0x0800c4cc        0xc ..\obj\system.o
+                0x0800c93c        0xc ..\obj\system.o
  .ARM.extab.text._ZN6System8wdgResetEv
-                0x0800c4d8        0xc ..\obj\system.o
+                0x0800c948        0xc ..\obj\system.o
  .ARM.extab.text._Z9IWDGSetupth
-                0x0800c4e4        0xc ..\obj\system.o
+                0x0800c954        0xc ..\obj\system.o
  .ARM.extab.text._ZN4GPIO5setupEP12GPIO_TypeDeft16GPIOMode_TypeDef
-                0x0800c4f0        0xc ..\obj\gpio.o
+                0x0800c960        0xc ..\obj\gpio.o
  .ARM.extab.text._ZN4GPIO5writeEt
-                0x0800c4fc        0xc ..\obj\gpio.o
+                0x0800c96c        0xc ..\obj\gpio.o
  .ARM.extab.text._ZN4GPIO4readEv
-                0x0800c508        0xc ..\obj\gpio.o
+                0x0800c978        0xc ..\obj\gpio.o
  .ARM.extab.text._ZN4GPIO6toggleEv
-                0x0800c514        0xc ..\obj\gpio.o
+                0x0800c984        0xc ..\obj\gpio.o
  .ARM.extab.text._Z9pinToggleP12GPIO_TypeDeft
-                0x0800c520        0xc ..\obj\gpio.o
+                0x0800c990        0xc ..\obj\gpio.o
  .ARM.extab.text._ZN4SBUS5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x0800c52c        0xc ..\obj\sbus.o
+                0x0800c99c        0xc ..\obj\sbus.o
  .ARM.extab.text._ZN4SBUS5cycleEv
-                0x0800c538        0xc ..\obj\sbus.o
+                0x0800c9a8        0xc ..\obj\sbus.o
  .ARM.extab.text._ZN7NCP53595setupER3TIMR4GPIO
-                0x0800c544        0xc ..\obj\NCP5359.o
+                0x0800c9b4        0xc ..\obj\NCP5359.o
  .ARM.extab.text._ZN7NCP53595cycleEv
-                0x0800c550        0xc ..\obj\NCP5359.o
+                0x0800c9c0        0xc ..\obj\NCP5359.o
  .ARM.extab.text._ZN7NCP53594dutyEf
-                0x0800c55c        0xc ..\obj\NCP5359.o
+                0x0800c9cc        0xc ..\obj\NCP5359.o
  .ARM.extab.text._ZN3ADC5setupEP11ADC_TypeDefhP12GPIO_TypeDefth
-                0x0800c568        0xc ..\obj\adc.o
+                0x0800c9d8        0xc ..\obj\adc.o
  .ARM.extab.text._ZN3ADC5startEv
-                0x0800c574        0xc ..\obj\adc.o
+                0x0800c9e4        0xc ..\obj\adc.o
  .ARM.extab.text._ZN3ADC5startEh
-                0x0800c580        0xc ..\obj\adc.o
+                0x0800c9f0        0xc ..\obj\adc.o
  .ARM.extab.text._ZN3ADC9convertedEv
-                0x0800c58c        0xc ..\obj\adc.o
+                0x0800c9fc        0xc ..\obj\adc.o
  .ARM.extab.text._ZN3ADC4peekEv
-                0x0800c598        0xc ..\obj\adc.o
+                0x0800ca08        0xc ..\obj\adc.o
  .ARM.extab.text._ZN3ADC7ioSetupEP12GPIO_TypeDeft
-                0x0800c5a4        0xc ..\obj\adc.o
+                0x0800ca14        0xc ..\obj\adc.o
  .ARM.extab.text._Z9ADC1Setuph
-                0x0800c5b0        0xc ..\obj\adc.o
+                0x0800ca20        0xc ..\obj\adc.o
  .ARM.extab.text._Z9ADC2Setuph
-                0x0800c5bc        0xc ..\obj\adc.o
+                0x0800ca2c        0xc ..\obj\adc.o
  .ARM.extab.text._Z9ADC1Starthh
-                0x0800c5c8        0xc ..\obj\adc.o
+                0x0800ca38        0xc ..\obj\adc.o
  .ARM.extab.text._Z9ADC2Starthh
-                0x0800c5d4        0xc ..\obj\adc.o
+                0x0800ca44        0xc ..\obj\adc.o
  .ARM.extab.text._ZN3PID13measuredValueEf
-                0x0800c5e0        0xc ..\obj\PID_Controller.o
+                0x0800ca50        0xc ..\obj\PID_Controller.o
  .ARM.extab.text._ZN3PID5inputEf
-                0x0800c5ec        0xc ..\obj\PID_Controller.o
+                0x0800ca5c        0xc ..\obj\PID_Controller.o
  .ARM.extab.text._ZN3PID7outputFEv
-                0x0800c5f8        0xc ..\obj\PID_Controller.o
+                0x0800ca68        0xc ..\obj\PID_Controller.o
  .ARM.extab.text._ZN3PID8output32Ev
-                0x0800c604        0xc ..\obj\PID_Controller.o
+                0x0800ca74        0xc ..\obj\PID_Controller.o
  .ARM.extab.text._ZN8KawaRobo5cycleEv
-                0x0800c610        0xc ..\obj\KawaRoboMain.o
+                0x0800ca80        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo12controlCycleEv
-                0x0800c61c        0xc ..\obj\KawaRoboMain.o
+                0x0800ca8c        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo3runEv
-                0x0800c628        0xc ..\obj\KawaRoboMain.o
+                0x0800ca98        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo11armPotCycleEv
-                0x0800c634        0xc ..\obj\KawaRoboMain.o
+                0x0800caa4        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo5setupER5USARTR4SBUSR13SerialArduinoR7NCP5359S7_S7_S7_
-                0x0800c640        0xc ..\obj\KawaRoboMain.o
+                0x0800cab0        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo7uiSetupER6SwitchS1_R3LEDS3_S3_S3_
-                0x0800c64c        0xc ..\obj\KawaRoboMain.o
+                0x0800cabc        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo12motorDisableEv
-                0x0800c658        0xc ..\obj\KawaRoboMain.o
+                0x0800cac8        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo11motorEnableEv
-                0x0800c664        0xc ..\obj\KawaRoboMain.o
+                0x0800cad4        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo14getRunPositionEv
-                0x0800c670        0xc ..\obj\KawaRoboMain.o
+                0x0800cae0        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo14getArmPositionEv
-                0x0800c67c        0xc ..\obj\KawaRoboMain.o
+                0x0800caec        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo14getRevPositionEv
-                0x0800c688        0xc ..\obj\KawaRoboMain.o
+                0x0800caf8        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo17getSelectPositionEv
-                0x0800c694        0xc ..\obj\KawaRoboMain.o
+                0x0800cb04        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo17getTogglePositionEt
-                0x0800c6a0        0xc ..\obj\KawaRoboMain.o
+                0x0800cb10        0xc ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN8KawaRobo16getStickPositionEtt
-                0x0800c6ac        0xc ..\obj\KawaRoboMain.o
+                0x0800cb1c        0xc ..\obj\KawaRoboMain.o
+ .ARM.extab.text._ZN7AverageIiE5stackEi
+                0x0800cb28        0x0 ..\obj\KawaRoboMain.o
+ .ARM.extab.text._ZN7AverageIiE4peekEv
+                0x0800cb28        0x0 ..\obj\KawaRoboMain.o
+ .ARM.extab.text._ZN7AverageIiE4readEv
+                0x0800cb28        0x0 ..\obj\KawaRoboMain.o
  .ARM.extab.text._ZN13SerialArduino5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x0800c6b8        0xc ..\obj\SerialArduino.o
+                0x0800cb28        0xc ..\obj\SerialArduino.o
  .ARM.extab.text._ZN13SerialArduino5cycleEv
-                0x0800c6c4        0xc ..\obj\SerialArduino.o
+                0x0800cb34        0xc ..\obj\SerialArduino.o
  .ARM.extab.text._ZN5USART4putsEPKc
-                0x0800c6d0        0xc ..\obj\usart.o
+                0x0800cb40        0xc ..\obj\usart.o
  .ARM.extab.text._ZN5USART6printfEPKcz
-                0x0800c6dc       0x10 ..\obj\usart.o
+                0x0800cb4c       0x10 ..\obj\usart.o
  .ARM.extab.text._ZN5USART5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x0800c6ec        0xc ..\obj\usart.o
+                0x0800cb5c        0xc ..\obj\usart.o
  .ARM.extab.text._ZN5USART4sendEc
-                0x0800c6f8        0xc ..\obj\usart.o
+                0x0800cb68        0xc ..\obj\usart.o
  .ARM.extab.text._ZN5USART7ioSetupEP12GPIO_TypeDeftS1_t
-                0x0800c704        0xc ..\obj\usart.o
+                0x0800cb74        0xc ..\obj\usart.o
  .ARM.extab.text._Z11USART1Setupm
-                0x0800c710        0xc ..\obj\usart.o
+                0x0800cb80        0xc ..\obj\usart.o
  .ARM.extab.text._Z11USART2Setupm
-                0x0800c71c        0xc ..\obj\usart.o
+                0x0800cb8c        0xc ..\obj\usart.o
  .ARM.extab.text._Z11USART3Setupm
-                0x0800c728        0xc ..\obj\usart.o
+                0x0800cb98        0xc ..\obj\usart.o
  .ARM.extab.text._Z13USART1ITSetupt
-                0x0800c734        0xc ..\obj\usart.o
+                0x0800cba4        0xc ..\obj\usart.o
  .ARM.extab.text._Z13USART2ITSetupt
-                0x0800c740        0xc ..\obj\usart.o
+                0x0800cbb0        0xc ..\obj\usart.o
  .ARM.extab.text._Z13USART3ITSetupt
-                0x0800c74c        0xc ..\obj\usart.o
+                0x0800cbbc        0xc ..\obj\usart.o
  .ARM.extab.text.USART1_IRQHandler
-                0x0800c758        0xc ..\obj\usart.o
+                0x0800cbc8        0xc ..\obj\usart.o
  .ARM.extab.text.USART2_IRQHandler
-                0x0800c764        0xc ..\obj\usart.o
+                0x0800cbd4        0xc ..\obj\usart.o
  .ARM.extab.text.USART3_IRQHandler
-                0x0800c770        0xc ..\obj\usart.o
- .ARM.extab     0x0800c77c       0x18 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
-                0x0800c794                __exidx_start = .
+                0x0800cbe0        0xc ..\obj\usart.o
+ .ARM.extab     0x0800cbec       0x18 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
+                0x0800cc04                __exidx_start = .
 
-.ARM.exidx      0x0800c794      0x3c0
+.ARM.exidx      0x0800cc04      0x3d0
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
  .ARM.exidx.text._ZN6Switch5setupEP12GPIO_TypeDeft16GPIOMode_TypeDef
-                0x0800c794        0x8 ..\obj\switch.o
+                0x0800cc04        0x8 ..\obj\switch.o
  .ARM.exidx.text._ZN6Switch4readEv
-                0x0800c79c        0x8 ..\obj\switch.o
+                0x0800cc0c        0x8 ..\obj\switch.o
  .ARM.exidx.text._ZN6Switch5cycleEv
-                0x0800c7a4        0x8 ..\obj\switch.o
+                0x0800cc14        0x8 ..\obj\switch.o
  .ARM.exidx.text.SPI1_IRQHandler
-                0x0800c7ac        0x8 ..\obj\spi.o
+                0x0800cc1c        0x8 ..\obj\spi.o
  .ARM.exidx.text.SPI2_IRQHandler
-                0x0800c7b4        0x0 ..\obj\spi.o
+                0x0800cc24        0x0 ..\obj\spi.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10RingBufferIhLi128EEC2Ev
-                0x0800c7b4        0x8 ..\obj\spi.o
+                0x0800cc24        0x8 ..\obj\spi.o
  .ARM.exidx.text._ZN10RingBufferIhLi128EE5writeEh
-                0x0800c7bc        0x0 ..\obj\spi.o
+                0x0800cc2c        0x0 ..\obj\spi.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10RingBufferIhLi128EE4readEv
-                0x0800c7bc        0x0 ..\obj\spi.o
+                0x0800cc2c        0x0 ..\obj\spi.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10RingBufferIhLi128EE6lengthEv
-                0x0800c7bc        0x0 ..\obj\spi.o
+                0x0800cc2c        0x0 ..\obj\spi.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10RingBufferIhLi128EE7isEmptyEv
-                0x0800c7bc        0x0 ..\obj\spi.o
+                0x0800cc2c        0x0 ..\obj\spi.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z41__static_initialization_and_destruction_0ii
-                0x0800c7bc        0x0 ..\obj\spi.o
+                0x0800cc2c        0x0 ..\obj\spi.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._GLOBAL__sub_I__ZN10SPI_Master12interruptCntE
-                0x0800c7bc        0x0 ..\obj\spi.o
+                0x0800cc2c        0x0 ..\obj\spi.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3LED5setupEP12GPIO_TypeDeft
-                0x0800c7bc        0x8 ..\obj\led.o
+                0x0800cc2c        0x8 ..\obj\led.o
  .ARM.exidx.text._ZN3LED8intervalEm
-                0x0800c7c4        0x8 ..\obj\led.o
+                0x0800cc34        0x8 ..\obj\led.o
  .ARM.exidx.text._ZN3LED5cycleEv
-                0x0800c7cc        0x8 ..\obj\led.o
+                0x0800cc3c        0x8 ..\obj\led.o
  .ARM.exidx.text._ZN3TIM8pwmSetupEP11TIM_TypeDeftP12GPIO_TypeDeftttt
-                0x0800c7d4        0x8 ..\obj\tim.o
+                0x0800cc44        0x8 ..\obj\tim.o
  .ARM.exidx.text._ZN3TIM4dutyEt
-                0x0800c7dc        0x8 ..\obj\tim.o
+                0x0800cc4c        0x8 ..\obj\tim.o
  .ARM.exidx.text._ZN3TIM10ioSetupPwmEP12GPIO_TypeDeft
-                0x0800c7e4        0x8 ..\obj\tim.o
+                0x0800cc54        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z9TIM1Setuptt
-                0x0800c7ec        0x8 ..\obj\tim.o
+                0x0800cc5c        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z9TIM2Setuptt
-                0x0800c7f4        0x8 ..\obj\tim.o
+                0x0800cc64        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z9TIM3Setuptt
-                0x0800c7fc        0x8 ..\obj\tim.o
+                0x0800cc6c        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z9TIM4Setuptt
-                0x0800c804        0x8 ..\obj\tim.o
+                0x0800cc74        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z11OC1PWMSetupP11TIM_TypeDeft
-                0x0800c80c        0x8 ..\obj\tim.o
+                0x0800cc7c        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z11OC2PWMSetupP11TIM_TypeDeft
-                0x0800c814        0x8 ..\obj\tim.o
+                0x0800cc84        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z11OC3PWMSetupP11TIM_TypeDeft
-                0x0800c81c        0x8 ..\obj\tim.o
+                0x0800cc8c        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z11OC4PWMSetupP11TIM_TypeDeft
-                0x0800c824        0x8 ..\obj\tim.o
+                0x0800cc94        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z10OC1DutySetP11TIM_TypeDeft
-                0x0800c82c        0x8 ..\obj\tim.o
+                0x0800cc9c        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z10OC2DutySetP11TIM_TypeDeft
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z10OC3DutySetP11TIM_TypeDeft
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z10OC4DutySetP11TIM_TypeDeft
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM1_ENCODER_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM2_ENCODER_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM3_ENCODER_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM4_ENCODER_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM1_PWM_Update_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM2_PWM_Update_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM3_PWM_Update_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM4_PWM_Update_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM4_PWM_CC1_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM4_PWM_CC2_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM4_PWM_CC3_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z16TIM4_PWM_CC4_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM1_TIM_Update_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM2_TIM_Update_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM3_TIM_Update_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z19TIM4_TIM_Update_IRQv
-                0x0800c834        0x0 ..\obj\tim.o
+                0x0800cca4        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text.TIM1_UP_IRQHandler
-                0x0800c834        0x8 ..\obj\tim.o
+                0x0800cca4        0x8 ..\obj\tim.o
  .ARM.exidx.text.TIM2_IRQHandler
-                0x0800c83c        0x0 ..\obj\tim.o
+                0x0800ccac        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text.TIM3_IRQHandler
-                0x0800c83c        0x0 ..\obj\tim.o
+                0x0800ccac        0x0 ..\obj\tim.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text.TIM4_IRQHandler
-                0x0800c83c        0x8 ..\obj\tim.o
+                0x0800ccac        0x8 ..\obj\tim.o
  .ARM.exidx.text._Z5setupv
-                0x0800c844        0x8 ..\obj\main.o
+                0x0800ccb4        0x8 ..\obj\main.o
  .ARM.exidx.text.main
-                0x0800c84c        0x0 ..\obj\main.o
+                0x0800ccbc        0x0 ..\obj\main.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text.NVIC_SetPriority
-                0x0800c84c        0x8 ..\obj\system.o
+                0x0800ccbc        0x8 ..\obj\system.o
  .ARM.exidx.text.SysTick_Config
-                0x0800c854        0x0 ..\obj\system.o
+                0x0800ccc4        0x0 ..\obj\system.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN6System5setupEv
-                0x0800c854        0x0 ..\obj\system.o
+                0x0800ccc4        0x0 ..\obj\system.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN6System10usartSetupER5USART
-                0x0800c854        0x0 ..\obj\system.o
+                0x0800ccc4        0x0 ..\obj\system.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN6System5cycleEv
-                0x0800c854        0x8 ..\obj\system.o
+                0x0800ccc4        0x8 ..\obj\system.o
  .ARM.exidx.text._ZN6System8wdgSetupEth
-                0x0800c85c        0x8 ..\obj\system.o
+                0x0800cccc        0x8 ..\obj\system.o
  .ARM.exidx.text._ZN6System8wdgResetEv
-                0x0800c864        0x8 ..\obj\system.o
+                0x0800ccd4        0x8 ..\obj\system.o
  .ARM.exidx.text._Z9IWDGSetupth
-                0x0800c86c        0x8 ..\obj\system.o
+                0x0800ccdc        0x8 ..\obj\system.o
  .ARM.exidx.text._Z9IWDGResetv
-                0x0800c874       0x10 ..\obj\system.o
+                0x0800cce4       0x10 ..\obj\system.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN4GPIO5setupEP12GPIO_TypeDeft16GPIOMode_TypeDef
-                0x0800c884        0x8 ..\obj\gpio.o
+                0x0800ccf4        0x8 ..\obj\gpio.o
  .ARM.exidx.text._ZN4GPIO5writeEt
-                0x0800c88c        0x8 ..\obj\gpio.o
+                0x0800ccfc        0x8 ..\obj\gpio.o
  .ARM.exidx.text._ZN4GPIO4readEv
-                0x0800c894        0x8 ..\obj\gpio.o
+                0x0800cd04        0x8 ..\obj\gpio.o
  .ARM.exidx.text._ZN4GPIO6toggleEv
-                0x0800c89c        0x8 ..\obj\gpio.o
+                0x0800cd0c        0x8 ..\obj\gpio.o
  .ARM.exidx.text._Z9GPIOSetupv
-                0x0800c8a4        0x8 ..\obj\gpio.o
+                0x0800cd14        0x8 ..\obj\gpio.o
  .ARM.exidx.text._Z9pinToggleP12GPIO_TypeDeft
-                0x0800c8ac       0x10 ..\obj\gpio.o
+                0x0800cd1c       0x10 ..\obj\gpio.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN4SBUS5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x0800c8bc        0x8 ..\obj\sbus.o
+                0x0800cd2c        0x8 ..\obj\sbus.o
  .ARM.exidx.text._ZN4SBUS5cycleEv
-                0x0800c8c4        0x8 ..\obj\sbus.o
+                0x0800cd34        0x8 ..\obj\sbus.o
  .ARM.exidx.text._ZN4SBUS4readEt
-                0x0800c8cc        0x8 ..\obj\sbus.o
+                0x0800cd3c        0x8 ..\obj\sbus.o
  .ARM.exidx.text._ZN7NCP53595setupER3TIMR4GPIO
-                0x0800c8d4        0x8 ..\obj\NCP5359.o
+                0x0800cd44        0x8 ..\obj\NCP5359.o
  .ARM.exidx.text._ZN7NCP53595cycleEv
-                0x0800c8dc        0x8 ..\obj\NCP5359.o
+                0x0800cd4c        0x8 ..\obj\NCP5359.o
+ .ARM.exidx.text._ZN7NCP53599dutyLimitEf
+                0x0800cd54        0x8 ..\obj\NCP5359.o
  .ARM.exidx.text._ZN7NCP53594dutyEf
-                0x0800c8e4       0x10 ..\obj\NCP5359.o
+                0x0800cd5c       0x10 ..\obj\NCP5359.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3ADC5setupEP11ADC_TypeDefhP12GPIO_TypeDefth
-                0x0800c8f4        0x8 ..\obj\adc.o
+                0x0800cd6c        0x8 ..\obj\adc.o
  .ARM.exidx.text._ZN3ADC5startEv
-                0x0800c8fc        0x8 ..\obj\adc.o
+                0x0800cd74        0x8 ..\obj\adc.o
  .ARM.exidx.text._ZN3ADC5startEh
-                0x0800c904        0x8 ..\obj\adc.o
+                0x0800cd7c        0x8 ..\obj\adc.o
  .ARM.exidx.text._ZN3ADC9convertedEv
-                0x0800c90c        0x8 ..\obj\adc.o
+                0x0800cd84        0x8 ..\obj\adc.o
  .ARM.exidx.text._ZN3ADC4peekEv
-                0x0800c914        0x8 ..\obj\adc.o
+                0x0800cd8c        0x8 ..\obj\adc.o
  .ARM.exidx.text._ZN3ADC7ioSetupEP12GPIO_TypeDeft
-                0x0800c91c        0x8 ..\obj\adc.o
+                0x0800cd94        0x8 ..\obj\adc.o
  .ARM.exidx.text._Z9ADC1Setuph
-                0x0800c924        0x8 ..\obj\adc.o
+                0x0800cd9c        0x8 ..\obj\adc.o
  .ARM.exidx.text._Z9ADC2Setuph
-                0x0800c92c        0x8 ..\obj\adc.o
+                0x0800cda4        0x8 ..\obj\adc.o
  .ARM.exidx.text._Z9ADC1Starthh
-                0x0800c934        0x8 ..\obj\adc.o
+                0x0800cdac        0x8 ..\obj\adc.o
  .ARM.exidx.text._Z9ADC2Starthh
-                0x0800c93c        0x8 ..\obj\adc.o
+                0x0800cdb4        0x8 ..\obj\adc.o
  .ARM.exidx.text._Z12ADC1GetValuev
-                0x0800c944        0x8 ..\obj\adc.o
+                0x0800cdbc        0x8 ..\obj\adc.o
  .ARM.exidx.text._Z12ADC2GetValuev
-                0x0800c94c        0x0 ..\obj\adc.o
+                0x0800cdc4        0x0 ..\obj\adc.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z5delaym
-                0x0800c94c        0x8 ..\obj\systime.o
+                0x0800cdc4        0x8 ..\obj\systime.o
  .ARM.exidx.text._Z6microsv
-                0x0800c954        0x0 ..\obj\systime.o
+                0x0800cdcc        0x0 ..\obj\systime.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z6millisv
-                0x0800c954        0x0 ..\obj\systime.o
+                0x0800cdcc        0x0 ..\obj\systime.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text.SysTick_Handler
-                0x0800c954        0x0 ..\obj\systime.o
+                0x0800cdcc        0x0 ..\obj\systime.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3PID5setupEfff
-                0x0800c954        0x0 ..\obj\PID_Controller.o
+                0x0800cdcc        0x0 ..\obj\PID_Controller.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3PID8outLimitEff
-                0x0800c954        0x0 ..\obj\PID_Controller.o
+                0x0800cdcc        0x0 ..\obj\PID_Controller.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3PID5clearEv
-                0x0800c954        0x0 ..\obj\PID_Controller.o
+                0x0800cdcc        0x0 ..\obj\PID_Controller.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3PID13errorLimitIntEff
-                0x0800c954        0x0 ..\obj\PID_Controller.o
+                0x0800cdcc        0x0 ..\obj\PID_Controller.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3PID10errorLimitEtff
-                0x0800c954        0x0 ..\obj\PID_Controller.o
+                0x0800cdcc        0x0 ..\obj\PID_Controller.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN3PID13measuredValueEf
-                0x0800c954        0x8 ..\obj\PID_Controller.o
+                0x0800cdcc        0x8 ..\obj\PID_Controller.o
  .ARM.exidx.text._ZN3PID5inputEf
-                0x0800c95c        0x8 ..\obj\PID_Controller.o
+                0x0800cdd4        0x8 ..\obj\PID_Controller.o
  .ARM.exidx.text._ZN3PID7outputFEv
-                0x0800c964        0x8 ..\obj\PID_Controller.o
+                0x0800cddc        0x8 ..\obj\PID_Controller.o
  .ARM.exidx.text._ZN3PID8output32Ev
-                0x0800c96c       0x10 ..\obj\PID_Controller.o
+                0x0800cde4       0x10 ..\obj\PID_Controller.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN8KawaRobo5cycleEv
-                0x0800c97c        0x8 ..\obj\KawaRoboMain.o
+                0x0800cdf4        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo12displayCycleEv
-                0x0800c984        0x8 ..\obj\KawaRoboMain.o
+                0x0800cdfc        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo12controlCycleEv
-                0x0800c98c        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce04        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo4testEv
-                0x0800c994        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce0c        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo3runEv
-                0x0800c99c        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce14        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo12armPotUpdateEv
-                0x0800c9a4        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce1c        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo11armPotCycleEv
-                0x0800c9ac        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce24        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo5setupER5USARTR4SBUSR13SerialArduinoR7NCP5359S7_S7_S7_
-                0x0800c9b4        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce2c        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo7uiSetupER6SwitchS1_R3LEDS3_S3_S3_
-                0x0800c9bc        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce34        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo11sensorSetupER3ADCS1_S1_S1_sf
-                0x0800c9c4        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce3c        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo12motorDisableEv
-                0x0800c9cc        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce44        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo11motorEnableEv
-                0x0800c9d4        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce4c        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo14getRunPositionEv
-                0x0800c9dc        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce54        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo14getArmPositionEv
-                0x0800c9e4        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce5c        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo14getRevPositionEv
-                0x0800c9ec        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce64        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo17getSelectPositionEv
-                0x0800c9f4        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce6c        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo17getTogglePositionEt
-                0x0800c9fc        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce74        0x8 ..\obj\KawaRoboMain.o
  .ARM.exidx.text._ZN8KawaRobo16getStickPositionEtt
-                0x0800ca04        0x8 ..\obj\KawaRoboMain.o
+                0x0800ce7c        0x8 ..\obj\KawaRoboMain.o
+ .ARM.exidx.text._ZN7AverageIiE5stackEi
+                0x0800ce84        0x8 ..\obj\KawaRoboMain.o
+ .ARM.exidx.text._ZN7AverageIiE4peekEv
+                0x0800ce8c        0x0 ..\obj\KawaRoboMain.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text._ZN7AverageIiE4readEv
+                0x0800ce8c        0x0 ..\obj\KawaRoboMain.o
+                                  0x8 (size before relaxing)
  .ARM.exidx.text._ZN13SerialArduino5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x0800ca0c        0x8 ..\obj\SerialArduino.o
+                0x0800ce8c        0x8 ..\obj\SerialArduino.o
  .ARM.exidx.text._ZN13SerialArduino5cycleEv
-                0x0800ca14        0x8 ..\obj\SerialArduino.o
+                0x0800ce94        0x8 ..\obj\SerialArduino.o
  .ARM.exidx.text._ZN13SerialArduino5writeEts
-                0x0800ca1c        0x8 ..\obj\SerialArduino.o
+                0x0800ce9c        0x8 ..\obj\SerialArduino.o
  .ARM.exidx.text._ZN13SerialArduino4readEt
-                0x0800ca24        0x0 ..\obj\SerialArduino.o
+                0x0800cea4        0x0 ..\obj\SerialArduino.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN5USART4putsEPKc
-                0x0800ca24        0x8 ..\obj\usart.o
+                0x0800cea4        0x8 ..\obj\usart.o
  .ARM.exidx.text._ZN5USART6printfEPKcz
-                0x0800ca2c        0x8 ..\obj\usart.o
+                0x0800ceac        0x8 ..\obj\usart.o
  .ARM.exidx.text._ZN5USART5setupEP13USART_TypeDefmP12GPIO_TypeDeftS3_t
-                0x0800ca34        0x8 ..\obj\usart.o
+                0x0800ceb4        0x8 ..\obj\usart.o
  .ARM.exidx.text._ZN5USART4sendEc
-                0x0800ca3c        0x8 ..\obj\usart.o
+                0x0800cebc        0x8 ..\obj\usart.o
  .ARM.exidx.text._ZN5USART4readEv
-                0x0800ca44        0x8 ..\obj\usart.o
+                0x0800cec4        0x8 ..\obj\usart.o
  .ARM.exidx.text._ZN5USART9availableEv
-                0x0800ca4c        0x0 ..\obj\usart.o
+                0x0800cecc        0x0 ..\obj\usart.o
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN5USART7ioSetupEP12GPIO_TypeDeftS1_t
-                0x0800ca4c        0x8 ..\obj\usart.o
+                0x0800cecc        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z11USART1Setupm
-                0x0800ca54        0x8 ..\obj\usart.o
+                0x0800ced4        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z11USART2Setupm
-                0x0800ca5c        0x8 ..\obj\usart.o
+                0x0800cedc        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z11USART3Setupm
-                0x0800ca64        0x8 ..\obj\usart.o
+                0x0800cee4        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z13USART1ITSetupt
-                0x0800ca6c        0x8 ..\obj\usart.o
+                0x0800ceec        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z13USART2ITSetupt
-                0x0800ca74        0x8 ..\obj\usart.o
+                0x0800cef4        0x8 ..\obj\usart.o
  .ARM.exidx.text._Z13USART3ITSetupt
-                0x0800ca7c        0x8 ..\obj\usart.o
+                0x0800cefc        0x8 ..\obj\usart.o
  .ARM.exidx.text.USART1_IRQHandler
-                0x0800ca84        0x8 ..\obj\usart.o
+                0x0800cf04        0x8 ..\obj\usart.o
  .ARM.exidx.text.USART2_IRQHandler
-                0x0800ca8c        0x8 ..\obj\usart.o
+                0x0800cf0c        0x8 ..\obj\usart.o
  .ARM.exidx.text.USART3_IRQHandler
-                0x0800ca94       0x10 ..\obj\usart.o
+                0x0800cf14       0x10 ..\obj\usart.o
                                   0x8 (size before relaxing)
- .ARM.exidx     0x0800caa4        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x0800cf24        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
                                   0x8 (size before relaxing)
- .ARM.exidx     0x0800caa4       0x78 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(unwind-arm.o)
+ .ARM.exidx     0x0800cf24       0x78 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(unwind-arm.o)
                                  0xd8 (size before relaxing)
- .ARM.exidx     0x0800cb1c       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
+ .ARM.exidx     0x0800cf9c       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(pr-support.o)
                                  0x48 (size before relaxing)
-                0x0800cb54                __exidx_end = .
-                0x0800cb54                __etext = .
-                0x0800cb54                _sidata = __etext
+                0x0800cfd4                __exidx_end = .
+                0x0800cfd4                __etext = .
+                0x0800cfd4                _sidata = __etext
 
-.rel.dyn        0x0800cb54        0x0
- .rel.iplt      0x0800cb54        0x0 ..\obj\switch.o
+.rel.dyn        0x0800cfd4        0x0
+ .rel.iplt      0x0800cfd4        0x0 ..\obj\switch.o
 
-.data           0x20000000      0x9dc load address 0x0800cb54
+.data           0x20000000      0x9dc load address 0x0800cfd4
                 0x20000000                __data_start__ = .
                 0x20000000                _sdata = __data_start__
  *(vtable)
@@ -5863,10 +5891,10 @@ Linker script and memory map
                 0x200009dc                __data_end__ = .
                 0x200009dc                _edata = __data_end__
 
-.igot.plt       0x200009dc        0x0 load address 0x0800d530
+.igot.plt       0x200009dc        0x0 load address 0x0800d9b0
  .igot.plt      0x200009dc        0x0 ..\obj\switch.o
 
-.bss            0x200009e0      0xf98 load address 0x0800d538
+.bss            0x200009e0      0xfb8 load address 0x0800d9b8
                 0x200009e0                . = ALIGN (0x4)
                 0x200009e0                __bss_start__ = .
                 0x200009e0                _sbss = __bss_start__
@@ -5888,7 +5916,7 @@ Linker script and memory map
                 0x20000c2c                TIM::tim3Cnt
                 0x20000c30                TIM::tim4Cnt
  *fill*         0x20000c34        0x4 
- .bss           0x20000c38      0x840 ..\obj\main.o
+ .bss           0x20000c38      0x860 ..\obj\main.o
                 0x20000c38                sys
                 0x20000c40                serial
                 0x20000c48                sw
@@ -5904,65 +5932,65 @@ Linker script and memory map
                 0x20000fa8                spi
                 0x20000fb8                mag
                 0x200010a0                kw
-                0x20001470                intervalTime
- .bss           0x20001478        0x6 ..\obj\system.o
-                0x20001478                System::cycleFunctionCnt
-                0x2000147a                System::cycleFunctionNumber
-                0x2000147c                System::error
- *fill*         0x2000147e        0x2 
- .bss           0x20001480        0x4 ..\obj\syscalls.o
- *fill*         0x20001484        0x4 
- .bss           0x20001488        0x8 ..\obj\systime.o
- .bss           0x20001490      0x4b0 ..\obj\usart.o
-                0x20001490                USART::usart1RxBuffer
-                0x20001510                USART::usart1ReadAddress
-                0x20001514                USART::usart2RxBuffer
-                0x20001594                USART::usart2ReadAddress
-                0x20001598                USART::usart3RxBuffer
-                0x20001618                USART::usart3ReadAddress
-                0x2000161c                USART::usart1TxBuffer
-                0x2000171c                USART::usart1TxSendAddress
-                0x2000171e                USART::usart1TxWriteAddress
-                0x20001720                USART::usart2TxBuffer
-                0x20001820                USART::usart2TxSendAddress
-                0x20001822                USART::usart2TxWriteAddress
-                0x20001824                USART::usart3TxBuffer
-                0x20001924                USART::usart3TxSendAddress
-                0x20001926                USART::usart3TxWriteAddress
-                0x20001928                USART::usart1receiveTime
-                0x20001930                USART::usart2receiveTime
-                0x20001938                USART::usart3receiveTime
+                0x20001490                intervalTime
+ .bss           0x20001498        0x6 ..\obj\system.o
+                0x20001498                System::cycleFunctionCnt
+                0x2000149a                System::cycleFunctionNumber
+                0x2000149c                System::error
+ *fill*         0x2000149e        0x2 
+ .bss           0x200014a0        0x4 ..\obj\syscalls.o
+ *fill*         0x200014a4        0x4 
+ .bss           0x200014a8        0x8 ..\obj\systime.o
+ .bss           0x200014b0      0x4b0 ..\obj\usart.o
+                0x200014b0                USART::usart1RxBuffer
+                0x20001530                USART::usart1ReadAddress
+                0x20001534                USART::usart2RxBuffer
+                0x200015b4                USART::usart2ReadAddress
+                0x200015b8                USART::usart3RxBuffer
+                0x20001638                USART::usart3ReadAddress
+                0x2000163c                USART::usart1TxBuffer
+                0x2000173c                USART::usart1TxSendAddress
+                0x2000173e                USART::usart1TxWriteAddress
+                0x20001740                USART::usart2TxBuffer
+                0x20001840                USART::usart2TxSendAddress
+                0x20001842                USART::usart2TxWriteAddress
+                0x20001844                USART::usart3TxBuffer
+                0x20001944                USART::usart3TxSendAddress
+                0x20001946                USART::usart3TxWriteAddress
+                0x20001948                USART::usart1receiveTime
+                0x20001950                USART::usart2receiveTime
+                0x20001958                USART::usart3receiveTime
  .bss.__malloc_max_total_mem
-                0x20001940        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
-                0x20001940                __malloc_max_total_mem
+                0x20001960        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+                0x20001960                __malloc_max_total_mem
  .bss.__malloc_max_sbrked_mem
-                0x20001944        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
-                0x20001944                __malloc_max_sbrked_mem
+                0x20001964        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+                0x20001964                __malloc_max_sbrked_mem
  .bss.__malloc_top_pad
-                0x20001948        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
-                0x20001948                __malloc_top_pad
+                0x20001968        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+                0x20001968                __malloc_top_pad
  .bss.__malloc_current_mallinfo
-                0x2000194c       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
-                0x2000194c                __malloc_current_mallinfo
+                0x2000196c       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+                0x2000196c                __malloc_current_mallinfo
  *(COMMON)
- COMMON         0x20001974        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reent.o)
-                0x20001974                errno
-                0x20001978                . = ALIGN (0x4)
-                0x20001978                __bss_end__ = .
-                0x20001978                _ebss = __bss_end__
+ COMMON         0x20001994        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reent.o)
+                0x20001994                errno
+                0x20001998                . = ALIGN (0x4)
+                0x20001998                __bss_end__ = .
+                0x20001998                _ebss = __bss_end__
 
-.heap           0x20001978        0x0
-                0x20001978                __end__ = .
-                0x20001978                _end = __end__
-                0x20001978                end = __end__
+.heap           0x20001998        0x0
+                0x20001998                __end__ = .
+                0x20001998                _end = __end__
+                0x20001998                end = __end__
  *(.heap*)
-                0x20001978                __HeapLimit = .
+                0x20001998                __HeapLimit = .
 
-.co_stack       0x20001978      0x400 load address 0x0800e4d0
-                0x20001978                . = ALIGN (0x8)
+.co_stack       0x20001998      0x400 load address 0x0800e970
+                0x20001998                . = ALIGN (0x8)
  *(.co_stack .co_stack.*)
- .co_stack      0x20001978      0x400 ..\obj\startup_stm32f10x_md.o
-                0x20001978                pulStack
+ .co_stack      0x20001998      0x400 ..\obj\startup_stm32f10x_md.o
+                0x20001998                pulStack
                 0x20005000                __StackTop = (ORIGIN (ram) + LENGTH (ram))
                 0x20004c00                __StackLimit = (__StackTop - SIZEOF (.co_stack))
                 [!provide]                PROVIDE (__stack, __StackTop)
@@ -6043,7 +6071,7 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
 END GROUP
 OUTPUT(STM32F103mini_temp.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x21894
+.debug_info     0x00000000    0x21b1e
  .debug_info    0x00000000     0x1988 ..\obj\switch.o
  .debug_info    0x00001988     0x2542 ..\obj\spi.o
  .debug_info    0x00003eca     0x1c60 ..\obj\stm32f10x_tim.o
@@ -6053,26 +6081,26 @@ OUTPUT(STM32F103mini_temp.elf elf32-littlearm)
  .debug_info    0x00007ef3     0x1735 ..\obj\tim.o
  .debug_info    0x00009628       0xee ..\obj\startup_stm32f10x_md.o
  .debug_info    0x00009716      0x6f6 ..\obj\stm32f10x_gpio.o
- .debug_info    0x00009e0c     0x3b43 ..\obj\main.o
- .debug_info    0x0000d94f     0x20c7 ..\obj\system.o
- .debug_info    0x0000fa16      0x8a3 ..\obj\stm32f10x_rcc.o
- .debug_info    0x000102b9      0x9cd ..\obj\gpio.o
- .debug_info    0x00010c86      0xb7c ..\obj\stm32f10x_adc.o
- .debug_info    0x00011802      0x9f0 ..\obj\stm32f10x_usart.o
- .debug_info    0x000121f2     0x1bdb ..\obj\sbus.o
- .debug_info    0x00013dcd     0x205e ..\obj\NCP5359.o
- .debug_info    0x00015e2b      0x458 ..\obj\syscalls.o
- .debug_info    0x00016283     0x1e69 ..\obj\adc.o
- .debug_info    0x000180ec      0x20b ..\obj\systime.o
- .debug_info    0x000182f7      0x556 ..\obj\misc.o
- .debug_info    0x0001884d     0x1b8c ..\obj\PID_Controller.o
- .debug_info    0x0001a3d9      0x8fb ..\obj\stm32f10x_spi.o
- .debug_info    0x0001acd4     0x3da5 ..\obj\KawaRoboMain.o
- .debug_info    0x0001ea79     0x1c97 ..\obj\SerialArduino.o
- .debug_info    0x00020710      0xf76 ..\obj\usart.o
- .debug_info    0x00021686      0x20e ..\obj\stm32f10x_iwdg.o
+ .debug_info    0x00009e0c     0x3c47 ..\obj\main.o
+ .debug_info    0x0000da53     0x20c7 ..\obj\system.o
+ .debug_info    0x0000fb1a      0x8a3 ..\obj\stm32f10x_rcc.o
+ .debug_info    0x000103bd      0x9cd ..\obj\gpio.o
+ .debug_info    0x00010d8a      0xb7c ..\obj\stm32f10x_adc.o
+ .debug_info    0x00011906      0x9f0 ..\obj\stm32f10x_usart.o
+ .debug_info    0x000122f6     0x1bdb ..\obj\sbus.o
+ .debug_info    0x00013ed1     0x205e ..\obj\NCP5359.o
+ .debug_info    0x00015f2f      0x458 ..\obj\syscalls.o
+ .debug_info    0x00016387     0x1e69 ..\obj\adc.o
+ .debug_info    0x000181f0      0x20b ..\obj\systime.o
+ .debug_info    0x000183fb      0x556 ..\obj\misc.o
+ .debug_info    0x00018951     0x1b8c ..\obj\PID_Controller.o
+ .debug_info    0x0001a4dd      0x8fb ..\obj\stm32f10x_spi.o
+ .debug_info    0x0001add8     0x3f2b ..\obj\KawaRoboMain.o
+ .debug_info    0x0001ed03     0x1c97 ..\obj\SerialArduino.o
+ .debug_info    0x0002099a      0xf76 ..\obj\usart.o
+ .debug_info    0x00021910      0x20e ..\obj\stm32f10x_iwdg.o
 
-.debug_abbrev   0x00000000     0x44ca
+.debug_abbrev   0x00000000     0x44d8
  .debug_abbrev  0x00000000      0x3a2 ..\obj\switch.o
  .debug_abbrev  0x000003a2      0x504 ..\obj\spi.o
  .debug_abbrev  0x000008a6      0x1b2 ..\obj\stm32f10x_tim.o
@@ -6082,26 +6110,26 @@ OUTPUT(STM32F103mini_temp.elf elf32-littlearm)
  .debug_abbrev  0x00001049      0x2da ..\obj\tim.o
  .debug_abbrev  0x00001323       0xa7 ..\obj\startup_stm32f10x_md.o
  .debug_abbrev  0x000013ca      0x1cc ..\obj\stm32f10x_gpio.o
- .debug_abbrev  0x00001596      0x453 ..\obj\main.o
- .debug_abbrev  0x000019e9      0x446 ..\obj\system.o
- .debug_abbrev  0x00001e2f      0x1bc ..\obj\stm32f10x_rcc.o
- .debug_abbrev  0x00001feb      0x255 ..\obj\gpio.o
- .debug_abbrev  0x00002240      0x19a ..\obj\stm32f10x_adc.o
- .debug_abbrev  0x000023da      0x164 ..\obj\stm32f10x_usart.o
- .debug_abbrev  0x0000253e      0x37c ..\obj\sbus.o
- .debug_abbrev  0x000028ba      0x39a ..\obj\NCP5359.o
- .debug_abbrev  0x00002c54       0xe5 ..\obj\syscalls.o
- .debug_abbrev  0x00002d39      0x41d ..\obj\adc.o
- .debug_abbrev  0x00003156      0x101 ..\obj\systime.o
- .debug_abbrev  0x00003257      0x147 ..\obj\misc.o
- .debug_abbrev  0x0000339e      0x378 ..\obj\PID_Controller.o
- .debug_abbrev  0x00003716      0x180 ..\obj\stm32f10x_spi.o
- .debug_abbrev  0x00003896      0x4bc ..\obj\KawaRoboMain.o
- .debug_abbrev  0x00003d52      0x3ad ..\obj\SerialArduino.o
- .debug_abbrev  0x000040ff      0x2c8 ..\obj\usart.o
- .debug_abbrev  0x000043c7      0x103 ..\obj\stm32f10x_iwdg.o
+ .debug_abbrev  0x00001596      0x45c ..\obj\main.o
+ .debug_abbrev  0x000019f2      0x446 ..\obj\system.o
+ .debug_abbrev  0x00001e38      0x1bc ..\obj\stm32f10x_rcc.o
+ .debug_abbrev  0x00001ff4      0x255 ..\obj\gpio.o
+ .debug_abbrev  0x00002249      0x19a ..\obj\stm32f10x_adc.o
+ .debug_abbrev  0x000023e3      0x164 ..\obj\stm32f10x_usart.o
+ .debug_abbrev  0x00002547      0x37c ..\obj\sbus.o
+ .debug_abbrev  0x000028c3      0x39a ..\obj\NCP5359.o
+ .debug_abbrev  0x00002c5d       0xe5 ..\obj\syscalls.o
+ .debug_abbrev  0x00002d42      0x41d ..\obj\adc.o
+ .debug_abbrev  0x0000315f      0x101 ..\obj\systime.o
+ .debug_abbrev  0x00003260      0x147 ..\obj\misc.o
+ .debug_abbrev  0x000033a7      0x378 ..\obj\PID_Controller.o
+ .debug_abbrev  0x0000371f      0x180 ..\obj\stm32f10x_spi.o
+ .debug_abbrev  0x0000389f      0x4c1 ..\obj\KawaRoboMain.o
+ .debug_abbrev  0x00003d60      0x3ad ..\obj\SerialArduino.o
+ .debug_abbrev  0x0000410d      0x2c8 ..\obj\usart.o
+ .debug_abbrev  0x000043d5      0x103 ..\obj\stm32f10x_iwdg.o
 
-.debug_aranges  0x00000000     0x11c8
+.debug_aranges  0x00000000     0x11e0
  .debug_aranges
                 0x00000000       0x40 ..\obj\switch.o
  .debug_aranges
@@ -6149,15 +6177,15 @@ OUTPUT(STM32F103mini_temp.elf elf32-littlearm)
  .debug_aranges
                 0x00000ef8       0xd0 ..\obj\stm32f10x_spi.o
  .debug_aranges
-                0x00000fc8       0xb8 ..\obj\KawaRoboMain.o
+                0x00000fc8       0xd0 ..\obj\KawaRoboMain.o
  .debug_aranges
-                0x00001080       0x40 ..\obj\SerialArduino.o
+                0x00001098       0x40 ..\obj\SerialArduino.o
  .debug_aranges
-                0x000010c0       0xc0 ..\obj\usart.o
+                0x000010d8       0xc0 ..\obj\usart.o
  .debug_aranges
-                0x00001180       0x48 ..\obj\stm32f10x_iwdg.o
+                0x00001198       0x48 ..\obj\stm32f10x_iwdg.o
 
-.debug_ranges   0x00000000     0x1018
+.debug_ranges   0x00000000     0x1030
  .debug_ranges  0x00000000       0x30 ..\obj\switch.o
  .debug_ranges  0x00000030       0xd0 ..\obj\spi.o
  .debug_ranges  0x00000100      0x2e0 ..\obj\stm32f10x_tim.o
@@ -6181,12 +6209,12 @@ OUTPUT(STM32F103mini_temp.elf elf32-littlearm)
  .debug_ranges  0x00000ce8       0x30 ..\obj\misc.o
  .debug_ranges  0x00000d18       0x80 ..\obj\PID_Controller.o
  .debug_ranges  0x00000d98       0xc0 ..\obj\stm32f10x_spi.o
- .debug_ranges  0x00000e58       0xa8 ..\obj\KawaRoboMain.o
- .debug_ranges  0x00000f00       0x30 ..\obj\SerialArduino.o
- .debug_ranges  0x00000f30       0xb0 ..\obj\usart.o
- .debug_ranges  0x00000fe0       0x38 ..\obj\stm32f10x_iwdg.o
+ .debug_ranges  0x00000e58       0xc0 ..\obj\KawaRoboMain.o
+ .debug_ranges  0x00000f18       0x30 ..\obj\SerialArduino.o
+ .debug_ranges  0x00000f48       0xb0 ..\obj\usart.o
+ .debug_ranges  0x00000ff8       0x38 ..\obj\stm32f10x_iwdg.o
 
-.debug_line     0x00000000     0x9c6f
+.debug_line     0x00000000     0x9ddf
  .debug_line    0x00000000      0x6e6 ..\obj\switch.o
  .debug_line    0x000006e6      0x96c ..\obj\spi.o
  .debug_line    0x00001052      0xba4 ..\obj\stm32f10x_tim.o
@@ -6196,26 +6224,26 @@ OUTPUT(STM32F103mini_temp.elf elf32-littlearm)
  .debug_line    0x00002784      0x852 ..\obj\tim.o
  .debug_line    0x00002fd6       0xb6 ..\obj\startup_stm32f10x_md.o
  .debug_line    0x0000308c      0x424 ..\obj\stm32f10x_gpio.o
- .debug_line    0x000034b0      0x8f7 ..\obj\main.o
- .debug_line    0x00003da7      0x6c0 ..\obj\system.o
- .debug_line    0x00004467      0x51f ..\obj\stm32f10x_rcc.o
- .debug_line    0x00004986      0x42a ..\obj\gpio.o
- .debug_line    0x00004db0      0x58e ..\obj\stm32f10x_adc.o
- .debug_line    0x0000533e      0x506 ..\obj\stm32f10x_usart.o
- .debug_line    0x00005844      0x6ce ..\obj\sbus.o
- .debug_line    0x00005f12      0x74b ..\obj\NCP5359.o
- .debug_line    0x0000665d      0x202 ..\obj\syscalls.o
- .debug_line    0x0000685f      0x7e5 ..\obj\adc.o
- .debug_line    0x00007044      0x238 ..\obj\systime.o
- .debug_line    0x0000727c      0x297 ..\obj\misc.o
- .debug_line    0x00007513      0x705 ..\obj\PID_Controller.o
- .debug_line    0x00007c18      0x481 ..\obj\stm32f10x_spi.o
- .debug_line    0x00008099      0xc25 ..\obj\KawaRoboMain.o
- .debug_line    0x00008cbe      0x703 ..\obj\SerialArduino.o
- .debug_line    0x000093c1      0x65d ..\obj\usart.o
- .debug_line    0x00009a1e      0x251 ..\obj\stm32f10x_iwdg.o
+ .debug_line    0x000034b0      0x94a ..\obj\main.o
+ .debug_line    0x00003dfa      0x6c0 ..\obj\system.o
+ .debug_line    0x000044ba      0x51f ..\obj\stm32f10x_rcc.o
+ .debug_line    0x000049d9      0x42a ..\obj\gpio.o
+ .debug_line    0x00004e03      0x58e ..\obj\stm32f10x_adc.o
+ .debug_line    0x00005391      0x506 ..\obj\stm32f10x_usart.o
+ .debug_line    0x00005897      0x6ce ..\obj\sbus.o
+ .debug_line    0x00005f65      0x74b ..\obj\NCP5359.o
+ .debug_line    0x000066b0      0x202 ..\obj\syscalls.o
+ .debug_line    0x000068b2      0x7e5 ..\obj\adc.o
+ .debug_line    0x00007097      0x238 ..\obj\systime.o
+ .debug_line    0x000072cf      0x297 ..\obj\misc.o
+ .debug_line    0x00007566      0x705 ..\obj\PID_Controller.o
+ .debug_line    0x00007c6b      0x481 ..\obj\stm32f10x_spi.o
+ .debug_line    0x000080ec      0xd42 ..\obj\KawaRoboMain.o
+ .debug_line    0x00008e2e      0x703 ..\obj\SerialArduino.o
+ .debug_line    0x00009531      0x65d ..\obj\usart.o
+ .debug_line    0x00009b8e      0x251 ..\obj\stm32f10x_iwdg.o
 
-.debug_str      0x00000000     0x67ee
+.debug_str      0x00000000     0x68c5
  .debug_str     0x00000000      0xded ..\obj\switch.o
                                 0xfe6 (size before relaxing)
  .debug_str     0x00000ded      0xc0b ..\obj\spi.o
@@ -6234,41 +6262,41 @@ OUTPUT(STM32F103mini_temp.elf elf32-littlearm)
                                 0x15b (size before relaxing)
  .debug_str     0x00003513      0x2bb ..\obj\stm32f10x_gpio.o
                                 0x535 (size before relaxing)
- .debug_str     0x000037ce     0x109f ..\obj\main.o
-                               0x2962 (size before relaxing)
- .debug_str     0x0000486d      0x163 ..\obj\system.o
+ .debug_str     0x000037ce     0x1176 ..\obj\main.o
+                               0x2a39 (size before relaxing)
+ .debug_str     0x00004944      0x163 ..\obj\system.o
                                0x1521 (size before relaxing)
- .debug_str     0x000049d0      0x3e2 ..\obj\stm32f10x_rcc.o
+ .debug_str     0x00004aa7      0x3e2 ..\obj\stm32f10x_rcc.o
                                 0x636 (size before relaxing)
- .debug_str     0x00004db2      0x1fa ..\obj\gpio.o
+ .debug_str     0x00004e89      0x1fa ..\obj\gpio.o
                                 0xb4c (size before relaxing)
- .debug_str     0x00004fac      0x4e5 ..\obj\stm32f10x_adc.o
+ .debug_str     0x00005083      0x4e5 ..\obj\stm32f10x_adc.o
                                 0x717 (size before relaxing)
- .debug_str     0x00005491      0x417 ..\obj\stm32f10x_usart.o
+ .debug_str     0x00005568      0x417 ..\obj\stm32f10x_usart.o
                                 0x6ac (size before relaxing)
- .debug_str     0x000058a8       0x89 ..\obj\sbus.o
+ .debug_str     0x0000597f       0x89 ..\obj\sbus.o
                                0x10b9 (size before relaxing)
- .debug_str     0x00005931       0x71 ..\obj\NCP5359.o
+ .debug_str     0x00005a08       0x71 ..\obj\NCP5359.o
                                0x146b (size before relaxing)
- .debug_str     0x000059a2      0x179 ..\obj\syscalls.o
+ .debug_str     0x00005a79      0x179 ..\obj\syscalls.o
                                 0x35a (size before relaxing)
- .debug_str     0x00005b1b      0x165 ..\obj\adc.o
+ .debug_str     0x00005bf2      0x165 ..\obj\adc.o
                                0x1279 (size before relaxing)
- .debug_str     0x00005c80       0xc6 ..\obj\systime.o
+ .debug_str     0x00005d57       0xc6 ..\obj\systime.o
                                 0x2ed (size before relaxing)
- .debug_str     0x00005d46      0x118 ..\obj\misc.o
+ .debug_str     0x00005e1d      0x118 ..\obj\misc.o
                                 0x3da (size before relaxing)
- .debug_str     0x00005e5e       0xaa ..\obj\PID_Controller.o
+ .debug_str     0x00005f35       0xaa ..\obj\PID_Controller.o
                                 0xe41 (size before relaxing)
- .debug_str     0x00005f08      0x2cc ..\obj\stm32f10x_spi.o
+ .debug_str     0x00005fdf      0x2cc ..\obj\stm32f10x_spi.o
                                 0x619 (size before relaxing)
- .debug_str     0x000061d4       0xd5 ..\obj\KawaRoboMain.o
-                               0x28d1 (size before relaxing)
- .debug_str     0x000062a9       0x6c ..\obj\SerialArduino.o
+ .debug_str     0x000062ab       0xd5 ..\obj\KawaRoboMain.o
+                               0x29a8 (size before relaxing)
+ .debug_str     0x00006380       0x6c ..\obj\SerialArduino.o
                                0x1124 (size before relaxing)
- .debug_str     0x00006315      0x3e5 ..\obj\usart.o
+ .debug_str     0x000063ec      0x3e5 ..\obj\usart.o
                                0x10b2 (size before relaxing)
- .debug_str     0x000066fa       0xf4 ..\obj\stm32f10x_iwdg.o
+ .debug_str     0x000067d1       0xf4 ..\obj\stm32f10x_iwdg.o
                                 0x278 (size before relaxing)
 
 .comment        0x00000000       0x6e
@@ -6432,7 +6460,7 @@ OUTPUT(STM32F103mini_temp.elf elf32-littlearm)
  .ARM.attributes
                 0x00000ae3       0x1d c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_unorddf2.o)
 
-.debug_frame    0x00000000     0x528c
+.debug_frame    0x00000000     0x5304
  .debug_frame   0x00000000       0xd4 ..\obj\switch.o
  .debug_frame   0x000000d4      0x3a0 ..\obj\spi.o
  .debug_frame   0x00000474      0xe2c ..\obj\stm32f10x_tim.o
@@ -6456,29 +6484,29 @@ OUTPUT(STM32F103mini_temp.elf elf32-littlearm)
  .debug_frame   0x00003b78       0xd8 ..\obj\misc.o
  .debug_frame   0x00003c50      0x244 ..\obj\PID_Controller.o
  .debug_frame   0x00003e94      0x3a0 ..\obj\stm32f10x_spi.o
- .debug_frame   0x00004234      0x314 ..\obj\KawaRoboMain.o
- .debug_frame   0x00004548       0xd8 ..\obj\SerialArduino.o
- .debug_frame   0x00004620      0x324 ..\obj\usart.o
- .debug_frame   0x00004944       0xf0 ..\obj\stm32f10x_iwdg.o
- .debug_frame   0x00004a34       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00004a60       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x00004a98       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vsprintf.o)
- .debug_frame   0x00004ae8       0x44 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
- .debug_frame   0x00004b2c       0x84 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-dtoa.o)
- .debug_frame   0x00004bb0       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-localeconv.o)
- .debug_frame   0x00004bf0       0x54 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
- .debug_frame   0x00004c44       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memchr-stub.o)
- .debug_frame   0x00004c78       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mlock.o)
- .debug_frame   0x00004ca8      0x264 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
- .debug_frame   0x00004f0c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sbrkr.o)
- .debug_frame   0x00004f38       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strlen-stub.o)
- .debug_frame   0x00004f58       0x78 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfiprintf.o)
- .debug_frame   0x00004fd0       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-callocr.o)
- .debug_frame   0x00004ff8       0x74 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-freer.o)
- .debug_frame   0x0000506c       0x84 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-locale.o)
- .debug_frame   0x000050f0       0x4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mbtowc_r.o)
- .debug_frame   0x0000513c       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memmove.o)
- .debug_frame   0x0000516c       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
- .debug_frame   0x000051a0       0x58 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reallocr.o)
- .debug_frame   0x000051f8       0x58 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reent.o)
- .debug_frame   0x00005250       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00004234      0x38c ..\obj\KawaRoboMain.o
+ .debug_frame   0x000045c0       0xd8 ..\obj\SerialArduino.o
+ .debug_frame   0x00004698      0x324 ..\obj\usart.o
+ .debug_frame   0x000049bc       0xf0 ..\obj\stm32f10x_iwdg.o
+ .debug_frame   0x00004aac       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00004ad8       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00004b10       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-vsprintf.o)
+ .debug_frame   0x00004b60       0x44 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfprintf.o)
+ .debug_frame   0x00004ba4       0x84 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-dtoa.o)
+ .debug_frame   0x00004c28       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-localeconv.o)
+ .debug_frame   0x00004c68       0x54 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mallocr.o)
+ .debug_frame   0x00004cbc       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00004cf0       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mlock.o)
+ .debug_frame   0x00004d20      0x264 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mprec.o)
+ .debug_frame   0x00004f84       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x00004fb0       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-strlen-stub.o)
+ .debug_frame   0x00004fd0       0x78 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-svfiprintf.o)
+ .debug_frame   0x00005048       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-callocr.o)
+ .debug_frame   0x00005070       0x74 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-freer.o)
+ .debug_frame   0x000050e4       0x84 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-locale.o)
+ .debug_frame   0x00005168       0x4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x000051b4       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memmove.o)
+ .debug_frame   0x000051e4       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+ .debug_frame   0x00005218       0x58 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reallocr.o)
+ .debug_frame   0x00005270       0x58 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-reent.o)
+ .debug_frame   0x000052c8       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-wctomb_r.o)
