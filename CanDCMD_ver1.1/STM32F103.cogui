@@ -16,36 +16,31 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
-<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeMotorDriver.h" partName="canNodeMotorDriver.h" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/user/user_app/canNode/inc/canNodeMotorDriver.h" title="canNodeMotorDriver.h" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/user/user_app/canNode/inc/canNodeMotorDriver.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103/user_app/canNode/inc/canNodeMotorDriver.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="17" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="can.hpp" partName="can.hpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/user/user_lib/inc/can.h" title="can.hpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/user/user_lib/inc/can.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103/user_lib/inc/can.hpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="21" selectionOffset="607" selectionTopPixel="0"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" partName="main.cpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/main.cpp" title="main.cpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/main.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103/main.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="15" selectionOffset="4451" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" partName="main.hpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/main.hpp" title="main.hpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/main.hpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103/main.hpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="2106" selectionTopPixel="1290"/>
 </editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="24">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
 <element path="/STM32F103"/>
 <element path="/STM32F103/user_app"/>
 <element path="/STM32F103/user_app/board"/>
+<element path="/STM32F103/user_app/board/inc"/>
 <element path="/STM32F103/user_app/board/src"/>
 <element path="/STM32F103/user_app/canNode"/>
 <element path="/STM32F103/user_app/canNode/inc"/>
 <element path="/STM32F103/user_app/canNode/src"/>
+<element path="/STM32F103/user_app/device"/>
+<element path="/STM32F103/user_app/device/inc"/>
+<element path="/STM32F103/user_app/device/src"/>
+<element path="/STM32F103/user_app/inc"/>
 <element path="/STM32F103/user_app/src"/>
 <element path="/STM32F103/user_lib"/>
 <element path="/STM32F103/user_lib/inc"/>
@@ -54,7 +49,7 @@
 <element path="/STM32F103/util/inc"/>
 </expanded>
 <selection>
-<element path="/STM32F103/main.cpp"/>
+<element path="/STM32F103/user_app/device/inc/si8900.h"/>
 </selection>
 </viewState>
 </view>
@@ -261,166 +256,178 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/main.hpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/canNode/src/canNodeMotorDriver.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/canNode/inc/canNodeMotorDriver.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/main.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/board/src/can_dcmd.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/board/inc/can_dcmd.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/canNode/src/canNodeEmg.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/canNode/src/canNodeVoltage.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_lib/inc/can.hpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/src/motor.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/canNode/inc/canNodeVoltage.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/device/inc/si8900.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/main.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_lib/inc/can.hpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/canNode/inc/canNodeMotorDriver.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/main.hpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/board/inc/can_dcmd.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/canNode/inc/canNodePulse.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/canNode/inc/canNodeEmg.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/canNode/src/canNodeEmg.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/board/inc/can_dcmd.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/board/src/can_dcmd.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/main.hpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/inc/switch.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/main.hpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/canNode/src/canNodeEmg.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/board/src/can_dcmd.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/device/src/si8900.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103/user_app/device/inc/si8900.h"/>
 </editors>
-<item historyLabel="canNodeMotorDriver.h" index="2">
-<position info="not_deleted" x="98" y="0"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="1543" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.cpp" index="1">
-<position info="not_deleted" x="1946" y="0"/>
-</item>
-<item historyLabel="can_dcmd.h" index="5">
-<position info="not_deleted" x="150" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.h" index="2">
-<position info="not_deleted" x="98" y="0"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="1234" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.h" index="2">
+<item historyLabel="canNodeMotorDriver.h" index="0">
 <position info="not_deleted" x="17" y="0"/>
 </item>
-<item historyLabel="can_dcmd.h" index="5">
-<position info="not_deleted" x="150" y="0"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="1310" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position info="not_deleted" x="1359" y="4"/>
-</item>
-<item historyLabel="canNodeMotorDriver.cpp" index="1">
-<position info="not_deleted" x="1946" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position info="not_deleted" x="1359" y="4"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="1310" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position info="not_deleted" x="1359" y="4"/>
-</item>
-<item historyLabel="canNodeMotorDriver.cpp" index="1">
-<position info="not_deleted" x="2297" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.h" index="2">
-<position info="not_deleted" x="17" y="0"/>
-</item>
-<item historyLabel="can_dcmd.h" index="5">
-<position info="not_deleted" x="150" y="0"/>
-</item>
-<item historyLabel="main.hpp" index="0">
-<position info="not_deleted" x="3877" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position info="not_deleted" x="1358" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.h" index="2">
-<position info="not_deleted" x="17" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.cpp" index="1">
-<position info="not_deleted" x="2297" y="0"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="1310" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position info="not_deleted" x="1287" y="0"/>
-</item>
-<item historyLabel="main.hpp" index="0">
-<position info="not_deleted" x="3529" y="0"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="1310" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position info="not_deleted" x="4313" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.cpp" index="1">
-<position info="not_deleted" x="2297" y="0"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="1401" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.cpp" index="1">
-<position info="not_deleted" x="2297" y="0"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="10986" y="0"/>
-</item>
-<item historyLabel="canNodeEmg.cpp" index="6">
-<position info="not_deleted" x="307" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.cpp" index="1">
-<position info="not_deleted" x="2297" y="0"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="10986" y="0"/>
-</item>
-<item historyLabel="main.hpp" index="0">
-<position info="not_deleted" x="2988" y="0"/>
-</item>
-<item historyLabel="main.cpp" index="3">
-<position info="not_deleted" x="4313" y="0"/>
-</item>
-<item historyLabel="canNodeVoltage.cpp" index="7">
+<item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="can.hpp" index="8">
+<item historyLabel="motor.cpp" index="2">
+<position info="not_deleted" x="276" y="0"/>
+</item>
+<item historyLabel="canNodeVoltage.h" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="si8900.h" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="5">
+<position info="not_deleted" x="4451" y="15"/>
+</item>
+<item historyLabel="can.hpp" index="6">
 <position info="not_deleted" x="607" y="21"/>
 </item>
-<item historyLabel="canNodeVoltage.cpp" index="7">
-<position info="not_deleted" x="698" y="0"/>
+<item historyLabel="main.cpp" index="5">
+<position info="not_deleted" x="4451" y="15"/>
 </item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="10986" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.cpp" index="1">
-<position info="not_deleted" x="2297" y="0"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="10986" y="0"/>
-</item>
-<item historyLabel="canNodeEmg.cpp" index="6">
-<position info="not_deleted" x="307" y="0"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="10986" y="0"/>
-</item>
-<item historyLabel="can_dcmd.h" index="5">
-<position info="not_deleted" x="1272" y="55"/>
-</item>
-<item historyLabel="can_dcmd.cpp" index="4">
-<position info="not_deleted" x="10986" y="0"/>
-</item>
-<item historyLabel="can_dcmd.h" index="5">
-<position info="not_deleted" x="1272" y="55"/>
-</item>
-<item historyLabel="can.hpp" index="8">
-<position info="not_deleted" x="607" y="21"/>
-</item>
-<item historyLabel="main.cpp" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="canNodeMotorDriver.h" index="2">
+<item historyLabel="canNodeMotorDriver.h" index="7">
 <position info="not_deleted" x="17" y="0"/>
 </item>
-<item active="true" historyLabel="main.cpp" index="9">
+<item historyLabel="main.cpp" index="5">
+<position info="not_deleted" x="4451" y="15"/>
+</item>
+<item historyLabel="main.hpp" index="8">
+<position info="not_deleted" x="2425" y="0"/>
+</item>
+<item historyLabel="si8900.h" index="4">
 <position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="8">
+<position info="not_deleted" x="2732" y="0"/>
+</item>
+<item historyLabel="si8900.h" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="8">
+<position info="not_deleted" x="2732" y="0"/>
+</item>
+<item historyLabel="can_dcmd.h" index="9">
+<position info="not_deleted" x="317" y="15"/>
+</item>
+<item historyLabel="canNodeVoltage.h" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="can.hpp" index="6">
+<position info="not_deleted" x="607" y="21"/>
+</item>
+<item historyLabel="main.hpp" index="8">
+<position info="not_deleted" x="1598" y="0"/>
+</item>
+<item historyLabel="can.hpp" index="6">
+<position info="not_deleted" x="607" y="21"/>
+</item>
+<item historyLabel="canNodePulse.h" index="10">
+<position info="not_deleted" x="319" y="157"/>
+</item>
+<item historyLabel="canNodeEmg.h" index="11">
+<position info="not_deleted" x="139" y="136"/>
+</item>
+<item historyLabel="canNodePulse.h" index="10">
+<position info="not_deleted" x="319" y="157"/>
+</item>
+<item historyLabel="canNodeEmg.cpp" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="can_dcmd.h" index="13">
+<position info="not_deleted" x="317" y="15"/>
+</item>
+<item historyLabel="canNodeEmg.cpp" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="canNodePulse.h" index="10">
+<position info="not_deleted" x="319" y="157"/>
+</item>
+<item historyLabel="can_dcmd.h" index="13">
+<position info="not_deleted" x="317" y="15"/>
+</item>
+<item historyLabel="can_dcmd.cpp" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="15">
+<position info="not_deleted" x="2992" y="0"/>
+</item>
+<item historyLabel="canNodeEmg.cpp" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="canNodeEmg.h" index="11">
+<position info="not_deleted" x="310" y="0"/>
+</item>
+<item historyLabel="canNodeEmg.cpp" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="switch.h" index="16">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="17">
+<position info="not_deleted" x="2152" y="0"/>
+</item>
+<item historyLabel="switch.h" index="16">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="canNodeEmg.cpp" index="18">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="can_dcmd.cpp" index="19">
+<position info="not_deleted" x="1251" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="17">
+<position info="not_deleted" x="2106" y="6"/>
+</item>
+<item historyLabel="switch.h" index="16">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="17">
+<position info="not_deleted" x="2106" y="6"/>
+</item>
+<item historyLabel="canNodeEmg.cpp" index="18">
+<position info="not_deleted" x="219" y="0"/>
+</item>
+<item historyLabel="main.hpp" index="17">
+<position info="not_deleted" x="2106" y="6"/>
+</item>
+<item historyLabel="si8900.cpp" index="20">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="si8900.h" index="21">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="si8900.cpp" index="20">
+<position info="not_deleted" x="2509" y="0"/>
+</item>
+<item historyLabel="si8900.h" index="21">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="si8900.cpp" index="20">
+<position info="not_deleted" x="2509" y="0"/>
+</item>
+<item historyLabel="si8900.h" index="21">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="main.hpp" index="17">
+<position info="not_deleted" x="2106" y="6"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -429,50 +436,44 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="KawaRobo_F103.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\KawaRobo_F103\KawaRobo_F103.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/KawaRobo_F103.coproj"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" tooltip="STM32F103/main.cpp">
-<persistable path="/STM32F103/main.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can.hpp" tooltip="STM32F103/user_lib/inc/can.hpp">
-<persistable path="/STM32F103/user_lib/inc/can.hpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.cpp" tooltip="STM32F103/user_app/canNode/src/canNodeVoltage.cpp">
-<persistable path="/STM32F103/user_app/canNode/src/canNodeVoltage.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeEmg.cpp" tooltip="STM32F103/user_app/canNode/src/canNodeEmg.cpp">
-<persistable path="/STM32F103/user_app/canNode/src/canNodeEmg.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canMotorDriver.cpp" tooltip="STM32F103/user_app/src/canMotorDriver.cpp">
-<persistable path="/STM32F103/user_app/src/canMotorDriver.cpp"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="RS485_SERVO.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\RS485_SERVO\RS485_SERVO.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/RS485_SERVO/RS485_SERVO.coproj"/>
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanDCMD_ver1.1.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\CanDCMD_ver1.1\CanDCMD_ver1.1.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/CanDCMD_ver1.1.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeMotorDriver.cpp" tooltip="STM32F103mini_temp/user_app/canNode/src/canNodeMotorDriver.cpp">
-<persistable path="/STM32F103mini_temp/user_app/canNode/src/canNodeMotorDriver.cpp"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="KawaRobo_F103.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\KawaRobo_F103\KawaRobo_F103.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/KawaRobo_F103.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can_dcmd.cpp" tooltip="STM32F103mini_temp/user_app/board/src/can_dcmd.cpp">
-<persistable path="/STM32F103mini_temp/user_app/board/src/can_dcmd.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.h" tooltip="STM32F103mini_temp/user_app/canNode/inc/canNodeVoltage.h">
+<persistable path="/STM32F103mini_temp/user_app/canNode/inc/canNodeVoltage.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="can_dcmd.h" tooltip="STM32F103mini_temp/user_app/board/inc/can_dcmd.h">
-<persistable path="/STM32F103mini_temp/user_app/board/inc/can_dcmd.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.cpp" tooltip="STM32F103mini_temp/user_app/device/src/si8900.cpp">
+<persistable path="/STM32F103mini_temp/user_app/device/src/si8900.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="util.hpp" tooltip="STM32F103mini_temp/util/inc/util.hpp">
-<persistable path="/STM32F103mini_temp/util/inc/util.hpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.h" tooltip="STM32F103mini_temp/user_app/device/inc/si8900.h">
+<persistable path="/STM32F103mini_temp/user_app/device/inc/si8900.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="utilplus.cpp" tooltip="STM32F103mini_temp/util/src/utilplus.cpp">
-<persistable path="/STM32F103mini_temp/util/src/utilplus.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="NCP5359.h" tooltip="STM32F103mini_temp/user_app/device/inc/NCP5359.h">
+<persistable path="/STM32F103mini_temp/user_app/device/inc/NCP5359.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="enc.cpp" tooltip="STM32F103mini_temp/user_app/src/enc.cpp">
-<persistable path="/STM32F103mini_temp/user_app/src/enc.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8274.cpp" tooltip="STM32F103mini_temp/user_app/device/src/si8274.cpp">
+<persistable path="/STM32F103mini_temp/user_app/device/src/si8274.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="base.h" tooltip="STM32F103mini_temp/user_lib/inc/base.h">
-<persistable path="/STM32F103mini_temp/user_lib/inc/base.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8274.h" tooltip="STM32F103mini_temp/user_app/device/inc/si8274.h">
+<persistable path="/STM32F103mini_temp/user_app/device/inc/si8274.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="enc.h" tooltip="STM32F103mini_temp/user_app/inc/enc.h">
-<persistable path="/STM32F103mini_temp/user_app/inc/enc.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sbus.cpp" tooltip="STM32F103mini_temp/user_app/device/src/sbus.cpp">
+<persistable path="/STM32F103mini_temp/user_app/device/src/sbus.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="KawaRobo_F103.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\KawaRobo_F103\KawaRobo_F103.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/KawaRobo_F103.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.h" tooltip="STM32F103/user_app/device/inc/si8900.h">
+<persistable path="/STM32F103/user_app/device/inc/si8900.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.h" tooltip="STM32F103mini_temp/user_app/canNode/inc/canNodeVoltage.h">
+<persistable path="/STM32F103mini_temp/user_app/canNode/inc/canNodeVoltage.h"/>
 </file>
 </mruList>
 </workbench>

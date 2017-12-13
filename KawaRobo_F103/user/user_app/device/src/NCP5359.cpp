@@ -20,13 +20,17 @@ void NCP5359::cycle(){
 }
 
 void NCP5359::dutyLimit(float dutym,float dutyp){
-	if(dutyp < limitp)limitp = dutyp;
-	if(dutym > limitm)limitm = dutym;
+	//if(dutyp < limitp)limitp = dutyp;
+	//if(dutym > limitm)limitm = dutym;
+	limitp = dutyp;
+	limitm = dutym;
 }
 
 void NCP5359::dutyLimit(float duty){
-	if(duty < limitp)limitp = duty;
-	if(-duty > limitm)limitm = -duty;
+	//if(duty < limitp)limitp = duty;
+	//if(-duty > limitm)limitm = -duty;
+	limitp = duty;
+	limitm = -duty;
 }
 
 void NCP5359::duty(float duty){

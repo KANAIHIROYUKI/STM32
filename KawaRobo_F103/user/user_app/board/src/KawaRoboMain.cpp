@@ -22,106 +22,19 @@ void KawaRobo::cycle(){
 	displayCycle();
 
 	/**********************↑サイクル回すマン↓KRM****************************/
-	if(millis() > SERIKA_TIME && serika && sa->update){
+	if(millis() > SERIKA_TIME && serika && sa->update){//リセットかかった時になる｡普通に起動するとArduino側の方が起動遅いので鳴らない｡
 		serika = 0;
 		speakRequest = 63;						//アイドルマスターシンデレラガールズ
 	}
 
 	if(sa->update){
 		sa->update = 0;
-		robotR.measuredValue(-(float)(sa->read(0) + gyroOffset)/39200);
-		gravitatyAve.stack(sa->read(8)/10);
-		if(gravitatyAve.valueCnt > 50){
-			if(gravitatyAve.peek() < -1000){	//たぶん-90000ぐらい
-				if(turnoverReturn == 0){
-					turnoverReturn = 1;
-				}
-			}else if(gravitatyAve.peek() > 1000){
-				turnoverReturn = 0;
-			}
-			gravitatyAve.read();
-		}
+		saDataUpdate();
 	}
 
 	if(sbus->update){														//SBUS受信時､ロボットの制御周期はsbusの受信周期依存
 		sbus->update = 0;
-		armPotUpdate();
-
-		if(millis() - sa->lastReceiveTime < SA_TIMEOUT_TOLERANCE){
-			if((sa->read(3) * adcToBattV) > battUnderVoltage){		//Arduinoからの受信がある､かつ電圧OK
-				battUnderVoltage = BATT_UNDER_LIMIT;
-
-				if(getTogglePosition(0) < 0){				//プロポのトグルスイッチの状態によって動作モードを変更する
-					if(mode != MODE_RUN){
-						mode = MODE_RUN;
-
-						speakRequest = 83;					//わたしにいろんなこと､教えて下さいね！
-
-
-						motorEnable();
-						serial->printf("\n\rmode = RUN\n\r\n\r");
-						led[0]->interval(1000);
-						led[1]->interval(1000);
-						led[2]->interval(1000);
-
-						robotPIDR.clear();		//いらん動きしないようにPIDコントローラーもリセット
-						robotTargetR.clear();	//目標角度を0にする､現在の角度と目標角度の差を無くす
-						robotR.clear();			//ジャイロ角度の積分値をリセット､現在角度を0度とする
-
-						armPID.clear();			//いらん動きしないようにPIDコントローラーもリセット
-						armTarget.clear();		//目標角度を0にする
-						armTarget.errorInt = armDegree;		//現在の角度を目標角度にする
-					}
-
-				}else if(getTogglePosition(0) < 0.5){
-					if(mode != MODE_TEST){
-						mode = MODE_TEST;
-						sa->write(1,0);
-						speakRequest = 60;		//わたし､がんばりました
-
-						motorDisable();
-						serial->printf("\n\rmode = TEST\n\r\n\r");
-						led[0]->interval(1000);
-						led[1]->interval(1000);
-						led[2]->interval(1000);
-					}
-
-				}else{
-					if(mode != MODE_STOP){
-						mode = MODE_STOP;
-
-						motorDisable();
-						serial->printf("\n\rmode = STOP\n\r\n\r");
-						led[0]->interval(50);
-						led[1]->interval(1000);
-						led[2]->interval(1000);
-					}
-				}
-			}else{
-				if(mode != MODE_STOP){
-					mode = MODE_STOP;
-					speakRequest = 28;
-					motorDisable();
-					serial->printf("\n\rbatt under voltage\n\rmode = STOP\n\r\n\r");
-					led[0]->interval(50);
-					led[1]->interval(1000);
-					led[2]->interval(50);
-
-					battUnderVoltage = BATT_UNDER_LIMIT + BATT_UNDER_HYS;
-				}
-			}
-		}else{
-			if(mode != MODE_STOP){
-				mode = MODE_STOP;
-
-				motorDisable();
-
-				serial->printf("\n\rsa com lost\n\rmode = STOP\n\r\n\r");
-				led[0]->interval(50);
-				led[1]->interval(1000);
-				led[2]->interval(50);
-			}
-		}
+		sbusDataUpdate();
 
 	}else if(millis() - sbus->lastReceiveTime > SBUS_TIMEOUT_TOLERANCE){		//SBUS受信できていない｡無条件
 		if(mode != MODE_TIMEOUT){
@@ -134,38 +47,44 @@ void KawaRobo::cycle(){
 		mode = MODE_TIMEOUT;
 	}
 
-	if(millis() > controlCycleIntervalTime){
+	if(millis() > controlCycleIntervalTime){	//制御周期
 		controlCycleIntervalTime += 1;
-		controlCycle();
+		switch(mode){
+		case MODE_RUN:
+			run();
+			break;
+
+		case MODE_TEST:
+			motorDisable();
+			test();
+			break;
+
+		case MODE_STOP:
+			motorDisable();
+
+			break;
+		case MODE_TIMEOUT:
+			motorDisable();
+
+			break;
+		}
 	}
 
-	if(speakRequest > 0){
+	if(speakRequest > 0){							//発声要求
 		sa->write(1,speakRequest);
 		serial->printf("\n\rserika = %d\n\r",speakRequest);
 		sa->sendRequest = 0;
 		speakRequest = -1;
 		sa->sendEnded = 0;
-		/*
-		speakRequest = -1;
-		sa->sendEnded = 0;*/
 	}else if(speakRequest == -1 && sa->sendEnded == 1){
 		speakRequest = 0;
 		sa->write(1,0);
 		sa->sendRequest = 0;
 	}
 
-	if(millis() > saSendTime){
+	if(millis() > saSendTime){						//PowerENの送信間隔(連続で投げ続けるとArduinoが止まる)
 		saSendTime += SA_EN_INTERVAL;
 		sa->write(0,motorEN);
-	}
-
-	if(toggleStat != (int)getTogglePosition(3)){
-		if(getTogglePosition(3) > 0){
-			speakRequest = 5;						//いいところ見せちゃいますね！
-		}else{
-			speakRequest = 67;						//一生懸命がんばります！
-		}
-		toggleStat = (int)getTogglePosition(3);
 	}
 }
 
@@ -227,7 +146,7 @@ void KawaRobo::displayCycle(){
 			break;
 
 		case 3:
-			serial->printf("v = ,%d,mv,under voltage = %5d,adc2V = %4d",(int)(sa->read(3) * adcToBattV),battUnderVoltage,(int)(adcToBattV*100));
+			serial->printf("v = ,%d,mv,under voltage = %5d,adc2V = %4d",(int)battVoltage.peek(),(int)battUnderVoltage,(int)(adcToBattV*100));
 			break;
 
 		case 4:
@@ -239,7 +158,6 @@ void KawaRobo::displayCycle(){
 			serial->printf("arm  analog");
 			serial->printf("deg = ,%4d,PID out = ,%7d",(int)armDegree,armPID.output32());
 			serial->printf("arm PID P = ,%7d,D = ,%4d",(int)(armPID.error*100),(int)(armPID.errorDiv*100));
-			serial->printf("armTrg = %4d",(int)armTarget.errorInt);
 			break;
 
 		case 6:
@@ -258,26 +176,6 @@ void KawaRobo::displayCycle(){
 	}
 }
 
-void KawaRobo::controlCycle(){		//
-
-	switch(mode){
-	case MODE_RUN:
-		run();
-		break;
-
-	case MODE_TEST:
-		motorDisable();
-		test();
-		break;
-
-	case MODE_STOP:
-		motorDisable();
-
-		break;
-
-	}
-}
-
 /*************************************************************************************/
 
 void KawaRobo::test(){
@@ -285,12 +183,19 @@ void KawaRobo::test(){
 }
 
 void KawaRobo::run(){
-	if(armDegree > 90 && turnoverReturn == 1){
+	if(armDegree > 30 && turnoverReturn == 1){	//転倒復帰
 		turnoverReturn = 2;
-		speakRequest = 54;							//転倒復帰､よいしょ
+		switch(millis() %2){
+		case 0:
+			speakRequest = 54;//よいしょ
+			break;
+		case 1:
+			speakRequest = 8;//うんしょ
+			break;
+		}
 	}
 
-	if(getArmPosition() < -0.5 && armDegree > 60 && millis() - armSpeakTime > 500){
+	if(getArmPosition() < -0.5 && armDegree > 15 && millis() - armSpeakTime > 500 && turnoverReturn == 0){
 		armSpeakTime = millis();
 		switch(millis()%7){			//全部｢はい！｣
 		case 0:
@@ -299,75 +204,129 @@ void KawaRobo::run(){
 		case 1:
 			speakRequest = 40;
 			break;
-
 		case 2:
 			speakRequest = 39;
 			break;
-
 		case 3:
 			speakRequest = 42;
 			break;
-
 		case 4:
 			speakRequest = 43;
 			break;
-
 		case 5:
 			speakRequest = 12;
 			break;
-
 		case 6:
 			speakRequest = 13;
 			break;
 		}
+	}else if(armDegree > 30 && millis() - armSpeakTime < 500 && turnoverReturn == 0){
+		armSpeakTime = millis();
 	}
 
-	if(getTogglePosition(3) <= 0){
+	if(armDegree < ARM_BTM_DEG && getArmPosition() > 0.1){				//上限か下限に近づいていた場合､D制御で制動かける､duty0.1では制動モードに入らず動かせる｡
+		armPID.measuredValue(-armDegree + ARM_BTM_DEG);
+		motor[1]->duty(armPID.outputF());
+
+	}else if(armDegree > ARM_TOP_DEG && getArmPosition() < -0.1){
+		armPID.measuredValue(-armDegree + ARM_TOP_DEG);
+		motor[1]->duty(armPID.outputF());
+
+	}else{
+		motor[1]->duty(getArmPosition());						//上限でも下限でもないので完全手動
+	}
+
+	if(getTogglePosition(TOGGLE_CONTROL_MODE) <= 0){				//手動モード
 		motor[0]->duty(+getRunPosition() + getRevPosition());
 		motor[3]->duty(-getRunPosition() + getRevPosition());
-
-
-
-		if(armDegree < -110 && getArmPosition() < 0){
-			armPID.measuredValue(armDegree + 120);
-			armTarget.measuredValue(-getArmPosition());
-			motor[1]->duty(armPID.outputF());
-
-		}else if(armDegree > 110 && getArmPosition() > 0){
-			armPID.measuredValue(armDegree - 120);
-			armTarget.measuredValue(-getArmPosition());
-			motor[1]->duty(armPID.outputF());
-
-		}else{
-			motor[1]->duty(getArmPosition());
-		}
-
 		return;
 	}
-
+																	//制御モード
+	robotTargetR.measuredValue(getRevPosition());
 	robotPIDR.measuredValue(robotR.outputF() - robotTargetR.outputF());
 	motor[0]->duty(+getRunPosition() - robotPIDR.outputF());
 	motor[3]->duty(-getRunPosition() - robotPIDR.outputF());
 
-	if(getArmPosition() < -0.98){
-		armPID.measuredValue(armDegree - ARM_TOP_DEG);	//トップまで一気に上げる
-		armTarget.clear();
-		armTarget.errorInt = ARM_DEF_DEG;
-	}else{
-		armPID.measuredValue(armDegree - armTarget.outputF());
-		armTarget.measuredValue(-getArmPosition());
-	}
-	motor[1]->duty(armPID.outputF());
-
-	armCurrent.measuredValue((motor[1]->outDuty*14) - 0.1);
+	//armCurrent.measuredValue((motor[1]->outDuty*14) - 0.1);
 }
 
 
 
 /*************************************************************************************/
 
-//制御周期ごとに呼ぶ｡S.BUSなかったら呼ばれないので注意
-void KawaRobo::armPotUpdate(){
+//SerialArduino受信した時の処理
+void KawaRobo::saDataUpdate(){
+	robotR.measuredValue(-(float)(sa->read(0))/39200);
+
+	if(battVoltage.valueCnt > 500){ 			//100回平均
+		float val = battVoltage.read();
+		battVoltage.reset();
+
+		battVoltage.valueCnt = 10;				//初期10回分を前回の平均で入れる
+		battVoltage.stack(val*10);
+	}
+	battVoltage.stack((sa->read(3) * adcToBattV));
+
+	gravitatyAve.stack(sa->read(8)/10);
+	if(gravitatyAve.valueCnt > 50){
+		if(gravitatyAve.peek() < -100){		//裏返った時｡行ってもたぶん-1500ぐらい
+			if(turnoverReturn == 0){
+				switch(millis()%9){
+				case 0:
+					speakRequest = 11;//ううーん
+					break;
+				case 1:
+					speakRequest = 77;//恥ずかしいです
+					break;
+				case 2:
+					speakRequest = 84;//見られちゃいました
+					break;
+				case 3:
+					speakRequest = 47;//↓はっ
+					break;
+				case 4:
+					speakRequest = 48;
+					break;
+				case 5:
+					speakRequest = 49;
+					break;
+				case 6:
+					speakRequest = 50;
+					break;
+				case 7:
+					speakRequest = 51;
+					break;
+				case 8:
+					speakRequest = 46;//↑はっ
+					break;
+				}
+				turnoverReturn = 1;
+			}
+		}else if(gravitatyAve.peek() > 1000 && turnoverReturn != 0){	//反転してないよ
+			switch(millis()%4){//復帰した時
+			case 0:
+				speakRequest = 31;//です！
+				break;
+			case 1:
+				speakRequest = 53;//やりました！
+				break;
+			case 2:
+				speakRequest = 25;//じゃじゃーん！
+				break;
+			case 3:
+				speakRequest = 30;//できました！
+				break;
+			}
+			turnoverReturn = 0;
+		}
+		gravitatyAve.read();
+	}
+
+
+}
+
+//S.BUS受信した時の処理
+void KawaRobo::sbusDataUpdate(){
 	float value = (float)((pot1Int/pot1Cnt) - (pot2Int/pot2Cnt))/8191;
 	potCnt = pot1Cnt + pot2Cnt;
 	pot1Cnt = 0;
@@ -375,6 +334,108 @@ void KawaRobo::armPotUpdate(){
 	pot2Cnt = 0;
 	pot2Int = 0;
 	armDegree = -value * 270;
+
+	if(millis() - sa->lastReceiveTime < SA_TIMEOUT_TOLERANCE){
+		if(battVoltage.peek() > battUnderVoltage){		//Arduinoからの受信がある､かつ電圧OK
+			battUnderVoltage = BATT_UNDER_LIMIT;
+
+			if(getTogglePosition(0) < 0){				//プロポのトグルスイッチの状態によって動作モードを変更する
+				if(mode != MODE_RUN){
+					mode = MODE_RUN;
+
+					speakRequest = 83;					//わたしにいろんなこと､教えて下さいね！
+
+
+					motorEnable();
+					serial->printf("\n\rmode = RUN\n\r\n\r");
+					led[0]->interval(1000);
+					led[1]->interval(1000);
+					led[2]->interval(1000);
+
+					robotPIDR.clear();		//いらん動きしないようにPIDコントローラーもリセット
+					robotTargetR.clear();	//目標角度を0にする､現在の角度と目標角度の差を無くす
+					robotR.clear();			//ジャイロ角度の積分値をリセット､現在角度を0度とする
+
+					armPID.clear();			//いらん動きしないようにPIDコントローラーもリセット
+				}
+
+			}else if(getTogglePosition(0) < 0.5){
+				if(mode != MODE_TEST){
+					mode = MODE_TEST;
+					sa->write(1,0);
+					speakRequest = 60;		//わたし､がんばりました
+
+					motorDisable();
+					serial->printf("\n\rmode = TEST\n\r\n\r");
+					led[0]->interval(1000);
+					led[1]->interval(1000);
+					led[2]->interval(1000);
+				}
+
+			}else{
+				if(mode != MODE_STOP){
+					mode = MODE_STOP;
+
+					motorDisable();
+					serial->printf("\n\rmode = STOP\n\r\n\r");
+					led[0]->interval(50);
+					led[1]->interval(1000);
+					led[2]->interval(1000);
+				}
+			}
+		}else{
+			if(mode != MODE_STOP){
+				mode = MODE_STOP;
+				speakRequest = 28;		//だめですよ！！
+				motorDisable();
+				serial->printf("\n\rbatt under voltage\n\rmode = STOP\n\r\n\r");
+				led[0]->interval(50);
+				led[1]->interval(1000);
+				led[2]->interval(50);
+
+				battUnderVoltage = BATT_UNDER_LIMIT + BATT_UNDER_HYS;
+			}
+		}
+	}else{
+		if(mode != MODE_STOP){
+			mode = MODE_STOP;
+
+			motorDisable();
+
+			serial->printf("\n\rsa com lost\n\rmode = STOP\n\r\n\r");
+			led[0]->interval(50);
+			led[1]->interval(1000);
+			led[2]->interval(50);
+		}
+	}
+
+	if(toggleStat[TOGGLE_CONTROL_MODE] != (int)getTogglePosition(TOGGLE_CONTROL_MODE)){		//手動･自動切り替え
+		if(getTogglePosition(TOGGLE_CONTROL_MODE) > 0){
+			speakRequest = 5;						//いいところ見せちゃいますね！
+		}else{
+			speakRequest = 67;						//一生懸命がんばります！
+		}
+		if(toggleStat[TOGGLE_CONTROL_MODE] == 2)speakRequest = 0;							//初回設定
+		toggleStat[TOGGLE_CONTROL_MODE] = (int)getTogglePosition(TOGGLE_CONTROL_MODE);
+	}
+
+	if(toggleStat[TOGGLE_POWER_LIMIT] != (int)getTogglePosition(TOGGLE_POWER_LIMIT)){		//出力リミッタ切り替え
+		if(getTogglePosition(TOGGLE_POWER_LIMIT) > 0.1){
+			motor[3]->dutyLimit(0.95);
+			motor[0]->dutyLimit(0.95);
+			speakRequest = 36;						//どんなことも諦めちゃいけないって､プロデューサーさんが行ってました！
+		}else if(getTogglePosition(TOGGLE_POWER_LIMIT) > -0.1){
+			motor[3]->dutyLimit(0.7);
+			motor[0]->dutyLimit(0.7);
+			speakRequest = 67;						//一生懸命がんばります！
+		}else{
+			motor[3]->dutyLimit(0.4);
+			motor[0]->dutyLimit(0.4);
+			speakRequest = 66;						//一生懸命やりました！
+		}
+		if(toggleStat[TOGGLE_POWER_LIMIT] == 2)speakRequest = 0;							//初回設定
+		toggleStat[TOGGLE_POWER_LIMIT] = (int)getTogglePosition(TOGGLE_POWER_LIMIT);
+	}
 }
 
 //制御周期関係なくぶんまわし
@@ -390,8 +451,6 @@ void KawaRobo::armPotCycle(){
 		pot2Cnt++;
 		analog[1]->start();
 	}
-
-	robotTargetR.measuredValue(getRevPosition());
 }
 
 
@@ -407,10 +466,11 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 	this->motor[2] = &motor2;
 	this->motor[3] = &motor3;
 
-	motor[0]->dutyLimit(0.9);
 	motor[1]->dutyLimit(0.9);
-	motor[2]->dutyLimit(0.9);
+	//motor[2]->dutyLimit(0.2);
+
 	motor[3]->dutyLimit(0.9);
+	motor[0]->dutyLimit(0.9);
 
 	printValueSelect = 0;
 	battUnderVoltage = BATT_UNDER_LIMIT;
@@ -420,6 +480,7 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 	speakRequestNext = 0;
 	serika = 1;
 	turnoverReturn = 0;
+	armOffsetDuty = 0;
 
 	saSendTime = millis();
 	printTime = millis();
@@ -431,20 +492,21 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 	robotPIDR.setup(0.01,0,0);		//制御用コントローラ､ゲイン1で1deg→100%になる
 	robotPIDR.outLimit(-1,1);//*/
 
-	robotR.setup(1,0,0);			//ジャイロによる速度			単位度
+	robotR.setup(0.5,0,0);			//ジャイロによる速度			単位度
 	robotTargetR.setup(1,0,0);		//プロポによる速度設定		単位度
-	robotPIDR.setup(0,0.002,0);		//制御用コントローラ､ゲイン1で1deg→100%になる
+	robotPIDR.setup(1,0,0);		//制御用コントローラ､ゲイン1で1deg→100%になる
 	robotPIDR.outLimit(-1,1);
 
-	armPID.setup(0.01,0,0);		//ポテンショによる位置決め??
-	armTarget.setup(0,1,0);		//プロポによる目標角度(？)設定
-
-	armTarget.errorLimitInt(ARM_BTM_DEG,ARM_TOP_DEG);
+	armPID.setup(0,0,-10);		//機構限界制動用
 
 	armCurrent.setup(0,1,0);
 	armCurrent.errorLimitInt(0,100);
 
-	toggleStat = (int)getTogglePosition(3);
+	toggleStat[TOGGLE_CONTROL_MODE] = 2;
+	toggleStat[TOGGLE_POWER_LIMIT]  = 2;
+	//cyclleまだ回ってねえよ
+	//toggleStat[TOGGLE_CONTROL_MODE] = (int)getTogglePosition(TOGGLE_CONTROL_MODE);
+	//toggleStat[TOGGLE_POWER_LIMIT]  = (int)getTogglePosition(TOGGLE_POWER_LIMIT);
 }
 
 void KawaRobo::uiSetup(Switch &sw0,Switch &sw1,LED &led0,LED &led1,LED &led2,LED &led3){
@@ -461,12 +523,11 @@ void KawaRobo::uiSetup(Switch &sw0,Switch &sw1,LED &led0,LED &led1,LED &led2,LED
 	led[2]->interval(50);
 }
 
-void KawaRobo::sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3,int16_t _gyroOffset,float _adcToBatt){
+void KawaRobo::sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3,float _adcToBatt){
 	this->analog[0] = &adc0;
 	this->analog[1] = &adc1;
 	this->analog[2] = &adc2;
 	this->analog[3] = &adc3;
-	gyroOffset = _gyroOffset;
 	adcToBattV = _adcToBatt;
 }
 

@@ -66,7 +66,7 @@ void setup(){
 	sys.usartSetup(serial);
 
 	sa.setup(USART3,115200,PB10,PB11);
-	sbus.setup(USART2,100000,PA2,PA3);
+	sbus.setup(USART2,PA2,PA3);
 
 	sw[0].setup(PB0,INPUT_PU);
 	sw[1].setup(PA7,INPUT_PU);
@@ -89,10 +89,10 @@ void setup(){
 	kw.uiSetup(sw[1],sw[0],led[0],led[1],led[2],led[3]);
 
 	if(individual.read()){
-		kw.sensorSetup(analog[0],analog[1],analog[2],analog[3],GYRO_OFFSET_BOARD1,ADC_TO_BATT_BOARD1);
+		kw.sensorSetup(analog[0],analog[1],analog[2],analog[3],ADC_TO_BATT_BOARD1);
 		serial.printf("nr\rboard = 1\n\r");
 	}else{
-		kw.sensorSetup(analog[0],analog[1],analog[2],analog[3],GYRO_OFFSET_BOARD2,ADC_TO_BATT_BOARD2);
+		kw.sensorSetup(analog[0],analog[1],analog[2],analog[3],ADC_TO_BATT_BOARD2);
 		serial.printf("\n\rboard = 2\n\r");
 	}
 

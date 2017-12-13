@@ -17,11 +17,12 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" partName="main.hpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/RS485_SERVO/main.hpp" title="main.hpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/RS485_SERVO/main.hpp" workbook="org.eclipse.ui.internal.EditorStack@859df1">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" partName="main.hpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/RS485_SERVO/main.hpp" title="main.hpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/RS485_SERVO/main.hpp" workbook="org.eclipse.ui.internal.EditorStack@859df1">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/main.hpp"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1559" selectionTopPixel="695"/>
 </editor>
@@ -29,10 +30,14 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/main.cpp"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="canEncoder.h" partName="canEncoder.h" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/RS485_SERVO/user/user_app/inc/canEncoder.h" title="canEncoder.h" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/RS485_SERVO/user/user_app/inc/canEncoder.h" workbook="org.eclipse.ui.internal.EditorStack@859df1">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/user_app/inc/canEncoder.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="20">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="28">
 <expanded>
 <element path="/STM32F103mini_temp"/>
 <element path="/STM32F103mini_temp/user_app"/>
@@ -41,9 +46,10 @@
 <element path="/STM32F103mini_temp/user_app/device"/>
 <element path="/STM32F103mini_temp/user_app/device/inc"/>
 <element path="/STM32F103mini_temp/user_app/device/src"/>
+<element path="/STM32F103mini_temp/user_app/inc"/>
 </expanded>
 <selection>
-<element path="/STM32F103mini_temp/user_app/device/inc/dxlib.h"/>
+<element path="/STM32F103mini_temp/user_app/inc/canEncoder.h"/>
 </selection>
 </viewState>
 </view>
@@ -257,10 +263,8 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/main.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/src/dxlib.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/inc/dxlib.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/inc/canEncoder.h"/>
 </editors>
-<item historyLabel="main.hpp" index="0">
-<position info="not_deleted" x="1901" y="0"/>
-</item>
 <item historyLabel="main.cpp" index="1">
 <position info="not_deleted" x="181" y="0"/>
 </item>
@@ -405,8 +409,11 @@
 <item historyLabel="dxlib.cpp" index="3">
 <position info="not_deleted" x="371" y="0"/>
 </item>
-<item active="true" historyLabel="main.hpp" index="0">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="1012" y="0"/>
+</item>
+<item active="true" historyLabel="canEncoder.h" index="5">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -415,50 +422,50 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="KawaRobo_F103.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\KawaRobo_F103\KawaRobo_F103.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/KawaRobo_F103.coproj"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanNode_rev1.1_rewrited.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\CanNode_rev1.1_rewrited\CanNode_rev1.1_rewrited.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/CanNode_rev1.1_rewrited.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="dxlib.h" tooltip="STM32F103mini_temp/user_app/device/inc/dxlib.h">
-<persistable path="/STM32F103mini_temp/user_app/device/inc/dxlib.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canEncoder.h" tooltip="STM32F103mini_temp/user_app/inc/canEncoder.h">
+<persistable path="/STM32F103mini_temp/user_app/inc/canEncoder.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="dxlib.cpp" tooltip="STM32F103mini_temp/user_app/device/src/dxlib.cpp">
-<persistable path="/STM32F103mini_temp/user_app/device/src/dxlib.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="dynamixel485.h" tooltip="STM32F103mini_temp/user_app/device/inc/dynamixel485.h">
-<persistable path="/STM32F103mini_temp/user_app/device/inc/dynamixel485.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usart.hpp" tooltip="STM32F103mini_temp/user_lib/inc/usart.hpp">
-<persistable path="/STM32F103mini_temp/user_lib/inc/usart.hpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system.hpp" tooltip="STM32F103mini_temp/user_lib/inc/system.hpp">
-<persistable path="/STM32F103mini_temp/user_lib/inc/system.hpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="dx2lib.h" tooltip="STM32F103mini_temp/user_app/device/inc/dx2lib.h">
-<persistable path="/STM32F103mini_temp/user_app/device/inc/dx2lib.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="app.h" tooltip="STM32F103mini_temp/user_app/inc/app.h">
-<persistable path="/STM32F103mini_temp/user_app/inc/app.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="KawaRoboMain.cpp" tooltip="STM32F103mini_temp/user_app/board/src/KawaRoboMain.cpp">
-<persistable path="/STM32F103mini_temp/user_app/board/src/KawaRoboMain.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="NCP5359.cpp" tooltip="STM32F103mini_temp/user_app/device/src/NCP5359.cpp">
-<persistable path="/STM32F103mini_temp/user_app/device/src/NCP5359.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="NCP5359.h" tooltip="STM32F103mini_temp/user_app/device/inc/NCP5359.h">
-<persistable path="/STM32F103mini_temp/user_app/device/inc/NCP5359.h"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="RS485_SERVO.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\RS485_SERVO\RS485_SERVO.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/RS485_SERVO/RS485_SERVO.coproj"/>
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanDCMD_ver1.1.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\CanDCMD_ver1.1\CanDCMD_ver1.1.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/CanDCMD_ver1.1.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="led.cpp" tooltip="STM32F103mini_temp/user_app/src/led.cpp">
-<persistable path="/STM32F103mini_temp/user_app/src/led.cpp"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="KawaRobo_F103.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\KawaRobo_F103\KawaRobo_F103.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/KawaRobo_F103.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usart.cpp" tooltip="STM32F103mini_temp/user_lib/src/usart.cpp">
-<persistable path="/STM32F103mini_temp/user_lib/src/usart.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.h" tooltip="STM32F103mini_temp/user_app/canNode/inc/canNodeVoltage.h">
+<persistable path="/STM32F103mini_temp/user_app/canNode/inc/canNodeVoltage.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usart.cpp" tooltip="STM32F103mini_temp/user_lib/src/usart.cpp">
-<persistable path="/STM32F103mini_temp/user_lib/src/usart.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.cpp" tooltip="STM32F103mini_temp/user_app/device/src/si8900.cpp">
+<persistable path="/STM32F103mini_temp/user_app/device/src/si8900.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.h" tooltip="STM32F103mini_temp/user_app/device/inc/si8900.h">
+<persistable path="/STM32F103mini_temp/user_app/device/inc/si8900.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="NCP5359.h" tooltip="STM32F103mini_temp/user_app/device/inc/NCP5359.h">
+<persistable path="/STM32F103mini_temp/user_app/device/inc/NCP5359.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8274.cpp" tooltip="STM32F103mini_temp/user_app/device/src/si8274.cpp">
+<persistable path="/STM32F103mini_temp/user_app/device/src/si8274.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8274.h" tooltip="STM32F103mini_temp/user_app/device/inc/si8274.h">
+<persistable path="/STM32F103mini_temp/user_app/device/inc/si8274.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sbus.cpp" tooltip="STM32F103mini_temp/user_app/device/src/sbus.cpp">
+<persistable path="/STM32F103mini_temp/user_app/device/src/sbus.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="KawaRobo_F103.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\KawaRobo_F103\KawaRobo_F103.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/KawaRobo_F103.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.h" tooltip="STM32F103/user_app/device/inc/si8900.h">
+<persistable path="/STM32F103/user_app/device/inc/si8900.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.h" tooltip="STM32F103mini_temp/user_app/canNode/inc/canNodeVoltage.h">
+<persistable path="/STM32F103mini_temp/user_app/canNode/inc/canNodeVoltage.h"/>
 </file>
 </mruList>
 </workbench>

@@ -14,6 +14,9 @@
 #define CHANNEL_ARM		2
 #define CHANNEL_SEL		0
 
+#define TOGGLE_CONTROL_MODE 3
+#define TOGGLE_POWER_LIMIT  2
+
 #define CHANNEL_TOGGLE0 2
 #define CHANNEL_TOGGLE1 4
 #define CHANNEL_TOGGLE2 5
@@ -35,7 +38,7 @@
 #define SA_EN_INTERVAL 			50
 #define SERIKA_TIME				10	//最初に喋る時間
 
-#define BATT_UNDER_LIMIT 	11200	//11.2V	動作下限電圧､2.8V/cell
+#define BATT_UNDER_LIMIT 	2.3*4*1000	//11.2V	動作下限電圧､2.8V/cell
 #define BATT_UNDER_HYS		1000	//1V	ヒステリシス
 
 #define YAW 0
@@ -45,23 +48,21 @@
 #define MOTOR_OUT_REG_OFFSET 0.1
 #define MOTOR_OUT_ARM_OFFSET 0.1
 
-#define ATM_MAX_DEG  100		//機構限界
-#define ARM_TOP_DEG  120		//跳ね上げ時にあげて意味のある角度
+#define ATM_MAX_DEG  130		//機構限界
+#define ARM_TOP_DEG  110		//跳ね上げ時にあげて意味のある角度
 #define ARM_DEF_DEG  0			//初期角度(跳ね上げたあとに戻る
-#define ARM_BTM_DEG -120		//最小角度(要らない気もする
-#define ARM_MIN_DEG -130		//機構限界
+#define ARM_BTM_DEG -100		//最小角度(要らない気もする
+#define ARM_MIN_DEG -110		//機構限界
 
 class KawaRobo {
 public:
 	void setup(USART &serial,SBUS &sbus,SerialArduino &sa,NCP5359 &motor0,NCP5359 &motor1,NCP5359 &motor2,NCP5359 &motor3);
 	void uiSetup(Switch &sw0,Switch &sw1,LED &led0,LED &led1,LED &led2,LED &led3);
-	void sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3,int16_t gyroOffset,float adcBatt);
+	void sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3,float adcBatt);
 
 	void cycle();
 	void armPotCycle();
 	void displayCycle();
-
-	void controlCycle();
 
 	void run();
 	void test();
@@ -77,17 +78,18 @@ public:
 	float getVolumePosition();
 	int getStickPosition(uint16_t channel,uint16_t offset = 1024);
 
-	void armPotUpdate();
+	void sbusDataUpdate();
+	void saDataUpdate();
 
 	float armDegree,pot1Int,pot2Int,armTargetDeg;
 	int pot1Cnt,pot2Cnt,potCnt;
 
-	int16_t dispValue,gyroOffset;
+	int16_t dispValue;
 
-	float adcToBattV;
-	int32_t speakRequest,toggleStat,turnoverReturn;
-	uint16_t mode,printValueSelect,selectToggle,battUnderVoltage,motorEN,speakRequestNext,serika;
-	uint64_t printTime,controlCycleIntervalTime,saSendTime,armSpeakTime;
+	float adcToBattV,armOffsetDuty,battUnderVoltage;
+	int32_t speakRequest,toggleStat[4],turnoverReturn;
+	uint16_t mode,printValueSelect,selectToggle,motorEN,speakRequestNext,serika;
+	uint64_t printTime,controlCycleIntervalTime,saSendTime,armSpeakTime,moveTime;
 
 
 private:
@@ -104,9 +106,10 @@ private:
 	TIM enc;
 	AS504x mgEnc;
 
-	PID robotR,robotTargetR,robotPIDR,armPID,armTarget;
+	PID robotR,robotTargetR,robotPIDR,armPID;
 	PID armCurrent;
 	Average<int> gravitatyAve;
+	Average<float> battVoltage;
 };
 
 
