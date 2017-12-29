@@ -106,7 +106,7 @@ private:
 	TIM enc;
 	AS504x mgEnc;
 
-	PID robotR,robotTargetR,robotPIDR,armPID;
+	PID robotR,robotTargetR,robotPIDR,armPID,armPitchGy,armPitch;
 	PID armCurrent;
 	Average<int> gravitatyAve;
 	Average<float> battVoltage;

@@ -143,6 +143,7 @@ void KawaRobo::displayCycle(){
 			for(int i=0;i<8;i++){
 				serial->printf(",%5d",sbus->read(i));
 			}
+			serial->printf(",gy = %d",armPitchGy.output32());
 			break;
 
 		case 3:
@@ -224,16 +225,17 @@ void KawaRobo::run(){
 		armSpeakTime = millis();
 	}
 
-	if(armDegree < ARM_BTM_DEG && getArmPosition() > 0.1){				//上限か下限に近づいていた場合､D制御で制動かける､duty0.1では制動モードに入らず動かせる｡
+	float output = getArmPosition() - armPitchGy.outputF();
+	if(armDegree < ARM_BTM_DEG && output > 0.1){				//上限か下限に近づいていた場合､D制御で制動かける､duty0.1では制動モードに入らず動かせる｡
 		armPID.measuredValue(-armDegree + ARM_BTM_DEG);
 		motor[1]->duty(armPID.outputF());
 
-	}else if(armDegree > ARM_TOP_DEG && getArmPosition() < -0.1){
+	}else if(armDegree > ARM_TOP_DEG && output < -0.1){
 		armPID.measuredValue(-armDegree + ARM_TOP_DEG);
 		motor[1]->duty(armPID.outputF());
 
 	}else{
-		motor[1]->duty(getArmPosition());						//上限でも下限でもないので完全手動
+		motor[1]->duty(output);						//上限でも下限でもないので完全手動
 	}
 
 	if(getTogglePosition(TOGGLE_CONTROL_MODE) <= 0){				//手動モード
@@ -257,6 +259,9 @@ void KawaRobo::run(){
 //SerialArduino受信した時の処理
 void KawaRobo::saDataUpdate(){
 	robotR.measuredValue(-(float)(sa->read(0))/39200);
+	if(abs(sa->read(1)) > 100){
+		armPitchGy.measuredValue((float)sa->read(1)/39200);
+	}
 
 	if(battVoltage.valueCnt > 500){ 			//100回平均
 		float val = battVoltage.read();
@@ -327,7 +332,7 @@ void KawaRobo::saDataUpdate(){
 
 //S.BUS受信した時の処理
 void KawaRobo::sbusDataUpdate(){
-	float value = (float)((pot1Int/pot1Cnt) - (pot2Int/pot2Cnt))/8191;
+	float value = +(float)(((pot1Int/pot1Cnt)-2048)/4096);// - (pot2Int/pot2Cnt))/8191;
 	potCnt = pot1Cnt + pot2Cnt;
 	pot1Cnt = 0;
 	pot1Int = 0;
@@ -491,6 +496,9 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 	robotTargetR.setup(0,0.1,0);	//プロポによる角度設定		単位度
 	robotPIDR.setup(0.01,0,0);		//制御用コントローラ､ゲイン1で1deg→100%になる
 	robotPIDR.outLimit(-1,1);//*/
+
+	armPitch.setup(0.01,0,0);
+	armPitchGy.setup(1,0,0);			//ジャイロによる角度積分
 
 	robotR.setup(0.5,0,0);			//ジャイロによる速度			単位度
 	robotTargetR.setup(1,0,0);		//プロポによる速度設定		単位度

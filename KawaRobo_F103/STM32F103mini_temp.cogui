@@ -11,48 +11,39 @@
 <perspectiveBar/>
 <page focus="true" label="Workspace - CooCox CoBuilder">
 <editors>
-<editorArea activeWorkbook="org.eclipse.ui.internal.EditorStack@859df1">
-<info part="org.eclipse.ui.internal.EditorStack@859df1">
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.hpp" partName="main.hpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/main.hpp" title="main.hpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/main.hpp" workbook="org.eclipse.ui.internal.EditorStack@859df1">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/main.hpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1350" selectionTopPixel="816"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="KawaRoboMain.h" partName="KawaRoboMain.h" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/user/user_app/board/inc/KawaRoboMain.h" title="KawaRoboMain.h" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/user/user_app/board/inc/KawaRoboMain.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/user_app/board/inc/KawaRoboMain.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2642" selectionTopPixel="339"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="KawaRoboMain.cpp" partName="KawaRoboMain.cpp" path="C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/user/user_app/board/src/KawaRoboMain.cpp" title="KawaRoboMain.cpp" tooltip="C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/user/user_app/board/src/KawaRoboMain.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/STM32F103mini_temp/user_app/board/src/KawaRoboMain.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="502" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="76">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
 <element path="/STM32F103mini_temp"/>
 <element path="/STM32F103mini_temp/user_app"/>
 <element path="/STM32F103mini_temp/user_app/board"/>
 <element path="/STM32F103mini_temp/user_app/board/inc"/>
 <element path="/STM32F103mini_temp/user_app/board/src"/>
-<element path="/STM32F103mini_temp/user_app/canNode"/>
-<element path="/STM32F103mini_temp/user_app/canNode/inc"/>
-<element path="/STM32F103mini_temp/user_app/canNode/src"/>
-<element path="/STM32F103mini_temp/user_app/device"/>
-<element path="/STM32F103mini_temp/user_app/device/inc"/>
-<element path="/STM32F103mini_temp/user_app/device/src"/>
-<element path="/STM32F103mini_temp/user_app/inc"/>
-<element path="/STM32F103mini_temp/user_app/interface"/>
-<element path="/STM32F103mini_temp/user_app/interface/inc"/>
-<element path="/STM32F103mini_temp/user_app/interface/src"/>
 <element path="/STM32F103mini_temp/user_app/robot"/>
-<element path="/STM32F103mini_temp/user_app/robot/inc"/>
-<element path="/STM32F103mini_temp/user_app/src"/>
-<element path="/STM32F103mini_temp/user_lib"/>
-<element path="/STM32F103mini_temp/user_lib/inc"/>
-<element path="/STM32F103mini_temp/user_lib/src"/>
+<element path="/STM32F103mini_temp/user_app/robot/src"/>
 </expanded>
 <selection>
-<element path="/STM32F103mini_temp/user_app/src/canSwitch.cpp"/>
+<element path="/STM32F103mini_temp/user_app/robot/src/PID_Controller.cpp"/>
 </selection>
 </viewState>
 </view>
@@ -255,14 +246,7 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/inc/SerialArduino.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/inc/sbus.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/board/src/KawaRoboMain.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/main.hpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/src/sbus.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/inc/si8274.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/src/si8274.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/inc/NCP5359.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/inc/si8900.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/src/si8900.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/device/inc/SerialArduino.h"/>
@@ -275,156 +259,160 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/inc/canMotorDriver.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/inc/canSwitch.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/src/canSwitch.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/board/inc/KawaRoboMain.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/board/src/KawaRoboMain.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/robot/src/PID_Controller.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/STM32F103mini_temp/user_app/board/inc/KawaRoboMain.h"/>
 </editors>
-<item historyLabel="KawaRoboMain.cpp" index="2">
-<position info="not_deleted" x="950" y="0"/>
-</item>
-<item historyLabel="sbus.h" index="1">
+<item historyLabel="si8900.h" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="KawaRoboMain.cpp" index="2">
-<position info="not_deleted" x="950" y="0"/>
-</item>
-<item historyLabel="main.hpp" index="3">
-<position info="not_deleted" x="1338" y="0"/>
-</item>
-<item historyLabel="KawaRoboMain.cpp" index="2">
-<position info="not_deleted" x="950" y="0"/>
-</item>
-<item historyLabel="SerialArduino.h" index="0">
+<item historyLabel="si8900.cpp" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="sbus.h" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="sbus.cpp" index="4">
-<position info="not_deleted" x="58" y="0"/>
-</item>
-<item historyLabel="sbus.h" index="1">
-<position info="not_deleted" x="291" y="0"/>
-</item>
-<item historyLabel="sbus.cpp" index="4">
-<position info="not_deleted" x="58" y="0"/>
-</item>
-<item historyLabel="sbus.h" index="1">
-<position info="not_deleted" x="260" y="195"/>
-</item>
-<item historyLabel="sbus.cpp" index="4">
-<position info="not_deleted" x="158" y="6"/>
-</item>
-<item historyLabel="sbus.h" index="1">
-<position info="not_deleted" x="284" y="0"/>
-</item>
-<item historyLabel="sbus.cpp" index="4">
-<position info="not_deleted" x="158" y="6"/>
-</item>
-<item historyLabel="KawaRoboMain.cpp" index="2">
-<position info="not_deleted" x="950" y="0"/>
-</item>
-<item historyLabel="si8274.h" index="5">
-<position info="not_deleted" x="290" y="0"/>
-</item>
-<item historyLabel="si8274.cpp" index="6">
-<position info="not_deleted" x="1341" y="0"/>
-</item>
-<item historyLabel="si8274.h" index="5">
-<position info="not_deleted" x="290" y="0"/>
-</item>
-<item historyLabel="si8274.cpp" index="6">
-<position info="not_deleted" x="2648" y="0"/>
-</item>
-<item historyLabel="KawaRoboMain.cpp" index="2">
-<position info="not_deleted" x="950" y="0"/>
-</item>
-<item historyLabel="SerialArduino.h" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="NCP5359.h" index="7">
-<position info="not_deleted" x="207" y="153"/>
-</item>
-<item historyLabel="SerialArduino.h" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="si8900.h" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="si8900.cpp" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="si8900.h" index="8">
+<item historyLabel="si8900.h" index="1">
 <position info="not_deleted" x="198" y="277"/>
 </item>
-<item historyLabel="si8900.cpp" index="9">
+<item historyLabel="si8900.cpp" index="2">
 <position info="not_deleted" x="3117" y="0"/>
 </item>
-<item historyLabel="si8900.h" index="8">
+<item historyLabel="si8900.h" index="1">
 <position info="not_deleted" x="123" y="17"/>
 </item>
-<item historyLabel="si8900.cpp" index="9">
+<item historyLabel="si8900.cpp" index="2">
 <position info="not_deleted" x="19" y="0"/>
 </item>
-<item historyLabel="si8900.h" index="8">
+<item historyLabel="si8900.h" index="1">
 <position info="not_deleted" x="123" y="17"/>
 </item>
-<item historyLabel="main.hpp" index="3">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="1338" y="0"/>
 </item>
-<item historyLabel="SerialArduino.h" index="10">
+<item historyLabel="SerialArduino.h" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="SerialArduino.cpp" index="11">
+<item historyLabel="SerialArduino.cpp" index="4">
 <position info="not_deleted" x="1104" y="0"/>
 </item>
-<item historyLabel="SerialArduino.h" index="10">
+<item historyLabel="SerialArduino.h" index="3">
 <position/>
 </item>
-<item historyLabel="main.hpp" index="3">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="1338" y="0"/>
 </item>
-<item historyLabel="ADNS9800.h" index="12">
+<item historyLabel="ADNS9800.h" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.hpp" index="3">
+<item historyLabel="main.hpp" index="0">
 <position info="not_deleted" x="1338" y="0"/>
 </item>
-<item historyLabel="canEncoder.h" index="13">
+<item historyLabel="canEncoder.h" index="6">
 <position info="not_deleted" x="266" y="27"/>
 </item>
-<item historyLabel="canValve.h" index="14">
+<item historyLabel="canValve.h" index="7">
 <position info="not_deleted" x="95" y="78"/>
 </item>
-<item historyLabel="canEncoder.h" index="13">
+<item historyLabel="canEncoder.h" index="6">
 <position info="not_deleted" x="266" y="27"/>
 </item>
-<item historyLabel="main.hpp" index="15">
+<item historyLabel="main.hpp" index="8">
 <position info="not_deleted" x="1338" y="0"/>
 </item>
-<item historyLabel="canVoltage.h" index="16">
+<item historyLabel="canVoltage.h" index="9">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="canMotorDriver.h" index="17">
+<item historyLabel="canMotorDriver.h" index="10">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="canSwitch.h" index="18">
+<item historyLabel="canSwitch.h" index="11">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="canMotorDriver.h" index="17">
+<item historyLabel="canMotorDriver.h" index="10">
 <position info="not_deleted" x="176" y="117"/>
 </item>
-<item historyLabel="canSwitch.h" index="18">
+<item historyLabel="canSwitch.h" index="11">
 <position info="not_deleted" x="131" y="96"/>
 </item>
-<item historyLabel="canSwitch.cpp" index="19">
+<item historyLabel="canSwitch.cpp" index="12">
 <position info="not_deleted" x="506" y="0"/>
 </item>
-<item historyLabel="canSwitch.h" index="18">
+<item historyLabel="canSwitch.h" index="11">
 <position info="not_deleted" x="131" y="96"/>
 </item>
-<item historyLabel="canVoltage.h" index="16">
+<item historyLabel="canVoltage.h" index="9">
 <position info="not_deleted" x="106" y="0"/>
 </item>
-<item active="true" historyLabel="main.hpp" index="15">
-<position info="not_deleted" x="1338" y="0"/>
+<item historyLabel="main.hpp" index="8">
+<position info="not_deleted" x="1454" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.h" index="13">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.h" index="13">
+<position info="not_deleted" x="2642" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="12463" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.h" index="13">
+<position info="not_deleted" x="2642" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position/>
+</item>
+<item historyLabel="KawaRoboMain.h" index="13">
+<position info="not_deleted" x="2642" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="6535" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="6535" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="3160" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="6467" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="6474" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="5718" y="0"/>
+</item>
+<item historyLabel="PID_Controller.cpp" index="15">
+<position info="not_deleted" x="1097" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="6569" y="0"/>
+</item>
+<item historyLabel="PID_Controller.cpp" index="15">
+<position info="not_deleted" x="830" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="6569" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.h" index="16">
+<position info="not_deleted" x="2642" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="7969" y="0"/>
+</item>
+<item historyLabel="KawaRoboMain.h" index="16">
+<position info="not_deleted" x="2642" y="0"/>
+</item>
+<item active="true" historyLabel="KawaRoboMain.cpp" index="14">
+<position info="not_deleted" x="7969" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -433,6 +421,27 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="KawaRobo_F103.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\KawaRobo_F103\KawaRobo_F103.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/KawaRobo_F103.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor.h" tooltip="STM32F103/user_app/inc/motor.h">
+<persistable path="/STM32F103/user_app/inc/motor.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor.cpp" tooltip="STM32F103/user_app/src/motor.cpp">
+<persistable path="/STM32F103/user_app/src/motor.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanDCMD_ver1.1.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\CanDCMD_ver1.1\CanDCMD_ver1.1.coproj">
+<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/CanDCMD_ver1.1.coproj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="PID_Controller.cpp" tooltip="STM32F103mini_temp/user_app/robot/src/PID_Controller.cpp">
+<persistable path="/STM32F103mini_temp/user_app/robot/src/PID_Controller.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="KawaRoboMain.cpp" tooltip="STM32F103mini_temp/user_app/board/src/KawaRoboMain.cpp">
+<persistable path="/STM32F103mini_temp/user_app/board/src/KawaRoboMain.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="KawaRoboMain.h" tooltip="STM32F103mini_temp/user_app/board/inc/KawaRoboMain.h">
+<persistable path="/STM32F103mini_temp/user_app/board/inc/KawaRoboMain.h"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canSwitch.cpp" tooltip="STM32F103mini_temp/user_app/src/canSwitch.cpp">
 <persistable path="/STM32F103mini_temp/user_app/src/canSwitch.cpp"/>
 </file>
@@ -448,35 +457,14 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canValve.h" tooltip="STM32F103mini_temp/user_app/inc/canValve.h">
 <persistable path="/STM32F103mini_temp/user_app/inc/canValve.h"/>
 </file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="KawaRobo_F103.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\KawaRobo_F103\KawaRobo_F103.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/KawaRobo_F103/KawaRobo_F103.coproj"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canEncoder.h" tooltip="F103_mini/user_app/inc/canEncoder.h">
 <persistable path="/F103_mini/user_app/inc/canEncoder.h"/>
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanNode_rev1.1_rewrited.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\CanNode_rev1.1_rewrited\CanNode_rev1.1_rewrited.coproj">
 <persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanNode_rev1.1_rewrited/CanNode_rev1.1_rewrited.coproj"/>
 </file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="RS485_SERVO.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\RS485_SERVO\RS485_SERVO.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/RS485_SERVO/RS485_SERVO.coproj"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="CanDCMD_ver1.1.coproj" tooltip="C:\Users\hiroyuki\Documents\_RoboCon\STM32\CanDCMD_ver1.1\CanDCMD_ver1.1.coproj">
-<persistable uri="file:/C:/Users/hiroyuki/Documents/_RoboCon/STM32/CanDCMD_ver1.1/CanDCMD_ver1.1.coproj"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="canNodeVoltage.h" tooltip="STM32F103mini_temp/user_app/canNode/inc/canNodeVoltage.h">
-<persistable path="/STM32F103mini_temp/user_app/canNode/inc/canNodeVoltage.h"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.cpp" tooltip="STM32F103mini_temp/user_app/device/src/si8900.cpp">
 <persistable path="/STM32F103mini_temp/user_app/device/src/si8900.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8900.h" tooltip="STM32F103mini_temp/user_app/device/inc/si8900.h">
-<persistable path="/STM32F103mini_temp/user_app/device/inc/si8900.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="NCP5359.h" tooltip="STM32F103mini_temp/user_app/device/inc/NCP5359.h">
-<persistable path="/STM32F103mini_temp/user_app/device/inc/NCP5359.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="si8274.cpp" tooltip="STM32F103mini_temp/user_app/device/src/si8274.cpp">
-<persistable path="/STM32F103mini_temp/user_app/device/src/si8274.cpp"/>
 </file>
 </mruList>
 </workbench>
