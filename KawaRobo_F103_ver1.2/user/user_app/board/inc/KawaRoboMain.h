@@ -74,7 +74,6 @@ public:
 	void displayCycle();
 
 	void run();
-	void test();
 
 	void motorDisable();
 	void motorEnable();
