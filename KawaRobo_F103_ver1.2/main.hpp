@@ -24,6 +24,7 @@ GPIO individual,motorEn;
 NCP5359 motor[4];
 
 SerialArduino sa;
+SerialArduino ps3;
 SBUS sbus;
 
 SPI_Master spi;
@@ -60,6 +61,7 @@ void setup(){
 
 	/*********↓通信↑モーター********/
 
+	ps3.setup(USART1,115200,PA9,PA10);
 	serial.setup(USART1,115200,PA9,PA10);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
