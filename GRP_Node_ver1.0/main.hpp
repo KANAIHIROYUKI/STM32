@@ -31,7 +31,8 @@ CAN_TX tx[4];
 Mecanum mc;
 
 uint64_t intervalTime,intTime;
-uint8_t data[8];
+uint8_t data[8],swStat[8];
+int servoDeg[8];
 
 void setup(){
 	sys.setup();

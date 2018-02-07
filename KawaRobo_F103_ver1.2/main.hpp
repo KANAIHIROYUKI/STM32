@@ -24,7 +24,6 @@ GPIO individual,motorEn;
 NCP5359 motor[4];
 
 SerialArduino sa;
-SerialArduino ps3;
 SBUS sbus;
 
 SPI_Master spi;
@@ -60,8 +59,6 @@ void setup(){
 	analog[3].setup(ADC2,5,PA5);
 
 	/*********↓通信↑モーター********/
-
-	ps3.setup(USART1,115200,PA9,PA10);
 	serial.setup(USART1,115200,PA9,PA10);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
@@ -82,11 +79,6 @@ void setup(){
 	led[5].setup(PA15);
 
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
-
-	/*
-	spi.setup(SPI2,PB13,PB14,PB15,SPI_Mode3);
-	spiNss.setup(PB12,OUTPUT);
-	mag.setup(spi,spiNss);//*/
 
 	kw.setup(serial,sbus,sa,motor[0],motor[1],motor[2],motor[3],motorEn);
 	kw.uiSetup(sw[1],sw[0],led[0],led[1],led[2],led[3],led[4],led[5]);

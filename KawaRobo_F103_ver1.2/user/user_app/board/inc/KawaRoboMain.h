@@ -14,8 +14,10 @@
 #define CHANNEL_ARM		2
 #define CHANNEL_SEL		0
 
-#define TOGGLE_CONTROL_MODE 3
+#define TOGGLE_CONTROL_MODE 0
 #define TOGGLE_POWER_LIMIT  2
+#define TOGGLE_SITUATION	1
+#define TOGGLE_VOICE		3
 
 #define CHANNEL_TOGGLE0 2
 #define CHANNEL_TOGGLE1 4
@@ -53,8 +55,8 @@
 #define ATM_MAX_DEG  130		//機構限界
 #define ARM_TOP_DEG  110		//跳ね上げ時にあげて意味のある角度
 #define ARM_DEF_DEG  0			//初期角度(跳ね上げたあとに戻る
-#define ARM_BTM_DEG -100		//最小角度(要らない気もする
-#define ARM_MIN_DEG -110		//機構限界
+#define ARM_BTM_DEG -110		//最小角度(要らない気もする
+#define ARM_MIN_DEG -120		//機構限界
 
 enum ERROR{
 	NONE = 0,
@@ -94,12 +96,12 @@ public:
 
 	int16_t dispValue;
 
-	float adcToBattV,armOffsetDuty,battUnderVoltage;
+	float adcToBattV,armOffsetDuty,battUnderVoltage,robotRGain,armPitchGain;
 	int32_t speakRequest,toggleStat[4],turnoverReturn;
 	uint16_t serika,speakRequestNext;
 
 	uint16_t mode,printValueSelect,selectToggle,error,oldError,saLedStat;
-	uint64_t printTime,controlCycleIntervalTime,saSendTime,armSpeakTime;
+	uint64_t printTime,controlCycleIntervalTime,saSendTime,armSpeakTime,runningTime,loopCycleCnt;
 
 
 private:

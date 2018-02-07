@@ -38,8 +38,22 @@ int main(void)
         		tx[1].send();
         		tx[2].send();
         		for(int i=0;i<4;i++){
-        			sa.write(4 + i,100 - ps3.read(i));
-        			motor[i].duty((float)ps3.read(4+i)/100);
+        			motor[i].duty((float)ps3.read(4+i)/200);
+        			//sa.write(i + 4,100 - ps3.read(i));
+        		}
+        		for(int i=0;i<8;i++){
+        			if(ps3.read(i+8) != swStat[i]){
+        				swStat[i] = ps3.read(i + 8);
+
+        				if(swStat[i]){
+        					if(servoDeg[i] > 1){
+        						servoDeg[i] = 0;
+        					}else{
+        						servoDeg[i] = 180;
+        					}
+        					sa.write(i+4,servoDeg[i]);
+        				}
+        			}
         		}
         		//serial.printf("%d,%d,%d\n\r",ps3.read(5),ps3.read(4),ps3.read(7));
         	}
