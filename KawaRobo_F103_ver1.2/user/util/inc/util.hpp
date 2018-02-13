@@ -130,12 +130,12 @@ int sign(int val);
 int sign(float val);
 
 template<typename T=char,int bufSize=256> class RingBuffer{
-private:
+
+public:
     T data[bufSize+2];
     int readPointer;
     int writePointer;
 
-public:
     RingBuffer(){
         readPointer=0;
         writePointer=0;

@@ -57,10 +57,9 @@ void KawaRobo::cycle(){
 			error &= 0xFFFF - SBUS_LOST;								//SBUS通信OK､送信機と接続
 		}
 		sbusDataUpdate();
-
 	}
 
-	if(SA_RECEIVE_OK){
+	if(SA_RECEIVE_OK){			//SerialArduinoのLEDとエラー処理
 		if(saLedStat == 0){
 			saLedStat = 1;
 			led[0]->write(1);
@@ -81,36 +80,20 @@ void KawaRobo::cycle(){
 			}else{
 				led[3]->write(1);
 			}
+
 			oldError = error;
 		}
-	}else if(error != oldError){
+	}else if(error != oldError){	//エラーなくなった
 		oldError = error;
 		led[3]->write(0);
 	}
 
 	if(millis() > controlCycleIntervalTime){	//制御周期
 		controlCycleIntervalTime += 1;
-		switch(mode){
-		case MODE_RUN:
+		if(mode == MODE_RUN || mode == MODE_TEST){
 			run();
-			break;
-
-		case MODE_TEST:
-			run();
-			break;
-
-		case MODE_STOP:
-			motorDisable();
-
-			break;
-		case MODE_DISCONNECT:
-			motorDisable();
-
-			break;
-		case MODE_ERROR:
-			motorDisable();
-
-			break;
+		}else if(mode == MODE_STOP || mode == MODE_DISCONNECT || mode == MODE_ERROR){
+			safety();
 		}
 	}
 
@@ -120,6 +103,9 @@ void KawaRobo::cycle(){
 		sa->sendRequest = 0;
 		speakRequest = -1;
 		sa->sendEnded = 0;
+
+		loopCycleCnt++;
+
 	}else if(speakRequest == -1 && sa->sendEnded == 1){
 		speakRequest = 0;
 		sa->write(1,0);
@@ -242,9 +228,9 @@ void KawaRobo::displayCycle(){
 		case 6:
 			serial->printf("run = %4d,rev = %4d,arm = %4d,",(int)(getRunPosition()*100),(int)(getRevPosition()*100),(int)(getArmPosition()*100));
 			serial->printf("motot out ");
-			serial->printf(",%4d",(int)(motor[0]->outDuty*100));
-			serial->printf(",%4d",(int)(motor[1]->outDuty*100));
-			serial->printf(",%4d",(int)(motor[3]->outDuty*100));
+			serial->printf(",L,%4d",(int)(motor[ML]->outDuty*100));
+			serial->printf(",A,%4d",(int)(motor[MA]->outDuty*100));
+			serial->printf(",R,%4d",(int)(motor[MR]->outDuty*100));
 			break;
 
 		default:
@@ -258,6 +244,14 @@ void KawaRobo::displayCycle(){
 /*************************************************************************************/
 
 void KawaRobo::run(){
+	float value = +(float)(((pot1Int/pot1Cnt)-2048)/4096);// - (pot2Int/pot2Cnt))/8191;
+	potCnt = pot1Cnt + pot2Cnt;
+	pot1Cnt = 0;
+	pot1Int = 0;
+	pot2Cnt = 0;
+	pot2Int = 0;
+	armDegree = -value * 270;
+
 	if(armDegree > 30 && turnoverReturn == 1){	//転倒復帰
 		turnoverReturn = 2;
 		switch(loopCycleCnt %3){
@@ -304,39 +298,64 @@ void KawaRobo::run(){
 	}else if(armDegree > 30 && millis() - armSpeakTime < 500 && turnoverReturn == 0){
 		armSpeakTime = millis();
 	}
-	float output;
+
+	output = 0;
 	if(mode == MODE_TEST){
 		output = getArmPosition();								//ジャイロ補正なし
 	}else{
 		output = getArmPosition();// + armPitchGy.outputF();		//ジャイロ補正あり
 	}
+
 	if(armDegree < ARM_BTM_DEG && output > 0.1){				//上限か下限に近づいていた場合､D制御で制動かける､duty0.1では制動モードに入らず動かせる｡
 		armPID.measuredValue(-armDegree + ARM_BTM_DEG);
-		motor[1]->duty(armPID.outputF());						//ギアが1段減ったので逆にしている
-		motor[2]->duty(armPID.outputF());
+		output = armPID.outputF();
+		motor[MA]->duty(output);						//
+		motor[MS]->duty(output);
 
 	}else if(armDegree > ARM_TOP_DEG && output < -0.1){
 		armPID.measuredValue(-armDegree + ARM_TOP_DEG);
-		motor[1]->duty(armPID.outputF());
-		motor[2]->duty(armPID.outputF());
+		output = armPID.outputF();
+		motor[MA]->duty(output);
+		motor[MS]->duty(output);
 
 	}else{
-		motor[1]->duty(output);						//上限でも下限でもないので完全手動
-		motor[2]->duty(output);
+		motor[MA]->duty(output);						//上限でも下限でもないので完全手動
+		motor[MS]->duty(output);
+
 	}
+	/*
+	if(millis() - modeChangeTime < 500 && modeChangeTime != 0){
+		serial->printf("\n\r%d",(int)(output*100));
+	}*/
 
 	if(mode == MODE_TEST){				//手動モード
-		motor[0]->duty(+getRunPosition() + getRevPosition());
-		motor[3]->duty(-getRunPosition() + getRevPosition());
+		motor[MR]->duty(+getRunPosition() + getRevPosition());
+		motor[ML]->duty(-getRunPosition() + getRevPosition());
 		return;
 	}
 																	//制御モード
 	robotTargetR.measuredValue(getRevPosition());
 	robotPIDR.measuredValue(robotR.outputF() - robotTargetR.outputF());
-	motor[0]->duty(+getRunPosition() - robotPIDR.outputF());
-	motor[3]->duty(-getRunPosition() - robotPIDR.outputF());
+	motor[MR]->duty(+getRunPosition() - robotPIDR.outputF());
+	motor[ML]->duty(-getRunPosition() - robotPIDR.outputF());
 
 	//armCurrent.measuredValue((motor[1]->outDuty*14) - 0.1);
+}
+
+void KawaRobo::safety(){
+	float value = +(float)(((pot1Int/pot1Cnt)-2048)/4096);// - (pot2Int/pot2Cnt))/8191;
+	potCnt = pot1Cnt + pot2Cnt;
+	pot1Cnt = 0;
+	pot1Int = 0;
+	pot2Cnt = 0;
+	pot2Int = 0;
+	armDegree = -value * 270;
+
+	armPID.measuredValue(-armDegree + ARM_BTM_DEG);
+	robotTargetR.measuredValue(getRevPosition());
+	robotPIDR.measuredValue(robotR.outputF() - robotTargetR.outputF());
+
+	motorDisable();
 }
 
 
@@ -419,22 +438,14 @@ void KawaRobo::saDataUpdate(){
 
 //S.BUS受信した時の処理
 void KawaRobo::sbusDataUpdate(){
-	float value = +(float)(((pot1Int/pot1Cnt)-2048)/4096);// - (pot2Int/pot2Cnt))/8191;
-	potCnt = pot1Cnt + pot2Cnt;
-	pot1Cnt = 0;
-	pot1Int = 0;
-	pot2Cnt = 0;
-	pot2Int = 0;
-	armDegree = -value * 270;
-
-	loopCycleCnt++;
-
+	//serial->printf("%d\n\r",sbus->read(2));
 	if(SA_RECEIVE_OK){
 		if(battVoltage.peek() > battUnderVoltage){		//Arduinoからの受信がある､かつ電圧OK
 			battUnderVoltage = BATT_UNDER_LIMIT;
 			error &= 0xFFFF - Batt_UVL;
-			if(getTogglePosition(TOGGLE_CONTROL_MODE) < 0){				//プロポのトグルスイッチの状態によって動作モードを変更する
+			if(getTogglePosition(TOGGLE_CONTROL_MODE) > 0.5){				//プロポのトグルスイッチの状態によって動作モードを変更する
 				if(mode != MODE_RUN){
+
 					mode = MODE_RUN;
 
 					switch(loopCycleCnt % 5){
@@ -455,10 +466,9 @@ void KawaRobo::sbusDataUpdate(){
 						break;
 					}
 
+
 					motorEnable();
 					serial->printf("\n\rmode = RUN\n\r\n\r");
-
-					runningTime = millis();
 				}
 
 			}else if(getTogglePosition(TOGGLE_CONTROL_MODE) < 0.5){
@@ -531,6 +541,7 @@ void KawaRobo::sbusDataUpdate(){
 			}else{
 				if(mode != MODE_STOP){
 					mode = MODE_STOP;
+
 					if(mode == MODE_TEST || mode == MODE_RUN){
 						switch(millis() % 4){
 						case 0:
@@ -554,7 +565,7 @@ void KawaRobo::sbusDataUpdate(){
 			}
 		}else{
 			if(mode != MODE_STOP){						//電圧不足
-				mode = MODE_STOP;
+
 				if(loopCycleCnt%2){
 					speakRequest = 13;//怒っちゃいますよ
 				}else{
@@ -579,8 +590,8 @@ void KawaRobo::sbusDataUpdate(){
 
 	if(toggleStat[TOGGLE_POWER_LIMIT] != (int)getTogglePosition(TOGGLE_POWER_LIMIT)){		//出力リミッタ切り替え
 		if(getTogglePosition(TOGGLE_POWER_LIMIT) > 0.1){
-			motor[3]->dutyLimit(0.95);
-			motor[0]->dutyLimit(0.95);
+			motor[MR]->dutyLimit(0.99);
+			motor[ML]->dutyLimit(0.99);
 			switch(loopCycleCnt % 2){
 			case 0:
 				speakRequest = 35;						//一生懸命がんばります！
@@ -590,8 +601,8 @@ void KawaRobo::sbusDataUpdate(){
 				break;
 			}
 		}else if(getTogglePosition(TOGGLE_POWER_LIMIT) > -0.1){
-			motor[3]->dutyLimit(0.7);
-			motor[0]->dutyLimit(0.7);
+			motor[MR]->dutyLimit(0.7);
+			motor[ML]->dutyLimit(0.7);
 			switch(loopCycleCnt % 2){
 			case 0:
 				speakRequest = 11;						//応援してもらうと,なんでもできちゃう気がします！
@@ -605,8 +616,8 @@ void KawaRobo::sbusDataUpdate(){
 			}
 
 		}else{
-			motor[3]->dutyLimit(0.4);
-			motor[0]->dutyLimit(0.4);
+			motor[MR]->dutyLimit(0.4);
+			motor[ML]->dutyLimit(0.4);
 			switch(loopCycleCnt % 3){
 			case 0:
 				speakRequest = 39;						//一生懸命やりました！
@@ -695,11 +706,10 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 	this->motor[3] = &motor3;
 	this->motorEn = &motorEN;
 
-	motor[1]->dutyLimit(0.9);
-	//motor[2]->dutyLimit(0.2);
-
-	motor[3]->dutyLimit(0.9);
-	motor[0]->dutyLimit(0.9);
+	motor[MA]->dutyLimit(0.99);
+	motor[MS]->dutyLimit(0.99);
+	motor[ML]->dutyLimit(0.4);
+	motor[MR]->dutyLimit(0.4);
 
 	printValueSelect = 0;
 	battUnderVoltage = BATT_UNDER_LIMIT;
@@ -728,7 +738,6 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 
 
 	armPitchGain = 1;
-	armPitch.setup(0.01,0,0);
 	armPitchGy.setup(armPitchGain,0,0);			//ジャイロによる角度積分
 
 	robotRGain = 0.5;
@@ -738,6 +747,7 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 	robotPIDR.outLimit(-1,1);
 
 	armPID.setup(0,0,-10);		//機構限界制動用
+	armPID.outLimit(-0.1,0.1);
 
 	armCurrent.setup(0,1,0);
 	armCurrent.errorLimitInt(0,100);
@@ -772,26 +782,29 @@ void KawaRobo::sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3,float _adcToB
 /*************************************************************************************/
 
 void KawaRobo::motorDisable(){
+
 	motorEn->write(0);		//motor disable
 	led[2]->write(0);
 	for(int i=0;i<4;i++){
 		motor[i]->duty(0);
 	}
-
 }
 
 void KawaRobo::motorEnable(){
-	motorEn->write(1);		//motor enable
-	led[2]->write(1);
+
 	for(int i=0;i<4;i++){
 		motor[i]->duty(0);
 	}
+	motorEn->write(1);		//motor enable
+	led[2]->write(1);
 
+	return;
 	robotPIDR.clear();		//いらん動きしないようにPIDコントローラーもリセット
 	robotTargetR.clear();	//目標角度を0にする､現在の角度と目標角度の差を無くす
 	robotR.clear();			//ジャイロ角度の積分値をリセット､現在角度を0度とする
 
 	armPID.clear();			//いらん動きしないようにPIDコントローラーもリセット
+	armPitchGy.clear();
 }
 
 /*************************************************************************************/
@@ -801,13 +814,15 @@ float KawaRobo::getRunPosition(){
 }
 
 float KawaRobo::getArmPosition(){
-	if(sbus->read(CHANNEL_ARM) < 802){
-		return (float)getStickPosition(CHANNEL_ARM,585)/(STICK_MAX/3);
+	return (float)getStickPosition(CHANNEL_ARM)/(STICK_MAX);
+
+	/*if(sbus->read(CHANNEL_ARM) < 802){
+
 	}else if(sbus->read(CHANNEL_ARM) < 1242){
 		return (float)getStickPosition(CHANNEL_ARM,1024)/(STICK_MAX/3);
 	}else{
 		return (float)getStickPosition(CHANNEL_ARM,1464)/(STICK_MAX/3);
-	}
+	}*/
 }
 
 float KawaRobo::getRevPosition(){
@@ -821,9 +836,9 @@ float KawaRobo::getSelectPosition(){
 float KawaRobo::getTogglePosition(uint16_t num){
 	switch(num){
 	case 0:
-		if(sbus->read(CHANNEL_TOGGLE0) < 805){
+		if(sbus->read(CHANNEL_TOGGLE0) < 500){
 			return 1.0;
-		}else if(sbus->read(CHANNEL_TOGGLE0) < 1245){
+		}else if(sbus->read(CHANNEL_TOGGLE0) < 1500){
 			return 0;
 		}else{
 			return -1.0;
@@ -863,7 +878,8 @@ float KawaRobo::getTogglePosition(uint16_t num){
 }
 
 float KawaRobo::getVolumePosition(){
-	return (float)(sbus->read(CHANNEL_VOLUME)-1024)/880;
+	return 0;
+	//return (float)(sbus->read(CHANNEL_VOLUME)-1024)/880;
 }
 
 int KawaRobo::getStickPosition(uint16_t channel,uint16_t offset){

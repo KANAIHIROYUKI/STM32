@@ -20,7 +20,7 @@ LED led[6];
 ADC analog[4],vBattIn;
 
 TIM pwmP[4],pwmN[4];
-GPIO individual,motorEn;
+GPIO individual,motorEn,spiSS;
 NCP5359 motor[4];
 
 SerialArduino sa;
@@ -77,6 +77,8 @@ void setup(){
 	led[3].setup(PA2);
 	led[4].setup(PB3);
 	led[5].setup(PA15);
+
+	spiSS.setup(PB12,OUTPUT);
 
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
 
