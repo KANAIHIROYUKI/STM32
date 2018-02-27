@@ -6,6 +6,7 @@ int main(void)
 	motorEn.write(1);
 
 	led[0].interval(500);
+	serial.printf("mdaddress = %d,%d\n\r",md[0].canMotorDriver_address[0],md[1].canMotorDriver_address[0]);
 
     while(1){
     	if(millis() - intervalTime > 200){
@@ -16,6 +17,7 @@ int main(void)
         			serial.printf("%d,",ps3.read(i));
         			//serial.printf("m%d = %d%%",i,(int)(mc.out[i]*100));
         		}
+        		serial.printf("duty = %d,%d",md[0].outDuty16,md[1].outDuty16);
     		}else{
     			serial.printf("%d,",(int)can.lastReceiveTime);
         		for(int i=0;i<4;i++){
@@ -31,14 +33,14 @@ int main(void)
     	if(individual.read()){
         	if(ps3.update){
         		ps3.update = 0;
-        		int_to_uchar4(tx[0].data,ps3.read(5));
-        		int_to_uchar4(tx[1].data,ps3.read(4));
-        		int_to_uchar4(tx[2].data,ps3.read(7));
-        		tx[0].send();
-        		tx[1].send();
-        		tx[2].send();
+        		//int_to_uchar4(tx[0].data,ps3.read(5));
+        		//int_to_uchar4(tx[1].data,ps3.read(4));
+        		//int_to_uchar4(tx[2].data,ps3.read(7));
+        		//tx[0].send();
+        		//tx[1].send();
+        		//tx[2].send();
         		for(int i=0;i<4;i++){
-        			motor[i].duty((float)ps3.read(4+i)/200);
+        			md[i].duty((float)ps3.read(4+i)/100);
         			//sa.write(i + 4,100 - ps3.read(i));
         		}
         		for(int i=0;i<8;i++){
@@ -75,6 +77,8 @@ int main(void)
     	for(int i=0;i<6;i++){
     		led[i].cycle();
     	}
+
+    	led[3].write(motor[0].outFrq);
 
     	sw[0].cycle();
     	sw[1].cycle();

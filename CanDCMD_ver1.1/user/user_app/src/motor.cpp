@@ -5,6 +5,8 @@ void Motor::setup(TIM &PWM_1,TIM &PWM_2){
 	this->pwm2 = &PWM_2;
 
 	outEnable = 1;
+	pwmFrqStat = 0;
+	defaultFrq = pwm1->pwm_period;
 
 	free();
 
@@ -38,16 +40,34 @@ void Motor::duty(float motorDuty){
 		break;
 	}
 
-	int16_t motorDuty16 = (int16_t)(motorDuty * pwm1->pwm_period);
 
-	uint16_t dutyLimit = (pwm1->pwm_period) - 50;	//スイッチング時間分でduty上限かける
+	/*if(FRQ_THR*1.01 < fabs(motorDuty) && pwmFrqStat == 0){
+		pwm1->pwmReset(18000);
+		pwm2->pwmReset(18000);
+		pwmFrqStat = 1;
+	}else if(FRQ_THR > fabs(motorDuty)&& pwmFrqStat == 1){
+		pwm1->pwmReset(2000);
+		pwm2->pwmReset(2000);
+		pwmFrqStat = 0;
+	}*/
+	//タイマ共有しているんだよなあ^^
+
+	int motorDuty16 = (int16_t)(motorDuty * pwm1->pwm_period);
+
+	int dutyLimit = (pwm1->pwm_period) - 75;	//スイッチング時間分でduty上限かける
 	if(motorDuty16 >  dutyLimit)motorDuty16 = dutyLimit;
 	if(motorDuty16 < -dutyLimit)motorDuty16 = -dutyLimit;
 	//if(motorDuty16 < 50 && motorDuty16 > -50)motorDuty16 = 0;
 
-
-	pwm1->duty(pwm1->pwm_period/2 - motorDuty16/2);
-	pwm2->duty(pwm2->pwm_period/2 + motorDuty16/2);
+	if(motorDuty16 >= 0){
+		pwm1->duty(motorDuty16);
+		pwm2->duty(0);
+	}else{
+		pwm1->duty(0);
+		pwm2->duty(-motorDuty16);
+	}
+	//pwm1->duty(pwm1->pwm_period/2 - motorDuty16/2);
+	//pwm2->duty(pwm2->pwm_period/2 + motorDuty16/2);
 	outDuty = motorDuty16;
 
 }

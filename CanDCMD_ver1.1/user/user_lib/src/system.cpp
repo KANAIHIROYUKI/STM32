@@ -18,7 +18,7 @@ void System::cycle(){
 	if(cycleFunctionCnt > 0){
 		if(usartFlag){
 			//system_usart->printf("cycle function error cycleCnt = %d\n\r",cycleFunctionCnt);
-			while(1);
+			//while(1);
 		}
 	}
 	wdgReset();

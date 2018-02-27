@@ -7,6 +7,7 @@ void NCP5359::setup(TIM &pwm1Set,TIM &pwm2Set){
 	duty(0);
 
 	dutySetTime = 0;
+	outFrq = 0;
 
 	limitp = 0.99;
 	limitm = -0.99;
@@ -40,7 +41,18 @@ void NCP5359::duty(float duty){
 	dutySetTime = millis();
 
 	duty = floatlimit(limitp,duty,limitm);
+	if(THR_DUTY*1.01 < fabs(duty) && outFrq == 0){
+		outFrq = 1;
+		pwm[0]->pwmReset(34351);	//2kHz‚®‚ç‚¢¤"ƒh"
+		pwm[1]->pwmReset(34351);
+	}else if(THR_DUTY*0.99 > fabs(duty) && outFrq == 1){
+		outFrq = 0;
+		pwm[0]->pwmReset(2000);
+		pwm[1]->pwmReset(2000);
+	}
+
 	outDuty = duty;
+
 	if(duty > 0){
 		pwm[0]->duty(duty * pwm[0]->pwm_period);
 		pwm[1]->duty(0);

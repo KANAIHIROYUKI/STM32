@@ -5,8 +5,6 @@ int main(void)
 {
 	setup();
 
-
-
 	if(canNodeMode == CAN_NODE_MODE_AMP){
 		serial.printf("can node amp & encoder\n\r");
 	}

@@ -30,6 +30,8 @@ CAN_RX rx[4];
 CAN_TX tx[4];
 Mecanum mc;
 
+CanMotorDriver md[4];
+
 uint64_t intervalTime,intTime;
 uint8_t data[8],swStat[8];
 int servoDeg[8];
@@ -86,7 +88,7 @@ void setup(){
 
 	if(individual.read()){	//master
 		for(int i=0;i<4;i++){
-			tx[i].setup(can,0x100 + i);
+			//tx[i].setup(can,0x100 + i);
 			//rx[i].setup(can,0x100 + i);
 		}
 	}else{					//node
@@ -96,6 +98,9 @@ void setup(){
 		}
 	}
 
+	for(int i=0;i<4;i++){
+		md[i].setup(can,i);
+	}
 }
 
 extern "C" void USB_LP_CAN1_RX0_IRQHandler(void){

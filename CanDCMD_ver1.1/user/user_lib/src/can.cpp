@@ -127,13 +127,14 @@ void CAN1Setup(uint16_t mode){
 
 void CAN1Send(uint16_t id,uint8_t length,uint8_t data[8]){
     uint64_t timeOut = millis();
+    /*
     while(CANTXOK != CAN_TransmitStatus(CAN1,0)){
-    	if(millis() - timeOut > 5){
+    	if(millis() - timeOut > 2){
     		CAN::errorCnt++;
     		CAN::errorAddress = CAN::sendAddress;
     		break;
     	}
-    }
+    }*/
 
     CAN::sendAddress = id;
 

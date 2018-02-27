@@ -10,7 +10,7 @@ int main(void)
 
     while(1){
     	sys.wdgReset();
-    	kw.cycle();
+    	//kw.cycle();
 
 
     }

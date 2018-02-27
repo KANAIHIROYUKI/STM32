@@ -13,6 +13,9 @@
 #define MOTOR_ENABLE_ENABLE  1
 #define MOTOR_ENABLE_BUZZER  2
 
+#define FRQ_THR		0.9
+#define LOW_FRQ_PRI 35000	//2kHz
+
 class Motor{
 public:
 
@@ -35,6 +38,8 @@ public:
 
 	uint16_t pwm_period,pwm_prescaler,pwm_mode;
 	uint16_t en_period,en_prescaler,en_mode;
+
+	uint16_t defaultFrq,pwmFrqStat;
 
 
 	TIM *pwm1;

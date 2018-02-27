@@ -90,7 +90,7 @@ void setup(){
 
 	adcRst.setup(PA10,OUTPUT);
 	adcPowerOn.setup(PB2,INPUT);
-
+	//234000
 	iso.setup(USART2,234000,PA2,PA3);
 	isoIn.setup(iso,SI8900_MODE_LOOP);
 	isoIn.gpioAssigne(adcPowerOn,adcRst);
@@ -131,18 +131,6 @@ void setup(){
 	driver.emgSetup(canEmg);
 	driver.optionSetup(currentOption);
 
-	if(debugMode){
-		canVoltage.setup(can1,CAN_ADDRESS*2,100);
-
-		canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
-		canEncoder[1].setup(can1,(CAN_ADDRESS * 2) + 1,10);
-
-		canMotor[0].setup(can1,(CAN_ADDRESS * 2));
-		canMotor[1].setup(can1,(CAN_ADDRESS * 2) + 1);
-
-		canSwitch.setup(can1,CAN_ADDRESS*2,100);
-	}
-
 	while(sw[0].gpioRead() == 0 || sw[1].gpioRead() == 0);
 
 	//ハードウェア識別
@@ -151,10 +139,10 @@ void setup(){
 	}else{
 		serial.printf("FDB86563 model\n\r");
 	}
-
+	currentOption.setup(PC15,OUTPUT);
 	///*
-	driver.overCurrentPeakSet(ChannelCurrentA,120);	//つよい
-	driver.overCurrentPeakSet(ChannelCurrentB,120);
+	driver.overCurrentPeakSet(ChannelCurrentA,150);	//つよい
+	driver.overCurrentPeakSet(ChannelCurrentB,150);
 
 	driver.overCurrentAveSet(ChannelCurrentA,50);
 	driver.overCurrentAveSet(ChannelCurrentB,50);
@@ -179,8 +167,17 @@ void setup(){
 	serial.printf("setup end\n\r");
 	if(debugMode == 1){
 		serial.printf("mode : debug-motor\n\r");
+		canMotor[0].setup(can1,(CAN_ADDRESS * 2));
+		canMotor[1].setup(can1,(CAN_ADDRESS * 2) + 1);
+
 	}else if(debugMode == 2){
+
 		serial.printf("mode : debug-sensor\n\r");
+
+		canVoltage.setup(can1,CAN_ADDRESS*2,100);
+		canEncoder[0].setup(can1,(CAN_ADDRESS * 2),10);
+		canEncoder[1].setup(can1,(CAN_ADDRESS * 2) + 1,10);
+		canSwitch.setup(can1,CAN_ADDRESS*2,100);
 	}else{
 		serial.printf("mode : run\n\r");
 	}

@@ -28,6 +28,7 @@ MotorController mc[4];
 void setup(){
 	sys.setup();
 
+	/*
 	pwm[0].pwmSetup(TIM4,3,PB9,2000);
 	pwm[1].pwmSetup(TIM4,2,PB8,2000);
 	pwm[2].pwmSetup(TIM4,1,PB7,2000);
@@ -83,7 +84,7 @@ void setup(){
 
 	delay(10);
 	serial.printf("interrupt = %d\n\r",spi.interruptCnt);
-	delay(10);
+	delay(10);*/
 }
 
 #endif

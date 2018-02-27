@@ -3,10 +3,11 @@
 int main(void)
 {
 	setup();
-	sys.wdgSetup(500);	//50ms
+	sys.wdgSetup(1000);	//100ms
 
 
     while(1){
+    	currentOption.toggle();
     	for(int i=0;i<4;i++){
     		limit[i].cycle();
     	}
@@ -49,7 +50,10 @@ int main(void)
     		}
 
     		if(serial.available()){
-    			if(serial.peek() == 'r')while(1);
+    			if(serial.peek() == 'r'){
+    				serial.printf("\n\r\n\r serial reset requested");
+    				while(1);
+    			}
 
     			/*
     			if(serial.peek() == 's'){
@@ -68,17 +72,16 @@ int main(void)
     				printValue++;
     			}
     			serial.read();
-
     		}
 
     		if(debugMode == 1){
         		if(sw[0].read() == 0){
-        			canMotor[0].duty(-0.3);
-        			canMotor[1].duty(-0.3);
+        			canMotor[0].duty(0.2);
+        			canMotor[1].duty(0.2);
         			serial.printf("ccw");
         		}else if(sw[1].read() == 0){
-        			canMotor[0].duty(0.3);
-        			canMotor[1].duty(0.3);
+        			canMotor[0].duty(-0.2);
+        			canMotor[1].duty(-0.2);
         			serial.printf("cw ");
         		}else{
         			canMotor[0].duty(0);
@@ -89,9 +92,11 @@ int main(void)
     		}else{
         		if(sw[0].readStat == 1 && sw[0].read() == 0&& printValue > 0){
         			printValue--;
+        			//serial.printf("val-1");
         		}
         		if(sw[1].readStat == 1 && sw[1].read() == 0){
         			printValue++;
+        			//serial.printf("val+1");
         		}
     		}
 
@@ -109,7 +114,7 @@ int main(void)
 
     			break;
     		case 2:
-    			serial.printf("md rvt=,%6d,%6d,dty=,%+d,%+d,enc itx=,%d,%d,sw itv=,%d,snd=,%d\n\r",(uint32_t)canMD[0].lastReceiveTime,(uint32_t)canMD[1].lastReceiveTime,canMD[0].outDuty,canMD[1].outDuty,(uint32_t)canEnc[0].interval,(uint32_t)canEnc[1].interval,canSw.intervalTime,(uint32_t)canSw.lastSendTime);
+    			serial.printf("md rvt=,%6d,%6d,dty=,%+d,%+d,enc itx=,%d,%d,sw itv=,%d,snd=,%d\n\r",(uint32_t)canMD[0].lastReceiveTime,(uint32_t)canMD[1].lastReceiveTime,(int)canMD[0].outDuty,(int)canMD[1].outDuty,(uint32_t)canEnc[0].interval,(uint32_t)canEnc[1].interval,canSw.intervalTime,(uint32_t)canSw.lastSendTime);
 
     			break;
     		case 3:
