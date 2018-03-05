@@ -19,7 +19,6 @@ public:
 	void dutyLimit(float duty);
 	void dutyLimit(float dutyp,float dutym);
 
-	int outFrq;
 	float outDuty,limitp,limitm;
 	uint64_t dutySetTime;
 	TIM *pwm[2];

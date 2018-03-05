@@ -141,6 +141,12 @@ void setup(){
 	}
 	currentOption.setup(PC15,OUTPUT);
 	///*
+	driver.overCurrentPeakSet(ChannelCurrentA,160);	//�悢
+	driver.overCurrentPeakSet(ChannelCurrentB,160);
+
+	driver.overCurrentAveSet(ChannelCurrentA,100);
+	driver.overCurrentAveSet(ChannelCurrentB,100);
+	/*
 	driver.overCurrentPeakSet(ChannelCurrentA,150);	//�悢
 	driver.overCurrentPeakSet(ChannelCurrentB,150);
 

@@ -1,7 +1,7 @@
 #include "sbus.h"
 
 void SBUS::setup(USART_TypeDef *usart,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx){
-	serial.setup(usart,100000,gpio_tx,pin_tx,gpio_rx,pin_rx);
+	serial.setup(usart,gpio_tx,pin_tx,gpio_rx,pin_rx,100000);
 
 	errorValue = 0;
 

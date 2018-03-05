@@ -60,11 +60,11 @@ void Motor::duty(float motorDuty){
 	//if(motorDuty16 < 50 && motorDuty16 > -50)motorDuty16 = 0;
 
 	if(motorDuty16 >= 0){
-		pwm1->duty(motorDuty16);
-		pwm2->duty(0);
-	}else{
+		pwm2->duty(motorDuty16);
 		pwm1->duty(0);
-		pwm2->duty(-motorDuty16);
+	}else{
+		pwm2->duty(0);
+		pwm1->duty(-motorDuty16);
 	}
 	//pwm1->duty(pwm1->pwm_period/2 - motorDuty16/2);
 	//pwm2->duty(pwm2->pwm_period/2 + motorDuty16/2);

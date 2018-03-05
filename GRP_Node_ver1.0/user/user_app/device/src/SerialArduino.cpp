@@ -1,7 +1,7 @@
 #include "SerialArduino.h"
 
-void SerialArduino::setup(USART_TypeDef *usart,uint32_t baud,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx){
-	serial.setup(usart,baud,gpio_tx,pin_tx,gpio_rx,pin_rx);
+void SerialArduino::setup(USART_TypeDef *usart,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx,uint32_t baud){
+	serial.setup(usart,gpio_tx,pin_tx,gpio_rx,pin_rx,baud);
 
 
 	receiveStat = 0;

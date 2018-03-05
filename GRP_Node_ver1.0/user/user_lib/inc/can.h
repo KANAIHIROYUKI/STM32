@@ -33,6 +33,9 @@
 #define CAN_ADD_ENC_SETUP 			(uint16_t)0x400
 #define CAN_ADD_ENC_VALUE 			(uint16_t)0x440
 
+#define CAN1_INIT					CAN1,PA12,PA11
+#define CAN1_INIT_Remap				CAN1,PB9,PB8
+
 class CAN{
 public:
 	//debugMode = 1にするとループバックモードになる

@@ -30,8 +30,6 @@ CAN_RX rx[4];
 CAN_TX tx[4];
 Mecanum mc;
 
-CanMotorDriver md[4];
-
 uint64_t intervalTime,intTime;
 uint8_t data[8],swStat[8];
 int servoDeg[8];
@@ -63,14 +61,14 @@ void setup(){
 
 	/*********↓通信↑モーター********/
 
-	ps3.setup(USART1,115200,PA9,PA10);
-	serial.setup(USART1,115200,PA9,PA10);
+	ps3.setup(USART1_INIT,115200);
+	serial.setup(USART1_INIT,115200);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
 
 	sys.usartSetup(serial);
 
-	sa.setup(USART3,115200,PB10,PB11);
+	sa.setup(USART3_INIT,115200);
 
 	sw[0].setup(PB5,INPUT_PU);
 	sw[1].setup(PB4,INPUT_PU);
@@ -88,7 +86,7 @@ void setup(){
 
 	if(individual.read()){	//master
 		for(int i=0;i<4;i++){
-			//tx[i].setup(can,0x100 + i);
+			tx[i].setup(can,0x100 + i);
 			//rx[i].setup(can,0x100 + i);
 		}
 	}else{					//node
@@ -96,10 +94,6 @@ void setup(){
 			//tx[i].setup(can,0x100 + i);
 			rx[i].setup(can,0x100 + i);
 		}
-	}
-
-	for(int i=0;i<4;i++){
-		md[i].setup(can,i);
 	}
 }
 

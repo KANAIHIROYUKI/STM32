@@ -100,10 +100,10 @@ float Mecanum::move(float _x, float _y, float rev) {
 	}
 
 
-	out[2] = out[0] * power - rev/10;
-	out[3] = out[1] * power + rev/10;
+	out[2] = - out[0] * power - rev/10;
+	out[3] = - out[1] * power - rev/10;
 	out[0] = out[0] * power + rev/10;
-	out[1] = out[1] * power - rev/10;
+	out[1] = out[1] * power + rev/10;
 
 	float outMax = 0;
 	for (int i = 0; i < 4; i++) {
