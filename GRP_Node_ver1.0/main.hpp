@@ -5,12 +5,6 @@
 #include "app.h"
 #include "util.h"
 
-#define GYRO_OFFSET_BOARD1 -20
-#define GYRO_OFFSET_BOARD2 110
-
-#define ADC_TO_BATT_BOARD1 16.901
-#define ADC_TO_BATT_BOARD2 17.114
-
 System sys;
 
 USART serial;
@@ -30,9 +24,33 @@ CAN_RX rx[4];
 CAN_TX tx[4];
 Mecanum mc;
 
+#define SERVO_TILT_LOCK 	0
+#define SERVO_HOLDER_LOCK 	1
+#define SERVO_GRIP			2
+#define SERVO_PICKUP		3
+#define SERVO_POUT			4
+
 uint64_t intervalTime,intTime;
-uint8_t data[8],swStat[8];
-int servoDeg[8];
+uint8_t data[8],swStat[12];
+
+int controlMode = 0;
+int servoDeg[8],servoSet[8];
+
+
+void servoSwitchEvent(uint8_t ps3Num,uint8_t servoNum){
+	if(ps3.read(ps3Num) != swStat[servoNum]){
+		swStat[servoNum] = ps3.read(ps3Num);
+
+		if(swStat[servoNum]){
+			if(servoDeg[servoNum] > 1){
+				servoDeg[servoNum] = 0;
+			}else{
+				servoDeg[servoNum] = servoSet[servoNum];
+			}
+			sa.write(servoNum+4,servoDeg[servoNum]);
+		}
+	}
+}
 
 void setup(){
 	sys.setup();

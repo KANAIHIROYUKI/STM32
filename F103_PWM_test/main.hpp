@@ -3,14 +3,9 @@
 
 #include "system.h"
 #include "app.h"
-#include "KawaRoboMain.h"
 #include "util.h"
 
-#define GYRO_OFFSET_BOARD1 -20
-#define GYRO_OFFSET_BOARD2 110
-
-#define ADC_TO_BATT_BOARD1 16.901
-#define ADC_TO_BATT_BOARD2 17.114
+#define FLASH_PAGE_ADDRESS 0x801F800
 
 System sys;
 
@@ -19,6 +14,9 @@ TIM pwm;
 ADC adc;
 
 uint64_t intervalTime;
+uint32_t FlashRead(uint32_t address);
+void FlashWrite(uint32_t address,uint32_t data);
+int FlashErase();
 
 void setup(){
 	sys.setup();

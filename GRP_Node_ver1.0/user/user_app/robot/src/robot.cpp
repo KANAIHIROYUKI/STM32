@@ -50,7 +50,7 @@ void Robot::omni(float spd,float rad,float rps){
 }
 
 float Mecanum::move(float _x, float _y, float rev) {
-	float deg = atan2(_y, _x) + M_PI / 4 - rad;
+	float deg = atan2(-_x, -_y) + M_PI / 4 - rad;
 
 	while (deg < -M_PI * 3 / 4)deg += M_PI * 2;
 	while (deg >  M_PI * 5 / 4)deg -= M_PI * 2;
@@ -99,11 +99,11 @@ float Mecanum::move(float _x, float _y, float rev) {
 		div = 7;
 	}
 
+	out[2] = out[0] * power + rev/10;
+	out[3] = out[1] * power + rev/10;	//out[n]‚ð‹¤—p‚µ‚Ä‚¢‚é
 
-	out[2] = - out[0] * power - rev/10;
-	out[3] = - out[1] * power - rev/10;
-	out[0] = out[0] * power + rev/10;
-	out[1] = out[1] * power + rev/10;
+	out[0] = -out[0] * power + rev/10;
+	out[1] = -out[1] * power + rev/10;
 
 	float outMax = 0;
 	for (int i = 0; i < 4; i++) {
