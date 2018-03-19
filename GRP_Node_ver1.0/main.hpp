@@ -24,17 +24,41 @@ CAN_RX rx[4];
 CAN_TX tx[4];
 Mecanum mc;
 
+#define BUTTON_R2			0
+#define BUTTON_L2			1
+#define BUTTON_CR			2
+#define BUTTON_CI			3
+#define HAT_RY				4
+#define HAT_RX				5
+#define HAT_LY				6
+#define HAT_LX				7
+#define BUTTON_TR			8
+#define BUTTON_SQ			9
+#define BUTTON_L1			10
+#define BUTTON_R1			11
+#define BUTTON_START		12
+#define BUTTON_SELECT		13
+#define BUTTON_HAT_L		14
+#define BUTTON_HAL_R		15
+
 #define SERVO_TILT_LOCK 	0
 #define SERVO_HOLDER_LOCK 	1
 #define SERVO_GRIP			2
-#define SERVO_PICKUP		3
-#define SERVO_POUT			4
+#define SERVO_POUT			3
+
+#define MOTOR_SHAKE			0
+#define MOTOR_TILT			1
+#define MOTOR_PUSH			2
+#define MOTOR_PICKUP		3
+
+#define HAT_TOLERANCE		7
 
 uint64_t intervalTime,intTime;
 uint8_t data[8],swStat[12];
 
-int controlMode = 0;
-int servoDeg[8],servoSet[8];
+int controlMode = 0,ledData = 0;
+int servoDeg[8],servoSet[8],servoDef[8];
+Average<int> ave;
 
 
 void servoSwitchEvent(uint8_t ps3Num,uint8_t servoNum){
@@ -42,14 +66,19 @@ void servoSwitchEvent(uint8_t ps3Num,uint8_t servoNum){
 		swStat[servoNum] = ps3.read(ps3Num);
 
 		if(swStat[servoNum]){
-			if(servoDeg[servoNum] > 1){
-				servoDeg[servoNum] = 0;
+			if(servoDeg[servoNum] != servoDef[servoNum]){
+				servoDeg[servoNum] = servoDef[servoNum];
 			}else{
 				servoDeg[servoNum] = servoSet[servoNum];
 			}
 			sa.write(servoNum+4,servoDeg[servoNum]);
 		}
 	}
+}
+
+int hatTls(int data){
+	if(data < HAT_TOLERANCE && data > -HAT_TOLERANCE)data = 0;
+	return data;
 }
 
 void setup(){
