@@ -46,15 +46,15 @@ Mecanum mc;
 #define SERVO_GRIP			2
 #define SERVO_POUT			3
 
-#define MOTOR_SHAKE			0
-#define MOTOR_TILT			1
-#define MOTOR_PUSH			2
-#define MOTOR_PICKUP		3
+#define MOTOR_SHAKE			3
+#define MOTOR_TILT			2
+#define MOTOR_PUSH			0
+#define MOTOR_PICKUP		1
 
 #define HAT_TOLERANCE		7
 
 uint64_t intervalTime,intTime;
-uint8_t data[8],swStat[12];
+uint8_t data[8],swStat[16];
 
 int controlMode = 0,ledData = 0;
 int servoDeg[8],servoSet[8],servoDef[8];
@@ -62,10 +62,10 @@ Average<int> ave;
 
 
 void servoSwitchEvent(uint8_t ps3Num,uint8_t servoNum){
-	if(ps3.read(ps3Num) != swStat[servoNum]){
-		swStat[servoNum] = ps3.read(ps3Num);
+	if(ps3.read(ps3Num) != swStat[ps3Num]){
+		swStat[ps3Num] = ps3.read(ps3Num);
 
-		if(swStat[servoNum]){
+		if(swStat[ps3Num]){
 			if(servoDeg[servoNum] != servoDef[servoNum]){
 				servoDeg[servoNum] = servoDef[servoNum];
 			}else{
@@ -76,10 +76,29 @@ void servoSwitchEvent(uint8_t ps3Num,uint8_t servoNum){
 	}
 }
 
+void speak(int voiceTrack,int num){
+	voiceTrack += millis()%num;
+	serial.printf("*");
+	serial.send(voiceTrack);
+	return;
+}
+
+void speakSwitchEvent(uint8_t ps3Num,uint8_t trackNum,uint8_t rand){
+	if(ps3.read(ps3Num) != swStat[ps3Num]){
+		swStat[ps3Num] = ps3.read(ps3Num);
+		if(swStat[ps3Num]){
+			speak(trackNum,rand);
+		}
+	}
+}
+
 int hatTls(int data){
 	if(data < HAT_TOLERANCE && data > -HAT_TOLERANCE)data = 0;
 	return data;
 }
+
+
+
 
 void setup(){
 	sys.setup();
