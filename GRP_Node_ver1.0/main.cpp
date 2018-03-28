@@ -19,7 +19,7 @@ int main(void)
 
 	servoDef[0] = 165;	//シェイクロック
 	servoDef[1] = 170;	//シェイカー保持ロック
-	servoDef[2] = 0;	//シェイカーグリップ
+	servoDef[2] = 90;	//シェイカーグリップ
 	servoDef[3] = 0;	//チルト
 
 	servoDef[4] = 90;	//↓予備
@@ -55,6 +55,9 @@ int main(void)
     		}else{
 
     			serial.printf("%d,",(int)can.lastReceiveTime);
+    			for(int i=0;i<3;i++){
+    				serial.printf("%d,",uchar4_to_int(rx[i].data));
+    			}
         		for(int i=0;i<4;i++){
         			//serial.printf("%d,",ps3.read(i));
         			serial.printf("m%d = %4d%%",i,(int)(mc.out[i]*100));
@@ -121,6 +124,7 @@ int main(void)
         				sa.write(SERVO_POUT+4,servoDeg[SERVO_POUT]);
             			ave.reset();
         			}
+        			motor[MOTOR_PICKUP].duty((float)hatTls(ps3.read(HAT_LY))/100);	//保持ハンド
         			motor[MOTOR_PUSH].duty((float)hatTls(ps3.read(HAT_LX))/100);	//スライダ移動用
         			speakSwitchEvent(BUTTON_R1,'0',2);//あちらのお客様からです
         			speakSwitchEvent(BUTTON_L1,'B',2);//どうぞめしあがれ
