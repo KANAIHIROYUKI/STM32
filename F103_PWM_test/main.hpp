@@ -10,8 +10,8 @@
 System sys;
 
 USART serial;
-TIM pwm;
-ADC adc;
+GPIO ss;
+SPI_Master spi;
 
 uint64_t intervalTime;
 uint32_t FlashRead(uint32_t address);
@@ -24,10 +24,12 @@ void setup(){
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
 
+	spi.setup(SPI1,PA5,PA6,PA7);
+	ss.setup(PA4,OUTPUT);
+
 	sys.usartSetup(serial);
-	pwm.pwmSetup(TIM1,1,PA8,18000,8);
-	pwm.duty(0);
-	adc.setup(ADC1,0,PA0);
+
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
 }
 
 

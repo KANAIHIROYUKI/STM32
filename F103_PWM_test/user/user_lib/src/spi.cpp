@@ -81,14 +81,7 @@ uint8_t SPI_Master::transfer(uint8_t data){
 
 void SPI_Master::write(uint8_t data){
 	if(spi == SPI1){
-		if(SPI_I2S_GetFlagStatus(SPI1,SPI_I2S_FLAG_TXE)){
-			SPI_I2S_SendData(SPI1,data);
-			SPI_I2S_ITConfig(SPI1,SPI_I2S_FLAG_TXE,ENABLE);
-			//SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_RXNE,ENABLE);
-		}else{
-			spi1txBuffer.write(data);
-		}
-
+		spi1txBuffer.write(data);
 	}else if(spi == SPI2){
 		spi2txBuffer.write(data);
 	}else{
@@ -99,11 +92,14 @@ void SPI_Master::write(uint8_t data){
 void SPI_Master::send(){
 	if(spi == SPI1){
 		SPI_I2S_ITConfig(SPI1,SPI_I2S_FLAG_TXE,ENABLE);
-		SPI_I2S_SendData(SPI1,spi1txBuffer.read());
+		SPI_I2S_ITConfig(SPI1,SPI_I2S_FLAG_RXNE,ENABLE);
+		SPI_I2S_SendData(SPI1,0x81);
 
 	}else if(spi == SPI2){
-		SPI_I2S_SendData(SPI2,spi2txBuffer.read());
-		SPI_Cmd(SPI2, ENABLE);
+		SPI_I2S_ITConfig(SPI2,SPI_I2S_FLAG_TXE,ENABLE);
+		SPI_I2S_SendData(SPI2,0x8);
+		while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_TXE) == SET);
+		SPI_I2S_SendData(SPI2,0x81);
 	}
 }
 
@@ -226,10 +222,10 @@ void SPI1Setup(uint16_t SPI_Mode,uint16_t SPI_Protocol_Mode,uint16_t SPI_Prescal
 
 	//äÑÇËçûÇ›ê›íË
 	NVIC_InitTypeDef NVIC_InitStructure;
-
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	NVIC_InitStructure.NVIC_IRQChannel = SPI1_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
@@ -294,27 +290,27 @@ void SPI2Setup(uint16_t SPI_Mode,uint16_t SPI_Protocol_Mode,uint16_t SPI_Prescal
 
 	NVIC_InitStructure.NVIC_IRQChannel = SPI2_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
-	SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_TXE,ENABLE);
+	//SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_TXE,ENABLE);
 	//SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_RXNE,ENABLE);
 
 	//SPIóLå¯
-	//SPI_Cmd(SPI2, ENABLE);
+	SPI_Cmd(SPI2, ENABLE);
 }
 
-extern "C" void SPI1_IRQHandler(){			//Ç†Ç∆Ç≈
+extern "C" void SPI1_IRQHandler(){
 	SPI_Master::interruptCnt++;
-	if(SPI_I2S_GetITStatus(SPI1,SPI_I2S_IT_TXE)){
+	if(SPI_I2S_GetITStatus(SPI1,SPI_I2S_IT_TXE) == SET){
 		SPI_I2S_ClearITPendingBit(SPI1,SPI_I2S_FLAG_TXE);
 		if(SPI_Master::spi1txBuffer.isEmpty()){
-			SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_RXNE,DISABLE);
+			SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_TXE,DISABLE);
+			SPI_I2S_SendData(SPI1,0xC3);
 		}else{
-			SPI_I2S_SendData(SPI1,SPI_Master::spi1txBuffer.read());
+			SPI_I2S_SendData(SPI1,0xAA);
 		}
-
 	}
 
 	if(SPI_I2S_GetITStatus(SPI1,SPI_I2S_IT_RXNE)){
@@ -327,21 +323,20 @@ extern "C" void SPI1_IRQHandler(){			//Ç†Ç∆Ç≈
 extern "C" void SPI2_IRQHandler(){
 	SPI_Master::interruptCnt++;
 
-
-	if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_TXE)){
+	if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_TXE) == SET){
+		SPI_I2S_ClearITPendingBit(SPI2,SPI_I2S_FLAG_TXE);
 		if(SPI_Master::spi2txBuffer.length() == 0){
-			//SPI_Cmd(SPI2, DISABLE);
-			SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_TXE,ENABLE);
+			//SPI_I2S_ITConfig(SPI2,SPI_I2S_IT_TXE,DISABLE);
+
+			SPI_I2S_SendData(SPI2,0xAA);
 		}else{
-			SPI_I2S_SendData(SPI2,SPI_Master::spi2txBuffer.read());
+			SPI_Master::spi2txBuffer.read();
+			SPI_I2S_SendData(SPI2,0xC3);
 		}
 	}
-
 
 	if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_RXNE)){
 		SPI_I2S_ClearITPendingBit(SPI2,SPI_I2S_FLAG_RXNE);
 		SPI_Master::spi2rxBuffer.write(SPI_I2S_ReceiveData(SPI2));
-
-		if(SPI_I2S_GetITStatus(SPI2,SPI_I2S_IT_TXE))SPI_Cmd(SPI2, DISABLE);
-	}//*/
+	}
 }

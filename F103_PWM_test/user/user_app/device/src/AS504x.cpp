@@ -36,7 +36,7 @@ void AS504x::cycle(){
 			//delayMicros(100);
 			valueReadCnt++;
 			for(int i=0;i<magencDeviceNumber;i++){
-				directlyValue[i] = ((spi->read() << 8) + spi->read());
+				directlyValue[i] = ((spi->read() << 3) + (spi->read() >> 5)) & 0x3FF;
 
 				if(oldDirectryValue[i] > directlyValue[i]){	//オーバーフロー/アンダーフロー処理														//oldのほうが大きい
 					if(directlyValue[i] + 512 - oldDirectryValue[i] > oldDirectryValue[i] - directlyValue[i]){	//なにもせず引き算して出したほうが差が小さい　=　飛んでいない

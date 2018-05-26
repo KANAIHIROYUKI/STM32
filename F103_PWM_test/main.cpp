@@ -3,6 +3,36 @@
 int main(void)
 {
 	setup();
+
+	while(1){
+		ss.write(0);
+	    uint8_t data1 = spi.transfer(0xaf);
+	    uint8_t data2 = spi.transfer(0xaf);
+	    ss.write(1);
+	    uint32_t num = ((data1 << 3) + (data2 >> 5)) & 0x3FF;
+
+	    serial.printf("%d,\n\r",num);
+	    delay(100);
+	}
+
+	while(1){
+		ss.write(0);
+		for(int i=0;i<10;i++){
+			spi.write(i);
+		}
+		spi.send();
+		delay(1);
+		ss.write(1);
+		delay(100);
+		serial.printf("tx buf = %d,int = %d,",spi.spi1txBuffer.length(),spi.interruptCnt);
+		serial.printf("rx = ");
+		while(spi.available()){
+			serial.printf("%d,",spi.read());
+		}
+		serial.printf("\n\r");
+		//spi.interruptCnt = 0;
+	}
+
 	uint32_t i = 0,num = 0;
 	serial.printf("%x,%x,%x",FLASH_BUSY,FLASH_ERROR_WRP,FLASH_TIMEOUT);
 	for(int n = 0;n<256;n++){
@@ -12,38 +42,7 @@ int main(void)
 	}
 	sys.wdgSetup(1000);
     while(1){
-    	sys.cycle();
-    	if(intervalTime < millis()){
-    		intervalTime += 50;
-    		//serial.printf("%d,\n\r",adc.read()*4);
-    		pwm.duty(adc.read()*4);
-    		serial.printf("i = %d,%x\n\r",i,FlashRead(i));
 
-    		i++;
-    		if(i > 255)i = 0;
-    	}
-    	if(serial.available()){
-    		if(serial.peek() == 'r'){
-    			while(1);
-    		}else if(serial.peek() == 'm'){
-    			uint64_t time = millis();
-    			serial.printf("flash = %x,",FlashErase());
-    			serial.printf("erase time = %d\n\r",millis() - time);
-    		}else if(serial.peek() == 'c'){
-    			serial.printf("ebusy = %d\n\r",FLASH_GetFlagStatus(FLASH_BUSY));
-    			serial.printf("eop = %d\n\r",FLASH_GetFlagStatus(FLASH_FLAG_EOP));
-    			serial.printf("pg = %d\n\r",FLASH_GetFlagStatus(FLASH_ERROR_PG));
-    			serial.printf("wrp = %d\n\r",FLASH_GetFlagStatus(FLASH_ERROR_WRP));
-    			serial.printf("opterr = %d\n\r",FLASH_GetFlagStatus(FLASH_FLAG_OPTERR));
-    		}else{
-
-    			FlashWrite(num,0xFF000000 + num);
-    			num++;
-    			serial.printf("data = %x\n\r",num);
-    			if(num > 255)num = 0;
-    		}
-    		while(serial.available())serial.read();
-    	}
     }
 }
 
