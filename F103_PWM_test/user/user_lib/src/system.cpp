@@ -7,6 +7,8 @@ uint16_t System::error = 0;
 void System::setup(){
 	SysTick_Config(SystemCoreClock/TIME_SPLIT);
 	usartSetupFlag = 0;
+	FLASH_SetLatency(FLASH_Latency_2);
+	FLASH_PrefetchBufferCmd(FLASH_PrefetchBuffer_Enable);
 
 	error = 0;
 }
@@ -45,6 +47,33 @@ void System::wdgSetup(uint16_t reload,uint8_t prescaler){
 
 void System::wdgReset(){
 	IWDGReset();
+}
+
+uint32_t System::flashRead(uint32_t address){	//F103‚Í1ƒy[ƒW1KB‚È‚Ì‚Å
+	if(address > 255)return 0;
+	return *(uint32_t *)(0x801FC00 + address * 4);
+}
+
+bool System::flashWrite(uint32_t address,uint32_t data){
+	if(address > 255)return 1;
+
+	while(FLASH_GetFlagStatus(FLASH_BUSY) == SET);
+
+	FLASH_Unlock();
+	FLASH_ProgramWord(0x801FC00 + address*4,data);
+	while(FLASH_GetFlagStatus(FLASH_BUSY) == SET);
+	FLASH_Lock();
+	return 0;
+}
+
+bool System::flashErase(){
+
+	//while(FLASH_GetFlagStatus(FLASH_BUSY) == SET);
+	FLASH_Unlock();
+	FLASH_ErasePage(0x801FC00);
+	while(FLASH_GetFlagStatus(FLASH_BUSY) == SET)
+	FLASH_Lock();
+	return 0;
 }
 
 void IWDGSetup(uint16_t reload,uint8_t prescaler){

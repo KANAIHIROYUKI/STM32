@@ -14,10 +14,14 @@
 #define USART_RX_BUFFER_SIZE 128
 #define USART_TX_BUFFER_SIZE 256
 
+#define USART1_SETUP USART1,PA9,PA10
+#define USART2_SETUP USART2,PA2,PA3
+#define USART3_SETUP USART3,PB10,PB11
+
 
 class USART {
 public:
-	void setup(USART_TypeDef *usart,uint32_t baud,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx);
+	void setup(USART_TypeDef *usart,GPIO_TypeDef* gpio_tx,uint16_t pin_tx,GPIO_TypeDef* gpio_rx,uint16_t pin_rx,uint32_t baud);
 
 	void send(char c);
 	char read();

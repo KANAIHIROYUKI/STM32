@@ -2647,7 +2647,7 @@ Discarded input sections
 Memory Configuration
 
 Name             Origin             Length             Attributes
-rom              0x08000000         0x00010000         xr
+rom              0x08000000         0x00020000         xr
 ram              0x20000000         0x00005000         xrw
 *default*        0x00000000         0xffffffff
 
@@ -4428,39 +4428,39 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
 END GROUP
 OUTPUT(F103_mini.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x1d9e5
+.debug_info     0x00000000    0x1d9f3
  .debug_info    0x00000000      0x51c ..\obj\switch.o
  .debug_info    0x0000051c     0x1f9f ..\obj\canNodeSwitch.o
  .debug_info    0x000024bb      0xca6 ..\obj\canNodeEncoder.o
  .debug_info    0x00003161      0x49b ..\obj\spi.o
  .debug_info    0x000035fc     0x1c60 ..\obj\stm32f10x_tim.o
- .debug_info    0x0000525c     0x3581 ..\obj\can_dcmd.o
- .debug_info    0x000087dd      0x783 ..\obj\canSwitch.o
- .debug_info    0x00008f60      0x4d4 ..\obj\util.o
- .debug_info    0x00009434      0x49c ..\obj\system_stm32f10x.o
- .debug_info    0x000098d0      0x814 ..\obj\canMotorDriver.o
- .debug_info    0x0000a0e4     0x1654 ..\obj\tim.o
- .debug_info    0x0000b738      0x88d ..\obj\canEncoder.o
- .debug_info    0x0000bfc5       0xee ..\obj\startup_stm32f10x_md.o
- .debug_info    0x0000c0b3      0xba4 ..\obj\stm32f10x_can.o
- .debug_info    0x0000cc57      0x6f6 ..\obj\stm32f10x_gpio.o
- .debug_info    0x0000d34d     0x3ca0 ..\obj\main.o
- .debug_info    0x00010fed      0x847 ..\obj\system.o
- .debug_info    0x00011834      0xec8 ..\obj\can.o
- .debug_info    0x000126fc      0x8a3 ..\obj\stm32f10x_rcc.o
- .debug_info    0x00012f9f      0x9cd ..\obj\gpio.o
- .debug_info    0x0001396c      0xcf7 ..\obj\motor.o
- .debug_info    0x00014663      0x9f0 ..\obj\stm32f10x_usart.o
- .debug_info    0x00015053      0x458 ..\obj\syscalls.o
- .debug_info    0x000154ab     0x24e7 ..\obj\canNodeVoltage.o
- .debug_info    0x00017992     0x1c04 ..\obj\canNodeEmg.o
- .debug_info    0x00019596      0x556 ..\obj\misc.o
- .debug_info    0x00019aec      0x8fb ..\obj\stm32f10x_spi.o
- .debug_info    0x0001a3e7      0x7b9 ..\obj\canVoltage.o
- .debug_info    0x0001aba0     0x126a ..\obj\canNodeMotorDriver.o
- .debug_info    0x0001be0a      0xac0 ..\obj\si8900.o
- .debug_info    0x0001c8ca      0xf0d ..\obj\usart.o
- .debug_info    0x0001d7d7      0x20e ..\obj\stm32f10x_iwdg.o
+ .debug_info    0x0000525c     0x3588 ..\obj\can_dcmd.o
+ .debug_info    0x000087e4      0x783 ..\obj\canSwitch.o
+ .debug_info    0x00008f67      0x4d4 ..\obj\util.o
+ .debug_info    0x0000943b      0x49c ..\obj\system_stm32f10x.o
+ .debug_info    0x000098d7      0x814 ..\obj\canMotorDriver.o
+ .debug_info    0x0000a0eb     0x1654 ..\obj\tim.o
+ .debug_info    0x0000b73f      0x88d ..\obj\canEncoder.o
+ .debug_info    0x0000bfcc       0xee ..\obj\startup_stm32f10x_md.o
+ .debug_info    0x0000c0ba      0xba4 ..\obj\stm32f10x_can.o
+ .debug_info    0x0000cc5e      0x6f6 ..\obj\stm32f10x_gpio.o
+ .debug_info    0x0000d354     0x3ca7 ..\obj\main.o
+ .debug_info    0x00010ffb      0x847 ..\obj\system.o
+ .debug_info    0x00011842      0xec8 ..\obj\can.o
+ .debug_info    0x0001270a      0x8a3 ..\obj\stm32f10x_rcc.o
+ .debug_info    0x00012fad      0x9cd ..\obj\gpio.o
+ .debug_info    0x0001397a      0xcf7 ..\obj\motor.o
+ .debug_info    0x00014671      0x9f0 ..\obj\stm32f10x_usart.o
+ .debug_info    0x00015061      0x458 ..\obj\syscalls.o
+ .debug_info    0x000154b9     0x24e7 ..\obj\canNodeVoltage.o
+ .debug_info    0x000179a0     0x1c04 ..\obj\canNodeEmg.o
+ .debug_info    0x000195a4      0x556 ..\obj\misc.o
+ .debug_info    0x00019afa      0x8fb ..\obj\stm32f10x_spi.o
+ .debug_info    0x0001a3f5      0x7b9 ..\obj\canVoltage.o
+ .debug_info    0x0001abae     0x126a ..\obj\canNodeMotorDriver.o
+ .debug_info    0x0001be18      0xac0 ..\obj\si8900.o
+ .debug_info    0x0001c8d8      0xf0d ..\obj\usart.o
+ .debug_info    0x0001d7e5      0x20e ..\obj\stm32f10x_iwdg.o
 
 .debug_abbrev   0x00000000     0x4612
  .debug_abbrev  0x00000000      0x19a ..\obj\switch.o
@@ -4630,7 +4630,7 @@ OUTPUT(F103_mini.elf elf32-littlearm)
  .debug_line    0x000094c3      0x635 ..\obj\usart.o
  .debug_line    0x00009af8      0x254 ..\obj\stm32f10x_iwdg.o
 
-.debug_str      0x00000000     0x66bb
+.debug_str      0x00000000     0x66c8
  .debug_str     0x00000000      0x51f ..\obj\switch.o
                                 0x5ff (size before relaxing)
  .debug_str     0x0000051f      0xc78 ..\obj\canNodeSwitch.o
@@ -4641,59 +4641,59 @@ OUTPUT(F103_mini.elf elf32-littlearm)
                                 0x728 (size before relaxing)
  .debug_str     0x00001aa5      0xb29 ..\obj\stm32f10x_tim.o
                                 0xdfa (size before relaxing)
- .debug_str     0x000025ce      0xe22 ..\obj\can_dcmd.o
-                               0x23f0 (size before relaxing)
- .debug_str     0x000033f0       0xc8 ..\obj\canSwitch.o
+ .debug_str     0x000025ce      0xe2f ..\obj\can_dcmd.o
+                               0x23fd (size before relaxing)
+ .debug_str     0x000033fd       0xc8 ..\obj\canSwitch.o
                                 0x5a9 (size before relaxing)
- .debug_str     0x000034b8      0x14a ..\obj\util.o
+ .debug_str     0x000034c5      0x14a ..\obj\util.o
                                 0x2d0 (size before relaxing)
- .debug_str     0x00003602      0x179 ..\obj\system_stm32f10x.o
+ .debug_str     0x0000360f      0x179 ..\obj\system_stm32f10x.o
                                 0x30c (size before relaxing)
- .debug_str     0x0000377b      0x136 ..\obj\canMotorDriver.o
+ .debug_str     0x00003788      0x136 ..\obj\canMotorDriver.o
                                 0x624 (size before relaxing)
- .debug_str     0x000038b1      0x798 ..\obj\tim.o
+ .debug_str     0x000038be      0x798 ..\obj\tim.o
                                0x155b (size before relaxing)
- .debug_str     0x00004049      0x152 ..\obj\canEncoder.o
+ .debug_str     0x00004056      0x152 ..\obj\canEncoder.o
                                 0x646 (size before relaxing)
- .debug_str     0x0000419b       0xc5 ..\obj\startup_stm32f10x_md.o
+ .debug_str     0x000041a8       0xc5 ..\obj\startup_stm32f10x_md.o
                                 0x15c (size before relaxing)
- .debug_str     0x00004260      0x436 ..\obj\stm32f10x_can.o
+ .debug_str     0x0000426d      0x436 ..\obj\stm32f10x_can.o
                                 0x74b (size before relaxing)
- .debug_str     0x00004696      0x2bc ..\obj\stm32f10x_gpio.o
+ .debug_str     0x000046a3      0x2bc ..\obj\stm32f10x_gpio.o
                                 0x536 (size before relaxing)
- .debug_str     0x00004952      0x2a6 ..\obj\main.o
-                               0x2a50 (size before relaxing)
- .debug_str     0x00004bf8      0x1a4 ..\obj\system.o
+ .debug_str     0x0000495f      0x2a6 ..\obj\main.o
+                               0x2a5d (size before relaxing)
+ .debug_str     0x00004c05      0x1a4 ..\obj\system.o
                                 0x7d0 (size before relaxing)
- .debug_str     0x00004d9c      0x1ac ..\obj\can.o
+ .debug_str     0x00004da9      0x1ac ..\obj\can.o
                                 0xe28 (size before relaxing)
- .debug_str     0x00004f48      0x3fd ..\obj\stm32f10x_rcc.o
+ .debug_str     0x00004f55      0x3fd ..\obj\stm32f10x_rcc.o
                                 0x637 (size before relaxing)
- .debug_str     0x00005345      0x1fb ..\obj\gpio.o
+ .debug_str     0x00005352      0x1fb ..\obj\gpio.o
                                 0xb55 (size before relaxing)
- .debug_str     0x00005540       0x9e ..\obj\motor.o
+ .debug_str     0x0000554d       0x9e ..\obj\motor.o
                                 0xaf9 (size before relaxing)
- .debug_str     0x000055de      0x41f ..\obj\stm32f10x_usart.o
+ .debug_str     0x000055eb      0x41f ..\obj\stm32f10x_usart.o
                                 0x6ad (size before relaxing)
- .debug_str     0x000059fd      0x17a ..\obj\syscalls.o
+ .debug_str     0x00005a0a      0x17a ..\obj\syscalls.o
                                 0x35c (size before relaxing)
- .debug_str     0x00005b77       0x92 ..\obj\canNodeVoltage.o
+ .debug_str     0x00005b84       0x92 ..\obj\canNodeVoltage.o
                                0x17d6 (size before relaxing)
- .debug_str     0x00005c09       0x78 ..\obj\canNodeEmg.o
+ .debug_str     0x00005c16       0x78 ..\obj\canNodeEmg.o
                                 0xfd9 (size before relaxing)
- .debug_str     0x00005c81      0x120 ..\obj\misc.o
+ .debug_str     0x00005c8e      0x120 ..\obj\misc.o
                                 0x3db (size before relaxing)
- .debug_str     0x00005da1      0x2da ..\obj\stm32f10x_spi.o
+ .debug_str     0x00005dae      0x2da ..\obj\stm32f10x_spi.o
                                 0x61a (size before relaxing)
- .debug_str     0x0000607b       0x5b ..\obj\canVoltage.o
+ .debug_str     0x00006088       0x5b ..\obj\canVoltage.o
                                 0x5ce (size before relaxing)
- .debug_str     0x000060d6       0x8f ..\obj\canNodeMotorDriver.o
+ .debug_str     0x000060e3       0x8f ..\obj\canNodeMotorDriver.o
                                 0xef3 (size before relaxing)
- .debug_str     0x00006165       0x76 ..\obj\si8900.o
+ .debug_str     0x00006172       0x76 ..\obj\si8900.o
                                 0xa14 (size before relaxing)
- .debug_str     0x000061db      0x3eb ..\obj\usart.o
+ .debug_str     0x000061e8      0x3eb ..\obj\usart.o
                                0x108e (size before relaxing)
- .debug_str     0x000065c6       0xf5 ..\obj\stm32f10x_iwdg.o
+ .debug_str     0x000065d3       0xf5 ..\obj\stm32f10x_iwdg.o
                                 0x279 (size before relaxing)
 
 .comment        0x00000000       0x6e

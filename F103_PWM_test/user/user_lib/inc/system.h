@@ -19,6 +19,8 @@
 #define DEFAULT_RELOAD 4095	//ç≈ëÂíl§0.1msíPà 
 
 
+#define FLASH_PAGE_ADDRESS 0x801F800
+
 class System{
 public:
 	void setup();
@@ -26,6 +28,10 @@ public:
 	void cycle();
 	void wdgSetup(uint16_t reload = DEFAULT_RELOAD,uint8_t prescaler = IWDG_Prescaler_4);
 	void wdgReset();
+
+	uint32_t flashRead(uint32_t address);
+	bool flashWrite(uint32_t address,uint32_t data);
+	bool flashErase();
 
 	static int16_t cycleFunctionNumber;
 	static int16_t cycleFunctionCnt;
