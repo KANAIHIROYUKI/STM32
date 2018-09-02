@@ -114,12 +114,13 @@
     <File name="user_lib/inc/can.hpp" path="user/user_lib/inc/can.h" type="1"/>
     <File name="user_lib/src/gpio.cpp" path="user/user_lib/src/gpio.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_flash.h" path="stm_lib/inc/stm32f10x_flash.h" type="1"/>
+    <File name="user_app/board/inc/SSL_BLDC.hpp" path="user/user_app/board/inc/SSL_BLDC.h" type="1"/>
     <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>
     <File name="stm_lib/inc/stm32f10x_spi.h" path="stm_lib/inc/stm32f10x_spi.h" type="1"/>
-    <File name="user_app/canMaster/inc/canEncoder.h" path="user/user_app/canMaster/inc/canEncoder.h" type="1"/>
-    <File name="user_app/device/src/si8900.cpp" path="user/user_app/device/src/si8900.cpp" type="1"/>
-    <File name="stm_lib/inc/stm32f10x_dma.h" path="stm_lib/inc/stm32f10x_dma.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_adc.c" path="stm_lib/src/stm32f10x_adc.c" type="1"/>
+    <File name="user_app/device/src/si8900.cpp" path="user/user_app/device/src/si8900.cpp" type="1"/>
+    <File name="user_app/canMaster/inc/canEncoder.h" path="user/user_app/canMaster/inc/canEncoder.h" type="1"/>
+    <File name="stm_lib/inc/stm32f10x_dma.h" path="stm_lib/inc/stm32f10x_dma.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_iwdg.h" path="stm_lib/inc/stm32f10x_iwdg.h" type="1"/>
     <File name="user_app/canMaster/inc/canVoltage.h" path="user/user_app/canMaster/inc/canVoltage.h" type="1"/>
     <File name="user_app/device/inc/dynamixel485.h" path="user/user_app/device/inc/dynamixel485.h" type="1"/>
@@ -127,9 +128,10 @@
     <File name="user_lib/inc/base.h" path="user/user_lib/inc/base.h" type="1"/>
     <File name="user_app/board" path="" type="2"/>
     <File name="user_app/canMaster/inc/canMotorDriver.h" path="user/user_app/canMaster/inc/canMotorDriver.h" type="1"/>
-    <File name="user_lib/inc/tim.hpp" path="user/user_lib/inc/tim.h" type="1"/>
     <File name="user_app/device/src/dxlib.cpp" path="user/user_app/device/src/dxlib.cpp" type="1"/>
+    <File name="user_lib/inc/tim.hpp" path="user/user_lib/inc/tim.h" type="1"/>
     <File name="user_app/general" path="" type="2"/>
+    <File name="user_app/board/src/SSL_BLDC.cpp" path="user/user_app/board/src/SSL_BLDC.cpp" type="1"/>
     <File name="user_app/general/inc/port.h" path="user/user_app/general/inc/port.h" type="1"/>
     <File name="user_app/general/src/port.cpp" path="user/user_app/general/src/port.cpp" type="1"/>
     <File name="util/src/util.c" path="user/util/src/util.c" type="1"/>
@@ -142,11 +144,11 @@
     <File name="user_lib/src/spi.cpp" path="user/user_lib/src/spi.cpp" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.c" path="cmsis_boot/system_stm32f10x.c" type="1"/>
     <File name="stm_lib/inc/misc.h" path="stm_lib/inc/misc.h" type="1"/>
-    <File name="user_lib/src/remap.cpp" path="user/user_lib/src/remap.cpp" type="1"/>
+    <File name="user_app/device/inc/dxlib.h" path="user/user_app/device/inc/dxlib.h" type="1"/>
     <File name="user_app/robot/src" path="" type="2"/>
     <File name="util" path="" type="2"/>
+    <File name="user_lib/src/remap.cpp" path="user/user_lib/src/remap.cpp" type="1"/>
     <File name="user_lib/inc/system.hpp" path="user/user_lib/inc/system.h" type="1"/>
-    <File name="user_app/device/inc/dxlib.h" path="user/user_app/device/inc/dxlib.h" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="user_app/canNode/inc/canNodeAnalogIn.h" path="user/user_app/canNode/inc/canNodeAnalogIn.h" type="1"/>
     <File name="user_app" path="" type="2"/>
@@ -165,10 +167,10 @@
     <File name="stm_lib/src/stm32f10x_dma.c" path="stm_lib/src/stm32f10x_dma.c" type="1"/>
     <File name="stm_lib/src" path="" type="2"/>
     <File name="user_lib/inc/adc.hpp" path="user/user_lib/inc/adc.h" type="1"/>
-    <File name="user_app/robot/inc" path="" type="2"/>
     <File name="cmsis" path="" type="2"/>
-    <File name="stm_lib" path="" type="2"/>
+    <File name="user_app/robot/inc" path="" type="2"/>
     <File name="user_app/canMaster/src/canValve.cpp" path="user/user_app/canMaster/src/canValve.cpp" type="1"/>
+    <File name="stm_lib" path="" type="2"/>
     <File name="util/src" path="" type="2"/>
     <File name="stm_lib/inc/stm32f10x_exti.h" path="stm_lib/inc/stm32f10x_exti.h" type="1"/>
     <File name="user_app/canNode/inc/canNodeSwitch.h" path="user/user_app/canNode/inc/canNodeSwitch.h" type="1"/>
@@ -178,8 +180,8 @@
     <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
     <File name="user_lib/inc/gpio.hpp" path="user/user_lib/inc/gpio.h" type="1"/>
     <File name="util/src/utilplus.cpp" path="user/util/src/utilplus.cpp" type="1"/>
-    <File name="user_app/canMaster/src/canVoltage.cpp" path="user/user_app/canMaster/src/canVoltage.cpp" type="1"/>
     <File name="user_lib/src" path="" type="2"/>
+    <File name="user_app/canMaster/src/canVoltage.cpp" path="user/user_app/canMaster/src/canVoltage.cpp" type="1"/>
     <File name="user_app/device/src/sbus.cpp" path="user/user_app/device/src/sbus.cpp" type="1"/>
     <File name="user_app/canNode/inc/canNodeMotorDriver.h" path="user/user_app/canNode/inc/canNodeMotorDriver.h" type="1"/>
     <File name="user_app/canNode/src" path="" type="2"/>
@@ -188,9 +190,9 @@
     <File name="user_lib/inc/systime.h" path="user/user_lib/inc/systime.h" type="1"/>
     <File name="user_app/canNode/inc/canNodeEncoder.h" path="user/user_app/canNode/inc/canNodeEncoder.h" type="1"/>
     <File name="user_app/canMaster/src/canSwitch.cpp" path="user/user_app/canMaster/src/canSwitch.cpp" type="1"/>
+    <File name="user_lib/src/can.cpp" path="user/user_lib/src/can.cpp" type="1"/>
     <File name="user_app/canNode/src/canNodeValve.cpp" path="user/user_app/canNode/src/canNodeValve.cpp" type="1"/>
     <File name="user_app/canNode/src/canNodePulse.cpp" path="user/user_app/canNode/src/canNodePulse.cpp" type="1"/>
-    <File name="user_lib/src/can.cpp" path="user/user_lib/src/can.cpp" type="1"/>
     <File name="user_app/board/src/can_dcmd.cpp" path="user/user_app/board/src/can_dcmd.cpp" type="1"/>
     <File name="user_app/device/inc/SBDBT.h" path="user/user_app/device/inc/SBDBT.h" type="1"/>
     <File name="user_lib/src/dma.cpp" path="user/user_lib/src/dma.cpp" type="1"/>
@@ -211,8 +213,8 @@
     <File name="user_app/device/inc/sbus.h" path="user/user_app/device/inc/sbus.h" type="1"/>
     <File name="user_app/general/inc/enc.h" path="user/user_app/general/inc/enc.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_spi.c" path="stm_lib/src/stm32f10x_spi.c" type="1"/>
-    <File name="stm_lib/src/stm32f10x_iwdg.c" path="stm_lib/src/stm32f10x_iwdg.c" type="1"/>
     <File name="user_app/canMaster/src" path="" type="2"/>
+    <File name="stm_lib/src/stm32f10x_iwdg.c" path="stm_lib/src/stm32f10x_iwdg.c" type="1"/>
     <File name="user_app/canMaster" path="" type="2"/>
     <File name="user_app/device/src/SerialArduino.cpp" path="user/user_app/device/src/SerialArduino.cpp" type="1"/>
     <File name="user_app/interface/src/spiInterface.cpp" path="user/user_app/interface/src/spiInterface.cpp" type="1"/>
@@ -231,6 +233,7 @@
     <File name="user_app/canNode" path="" type="2"/>
     <File name="user_app/board/inc" path="" type="2"/>
     <File name="stm_lib/inc/stm32f10x_gpio.h" path="stm_lib/inc/stm32f10x_gpio.h" type="1"/>
+    <File name="user_app/board/inc/CatchRoboMap.h" path="user/user_app/board/inc/CatchRoboMap.h" type="1"/>
     <File name="user_app/general/src/switch.cpp" path="user/user_app/general/src/switch.cpp" type="1"/>
     <File name="user_app/general/inc/pwm.h" path="user/user_app/general/inc/pwm.h" type="1"/>
     <File name="user_app/general/src/app.cpp" path="user/user_app/general/src/app.cpp" type="1"/>
@@ -252,7 +255,6 @@
     <File name="util/inc/util.h" path="user/util/inc/util.h" type="1"/>
     <File name="user_app/interface/inc/canInterface.h" path="user/user_app/interface/inc/canInterface.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_flash.c" path="stm_lib/src/stm32f10x_flash.c" type="1"/>
-    <File name="user_app/general/src/motorController.cpp" path="user/user_app/general/src/motorController.cpp" type="1"/>
     <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>
     <File name="user_lib/src/tim.cpp" path="user/user_lib/src/tim.cpp" type="1"/>
     <File name="user_app/device/src/dynamixel485.cpp" path="user/user_app/device/src/dynamixel485.cpp" type="1"/>
@@ -260,11 +262,11 @@
     <File name="syscalls" path="" type="2"/>
     <File name="user_app/device/src/ADNS9800.cpp" path="user/user_app/device/src/ADNS9800.cpp" type="1"/>
     <File name="user_app/general/inc/switch.h" path="user/user_app/general/inc/switch.h" type="1"/>
+    <File name="user_app/board/src/CatchRoboMap.cpp" path="user/user_app/board/src/CatchRoboMap.cpp" type="1"/>
     <File name="user_app/general/inc/app.h" path="user/user_app/general/inc/app.h" type="1"/>
     <File name="user_app/canMaster/src/canMotorDriver.cpp" path="user/user_app/canMaster/src/canMotorDriver.cpp" type="1"/>
     <File name="stm_lib/src/stm32f10x_can.c" path="stm_lib/src/stm32f10x_can.c" type="1"/>
     <File name="stm_lib/inc" path="" type="2"/>
     <File name="util/inc/util.hpp" path="user/util/inc/util.hpp" type="1"/>
-    <File name="user_app/general/inc/motorController.h" path="user/user_app/general/inc/motorController.h" type="1"/>
   </Files>
 </Project>
