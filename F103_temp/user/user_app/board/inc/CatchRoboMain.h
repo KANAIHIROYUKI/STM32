@@ -42,14 +42,14 @@ namespace Position{
 }
 
 
-#define MotorR_FF_S_Gain 0.5
+#define MotorR_FF_S_Gain 0.2
 
 #define basePich_Offset_D	40
 #define basePich_Offset_Y	200
 #define basePich_Offset_Z	(450 + 500)		//フィールド底面←→ピッチ付け根
 
-#define ENC_CNT 2000*4
-#define ENC_
+#define ENC_CNT (2000*4)
+#define DistanceToCntX (8000/50/M_PI)
 
 class CatchRobo{
 public:
@@ -90,13 +90,15 @@ public:
 	float targetPosX,targetPosR,targetPosS,targetPosJ,targetPosY;
 	float targetPosP,targetPosZ,targetPosA;
 
-	uint16_t originDetected[2];
+	uint16_t origin,originR,handInternal;
 	uint16_t outputEnable;
-	uint16_t motionMove,motionType;
+	uint16_t motionType;
 	int16_t stageX,stageY,boxX,boxY;
 	uint16_t handState,getState;
-	float rFF;
-	float safetyValue[10];
+	float rFF,servoDuty[2];
+
+	uint16_t swStat[20];
+	uint8_t vData[8];
 };
 
 

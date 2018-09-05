@@ -48,7 +48,7 @@ void CatchRoboMap::callWork(int row,int col){
 				default:
 				notExist = 1;
 			}
-			x -= 270;
+			//x -= 270;
 	}else{
 		switch(row){
 		case 1:
@@ -80,7 +80,7 @@ void CatchRoboMap::callWork(int row,int col){
 		default:
 			notExist = 1;
 		}
-		x += 270;
+		//x += 270;
 
 	}
 	z = Field_Z;

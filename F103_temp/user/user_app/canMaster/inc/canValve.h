@@ -9,7 +9,6 @@ public:
 	void write(uint8_t pin,uint8_t stat);
 
 	uint16_t address;
-private:
 	CAN *can;
 };
 

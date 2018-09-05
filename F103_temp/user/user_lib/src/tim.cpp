@@ -226,16 +226,32 @@ void TIM::reverse(int8_t dir){
 
 void TIM::write(int64_t cnt){
 	if(tim_tim == TIM1){
-		tim1Cnt = cnt/65535;
+		if(cnt > 0){
+			tim1Cnt = cnt/65535;
+		}else{
+			tim1Cnt = 65535-cnt/65535;
+		}
 		TIM1->CNT = cnt%65535;
 	}else if(tim_tim == TIM2){
-		tim2Cnt = cnt/65535;
+		if(cnt > 0){
+			tim2Cnt = cnt/65535;
+		}else{
+			tim2Cnt = 65535-cnt/65535;
+		}
 		TIM2->CNT = cnt%65535;
 	}else if(tim_tim == TIM3){
-		tim3Cnt = cnt/65535;
+		if(cnt > 0){
+			tim3Cnt = cnt/65535;
+		}else{
+			tim3Cnt = 65535-cnt/65535;
+		}
 		TIM3->CNT = cnt%65535;
 	}else if(tim_tim == TIM4){
-		tim4Cnt = cnt/65535;
+		if(cnt > 0){
+			tim4Cnt = cnt/65535;
+		}else{
+			tim4Cnt = 65535-cnt/65535;
+		}
 		TIM4->CNT = cnt%65535;
 	}
 }

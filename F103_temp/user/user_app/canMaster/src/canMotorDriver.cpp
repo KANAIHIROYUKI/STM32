@@ -27,7 +27,7 @@ void CanMotorDriver::duty(float motor_duty){
 void CanMotorDriver::position(float pos){
 	uint8_t data[4];
 	float_to_uchar4(data,pos);
-	can->send(address + CAN_ADD_POSITION,4,data);
+	can->send(address + CAN_ADD_POSITION,8,data);
 	outPosition = pos;
 }
 

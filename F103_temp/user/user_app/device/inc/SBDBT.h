@@ -6,18 +6,18 @@
 
 #define DataBufferSize 18
 
-#define PS3_UP		0
-#define PS3_DOWN	1
-#define PS3_RIGHT	2
-#define PS3_LEFT	3
-#define PS3_TRI		4
-#define PS3_CRO		5
-#define PS3_CIR		6
-#define PS3_SQR		7
-#define PS3_L1		8
-#define PS3_L2		9
-#define PS3_R1		10
-#define PS3_R2		11
+#define PS3_UP		5
+#define PS3_DOWN	6
+#define PS3_RIGHT	7
+#define PS3_LEFT	8
+#define PS3_TRI		9
+#define PS3_CRO		10
+#define PS3_CIR		11
+#define PS3_SQR		0
+#define PS3_L1		1
+#define PS3_L2		2
+#define PS3_R1		3
+#define PS3_R2		4
 #define PS3_Start	12
 #define PS3_Select	13
 #define PS3_HatLX	14
@@ -36,9 +36,10 @@ public:
 
 	int16_t dataBuf[DataBufferSize];
 	int16_t data[DataBufferSize];
-	int16_t oldData[DataBufferSize];
+	uint16_t oldData[DataBufferSize];
 
 	uint16_t rxNum,parity;	//éÛêMån
+	uint8_t namaData[20];
 
 	uint16_t update,error;
 	uint64_t lastReceiveTime;

@@ -4,7 +4,7 @@
 #include "system.h"
 #include "util.h"
 
-#define InnerWall_NS1C1_X		240
+#define InnerWall_NS1C1_X		150	//240になってた･･･？？？
 
 #define InnerWall_NS1C1_Y		300		//ノーマル､ワークの先端
 #define InnerWall_NS2C1_Y		210
