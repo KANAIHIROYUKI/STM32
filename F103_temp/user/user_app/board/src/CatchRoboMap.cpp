@@ -21,9 +21,9 @@ void CatchRoboMap::callWork(int row,int col){
 		switch(row){
 			case 1:
 				if(col%2 == 0){		//ãÙêîÇÃÇ∆Ç´
-					y = InnerWall_NS2C1_Y + HandlingWorkPosition;
-				}else{
 					y = InnerWall_NS1C1_Y - HandlingWorkPosition;
+				}else{
+					y = InnerWall_NS2C1_Y + HandlingWorkPosition;
 				}
 				x = -InnerWall_NS1C1_X - ((col - 1) * 90);
 				break;
@@ -53,7 +53,7 @@ void CatchRoboMap::callWork(int row,int col){
 		switch(row){
 		case 1:
 			if(col%2 == 0){		//ãÙêîÇÃÇ∆Ç´
-				y = InnerWall_NS2C1_Y + HandlingWorkPosition;
+				y = InnerWall_NS2C1_Y + HandlingWorkPosition;	//Ç®ÇªÇÁÇ≠Ç±Ç±ÇÃ+-Ç™îΩì]Ç∑ÇÈÇÕÇ∏
 			}else{
 				y = InnerWall_NS1C1_Y - HandlingWorkPosition;
 			}
@@ -83,6 +83,7 @@ void CatchRoboMap::callWork(int row,int col){
 		//x += 270;
 
 	}
+	y += Field_Y - 50;
 	z = Field_Z;
 }
 void CatchRoboMap::callShootingBox(int row,int col){
@@ -114,6 +115,7 @@ void CatchRoboMap::callShootingBox(int row,int col){
 		x = -InnerWall_BS1C1_X - ((col - 1) * 80);
 	}
 	z = ShootingBox_Z;
+	y += Field_Y - 250;
 }
 
 void CatchRoboMap::callNormalWork(int stage,int col){

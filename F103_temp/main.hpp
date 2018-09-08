@@ -73,14 +73,15 @@ void setup(){
 	//PS3ƒRƒ“
 	ps3.setup(USART3_Setup,115200);
 
-/*	while(1){
+	/*while(1){
 		limit[0].cycle();
 		limit[1].cycle();
 		if(intervalTime < millis()){
 			intervalTime += 100;
-			serial.printf("%d,%d\n\r",limit[0].read(),limit[1].read());
+			serial.printf("%d,%d,%d,%d,%d\n\r",limit[0].read(),limit[1].read(),pot[0].read(),pot[1].read());
 		}
 	}*/
+
 
 	can.setup(CAN1_Setup);
 
@@ -102,6 +103,13 @@ void setup(){
 	robo.assignMD(md[4],4);
 	robo.assignMD(md[5],5);
 
+	/*float servoDuty;
+	servoDuty = -M_PI/4;
+	while(1){
+		delay(50);
+		servo[1].position(159 - (servoDuty/M_PI)*40);
+	}*/
+
 	//“dŽ¥•Ù
 	valve.setup(can,0);
 
@@ -113,6 +121,20 @@ void setup(){
 	led[2].setup(PC15);
 
 	led[0].interval(500);
+
+	/*
+	int hoge = 0;
+	while(1){
+
+		if(intervalTime < millis()){
+			intervalTime += 2000;
+			hoge++;
+			if(hoge >= 4)hoge = 0;
+			serial.printf("%d\n\r",hoge);
+		}
+		delay(50);
+		md[hoge].duty(0.2);
+	}*/
 
 	/*while(1){
 		for(int i=0;i<10;i++){

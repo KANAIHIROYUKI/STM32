@@ -12,6 +12,8 @@ void CanMotorDriver::free(){
 }
 
 void CanMotorDriver::duty(float motor_duty){
+	if(motor_duty < -1)motor_duty = -1;
+	if(motor_duty > 1)motor_duty = 1;
 	outDuty16 = (int16_t)(motor_duty * 32767);
 
 	uint8_t data[2] = {0,0};

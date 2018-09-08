@@ -15,6 +15,11 @@
 #define ServoZ 4
 #define ServoP 5
 
+#define PosX 0
+#define PosY 1
+#define PosZ 2
+#define PosA 3
+
 #define EncoderX 0
 #define EncoderR 1
 
@@ -43,6 +48,9 @@ namespace Position{
 
 
 #define MotorR_FF_S_Gain 0.2
+#define MotorS_FF_S_Gain 0.15
+
+
 
 #define basePich_Offset_D	40
 #define basePich_Offset_Y	200
@@ -71,6 +79,9 @@ public:
 	float readS();
 	float readJ();
 
+	void offsetJog();
+	void offsetClear();
+
 	uint64_t cycleTime,controlCycleTime,printCycleTime;
 
 	USART *serial;
@@ -90,15 +101,18 @@ public:
 	float targetPosX,targetPosR,targetPosS,targetPosJ,targetPosY;
 	float targetPosP,targetPosZ,targetPosA;
 
+	float offsetPos[6];
+
 	uint16_t origin,originR,handInternal;
 	uint16_t outputEnable;
 	uint16_t motionType;
 	int16_t stageX,stageY,boxX,boxY;
 	uint16_t handState,getState;
-	float rFF,servoDuty[2];
+	float rFF,servoDuty[2],sFF;
 
 	uint16_t swStat[20];
 	uint8_t vData[8];
+	uint16_t escape;
 };
 
 

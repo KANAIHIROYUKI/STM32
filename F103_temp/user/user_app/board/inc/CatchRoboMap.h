@@ -12,15 +12,17 @@
 #define InnerWall_SS1C1_Y		565		//シェア
 #define InnerWall_SS1C1_X		165
 
-#define HandlingWorkPosition 	125		//先端から保持高さまで
+#define HandlingWorkPosition 	150		//先端から保持高さまで
 
 
 #define InnerWall_BS1C1_X		(80 + 30)	//BOX
 #define InnerWall_BS1C1_Y		(80 + 50)
 
 
-#define Field_Z					100
-#define ShootingBox_Z			(450 + Field_Z)
+#define Field_Z					180
+#define ShootingBox_Z			(280 + Field_Z)
+
+#define Field_Y					-30
 
 class CatchRoboMap{
 public:
