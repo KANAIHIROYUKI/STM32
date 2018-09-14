@@ -16,7 +16,7 @@ void CatchRobo::setup(USART &serial,SBDBT &ps3,uint16_t _id){
 	pid[ServoZ].setup(1.0,0,0);
 
 	pid[MotorX].outLimit(-0.5,0.5);	//1
-	pid[MotorR].outLimit(-0.2,0.2);
+	pid[MotorR].outLimit(-0.2,0.5);
 	pid[MotorS].outLimit(-0.7,0.7);	//0.9
 	pid[MotorJ].outLimit(-0.2,0.2);
 
@@ -52,7 +52,7 @@ void CatchRobo::setup(USART &serial,SBDBT &ps3,uint16_t _id){
 	valve->write(0,0);
 	valve->write(1,0);
 
-	servoDuty[0] = 159 - ((M_PI/2)/M_PI)*50;
+	//servoDuty[0] = 159 - ((M_PI/2)/M_PI)*50;
 }
 
 void CatchRobo::assignMD(CanMotorDriver &canMD,uint16_t address){
@@ -87,11 +87,6 @@ void CatchRobo::cycle(){
 
 	if(ps3->update){									//データ受信時
 		ps3->update = 0;
-		outputEnable = 1;
-		//serial->printf("%d,%d,%d,%d\n\r",ps3->data[PS3_HatLX],ps3->data[PS3_HatLY],ps3->data[PS3_HatRX],ps3->data[PS3_HatRY]);
-		//serial->printf("%d,%d,%d,%d,%d\n\r",ps3->dataBuf[PS3_R1],ps3->dataBuf[PS3_L1],ps3->dataBuf[PS3_R2],ps3->dataBuf[PS3_L2],ps3->rxNum);
-		//serial->printf("%d,%d,%d,%d\n\r",);
-		//serial->printf("%d,%d\n\r",ps3->data[PS3_Select],ps3->data[PS3_Start]);
 
 		if(ps3->data[PS3_Select] == 1){
 			motionType = Motion::origin;
@@ -120,11 +115,8 @@ void CatchRobo::cycle(){
 			if(ps3->data[PS3_RIGHT] == 1 && swStat[PS3_RIGHT] == 0){
 				offsetClear();
 				swStat[PS3_RIGHT] = 1;
-				if(id){
-					if(boxX < 3)boxX++;
-				}else{
-					if(boxX > 1)boxX--;
-				}
+				if(id == 1 && boxX < 3)boxX++;
+				if(id == 0 && boxX > 1)boxX--;
 			}else if(ps3->data[PS3_RIGHT] == 0){
 				swStat[PS3_RIGHT] = 0;
 			}
@@ -150,11 +142,8 @@ void CatchRobo::cycle(){
 			if(ps3->data[PS3_LEFT] == 1 && swStat[PS3_LEFT] == 0){
 				offsetClear();
 				swStat[PS3_LEFT] = 1;
-				if(id){
-					if(stageX < 6)stageX++;
-				}else{
-					if(stageX > 1)stageX--;
-				}
+				if(id == 1 && stageX < 6)stageX++;
+				if(id == 0 && stageX > 1)stageX--;
 			}else if(ps3->data[PS3_LEFT] == 0){
 				swStat[PS3_LEFT] = 0;
 			}
@@ -162,11 +151,8 @@ void CatchRobo::cycle(){
 			if(ps3->data[PS3_RIGHT] == 1 && swStat[PS3_RIGHT] == 0){
 				offsetClear();
 				swStat[PS3_RIGHT] = 1;
-				if(id){
-					if(stageX > 1)stageX--;
-				}else{
-					if(stageX < 6)stageX++;
-				}
+				if(id == 1 && stageX > 1)stageX--;
+				if(id == 0 && stageX < 6)stageX++;
 			}else if(ps3->data[PS3_RIGHT] == 0){
 				swStat[PS3_RIGHT] = 0;
 			}
@@ -175,14 +161,13 @@ void CatchRobo::cycle(){
 				offsetClear();
 				swStat[PS3_UP] = 1;
 				if(stageY < 4){
-					if(id){
-						if(stageY == 1 && stageX % 2 == 0){
-							stageY++;
-						}
+					if(stageY == 1){
+						//ノーマル→共通でハンドが激突しないように制限つけている
+						if(id == 1 && stageX % 2 == 0)stageY++;
+						if(id == 0 && stageX % 2 == 1)stageY++;
 					}else{
-						if(stageY == 1 && stageX % 2 == 1){
-							stageY++;
-						}
+						//共通
+						stageY++;
 					}
 				}
 			}else if(ps3->data[PS3_UP] == 0){
@@ -296,7 +281,7 @@ void CatchRobo::controlCycle(){
 		}else if(limit[MotorR]->read() == 0 && originR == 0){		//押されていない
 			targetPosR = readR() - 0.015;	//1rad/s=57°/s
 		}else{								//すでに押されている
-			targetPosR = deg_to_radian(15);
+			targetPosR = deg_to_radian(10);
 			if(limit[MotorX]->readStat == 1 && limit[MotorX]->read() == 1){		//押された
 				enc[MotorX]->reset();
 				if(id){
@@ -362,50 +347,64 @@ void CatchRobo::controlCycle(){
 		targetPosY = map.y;
 		targetPosZ = map.z;
 
-		if(id){									//シューティングボックス上にいるとき
-			if(readX() > -100){
-				targetPosZ = 750;
-				targetPosY = 200;
-			}
-		}else{
-			if(readX() < 100){
-				targetPosZ = 750;
-				targetPosY = 200;
-			}
+		if((id == 1 && readX() > -100) || (id == 0 && readX() < 100)){
+			armControl();
+			targetPosS = 500;					//長さ固定
+			targetPosR = deg_to_radian(60);		//仰角固定
+			targetPosP = M_PI/2;
+			//mapに従って動くのはXだけ
+			motorControl();
+			break;
 		}
 
+		if(readR() > deg_to_radian(43) && readS() < 550){		//角度ガバガバ､共通ワーク取りに行ってる時にバグらないようにSつき
+			armControl();
+			targetPosS = 500;
+			targetPosR = deg_to_radian(30);
+			targetPosP = M_PI/2;
+			motorControl();
+			break;
+		}
+
+		//初手のハンド引き出し動作
+		if(readR() < deg_to_radian(40) && handInternal == 1){
+			targetPosR = deg_to_radian(60);	//ある程度大きくしておかないとゲインの都合で遅い
+			targetPosS = 435;
+			targetPosP = -M_PI/2;
+			motorControl();
+			break;
+		}else if(readR() > deg_to_radian(40) && handInternal == 1){
+			handInternal = 0;
+			break;
+		}
+
+		/********↑退避動作↓通常動作********/
+
 		if(stageY == 1){
-			if(id){
-				if(stageX % 2 == 1){
-					targetPosA = M_PI/2;
-				}else{
-					targetPosA = -M_PI/2;	//逆向きなので反転させる
-				}
+			if((id == 1 && stageX % 2 == 1) || (id == 0 && stageX % 2 == 0)){
+				targetPosA = M_PI / 2;
 			}else{
-				if(stageX % 2 == 0){
-					targetPosA = M_PI/2;
-				}else{
-					targetPosA = -M_PI/2;	//逆向きなので反転させる
-				}
+				targetPosA = -M_PI /2;
 			}
 
-			if(getState){
 
-			}else{
+			if(getState == 0){		//ボタン押してない時は上で待機
 				targetPosZ += 100;
 			}
-			targetPosP = -readR();
+			targetPosP = -readR();	//初期角度ぶんのオフセットはいらなかった(実験)､シューティングボックスに入れる時に都合がいいがち
+
 		}else{											//共通ワーク
 
-			if(getState){
+			if(getState){				//取りに行く時はz=-100,y=0
 				targetPosZ -= 100;
+				targetPosY -= 0;
 			}else{
-				if(handState){
+				if(handState){		//ハンド開閉
 					//垂直に引き上げ
 				}else{
-					targetPosY -= 100;						//
+					targetPosY -= 100;	//掴んでない時はz=0,y=-100
+					targetPosZ -= 0;
 				}
-				//targetPosZ -= 100;
 			}
 			targetPosA = M_PI/2;
 			targetPosP = -readR() + M_PI / 2;
@@ -413,20 +412,12 @@ void CatchRobo::controlCycle(){
 
 		offsetJog();
 
-		if(readR() < deg_to_radian(35) && handInternal == 1){		//アームを引き出す
-			targetPosR = deg_to_radian(40);
-			targetPosS = 435;
-			targetPosP = -M_PI/2;
-			motorControl();
-			break;
-		}else if(readR() > deg_to_radian(35) && handInternal == 1){
-			handInternal = 0;
-			break;
-		}
-
 		armControl();
 
+		//フィールド面へのハンドの衝突を防ぐ｡
+		//ノーマル→共通のときは目標ピッチになるまで竿伸ばさない
 		if(readR() < (targetPosR - deg_to_radian(1)))targetPosS = readS();
+		//共通→ノーマルのときは先に竿を縮めてからピッチ変更する
 		if(readS() > (targetPosS + 20))targetPosR = readR();
 
 		motorControl();
@@ -436,6 +427,7 @@ void CatchRobo::controlCycle(){
 
 		if(escape == 0){												//共通→ノーマル
 			if(readR() > deg_to_radian(25)){
+				//共通エリアから退避してノーマルエリアの上空へ行く｡
 				targetPosY = 70;
 				targetPosZ = 400;
 				armControl();
@@ -450,9 +442,13 @@ void CatchRobo::controlCycle(){
 				escape = 1;
 			}
 		}else if(escape == 1){											//ノーマル→シューティングボックス
+			//ピッチめいっぱい上げる
 			if(readR() < deg_to_radian(70))targetPosR = deg_to_radian(80);
+			//竿も目一杯縮める
 			if(readS() > 450)targetPosS = 430;
+			//どっちもできたら完了してmap座標に従って動く
 			if(readR() > deg_to_radian(70) && readS() < 550)escape = 2;
+
 			targetPosP = M_PI / 2;
 			targetPosA = M_PI / 2;
 			if(id){
@@ -469,18 +465,15 @@ void CatchRobo::controlCycle(){
 		targetPosX = map.x;
 		targetPosP = -readR() + M_PI / 2;// - deg_to_radian(15);
 
-		if(id){
-			if(readX() > 0){
-				targetPosZ += 200;
-			}
-		}else{
-			if(readX() < 0){
-				targetPosZ += 200;
-			}
-		}
+
+		if(id == 1 && readX() > 0)targetPosZ += 200;
+		if(id == 0 && readX() < 0)targetPosZ += 200;
+
 
 		if(getState)targetPosZ -= 100;
 
+
+		//古い退避プログラム
 		/*
 		if(readS() > 590){	//アーム上がりきっていない
 			if(id){
@@ -533,47 +526,37 @@ void CatchRobo::motorControl(){
 	pid[MotorS].input(targetPosS,readS());
 	pid[MotorJ].input(targetPosJ,readJ());
 
-	for(int i=0;i<4;i++){
-		output[i] = pid[i].outputF();
-	}
-	if(motionType != Motion::origin){
+	for(int i=0;i<4;i++)output[i] = pid[i].outputF();
 
-	}else{
+	if(motionType == Motion::origin){	//初期位置合わせにフィードフォワード項があると角度と補正量が合わずに動かないことがある･･･のだが手前にあるので動くっぽい｡
 		rFF = 0;
 	}
+
 	rFF = sin(readR()) * (readS() / 1170) * MotorR_FF_S_Gain;
 	sFF = -cos(readR()) * MotorS_FF_S_Gain;
 	output[MotorR] += rFF;
 	output[MotorS] += sFF;
 
-	outputEnable = 1;
-	if(outputEnable){
+	md[MotorX]->duty(output[MotorX]);	//かわロボ:+　本体:0
+	md[MotorS]->duty(-output[MotorS]);	//かわろぼ:-　本体:+
+	md[MotorJ]->duty(output[MotorJ]);	//かわろぼ:- 本体+
 
-		md[MotorX]->duty(output[MotorX]);	//かわロボ:+　本体:0
-		md[MotorS]->duty(-output[MotorS]);	//かわろぼ:-　本体:+
-		//md[MotorJ]->duty(output[MotorJ]);	//かわろぼ:- 本体+
-
-		if(id){
-			md[MotorR]->duty(output[MotorR]);	//かわロボ:+ 本体:-
-		}else{//右と左は反転している
-			md[MotorR]->duty(-output[MotorR]);	//かわロボ:+ 本体:-
-		}
-
-		if(targetPosA < -M_PI/2)targetPosA = -M_PI/2;
-		if(targetPosA > M_PI/2)targetPosA = M_PI/2;
-		if(targetPosP < -M_PI/2)targetPosP = -M_PI/2;
-		if(targetPosP > M_PI/2)targetPosP = M_PI/2;
-
-		servoDuty[0] = 159 - (targetPosA/M_PI)*40;
-		servoDuty[1] = 159 - (targetPosP/M_PI)*40;
-
-		md[ServoZ]->position(servoDuty[0]);
-		md[ServoP]->position(servoDuty[1]);
-	}else{
-		for(int i=0;i<4;i++){
-			md[i]->duty(0);
-		}
+	if(id){
+		md[MotorR]->duty(output[MotorR]);	//かわロボ:+ 本体:-
+	}else{//右と左は反転している
+		md[MotorR]->duty(-output[MotorR]);	//かわロボ:+ 本体:-
 	}
+
+	if(targetPosA < -M_PI/2)targetPosA = -M_PI/2;
+	if(targetPosA > M_PI/2)targetPosA = M_PI/2;
+	if(targetPosP < -M_PI/2)targetPosP = -M_PI/2;
+	if(targetPosP > M_PI/2)targetPosP = M_PI/2;
+
+	servoDuty[0] = 159 - (targetPosA/M_PI)*40;
+	servoDuty[1] = 159 - (targetPosP/M_PI)*40;
+
+	md[ServoZ]->position(servoDuty[0]);
+	md[ServoP]->position(servoDuty[1]);
 }
 
 float CatchRobo::readR(){
@@ -600,9 +583,7 @@ float CatchRobo::readJ(){
 }
 
 void CatchRobo::offsetClear(){
-	for(int i=0;i<6;i++){
-		offsetPos[i] = 0;
-	}
+	for(int i=0;i<6;i++)offsetPos[i] = 0;
 }
 
 void CatchRobo::offsetJog(){

@@ -104,7 +104,6 @@ public:
 	float offsetPos[6];
 
 	uint16_t origin,originR,handInternal;
-	uint16_t outputEnable;
 	uint16_t motionType;
 	int16_t stageX,stageY,boxX,boxY;
 	uint16_t handState,getState;

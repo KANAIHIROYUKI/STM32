@@ -115,7 +115,7 @@ void CatchRoboMap::callShootingBox(int row,int col){
 		x = -InnerWall_BS1C1_X - ((col - 1) * 80);
 	}
 	z = ShootingBox_Z;
-	y += Field_Y - 250;
+	y += Field_Y - 300;
 }
 
 void CatchRoboMap::callNormalWork(int stage,int col){
