@@ -71,6 +71,7 @@ public:
 	void setup(USART &serial,SBUS &sbus,SerialArduino &sa,NCP5359 &motor0,NCP5359 &motor1,NCP5359 &motor2,NCP5359 &motor3,GPIO &motorEnable);
 	void uiSetup(Switch &sw0,Switch &sw1,LED &led0,LED &led1,LED &led2,LED &led3,LED &led4,LED &led5);
 	void sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3,float adcBatt);
+	void servoSetup(CanMotorDriver &servo0,CanMotorDriver &servo1);
 
 	void cycle();
 	void armPotCycle();
@@ -107,6 +108,7 @@ public:
 	uint16_t mode,printValueSelect,selectToggle,error,oldError,saLedStat;
 	uint64_t printTime,controlCycleIntervalTime,saSendTime,armSpeakTime,loopCycleCnt;
 
+	float servoOutput[2],servoTargetDeg;
 private:
 	USART *serial;
 	NCP5359 *motor[4];
@@ -126,6 +128,8 @@ private:
 	PID armCurrent;
 	Average<int> gravitatyAve;
 	Average<float> battVoltage;
+
+	CanMotorDriver *servo[2];
 };
 
 

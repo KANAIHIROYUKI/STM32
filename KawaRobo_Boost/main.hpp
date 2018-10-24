@@ -12,7 +12,7 @@
 #define ADC_TO_BATT_BOARD1 16.901
 #define ADC_TO_BATT_BOARD2 17.114
 
-#define PWM_FRQ 1000
+#define PWM_FRQ 200
 
 System sys;
 
@@ -27,7 +27,7 @@ NCP5359 motor[4];
 
 GPIO outP[4],outN[4];
 
-SerialArduino sa;
+SerialArduino sa,pc;
 SBUS sbus;
 
 SPI_Master spi;
@@ -42,18 +42,23 @@ void setup(){
 	individual.setup(PB2,INPUT_PU);
 	motorEn.setup(PA8,OUTPUT);
 
-	outP[0].setup(PB1,OUTPUT);
-	outP[1].setup(PA7,OUTPUT);
-	outP[2].setup(PB9,OUTPUT);
-	outP[3].setup(PB7,OUTPUT);
-	outN[0].setup(PB0,OUTPUT);
-	outN[1].setup(PA6,OUTPUT);
-	outN[2].setup(PB8,OUTPUT);
-	outN[3].setup(PB6,OUTPUT);
 
+	pwmP[0].pwmSetup(TIM3,4,PB1,PWM_FRQ,0,TIM_OCMode_PWM1);
+	pwmP[1].pwmSetup(TIM3,2,PA7,PWM_FRQ,0,TIM_OCMode_PWM1);
+	pwmP[2].pwmSetup(TIM4,4,PB9,PWM_FRQ,0,TIM_OCMode_PWM1);
+	pwmP[3].pwmSetup(TIM4,2,PB7,PWM_FRQ,0,TIM_OCMode_PWM1);
+
+	pwmN[0].pwmSetup(TIM3,3,PB0,PWM_FRQ,0,TIM_OCMode_PWM2);
+	pwmN[1].pwmSetup(TIM3,1,PA6,PWM_FRQ,0,TIM_OCMode_PWM2);
+	pwmN[2].pwmSetup(TIM4,3,PB8,PWM_FRQ,0,TIM_OCMode_PWM2);
+	pwmN[3].pwmSetup(TIM4,1,PB6,PWM_FRQ,0,TIM_OCMode_PWM2);
+
+
+	pc.setup(USART1,115200,PA9,PA10);
 	serial.setup(USART1,115200,PA9,PA10);
 	serial.printf("DATE = %s\n\r",__DATE__);
 	serial.printf("TIME = %s\n\r",__TIME__);
+
 
 	sys.usartSetup(serial);
 
@@ -76,26 +81,18 @@ void setup(){
 	motorEn.write(1);
 
 	while(1){
-		motorEn.write(1);
-		outP[0].write(1);
-		outN[0].write(0);
-		for(int i=0;i<1000;i++){
+		led[0].cycle();
+		sw[0].cycle();
+		sw[1].cycle();
+		pc.cycle();
+
+		if(sw[0].read() == 0){
 
 		}
-
-		motorEn.write(0);
-		delayMicros(50);
-
-		motorEn.write(1);
-		outP[0].write(0);
-		outN[0].write(1);
-		for(int i=0;i<1000;i++){
-		}
-
-		motorEn.write(0);
-		delayMicros(50);
+		delay(50);
+		pc.write(0,millis());
+		pc.write(1,millis());
 	}
-
 
 	while(1){
 		led[0].cycle();
@@ -103,18 +100,23 @@ void setup(){
 		sw[1].cycle();
 		if(sw[0].read() == 0){
 			for(int i=0;i<4;i++){
-				motor[i].duty(0.5);
+				pwmN[i].duty(PWM_FRQ/2);
+				pwmP[i].duty(PWM_FRQ/2);
 			}
+			delay(500);
 		}else if(sw[1].read() == 0){
 			for(int i=0;i<4;i++){
-				motor[i].duty(0.5);
+				pwmN[i].duty(PWM_FRQ/2);
+				pwmP[i].duty(PWM_FRQ/2);
 			}
+			delay(1000);
 		}else{
 			for(int i=0;i<4;i++){
-				motor[i].duty(0);
+				pwmN[i].duty(PWM_FRQ-1);
+				pwmP[i].duty(0);
 			}
 		}
-		delay(100);
+		delay(1);
 	}
 }
 

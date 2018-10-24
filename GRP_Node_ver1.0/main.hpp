@@ -158,7 +158,7 @@ void setup(){
 	}else{					//node
 		for(int i=0;i<4;i++){
 			//tx[i].setup(can,0x100 + i);
-			rx[i].setup(can,0x100 + i);
+			rx[i].setup(can,0x200 + i);
 		}
 	}
 }

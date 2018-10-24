@@ -208,6 +208,7 @@ void KawaRobo::displayCycle(){
 				serial->printf(",%5d",sbus->read(i));
 			}
 			serial->printf(",gy = %d",armPitchGy.output32());
+			serial->printf("servo = %3d,%3d",(int)servoOutput[0],(int)servoOutput[1]);		//工大祭
 			break;
 
 		case 3:
@@ -340,6 +341,25 @@ void KawaRobo::run(){
 	motor[ML]->duty(-getRunPosition() - robotPIDR.outputF());
 
 	//armCurrent.measuredValue((motor[1]->outDuty*14) - 0.1);
+
+	//↓工大祭
+	//servoOutput[0] += getSelectPosition()/3;
+	//servoOutput[1] -= getSelectPosition()/3;
+	if(servoTargetDeg > 0){
+		if(servoOutput[0] > 60)servoTargetDeg = -60;
+		servoOutput[0] += 0.3;
+		servoOutput[1] += 0.3;
+	}else{
+		if(servoOutput[0] < -60)servoTargetDeg = 60;
+		servoOutput[0] -= 0.3;
+		servoOutput[1] -= 0.3;
+	}
+
+	servoOutput[0] = constrain(servoOutput[0],-90,90);
+	servoOutput[1] = constrain(servoOutput[1],-90,90);
+
+	servo[0]->duty(servoOutput[0]/90);
+	servo[1]->duty(servoOutput[1]/90);
 }
 
 void KawaRobo::safety(){
@@ -593,8 +613,8 @@ void KawaRobo::sbusDataUpdate(){
 
 	if(toggleStat[TOGGLE_POWER_LIMIT] != (int)getTogglePosition(TOGGLE_POWER_LIMIT)){		//出力リミッタ切り替え
 		if(getTogglePosition(TOGGLE_POWER_LIMIT) > 0.1){
-			motor[MR]->dutyLimit(0.99);
-			motor[ML]->dutyLimit(0.99);
+			motor[MR]->dutyLimit(0.70);
+			motor[ML]->dutyLimit(0.70);
 			switch(loopCycleCnt % 2){
 			case 0:
 				speakRequest = 35;						//一生懸命がんばります！
@@ -604,8 +624,8 @@ void KawaRobo::sbusDataUpdate(){
 				break;
 			}
 		}else if(getTogglePosition(TOGGLE_POWER_LIMIT) > -0.1){
-			motor[MR]->dutyLimit(0.7);
-			motor[ML]->dutyLimit(0.7);
+			motor[MR]->dutyLimit(0.5);
+			motor[ML]->dutyLimit(0.5);
 			switch(loopCycleCnt % 2){
 			case 0:
 				speakRequest = 11;						//応援してもらうと,なんでもできちゃう気がします！
@@ -619,8 +639,8 @@ void KawaRobo::sbusDataUpdate(){
 			}
 
 		}else{
-			motor[MR]->dutyLimit(0.4);
-			motor[ML]->dutyLimit(0.4);
+			motor[MR]->dutyLimit(0.3);
+			motor[ML]->dutyLimit(0.3);
 			switch(loopCycleCnt % 3){
 			case 0:
 				speakRequest = 39;						//一生懸命やりました！
@@ -709,8 +729,9 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 	this->motor[3] = &motor3;
 	this->motorEn = &motorEN;
 
-	motor[MA]->dutyLimit(0.99);
-	motor[MS]->dutyLimit(0.99);
+	//工大祭仕様
+	motor[MA]->dutyLimit(0.70);
+	motor[MS]->dutyLimit(0.70);
 	motor[ML]->dutyLimit(0.4);
 	motor[MR]->dutyLimit(0.4);
 
@@ -760,6 +781,10 @@ void KawaRobo::setup(USART &serialSet,SBUS &sbusSet,SerialArduino &saSet,NCP5359
 	//cyclleまだ回ってねえよ
 	//toggleStat[TOGGLE_CONTROL_MODE] = (int)getTogglePosition(TOGGLE_CONTROL_MODE);
 	//toggleStat[TOGGLE_POWER_LIMIT]  = (int)getTogglePosition(TOGGLE_POWER_LIMIT);
+
+	servoOutput[0] = 0;
+	servoOutput[1] = 0;
+
 }
 
 void KawaRobo::uiSetup(Switch &sw0,Switch &sw1,LED &led0,LED &led1,LED &led2,LED &led3,LED &led4,LED &led5){
@@ -780,6 +805,11 @@ void KawaRobo::sensorSetup(ADC &adc0,ADC &adc1,ADC &adc2,ADC &adc3,float _adcToB
 	this->analog[2] = &adc2;
 	this->analog[3] = &adc3;
 	adcToBattV = _adcToBatt;
+}
+
+void KawaRobo::servoSetup(CanMotorDriver &servo0,CanMotorDriver &servo1){
+	this->servo[0] = &servo0;
+	this->servo[1] = &servo1;
 }
 
 /*************************************************************************************/

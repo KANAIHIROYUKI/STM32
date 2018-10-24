@@ -39,4 +39,6 @@
 #include "robot.h"
 #include "PID_Controller.h"
 
+#include "canInterface.h"
+
 #endif

@@ -26,6 +26,7 @@ void AS504x::cycle(){
 
 	if(spiif.begin()){										//spi取得できると自動的にnssもアサートしてくれる
 		delay(1);
+		spi->changeMode(SPI_Mode3);
 		for(int i=0;i<magencDeviceNumber*2;i++){			//空データ｡受信のみ､各16bitある
 			spi->write(0);
 		}
@@ -68,10 +69,10 @@ int AS504x::getValue(){
 	spi->changeMode(SPI_Mode3);
 
 	//tClockFe = 0.5us
-	nss->write(0);
+	spiif.nss->write(0);
 	data[0] = spi->transfer(0);
 	data[1] = spi->transfer(0);
-	nss->write(1);
-	return (int)((data[0] << 2) + (data[1] >> 6));
+	spiif.nss->write(1);
+	return (int)((data[0] << 3) + (data[1] >> 5));
 }
 

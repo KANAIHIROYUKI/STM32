@@ -31,7 +31,6 @@ public:
 	Enc *enc[8];
 	SPI_Master *spi;
 	SPI_Interface spiif;
-	GPIO *nss;
 };
 
 

@@ -69,7 +69,7 @@ public:
 	void pwmReset(uint16_t period = PWM_PERIOD_DEFALUT,uint16_t prescaler = 0,uint16_t mode = TIM_OCMode_DEFAULT);
 	uint16_t duty(uint16_t duty);
 	uint16_t dutyF(float duty);
-	void itSetup();
+	void itSetup(uint16_t tim_it = TIM_IT_Update);
 
 	void timerSetup(TIM_TypeDef* tim);
 	uint64_t millis();
@@ -118,6 +118,7 @@ void OC4DutySet(TIM_TypeDef*TIMx,uint16_t duty);
 
 /********************************Å´ENCODER Å™PWM***********************************************/
 
+
 void TIM1EncoderSetup();
 void TIM2EncoderSetup();
 void TIM3EncoderSetup();
@@ -137,6 +138,11 @@ void TIM1_PWM_Update_IRQ();
 void TIM2_PWM_Update_IRQ();
 void TIM3_PWM_Update_IRQ();
 void TIM4_PWM_Update_IRQ();
+
+void TIM3_PWM_CC1_IRQ();
+void TIM3_PWM_CC2_IRQ();
+void TIM3_PWM_CC3_IRQ();
+void TIM3_PWM_CC4_IRQ();
 
 void TIM4_PWM_CC1_IRQ();
 void TIM4_PWM_CC2_IRQ();

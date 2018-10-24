@@ -20,11 +20,11 @@ void DRV8305::setup(SPI_Master &_spi,GPIO &_ss){
 
 void DRV8305::programing(){
 	spi->changeMode(SPI_Mode1);
-	write(0x5,(0x3 << 8) + (0b1011 << 4) + 0b1011);
-	write(0x6,(0x3 << 8) + (0b1011 << 4) + 0b1011);													//GD Current 1.25A/1.00A
-	write(0x7,(0x1 << 9) + (0x0 << 7) + (0b011 << 4) + (0x1 << 2) + 0x2);							//DT = 440ns
-	write(0xA,(0 << 10) + (0 << 9) + (0 << 8) + (0x0 << 6) + (0b00 << 4) + (0b00 << 2) + 0b00);		//10V/V
-	write(0xC,(0b10010 << 3) + 0x0);																//Vds0.511V
+	write(0x5,(0b11 << 8) + (0b1011 << 4) + 0b1011);
+	write(0x6,(0b11 << 8) + (0b1011 << 4) + 0b1011);													//GD Current 1.25A/1.00A
+	write(0x7,(0b0 << 9) + (0b10 << 7) + (0b011 << 4) + (0b1 << 2) + 0b10);							//DT = 440ns
+	write(0xA,(0 << 10) + (0 << 9) + (0 << 8) + (0b0 << 6) + (0b00 << 4) + (0b00 << 2) + 0b00);		//10V/V
+	write(0xC,(0b10010 << 3) + 0b0);																//Vds0.511V
 }
 
 void DRV8305::readFault(){
@@ -58,7 +58,7 @@ void DRV8305::write(uint8_t address,uint16_t _data){
 	spi->changeMode(SPI_Mode1);
 	ss->write(0);
 	delayMicros(100);
-	spi->transfer(0x80 + (address << 3) + (_data >> 8));
+	spi->transfer(0x00 + (address << 3) + (_data >> 8));
 	spi->transfer(_data);
 	ss->write(1);
 	data[address] = _data;
@@ -69,10 +69,11 @@ uint16_t DRV8305::read(uint8_t address){
 	spi->changeMode(SPI_Mode1);
 	ss->write(0);
 	delayMicros(100);
-	spi->transfer(0x80 + (address << 3));
-	spi->transfer(0x00);
+	rxData = spi->transfer(0x80 + (address << 3)) << 8;
+	rxData += spi->transfer(0x00);
 	ss->write(1);
-	return 0;
+	delayMicros(200);
+	return rxData;
 }
 
 void DRV8305::setupGPIO(){

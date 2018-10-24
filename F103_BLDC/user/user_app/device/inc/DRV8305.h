@@ -20,6 +20,7 @@ public:
 	uint16_t read(uint8_t address);
 
 	uint16_t data[16];
+	uint16_t rxData;
 	SPI_Master *spi;
 	GPIO *ss;
 	//SPIƒ‚[ƒh‚Í1H

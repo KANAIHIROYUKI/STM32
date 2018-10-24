@@ -140,15 +140,15 @@ uint16_t TIM::dutyF(float dutyIn){
 	return duty((uint16_t)dutyIn*pwm_period);
 }
 
-void TIM::itSetup(){
+void TIM::itSetup(uint16_t tim_it){
 	if(tim_tim == TIM1){
-		TIM1ITSetup();
+		TIM1ITSetup(tim_it);
 	}else if(tim_tim == TIM2){
-		TIM2ITSetup();
+		TIM2ITSetup(tim_it);
 	}else if(tim_tim == TIM3){
-		TIM3ITSetup();
+		TIM3ITSetup(tim_it);
 	}else if(tim_tim == TIM4){
-		TIM4ITSetup();
+		TIM4ITSetup(tim_it);
 	}
 }
 
@@ -358,6 +358,7 @@ void TIM3ITSetup(uint16_t tim_it){
 	NVIC_Init(&NVIC_InitStructure);
 
 	TIM_ITConfig(TIM3,tim_it,ENABLE);
+	TIM_ITConfig(TIM3,TIM_IT_CC1,ENABLE);
 }
 
 void TIM4ITSetup(uint16_t tim_it){
@@ -369,7 +370,6 @@ void TIM4ITSetup(uint16_t tim_it){
 	NVIC_Init(&NVIC_InitStructure);
 
 	TIM_ITConfig(TIM4,tim_it,ENABLE);
-	//TIM_ITConfig(TIM4,TIM_IT_CC1,ENABLE);
 }
 
 
@@ -572,6 +572,21 @@ void TIM3_PWM_Update_IRQ(){
 
 }
 
+/*void TIM3_PWM_CC1_IRQ(){
+	tim3_cc1_cnt++;
+}*/
+
+void TIM3_PWM_CC2_IRQ(){
+
+}
+
+void TIM3_PWM_CC3_IRQ(){
+
+}
+
+void TIM3_PWM_CC4_IRQ(){
+
+}
 
 
 void TIM4_PWM_Update_IRQ(){
@@ -639,8 +654,25 @@ extern "C" void TIM2_IRQHandler(void){
 
 extern "C" void TIM3_IRQHandler(void){
 	if(TIM::tim3_mode == TIM_ENC){
-		TIM3_ENCODER_IRQ();
-		TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
+		if(TIM_GetITStatus(TIM3,TIM_IT_Update) == SET){
+			TIM3_ENCODER_IRQ();
+			TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
+		}else if(TIM_GetITStatus(TIM3,TIM_IT_CC1) == SET){
+			//TIM3_PWM_CC1_IRQ();
+			TIM_ClearITPendingBit(TIM3,TIM_IT_CC1);
+
+		}else if(TIM_GetITStatus(TIM3,TIM_IT_CC2) == SET){
+			TIM3_PWM_CC2_IRQ();
+			TIM_ClearITPendingBit(TIM3,TIM_IT_CC2);
+
+		}else if(TIM_GetITStatus(TIM3,TIM_IT_CC3) == SET){
+			TIM3_PWM_CC3_IRQ();
+			TIM_ClearITPendingBit(TIM3,TIM_IT_CC3);
+
+		}else if(TIM_GetITStatus(TIM3,TIM_IT_CC4) == SET){
+			TIM3_PWM_CC4_IRQ();
+			TIM_ClearITPendingBit(TIM3,TIM_IT_CC4);
+		}
 	}else if(TIM::tim3_mode == TIM_PWM){
 		TIM3_PWM_Update_IRQ();
 		TIM_ClearITPendingBit(TIM3,TIM_IT_Update);

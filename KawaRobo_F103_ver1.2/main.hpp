@@ -27,6 +27,7 @@ NCP5359 motor[4];
 
 SerialArduino sa;
 SBUS sbus;
+CAN can;
 
 SPI_Master spi;
 AS504x mag;
@@ -34,6 +35,8 @@ AS504x mag;
 KawaRobo kw;
 
 uint64_t intervalTime;
+
+CanMotorDriver servo[2];
 
 void setup(){
 	sys.setup();
@@ -115,8 +118,13 @@ void setup(){
 		delay(100);
 	}*/
 
+	can.setup(CAN1,PA12,PA11);
+	servo[0].setup(can,0);
+	servo[1].setup(can,1);
+
 	kw.setup(serial,sbus,sa,motor[0],motor[1],motor[2],motor[3],motorEn);
 	kw.uiSetup(sw[1],sw[0],led[0],led[1],led[2],led[3],led[4],led[5]);
+	kw.servoSetup(servo[0],servo[1]);
 
 	if(individual.read()){
 		kw.sensorSetup(analog[0],analog[1],analog[2],analog[3],ADC_TO_BATT_BOARD1);
